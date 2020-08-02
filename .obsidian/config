@@ -1,0 +1,20 @@
+{
+  "theme": "moonstone",
+  "pluginEnabledStatus": {
+    "File explorer": true,
+    "Search": true,
+    "Quick switcher": true,
+    "Graph view": true,
+    "Backlinks": true,
+    "Command palette": true,
+    "Markdown format importer": true,
+    "Word count": true,
+    "Random note": true
+  },
+  "promptDelete": true,
+  "vimMode": true,
+  "fileSortOrder": "byModifiedTimeReverse",
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "Attachements",
+  "newFileLocation": "root"
+}

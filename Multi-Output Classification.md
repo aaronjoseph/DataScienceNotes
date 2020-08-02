@@ -1,0 +1,1 @@
+MultiOutput Classification is a generalization of multi-label classification, wherein each label has more than 2 classes

@@ -1,0 +1,93 @@
+{
+  "main": {
+    "id": "3fc2f5d6f605c70e",
+    "type": "split",
+    "children": [
+      {
+        "id": "d72164d40863432e",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "OverSampling.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "8f6830db3a4a3623",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Undersampling.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2c8c34b8223154bc",
+    "type": "split",
+    "children": [
+      {
+        "id": "9095a2596b25af69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "04b2650de4e76fa2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "57de68b1d28f8ae6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "a0444c96ed4a9f15",
+    "type": "split",
+    "children": [
+      {
+        "id": "61e9249072ff4efc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fb9df67c642ce810",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "OverSampling.md",
+    "Undersampling.md",
+    "Imbalanced Classification.md",
+    "Untitled.md",
+    "Decision Trees.md"
+  ]
+}

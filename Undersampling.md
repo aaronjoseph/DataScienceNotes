@@ -1,0 +1,3 @@
+- In Undersampling, the aim is to increase the number of minority classes as much as the majority class
+- This is done by deleting samples of the majority class 
+- This technique can cause information loss 
