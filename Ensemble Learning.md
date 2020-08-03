@@ -1,6 +1,10 @@
 Group of predictors is called ensemble.
 The use of ensemble for predictors is called ensemble learning.
 
+Two Types of Ensemble Learning
+1. Bagging -> Random Forest
+2. Boosting -> XGBoost, ADABoost, GBoost
+
 `Hard-Voting` - Here each predictor's class is taken and the majority voting is done to determine the output
 
 `Soft-Voting` - Each predictor's probability score is taken, post which, for the final calculation the probability score value is averaged out to get the final value

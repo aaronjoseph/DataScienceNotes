@@ -9,12 +9,19 @@
     "Command palette": true,
     "Markdown format importer": true,
     "Word count": true,
-    "Random note": true
+    "Random note": true,
+    "Slides": true,
+    "Tag pane": true,
+    "Page preview": true,
+    "Outline": true
   },
   "promptDelete": true,
   "vimMode": true,
-  "fileSortOrder": "byModifiedTimeReverse",
+  "fileSortOrder": "alphabetical",
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "Attachements",
-  "newFileLocation": "root"
+  "newFileLocation": "root",
+  "hotkeys": {
+    "workspace:close": []
+  }
 }

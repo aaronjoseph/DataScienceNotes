@@ -1,4 +1,4 @@
-# Logistic Regression
+# [[Logistic Regression]]
 - Useful for understanding the influence of multiple variables on a single outcome
 - This is quite useful, when the final outcome variable has only 2 classes
 - This can fail for Null Data in the predictor 
@@ -11,7 +11,7 @@ lr.fit(x_train,y_train)
 lr.predict(test)
 ```
 
-# Naive Bayes
+# [[Naive Bayes]]
 - Useful for small amount of training data
 - Is extrememly fast
 

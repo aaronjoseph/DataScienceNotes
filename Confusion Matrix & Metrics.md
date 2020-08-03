@@ -29,12 +29,12 @@ $$Specificity = \frac{True Negative}{True Negative + False Positive}$$
 - False Positive Rate
 $$ False  Rate = \frac{False Positive}{True Negative + False Positive} = 1- Specificity$$
 
-- F1 Score
+- F1 Score/ F Beta Score
 - Also, is the harmonic mean of Precision and Recall
  $$ F1 Score = 2*\frac{Precision*Recall}{Precision+Recall} $$
  
- > Type I Error : `False Positive`
- > Type II Error : `False Negative`
+ > Type I Error : `False Positive` 
+ > Type II Error : `False Negative` 
 
 ```py
 from sklearn.metrics import confusion_matrix
