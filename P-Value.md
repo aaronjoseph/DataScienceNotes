@@ -1,3 +1,1 @@
 P value is used for statistical testing, a small P-value will help us reject the Null-Hypothesis. P-Value is calculated by adding up probabilities
-
-Formulae

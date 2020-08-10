@@ -1,7 +1,7 @@
 Correlation Matrix helps us understand relationship between two columns. [[Correlation and Covariance]]
 
 ### Cons of Correlation
-- Correlation fails in Non-Linear relationships such as quadratic or mystery step function. Also it is defined for numerical columns, categorical columns need to be encoded or transformed into one-hot encoding
+- Correlation fails in Non-Linear relationships such as quadratic or mystery step function. Also it is defined for numerical columns, categorical columns need to be encoded or transformed into one-hot [[Encoding]]
 - Correlation is based on symmetry, while this may not be true in the real world
 
 ### What PPS sets out to acheive

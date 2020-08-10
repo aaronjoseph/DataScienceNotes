@@ -14,6 +14,9 @@ Feature Scaling will not be required for ensemble technique
 	2. Then the values are filled as per the standard Deviation from the mean
 	3. This method can handle outlier values
 
+Technique uses Z-Score for calibration $z = \frac{Observation - Mean}{Standard Deviation}$
+
+
 ```py
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()

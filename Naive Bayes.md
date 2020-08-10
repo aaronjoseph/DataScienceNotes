@@ -1,5 +1,4 @@
 ### Bayes Theorem
-
 Bayes theorem is centred around the defining formulae
 
 $$P(A|B) = \frac{P({A\cap B})}{P(B)}$$ 

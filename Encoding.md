@@ -18,6 +18,8 @@ label.fit_tranform(DF[Target])
 
 One hot encoding can be done for categorical variables, wherein for each variable a column is created
 
+This works great for tree based models over Linear models.
+
 ```
 pd.get_dummies(df['target'])
 ```

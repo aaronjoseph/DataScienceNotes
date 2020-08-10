@@ -1,0 +1,1 @@
+Exponential Smoothing (ETS) forecasting is a technique to make forecast by using a weighted mean of past values, wherein more recent values are given higher weights 

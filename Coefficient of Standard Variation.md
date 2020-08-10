@@ -1,0 +1,1 @@
+Coefficient of Variation = $\frac{Std Deviation}{Mean}$

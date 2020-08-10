@@ -50,7 +50,7 @@ from sklearn.neighbours import KNeighboursClassifier
 from sklearn.tree import DecsionTreeClasifier
 ```
 
-# Random Forest Classifier
+# [[Random Forest]] Classifier
 - Fits a number of Decision Tree within the algorithm to control the predictive accuracy of the model and control over-fitting
 - Is slow when considering real time output
 - Is better than decision tress

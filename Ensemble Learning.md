@@ -2,7 +2,7 @@ Group of predictors is called ensemble.
 The use of ensemble for predictors is called ensemble learning.
 
 Two Types of Ensemble Learning
-1. Bagging -> Random Forest
+1. Bagging -> [[Random Forest]]
 2. Boosting -> XGBoost, ADABoost, GBoost
 
 `Hard-Voting` - Here each predictor's class is taken and the majority voting is done to determine the output
@@ -24,7 +24,7 @@ High Bias | Low Bias than Bagging
 
 Out of Bag Evaluation - No of elements that are missed out, the probability of a datapoint not being trained on is around 36.8%
 
-- Random Forest is a bagging algorithm with decision tree as base classifier/regressor
+- [[Random Forest]] is a bagging algorithm with decision tree as base classifier/regressor
 
 ```py
 # Bagging Implementation

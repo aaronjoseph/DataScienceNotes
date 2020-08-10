@@ -1,11 +1,4 @@
-[[Classification Algorithms]]
-[[Regression Algorithms]]
-
-- [ ] Add Cart
-- [ ] Find the algorithm - Information Gain and other algo for creating trees
-- [ ] Topic on pruning the tree
-
-
+[[Classification Algorithms]] [[Regression Algorithms]]
 - Base of ensemble algorithm
 - Uses hierarchy to make the prediction
 - Decision Tree has low-bias and high-Variance
@@ -24,7 +17,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.tree import DecisionTreeRegressor
 ```
 
-- Decision trees are `White Box` in nature, as in we can uncover the decisions for the classification, incontrast Random Forest has more of a `Black Box` approach, as in we cannot make sense of what is happening inside
+- Decision trees are `White Box` in nature, as in we can uncover the decisions for the classification, incontrast [[Random Forest]] has more of a `Black Box` approach, as in we cannot make sense of what is happening inside
 - Decision tree can also output the probabilities of the predicted values
 ```py
 clf.predict_proba()
@@ -74,3 +67,9 @@ Entropy or Gini?
 Decision trees are constructed based on the Information Gain value. Decision tree will always try to maximise the Information Gain
 
 An attribute with highest information gain will be split first
+
+---
+
+- [ ] Add Cart
+- [ ] Find the algorithm - Information Gain and other algo for creating trees
+- [ ] Topic on pruning the tree

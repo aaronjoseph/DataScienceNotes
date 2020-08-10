@@ -1,3 +1,4 @@
+[[Imbalanced Classification]]
 There are quite a few metrics that are used commonly used for testing the performance of a model
 
 ---

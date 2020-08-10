@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Categorical, Ordinal & Nominal.md",
+            "file": "SQL/Stored Procedure.md",
             "mode": "preview"
           }
         }
@@ -84,14 +84,14 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 263,
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Categorical, Ordinal & Nominal.md",
-    "Churn Analysis.md",
-    "Encoding.md",
-    "Hypothesis Testing.md",
+    "SQL/Stored Procedure.md",
+    "SQL/Row_Number, Rank, Dense Rank.md",
+    "SQL/Order of Execution.md",
+    "SQL/Untitled.md",
     "Untitled.md"
   ]
 }
