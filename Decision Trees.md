@@ -3,7 +3,7 @@
 - Uses hierarchy to make the prediction
 - Decision Tree has low-bias and high-Variance
 - Decision Trees are versatile Machine Learning Algorithms that perform both classification and regression tasks and even multi-output tasks
-- The advantages of DecisionTree is that they require very little data preparation - feature scaling
+- The advantages of DecisionTree is that they require very little data preparation - [[Feature Scaling]]
 - Decision tree is `non-parametric`, meaning to say the number of parameters are not clear before the training
 - Decision tree is prone to small variation in the dataset
 - Training Algorithm used in Scikit-learn is stocastic, you will get different results on the same training data

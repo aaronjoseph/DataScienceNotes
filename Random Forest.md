@@ -20,5 +20,8 @@ Hyperparameters
 	2. sqrt : Sqrt of the number of features available
 	3. 0.2 : Fixed value (here it will indicate 20% of the features)
 	> Right balanced needs to be striked, lower number of features will make the model less diverse, while more features will increase the computation complexity
-2. n_estimators - The number of trees built to make the final decision, higher the trees, slower the code
+2. n_estimators - The number of trees built to make the final decision, higher the trees, slower the code, use GridSearchCV to find the optimal number of tress. Typical Values lies between `[10,30,100]`
+	1. With more number of trees, more samples are created, the more samples that has been created, the more you reduce biasness of the data, with excessive number of trees, data will repeat, therefore optimal number of trees are required
 3. min_sample_leaf - is the minimum number of samples required to be at the leaf node. Lower the number of samples at the leaf-node will indicate higher degree of noise capture
+
+ Early stopping with some large no of trees to handle overfitting - Best approach

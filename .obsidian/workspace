@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "b86a765f700ec7dd",
+        "id": "c4ceb648a097357d",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "SQL/Stored Procedure.md",
-            "mode": "preview"
+            "file": "P-Value.md",
+            "mode": "source"
           }
         }
       }
@@ -42,7 +42,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -88,10 +89,10 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "SQL/Stored Procedure.md",
-    "SQL/Row_Number, Rank, Dense Rank.md",
-    "SQL/Order of Execution.md",
-    "SQL/Untitled.md",
-    "Untitled.md"
+    "P-Value.md",
+    "Untitled.md",
+    "Outlier.md",
+    "Undersampling.md",
+    "Hypothesis Testing.md"
   ]
 }

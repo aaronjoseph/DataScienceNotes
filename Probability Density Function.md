@@ -7,11 +7,19 @@
 
 - Uniform Distribution - Here all random variables are the same
 
-- Normal Distribution/ Gaussian Distribution
+- [[Normal Distribution]]/ Gaussian Distribution
+Normal distribution mimics many naturally occuring phenomena, atleast approximately. Normal distribution with 
+$\mu = 0$  
+$\sigma = 1$
+is called `standard distribution`
+
 Keep Random State to a fixed number to maintain reproducibility
 ```py
 from scipy.stats import norm
 data_normal = norm.rvs(size=1000,loc=0,scale=1)
+
+scipy.stats.norm.cdf(0)
+# This will give 0.5 since mean = 0, mid-point
 ```
 scale = Standard Deviation
 loc = Mean
@@ -25,6 +33,7 @@ gamma.rvs(a=5, size =10000)
 ```
 
 - Exponential Distribution
+The Cumulative Distribution Function of exponential distribution is defined by $CDF(x) = 1 - e^{-\lambda x}$ where $\lambda$ 
 
 ```py
 from scipy.stats import expon

@@ -4,6 +4,16 @@ Once the gradient is zero, the local or global optima is reached.
 
 `Learning Rate` - Determines the size of the jump of the learning algorithm
 
+For any learning algorithm, there are two ways to approach it,
+1. Direct Solution
+	1. Here the partial derivative is taken and then it is equate to 0 to find the critical solution
+2. Gradient Descent
+	1. Here, the global optima is never reached, but approached
+
+High dependency of Gradient Descent
+1. This can be applied to any model while the direct solution can be used for handful of models
+2. Solving large system of linear equations can be expensive
+
 ---
 # Approach
 

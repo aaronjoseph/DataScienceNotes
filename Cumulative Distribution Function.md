@@ -1,0 +1,1 @@
+In probability theory, the cumulative distribution function of a real-valued random variable, here the final value is of 1

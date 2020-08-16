@@ -5,6 +5,8 @@
 # Accuracy Metrics
 ---
 
+> `Loss Function` is defined as the amount by which your predictions are deviating from your actual data, or indicates the magnitude of error the model makes 
+
 # Classifier Metrics
 
 ## Classification Accuracy
@@ -56,13 +58,18 @@ from sklearn.metrics import mean_squared_error
 ```
 
 ## RMSE
-This is similar to MSE, however, bring better interpretability to the table.
+This is the square root of MSE, however, bring better interpretability to the table.
 
 ## MSLE
 Mean Squared Log Error
 
-## Metric - $R^2$
- 
+## $R^2$ or Coefficient of Determination
+Is the measure of variance explained by the predictor variable which is present in the target variable. 
 
+If $R^2$ is 0.64, then 64% of the variation in the output variable is explained by the input variable, in other words the higher the $R^2$ the more variation is explained by your input variable and hence better is your model
+- 0 indicates the given model explains none of the variablity of the response data around the mean
+- 100% indicates that the model explains all the variablity of the response data around its mean
 
+## Adjusted $R^2$
 
+Major pitfall of adjusted R-square is that it will always imporve as we increase the number of variables. Adjusted $R^2$ fixes this issue, it adds a penalty to the model. For both $R^2$ and adjusted $R^2$, values closer to 1 is preferred

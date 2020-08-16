@@ -1,6 +1,6 @@
 Collinearity/MultiCollinearity is a phenomenon related to regression, in which the predictor variable are highly correlated among themselves.
 
-Essentially, when some predictors are collinear to each other, we can reduce the predictors since the model anyways considers the impact of collinear variables to the target variable.
+Essentially, when some predictors are collinear to each other, we can reduce the predictors since the model anyways considers the impact of collinear variables to the target variable - this also keeps the model simple.
 
 Correlation Coefficient or Pearson Correlation Coefficient R lies between -1 to 1
 

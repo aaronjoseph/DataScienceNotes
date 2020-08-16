@@ -4,7 +4,7 @@ L1- norm Loss Function is called as least absolute deviations (LAD)
 
 ### L1 & L2 Regularization
 
-`Ridge Regression` Regularized version of linear regression wherein the regularization term$\alpha/2\sum_{i=1}^{n}\theta_i^2$is used on the cost function
+`Ridge Regression` Regularized version of linear regression wherein the regularization term$\alpha/2\sum_{i=1}^{n}\theta_i^2$is used on the cost function. [[Collinearity]] can be reduced using Ridge regression.
 
 `Least Absolute Shrinkage and Selection Operator Regression` or  Lasso Regression uses  $l_1$ norm that is  $\alpha\sum_{i=1}^{n}|\theta_i|$ in the cost function
 

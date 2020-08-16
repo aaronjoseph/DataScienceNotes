@@ -1,0 +1,1 @@
+Confidence interval is a type of estimate computed from the statistics of the observed data.

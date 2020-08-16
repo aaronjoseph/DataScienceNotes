@@ -2,6 +2,9 @@
 There are quite a few metrics that are used commonly used for testing the performance of a model
 
 ---
+ROC
+
+Most classifiers use probability to distribute samples into classes. In most cases, 0.5 is taken as the thereshold. The choice of threshold may not be the best , hence here, the ROC comes into play and is the plot of TPR (Sensitivity/Recall) and FPR (1-TPR). This is useful in understanding the binary classifier.
 
 - `AUC & ROC` - Area under the curve/ Receiver Operator Characteristics
 - AUC/ ROC is used for classification problems [Binary Classifiers]
