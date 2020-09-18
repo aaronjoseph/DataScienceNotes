@@ -1,4 +1,4 @@
-![[Pasted image.png]]
+![[Attachements/Pasted image.png]]
 
 ### Correlation
 - Correlation correlates to how well two variables fluctuate together, positive correlation indicates postive change to the other values, which negative correlation indicates the opposite

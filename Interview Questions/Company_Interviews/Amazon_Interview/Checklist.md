@@ -1,0 +1,23 @@
+- [ ] LSTM's for forecasting
+- [ ] CNN's for forecasting
+- [ ] [[ForeCasting and Monte-Carlo Simulation]] Finish
+- [ ] [[Churn]] Finish
+- [ ] Sagemaker for predictions
+- [ ] Story for Sagemakers useage for Operation team and the Numbers required
+- [ ] Get the basic numbers ready
+	- [ ] No of Customers
+	- [ ] No of enrolments
+	- [ ] What is process is like
+	- [ ] % Conversion from Enrolment to Verfication completion
+	- [ ] % Conversion from Verification to Paying Customers
+	- [ ] % Conversion from Paying to Regular Paying Customers
+- [x] Finish the Tensorflow Book 
+	- [x] Need to learn TensorFlow Immediately
+- [ ] Revision of Deep Learning Notes
+- [ ] Model Drift in Sagemaker
+- [ ] What is boto3 SDK
+- [ ] Introduce yourself on the mirror [[Introduce Yourself]]
+- [ ] [[Behavioural Questions]]
+- [ ] [[What are your Strengths]]
+- [ ] [[Your Weakness]]
+- [ ] SQL Questions - Read the book

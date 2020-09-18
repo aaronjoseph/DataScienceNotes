@@ -4,6 +4,8 @@ Entropy/Chaos theory originated in thermodynamics as a measure of molecular diso
 
 Entropy is defined as the average level of "information", "suprise", or "uncertainity" inherent in the variable's possible outcomes. In data science, entropy measure the level of impurity.
 
+> Higher the entropy, harder it is to draw any conclusion from the information
+
 Cross-entropy is a cost-function used for training. The concepts are drawn from Information Theory.
 
 Cross-Entropy is basically the average message length. Cross-Entropy = Entropy + KL Divergence

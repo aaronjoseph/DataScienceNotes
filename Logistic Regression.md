@@ -5,3 +5,6 @@ Here, the top-level goal is to predict a scalar-valued target from a set of feat
 
 - Logistic Regression is generally done on binary classification
 - It is generally done on dataset, wherein the data is linearly seperable
+
+Mathematics : 
+[[Logistic_Regression_Derivation.pdf]]

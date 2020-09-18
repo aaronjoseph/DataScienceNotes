@@ -45,7 +45,7 @@ Is a preferred use-case to account for outlier values
 
 ```py
 from scipy.stats import poisson
-poisson.rvs(mu=3, size 1000)
+poisson.rvs(mu=3, size=1000)
 ```
 
 - Binomial Distribution

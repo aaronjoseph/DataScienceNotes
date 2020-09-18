@@ -4,15 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "c4ceb648a097357d",
+        "id": "124a8eaf894a10b5",
         "type": "leaf",
         "active": true,
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "P-Value.md",
-            "mode": "source"
-          }
+          "type": "graph",
+          "state": {}
         }
       }
     ],
@@ -39,7 +36,9 @@
             "type": "leaf",
             "state": {
               "type": "search",
-              "state": {}
+              "state": {
+                "query": "eisenho"
+              }
             }
           }
         ],
@@ -47,7 +46,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 410,
+    "collapsed": true
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -89,10 +89,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "P-Value.md",
-    "Untitled.md",
-    "Outlier.md",
-    "Undersampling.md",
-    "Hypothesis Testing.md"
+    "Eisenhower Decision Matrix.md",
+    "Interview Questions/Behavioral/Behavioral Questions.md",
+    "Supervised Learning.md",
+    "Untitled 1.md",
+    "Binning.md",
+    "SQL/Stored Procedure.md",
+    "Interview Questions/Quant Company.md",
+    "Interview Questions/0.pdf",
+    "Sampling.md",
+    "Ensemble Learning.md"
   ]
 }

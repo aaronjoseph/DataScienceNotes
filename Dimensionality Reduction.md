@@ -12,7 +12,7 @@ Most real-world high-dimensional datasets lie close to a much lower-dimensional 
 
 Dimensionality reduction will usually speed up training but will not guarentee better or simpler solution
 
-PCA (Principal Componet Analysis)
+[[PCA]] (Principal Componet Analysis)
 - Is the most popular dimensionality reduction algorithm
 - It finds the hyperplane closest to the data, and then projects the data onto it
 

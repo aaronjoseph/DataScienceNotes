@@ -1,0 +1,4 @@
+- Never provide a specific number
+- Can't give a nail on the head
+- Ranges are not good either
+> Compensation is important to me, I would like to know the value I get working at this/your firm, what I get to do, who I work with , the training oppurtunities and career oppurtunities, vacation oppurtunities and all the things that go along in your organisation and I am excited to learn about it in the interviewing process and towards the end I will be able to give you a much better idea, at this point I do not have a clarity with regards to the expected number. I would like to go about the entire oppurtunity and make a informed decision

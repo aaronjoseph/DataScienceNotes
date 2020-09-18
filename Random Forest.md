@@ -2,6 +2,12 @@ Random-Forest is basically Bagging (Bootstrap Aggregation).
 
 Random Forest is an ensemble tool which takes a subset of observation and a subset of variables to build a decision trees.
 
+Random Forest is called Random because
+1. It takes random samples of training dataset when building trees
+2. Random subsets of features are considered when splitting nodes
+
+In bagging technique, a data set is divided into N samples using randomized sampling. Then, using a single learning algorithm a model is built on all samples. Later, the resultant predictions are combined using voting or averaging in parallel.
+
 ```py
 from sklearn.ensemble import RandomForestClassifier
 RandomForestClassifier(

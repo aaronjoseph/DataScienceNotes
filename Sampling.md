@@ -55,7 +55,7 @@ Cluster sampling clusters the population into subgroups
 - The subgroup has characteristics of the population
 - Then at sampling stage, each subgroup is selected
 
-![[Pasted image 2.png]]
+![[Attachements/Pasted image 2.png]]
 
 ---
 ## Non-Probability Sampling

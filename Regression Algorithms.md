@@ -24,6 +24,7 @@ from sklearn.linear_models import LinearRegression
 ```
 
 ### Logistic Regression
+![[Logistic Regression]]
 
 
 ### Ridge Regression
@@ -32,3 +33,5 @@ Ridge regression is used to analyze multiple regression lines that suffer from m
 
 ### Lasso Regression
 
+### Light GBM
+[[Light GBM]]

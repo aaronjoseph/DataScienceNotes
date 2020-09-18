@@ -40,6 +40,10 @@ $$ False  Rate = \frac{False Positive}{True Negative + False Positive} = 1- Spec
  > Type I Error : `False Positive` 
  > Type II Error : `False Negative` 
 
+Type I error is changing your mind when you shouldn't
+Type II error is not changing your mind when you should
+Type III error occurs when researches provide the right answer to the wrong question
+
 ```py
 from sklearn.metrics import confusion_matrix
 confusion_matix(Actual_Data, Predicted_Data)

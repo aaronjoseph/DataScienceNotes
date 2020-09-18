@@ -1,4 +1,8 @@
-![[Pasted image 1.png]]
+[[AB Testing]]
+[[Z-Test]]
+[[Chi-Squared Hypothesis Testing]]
+
+![[Attachements/Pasted image 1.png]]
 
 ---
 ### Basic requirements
@@ -132,6 +136,12 @@ sm.stats.ztest(females["BMXBMI"].dropna(), male["BMXBMI"].dropna(),alternative='
 ```
 
 ---
+### Formulae
+
+Z-Score
+$$\frac{\mu_1 - \mu_2}{\frac{\sigma}{\sqrt{No of Observations}}}$$
+
+---
 ### Pointers
 
 Chi-Square - Used as a test of independence of two categorical variables
@@ -141,6 +151,8 @@ Z-test - A z-test is a stastical test to determine whether two population means 
 t-test hypothesis testing is used for variance is unknown and sample size < 30. It is a type of inferential statistics. It is used to decide whether that is a significant difference between the means of two groups
 
 `P-Value`  The probability that an effect could occur by chance. The true meaning of p-value is that alternative hypothesis is never accepted, it just show sufficient/not-sufficient evidence in favor of rejecting the null hypothesis
+
+A p-value is the probability of observing results at least as extreme as those measured when the null hypothesis is true
 
 `Statistically Significant`  An effect is statistically significant if it is unlikely to occur by chance
 

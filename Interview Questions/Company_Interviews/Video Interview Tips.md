@@ -1,0 +1,17 @@
+# Tips
+- It a different medium, and the process remains the same
+- Be careful about the camera
+	- Even the camera
+	- This can be done by adjusting the height, by stacking books beneth the laptop
+- Lighting
+	- Sun or Lighting is in front of you
+- Audio
+	- Good microphone will help
+- Check the internet speed
+- Close all the apps to keep the system is fast
+- Keep the resume ready
+- Wear darker color shirt
+	- It is solid on the screen
+- `Talk to the camera` they will feel more connected
+- Smile a lot
+- Try to get their Email address

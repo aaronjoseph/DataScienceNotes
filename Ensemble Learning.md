@@ -1,4 +1,5 @@
-Group of predictors is called ensemble.
+Group of predictors is called ensemble. Combining the predicitons from multiple models can result in more stable predictions, in some cases predictions that have better performance than any of the contributing models. 
+
 The use of ensemble for predictors is called ensemble learning.
 
 Two Types of Ensemble Learning
@@ -9,7 +10,7 @@ Two Types of Ensemble Learning
 
 `Soft-Voting` - Each predictor's probability score is taken, post which, for the final calculation the probability score value is averaged out to get the final value
 
-- Ensemble works best when the classes are independent and are making uncorrelated error, which may not always be the 
+- Ensemble works best when the classes are independent and are making uncorrelated error, which may not always be the case
 
 ---
 

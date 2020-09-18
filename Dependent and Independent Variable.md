@@ -1,0 +1,1 @@
+`Independent` variable is feature set or the x variable. `Dependent` variable is y, which predicts the final output 

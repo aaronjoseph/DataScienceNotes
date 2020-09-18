@@ -1,0 +1,31 @@
+### Pipeline
+- [x] Random Chennai Company | Monday Phone Call | Tuesday Call | Salary Issue
+- [x] Poshmark | SQL Round | Date Selection Done | No update from recruiter | Updated Schedule | Position Closed
+- [x] SG - Resume | No Response | Not Considered
+- [x] YoloBus | Test Stage | Dropped Fuckall Questions & Fuckall company
+- [x] Linkedin | Only viewed Pranav Pandey
+- [x] TEAL | Interview -> Date Selection | Interview | Great Interview | Low Salary
+- [x] Numerator | `Finish the test` | Position Closed
+- [x] Fractal | `Finish the Test` | Failed the test
+- [x] MadStreetDen | `Finish the test`
+- [ ] Amazon | BIE (Lvl IV?) | Telephonic Interview | Rajagopalan
+- [ ] Cisco | DS (Grade 6) | Asad Call | 
+
+Study Pipeline Roadmap
+- [ ] Finish TensorFlow Book
+- [ ] Develop code for Churn Analysis
+	- [ ] Understand what were the alternative solutions
+	- [ ] And the reasons for it
+- [ ] Code for simulation modeling
+	- [ ] Why and how
+	- [ ] Kind of distribution used and the code
+	-  [ ] Get base formulaes and figures on average values
+-  [ ] Develop code for forecasting from Sid's Code
+	-  [ ] Find ways to do hyperparameter tuning
+-  [ ] Develop code for Airflow
+-  [ ] Develop Script for each project
+-  [ ] Geeks for Geeks 
+	-  [ ] Find the significance of [1:], [:2]
+-  [ ] Work on Storybuilding
+	-  [ ] For each Behavioural questions 2 answers need to be structured
+	-  [ ] [[Checklist]]

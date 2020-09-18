@@ -1,0 +1,16 @@
+- Story of  being first / Personal First
+	- Elaborate how 
+- Being wrong 
+	- When you make mistakes, how did you respond, what were your 
+- What level of detail 
+	- `Am I giving you the appropiate level of detail, should I raise it up or lower it`
+- Being descriptive	
+	- I did step I, Step II
+	- Profound Statistics 
+	- 37 % over 1/3rd
+	- Give precision on the numbers
+- Getting them to care
+	- Show how you care about them
+	-[Manager] If you hire me, how can I make your work easier
+- [Interviewing with subordinate] How Can I best Help you?
+ 

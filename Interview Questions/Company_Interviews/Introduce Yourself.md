@@ -1,0 +1,38 @@
+ [[Story Telling]]
+
+- Focus on Strengths, and important pointers
+- Have a good start
+- Keep it under 1.5 Minutes
+
+---
+Backward Story - II
+
+I am Aaron Joseph, and have 3+ years of experience in the Data Science Space. During this time I have worked with multiple business functions such as`Product, Marketing, Finance and Sales`. I currently work with Kaleidofin which is a `Series A` startup in the underbanked space, which in simple teams is in the business of providing `financial inclusion for the poor` and financially fragile segement of the Indian economy and are generally from the rural sector. My company vision is to bring financial inclusion for the poor.
+
+At Kaleidofin my role varies day to day, however my core fuction is to handle `Fund Analytics, BI dashboarding, Data Engineering and DBA , App Deployment and Simulation Modeling`. Apart from that on an ad-hoc basis I have worked with the management for board presentation data, tresury fund recommendation, `A/B Testing for Product` and documentation of projects.
+
+At Kaleidofin, I got the oppurtunity to work on projects end-to-end as an IC. Most of the project I worked on pushed me to a very good understanding of the underlying business also. We are a fast moving start-up making constant changes to the business.
+
+The major project that I have undertaken is the Mutual fund Analytics which is 8000 lines of code in python, all of it written by me, which encompasses, Data Engineering, to 
+
+
+My Tech Expertise
+Python : `Sklearn, TensorFlow, Airflow`
+Plotting : `Plotly, Matplotlib, Seaborn`
+Version Controling : `Git and Github`
+CRM : `Google Analytics`
+
+
+
+
+---
+Backward Story - `Always find a way to see the Backwards Story - Find a way to pull some aspects from the Job Description`
+
+I have an experience of over 3+ Years,  and I currently work with Kaleidofin, which is a Series-A startup working in the underbanked space. I joined when it was in seed stage. At Kaleidofin, I got the chance to work with multiple teams, Sales, Solutions & Operations and I also worked on end-to-end projects as an IC. Most of the projects I worked on involved me to get an better understanding of the underlying requirements to development of data pipelines to development of dashboards, involving complex calculations and at the same time I have developed analytical solution based of the data warehouse I developed. Which I have deployed over some of the latest framework Streamlit & Dash. I have worked very closely with the management level for various requirements and I developed a knack of building good rapport for various requirements that they need from time to time. In all I have experience in Data Warehousing using Airflow framework. I have a good understanding of the version control systems namely Git. In python, I have worked with TensorFlow, SCipy, Sklearn which are the libraries for Machine Learning and I have good understanding of MatplotLib, Seaborn and Plotly. Infact my recent interest in Plotly animation charts inspired me to get some company related visuals to the company Web-App, hosted internally. I also have good knowledge of Docker  and have deployed analytical solution over docker.
+
+In all over the 3 years, I have worked in Consultancy & Finance and have worked with multiple teams across my career.
+
+---
+Forward Story
+
+I have been fascinated by the space of machine learning from my college days, infact I was so interested that I did a certification in Machine Learning By Andrew Ng and being from an electronics background my project was on Image classification using Docker which I deployed on GCP over Nvidia K8 GPU. My early career was with MuSigma and I was quite fortunate to learn the skills required in the industry. My interest in Mutual Funds got me to FundsIndia which is one of the largest mutual fund distributor in India. Here, I was blown away by the learning I got from the reseach team which focused on finding the relevant funds for our customers. Though I worked with Product, Strategy and Marketing team, I was always intrigued by their methodology. At FundsIndia I learnt about the functioning of Product and Marketing team - I developed a broad understanding of how UI/UX team understand customer needs and how Marketing team work constantly on SEO and paid marketing to beat the competition. Shortly after I completed a year at FundsIndia my ex-boss told me about an oppurtunity at his current startup wherein there was a spot for MutualFundAnalytics - this oppurtunity got me interested for 2 reasons, 1, I could work on the algorithm to discover Mutual Funds and secondly because this startup worked towards empowering the lives of the poor in India who have no access to the basic financial services that we have access to - complete opposite to what I was exposed to FundsIndia which taped into significantly richer customers. It was because of the second reason I took a one-way ticket to Chennai to work with them and empower the life of the poor and needy. My journey at Kaleidofin has been kind of a rollercoaster, wherein not only did I work on Mutual Fund Analytics, where ironically had to double down on learning the nuances of Mutual Fund Industry, I was responsible for dashboarding, development of boiler-plate codes within the team such as SMTP and connector codes & worked on data warehousing as well.  I also have experience in Data Modelling - in Churn Analysis and Forecasting. And I have also handled hiring of interns end-to-end for the startup.  

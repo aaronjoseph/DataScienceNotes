@@ -36,3 +36,15 @@ A/B Testing cannot be used for
 	5.	Length of experiment : How long should the experiment run?
 	6.	No of users to be exposed to the test
 	> Rolling of the variants to customer at the same time
+
+---
+Defination
+
+`Control` The subset that doesn't see the new change
+`Experiment` The subset that see's the new changes
+`Baseline Rate` This is the current conversion rate that you want to test = Conversion_of_Control/Total_Control_Users
+`Effect Size`  - The difference between  A and B 
+`Practical Significane` Practical significance refers to the magnitude of the effect
+`Confidence Inteval` Is the range of values that is likely to contain the population value
+`Significane Level` $\alpha$  The significance level is a measure of how strong the sample evidence must be before determining the results are statistically significant
+`Sensitivity` 1-$\beta$ refers to sensitivity, 

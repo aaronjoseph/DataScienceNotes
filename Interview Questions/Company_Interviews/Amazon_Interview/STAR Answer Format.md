@@ -1,0 +1,4 @@
+- Situation : Describe the situation that you were in, or the task that you needed to accomplish. Give enough detail for the interviewer to understand the complexities of the situation
+- Task : What goal were you working towards?
+- Action : Describe the action you took to address the situation with an appropriate amount of detail, and keep the focus on you. What specific steps were taken. What was your particular contribution?
+- Result : Describe the outcome of your actions and dont be shy about taking credit for your behaviour. What happened? How did the event end ? What did you accomplish ? What did you learn? Provide examples `using metrics or data` if applicable

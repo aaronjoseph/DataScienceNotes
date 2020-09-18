@@ -16,6 +16,7 @@ Feature Scaling will not be required for ensemble technique
 
 Technique uses Z-Score for calibration $z = \frac{Observation - Mean}{Standard Deviation}$
 
+> `Z-Score` defines the distance of the measurement from the mean, wrt Std deviation
 
 ```py
 from sklearn.preprocessing import MinMaxScaler

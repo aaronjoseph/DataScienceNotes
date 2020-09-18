@@ -35,5 +35,5 @@ model = LocalOutlierFactor().fit(X)
 model.predict(X)
 ```
 
-> PCA visualization can confirm the extent of anomaly within a dataset
+> [[PCA]] visualization can confirm the extent of anomaly within a dataset
 
