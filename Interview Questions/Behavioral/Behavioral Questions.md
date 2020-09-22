@@ -440,3 +440,13 @@ This question can be tossed back to the interviewer, asking how they evaluate su
 
 - Sell how you are going to not just meet but exceed expectations
 - `I deserve the job because I have the skills, I meet the qualification, I fit you culturally, I have done the work successfully, I am going to be able to perform successfully in this role, and that's what you want, do you agree?`
+
+---
+> Your ability as a team player ?
+
+- This can be substantiated by listing a story wherein you had issues within a team
+	- How good you are at taking a step back
+	- How you listen to both sides of the argument
+	- Not hold on to the your biases
+	- And come out with a strong solution
+

@@ -1,6 +1,6 @@
 <a href = "https://arxiv.org/pdf/1709.01907.pdf"> Paper </a>
 
-When LSTM's are provided with numerous dimensions, it is able to model complex nonlinear feature interactions -> which is relevant for complex extreme events forecasting
+When [[LSTM]]'s are provided with numerous dimensions, it is able to model complex nonlinear feature interactions -> which is relevant for complex extreme events forecasting
 
 There is a need to model uncertainity to the predictions, especially in the context of anomaly detection. 
 

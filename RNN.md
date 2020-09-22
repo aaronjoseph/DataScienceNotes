@@ -17,7 +17,7 @@ Vanilla RNN's have trouble with [[Vanishing & Exploding Gradients]] gradients du
 	- Activation Function
 	- Parameter Initialization
 	- Network Architecture
-		- LSTM's 
+		- [[LSTM]]'s 
 		- GRU's
 
 ---

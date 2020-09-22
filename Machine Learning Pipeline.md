@@ -16,7 +16,7 @@ Steps to improve the performance of the model
 - Data Augmentation & External Data
 	- `Data Augmentation` is the process of modifying the exisiting data to make the algorithm more robust
 - Model Architecture & Different loss function 
- >`Transfer Learning` : Can be used for model Architecture. Ideally it is good to go with the Model with lower parameters so the training is faster 
+ >[[Transfer Learning]] : Can be used for model Architecture. Ideally it is good to go with the Model with lower parameters so the training is faster 
 - Training Schedule, Optimizer
 - Postprocessing
 > Herein, you can do improvements by leveraging the existing model over the small datasets. This way you can see high performance over the existing model

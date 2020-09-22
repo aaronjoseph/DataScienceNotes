@@ -4,12 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "124a8eaf894a10b5",
+        "id": "73eb59c045061d5d",
         "type": "leaf",
         "active": true,
         "state": {
-          "type": "graph",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Interview Questions/Behavioral/Work List.md",
+            "mode": "preview"
+          }
         }
       }
     ],
@@ -37,17 +40,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "eisenho"
+                "query": "pandas"
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 410,
-    "collapsed": true
+    "width": 410
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -62,7 +63,9 @@
             "type": "leaf",
             "state": {
               "type": "backlink",
-              "state": {}
+              "state": {
+                "file": "Interview Questions/Behavioral/Work List.md"
+              }
             }
           },
           {
@@ -78,7 +81,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Interview Questions/Behavioral/Work List.md"
+              }
             }
           }
         ]
@@ -89,15 +94,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Eisenhower Decision Matrix.md",
-    "Interview Questions/Behavioral/Behavioral Questions.md",
-    "Supervised Learning.md",
-    "Untitled 1.md",
-    "Binning.md",
-    "SQL/Stored Procedure.md",
-    "Interview Questions/Quant Company.md",
-    "Interview Questions/0.pdf",
-    "Sampling.md",
-    "Ensemble Learning.md"
+    "Interview Questions/Behavioral/Work List.md",
+    "Interview Questions/Behavioral/Your Weakness.md",
+    "Interview Questions/Behavioral/Technical Interview List.md",
+    "Interview Questions/Company_Interviews/Elevator Pitch.md",
+    "Interview Questions/Company_Interviews/Expected Salary.md",
+    "Interview Questions/Company_Interviews/Confidence Booster.md",
+    "Interview Questions/Company_Interviews/Building Rapo with the Job Interviewer.md",
+    "Interview Questions/Company_Interviews/Body Language.md",
+    "Interview Questions/Company_Interviews/Behavioural Questions.md",
+    "Interview Questions/Company_Interviews/WorldQuant/Job Description.md"
   ]
 }

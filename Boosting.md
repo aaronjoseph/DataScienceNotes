@@ -1,8 +1,20 @@
-Boosting refers to ensemble learning wherein several weak learners are combined to form a strong learner.
+Boosting works on the principle that, it leverages multiple weak learners to build a strong learner.
 
 Adaboost algorithm is an example of boosting
 
 Gradient Boosting - Is another example of Boosting
+
+---
+### Algorithms
+
+- [[AdaBoost]]
+- [[Gradient Boosting (GBM)]]
+- [[XGBoost]]
+- [[Light GBM]]
+- [[CatBoost]]
+
+---
+### Code
 
 ```py
 from sklearn.tree import DecisionTreeRegressor

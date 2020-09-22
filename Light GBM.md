@@ -11,6 +11,10 @@ Light GBM advantages
 
 Control Parameters
 
+```py
+import lightgbm as lgb
+```
+
 - `max_depth` Describes the max depth of tree. This can handle model overfitting
 - `min_data_in_leaf` Minimum number of the records a leaf may have. The default value is 20, optimum value. It is also used to deal over-fitting
 - `feature_fraction`  Used when your boosting is random forest

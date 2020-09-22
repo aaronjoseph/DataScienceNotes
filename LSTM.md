@@ -15,3 +15,10 @@ LSTM's can handle long range dependencies.
 	- Selectively update cell state
 	- Output gate returns a filtered version of the cell state
 3. Backpropogation through time with uninterrupted gradient flow
+
+---
+
+### Challenges of LSTM
+
+- LSTM's have downsides, it is still a recurrent network, so if a LSTM cell is called 1000 times, a long gradient path is created. While the addition of a long-term memory channel helps, there is a limit to how much it can hold
+- [[Transfer Learning]] do not work on LSTM's
