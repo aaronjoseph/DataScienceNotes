@@ -1,3 +1,19 @@
+Machine Learning algorithms sensitive to outliers
+- Linear and Logistic Regression
+- SVM's
+- KNN
+- K-Means
+- Hierarchical Clusterin
+- PCA
+
+Not Sensitive to Outliers
+- Tree Based Models
+- XGBoost
+- Naive Bayes
+- DBScan Clustering
+
+---
+
 `Outlier` is a data point that is distant from all other observations. Outliers can occur due to two reasons
 1. Variability in the data
 2. Experimental measurement error

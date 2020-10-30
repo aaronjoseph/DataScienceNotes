@@ -39,6 +39,7 @@ $$ False  Rate = \frac{False Positive}{True Negative + False Positive} = 1- Spec
  
  > Type I Error : `False Positive` 
  > Type II Error : `False Negative` 
+ > Type I Error is more serious than Type II Error
 
 Type I error is changing your mind when you shouldn't
 Type II error is not changing your mind when you should
@@ -69,7 +70,7 @@ AUC Value | Indication
 
 ---
 
-Using F1 & Accracy
+Using F1 & Accuracy
 
 > F1 should be used when not making mistake is quite important [1-0, 1 is good, 0 is bad]
 > Accuracy should be used when models goal is to optimize performance

@@ -47,4 +47,9 @@ Defination
 `Practical Significane` Practical significance refers to the magnitude of the effect
 `Confidence Inteval` Is the range of values that is likely to contain the population value
 `Significane Level` $\alpha$  The significance level is a measure of how strong the sample evidence must be before determining the results are statistically significant
-`Sensitivity` 1-$\beta$ refers to sensitivity, 
+`Sensitivity` 1-$\beta$ refers to sensitivity
+
+---
+### Concerns with AB Testing
+
+AB testing is used to manipulate the website in a way to ensure conversion ratios are high, however, overdoing AB testing in the long run can make a website more like a porn site. AB testing is designed to exploit psychology, people are not predictable and AB testing psychologically manipulate the end-consumer to get their dopamine level high - over mass population of people. 

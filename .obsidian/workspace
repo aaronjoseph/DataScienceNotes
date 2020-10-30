@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "73eb59c045061d5d",
+        "id": "7c5b928f21e6dc0b",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Interview Questions/Behavioral/Work List.md",
-            "mode": "preview"
+            "file": "SHAP.md",
+            "mode": "source"
           }
         }
       }
@@ -40,11 +40,12 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "pandas"
+                "query": "shap"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -64,7 +65,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Interview Questions/Behavioral/Work List.md"
+                "file": "SHAP.md"
               }
             }
           },
@@ -82,7 +83,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Interview Questions/Behavioral/Work List.md"
+                "file": "SHAP.md"
               }
             }
           }
@@ -94,15 +95,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Interview Questions/Behavioral/Work List.md",
-    "Interview Questions/Behavioral/Your Weakness.md",
-    "Interview Questions/Behavioral/Technical Interview List.md",
-    "Interview Questions/Company_Interviews/Elevator Pitch.md",
-    "Interview Questions/Company_Interviews/Expected Salary.md",
-    "Interview Questions/Company_Interviews/Confidence Booster.md",
-    "Interview Questions/Company_Interviews/Building Rapo with the Job Interviewer.md",
-    "Interview Questions/Company_Interviews/Body Language.md",
-    "Interview Questions/Company_Interviews/Behavioural Questions.md",
-    "Interview Questions/Company_Interviews/WorldQuant/Job Description.md"
+    "SHAP.md",
+    "Permuatation Importance.md",
+    "Partial Plots.md",
+    "Job Related/Company_Interviews/Data Robot/Question List.md",
+    "Job Related/Question Repo/Technical Questions/Decision Tree Questions.md",
+    "Job Related/Question Repo/Technical Questions/Data Science - Statistics.md",
+    "Job Related/Question Repo/Technical Questions/Coding_Questions.md",
+    "Job Related/Question Repo/Technical Questions/Computer Vision.md",
+    "Job Related/Question Repo/Technical Questions/Basic DS Questions.md",
+    "Job Related/Question Repo/SQL/Stored Procedure.md"
   ]
 }

@@ -1,8 +1,11 @@
-In bagging the fundamental idea is to combine the results of multiple models, however, the major issue here is the use of same set of data. Since the data used is the same, the resultant models will not prove to be useful.
+Bagging - **B**ootstrap **Agg**regat**ing**  works on the idea that suitably large number of uncorrelated errors average out to zero 
 
-Bagging uses `bootstrapping`. 
+Bagging can be decomposed into two stages
 
+- Bootstrapping
 >`Bootstrapping` is a sampling technique in which we create subsets of observations from the original dataset, with replacement. 
+- Aggregating
+> Here the result of the models are aggregated to make final predictions. The core idea here is, that the model makes uncorrelated errors - This could be the case since the model is trained on different data
 
 The models are created on the the sample data. Final predication is outputted, after considering all the values of the minor models.
 

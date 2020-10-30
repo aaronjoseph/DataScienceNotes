@@ -29,5 +29,4 @@ model.score(x_test, y_test)
 	- It is the maximum number of samples to train each base estimator
 - `max_features`
 	- Controls the number of features to draw from the whole dataset
-	- It defines the maximum number of samples to train each base estimator
-- 
+	- It defines the maximum number of samples to train each base estimator 

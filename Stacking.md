@@ -1,3 +1,0 @@
-- Short for `Stacked Generalization`
-- Here at the final stage of prediction wherein voting is done, is replaced by another learning algorithm or the Meta Learner/Blender
-- Scikit Learn doesn't support stacking directly

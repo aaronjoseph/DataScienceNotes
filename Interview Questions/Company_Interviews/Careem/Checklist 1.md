@@ -1,9 +1,0 @@
-- [ ] LSTM's for forecasting
-- [ ] CNN's for forecasting
-- [ ] [[ForeCasting and Monte-Carlo Simulation]] Finish
-- [ ] Notes Monte Carlo
-- [ ] Introduce yourself on the mirror [[Introduce Yourself]]
-- [ ] [[Amazon Behavioural Questions]]
-- [ ] [[What are your Strengths]]
-- [ ] [[Your Weakness]]
-- [ ] SQL Questions - Read the book

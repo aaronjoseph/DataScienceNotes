@@ -15,7 +15,7 @@
     "page-preview": true,
     "outline": true
   },
-  "promptDelete": true,
+  "promptDelete": false,
   "vimMode": true,
   "fileSortOrder": "alphabetical",
   "alwaysUpdateLinks": true,
@@ -23,5 +23,6 @@
   "newFileLocation": "root",
   "hotkeys": {
     "workspace:close": []
-  }
+  },
+  "enabledPlugins": []
 }

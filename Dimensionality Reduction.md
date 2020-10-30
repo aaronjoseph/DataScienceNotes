@@ -12,7 +12,18 @@ Most real-world high-dimensional datasets lie close to a much lower-dimensional 
 
 Dimensionality reduction will usually speed up training but will not guarentee better or simpler solution
 
-[[PCA]] (Principal Componet Analysis)
+### [[PCA|Principal Component Analysis]] 
 - Is the most popular dimensionality reduction algorithm
 - It finds the hyperplane closest to the data, and then projects the data onto it
 
+### [[T-SNE]]
+
+T-SNE is another approach for dimensionality reduction
+
+### Difference between T-SNE and PCA
+
+PCA | T-SNE
+----|-----
+Emerged in 1933 | Emerged in 2008
+Linear dimension reduction technique that seeks to maximise variance and preserve pairwise distances | t-SNE differs in the fact that,  it preserves only pair-wise distances or local similarities whereas PCA is concered with preserving large pairwise distances to maximize variance
+Very fast for large dataset | Will be extremely slow for large dataset, due to computational complexity

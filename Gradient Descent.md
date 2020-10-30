@@ -1,5 +1,7 @@
 Is a generic optimization algorithm capable of finding optimal solutions to a wide range of problems. The general or undelying principle here is that Gradient descent tweaks parameters iteratively in order to minimize a cost function.
 
+Gradient descent is generally used to find the 
+
 Once the gradient is zero, the local or global optima is reached.
 
 `Learning Rate` - Determines the size of the jump of the learning algorithm
@@ -16,20 +18,26 @@ High dependency of Gradient Descent
 
 ---
 # Approach
+> Gradient descent is used to update the parameters of a model. Parameters refer to coefficient in Linear Regression and weights in Neural Networks
 
 ### Batch Gradient Descent
 
-This is the basic gradient descent, computes the gradient of the cost function wrt the parameters $\theta$ for the entire training dataset
+This is the basic gradient descent, computes the gradient of the cost function wrt the parameters $\theta$ for the entire `training dataset`
 - This calculates the gradient for the entire dataset to perform one update
-- Hence, can be slow and will be an issue if the data-set cannot fir in memory
+- Hence, can be slow and will be an issue if the data-set cannot fit in memory
 - Also, doesn't work for updating the model online
+- Fine to use when the data size is not too big
 
 
 ### Stocastic Gradient Descent
 
-Unlike Batch Gradient Descent, SGD does optimisation on one training example $x^i$ and label $y^i$ one at a time
+Unlike Batch Gradient Descent, SGD does optimisation on one training example $x^i$ and label $y^i$ `one at a time`
 - This is therefore much faster than Batch Gradient Descent
 - Can be used for online learning
 
 ### Mini-Batch Gradient Descent
 - Advantage over Stocastic gradient descent when it comes to performance boost
+- This is the best of both worlds, performs an update for every mini-batch of n training exmaples
+- Usually the batch size is powers of 2, 2,8,16,256 and so on
+
+

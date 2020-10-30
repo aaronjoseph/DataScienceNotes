@@ -1,8 +1,6 @@
 Boosting works on the principle that, it leverages multiple weak learners to build a strong learner.
 
-Adaboost algorithm is an example of boosting
-
-Gradient Boosting - Is another example of Boosting
+Boosting differs from bagging in the order of execution, boosting is implemented sequentially, while bagging is done parallelly
 
 ---
 ### Algorithms

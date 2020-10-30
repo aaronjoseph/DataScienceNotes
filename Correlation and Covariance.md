@@ -1,3 +1,9 @@
+### Formulae for 
+- Correlation
+- Covariance
+- Variance
+- Standard Deviation
+
 ![[Attachements/Pasted image.png]]
 
 ### Correlation

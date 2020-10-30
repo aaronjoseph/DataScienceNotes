@@ -3,10 +3,14 @@ It is also referred to as `Gausian Distribution`. The shape of the curve is like
 
 ---
 #### Formula of Normal distribution
+
 General Formulae of PDF is 
 
 $$f(x) = \frac{e^{\frac{-(x-\mu)^2}{2\sigma^2}}}{\sigma\sqrt{2\pi}}$$
 
+[[Exponetial Constant - e | Information on exponential distribution function]]
+
 When $\mu$ and $\sigma$ is 0 and 1, then we have
 
 $$f(x) = \frac{e^{\frac{x^2}{2}}}{\sqrt{2\pi}}$$
+

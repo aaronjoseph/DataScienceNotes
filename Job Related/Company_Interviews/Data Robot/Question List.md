@@ -1,0 +1,18 @@
+- [x] Describe Cross Validation
+- [x] Random Forest
+	- [x] Explain how a random forest works to a non technical CEO  
+- [x] How does a tree split
+- [x] How do forest differ
+- [x] How to check for overfitting
+- [x] How XGBoost work
+- [x] Which algorithms used and for what purpose
+- [x] Why did you choose that particular target variable? Why did you choose that particular evaluation metric?  
+- [x] Describe your python pipeline
+- [x]  What is association rule mining and how does it work, explain its mechanism?
+- [x]  What are unit tests
+- [x]  Advantage and disadvantage of R
+- [ ]  How do you deal and present to your customer
+- [ ]  Simple string manipulations, e.g., find the k most frequent words from a given text 
+- [ ]  Your client wants to know if (insert topic you have no knowledge of) is a good candidate for a model. How do you advise them? 
+- [ ]  What kind of databases would you use for unstructured/structured data  
+- [ ]  How would you treat time-series

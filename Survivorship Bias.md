@@ -1,0 +1,1 @@
+It is a logical error in which the focus is put on people or things that have made it past the selection process and overlooking those that did not, typically due to the fact that it is lost out in the process. This can cause false conclusion in several different ways. It is a form of selection Bias. 

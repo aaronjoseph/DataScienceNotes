@@ -1,3 +1,12 @@
+XGBoost is a learning algorithm with lots of moving parts.XGBoost was designed to handle large, complicated data sets. 
+
+
+[[XGBoost Regression]] -> For regression
+[[XGBoost Classification]] -> Classification
+
+---
+### Main Ideas
+
 XGBoost is an an advanced version of [[Gradient Boosting (GBM)]] and is a very effective algorithm. XGBoost has high predictive power and is almost 10 times faster than the other gradient boosting techniques. It also includes a variety of regularization which reduces overfitting and improves overall performance. 
 
 Some of the key advantages of XGBoost are 

@@ -1,4 +1,4 @@
-Light GBM is a gradient boositng framework that uses tree based learning algorithm.
+Light GBM is a gradient boosting framework that uses tree based learning algorithm.
 
 Light GBM grows tree vertically while other tree based models grows trees horizontally. Light GBM grows tree leaf-wise while other algorithm grows level wise. It will choose the leaf with max delta loss to grow.  When growing the same leaf, leaf-wise algorithm can reduce more loss than a level-wise algorithm.
 
