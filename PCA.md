@@ -1,3 +1,5 @@
+
+
 PCA or Principal Component Analysis is a dimensionality reduction method that transforms large sets of variables into smaller ones with most of the information in the large set.
 
 ### Steps in PCA
@@ -17,7 +19,7 @@ Cov(x,y) = Cov(y,x), Covariance table is the table of summary of correlations be
 3. Compute EigenVectors and EigenValues of Covariance Matrix to Identify Principal Components
 This is the most important step in the process
 - Every Eigenvector has eigenvalue, their number is equal to the number of dimensions
-- Eigenvectors and eigenvalues form the basis for PCA, since, Eigenvectors of the covariance matrix are actually the directions of teh axes where there is the most amount of variance, which is known as Principal Component
+- Eigenvectors and eigenvalues form the basis for PCA, since, Eigenvectors of the covariance matrix are actually the directions of the axes where there is the most amount of variance, which is known as Principal Component
 
 4. Feature Vector
 Feature Vector stage, removes features that will result in `dimensionality reduction`

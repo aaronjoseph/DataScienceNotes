@@ -4,6 +4,23 @@
 - Have a good start
 - Keep it under 1.5 Minutes
 
+### Major Pointers
+- 
+
+
+---
+Approach - IV
+
+I have total experience of 3.5 Years of which I have spent more than 2.5 years in fin-tech and the rest in consultancy. Currently I work for Kaleidofin which is a Series-A fin-tech start-up that is working towards bringing financial inclusion to the underbanked segement.
+
+The major project that I have undertaken is Mutual Fund Analytics which is a DS tooling project - and I worked on this as a IC. This project saved the company close to 500+ ruppees in annual subscriptions cost and over 300+ ruppees in AWS cloud charges. This tool was used to portfolio management on both the customer and company side. 
+
+Additonally I have taken care of Dashboarding, wherein some of the key dashboards I have integrated ML using AWS Sagemaker and deployed over tools such as AWS Quicksight.  On the dashboarding front I have experience in Tableau, AWS Quicksight and GCP Datastudio. 
+
+Also, I have taken care of data engineering as well wherein I have taken care of DBA tasks such as indexing database for better performance. Designing the schema such that the new database is normalized. And writing code in Apache Airflow which is a workflow orchestration tool.
+
+Apart from the diverse deliverables that I have taken care of, I have also handled slides for board meetings, provided financial information to Investment bank for fund-raising reasons. Had the oppurtunity to work with World Bank in providing relevant information about our customers and forbes magazine when we working on getting our story out  
+
 ---
 
 Backward Story - III

@@ -1,0 +1,1 @@
+Levenshtein distance is a metric to measure how apart two sequence of words are. In other words it measures the minimum number of edits that you need to do to change a one-word sequence into the another. 

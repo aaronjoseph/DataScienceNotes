@@ -8,4 +8,4 @@
 
 ---
 
-Hi, I am Aaron Joseph, I am a Data Scientist with 3+ years of experience with 2+ years in Fintech. My core expertise in analytics lies in Dashboarding using App and Standalone tool , Data Warehousing or ETL, Model Development & Deployment & DS-DevOps using Docker.
+I am a Data Scientist with 3.5 years of experience with more than 2.5 years in Fintech. My core expertise in analytics lies in Dashboarding, ETL, Model Development & Deployment.

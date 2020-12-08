@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "7c5b928f21e6dc0b",
+        "id": "bb916faae613b257",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "SHAP.md",
-            "mode": "source"
+            "file": "Confusion Matrix & Metrics.md",
+            "mode": "preview"
           }
         }
       }
@@ -40,7 +40,12 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "shap"
+                "query": "precision",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
               }
             }
           }
@@ -65,7 +70,12 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SHAP.md"
+                "file": "Confusion Matrix & Metrics.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           },
@@ -83,7 +93,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SHAP.md"
+                "file": "Confusion Matrix & Metrics.md"
               }
             }
           }
@@ -95,15 +105,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "SHAP.md",
-    "Permuatation Importance.md",
-    "Partial Plots.md",
-    "Job Related/Company_Interviews/Data Robot/Question List.md",
-    "Job Related/Question Repo/Technical Questions/Decision Tree Questions.md",
-    "Job Related/Question Repo/Technical Questions/Data Science - Statistics.md",
-    "Job Related/Question Repo/Technical Questions/Coding_Questions.md",
-    "Job Related/Question Repo/Technical Questions/Computer Vision.md",
-    "Job Related/Question Repo/Technical Questions/Basic DS Questions.md",
-    "Job Related/Question Repo/SQL/Stored Procedure.md"
+    "Confusion Matrix & Metrics.md",
+    "Churn Analysis.md",
+    "Job Related/Communication/Introduce Yourself.md",
+    "Job Related/Company_Interviews/Exit Email.md",
+    "Light GBM.md",
+    "LIME.md",
+    "Job Related/Communication/Resume Power Words.md",
+    "Untitled.md",
+    "Boosting.md",
+    "Ensemble Learning.md"
   ]
 }
