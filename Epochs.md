@@ -1,0 +1,1 @@
+Epochs is the number of times you give data to the neural network.

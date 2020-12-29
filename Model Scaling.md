@@ -1,0 +1,1 @@
+Model Scaling refers to the decision of increasing the model size for better accuracy.

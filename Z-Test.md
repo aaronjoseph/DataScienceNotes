@@ -1,5 +1,11 @@
 Z-test is a statistical test for which the distribution of the test statistic under the null hypothesis can be approximated by a normal distribution
 
+
+### One Sample Z-test
+
+A Z test is used when we want to measure if a sample comes from a specified population. We need good amount of samples **(more than 30)**
+
+
 Z Test Value 
 
 $$Z-Score = \frac{\delta(Mean)}{SE}$$

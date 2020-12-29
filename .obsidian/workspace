@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "bb916faae613b257",
+        "id": "84b70d3b3511d870",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Confusion Matrix & Metrics.md",
+            "file": "Finance/Piotroski Score.md",
             "mode": "preview"
           }
         }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "precision",
+                "query": "boosting",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -49,8 +49,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Confusion Matrix & Metrics.md",
+                "file": "Finance/Piotroski Score.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,7 +83,9 @@
             "type": "leaf",
             "state": {
               "type": "tag",
-              "state": {}
+              "state": {
+                "sortOrder": "frequency"
+              }
             }
           },
           {
@@ -93,7 +94,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Confusion Matrix & Metrics.md"
+                "file": "Finance/Piotroski Score.md"
               }
             }
           }
@@ -105,15 +106,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Confusion Matrix & Metrics.md",
-    "Churn Analysis.md",
-    "Job Related/Communication/Introduce Yourself.md",
-    "Job Related/Company_Interviews/Exit Email.md",
+    "Finance/Piotroski Score.md",
+    "Finance/Untitled.md",
     "Light GBM.md",
-    "LIME.md",
-    "Job Related/Communication/Resume Power Words.md",
-    "Untitled.md",
     "Boosting.md",
-    "Ensemble Learning.md"
+    "Gradient Descent.md",
+    "Job Related/Communication/Introduce Yourself.md",
+    "Stratified K Fold Cross Validation.md",
+    "Study List.md",
+    "Supervised Learning.md",
+    "Support Vector Machines.md"
   ]
 }

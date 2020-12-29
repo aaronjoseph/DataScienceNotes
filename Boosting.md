@@ -1,5 +1,7 @@
 Boosting works on the principle that, it leverages multiple weak learners to build a strong learner.
 
+Here, hard to classify instances are given more weights. Therefore in the sequantial learning step, hard to learn records are given more emphasis, and therefore learnt.
+
 Boosting differs from bagging in the order of execution, boosting is implemented sequentially, while bagging is done parallelly
 
 ---
