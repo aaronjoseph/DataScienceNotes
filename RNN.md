@@ -10,6 +10,7 @@ RNN can be scaled for large scale sequence, however, due to vanishing gradients,
 In a **vanilla** recurrent neural network as the name suggests, the network applies a function $f_w$ which is parameterized on the previous state $h_{t-1}$ and the current input $x_t$  
 
 ---
+### Disadvantages of RNN's
 
 Vanilla RNN's have trouble with [[Vanishing & Exploding Gradients]] gradients during backprop -> hard to calculate deep layers
 - Exploding Gradients can be fixed using gradient clipping (Gradient Thresholding)
@@ -19,6 +20,8 @@ Vanilla RNN's have trouble with [[Vanishing & Exploding Gradients]] gradients du
 	- Network Architecture
 		- [[LSTM]]'s 
 		- GRU's
+- Slow to train
+	- It is quite slow and is hardware intense
 
 ---
 
@@ -40,3 +43,4 @@ This, will prevent weights from shrinking to zero during backpropogation
 Here we can use complex recurrent unit with gates to control what information is passed through.
 
 Here [[LSTM]] or GRU's  can be utilized in this regard
+

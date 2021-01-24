@@ -1,5 +1,3 @@
-Most Neural Networks outputs that may not make sense in the numerical format, hence there is a need to 
-
 Sigmoid function is used for the two-class logistic regression whereas softmax function is used for multi-class logistic regression.
 
 Suppose we plug a sigmoid function and a softmax function to the end of a neural network

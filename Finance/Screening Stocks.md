@@ -1,3 +1,0 @@
-- There is a fundamental need to screen stocks
-	- Also, before the valuation rise starts, need to buy in 
-	- Does it make sense to buy it at a particular PE

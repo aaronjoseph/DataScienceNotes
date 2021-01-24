@@ -1,1 +1,0 @@
-https://towardsdatascience.com/understanding-portfolio-optimization-795668cef596

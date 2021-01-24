@@ -4,13 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "84b70d3b3511d870",
+        "id": "96e6e8292bb55fed",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Classifier Accuracy.md",
+            "mode": "source"
+          }
+        }
+      },
+      {
+        "id": "16e1e1f582671100",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Finance/Piotroski Score.md",
+            "file": "Confusion Matrix & Metrics.md",
             "mode": "preview"
           }
         }
@@ -40,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "boosting",
+                "query": "f1 sc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -49,7 +60,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -69,7 +81,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Finance/Piotroski Score.md",
+                "file": "Confusion Matrix & Metrics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,7 +96,8 @@
             "state": {
               "type": "tag",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "useHierarchy": true
               }
             }
           },
@@ -94,7 +107,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Finance/Piotroski Score.md"
+                "file": "Confusion Matrix & Metrics.md"
               }
             }
           }
@@ -106,15 +119,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Finance/Piotroski Score.md",
-    "Finance/Untitled.md",
-    "Light GBM.md",
-    "Boosting.md",
-    "Gradient Descent.md",
-    "Job Related/Communication/Introduce Yourself.md",
-    "Stratified K Fold Cross Validation.md",
-    "Study List.md",
-    "Supervised Learning.md",
-    "Support Vector Machines.md"
+    "Confusion Matrix & Metrics.md",
+    "Classifier Accuracy.md",
+    "Untitled.md",
+    "Regex.md",
+    "Topic Coherence.md",
+    "Stemming and Lemmatization.md",
+    "Untitled 1.md",
+    "Gibbs Sampling.md",
+    "Latent Dirichlet Allocation - LDA.md",
+    "Topic Modeling.md"
   ]
 }

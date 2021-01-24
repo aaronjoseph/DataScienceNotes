@@ -1,0 +1,1 @@
+In NLP stopwords are words that are filtered out before or after processing of NLP text. Stop words are the most common words in a language, there is no single universal list of stop words used by all NLP tools.

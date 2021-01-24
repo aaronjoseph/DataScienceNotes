@@ -450,3 +450,8 @@ This question can be tossed back to the interviewer, asking how they evaluate su
 	- Not hold on to the your biases
 	- And come out with a strong solution
 
+---
+> If you got a better oppurtunity than our company, will you leave ?
+
+- A less confrontational version of this question will be - 'Why do you want to work here?'
+- `It depends. I want to work here because of X and Y. I want to accomplish Z before I even think of moving. If I accept a job here, it’s because I think it meets these criteria. If I feel I don’t have good opportunities here for X and Y, and if I’m at a point in Z where leaving won’t significantly hurt the product - for example right after a release - then I would want to compare that opportunity to what I can accomplish here. If there’s a huge difference between here and there, it would be bad for everyone if I didn’t move.Having said that, I would not be open to external opportunities except after a year or two year, and after achieving Z. If I can meet my goals here, it makes sense to stay.`

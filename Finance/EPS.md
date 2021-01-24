@@ -1,0 +1,1 @@
+$$EPS = \frac{Net Profit - Preferred Dividends}{No of Common Shares}$$
