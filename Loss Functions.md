@@ -1,0 +1,1 @@
+Loss functions are used to gauge the error between the predicted output $\hat{y}$ and actual output $y$. A loss function indicates how far the algorithm model is from realizing the expected outcome. 

@@ -1,0 +1,5 @@
+Risk Parity is a portfolio allocation strategy that uses risk to determine allocations across various components of an investment portfolio. 
+
+Risk parity is an advanced portfolio technique often used by hedge funds  and sophisticated investors. It requires a complex  quantitative methodology, which makes its allocations more advanced than simplified allocation strategies. The goal of risk parity investing is to earn the optimal level of return at the targeted risk level.
+
+Risk parity strategies allow for both leverage and alternative diversification, along with short selling in portfolios and funds. Following this approach, portfolio managers can use any mix of assets they choose. However, instead of generating allocations to different asset classes to arrive at an optimal risk target, risk parity strategies use the optimal risk target level as their basis for investing. This goal is often achieved by using leverage to weight risk equally among different asset classes using the optimal risk target level.

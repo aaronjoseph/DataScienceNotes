@@ -1,0 +1,3 @@
+The 10-year Treasury note is a debt obligation issued by the United States government with a maturity of 10 years upon initial issuance. A 10-year Treasury Note pays interest at a fixed rate once every six months and pays the face value to the holder at maturity. The U.S. government partially funds itself by issuing 10-year Treasury notes.
+
+>The 10-year T-note is the most widely tracked government debt instrument in finance, and its yield is often used as a benchmark for other interest rates, such as mortgage rates

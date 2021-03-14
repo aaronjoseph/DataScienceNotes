@@ -4,24 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "96e6e8292bb55fed",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Classifier Accuracy.md",
-            "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "16e1e1f582671100",
+        "id": "bfa37e28c2d02e39",
         "type": "leaf",
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Confusion Matrix & Metrics.md",
+            "file": "Vim/Commands.md",
             "mode": "preview"
           }
         }
@@ -51,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "f1 sc",
+                "query": "power",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -60,8 +49,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -81,12 +69,12 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Confusion Matrix & Metrics.md",
+                "file": "Vim/Commands.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -107,11 +95,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Confusion Matrix & Metrics.md"
+                "file": "Vim/Commands.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -119,15 +108,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Confusion Matrix & Metrics.md",
-    "Classifier Accuracy.md",
-    "Untitled.md",
-    "Regex.md",
-    "Topic Coherence.md",
-    "Stemming and Lemmatization.md",
-    "Untitled 1.md",
-    "Gibbs Sampling.md",
-    "Latent Dirichlet Allocation - LDA.md",
-    "Topic Modeling.md"
+    "Vim/Untitled.md",
+    "Finance/Value Trap.md",
+    "Finance/Shiller PE Ratio.md",
+    "Search Related/Communication/Resume Power Words.md",
+    "7 Database Paradigms.md",
+    "Evaluation Metrics.md",
+    "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+    "Outlier.md",
+    "Search Related/Question Repo/Technical Questions/List of Questions.pdf",
+    "Search Related/Question Repo/Technical Questions/Decision Tree Questions.md"
   ]
 }
