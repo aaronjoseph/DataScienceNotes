@@ -1,0 +1,1 @@
+Zipf's law was created for quantitaive linguistic, which states that given some NLP corpus, any word's frequency is inversely proportional to its frequency table rank. Thus the most frequent word will occur approzimately twice as often as the second most frequent word, three times as often as the third most frequent word.

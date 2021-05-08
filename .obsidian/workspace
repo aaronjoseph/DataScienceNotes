@@ -4,13 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "bfa37e28c2d02e39",
+        "id": "def2aa8365c15aa5",
         "type": "leaf",
-        "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Vim/Commands.md",
+            "file": "Finance/Cash Flow Statement.md",
+            "mode": "preview"
+          }
+        }
+      },
+      {
+        "id": "b6fb64be1b715667",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Finance/Debt to Asset Ratio.md",
             "mode": "preview"
           }
         }
@@ -40,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "power",
+                "query": "mermaid",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -69,10 +79,12 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Vim/Commands.md",
+                "file": "Finance/Debt to Asset Ratio.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -95,7 +107,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Vim/Commands.md"
+                "file": "Finance/Debt to Asset Ratio.md"
               }
             }
           }
@@ -107,16 +119,17 @@
     "width": 263,
     "collapsed": true
   },
+  "active": "b6fb64be1b715667",
   "lastOpenFiles": [
-    "Vim/Untitled.md",
-    "Finance/Value Trap.md",
-    "Finance/Shiller PE Ratio.md",
-    "Search Related/Communication/Resume Power Words.md",
-    "7 Database Paradigms.md",
-    "Evaluation Metrics.md",
-    "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+    "Finance/Debt to Asset Ratio.md",
+    "Finance/Cash Flow Statement.md",
+    "Finance/Balance Sheet.md",
+    "Finance/Amortization & Depreciation.md",
+    "Finance/Account Receivables & Account Payable.md",
+    "Finance/10 Year Treasury Note.md",
     "Outlier.md",
-    "Search Related/Question Repo/Technical Questions/List of Questions.pdf",
-    "Search Related/Question Repo/Technical Questions/Decision Tree Questions.md"
+    "Exponetial Constant - e.md",
+    "Finance/Interest Coverage Ratio.md",
+    "Finance/Operating Ratios.md"
   ]
 }

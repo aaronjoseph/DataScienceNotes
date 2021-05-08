@@ -1,0 +1,3 @@
+The Law of Large Numbers stated that as the number of trails of a random process increases, the result's average would get closer to the expected values or theoretical values. 
+
+The Law of Large Numbers is different than the Law of Average where it was used to express a belief that outcomes of a random event will "even out" within a small sample. This is what is known as "Gambler's Fallacy", where we expect the expected value would occur in a smaller sample.

@@ -3,7 +3,7 @@
 The formulae for exponential growth function is as below
 $$y = A_0 e^{kt}$$ 
 
-Here, e is the euler constant
+Here, e is the euler constant or [[Exponetial Constant - e]]
 k is the growth rate constant
 t is the time difference
 

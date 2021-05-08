@@ -12,7 +12,7 @@ Cross-Entropy is basically the average message length. Cross-Entropy = Entropy +
 
 ---
 
-Cross-Entropy Equation
+**Cross Entropy - Sparse Categorical/Categorical**
 
 $$J(w) = -(1/N)*\sum_{i=1}^{N}[y_ilog(\hat{y_i}) + (1-y_i)log(1-\hat{y_i})]$$
 

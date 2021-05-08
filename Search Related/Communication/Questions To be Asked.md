@@ -15,4 +15,3 @@
 3. How do product or business decisions made here ?
 4. What do you see as the strengths and weaknesses of the current team
 5. What does success look like for your team in five years?
-6. 

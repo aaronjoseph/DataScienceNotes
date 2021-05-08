@@ -1,0 +1,1 @@
+Current assets are assets that can be easily converted to cash, and the company foresees a situation of consuming these assets within 365 days. Current assets are the assets that a company uses to fund its day to day operations and ongoing expenses.
