@@ -1,0 +1,1 @@
+- Operating expenses commonly referred to as unavoidable expenses that the company has to incur for the smooth running of its day to day business activities

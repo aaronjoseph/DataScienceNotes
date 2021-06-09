@@ -6,21 +6,21 @@ Profit & Loss Statement or Statement of Profit and Loss is also referred as
 
 Gives a general idea about the company's profitability.
 
-## Top Line Revenue
-This factor talks about the total revenue's earned by the company.
-This is the most important factor in any balance sheet.
+> This statement reports the amount of money earned during a set period of time
 
-## Bottom Line 
-The bottom line shows the final profit/loss of a company.
+## General Income Statement Format
 
-## Depreciation And Amortization
-![[Amortization & Depreciation]]
-
-## PBT - Profit Before Tax
-![[Profit Before Tax (PBT)]]
-
-## PAT - Profit After Tax
-![[Profit After Tax (PAT)]]
-
-## EPS
-![[EPS]]
+Type | Inflow/Outflow | $ in Millions
+---|--- |---
+[[Revenue]] | Inflow | 10,000
+[[Cost of Goods Sold]] | Outflow | 3,000
+[[Gross Profit]] | [[Revenue]] - [[Cost of Goods Sold]] | 7,000
+ | | 
+ [[Operating Expense]] | Outflow | 
+ [[Selling, General and Administrative Expense]] | Outflow | 2100
+ [[R&D Costs]] | Outflow | 1,000
+ [[Interest Expense]] | Outflow | 700
+ [[Gain (Or Loss) On Sale of Assets and Others]] | Inflow/Outflow| 1,490
+ [[Profit Before Tax (PBT)]] | - | 1,500
+ Taxes Paid | - | 525
+ [[Profit After Tax (PAT)]] | - | 975

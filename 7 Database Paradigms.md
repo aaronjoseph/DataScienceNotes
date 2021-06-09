@@ -17,7 +17,7 @@ There are 7 types of databases
 
 - Examples
 	- Cassandra
-	- Apache HBase
+	- Apache [[HBase]]
 - This works on the Key-value pair idea, and adds another dimension to the value part
 - Unlike Relational database, this lacks schema
 	- However, querying is possible using something called CQL

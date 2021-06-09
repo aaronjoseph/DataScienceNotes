@@ -1,0 +1,1 @@
+Google File System was created to handle sharding and storing petabytes of data at scale. GFS is the foundation for Cloud Storage and also what would become [[BigQuery]] managed storage.

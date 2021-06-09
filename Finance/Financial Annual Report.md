@@ -17,8 +17,8 @@ Some of the sections of an Annual Report are
 
 - `Financial Report` - This is generally the last part of the AR (Annual Report). It contains 3 parts to it
 	- [[P&L Statement]]
-	- Balance Sheet 
-	- Cash Flow Statement
+	- [[Balance Sheet]] 
+	- [[Cash Flow Statement]]
 
 ### Consolidated and Standalone Financial Statements
 - Financial statements come in two forms

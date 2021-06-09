@@ -1,0 +1,3 @@
+- Interest expense is the cost incurred by an entity for borrowed funds. `Interest expense on the income statement represents interest accrued during the period covered by the financial statements, and not the amount of interest paid over that period`
+- Ratio of interest payments to operating income can be used to understand the level of risk taken by the company.`The below ratio is vital`
+$$\frac{Interest \ Expense}{Operating \ Income}$$

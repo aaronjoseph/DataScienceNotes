@@ -1,0 +1,7 @@
+- It is a messaging middleware
+	- It is a real time service
+- It is a many to many asynchronous messaging
+- **Pub/Sub** stands for Publisher & Subscriber 
+- **Publisher** apps create and send messages on a Topic
+- **Subscriber** apps subscribe to a topic to receive messages
+- Subscription is queue to a subscriberl

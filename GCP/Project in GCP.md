@@ -1,0 +1,3 @@
+- Project is the top level billing resource in GCP
+- Different project can be assigned with a seperate billing account
+- Always delete the project in order to 

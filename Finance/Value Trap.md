@@ -1,9 +1,9 @@
 ### Value Trap 
 In value investing, one of the most important step is to identify stocks that are of real value investment
 
-Value trap is a stock that appears to be cheaply priced in terms of [[PE Ratio|Price to Earnings Ratio]], Price to Cashflow (P/CF), Price to Book Value (P/B) for an extended period of time. This can inturn lead to a trap for a a investor, when the stock continues to langush or drop further.
+Value trap is a stock that appears to be cheaply priced in terms of [[Price to Earnings Ratio|Price to Earnings Ratio]], Price to Cashflow (P/CF), Price to Book Value (P/B) for an extended period of time. This can inturn lead to a trap for a investor, when the stock continues to langush or drop further.
 
-When the stock is trading at a price lower than [[Intrinsic Value & Margin of Safety| intrinsic value]], it could turn out to be a value trap.   
+> When the stock is trading at a price lower than [[Intrinsic Value & Margin of Safety| intrinsic value]], it could turn out to be a `value trap`.   
 
 ### Factors to consider whether your investment is a value trap
 

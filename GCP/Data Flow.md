@@ -1,0 +1,5 @@
+- Dataflow models the flow of data through a set of transformations
+- DAG based representation is used
+- Dataflow is modeled on `Apache Beam`
+	- Apache Beam is used for both batch and streaming data-parallel processing pipelines
+	- It is particularly useful for paralled data processing tasks

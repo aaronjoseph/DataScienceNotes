@@ -5,7 +5,7 @@ Connecting List between  P&L and Balance Sheet
 P&L Statement | The Balance Sheet Statement
 ----|----
 Sales Revenue	| Receivable and Cash Balance
-Operating Expenses | Inventory and Trade Payables
+[[Operating Expense]] | Inventory and Trade Payables
 Depreciation & Amortization | Accumulated Depreciation
 Other Income | Investments
 Finance Cost | Debt

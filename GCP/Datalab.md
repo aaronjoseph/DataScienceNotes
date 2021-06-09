@@ -1,0 +1,3 @@
+- Interactive code execution for notebooks. This is jupyter or iPython for notebooks for running code
+- Packaged as container running on a VM instance
+- Need to connect from browser to Datalab container on GCP 

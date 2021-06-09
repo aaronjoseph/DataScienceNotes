@@ -1,0 +1,1 @@
+**Operating Income = Gross Income - Operating Expense**

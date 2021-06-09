@@ -1,4 +1,4 @@
-This is also called as CAPE - Cyclically Adjusted Price-to-Earnings Ratio. This is defined as Price divided by average of ten years of [[EPS|earnings per share]] (moving average), adjusted for inflation. 
+This is also called as CAPE - Cyclically Adjusted Price-to-Earnings Ratio. This is defined as Price divided by average of ten years of [[Earnings Per Share|earnings per share]] (moving average), adjusted for inflation. 
 
 $$Shiller Ratio = \frac{Price of Stock}{Earnings Per Share,Inflation Adjusted for 10 years}$$
 

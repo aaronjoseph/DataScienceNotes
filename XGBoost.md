@@ -16,7 +16,7 @@ Some of the key advantages of XGBoost are
 	2. XGBoost prevents overfitting
 2. Parallel Processing
 	1. XGBoost implements parallel processing and is faster than GBM
-	2. Also supports on Hadoop
+	2. Also supports on [[Hadoop]]
 3. High flexibility
 	1. XGBoost allows users to define custom optimization objectives and evaluation criteria adding a whole new dimension to the model
 4. Handling Missing Values

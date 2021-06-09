@@ -1,0 +1,4 @@
+- Cloud Functions is a completely serverless execution environment
+- It is a Functions-as-a-Service
+	- It executes your code in response to events
+- Google scales resourcs as required

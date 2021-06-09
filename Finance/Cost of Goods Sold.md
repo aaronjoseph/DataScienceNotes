@@ -1,0 +1,4 @@
+- Cost of Goods Sold is also referred to as 
+	- Cost of Revenue
+- Cost of Good Sold is the cost of purchasing the goods the company is reselling or the cost of the materials and labour used
+- `Cost of Revenue` is used where the company is in the business of providing services rather than products

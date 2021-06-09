@@ -13,6 +13,6 @@ The margin of safety for an investment is the difference between the real or fun
 
 > "The secret  to investing is to figure out the value of something - and then pay a lot less - Joel Greenblatt"
 
-### Relationship between Intrinsic Vlaue 
+### Relationship between Intrinsic Value 
 
 Calculating the intrinsic value of bond is easier than stocks. Often time for stocks there are tangible and intangible factors to be considered and therefore the fluctuations are quite high. Hence when the variance or range of instrinsic value is quite high - it is a good idea to have a higher margin of safety.

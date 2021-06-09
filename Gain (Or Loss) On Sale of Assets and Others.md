@@ -1,0 +1,3 @@
+When a company sells an asset (other than inventory), the profit or loss for the sale is recorded under Gain (or Loss) on Sale of Assets. The profit is the difference between the proceeds from the sale and the carrying amount shown on the company's books.
+
+Same things applies to `Others`,  would be licensing agreements and sales of patents - if they were categorized as outside the normal course of business.

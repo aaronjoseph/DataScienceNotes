@@ -1,0 +1,12 @@
+- This is a Paas 'Platform as a service'
+	- This basically means a way to run code in the cloud without having to worry about infra
+	- You just have to focus on the code, Google will deal with all the provisioning and resource management
+- GCP App Engine is a fully managed serverless platform
+- Applications run in a secure, sandboxed environment
+- App Engine standard environment distributes requsts across multiple servers and scaling servers to meet traffic demands
+- Your application runs within its won secure, reliable environment that is independent of the hardward, operating system or physical location of the server
+- App Engine Enviroment comes in 2 type
+	- Standard Enviroment
+		- This is basically a container
+	- Flexible Enviroment
+		- This is a VM of GCE, wherein modifications can be made
