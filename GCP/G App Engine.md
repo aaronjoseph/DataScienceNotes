@@ -1,3 +1,4 @@
+- Ideally used for web applications, which can auto-scale to billions of users
 - This is a Paas 'Platform as a service'
 	- This basically means a way to run code in the cloud without having to worry about infra
 	- You just have to focus on the code, Google will deal with all the provisioning and resource management

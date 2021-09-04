@@ -26,4 +26,7 @@ Feature Vector stage, removes features that will result in `dimensionality reduc
 
 5. Recasting the data along the principal component axes
 
+<iframe border=0 frameborder=0 height=500 width=550  
+ 
+src ="https://twitter.com/Jeande_d/status/1417093660244594688?s=20"</iframe>
 

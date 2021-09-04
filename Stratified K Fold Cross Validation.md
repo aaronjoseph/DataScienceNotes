@@ -4,7 +4,7 @@ Essentially this is done since the general algorithm gives more weightage to the
 
 Stratified Cross Validation - Split data into k folds and each fold has the same proportion of different class as that is there in the main population. 
 
-Code to do K-Fold Cross Validation and allow for Models
+Code to do [[K Fold Cross Validation]] and allow for Models
 
 For K-Fold Cross Validation - Use StratifiedKFold() & Run it within a loop
 

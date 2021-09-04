@@ -1,0 +1,3 @@
+- A champion challenger is a method that allows different approaches to testing operational decisions in production. 
+- This is similar to [[AB Testing]] 
+	- It enables you to experiment in order to reach a decision through different approaches, using decision logic 

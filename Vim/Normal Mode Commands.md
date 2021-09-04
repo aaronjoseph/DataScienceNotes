@@ -3,6 +3,7 @@ Command | Significance
 :h vimtutor | Built in documentation of Vim
 x | Deletes the character under the cursor
 . | Repeats last command
+Ctrl + r | Redo
 u | Undo Last command
 dd | Delete the line
 <G | Decrease Indentation till the end of the file

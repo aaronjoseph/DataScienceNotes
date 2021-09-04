@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "14155fb91ce31ef2",
+        "id": "38f2f766240d88c0",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "GCP/G Container Engine.md",
+            "file": "Search Related/Communication/Simon Sinek Process.md",
             "mode": "preview"
           }
         }
@@ -39,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "simo",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 410,
-    "collapsed": true
+    "width": 410
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -71,14 +70,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GCP/G Container Engine.md",
+                "file": "Search Related/Communication/Simon Sinek Process.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": true,
-                "unlinkedCollapsed": true
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
               }
             }
           }
@@ -106,7 +105,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GCP/G Container Engine.md"
+                "file": "Search Related/Communication/Simon Sinek Process.md"
               }
             }
           }
@@ -117,17 +116,17 @@
     "width": 263,
     "collapsed": true
   },
-  "active": "14155fb91ce31ef2",
+  "active": "38f2f766240d88c0",
   "lastOpenFiles": [
-    "GCP/G Container Engine.md",
-    "GCP/G App Engine.md",
-    "GCP/Cloud Functions.md",
-    "GCP/G Compute Engine (GCE).md",
-    "Untitled.md",
-    "BigTable.md",
-    "MapReduce.md",
-    "GCP/BigQuery.md",
-    "Metcalfe's Law.md",
-    "GCP/Data Flow.md"
+    "Search Related/Communication/Simon Sinek Process.md",
+    "Search Related/Communication/Confidence Booster.md",
+    "Untitled 4.md",
+    "grep - Shell.md",
+    "Search Related/Communication/Interview - Introduce Yourself.md",
+    "7 Database Paradigms.md",
+    "Search Related/Communication/Job Hopper Question.md",
+    "Finance/Stock Screening - Financial Ratios.md",
+    "Improving Machine Learning Performance.md",
+    "Vim/Macros.md"
   ]
 }

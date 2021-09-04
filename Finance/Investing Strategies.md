@@ -20,3 +20,7 @@ One of the ideas of investing that can be considered is as below, here 100% of a
 	- Price Volume Action
 	- Earnings Momentum
 	- Tracking Framework
+
+## Stock Screening
+
+[[Stock Screening - Financial Ratios]]

@@ -65,7 +65,7 @@ There are 7 types of databases
 
 - Example
 	- Fauna DB
-- It goes about 3 paradims
+- It goes about 3 paradigms
 	- Graph
 	- Document
 	- Relational DB

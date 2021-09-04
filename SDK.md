@@ -1,0 +1,1 @@
+SDK (Software Development Kit) is a set of tools provided by the manufacturer. SDKs allow for creation of applications for that specific platform, system or programming language. A good SDK will supply any component a developer might find necessary when creating new applications for that specific product and its ecosystem.

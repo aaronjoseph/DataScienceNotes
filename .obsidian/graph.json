@@ -1,1 +1,22 @@
-{"collapse-filter":false,"search":"balance sheet","showTags":true,"showAttachments":false,"hideUnresolved":false,"showOrphans":true,"collapse-color-groups":true,"colorGroups":[],"collapse-display":false,"showArrow":true,"textFadeMultiplier":0,"nodeSizeMultiplier":0.554139957264957,"lineSizeMultiplier":1.00435363247863,"collapse-forces":false,"centerStrength":0.709401709401709,"repelStrength":9.23076923076923,"linkStrength":0.514522058823529,"linkDistance":66,"scale":1.0353546248726513,"close":false}
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 0.554139957264957,
+  "lineSizeMultiplier": 1.00435363247863,
+  "collapse-forces": false,
+  "centerStrength": 0.709401709401709,
+  "repelStrength": 11.7977528089888,
+  "linkStrength": 0.514522058823529,
+  "linkDistance": 66,
+  "scale": 0.8429144505133848,
+  "close": false
+}

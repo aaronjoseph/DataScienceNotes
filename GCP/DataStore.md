@@ -1,3 +1,5 @@
+This is the No-Sql variant in GCP eco-system
+
 - Alternative to MongoDB/CouchDB
 	- Suited for document data - XML/HTML
 - Key-value structure

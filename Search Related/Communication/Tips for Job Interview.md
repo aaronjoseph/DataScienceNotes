@@ -5,7 +5,7 @@
 	- "Future"
 - Most interviews think of past and evaluate about your future
 - Shift the discussion from past to future
-	- [[Introduce Yourself]] -> Explain and drop hint about the future, explain how a particular project can be used in thier environment
+	- [[Interview - Introduce Yourself]] -> Explain and drop hint about the future, explain how a particular project can be used in thier environment
 	- Question Phase [How you handled this issus Etc.] -> As you approach the end, ask them do you have a situation/example/senario or anticipate one where I might need to apply those skills so I could share how I could handle that in your environment so you could understand I could be a good fit
 	- Whoever was to take this job, a year from now what specific should the person should have accomplied to be sucessful in their job
 

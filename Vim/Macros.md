@@ -6,3 +6,4 @@ Command | Significance
 q[a-z] | starts recording macro in [a-z] register
 q | stops recording the macro
 q[A-Z] | starts appending macro in [A-Z] register
+@[A-z] | to run the macro command

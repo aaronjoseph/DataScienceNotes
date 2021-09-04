@@ -1,4 +1,5 @@
-- BigQuery is Fully managed, no server/serverless , no resources deployed
+- BigQuery is Fully managed, no server/serverless , no resources deployed, enterprise warehouse
+- It is a common sink or staging area for data analytics workload
 - Bigquery semantically maps to [[Hive]] technology
 	- However it is faster than Hive in terms of giving outputs
 	- This is due to the use of Columnar data storage format, which is proprietary as well
@@ -12,6 +13,16 @@
 - Dataset must belong to a project, so as to be billed
 
 > BigQuery is a columnar DB, so if you reduce the amount of columns in the query, the amount of data processed reduces as well, thereby reducing the query cost. `It doesn't depend on the where condition of the query`
+
+> ML Cheatsheet link [[BigQuery ML Cheatsheet]]
+
+## Managed Service
+
+Bigquery can be split into two distinct service
+- BigQuery Storage Service
+- Bigquery Query Service
+
+Here, the data in BigQuery Storage Service is stored in the colossus system.
 
 ## Table Schema 
 

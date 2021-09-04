@@ -45,6 +45,12 @@
 - 90 day minimum storage duration, costs for dta access and higher per-operation costs
 - Infrequently accessed data, such as data stored for legal or regulatory reasons
 
+## Archive Storage
+
+- The lowest cost, highly durable storage service for data archiving, online backup and disaster recovery
+
 ---
 
 `Lifecycle management for Buckets` Allows you to specify how long files stick around in your bucket before a specific activity is triggered
+
+> Always ensure the data is stored in the closest regional area. This will lead to lower network costs and improved performance for high-data intensive tasks

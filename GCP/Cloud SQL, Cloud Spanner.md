@@ -1,5 +1,5 @@
 - Relational database
-- Cloud SQL is open source
+- Cloud SQL is open source, fully managed RDBMS
 - Cloud Spanner is proprietary
 - Both support ACID Properties - relevant for OLTP (transaction processing)
 - Cloud Spanner supports ACID++
@@ -22,6 +22,12 @@
 	- This means, the DB has a failover replica
 	- The failover replica must be in a different zone than the original instance, also called master
 	- All changes made to the data on the master, including to user tables, are replicated to the failover replica using semisynchronous replication	
+- Key Features of Cloud SQL
+1. Flexible Pricing - You pay for what you use
+2. Managed backups - GCP manages the backup
+	1. Also handles automated repliation
+3. Faster connection from [[G Compute Engine (GCE)]] and [[G App Engine]]
+4. Google Security
 
 ## Cloud Spanner
 

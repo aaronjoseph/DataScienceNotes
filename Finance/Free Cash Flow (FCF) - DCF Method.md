@@ -7,7 +7,7 @@ The steps are as follows
 1. Identify the Average Free Cash Flow of the company
 2. Identify the growth rate
 	1. Here, for smaller companies, assume 18% in the first 5 years into the future
-	2. For larger companies, assuem 15% and 10% growth for the first 5 and the last 5 years
+	2. For larger companies, assume 15% and 10% growth for the first 5 and the last 5 years
 3. Estimate the future cash flows
 	1. Table below shows a sample
 
@@ -50,6 +50,7 @@ $\therefore$ The company's Net Free cashflow post the 10th year till infinity is
 ## Net Present Value (NPV)
 
 - Assumption, discount rate at 9 %
+- Divide 118/1.09
 
 Type| Year | Growth Rate | Future Cash Flow (INR Crs) | Present Value
 ---|---|---|---| ---
@@ -74,7 +75,7 @@ Which can be the assumed total free cash flow, all of which will belong to the i
 This is the last stage of the DCF Method.
 
 - First we need to calculate the Net Debt
-	- **Net Debt = Current Year Total Debt - Cash & Cash Balace**
+	- **Net Debt = Current Year Total Debt - Cash & Cash Balance**
 - This needs to be added to the NPV of future cash flow
 - Then the share price can be calculated as follows
 	- **Share Price = (Total Present Value of Free Cash Flow - Net Debt)/Total Number of Shares**

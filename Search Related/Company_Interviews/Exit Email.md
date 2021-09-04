@@ -25,3 +25,15 @@ I plan on being in the city for atleast a few weeks, but my gut tells me to even
 - I will be handing over my projects to so and so person, please contact them for the same
 
 I wish you the very best in all your future personal and professional endeavours. My phone number and personal email address are () . If you ever happen to visit Bangalore, especially North Bangalore, I will love to meet you at a coffee shop for a good catch-up chat!
+
+## Subhajit's Format
+
+_Hello All,_
+
+_Finally the moment has arrived to say goodbye, which is never easy .It has been a fantastic journey and a great learning experience where I have enjoyed every moment and I appreciate having had the opportunity to work with each of you with whom I have interacted._
+
+_Sincere thanks to all my project managers (Tim Wyatt, Aditya Shekhar, Avinash Tiwari) and my colleagues for their support and guidance to excel in my career. I would like to mention that it has been great to interact with every one of you on a personal and a professional level. The good times we’ve shared will always be etched in my memory. We may have had our share of disparity of opinions, but that was all in good faith. Even though I am excited about my new role, every person I’ve worked with will be missed sorely._
+
+_Even though I will miss you all, I am looking forward to this new challenge and to start a new phase in my career. I wish you all the very best in life. Nevertheless, this is just the beginning of a new chapter. My personal contact number is [9035709622](tel:9035709622) and you can stay connected with me on my personal email ID "[subhajit.nayakds@gmail.com](mailto:subhajit.nayakds@gmail.com)" and LinkedIn : [https://www.linkedin.com/in/subhajitnayak/](https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsubhajitnayak%2F&data=04%7C01%7Caaron.mathew%40bt.com%7C42179a33100d45295d8408d93ad39010%7Ca7f356889c004d5eba4129f146377ab0%7C0%7C0%7C637605502588636593%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=2wPFSJodnmrKJary8xO357hHZF6MICM2ODVUN1Pu9tk%3D&reserved=0)_
+
+_Once again, I wish my colleagues a bright future and success for the entire organization that taught me a lot. I would like to extend my best wishes to the entire firm. It was a pleasure knowing each and every one of you. In case I have unintentionally hurt anyone, please forgive me. Needless to say, please stay in touch._

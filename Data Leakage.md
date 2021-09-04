@@ -28,3 +28,11 @@ Scenario
 
 Controling LVS
 -  Make use of Scikit-Learn pipeline to streamline the process
+
+
+### Other examples
+
+- During Data Pre-processing Stage
+	- Pre-processors like [[Imputing Missing Values| Imputers]], [[Feature Scaling|Normalizer/Standardization]], Log Transformers tap into the underlying data distribution during the fit time
+	- For example, if we use StandardScaler, which subtracts the mean from every observation and then divides it with the standard deviation. Calling it on the entire data, will cause the transformer to learn the mean and SD of the entire distribution of each feature. After this if we are to split the data into train and test sets, the train set is contaminated - since the StandardScaler leaked important information from the actual distribution
+		- To avoid this, always try to use the `built-in pipeline features` 

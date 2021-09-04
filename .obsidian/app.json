@@ -1,0 +1,15 @@
+{
+  "promptDelete": true,
+  "vimMode": true,
+  "fileSortOrder": "alphabetical",
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "Attachements",
+  "newFileLocation": "root",
+  "enabledPlugins": [],
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}
