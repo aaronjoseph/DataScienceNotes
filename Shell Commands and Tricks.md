@@ -25,3 +25,28 @@ finger # Tells who all are logged in
 netstat -a # Shows all listening port
 traceroute google.com # Shows the route a packet took to reach the host
 ```
+
+## Enviroment Variable
+
+> Global Variables are all caps, `always define variables as small caps`
+
+```shell
+printenv #List of all global variable
+printenv HOME #Find the home variable config
+echo $HOME #Gets the variable config
+unset variable #Removes the variable
+
+# Adding to PATH Variable for easy execution
+PATH=$PATH:/path/to/specify
+```
+
+Additionally, you can add the PATH to Bashrc
+
+```shell
+if [-d "$HOME/.bin"];
+	then PATH="$HOME/.bin;$PATH"
+fi
+
+# Here the code above checks if the folder exists
+# If so, then adds it to PATH
+```
