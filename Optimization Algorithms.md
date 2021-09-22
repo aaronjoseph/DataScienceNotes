@@ -72,5 +72,9 @@ NADAM is Adam with Nesterov Momentum. Adam can be viewed as a combination of RMS
 
 Adadelta is an extension of Adagrad that seeks to reduce its aggressive, monotonically decreasing learning rate.
 
+### Pytorch - To view all Optimization Algorithms
 
-### Nesterov Accelerated Gradient
+```python
+import torch.optim as optim
+dir(optim)
+```

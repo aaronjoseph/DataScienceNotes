@@ -1,0 +1,12 @@
+All commands start with `Ctrl + B`
+-   “ — Splits your current tab horizontally.
+-   % — Splits your current tab vertically.
+-   Arrow Keys — Allows for navigation between panes.
+-   $ — Rename your current session.
+-   , — Rename your current tab.
+-   s — Switch between sessions.
+-   d — Detach from the existing session.
+-   x — Deletes a pane from your current window.
+-   & — Deletes a tab in your current session.
+-   c — Creates a new tab in your current session.
+-   r — Restarts your current session.

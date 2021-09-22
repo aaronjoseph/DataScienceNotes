@@ -9,7 +9,18 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Shell Commands and Tricks.md",
+            "file": "L1 and L2 Regularization.md",
+            "mode": "preview"
+          }
+        }
+      },
+      {
+        "id": "869d9963905c958a",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "TMUX.md",
             "mode": "preview"
           }
         }
@@ -39,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Shell",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -48,8 +59,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -71,7 +81,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Shell Commands and Tricks.md",
+                "file": "TMUX.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Shell Commands and Tricks.md"
+                "file": "TMUX.md"
               }
             }
           }
@@ -117,17 +127,17 @@
     "width": 263,
     "collapsed": true
   },
-  "active": "38f2f766240d88c0",
+  "active": "869d9963905c958a",
   "lastOpenFiles": [
-    "Shell Commands and Tricks.md",
-    "Untitled 4.md",
-    "Horizontal & Vertical Scaling.md",
-    "Search Related/Communication/Simon Sinek Process.md",
-    "Search Related/Communication/Confidence Booster.md",
-    "grep - Shell.md",
-    "Search Related/Communication/Interview - Introduce Yourself.md",
-    "7 Database Paradigms.md",
-    "Search Related/Communication/Job Hopper Question.md",
-    "Finance/Stock Screening - Financial Ratios.md"
+    "Untitled.md",
+    "Optimization Algorithms.md",
+    "Gradient Descent.md",
+    "L1 and L2 Regularization.md",
+    "L1 and L2 Loss Functions.md",
+    "Loss Functions.md",
+    "Topic Coherence.md",
+    "with - python.md",
+    "Why Productionalising ML is Hard.md",
+    "Untitled 3.md"
   ]
 }
