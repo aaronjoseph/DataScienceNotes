@@ -1,0 +1,1 @@
+Principle of Least Privileges - states that for a given set of privileges, always give the least possible privileges. This is the principle used in 
