@@ -3,13 +3,15 @@
 - Focus on Strengths, and important pointers
 - Have a good start
 - Keep it under 1.5 Minutes
+- Apply [[Simon Sinek Process]]
 
 ### Major Pointers
-- 
-
+- Tech stack approch will fail for Technical folks
+	- Use it for Business folks
+	- Check their linkedin for key words that they are emphasising on and curate one 
 
 ---
-Approach - IV
+Approach - V
 
 I have total experience of 3.5 Years of which I have spent more than 2.5 years in fin-tech and the rest in consultancy. Currently I work for Kaleidofin which is a Series-A fin-tech start-up that is working towards bringing financial inclusion to the underbanked segement.
 
@@ -23,7 +25,7 @@ Apart from the diverse deliverables that I have taken care of, I have also handl
 
 ---
 
-Backward Story - III
+Backward Story - IV
 
 I am Aaron Joseph, currently working as a Data Scientist at Kaleidofin which is a fin-tech series-A startup & I have 3+ years of experience in Data Science. My core expertise lies in Model Development, Deployment & App creation. Additionally, I have taken care of Data Warehousing and dashboarding and love evangelizing data science solution to business stakeholders since I strongly belive buy-in from management is a strong indicator on whether the project will succeed or not.
 

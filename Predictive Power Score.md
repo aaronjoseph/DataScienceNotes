@@ -9,7 +9,7 @@ Correlation Matrix helps us understand relationship between two columns. [[Corre
 
 ### Advantages of PPS
 - Find pattern in data
-- Feature Selection
+- [[Feature Selection]]
 
 
 ```py

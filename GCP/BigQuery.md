@@ -80,7 +80,19 @@ The different ways interacting with data in BigQuery
 - Need to declare tablee as partitioned at ceration time
 - No need to specity schema (can do while loading data)
 - BigQuery automatically creates date partitions 
-	
+
+## Struct
+
+The easiest way to think about a STRUCT is to consider it conceptually like a separate table that is already pre-joined into your main table.
+
+A STRUCT can have:
+
+-   one or many fields in it
+-   the same or different data types for each field
+-   it's own alias
+
+> The main advantage of having STRUCTs in a single table is it allows you to run queries without having to do any JOINs
+
 ---
 
 ## Query Plan Explanation

@@ -4,15 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "869d9963905c958a",
+        "id": "a3f46cf0ad52ccef",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Terraform.md",
+            "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
             "mode": "source"
           }
-        }
+        },
+        "group": "f5609f04f62ccc86"
+      },
+      {
+        "id": "57a948ce661fa434",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+            "mode": "preview"
+          }
+        },
+        "group": "f5609f04f62ccc86"
       }
     ],
     "direction": "vertical"
@@ -39,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "terra",
+                "query": "interview ",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -53,8 +66,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 410,
-    "collapsed": true
+    "width": 410
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -71,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Terraform.md",
+                "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +118,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Terraform.md"
+                "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md"
               }
             }
           }
@@ -117,17 +129,17 @@
     "width": 263,
     "collapsed": true
   },
-  "active": "869d9963905c958a",
+  "active": "a3f46cf0ad52ccef",
   "lastOpenFiles": [
-    "Terraform.md",
-    "TMUX.md",
-    "Untitled.md",
-    "Optimization Algorithms.md",
-    "Gradient Descent.md",
-    "L1 and L2 Regularization.md",
-    "L1 and L2 Loss Functions.md",
-    "Loss Functions.md",
-    "Topic Coherence.md",
-    "with - python.md"
+    "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+    "Feature Selection.md",
+    "Data - MLOPs.md",
+    "Linear Discriminant Analysis.md",
+    "Imputing Missing Values.md",
+    "Hyperparameter Tuning.md",
+    "Dimensionality Reduction.md",
+    "Feature Cross.md",
+    "Feature Importance.md",
+    "Feature Engineering.md"
   ]
 }

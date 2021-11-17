@@ -4,7 +4,7 @@ Permutation importance is a type of [[Feature Importance]] method. It indicates 
 Reasons for its popularity is
 - Fast to calculate
 - Widely used and understood
-- Inline with what we want feature selection process to actually measure
+- Inline with what we want [[Feature Selection]] process to actually measure
 
 ### Technique
 This technique is used for calculating relative importance scores that is independent of the model used.

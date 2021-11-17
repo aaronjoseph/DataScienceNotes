@@ -1,4 +1,4 @@
-- Manged Hadoop + Spark
+- Manged [[Hadoop]]] + [[Spark]]
 	- This gives you all the power of Hadoop without having to manage clusters
 	- You can lift and shift your existing Hadoop & Spark workloads
 	- Connect with cloud storage to seperate compute and storage

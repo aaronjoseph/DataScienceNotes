@@ -30,3 +30,14 @@ Dataflow provides serverless service both for batch and streaming data. Also, al
 3. AfterCount
 	1. Data Driven Trigger
 
+## Windowing
+
+1. Tumbling windows/Fixed Window
+	1. Windows of fixed interval duration, uniform across all keys, no overlaps between two consecutive windows
+		2. Use Case - Aggregation use case
+2. Sliding Window
+	1. Windows of fixed interval duration, uniform across all the keys, overlap between two windows
+	2. Use Case - Moving Average
+3. Session Window
+	1. Windows of dynamically set intervals, non-uniform across keys, no overlap between two windows
+	2. Use Case - User Session data, click data, real time gaming data analysis

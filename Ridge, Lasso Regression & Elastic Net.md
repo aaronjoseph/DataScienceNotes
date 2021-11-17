@@ -14,7 +14,7 @@ The end goal of any model is to have [[Bias-Variance Tradeoff| low bias and low 
 
 `Least Absolute Shrinkage and Selection Operator Regression` or  Lasso Regression uses  $l_1$ norm that is  $\alpha\sum_{i=1}^{n}|\theta_i|$ in the cost function
 - Lasso reduces overfitting
-	- Also, helps in feature selection
+	- Also, helps in [[Feature Selection]]
 
 Elastic Net is a middle ground between Ridge Regression and Lasso Regression
 

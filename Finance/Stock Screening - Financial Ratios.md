@@ -14,8 +14,10 @@ Stock screening is done to filter out stocks that meet our criteria, this way we
 ---
 <iframe border=0 frameborder=0 height=500 width=550  
  src="https://twitter.com/Stockstudy8/status/1427300364819210248?s=20"></iframe>
- 
- 
+
+---
+<iframe border=0 frameborder=0 height=500 width=550  
+ src="https://twitter.com/Stockstudy8/status/1439259024877228036?s=20"></iframe>
 
 ## Selection Strategy
 

@@ -1,3 +1,5 @@
+> In Data Drift, we have to correct for `x`, the predictor 
+
 - When the underlying data distrubution shifts, it causes data drift
 - Also referred to as 
 	- Feature Drift
@@ -9,3 +11,22 @@
 	- Assume you train CV model based on mobile with low-resolution (assume 1.2 MP camera)
 	- Overtime, hardware improvements will cause the image quality to improve, which will lead to higher resolution of the image
 	- This causes data drift in the case of the underlying models
+
+### Reasons for Data Drift
+
+Data Changes |
+---|
+Trend and Seasonality|
+Distribution of features changes | 
+Relative importance of feature changes |
+
+World Changes |
+---|
+Fashion Change |
+Scope and processes change|
+competitors change|
+Business expands to other geos|
+
+### Training Serving Skew
+
+Training serving skew is a case wherein the training data and the production use case data differ drastically. This leads to major performance issues.
