@@ -41,11 +41,61 @@ A --> D[Embedded Methods]
 ```
 
 
-`Filter Methods`
+## `Filter Methods`
 
 Have 3 types 
 - Correlation
 - Univariate Feature selection
+
+**Correlation**
+- Correlated features are usually redundant
+	- And it's ideal to remove them
+- Methods
+	- Pearson Correlation
+	- Univariate Feature Selection
+
+For comparing feature comparision, to evaluate how close the features are we have
+- Pearson's correlation: Linear relationships
+- Kendall Tau Rank Correlation Coefficient : Monotonic relationships & small sample size
+- Spearman's Rank Correlation Coefficient : Monotonic relationships
+- Mutual Information
+- F-test
+- Chi-Squared test
+
+**Univariate Feature Selection**
+
+1. SelectKBest
+2. SelectPercentile
+3. GenericUnivariateSelect
+
+**Correlation Filter Method Approach**
+
+```mermaid
+flowchart LR
+A[Set of All Features] --> B[Selecting the Best Subset]
+B --> C[ML Model]
+C --> D[Model Performance]
+```
+
+
+## `Wrapper Methods`
+
+This is a search method that goes throught the data and finds the optimal selection 
+- Forward Elimination
+- Backward Elimination
+- Recursive Feature Elimination
+
+```mermaid
+flowchart LR
+A[Set of All Fetures] --> B[Generate a subset]
+B <--> C[ML Model]
+C --> D[Performance]
+```
+
+## `Embedded Methods`
+Methods 
+- [[L1 and L2 Regularization|L1 Regularization]]
+- [[Feature Importance]]
 
 
 ### Variance Threshold

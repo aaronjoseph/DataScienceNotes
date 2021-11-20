@@ -4,28 +4,52 @@
     "type": "split",
     "children": [
       {
-        "id": "a3f46cf0ad52ccef",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
-            "mode": "source"
-          }
-        },
-        "group": "f5609f04f62ccc86"
-      },
-      {
         "id": "57a948ce661fa434",
         "type": "leaf",
+        "dimension": 32.47311827956989,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+            "file": "Feature Selection.md",
             "mode": "preview"
           }
-        },
-        "group": "f5609f04f62ccc86"
+        }
+      },
+      {
+        "id": "eaf8f9ba714871f2",
+        "type": "leaf",
+        "dimension": 24.193548387096776,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Monitoring - MLOPS.md",
+            "mode": "preview"
+          }
+        }
+      },
+      {
+        "id": "c53ae3d132438d46",
+        "type": "leaf",
+        "dimension": 25.806451612903224,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Feature Importance.md",
+            "mode": "preview"
+          }
+        }
+      },
+      {
+        "id": "ea9cf4d82c01c2cc",
+        "type": "leaf",
+        "dimension": 17.526881720430108,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "L1 and L2 Regularization.md",
+            "mode": "preview"
+          }
+        }
       }
     ],
     "direction": "vertical"
@@ -52,7 +76,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "interview ",
+                "query": "model mon",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -66,7 +90,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 410
+    "width": 410,
+    "collapsed": true
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -83,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+                "file": "Feature Selection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md"
+                "file": "Feature Selection.md"
               }
             }
           }
@@ -129,17 +154,17 @@
     "width": 263,
     "collapsed": true
   },
-  "active": "a3f46cf0ad52ccef",
+  "active": "57a948ce661fa434",
   "lastOpenFiles": [
-    "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
     "Feature Selection.md",
-    "Data - MLOPs.md",
-    "Linear Discriminant Analysis.md",
-    "Imputing Missing Values.md",
-    "Hyperparameter Tuning.md",
-    "Dimensionality Reduction.md",
-    "Feature Cross.md",
+    "Monitoring - MLOPS.md",
     "Feature Importance.md",
-    "Feature Engineering.md"
+    "Feature Engineering.md",
+    "L1 and L2 Regularization.md",
+    "Data - MLOPs.md",
+    "Permuatation Importance.md",
+    "Terraform.md",
+    "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
+    "Linear Discriminant Analysis.md"
   ]
 }

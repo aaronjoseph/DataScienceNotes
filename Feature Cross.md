@@ -1,0 +1,5 @@
+- Combining multiple features together into a new feature
+- Encodes nonlinearity in the feature space, or encodes the same information in fewer features
+- Creation of many different kinds of feature crosses can be done
+- Feature crossing : synthetic feature encoding nonlinearity in feature space
+- Feature Coding : transforming categorical to a continuous variable
