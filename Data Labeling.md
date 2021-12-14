@@ -6,9 +6,9 @@ Methods
 
 - Process Feedback (Direct Labeling)
 - Human Labeling
-- Semi-Supervised Labeling
-- Active Learning
-- Weak Supervision
+- [[Semi-Supervised Labeling]]
+- [[Active Learning]]
+- [[Weak Supervision]]
 
 ## Process Feedback
 

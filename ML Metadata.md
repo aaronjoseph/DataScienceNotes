@@ -1,0 +1,1 @@
+- Tracks metadata flowing between components

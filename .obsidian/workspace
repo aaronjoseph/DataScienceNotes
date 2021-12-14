@@ -4,50 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "57a948ce661fa434",
+        "id": "2bcaec678c3fa6e2",
         "type": "leaf",
-        "dimension": 32.47311827956989,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Feature Selection.md",
-            "mode": "preview"
+            "file": "Data Labeling.md",
+            "mode": "source"
           }
         }
       },
       {
-        "id": "eaf8f9ba714871f2",
+        "id": "3c4635e1b65db400",
         "type": "leaf",
-        "dimension": 24.193548387096776,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Monitoring - MLOPS.md",
-            "mode": "preview"
-          }
-        }
-      },
-      {
-        "id": "c53ae3d132438d46",
-        "type": "leaf",
-        "dimension": 25.806451612903224,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Feature Importance.md",
-            "mode": "preview"
-          }
-        }
-      },
-      {
-        "id": "ea9cf4d82c01c2cc",
-        "type": "leaf",
-        "dimension": 17.526881720430108,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "L1 and L2 Regularization.md",
-            "mode": "preview"
+            "file": "Weak Supervision.md",
+            "mode": "source"
           }
         }
       }
@@ -76,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "model mon",
+                "query": "labeling",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -108,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Feature Selection.md",
+                "file": "Weak Supervision.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Feature Selection.md"
+                "file": "Weak Supervision.md"
               }
             }
           }
@@ -154,17 +128,17 @@
     "width": 263,
     "collapsed": true
   },
-  "active": "57a948ce661fa434",
+  "active": "3c4635e1b65db400",
   "lastOpenFiles": [
-    "Feature Selection.md",
-    "Monitoring - MLOPS.md",
-    "Feature Importance.md",
-    "Feature Engineering.md",
-    "L1 and L2 Regularization.md",
-    "Data - MLOPs.md",
-    "Permuatation Importance.md",
-    "Terraform.md",
-    "Search Related/Question Repo/Technical Questions/Links of Good Interview questions.md",
-    "Linear Discriminant Analysis.md"
+    "Weak Supervision.md",
+    "Data Labeling.md",
+    "Active Learning.md",
+    "Semi-Supervised Labeling.md",
+    "Untitled.md",
+    "Imbalanced Classification.md",
+    "Undersampling.md",
+    "OverSampling.md",
+    "Reinforcement Learning.md",
+    "Data - MLOPs.md"
   ]
 }
