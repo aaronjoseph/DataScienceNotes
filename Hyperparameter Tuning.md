@@ -1,4 +1,6 @@
-`Hyperparameter`  is a parameter whose value is set before the learning process begins
+- `Hyperparameter`  is a parameter whose value is set before the learning process begins
+- This is not updated in each training steps
+- And it is not scalable
 
 # Grid Search
 The idea of grid search is to search the hyper-parameter space within the grid-values. The grid value defines for each hyperparameter which values should be tested.

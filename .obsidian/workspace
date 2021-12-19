@@ -4,23 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "2bcaec678c3fa6e2",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Data Labeling.md",
-            "mode": "source"
-          }
-        }
-      },
-      {
         "id": "3c4635e1b65db400",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Weak Supervision.md",
+            "file": "Network Architecture Search.md",
             "mode": "source"
           }
         }
@@ -50,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "labeling",
+                "query": "network",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -82,7 +71,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Weak Supervision.md",
+                "file": "Network Architecture Search.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +106,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Weak Supervision.md"
+                "file": "Network Architecture Search.md"
               }
             }
           }
@@ -130,15 +119,15 @@
   },
   "active": "3c4635e1b65db400",
   "lastOpenFiles": [
-    "Weak Supervision.md",
-    "Data Labeling.md",
-    "Active Learning.md",
-    "Semi-Supervised Labeling.md",
-    "Untitled.md",
-    "Imbalanced Classification.md",
-    "Undersampling.md",
-    "OverSampling.md",
-    "Reinforcement Learning.md",
-    "Data - MLOPs.md"
+    "Network Architecture Search.md",
+    "Hyperparameter Tuning.md",
+    "Untitled 1.md",
+    "Feature Scaling.md",
+    "Data Drift.md",
+    "Time Series.md",
+    "Machine Learning Pipeline - Competition.md",
+    "Why Productionalising ML is Hard.md",
+    "Data - MLOPs.md",
+    "Data Labeling.md"
   ]
 }
