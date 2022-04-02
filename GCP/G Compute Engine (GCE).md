@@ -1,9 +1,9 @@
 - GCP Compute Engine is a computing and hosting service
 - Allows you to create virtual machines
 - IaaS - Infra as a service
+- If your application isn't a container, this is the service to be used 
 
 ## Preemptible Instances
-
 - Much cheaper than compute engine instances
 - But can be terminated at any time if Compute Engine needs the resources
 - Can be terminated after running for 24 hours

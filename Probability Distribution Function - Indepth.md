@@ -2,7 +2,7 @@
 ![[Pasted image 6.png]]
 
 ### Defination of PDF 
-![[Probability Distribution - Defination]]
+![[Probability Density Function]]
 
 ### Bernoulli Distribution
 

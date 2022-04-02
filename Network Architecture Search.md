@@ -8,9 +8,40 @@
 	- Human bias may creep in, if certain architectures are excluded
 	- There are two approaches to it
 		- `Macro`
+			- Contains individual layers and connection types
 		- `Micro`
+			- It builds on cells, cells are stacked to make the final architecture
+		- `Micro` apporach is better than `Macro`
 - Search Strategy
 	- This is all about how to explore the search space 
 	- There is always a risk of premature convergence
+	- The types of search strategies are
+	- Grid & Random Search
+		- This is suited for smaller search spaces
+		- Both of these techniques will fail with growing size of search space
+	- Bayesian Optimization
+		- Assumes that a specific probability distribution, is underlying the performance
+		- Tested architectures constrain the probability distribution and guide the selection of the next option
+		- In this way, promising architectures can be stochastically determined and tested
+	- Evolutionary Methods
+	- Reinforcement Learning
+		- Agent goal is to maximize a reward
+		- The available options are selected from the search space
+		- The performance estimation strategy determines the reward
 - Performance Estimation Strategy
 	- Provides the model performace back to the search strategy with a feedback loop
+	- Techniques used
+	- Validation Accuracy
+		- This technique can be computationally heavy and therefore expensive
+	- **Reducing Validation Accuracy**
+		- Lower Fidelity Estimates
+			- Herein, smaller datasets can be used, or, low resolution images
+			- This reduces cost but underestimates performance
+		- Learning Curve Extrapolation
+			- Requires predicting the learning curve reliably
+			- Extrapolates based on initial learning
+			- Removes poor performers
+		- Weight Inheritance/Network Morphisms
+			- Initialize weights of new architectures based on previously trained architectures
+			- New network inherits knowledge from parent network
+			- Network size not inherently bounded

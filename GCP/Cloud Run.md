@@ -1,0 +1,4 @@
+- Cloud Run allows you to use Kubernets without the cluster management or configuration
+- Apps must be stateless
+- Need to deploy apps using Docker images in Container Registry
+- Can also use Cloud Run to automate deployment to your own GKE cluster

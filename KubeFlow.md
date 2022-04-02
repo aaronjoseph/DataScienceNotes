@@ -1,4 +1,4 @@
-- Kubeflow is a tool for orchestrating complicated workflows running on Kubernetes
+- Kubeflow is a tool for orchestrating complicated workflows running on [[Kubernetes]]
 - Every step of a Kubeflow pipeline is a seperate container
 - The reason Kubeflow is the front runner in the MLOPs space is because it
 

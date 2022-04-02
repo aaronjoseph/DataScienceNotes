@@ -1,3 +1,5 @@
+#oan
+
 In Association Rule Mining we try to uncover relationships between different items sold by a retailer or find patterns that were not discovered earlier.
 
 The base of Association Rule Mining is based on Maket Basket Analysis. The core idea is to uncover relationships between items so that such products can be placed closely. This is designed to drive more purchase.

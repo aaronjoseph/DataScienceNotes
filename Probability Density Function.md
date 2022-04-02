@@ -1,5 +1,12 @@
->`Probability Distribution Function` is used to infer the probability of random variable falling within a particular range of values. Probability density function is non-negative everywhere and its integral over the entire space is 1
->`Random Variable` is a variable whose numerical outcome is that of a random phenomenon. There are two types of radom variables - Discrete [1,2,3,...] and continous [1.1,1.2,...] random variable
+#sim 
+
+In a random event a [[Random Variable]] can take any value, often times, certain values come across more frequent than others.
+
+`Probability Mass Function` is probability distribution for `discrete random variable`
+`Probability Density Function` is probability distribution for `continous random variable`
+
+>`Probability Distribution Function` is used to infer the probability of [[Random Variable]] falling within a particular range of values. Probability density function is non-negative everywhere and its integral over the entire space is 1, integral of PDF/PMF gives [[Cumulative Density Function]]
+
 ---
 
 ### Types of Distribution

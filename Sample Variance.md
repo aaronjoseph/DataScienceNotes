@@ -1,1 +1,0 @@
-Sample variance is the variance calculated for the 

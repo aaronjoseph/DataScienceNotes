@@ -66,7 +66,7 @@ Fast random access with mobile SDKs | Firebase Realtime DB
 ```mermaid
 graph TD;
 
-A[If your Data is] --Unstructured--- B[Cloud Storage]
+A[If your Data is] --Unstructured--- B[Cloud Storage/Filestore]
 A --Structured--- C[Data Analytics]
 A --Structured--- D[Transactional Workload]
 C --Millisecond Latency --- C1[(Cloud Bigtable)]

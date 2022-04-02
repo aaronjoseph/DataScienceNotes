@@ -4,7 +4,7 @@
 - Buckets are globally unique
 	- Name (gloabally unique)
 	- Location
-
+- `Lifecycle management policy` - Herein, files which are older than the specified limit will get deleted
 > Data in cloud storage is called `objects`. Every object has a storage class
 	
 ## Storage Classes

@@ -18,7 +18,7 @@ I may have learnt the odd technical finance concept or two; however the more val
 
 I don't know what the future holds for me, however, I am filled with nervous-excitement at the prospect of what might be in store for me, I have never imagined working in finance, let alone `Whatever cool work you did`.  I would devote the near future to family, reading, writing, kaggle and day-dreaming.
 
-I plan on being in the city for atleast a few weeks, but my gut tells me to eventually move back to my old stomping grounds in Kolkata. I have spent close to seven years in stateside, and have truly come to belive that the days are long but the years are short. I take enough confidence and self-belief with me from my time here at `company` that I can add value to whatever it is that I end up pursuing "Full-Time" .
+I plan on being in the city for atleast a few weeks, but my gut tells me to eventually move back to my old stomping grounds in BLR . I have spent close to a year in chennai, and have truly come to belive that the days are long but the years are short. I take enough confidence and self-belief with me from my time here at `company` that I can add value to whatever it is that I end up pursuing "Full-Time" .
 
 `Project Handover` 
 
