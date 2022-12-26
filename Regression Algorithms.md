@@ -35,3 +35,8 @@ Ridge regression is used to analyze multiple regression lines that suffer from m
 
 ### Light GBM
 [[Light GBM]]
+
+---
+#mgt
+
+

@@ -16,13 +16,7 @@ Application of Clustering
 6. Search Engines
 7. Image Segmentation
 
-### KMeans
+## Algorithms
 
-KMeans is a clustering algorithm
+[[KMeans]]
 
-Optimising K-Mean score
-
-```py
-from sklearn.metrics import silhouette_score
-silhouette_score(X, kmeans.labels_)
-```

@@ -85,7 +85,9 @@ $$MeanAbsoluteError = \frac{1}{N}  \sum_{j=1}^{N}(y_j-\hat{y_j})^2$$
 from sklearn.metrics import mean_squared_error
 ```
 
-## RMSE [0 - $\infty$]
+## RMSE
+Value Range = 0 - $\infty$
+
 This is the square root of MSE, however, bring better interpretability to the table.
 
 ## MSLE
@@ -112,7 +114,7 @@ If $R^2$ is 0.64, then 64% of the variation in the output variable is explained 
 
 ## Adjusted $R^2$
 
-Major pitfall of R-square is that it will always imporve as we increase the number of variables. Adjusted $R^2$ fixes this issue, it adds a penalty to the model. For both $R^2$ and adjusted $R^2$, values closer to 1 is preferred
+Major pitfall of R-square is that it will always improve as we increase the number of variables. Adjusted $R^2$ fixes this issue, it adds a penalty to the model. For both $R^2$ and adjusted $R^2$, values closer to 1 is preferred
 
 $$R_{adj}^2 = 1-[\frac{(1-R^2)(n-1)}{n-k-1}]$$
 

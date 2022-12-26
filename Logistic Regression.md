@@ -17,6 +17,15 @@ In the most fundamental form, the hypothesis function for linear regression is  
 In Logistic Regression, the sigmoid function is applied over the hypothesis function.
 
 ---
+### Interpretation of Logistic Regression Co-efficients
+#oan 
+When using any basic libraries, we can obtain the co-effients, that will enable us to understand the relationship between the [[Dependent and Independent Variable| Dependent & Independent]] variable. If we have a fixed value accociated to the co-efficient term, here's how the interpretation is:
+Assume, the co-efficient of the independent variable x to be $c_0$
+- A increase in 1 unit of x will lead to natural log of outcome to increase of decrease by $c_0$
+- If x increases by 1 unit, then then the odds of dependent variable increases/decreases by a factor of exp($c_0$)
+- If x increases by 1 unit, the odds of dependent variable increases by roughly 100*$c_0$ %
+
+---
 
 ### Loss Function
 
@@ -39,4 +48,4 @@ Actual - y | Predicted - $\hat{y}$ | Loss Function Result
 
 ---
 Mathematics : 
-[[Logistic_Regression_Derivation.pdf]]
+![[Logistic_Regression_Derivation.pdf]] [[Sigmoid and Softmax Functions]]

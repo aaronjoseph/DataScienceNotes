@@ -11,6 +11,14 @@ This is referred to as Lloyd's Algorithm
 
 The algorithm has converged when the assignments no longer change. The algorithm does not guarentee to find the optimum.
 
+KMeans is a clustering algorithm
+
+Optimising K-Mean score 
+
+```py
+from sklearn.metrics import silhouette_score
+silhouette_score(X, kmeans.labels_)
+```
 ---
 
 

@@ -1,4 +1,4 @@
-Decision Tree can be used for regression.
+Decision Tree can be used for regression, it will be called regression tree in that case.
 
 In regressor tree the difference is that, there will be Numerical values in its leaf node as against categories as in classification trees.
 

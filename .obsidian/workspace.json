@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "3fc2f5d6f605c70e",
+    "type": "split",
+    "children": [
+      {
+        "id": "f53d6da56dec69b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2452714c5f894a6a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GCP/VPC.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fcde7e350cfcc798",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Search Related/Communication/Resume Power Words.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "feb556c75793d9df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Search Related/Communication/Resume Power Words.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a09624f64933a3d1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Search Related/Communication/Resume Power Words.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            },
+            "group": "6e0bbb71158b7230"
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "4baef0e85e667bd5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "27e676f4dcee5133",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Search Related/Communication/Resume Power Words.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              }
+            },
+            "group": "6e0bbb71158b7230"
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2c8c34b8223154bc",
+    "type": "split",
+    "children": [
+      {
+        "id": "9095a2596b25af69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "04b2650de4e76fa2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "57de68b1d28f8ae6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "power word",
+                "matchingCase": false,
+                "explainSearch": true,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 410
+  },
+  "right": {
+    "id": "a0444c96ed4a9f15",
+    "type": "split",
+    "children": [
+      {
+        "id": "2775fe9b91aa9e07",
+        "type": "tabs",
+        "dimension": 66.50943396226415,
+        "children": [
+          {
+            "id": "fb9df67c642ce810",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Search Related/Communication/Resume Power Words.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "61e9249072ff4efc",
+        "type": "tabs",
+        "dimension": 33.490566037735846,
+        "children": [
+          {
+            "id": "e25d073af8d35c1f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "f303620d8c100733",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Search Related/Communication/Resume Power Words.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 263,
+    "collapsed": true
+  },
+  "active": "a09624f64933a3d1",
+  "lastOpenFiles": [
+    "Bagging Meta-Estimator.md",
+    "Deployment - MLOPs.md",
+    "Data Drift.md",
+    "Finance/Stock Screening - Financial Ratios.md",
+    "SQL/SQL Best Practices.md",
+    "Regression Algorithms.md",
+    "Collinearity.md",
+    "Evaluation Metrics.md",
+    "Decision Tree Regressor.md",
+    "Decision Tree - Pruning.md"
+  ]
+}
