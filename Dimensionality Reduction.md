@@ -3,6 +3,20 @@
 Dimensionality Reduction - Process of removing features.
 In high-dimension data, the distance between two points can be quite large. Hence for high dimensional data number of datapoints required is quite high else the high-dimensional space will remain quite sparse.
 
+Herein, we have to reduce the number of random variables in consideration
+- One can combine, transform or select variables 
+- Or make use of linear or non-linear operations
+
+**Need for Dimensionality Reduction**
+1. Visulizing, exploring and understanding the data
+2. Extracting featurs and dominant modes
+3. Cleaning data
+
+**Applications**
+1. Image Compression
+2. Face recognition (Eigenface)
+3. NLP (Latent semantic analysis)
+
 **Steps to handle Dimensionality Reduction**
 1. Projection
 2. Manifold Learning

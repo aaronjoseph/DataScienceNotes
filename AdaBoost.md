@@ -20,6 +20,8 @@ Steps followed
 	4. Next step is to get a new distribution of data wherein there will be higher weightage given to the incorrectly classified data -> Since it has gotten higher weights
 4. This step continoues sequentially and the above steps are repeated
 
+> In Adaboost, decision trees are generally a node and two leaves. A decision tree of this kind is called a stump
+
 ---
 ### Code
 ```py

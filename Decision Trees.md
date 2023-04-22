@@ -5,6 +5,7 @@ Decision Trees are used for its simplistic nature. The end results can be presen
 - Requirs less feature preparation such as - [[Feature Scaling]]
 - Decision tree is `non-parametric`, meaning to say the number of parameters are not clear before the training
 - Decision tree is prone to small variation in the dataset
+	- So the main issue of tree-based method is noisy outcome, although on the flip side, it can capture complex structures. This can be overcome by averaging - wherein tree's can be grown with bootstrap samples and then average it out - which is what a [[Random Forest]] is
 - Training Algorithm used in Scikit-learn is stocastic, you will get different results on the same training data
 - Decision trees are `White Box` in nature, as in we can uncover the decisions for the classification, incontrast [[Random Forest]] has more of a `Black Box` approach, as in we cannot make sense of what is happening inside
 - Decision tree can also output the probabilities of the predicted values
