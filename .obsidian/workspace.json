@@ -13,6 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
+
                 "file": "Information Retreival.md",
                 "mode": "source",
                 "source": false
@@ -69,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 410
+    "width": 313.5
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -89,6 +90,7 @@
                 "file": "Information Retreival.md",
                 "collapseAll": true,
                 "extraContext": true,
+
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",

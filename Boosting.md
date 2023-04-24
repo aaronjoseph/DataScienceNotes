@@ -12,6 +12,9 @@ Boosting differs from bagging in the order of execution, boosting is implemented
 - [[XGBoost]]
 - [[Light GBM]]
 - [[CatBoost]]
+- BrownBoost
+- MadaBoost
+- LogitBoost
 
 ---
 ### Code

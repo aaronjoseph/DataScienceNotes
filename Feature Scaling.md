@@ -6,7 +6,7 @@
 Feature Scaling will not be required for ensemble technique
 
 1. Min-Max Scaler/ Normalization
-	1. Here the values are normalised between 0 & 1
+		1. Here the values are normalised between 0 & 1
 
 	$$X_{norm} = \frac{X - X_{min}}{X_{max}-X_{min}}$$
 2. Standardization
