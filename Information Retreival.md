@@ -5,3 +5,8 @@ Information Retreival (IR) is finding material of an unstructured nature that sa
 `Precision`: Fraction of retreived docs that are relevant to the user's need
 `Recall`: Fraction of relevant docs in collection that are retreived
 
+## Inverted Index
+
+![[Inverted Index]]
+
+
