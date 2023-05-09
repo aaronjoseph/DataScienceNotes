@@ -39,8 +39,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -69,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#oan",
+                "query": "search",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -77,8 +76,17 @@
                 "sortOrder": "alphabetical"
               }
             }
+          },
+          {
+            "id": "ac067e6cb9aac8b8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -100,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Inverted Index.md",
+                "file": "Information Retreival.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -135,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Inverted Index.md"
+                "file": "Information Retreival.md"
               }
             }
           }
@@ -144,7 +152,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 263
+    "width": 263,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -157,8 +166,21 @@
       "random-note:Open random note": false
     }
   },
-  "active": "b2bf41d3a3209d70",
+  "active": "fb9df67c642ce810",
   "lastOpenFiles": [
+    "Vim/Visual Mode.md",
+    "Vim/Patterns.md",
+    "Vim/Normal Mode Commands.md",
+    "Vim/Macros.md",
+    "Vim/Insert Mode Commands.md",
+    "Vim/Command Line Mode.md",
+    "BERT.md",
+    "Autoencoders.md",
+    "Bagging Meta-Estimator.md",
+    "Deployment - MLOPs.md",
+    "Canary Deployment.md",
+    "7 Database Paradigms.md",
+    "GCP/Compute Types.md",
     "Information Retreival.md",
     "Inverted Index.md",
     "Untitled.canvas",
@@ -170,21 +192,9 @@
     "Normal Distribution.md",
     "Exponetial Constant - e.md",
     "Exponential Decay and Growth Function.md",
-    "Deployment - MLOPs.md",
     "Bagging.md",
     "Pasted image 20221211215254.png.md",
     "AB Testing.md",
-    "Vim/Visual Mode.md",
-    "Vim/Insert Mode Commands.md",
-    "Vim/Macros.md",
-    "Vim/Command Line Mode.md",
-    "Deployment Patterns.md",
-    "Search Related/Communication/Resume Power Words.md",
-    "Bagging Meta-Estimator.md",
-    "Data Drift.md",
-    "Finance/Stock Screening - Financial Ratios.md",
-    "SQL/SQL Best Practices.md",
-    "Regression Algorithms.md",
-    "Collinearity.md"
+    "Deployment Patterns.md"
   ]
 }
