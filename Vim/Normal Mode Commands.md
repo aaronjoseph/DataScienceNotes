@@ -1,21 +1,23 @@
-Command | Significance
---- | ---
-:h vimtutor | Built in documentation of Vim
-x | Deletes the character under the cursor
-. | Repeats last command
-Ctrl + r | Redo
-u | Undo Last command
-dd | Delete the line
-<G | Decrease Indentation till the end of the file
->G  |  Increase Indentation till the end of the file
-a | Append
-A ($a) | Append at the end of the line
-$ | End of the line
-J | Merge the next line
-ga | To obtain the Hex or Octal code of the data
-gf | Go to File under the cursor -> Opens directory to refer files from
-Ctrl + ] | Take to the function where it was invoked
-`R` | Replace Mode
+
+| Command | Significance |
+| --- | --- |
+| `:h vimtutor` | Built in documentation of Vim |
+| `x` | Deletes the character under the cursor |
+| `.` | Repeats last command |
+| `Ctrl + r` | Redo |
+| `u` | Undo Last command |
+| `dd` | Delete the line |
+| `<G` | Decrease Indentation till the end of the file |
+| `>G` | Increase Indentation till the end of the file |
+| `a` | Append |
+| `A` (`$a`) | Append at the end of the line |
+| `$` | End of the line |
+| `J` | Merge the next line |
+| `ga` | To obtain the Hex or Octal code of the data |
+| `gf` | Go to File under the cursor -> Opens directory to refer files from |
+| `Ctrl + ]` | Take to the function where it was invoked |
+| `R` | Replace Mode |
+
 
 ## Global Marks
 
@@ -75,7 +77,7 @@ g~ | Swap case
 gu | Make Lowercase
 gU | Make Uppercase
 < | Shift Left
-> | Shift Right
+`>` | Shift Right
 = | Autoindent
 ! | Filter lines through an external program
 
@@ -100,7 +102,7 @@ daw | 'Delete a word' - deletes the whole word
 dap | Delete a paragraph
 cW | Deletes word, and allows for new edits
 c | Delete and Insert
-d/{word}<CR> | Delete from the cursor till the first occurance of the word `before the word`
+`d/{word}<CR>`| Delete from the cursor till the first occurance of the word `before the word`
 p | Paste  
 
 ## Difference between s, c & r
@@ -128,7 +130,7 @@ s | cl
 S | ^ C
 I |  ^ i
 A | $a
-o | A<CR>
+o | `A<CR>`
 O | ko
 
 ## Undoing Or Repeating
@@ -138,7 +140,8 @@ Intent | Act | Repeat | Reverse
 Make a change | {edit} | . | u
 Scan line for next character | f{char}/t{char} | ; | ,
 Scan line for previous character | F{char}/T{char} | ; | ,
-Scan document for next match | /pattern<CR> | n | N
-Scan document for previous match |?pattern<CR> | n | N
+Scan document for next match | `/pattern<CR>` | n | N
+`Scan document for previous match |?pattern<CR> `| n | N
 Perform substitution | :s/target/replacement | & | u
 Execute a sequence of changes | qx{changes}q | @x | u
+
