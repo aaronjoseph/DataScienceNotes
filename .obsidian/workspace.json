@@ -64,8 +64,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -113,7 +112,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       },
       {
         "id": "61e9249072ff4efc",
@@ -150,9 +149,7 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
       "command-palette:Open command palette": false,
-      "markdown-importer:Open format converter": false,
       "zk-prefixer:Create new unique note": false,
       "random-note:Open random note": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
