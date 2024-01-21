@@ -1,38 +1,30 @@
-Sigmoid function is used for the two-class logistic regression whereas softmax function is used for multi-class logistic regression.
+Here is an improved version of your Obsidian note on the sigmoid and softmax functions:
 
-Suppose we plug a sigmoid function and a softmax function to the end of a neural network
-- Sum of all sigmoid functions can be above or below 1, whereas, for softmax function, it is all interrelated, and the sum equals 1. Therefore, for softmax function, when value of one class goes down, the other increases
+---
+
+The sigmoid function is typically used for two-class logistic regression, while the softmax function is used for multi-class logistic regression.
+
+### Comparing Sigmoid and Softmax in Neural Networks
+
+- The sum of the outputs from sigmoid functions may not equal 1, as each output is independent. This allows for the possibility of multiple classes being recognized in a given data point.
+- In contrast, softmax function outputs are interconnected, summing to 1. This interdependency means that an increase in the probability of one class will decrease the probability of the others, making it ideal for scenarios where each data point can only belong to one class.
 
 ### Use Cases
 
-`Sigmoid` 
-Sigmoids are used, wherein there can be a possibility of more than 1 classes occuring for a given data-point, since summation of sigmoid output doesn't converge to 1.
+**Sigmoid:**
+- Best suited for multi-label classification where more than one class can be the correct output for a given data point.
+- Employed in scenarios requiring non-exclusive outputs, where each output is treated independently.
 
-`Softmax`
-Given a case wherein, strictly speaking there can be only one class, softmax is the go-to function to be used
+Sigmoid function formula:
+$$ \sigma(z_j) = \frac{1}{1+e^{-z_j}} $$
 
-Both use the mathematical exponential term e, which equates to 2.71828.
+**Softmax:**
+- Applied in multi-class classification tasks where each data point is exclusively assigned to one class.
+- Useful when the outputs are mutually exclusive, ensuring that the probabilities of all possible outcomes sum to 1.
 
-[[Exponetial Constant - e| Interesting facts on the mathematical constant e]]
+Softmax function formula:
+$$ \text{softmax}(z_j) = \frac{e^{z_j}}{\sum_{k=1}^{K}e^{z_k}} $$
 
-### Sigmoid 
+### Mathematical Nature
 
-Sigmoids are used when the following is true
-- Multi-Label Classification (More than one right answer)
-- Non-Exclusive outputs
-
-When such is the case, wherein we have more than 1 right answer, sigmoid is applied to each element of the raw output, independently 
-
-Sigmoid function has the form
-$$\sigma(z_j) = \frac{e_j^z}{1+e_j^z}$$
-
-### Softmax
-
-Softmax's are preferred when
-- Multi-Class Classification (Only one right answer)
-- Mutually Exclusive Outputs
-
-Softmax ensures the probability of all the outcomes comes out as 1
-Softmax formulae looks as follows
-
-$$softmax(z_j) = \frac{e_j^z}{\sum_{k=1}^{K}e_k^z}$$
+Both sigmoid and softmax functions incorporate the exponential constant $e$ (approximately equal to 2.7) [[Exponential Constant - e]]
