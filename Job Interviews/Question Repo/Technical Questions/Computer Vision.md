@@ -5,6 +5,6 @@
 - Purpose of various CNN layers
 > Types of TF Losses, and its relevance
 - What is batch normalization ?
-- Optimizer - Stocastic Gradient Descent
+- Optimizer - Stocastic [[Gradient Descent]]
 - Why ReLU over Sigmoid ?
 - How to do 3 Class classification in CNN

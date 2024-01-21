@@ -1,123 +1,141 @@
-<a href = "https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234">Medium Article </a>
+#dl 
+# Evaluation/Accuracy Metrics
 
-<a href ="https://towardsdatascience.com/your-ultimate-data-science-statistics-mathematics-cheat-sheet-d688a48ad3db"> Medium Article </a>
+In evaluating machine learning models, accuracy metrics are crucial for understanding, diagnosing, and improving model performance. 
 
-# Accuracy Metrics
----
+## Performance Measure for a Classifier
 
-> `Loss Function` is defined as the amount by which your predictions are deviating from your actual data, or indicates the magnitude of error the model makes 
+### Need for a Performance Measure
+To optimize a classifier, it's essential to have a performance measure that:
+- Penalizes the model for incorrect predictions.
+- Allows modification of the model to reduce this penalty.
+- Is known as an objective or loss function.
 
-# Classifier Metrics
+### Empirical Risk Minimization
+In machine learning, empirical risk minimization is used to:
+- Decrease the loss across the training dataset.
+- Average the loss over the training data.
 
-## Classification Accuracy
-Herein the accuracy is defined as the number of correct prediction by the total number of predictions made
+Given a dataset of examples $\{(x_i, y_i)\}_{i=1}^N$ where $x_i$ is an image and $y_i$ is an integer label, the loss over the dataset is the sum of losses over the examples:
 
-$$Classification Accuracy = \frac{Total Correct Prediction}{No of Predications Made}$$
+$$
+L = \frac{1}{N} \sum_{i=1}^{N} L_i(f(x_i, W), y_i)
+$$
 
-This will not be useful metric when the % of small class is very low, then there is high chance of assuming the performance of the metric to be very high
+### Multiclass SVM Loss
+For a given example $(x_i, y_i)$, the SVM loss is formulated as:
 
-## Logarithmic Loss / Log Loss
-Log loss penalises false classification. Log-loss is good metric to compare model performance. 
+$$
+L_i = \sum_{j \neq y_i} \max(0, s_j - s_{y_i} + 1)
+$$
 
-> Lower log-loss indicates better performance
-> Also, for major errors, log-loss penalises heavily
+where $s$ is the scores vector from the function $f(x_i, W)$. This measures the margin by which the correct class score should exceed the incorrect class scores.
 
+### Performance Measure for Probabilities
+When using the softmax function to convert scores to probabilities, the suitable loss function is cross-entropy:
 
-Formulae is as follows 
-Assume there are N samples across M classes, then 
+$$
+L_i = -\log P(Y = y_i | X = x_i)
+$$
 
+This can be derived from the distance between two probability distributions (the model's output and the ground truth) or from a maximum likelihood estimation perspective, selecting probabilities that maximize the likelihood of the observed data.
 
-> $$y_{ij}$$  
-> Indicates if sample i belongs to class j
-> $$p_{ij}$$
-> Indicates the probability of sample i belonging to j class
+## Accuracy Metrics
 
+### Classification Accuracy
+Accuracy is the ratio of correct predictions to the total number of predictions:
 
-$$LogarithmicLoss = \frac{-1}{N} * \sum_{i=1}^{N}\sum_{j=1}^{M} y_{ij} * log(p_{ij})$$
+$$
+Classification\ Accuracy = \frac{Total\ Correct\ Predictions}{Number\ of\ Predictions\ Made}
+$$
 
-## Confusion Matrix
+However, it's not a useful metric when the percentage of a small class is very low.
 
-![[Confusion Matrix & Metrics]]
+### Logarithmic Loss / Log Loss
+Log loss, which penalizes false classifications, is a good metric to compare model performances:
 
-## Multi-Class Classification
+$$
+Logarithmic\ Loss = \frac{-1}{N} \sum_{i=1}^{N}\sum_{j=1}^{M} y_{ij} \log(p_{ij})
+$$
 
-### Macro averaged precision 
+where $y_{ij}$ indicates if sample $i$ belongs to class $j$, and $p_{ij}$ is the probability of sample $i$ belonging to class $j$.
 
-Calculate precision for all classes individually and then average them
+### Confusion Matrix
+A confusion matrix is a table used to describe the performance of a classification model on a set of test data for which the true values are known. It allows visualization of the performance of an algorithm. [[Confusion Matrix & Metrics]]
 
-### Micro averaged precision 
-Calculate class wise true positive and false positive and then use that to calculate overall precision
+### Multi-Class Classification Metrics
+- **Macro-averaged precision**: Calculate precision for all classes individually and then average them.
+- **Micro-averaged precision**: Calculate class-wise true positives and false positives, then use that to calculate overall precision.
+- **Weighted precision**: Similar to macro, but with a weighted average based on class size.
 
-### Weighted precision 
-Same as macro but in this case, it is weighted average
+## Regressor Metrics
 
+### Mean Absolute Error (MAE)
+This metric provides the average magnitude of errors in a set of predictions, without considering direction:
 
+$$
+Mean\ Absolute\ Error = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+$$
 
----
-# Regressor Metrics
+MAE is preferred over MSE when dealing with outliers.
 
-## Mean Absolute Error
-Gives the extent of error, but doesn't specify the direction. The most standard classifier
+### Mean Absolute Percentage Error (MAPE)
+MAPE measures the size of the error in percentage terms:
 
-This is better than MSE, when there are more outliers than regular datasets
+$$
+Mean\ Absolute\ Percentage\ Error = \frac{100\%}{N} \sum_{i=1}^{N} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
+$$
 
-$$MeanAbsoluteError = \frac{1}{N}  \sum_{j=1}^{N}|y_j-\hat{y_j}|$$
+### Mean Squared Error (MSE)
+MSE is more sensitive to outliers than MAE and is used for gradient-based optimization:
 
-```py
-from sklearn.metrics import mean_absolute_error
+$$
+Mean\ Squared\ Error = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+$$
+
+### Root Mean Squared Error (RMSE)
+RMSE is the square root of the mean squared error, providing scale-sensitive error measurement:
+
+$$
+RMSE = \sqrt{MSE}
+$$
+
+### Mean Squared Logarithmic Error (MSLE) and RMSLE
+These are useful when underprediction is preferred over overprediction:
+
+$$
+MSLE = \frac{1}{N} \sum_{i=1}^{N} (\log(y_i + 1) - \log(\hat{y}_i + 1))^2
+$$
+
+### $R^2$ or Coefficient of Determination
+$R^2$ indicates the proportion of the variance for the dependent variable that's explained by the independent variables:
+
+$$
+R^2 = \frac{Explained\ Variance}{Total\ Variance}
+$$
+
+### Adjusted $R^2$
+Adjusted $R^2$ accounts for the number of predictors in the model:
+
+$$
+R_{adj}^2 = 1 - \left[\frac{(1-R^2)(n-1)}{n-k-1}\right]
+$$
+
+where $n$ is the number of observations and $k$ is the number of predictors.
+
+To visualize the concepts from the slides, we can create a Mermaid diagram illustrating the performance measure for a classifier.
+
+```mermaid
+flowchart LR
+    A[Dataset of Examples] --> B[Compute Scores]
+    B --> C[Empirical Risk Minimization]
+    C --> D[Loss Function]
+    D --> E[Optimization]
+    E --> F[Performance Measure]
+    F --> G[Accuracy Metrics]
+    G --> H[Regressor Metrics]
 ```
 
-## Mean Absolute Percentage Error
-
-$$Formulae = \frac{1}{N}\sum \frac{|\hat{y}-y|}{\hat{y}}$$
-
-## Mean Squared Error
-This is useful for computing the gradient.
-Also the larger error gets more pronounced.
-
-- It can be expressed as sum of 
-	- Squared Bias of Predictors[Variance of the Predictor]
-	- Variance of some error term $\epsilon$
-
-$$MeanAbsoluteError = \frac{1}{N}  \sum_{j=1}^{N}(y_j-\hat{y_j})^2$$
-
-```py
-from sklearn.metrics import mean_squared_error
-```
-
-## RMSE
-Value Range = 0 - $\infty$
-
-This is the square root of MSE, however, bring better interpretability to the table.
-
-## MSLE
-Mean Squared Log Error
-
-$$MSLE = \frac{\sum [log(1+\hat{y}) - log(1+y)]}{N}$$
-
-### RMSLE
-
-This loss function is ideal when the need is to overpredict than under-predict
-
-
-## $R^2$ or Coefficient of Determination
-
-Can be considered as $\frac{Explained Variance}{Total Variance}$
-
-Indicates how well the model fits the data.
-
-Is the measure of variance explained by the predictor variable which is present in the target variable.  $R^2$ can be negative if the results are absurd
-
-If $R^2$ is 0.64, then 64% of the variation in the output variable is explained by the input variable, in other words the higher the $R^2$ the more variation is explained by your input variable and hence better is your model
-- 0 indicates the given model explains none of the variablity of the response data around the mean
-- 100% indicates that the model explains all the variablity of the response data around its mean
-
-## Adjusted $R^2$
-
-Major pitfall of R-square is that it will always improve as we increase the number of variables. Adjusted $R^2$ fixes this issue, it adds a penalty to the model. For both $R^2$ and adjusted $R^2$, values closer to 1 is preferred
-
-$$R_{adj}^2 = 1-[\frac{(1-R^2)(n-1)}{n-k-1}]$$
-
-Where, 
-- N is the number of points in the data sample
-- K is the number of independent regressors
+Further Reading on these metrics can be found in the provided Medium articles:
+- [Metrics to Evaluate Your Machine Learning Algorithm](https://towardsdatascience.com/metrics-to-evaluate-your-machine-learning-algorithm-f10ba6e38234)
+- [Your Ultimate Data Science, Statistics & Mathematics Cheat Sheet](https://towardsdatascience.com/your-ultimate-data-science-statistics-mathematics-cheat-sheet-d688a48ad3db)

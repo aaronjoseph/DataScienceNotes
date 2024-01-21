@@ -20,7 +20,7 @@ from sklearn.naive_bayes import GaussianNB
 nb = GaussianNB()
 ```
 
-# Stocastic Gradient Descent
+# Stocastic [[Gradient Descent]]
 - Useful when the data is linear
 - Can be modified with different loss functions
 - Also is suited for large dataset

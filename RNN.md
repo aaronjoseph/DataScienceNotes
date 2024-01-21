@@ -25,7 +25,7 @@ Vanilla RNN's have trouble with [[Vanishing & Exploding Gradients]] gradients du
 
 ---
 
-### Solving Vanishing Gradient Descent  
+### Solving Vanishing [[Gradient Descent]]  
 
 1. Choice of Activation Function
 

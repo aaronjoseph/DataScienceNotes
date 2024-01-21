@@ -1,80 +1,47 @@
-Neural networks are employed to solve big-data problems, however, since the process is highly empirical, there needs to be ways to ensure faster computation. Optimization algorithm ensures faster convergence.
+Neural networks, employed to solve large-scale data problems, depend heavily on optimization algorithms for efficient and faster convergence. These algorithms are crucial in navigating the high-dimensional landscape of neural network parameters to find a set of weights that minimizes the loss function effectively.
 
----
+### Optimization Challenges
+- **Search Problem**: Finding the best set of weights is a search problem in the landscape defined by the loss function.
+- **Various Methods**: Several classes of methods can be employed, including random search, genetic algorithms, and gradient-based optimization.
 
-### Notes on [[Gradient Descent]]
+### Gradient-Based Optimization
+In deep learning, gradient-based methods are dominant because they leverage the information from the gradient of the loss function to make informed updates to the parameters.
 
----
+### Loss Surface and Weights Adjustment
+- As weights change, so does the loss. Small changes in weights result in small changes in the loss, assuming local smoothness.
+- Iterative algorithms make slight adjustments to the weights based on this relationship.
 
-### Exponentially Weighted Averages
+### Steepest Descent Direction
+- The steepest descent direction is found by computing the negative gradient of the loss function.
+- Intuitively, the gradient measures how the loss function changes with a small change in weights.
 
-Exponentialy weighted average works on the following formulae
+### Algorithmic Implementation of Gradient Descent
+- **Model Selection**: Choose a model, for example, $f(x, W) = Wx$.
+- **Loss Function**: Choose a loss function, like $L_i = |y - Wx_i|^2$.
+- **Partial Derivatives**: Calculate the partial derivative of the loss with respect to each parameter $\frac{\partial L}{\partial w_j}$.
+- **Parameter Update**: Adjust each parameter $w_j$ in the direction that reduces the loss: $w_j = w_j - \alpha \frac{\partial L}{\partial w_j}$, where $\alpha$ is the learning rate.
 
-$$V_t = \beta V_{t-1} + (1-\beta)\theta_t$$
+### Advanced Optimization Techniques
+These methods build on gradient descent and introduce modifications to improve convergence:
 
-Here higher $\beta$ will ensure the new value will be dependent on more older values
+#### Exponentially Weighted Averages
+It calculates a moving average of the gradients to smooth out the updates, with higher $\beta$ values giving more weight to past observations.
 
-### Gradient Descent with Momentum
+#### Momentum
+This approach helps accelerate SGD in the relevant direction while dampening oscillations, effectively adding inertia to the optimization process.
 
-Momentum helps accelerate SGD in the relevant direction. Idea here is that in gradient descent, oscillation is limited
+#### RMSProp (Root Mean Squared Propagation)
+Adaptive learning rates for each parameter are used, allowing for larger learning rate values and faster optimization. RMSProp modifies the update by dividing it by an exponentially decaying average of squared gradients.
 
-Exponentially Weighted Average on Weights
-$$v_{dW} = \beta v_{dW} + (1-\beta)dW$$
-Exponentially Weighted Averages on Beta
-$$v_{db} = \beta v_{db} + (1-\beta)db$$
+#### Adam (Adaptive Moment Estimation)
+Adam combines ideas from RMSProp and Momentum by maintaining moving averages of both the gradients and their squares.
 
-The base equations above, $\beta$ can be considered as friction, while the product can be considered as momentum, second term can be analogous to acceleration
+#### AdaGrad (Adaptive Gradient Algorithm)
+It adapts the learning rate to the parameters, performing larger updates for infrequent parameters and smaller updates for frequent ones.
 
-Final Update 
+#### Nadam (Nesterov-accelerated Adaptive Moment Estimation)
+Combines Adam with Nesterov momentum, which anticipates future gradient directions for more accurate updates.
 
-W = W - $\alpha v_{dw}$
-b = b - $\alpha v_{db}$
+#### Adadelta
+An extension of AdaGrad that seeks to reduce its aggressively decreasing learning rate over time.
 
-
-### RMSProp - Root Mean Squared Propogation
-
-This algorithm uses exponentially weighted averages. This algorithm is adaptive, allows for individual adjustment of the learning rate for each parameter of the model. 
-
-The equations are built over Momentum equtions with some modifications - here you can go with larger $\alpha$ values for faster optimisation
-
-Formulaes
-
-
-Exponentially Weighted Average on Weights
-$$S_{dW} = \beta S_{dW} + (1-\beta)dW^2$$
-Exponentially Weighted Averages on Beta
-$$S_{db} = \beta S_{db} + (1-\beta)db^2$$
-
-W = W - $\alpha \frac{dw}{\sqrt{S_{dW}}}$
-b = b - $\alpha \frac{db}{\sqrt{S_{db}}}$
-
-> It is called root mean squared since we are squaring the values and then using square root in the update rule
-
-
-### Adam - Adaptive Moment Estimation
-
-Works on wide range of problems in deep-learning
-
-It is an algorithm like RMSprop . works well in a wide range of applications. It takes advantage of the biggest pros of RMSProp and combine them with ideas known from momentum optimization.  
-
-### AdaGrad
-
-This is a gradient descent optimization technique. Adagrad adapts the learning rate specifically to individual features, that means that some of the weights in your dataset will have different learning rates than others. 
-
-It is an optimizer with parameter specific learning rates, which are adapted relative to how frequently a parmet gets updated during training. The more update a parameter receives, the smaller the updates
-
-
-### Nadam Optimization - Nesterov Accelerated Adaptive Moment Estimation
-
-NADAM is Adam with Nesterov Momentum. Adam can be viewed as a combination of RMSProp and momentum
-
-### Adadelta
-
-Adadelta is an extension of Adagrad that seeks to reduce its aggressive, monotonically decreasing learning rate.
-
-### Pytorch - To view all Optimization Algorithms
-
-```python
-import torch.optim as optim
-dir(optim)
-```

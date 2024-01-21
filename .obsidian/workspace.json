@@ -4,18 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "850da61b82550833",
+        "id": "eb87efd3d4404c6b",
         "type": "tabs",
         "children": [
           {
-            "id": "de90ada8df33a6b5",
+            "id": "8abe8cc5334af5e3",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".tmp.driveupload/4398",
-                "staged": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -47,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "api",
+                "query": "tag:#dl",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -64,7 +61,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -77,7 +75,7 @@
       {
         "id": "2775fe9b91aa9e07",
         "type": "tabs",
-        "dimension": 66.50943396226415,
+        "dimension": 33.26271186440678,
         "children": [
           {
             "id": "fb9df67c642ce810",
@@ -85,13 +83,13 @@
             "state": {
               "type": "backlink",
               "state": {
-                "collapseAll": true,
+                "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": false
+                "unlinkedCollapsed": true
               }
             }
           },
@@ -112,12 +110,53 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
+      },
+      {
+        "id": "cb753ac662c1aa16",
+        "type": "tabs",
+        "dimension": 36.97033898305085,
+        "children": [
+          {
+            "id": "5be399f28746b09e",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              }
+            }
+          }
+        ]
       },
       {
         "id": "61e9249072ff4efc",
         "type": "tabs",
-        "dimension": 33.490566037735846,
+        "dimension": 29.76694915254237,
         "children": [
           {
             "id": "e25d073af8d35c1f",
@@ -156,34 +195,34 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "de90ada8df33a6b5",
+  "active": "8bbf350e56d0349f",
   "lastOpenFiles": [
+    "Gradient Descent.md",
+    "Deep Learning.md",
+    "[.md",
+    "Optimization Algorithms.md",
+    "Evaluation Metrics.md",
+    "Non-Parametric Model.md",
+    "Jacobians.md",
+    "Computational Graph.md",
+    "Confusion Matrix & Metrics.md",
+    "Reinforcement Learning.md",
+    "Hyperparameter Tuning.md",
+    "Parametric Model.md",
+    "Outlier.md",
+    "Supervised Learning.md",
     "API.md",
     "Research_Paper/Attention is not all you need.md",
-    "Gradient Descent.md",
-    "Gradient Descent.md",
     "Machine Learning Explainability.md",
     "Exponential Constant - e.md",
     "Inverted Index.md",
     "Machine Learning Life Cycle - MLOPs.md",
     "Machine Learning Pipeline - Competition.md",
     "Research_Paper/Deep and confident predictions for Time Series at Uber.md",
-    "Computational Graph.md",
     "Information Retreival.md",
     "Untitled.canvas",
     "20230421.md",
     "Model Evaluation.md",
-    "MapReduce.md",
-    "Improving Machine Learning Performance.md",
-    "Probability Density Function.md",
-    "Normal Distribution.md",
-    "Exponetial Constant - e.md",
-    "Exponential Decay and Growth Function.md",
-    "Deployment - MLOPs.md",
-    "Bagging.md",
-    "Pasted image 20221211215254.png.md",
-    "AB Testing.md",
-    "Vim/Visual Mode.md",
-    "Vim/Insert Mode Commands.md"
+    "MapReduce.md"
   ]
 }

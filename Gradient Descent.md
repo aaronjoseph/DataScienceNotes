@@ -1,62 +1,88 @@
-Gradient descent is a generic optimization algorithm capable of finding optimal solutions to a wide range of problems. The general underlying principle here is that gradient descent tweaks parameters iteratively to minimize a cost function.
+#DL 
+### Gradient Descent Overview
 
-Gradient descent is generally used to find the lowest point of a cost function. Once the gradient is zero, the local or global optimum is reached.
+Gradient descent is an optimization algorithm widely used in deep learning to find the minimum of a function. It iteratively moves towards the minimum of the cost function by updating the parameters in the opposite direction of the gradient of the cost function.
 
-`Learning Rate` determines the size of the steps the learning algorithm takes.
+### Key Components of Gradient Descent
 
-For any learning algorithm, there are two main approaches:
+1. **Model Selection**: Typically, a model is a function that predicts outputs given inputs, for example, $f(x, W) = Wx$ for linear models, where $W$ represents the weights.
 
-1. **Direct Solution**
-   - In this approach, the partial derivative of the cost function is taken and set to zero to find the critical points, which may reveal the optimal solution.
-2. **Gradient Descent**
-   - In this iterative approach, the algorithm may never reach the global optimum but instead approaches it incrementally.
+2. **Loss Function**: A loss function $L_i = |y - Wx_i|^2$ quantifies the error between the predicted values and the actual values. The goal is to minimize this function.
 
-### High Dependency of Gradient Descent
+3. **Partial Derivatives**: The algorithm computes the gradient of the loss function with respect to each parameter (weight), $\frac{\partial L}{\partial w_j}$.
 
-- Gradient descent can be applied to any model, whereas a direct solution is only applicable to a handful of models.
-- Solving a large system of linear equations using direct solutions can be computationally expensive.
+4. **Parameter Update**: Each parameter is updated in the direction that reduces the loss, $w_j = w_j - \alpha \frac{\partial L}{\partial w_j}$, where $\alpha$ is the learning rate.
+
+5. **Learning Rate**: The learning rate $\alpha$ controls the size of the steps taken towards the minimum of the cost function. It's crucial for ensuring convergence and needs to be set carefully.
+
+### Variants of Gradient Descent
+
+#### Full Batch Gradient Descent
+
+- **Process**: Computes the gradient of the cost function for the entire dataset and performs a single update per iteration.
+  
+- **Equation**: 
+  $$ L = \frac{1}{N} \sum_{i=1}^{N} L(f(x_i, W), y_i) $$
+
+#### Mini-Batch Gradient Descent
+
+- **Process**: Divides the dataset into small batches and performs an update for each mini-batch.
+  
+- **Advantages**: More efficient in terms of computation than full batch, especially with large datasets.
+  
+- **Equation**: 
+  $$ L = \frac{1}{M} \sum_{i=1}^{M} L(f(x_i, W), y_i) $$
+  
+  where $M$ is the size of the mini-batch and is typically much smaller than the full dataset size $N$.
+
+### Importance in Deep Learning
+
+- **Scalability**: Gradient descent is computationally more scalable for large datasets compared to direct solution methods.
+  
+- **Applicability**: It can be applied to a wide range of models, including non-linear models common in deep learning.
+  
+- **Flexibility**: It allows for online and batch learning, and the various forms of gradient descent (stochastic, mini-batch) offer flexibility for different training needs.
+
 
 ---
+### Analytical Derivation of the Partial Derivative:
 
-# Approaches to Gradient Descent
+For some functions, especially linear functions, we can analytically derive the partial derivatives. For example, consider a simple linear regression model:
 
-> Gradient descent is used to update the parameters of a model. In linear regression, parameters refer to coefficients, and in neural networks, they refer to weights.
+$$ f(w, x_i) = w^T x_i $$
 
-### Batch Gradient Descent
+with a quadratic loss function:
 
-- Computes the gradient of the cost function with respect to the parameters $\theta$ for the entire training dataset.
-- Performs one update at a time, which can be slow and problematic if the dataset cannot fit in memory.
-- Not suitable for online model updates.
-- Appropriate for smaller datasets.
+$$ L = \sum_{i=1}^{N} (y_i - w^T x_i)^2 $$
 
-For a cost function $J(\theta)$, the gradient is computed as:
+The gradient descent update rule dictates that we should update $w$ to minimize $L$:
 
-$$
-\theta := \theta - \alpha \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) - y^{(i)} \right) x^{(i)}
-$$
+$$ w_j \leftarrow w_j - \eta \frac{\partial L}{\partial w_j} $$
 
-### Stochastic Gradient Descent (SGD)
+For the quadratic loss function, the partial derivative $\frac{\partial L}{\partial w_j}$ is:
 
-- Optimizes one training example $x^{(i)}$ and label $y^{(i)}$ at a time, which is much faster than batch gradient descent.
-- Suitable for online learning.
+$$ \frac{\partial L}{\partial w_j} = -2 \sum_{i=1}^{N} (y_i - w^T x_i) x_{ij} $$
 
-SGD updates the parameters for each training example as:
+### Incorporating Non-Linearity (Sigmoid Function):
 
-$$
-\theta := \theta - \alpha \left( h_\theta(x^{(i)}) - y^{(i)} \right) x^{(i)}
-$$
+When a non-linear activation function like the sigmoid $\sigma(x) = \frac{1}{1 + e^{-x}}$ is used, the update rule becomes more complex. The sigmoid function's derivative can be expressed as $\sigma'(x) = \sigma(x)(1 - \sigma(x))$.
 
-### Mini-Batch Gradient Descent
+The loss function for a model with a sigmoid activation is:
 
-- Strikes a balance between batch gradient descent and SGD, updating parameters for every mini-batch of $n$ training examples.
-- Batch sizes are typically powers of 2 (e.g., 2, 8, 16, 256) for performance reasons.
+$$ L = \sum_{i=1}^{N} (y_i - \sigma(w^T x_i))^2 $$
 
-For mini-batch of $n$ examples, the gradient is computed as:
+The update rule for the weights when using the sigmoid activation is:
 
-$$
-\theta := \theta - \alpha \frac{1}{n} \sum_{i=1}^{n} \left( h_\theta(x^{(i)}) - y^{(i)} \right) x^{(i)}
-$$
+$$ w_j \leftarrow w_j - \eta \frac{\partial L}{\partial w_j} $$
 
-----
+where the partial derivative is given by:
 
-In these notes, $\alpha$ is the learning rate, a crucial hyperparameter that controls the step size in the parameter space towards the minimum of the cost function.
+$$ \frac{\partial L}{\partial w_j} = \sum_{i=1}^{N} 2(y_i - \sigma(w^T x_i)) \sigma'(w^T x_i) x_{ij} $$
+
+### Mathematics of the Update Rule:
+
+Incorporating the derivative of the sigmoid, the gradient update rule is:
+
+$$ w_j \leftarrow w_j + 2\eta \sum_{i=1}^{N} \delta_i (1 - \sigma_i) x_{ij} $$
+
+where $\sigma_i = \sigma(w^T x_i)$ and $\delta_i = y_i - \sigma_i$.
