@@ -1,5 +1,6 @@
 There are 7 types of databases
 
+![[Databases.pdf]]
 ### Key-Value Database
 
 - Popular Database in this space are

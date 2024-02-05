@@ -1,3 +1,4 @@
+#dl 
 `Overfitting` - the phenomenon, wherein the model has higher accuracy score for the training data, but fails to generalize for any other model.
 
 In general, simple linear regression is not prone to overfitting, however, higher degree polynomial regression functions or deep learning algorithms will be prone to overfitting due to its complex architecture

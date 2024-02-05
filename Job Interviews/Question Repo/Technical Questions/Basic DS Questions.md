@@ -3,7 +3,7 @@
 - Given a PDF for OCR, jot down a few issues and how to improve quality of OCR, name a few techniques and what impact will they have on the final output.
 - Suppose 'name' field in a table consists of 5 million records, with few records having the names written without any delimiter, suggest ways in which we can deal with the issue and make it right.eg: - Ram Mohan Shukla is written as Rammohanshukla
 - Explain [[Central Limit Theorem]]
-- Difference between [[Sigmoid and Softmax Functions|Sigmoid and Softmax]]
+- Difference between [[Sigmoid Function|Sigmoid and Softmax]]
 
 
 True or False

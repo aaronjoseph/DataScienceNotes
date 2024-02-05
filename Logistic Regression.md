@@ -48,4 +48,4 @@ Actual - y | Predicted - $\hat{y}$ | Loss Function Result
 
 ---
 Mathematics : 
-![[Logistic_Regression_Derivation.pdf]] [[Sigmoid and Softmax Functions]]
+![[Logistic_Regression_Derivation.pdf]] [[Sigmoid Function]]

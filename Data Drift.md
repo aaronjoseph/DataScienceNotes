@@ -14,18 +14,16 @@
 
 ### Reasons for Data Drift
 
-Data Changes |
----|
-Trend and Seasonality|
-Distribution of features changes | 
-Relative importance of feature changes |
+Data Changes 
+- TREND AND SEASONALITY
+- DISTRIBUTION OF FEATURES CHANGES 
+- RELATIVE IMPORTANCE OF FEATURE CHANGES
 
-World Changes |
----|
-Fashion Change |
-Scope and processes change|
-competitors change|
-Business expands to other geos|
+World Changes 
+- FASHION CHANGE 
+- SCOPE AND PROCESSES CHANGE
+- COMPETITORS CHANGE
+- BUSINESS EXPANDS TO OTHER GEOS
 
 ### Training Serving Skew
 

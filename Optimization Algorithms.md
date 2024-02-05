@@ -1,3 +1,4 @@
+#dl 
 Neural networks, employed to solve large-scale data problems, depend heavily on optimization algorithms for efficient and faster convergence. These algorithms are crucial in navigating the high-dimensional landscape of neural network parameters to find a set of weights that minimizes the loss function effectively.
 
 ### Optimization Challenges
@@ -21,23 +22,10 @@ In deep learning, gradient-based methods are dominant because they leverage the 
 - **Partial Derivatives**: Calculate the partial derivative of the loss with respect to each parameter $\frac{\partial L}{\partial w_j}$.
 - **Parameter Update**: Adjust each parameter $w_j$ in the direction that reduces the loss: $w_j = w_j - \alpha \frac{\partial L}{\partial w_j}$, where $\alpha$ is the learning rate.
 
+> Saddle Points : are those where the gradient of orthogonal directions are zero
 ### Advanced Optimization Techniques
 These methods build on gradient descent and introduce modifications to improve convergence:
 
-#### Exponentially Weighted Averages
-It calculates a moving average of the gradients to smooth out the updates, with higher $\beta$ values giving more weight to past observations.
-
-#### Momentum
-This approach helps accelerate SGD in the relevant direction while dampening oscillations, effectively adding inertia to the optimization process.
-
-#### RMSProp (Root Mean Squared Propagation)
-Adaptive learning rates for each parameter are used, allowing for larger learning rate values and faster optimization. RMSProp modifies the update by dividing it by an exponentially decaying average of squared gradients.
-
-#### Adam (Adaptive Moment Estimation)
-Adam combines ideas from RMSProp and Momentum by maintaining moving averages of both the gradients and their squares.
-
-#### AdaGrad (Adaptive Gradient Algorithm)
-It adapts the learning rate to the parameters, performing larger updates for infrequent parameters and smaller updates for frequent ones.
 
 #### Nadam (Nesterov-accelerated Adaptive Moment Estimation)
 Combines Adam with Nesterov momentum, which anticipates future gradient directions for more accurate updates.
@@ -45,3 +33,8 @@ Combines Adam with Nesterov momentum, which anticipates future gradient directio
 #### Adadelta
 An extension of AdaGrad that seeks to reduce its aggressively decreasing learning rate over time.
 
+
+ ![[Momentum]]
+ ![[Nesterov Momentum]]
+ ![[Adagrad and RMSProp]]
+ ![[Adam Optimizer]]

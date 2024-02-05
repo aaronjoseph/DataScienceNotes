@@ -4,18 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "eb87efd3d4404c6b",
+        "id": "6ee508ce40161fa3",
         "type": "tabs",
         "children": [
           {
-            "id": "8abe8cc5334af5e3",
+            "id": "1092bee146c3ab42",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Adagrad and RMSProp.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4c1cc3169fd1f22a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Convolutional Networks.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -44,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#dl",
+                "query": "convolu",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -66,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 313.5
+    "width": 305.5
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -83,6 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Convolutional Networks.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -109,8 +127,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "cb753ac662c1aa16",
@@ -123,6 +140,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "Convolutional Networks.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -174,15 +192,17 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Convolutional Networks.md"
+              }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 425.5
+    "width": 225.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,34 +215,36 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8bbf350e56d0349f",
+  "active": "4c1cc3169fd1f22a",
   "lastOpenFiles": [
-    "Gradient Descent.md",
-    "Deep Learning.md",
     "[.md",
-    "Optimization Algorithms.md",
+    "Finance/Price to Book Value.md",
+    "Finance/Return on Equity (ROE).md",
+    "Convolutional Networks.md",
+    "Adagrad and RMSProp.md",
+    "Adam Optimizer.md",
+    "Deep Learning.md",
     "Evaluation Metrics.md",
-    "Non-Parametric Model.md",
+    "Initialization.md",
     "Jacobians.md",
-    "Computational Graph.md",
-    "Confusion Matrix & Metrics.md",
-    "Reinforcement Learning.md",
-    "Hyperparameter Tuning.md",
-    "Parametric Model.md",
-    "Outlier.md",
-    "Supervised Learning.md",
-    "API.md",
-    "Research_Paper/Attention is not all you need.md",
-    "Machine Learning Explainability.md",
+    "L1 and L2 Regularization.md",
+    "Momentum.md",
+    "Nesterov Momentum.md",
+    "Optimization Algorithms.md",
+    "Tanh Function.md",
+    "Sigmoid Function.md",
+    "Entropy, Cross-Entropy, Sparse_Cross_Entropy and KL Divergence.md",
+    "Research_Paper/pytorch2_internals.pdf",
+    "Softmax Function.md",
+    "7 Database Paradigms.md",
+    "Research_Paper/Databases.pdf",
+    "L1 and L2 Loss Functions.md",
+    "L0, L1, L2 & L-Infinity Norm.md",
+    "Language Model.md",
     "Exponential Constant - e.md",
-    "Inverted Index.md",
-    "Machine Learning Life Cycle - MLOPs.md",
-    "Machine Learning Pipeline - Competition.md",
-    "Research_Paper/Deep and confident predictions for Time Series at Uber.md",
-    "Information Retreival.md",
-    "Untitled.canvas",
-    "20230421.md",
-    "Model Evaluation.md",
-    "MapReduce.md"
+    "Data Drift.md",
+    "Calculus.md",
+    "Untitled.md",
+    "Untitled.canvas"
   ]
 }
