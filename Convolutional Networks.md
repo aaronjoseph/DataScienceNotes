@@ -1,5 +1,5 @@
 #dl 
-### Convolutional Networks
+### Convolutional Networks/CNNs
 
 > Convolutional networks, also referred to as CNNs,  are neural networks that uses convolution in plae of general matrix multiplication in at least one of their layers.
 ### Key Concepts
@@ -32,9 +32,20 @@ graph TD
     D -->|Pooling| E[Output Layer]
 ```
 
+### CNN BackPropogation
+
+[[CNN - Backward Prop]]
+
+### CNN Different Architectures
+
+
+## Dimension Formulae 
+
 # Links
 
 
 - [Exploring Convolutional Networks for End-to-End Learning][https://arxiv.org/abs/XXXX.XXXXX]
 ![Convolution Youtube Link][https://www.youtube.com/watch?v=KuXjwB4LzSA] 
+
+
 ![Probability Explainations][https://www.youtube.com/watch?v=IaSGqQa5O-M]

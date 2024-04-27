@@ -1,8 +1,6 @@
 RNN is the most basic model used for [[Sequence Models|sequence modeling]].
 
-RNN's are used on sequential data.
-
-RNN can be scaled for large scale sequence, however, due to vanishing gradients, RNN's tend to forget due to large sequence - `long term dependencies` can have issues
+RNN's are used on sequential data. RNN can be scaled for large scale sequence, however, due to vanishing gradients, RNN's tend to forget due to large sequence - `long term dependencies` can have issues. Also, RNN's are slow to compute as well. Furthermore, it has difficulty in accessing information from a long time ago. 
 
 ---
 ![[Pasted image 8.png]]
@@ -31,16 +29,11 @@ Vanilla RNN's have trouble with [[Vanishing & Exploding Gradients]] gradients du
 
 Here, ReLU can be used as the derivative of ReLU stays 1 for x >0 and 0 other wise, this is a better choice than tanh and sigmoid derivative
 
-2. Parameter Initialization
+2. Parameter Initialisation
 
-Here, initialize weights to identity matrix.
-Initialize biases to zero.
-
-This, will prevent weights from shrinking to zero during backpropogation
+Here, initialise weights to identity matrix. Initialise biases to zero. This, will prevent weights from shrinking to zero during backpropogation
 
 3. Network Architecture
 
-Here we can use complex recurrent unit with gates to control what information is passed through.
-
-Here [[LSTM]] or GRU's  can be utilized in this regard
+Here we can use complex recurrent unit with gates to control what information is passed through. Here [[LSTM]] or GRU's  can be utilized in this regard
 

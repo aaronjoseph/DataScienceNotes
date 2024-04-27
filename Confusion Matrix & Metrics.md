@@ -8,7 +8,7 @@ Most classifiers use probability to distribute samples into classes. In most cas
 
 - `AUC & ROC` - Area under the curve/ Receiver Operator Characteristics
 - AUC/ ROC is used for classification problems [Binary Classifiers]
-- ROC is the probability curve & AUC represents degree or measures of seperability
+- ROC is the probability curve & AUC represents degree or measures of separability
 - The plot is plotted with TPR vs FPR as shown below
 
 ![[AUC_ROC.png]]

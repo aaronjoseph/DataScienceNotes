@@ -4,35 +4,102 @@
     "type": "split",
     "children": [
       {
-        "id": "6ee508ce40161fa3",
+        "id": "9069191646a9e909",
         "type": "tabs",
         "children": [
           {
-            "id": "1092bee146c3ab42",
+            "id": "3d5b09f07478a74d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Adagrad and RMSProp.md",
+                "file": "Gradient Descent.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "4c1cc3169fd1f22a",
+            "id": "c551f37ec9ea0f83",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Convolutional Networks.md",
+                "file": "Confusion Matrix & Metrics.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d07dbb863e24ece9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Feature Scaling.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
+      },
+      {
+        "id": "0d7606ca57198375",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86932ed0f8d4643d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Markov Decision Process.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "04c24c98fd007929",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Deep Q-Learning.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "271d63b2c7210f47",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Policy Gradients & Actor-Critic.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "10a1b895250755e8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Few Shot Learning.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -61,7 +128,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "convolu",
+                "query": "normalization",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -100,7 +167,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Convolutional Networks.md",
+                "file": "Feature Scaling.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -140,7 +207,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Convolutional Networks.md",
+                "file": "Feature Scaling.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -193,7 +260,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Convolutional Networks.md"
+                "file": "Feature Scaling.md"
               }
             }
           }
@@ -215,36 +282,42 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "4c1cc3169fd1f22a",
+  "active": "d07dbb863e24ece9",
   "lastOpenFiles": [
-    "[.md",
-    "Finance/Price to Book Value.md",
-    "Finance/Return on Equity (ROE).md",
-    "Convolutional Networks.md",
-    "Adagrad and RMSProp.md",
-    "Adam Optimizer.md",
-    "Deep Learning.md",
-    "Evaluation Metrics.md",
-    "Initialization.md",
-    "Jacobians.md",
-    "L1 and L2 Regularization.md",
-    "Momentum.md",
-    "Nesterov Momentum.md",
-    "Optimization Algorithms.md",
-    "Tanh Function.md",
+    "Feature Engineering.md",
+    "Job Interviews/Question Repo/Technical Questions/Computer Vision.md",
+    "CNN Different Architectures.md",
+    "Job Interviews/Question Repo/Technical Questions/Basic DS Questions.md",
+    "Markov Decision Process.md",
+    "Confusion Matrix & Metrics.md",
+    "Few Shot Learning.md",
+    "Policy Gradients & Actor-Critic.md",
+    "Reinforcement Learning.md",
+    "Deep Q-Learning.md",
+    "Pasted image 20221211215254.png.md",
+    "Untitled 1.md",
+    "Locality of Reference.md",
+    "Excalidraw/Drawing 2024-04-13 12.10.53.excalidraw.md",
+    "Excalidraw",
+    "Gradient Descent.md",
     "Sigmoid Function.md",
-    "Entropy, Cross-Entropy, Sparse_Cross_Entropy and KL Divergence.md",
-    "Research_Paper/pytorch2_internals.pdf",
+    "LSTM.md",
+    "RNN.md",
+    "CNN - Backward Prop.md",
     "Softmax Function.md",
-    "7 Database Paradigms.md",
-    "Research_Paper/Databases.pdf",
-    "L1 and L2 Loss Functions.md",
-    "L0, L1, L2 & L-Infinity Norm.md",
-    "Language Model.md",
+    "Transformers.md",
+    "Layer Normalisation.md",
+    "Encoder-Decoder Model (Transformers).md",
+    "Attachements/Transformers-1.png",
+    "Attachements/Transformers.png",
     "Exponential Constant - e.md",
-    "Data Drift.md",
-    "Calculus.md",
-    "Untitled.md",
+    "Convolutional Networks.md",
+    "Decoder-Only Model (Transformers).md",
+    "Attachements/Pasted image 20221211215417.png",
+    "Attachements/Pasted image 20240317181814.png",
+    "Attachements/Pasted image 20240317174326.png",
+    "Research_Paper/pytorch2_internals.pdf",
+    "Research_Paper/Databases.pdf",
     "Untitled.canvas"
   ]
 }

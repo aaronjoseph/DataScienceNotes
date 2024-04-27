@@ -9,7 +9,7 @@ The sigmoid function, denoted by $\sigma(x)$, is a widely used activation functi
   
 - **Shape**: It has an "S" shaped curve or sigmoid curve.
   
-- **Output Behavior**: The output of the sigmoid function is always positive.
+- **Output Behaviour**: The output of the sigmoid function is always positive.
 
 - **Saturation**: The function saturates at both ends, meaning as $x \to \infty$, $\sigma(x) \to 1$, and as $x \to -\infty$, $\sigma(x) \to 0$.
 

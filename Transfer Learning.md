@@ -1,1 +1,1 @@
-Transfer Learning is the ability of a existing Neural Network to have already known the universal rules of its task, makes it more accessible and feasible
+Transfer Learning is the ability of a existing Neural Network to have already known the universal rules of its task, makes it more accessible and feasible. This can be used in [[Convolutional Networks]].

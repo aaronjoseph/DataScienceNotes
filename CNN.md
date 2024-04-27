@@ -1,1 +1,0 @@
-- Once a CNN identifies or recognises a pattern at a location can then generalize it in other location, in retrospect DNN are not capable of the same

@@ -1,77 +1,56 @@
-[https://arxiv.org/pdf/2007.03313.pdf](https://arxiv.org/pdf/2007.03313.pdf "https://arxiv.org/pdf/2007.03313.pdf")
-https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf
+MDPs form the base of it - [[Markov Decision Process]].
 
-MDP - State , Action, Reward, Policy , $\gamma$
-You can have multiple optimal policy
+## Deep Q-Learning
 
-$V_{\pi}(s)$ -> Expected return, starting from state S
-$q_{\pi}(s,a)$
+[[Deep Q-Learning]]
 
-Bellman expected equations
+## Policy Gradients & Actor-Critic
 
-RL is based on maximising cumulative reward not next stage reward
-Optimal policy $\pi{*}$ is the objective of RL
+[[Policy Gradients & Actor-Critic]]
 
-Three Elements of RL
-- Action 
-- Reward 
-- Observation
+## Fundamentals of Reinforcement Learning (RL)
 
-Iterate using Bellman equation till it converges
+Reinforcement Learning focuses on the interaction of an agent with its environment with the aim of maximising cumulative rewards, not just the immediate reward. The ultimate goal in RL is to discover the optimal policy, denoted as $\pi^{*}$, that maximises this cumulative reward over time.
 
-## Partial vs Full Observable Environment
-- In fully observable enviroment, the agent has access to all the information
-- In Partial observable environment,  
+### Three Core Elements of RL
+1. **Action**: Decisions made by the agent.
+2. **Reward**: Immediate feedback from the environment.
+3. **Observation**: The agent's perception of the environment's state.
 
-## RL Mathematical Formulation
+In RL, the Bellman equation is iteratively applied to converge to the optimal values.
 
-- MDP is used to model the environment in RL learning. Model predicts outcomes from environment
+### Observability in Environments
+- **Fully Observable Environments**: The agent has complete information about the environment's state.
+- **Partially Observable Environments**: The agent has limited information and may not fully perceive the current state of the environment.
 
-Markov Property 
-`Future is independent of the past given the present`
+### RL Mathematical Framework
 
-Markov Process
-`A sequence of random states with Markov Property is known as Markov Process(Markov Chains)`
+#### Markov Decision Processes (MDP)
+MDPs are used to model the environment in RL, predicting the outcomes of actions taken in states.
 
-- It is represented by 
-	- State
-	- Transition Probabilities
+- **Markov Property**: Assumes that the future is independent of the past, given the present.
+- **Markov Process**: A series of random states satisfying the Markov Property, also known as Markov Chains, characterised by:
+  - A set of states
+  - Transition probabilities between states
+- **Markov Reward Processes**: A Markov process with added rewards at each transition.
+- **Markov Decision Processes**: An extension of Markov reward processes with decisions (actions) at every state.
 
-Markov Reward Processes
-- Markov process with reward is known as Markov Reward Processes
+#### Return and Reward
+- **Return**: The cumulative, potentially discounted reward received over time.
+- **Reward**: A scalar feedback signal indicating the immediate performance of the agent at each time step.
 
-Markov Decision Processes
-- Markov Decision Process is a Markov Reward process which have a decision associated at every state
+### Discounting in RL
+Discounting in RL addresses the importance of immediate versus future rewards and prevents infinite returns in continuous tasks.
+- A discount factor of 0 prioritises immediate rewards.
+- A discount factor close to 1 gives more weight to future rewards.
 
-`Return`
+### Policy in RL
+The policy in RL defines the agent's behaviour, specifying the action to take in each state. To find the optimal policy, we need:
 
-Reward is scalar feedback and indicates how agent is doing at point at time
+- **State Value Function ($V_{\pi}(s)$)**: The expected return from being in state $s$ and following policy $\pi$.
+- **Action Value Function ($q_{\pi}(s,a)$)**: The expected return from taking action $a$ in state $s$, then following policy $\pi$.
 
-## Discounting
+## Research-Papers and Links
 
-- Determines how much importance is to be given to the immediate reward and future rewards
-- Helps to avoid infinity as a reward in continuous tasks
-- Value between 0 and 1. A value of 0 means that more importance is given to the immediate reward and a value of 1 means more importance is given to the future reward
-
-## Policy
-
-Policy define agent's
-
-```mermaid
-flowchart TB
-A[RL Problem] --> B[Convert to Math Problem - MDP]
-B --> C[Optimal Policy]
-```
-
-To find Optimal Policy we need two things
-- $V_{\pi}(s)$ - Expected value of being a state follow $\pi$
-- $q_{A}(s,a)$ - Expected value of taking an action from a state then following $\pi$
-
-## State Value Function
-
-What is the values of being in a state given a policy
-
-Expected returns, 
-
-
-![[Pasted image 20211123100532.png]]
+- [https://arxiv.org/pdf/2007.03313.pdf](https://arxiv.org/pdf/2007.03313.pdf "https://arxiv.org/pdf/2007.03313.pdf")
+- https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf

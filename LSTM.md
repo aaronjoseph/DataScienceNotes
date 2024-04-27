@@ -1,3 +1,5 @@
+[Link to Understanding LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+
 LSTM - Long Short Term Memory
 
 LSTM's is a [[Sequence Models| sequence model]] which is capable of selectively control and regulate the flow of information.LSTM's can handle long range dependencies. This model was developed after RNN's, however due to additional complexity in the model, this model is even slower than RNN's.
