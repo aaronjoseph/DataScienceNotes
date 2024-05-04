@@ -6,6 +6,8 @@ Most DL techniques such as transformers, RNN's & LSTM's use tokens as input.
 
 Tokenization can be used to develop a vocabulary and then K frequently occuring words can be extracted. 
 
+> In the context of natural language processing tasks, tokenization involves breaking down a given text, such as 'My grandma makes the best apple pie,' into a sequence of individual units of meaning, referred to as tokens. This process enables the representation of the original text as a series of discrete elements that can be analyzed and manipulated by algorithms 
+
 ### Drawbacks of Tokenization
 
 OOV - Out of Vocabulary, refers to the new words which are encountered at testing and are not part of the vocabulary

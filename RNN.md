@@ -1,3 +1,10 @@
+
+### Links 
+
+- [The Unreasonable Effectiveness of RNN](https://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+
+---
+
 RNN is the most basic model used for [[Sequence Models|sequence modeling]].
 
 RNN's are used on sequential data. RNN can be scaled for large scale sequence, however, due to vanishing gradients, RNN's tend to forget due to large sequence - `long term dependencies` can have issues. Also, RNN's are slow to compute as well. Furthermore, it has difficulty in accessing information from a long time ago. 

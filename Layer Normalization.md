@@ -1,8 +1,8 @@
-Layer normalisation is a technique commonly used in deep learning models, including attention models like transformers. It helps to address the problem of internal covariate shift, which can hinder training and performance.
+Layer normalization is a technique commonly used in deep learning models, including attention models like transformers. It helps to address the problem of internal co-variate shift, which can hinder training and performance.
 
 **What is Internal Covariate Shift?**
 
-During training, the distribution of the activations (outputs) of a layer can change significantly. This shift can happen between different layers or even within the same layer during different training epochs. This shifting can make it difficult for the model to learn effectively.
+During training, the distribution of the activation (outputs) of a layer can change significantly. This shift can happen between different layers or even within the same layer during different training epochs. This shifting can make it difficult for the model to learn effectively.
 
 **How Does Layer Normalisation Work?**
 

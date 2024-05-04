@@ -4,102 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "9069191646a9e909",
+        "id": "ac062adf20710d8e",
         "type": "tabs",
         "children": [
           {
-            "id": "3d5b09f07478a74d",
+            "id": "2977f551ca6664b1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Gradient Descent.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c551f37ec9ea0f83",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Confusion Matrix & Metrics.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d07dbb863e24ece9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Feature Scaling.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "0d7606ca57198375",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "86932ed0f8d4643d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Markov Decision Process.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "04c24c98fd007929",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Deep Q-Learning.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "271d63b2c7210f47",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Policy Gradients & Actor-Critic.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "10a1b895250755e8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Few Shot Learning.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -128,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "normalization",
+                "query": "transformer",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -145,12 +61,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 305.5
+    "width": 305.5,
+    "collapsed": true
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -167,7 +83,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Feature Scaling.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -207,7 +122,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Feature Scaling.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -259,9 +173,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Feature Scaling.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -282,37 +194,38 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d07dbb863e24ece9",
+  "active": "2977f551ca6664b1",
   "lastOpenFiles": [
+    "Gradient Descent.md",
+    "Confusion Matrix & Metrics.md",
+    "Transformers.md",
+    "Transformer Papers.md",
+    "RNN.md",
+    "Attachements/Masked_SA&SA.png",
+    "Tokenization - NLP.md",
+    "Machine Translation.md",
+    "Language Model.md",
+    "Finance/Market Bubble.md",
+    "Layer Normalization.md",
+    "GPU.md",
+    "20240427.md",
+    "Markov Decision Process.md",
+    "Deep Q-Learning.md",
+    "Policy Gradients & Actor-Critic.md",
+    "Few Shot Learning.md",
+    "Feature Scaling.md",
     "Feature Engineering.md",
     "Job Interviews/Question Repo/Technical Questions/Computer Vision.md",
     "CNN Different Architectures.md",
     "Job Interviews/Question Repo/Technical Questions/Basic DS Questions.md",
-    "Markov Decision Process.md",
-    "Confusion Matrix & Metrics.md",
-    "Few Shot Learning.md",
-    "Policy Gradients & Actor-Critic.md",
     "Reinforcement Learning.md",
-    "Deep Q-Learning.md",
     "Pasted image 20221211215254.png.md",
     "Untitled 1.md",
     "Locality of Reference.md",
     "Excalidraw/Drawing 2024-04-13 12.10.53.excalidraw.md",
     "Excalidraw",
-    "Gradient Descent.md",
-    "Sigmoid Function.md",
-    "LSTM.md",
-    "RNN.md",
-    "CNN - Backward Prop.md",
-    "Softmax Function.md",
-    "Transformers.md",
-    "Layer Normalisation.md",
-    "Encoder-Decoder Model (Transformers).md",
     "Attachements/Transformers-1.png",
     "Attachements/Transformers.png",
-    "Exponential Constant - e.md",
-    "Convolutional Networks.md",
-    "Decoder-Only Model (Transformers).md",
     "Attachements/Pasted image 20221211215417.png",
     "Attachements/Pasted image 20240317181814.png",
     "Attachements/Pasted image 20240317174326.png",
