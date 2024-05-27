@@ -3,6 +3,7 @@
 - [On building Transformers from Scratch](https://www.datacamp.com/tutorial/building-a-transformer-with-py-torch)
 - [Formal Algorithms for Transformers - Paper (Deepmind)](https://arxiv.org/pdf/2207.09238)\
 - [GPT-2 in Depth](http://jalammar.github.io/illustrated-gpt2/)
+- [The Math behind Attention](https://www.youtube.com/watch?v=UPtG_38Oq8o)
 
 
 ### Other papers 

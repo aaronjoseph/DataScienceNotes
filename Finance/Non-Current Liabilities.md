@@ -1,4 +1,4 @@
-Non-current liabilities represent the long term obligations, which the company intends to settle/pay off within 365 days/12 months of the balance sheet date.
+Non-current liabilities or Long-term liabilities represent the long term obligations, which the company intends to settle/pay off within 365 days/12 months of the balance sheet date.
 
 Non-current liabilities are generally settled after 12 months after the reporting period.
 

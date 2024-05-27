@@ -1,4 +1,4 @@
- Non-current assets talk about the company’s assets, the economic benefit of which is enjoyed over a long period (beyond 365 days).
+ Non-current or Long-term assets talk about the company’s assets, the economic benefit of which is enjoyed over a long period (beyond 365 days).
  
  **Fixed assets** are assets (both tangible and intangible) that the company owns, which cannot be converted to cash easily or which cannot be liquidated easily. Typical examples of fixed assets are land, plant and machinery, vehicles, building etc. Intangible assets are also considered fixed assets because they benefit companies over a long period of time.
  

@@ -4,7 +4,7 @@ Profit & Loss Statement or Statement of Profit and Loss is also referred as
 - Statement of Operations
 - Statement of Earnings
 
-Gives a general idea about the company's profitability.
+Gives a general idea about the company's profitability. This is considered for a period of time, unlike a balance sheet. This shows how much money a company has earned (`not cash` ) over the same period of time.
 
 > This statement reports the amount of money earned during a set period of time
 

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ac062adf20710d8e",
+        "id": "78a3b02f3ddb4dc4",
         "type": "tabs",
         "children": [
           {
-            "id": "2977f551ca6664b1",
+            "id": "fd539c3a79ea4ae4",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -44,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "transformer",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -65,8 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 305.5,
-    "collapsed": true
+    "width": 305.5
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -108,8 +107,17 @@
               "type": "git-view",
               "state": {}
             }
+          },
+          {
+            "id": "6379cf370921c3ec",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "cb753ac662c1aa16",
@@ -144,7 +152,7 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 1,
+                  "scale": 0.6666666666666666,
                   "close": true
                 }
               }
@@ -180,7 +188,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 225.5,
+    "width": 251.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -190,39 +198,39 @@
       "command-palette:Open command palette": false,
       "zk-prefixer:Create new unique note": false,
       "random-note:Open random note": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "2977f551ca6664b1",
+  "active": "fd539c3a79ea4ae4",
   "lastOpenFiles": [
+    "Finance/P&L Statement.md",
+    "MGT_8803/Week 1- Introduction to Financial Accounting.pdf",
+    "MGT_8803/Financial Accounting.md",
+    "Finance/Financial Annual Report.md",
+    "Finance/Balance Sheet.md",
+    "Finance/Cash Flow Statement.md",
+    "Finance/Shareholder Equity.md",
+    "Untitled.md",
+    "Finance/Liabilities - Balance Sheet.md",
+    "Finance/Non-Current Liabilities.md",
+    "Finance/Assets - Balance Sheet.md",
+    "Finance/Non Current Asset.md",
+    "Finance/Current Liability.md",
+    "Finance/Account Receivables & Account Payable.md",
+    "Finance/Connecting P&L and Balance Sheet & Cash Flow.md",
+    "MLE Study Prep.md",
+    "Transformers.md",
+    "Tim-Sort.md",
+    "Job Interviews/Communication/What are the most Important things for you in a Job.md",
+    "Excalidraw/Drawing 2024-05-12 14.42.03.excalidraw.md",
     "Gradient Descent.md",
     "Confusion Matrix & Metrics.md",
-    "Transformers.md",
     "Transformer Papers.md",
     "RNN.md",
     "Attachements/Masked_SA&SA.png",
     "Tokenization - NLP.md",
     "Machine Translation.md",
-    "Language Model.md",
-    "Finance/Market Bubble.md",
-    "Layer Normalization.md",
-    "GPU.md",
-    "20240427.md",
-    "Markov Decision Process.md",
-    "Deep Q-Learning.md",
-    "Policy Gradients & Actor-Critic.md",
-    "Few Shot Learning.md",
-    "Feature Scaling.md",
-    "Feature Engineering.md",
-    "Job Interviews/Question Repo/Technical Questions/Computer Vision.md",
-    "CNN Different Architectures.md",
-    "Job Interviews/Question Repo/Technical Questions/Basic DS Questions.md",
-    "Reinforcement Learning.md",
-    "Pasted image 20221211215254.png.md",
-    "Untitled 1.md",
-    "Locality of Reference.md",
-    "Excalidraw/Drawing 2024-04-13 12.10.53.excalidraw.md",
     "Excalidraw",
     "Attachements/Transformers-1.png",
     "Attachements/Transformers.png",
