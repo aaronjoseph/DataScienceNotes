@@ -19,3 +19,4 @@ Short term money historically has been cheaper than long-term money. Hence compa
 	- Accrued rent payable
 - Other current liability is a slush fund for all short term debts that didn't qualify to be included in the above 2 categories
 
+> Current liabilities are considered more risky than [[Non-Current Liabilities]]

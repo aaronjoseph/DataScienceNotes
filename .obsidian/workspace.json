@@ -11,11 +11,70 @@
             "id": "fd539c3a79ea4ae4",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MGT_8803/Financial Accounting.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ed2181f67ef6e0db",
+            "type": "leaf",
+            "state": {
               "type": "empty",
               "state": {}
             }
           }
         ]
+      },
+      {
+        "id": "4ab1aaa1858c6d1a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3ef7e783cfe022d6",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "MGT_8803/Week 1- Introduction to Financial Accounting.pdf"
+              }
+            }
+          },
+          {
+            "id": "305ec19bd2469b5f",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md"
+              }
+            }
+          },
+          {
+            "id": "442ff650f1735b63",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md"
+              }
+            }
+          },
+          {
+            "id": "f6fb5c4ed9147bb2",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "MGT_8803/Week 2- Classification and Measurement.pdf"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -65,7 +124,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 305.5
+    "width": 305.5,
+    "collapsed": true
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -82,6 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "MGT_8803/Week 2- Classification and Measurement.pdf",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -130,6 +191,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "MGT_8803/Week 2- Classification and Measurement.pdf",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -181,7 +243,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "MGT_8803/Week 2- Classification and Measurement.pdf"
+              }
             }
           }
         ]
@@ -202,35 +266,37 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "fd539c3a79ea4ae4",
+  "active": "f6fb5c4ed9147bb2",
   "lastOpenFiles": [
-    "Finance/P&L Statement.md",
-    "MGT_8803/Week 1- Introduction to Financial Accounting.pdf",
     "MGT_8803/Financial Accounting.md",
-    "Finance/Financial Annual Report.md",
+    "Finance/Non-Current Liabilities.md",
+    "MGT_8803/Week 1- Introduction to Financial Accounting.pdf",
+    "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md",
+    "MGT_8803/Week 2- Classification and Measurement.pdf",
+    "Finance/Liabilities - Balance Sheet.md",
+    "Finance/Current Liability.md",
     "Finance/Balance Sheet.md",
+    "Excalidraw/Drawing 2024-04-13 12.10.53.excalidraw.md",
+    "Excalidraw/Drawing 2024-05-12 14.42.03.excalidraw.md",
+    "MGT_8803/Costco Financial Statements.pdf",
     "Finance/Cash Flow Statement.md",
+    "Finance/P&L Statement.md",
+    "Finance/Financial Annual Report.md",
     "Finance/Shareholder Equity.md",
     "Untitled.md",
-    "Finance/Liabilities - Balance Sheet.md",
-    "Finance/Non-Current Liabilities.md",
     "Finance/Assets - Balance Sheet.md",
     "Finance/Non Current Asset.md",
-    "Finance/Current Liability.md",
     "Finance/Account Receivables & Account Payable.md",
     "Finance/Connecting P&L and Balance Sheet & Cash Flow.md",
     "MLE Study Prep.md",
     "Transformers.md",
     "Tim-Sort.md",
     "Job Interviews/Communication/What are the most Important things for you in a Job.md",
-    "Excalidraw/Drawing 2024-05-12 14.42.03.excalidraw.md",
     "Gradient Descent.md",
     "Confusion Matrix & Metrics.md",
     "Transformer Papers.md",
     "RNN.md",
     "Attachements/Masked_SA&SA.png",
-    "Tokenization - NLP.md",
-    "Machine Translation.md",
     "Excalidraw",
     "Attachements/Transformers-1.png",
     "Attachements/Transformers.png",
