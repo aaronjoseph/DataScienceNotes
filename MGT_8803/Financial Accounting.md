@@ -24,3 +24,24 @@ Statement of Shareholders Equity - The statement of equity is a reconciliation o
 
 [[Week 2- Classification and Measurement.pdf]]
 
+
+
+---
+
+
+# Comparing Analytical Methods
+
+| Evaluation Method      | Inputs Required For:        | Decision Rule    | Accept         | Reject         | Does the Rule Adjust Cash Flows For: | Is the Rule Consistent with the Maximization of the Firm's Equity Value?         |
+|------------------------|-----------------------------|------------------|----------------|----------------|-------------------------------------|-----------------------------------------------------------------------------|
+|                        | Calculation                 |                  |                |                | Time? | Risk?                             |                                                                             |
+| Net present value (NPV)| * Cash flows                | * NPV            | NPV > 0        | NPV < 0        | Yes   | Yes                               | Yes, a project's NPV is a measure of the value the project creates or destroys |
+|                        | * Cost of capital (k)       |                  |                |                |       |                                   |                                                                             |
+| Profitability index (PI)| * Cash flows                | * PI             | PI > 1         | PI < 1         | Yes   | Yes                               | Yes, but may fail to select the project with the highest NPV when projects are mutually exclusive. |
+|                        | * Cost of capital (k)       |                  |                |                |       |                                   |                                                                             |
+| Internal rate of return (IRR)| * Cash flows          | * IRR            | IRR > k        | IRR < k        | Yes   | Yes                               | Yes, but may fail when: Projects are mutually exclusive; Cash flows change sign more than once |
+|                        | * Cost of capital (k)       |                  |                |                |       |                                   |                                                                             |
+| Payback period (PP)    | * Cash flows                | * PP             | PP < Cutoff period| PP > Cutoff period| No | No                                | No                                                                          |
+|                        | * Cutoff period             |                  |                |                |       |                                   |                                                                             |
+
+* Discussed in video lesson
+* Discounted payback period adjusts for time and risk. Does not consider the value of cash flow after payback of investment.

@@ -1,3 +1,5 @@
+> **Purpose**: Reconciles cash account from start to end of the period, showing how cash was generated and used.
+
 1.  The Cash flow statement gives us a picture of the `true cash position` of the company or `liquidity`
 2.  A legitimate company has three main activities – operating activities, investing activities and the financing activities.
 3.  Each activity either generates or drains money for the company.
@@ -11,6 +13,7 @@
 ## 3 Major Categories in Cash Flow Statement
 
 1.  **Operational activities (OA):** Activities related to the daily core business operations are called operational activities. Typical operating activities include sales, marketing, manufacturing, technology upgrade, resource hiring etc.
+	1. It has two methods, direct and indirect method
 2.  **Investing activities (IA):** Activities about investments that the company makes intending to reap benefits at a later stage. Examples include parking money in interest-bearing instruments, investing in equity shares, investing in land, property, plant and equipment, intangibles and other non-current assets etc.
 3.  **Financing activities (FA):** Activities about all financial transactions of the company such as distributing dividends, paying interest to service debt, raising fresh debt, issuing corporate bonds etc
 
