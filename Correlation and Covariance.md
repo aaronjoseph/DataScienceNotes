@@ -1,5 +1,5 @@
 ### Formulae for 
-- Correlation
+- Correlation - [[Kendall's Tau]], [[Spearman Correlation]]
 - Covariance
 - Variance
 - Standard Deviation
@@ -28,8 +28,6 @@ $$\sigma = \sqrt{\frac{\sum(x-\bar{x})^2}{n-1}}$$
 DF.corr()
 ```
 - Value fluctutes from -1 to 1
-
-
 
 ### Covariance
 - Indicates the strength of the relation

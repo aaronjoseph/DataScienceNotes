@@ -5,16 +5,15 @@ LSTM - Long Short Term Memory
 LSTM's is a [[Sequence Models| sequence model]] which is capable of selectively control and regulate the flow of information.LSTM's can handle long range dependencies. This model was developed after RNN's, however due to additional complexity in the model, this model is even slower than RNN's.
 
 ---
-
 ### Key Concepts
 
-1. Maintain a seperatte cell state from what is outputted
+1. Maintain a separate cell state from what is outputted
 2. Use gates to control the flow of information
 	- Forget gate gets rid of irrelevant information
 	- Store relevant information from current input
 	- Selectively update cell state
 	- Output gate returns a filtered version of the cell state
-3. Backpropogation through time with uninterrupted gradient flow
+3. Back propagation through time with uninterrupted gradient flow
 
 ---
 

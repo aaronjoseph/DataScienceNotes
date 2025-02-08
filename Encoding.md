@@ -29,7 +29,7 @@ Label encoding cannot be used in linear models, since the data is expected to be
 
 ### One-Hot Encoding | Nominal
 
-One hot encoding can be done for nominal categorical variables, wherein for each variable a column is created
+One hot encoding can be done for nominal categorical variables, wherein for each variable a column is created. 
 
 > This works great for tree based models over Linear models.
 
@@ -64,7 +64,7 @@ When number of unique values in a column are less, its ideal [[Dimensionality Re
 
 ### One Hot Encoding with Multiple Categories
 
-Here, observation is made on frequency of labels,  ones with high level of occurance is observed. 
+Here, observation is made on frequency of labels, ones with high level of occurrence is observed. 
 
 So if a column has 10 records or labels that are more frequent than lets say other 40, wherein the total number of distinct labels are 50, then during one-hot encoding, only 10 columns will be created, keeping the dimensions lower
 

@@ -50,12 +50,13 @@ from sklearn.metrics import confusion_matrix
 confusion_matix(Actual_Data, Predicted_Data)
 ```
 
-Output of Sklearn Matrix
+### **Threshold vs. FP & FN:**
 
-State | Negative Prediction | Positive Prediction
------- | ------| ------
-**Negative Class** | True Negative | False Negative
-**Positive Class**| False Positive | True Positive
+| Threshold          | FP (False Positives) | FN (False Negatives) | Precision | Recall |
+| ------------------ | -------------------- | -------------------- | --------- | ------ |
+| **0.3** (Low)      | High 🚀              | Low ✅                | Low ⚠️    | High ✅ |
+| **0.5** (Balanced) | Medium               | Medium               | Medium    | Medium |
+| **0.8** (High)     | Low ✅                | High 🚀              | High ✅    | Low ⚠️ |
 
 ---
 

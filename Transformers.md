@@ -4,7 +4,7 @@
 - [Formal Algorithms for Transformers - Paper (Deepmind)](https://arxiv.org/pdf/2207.09238)\
 - [GPT-2 in Depth](http://jalammar.github.io/illustrated-gpt2/)
 - [The Math behind Attention](https://www.youtube.com/watch?v=UPtG_38Oq8o)
-
+- [Harvard NLP Annotated Transformers](https://nlp.seas.harvard.edu/2018/04/03/attention.html)
 
 ### Other papers 
 
@@ -25,7 +25,7 @@ Transformers are magnificent neural network architecture, since it's a general p
 
 ---
 
-Transformers network comes with a architecture which is quite complex and is a form of [[Sequence Models|sequence model]]. The is used in [[Machine Translation]] and [[Language Model]] as well.
+Transformers network comes with a architecture which is quite complex and is a form of [[Sequence Models|sequence model]]. This is used in [[Machine Translation]] and [[Language Model]] as well.
 
 Paper - [PDF](https://arxiv.org/pdf/1706.03762.pdf)
 

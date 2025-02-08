@@ -1,4 +1,3 @@
-
 ### Links 
 
 - [The Unreasonable Effectiveness of RNN](https://karpathy.github.io/2015/05/21/rnn-effectiveness/)
@@ -8,6 +7,17 @@
 RNN is the most basic model used for [[Sequence Models|sequence modeling]].
 
 RNN's are used on sequential data. RNN can be scaled for large scale sequence, however, due to vanishing gradients, RNN's tend to forget due to large sequence - `long term dependencies` can have issues. Also, RNN's are slow to compute as well. Furthermore, it has difficulty in accessing information from a long time ago. 
+
+**Types of RNN**
+
+1. **One-to-One**: Processes a single input to produce a single output. This is the standard neural network architecture, suitable for tasks like image classification.
+    
+2. **One-to-Many**: Takes a single input and generates a sequence of outputs. An example is image captioning, where an image (single input) is used to produce a descriptive sentence (sequence of words).
+    
+3. **Many-to-One**: Processes a sequence of inputs to produce a single output. Sentiment analysis exemplifies this, where a sequence of words (input) is analyzed to determine the overall sentiment (positive or negative).
+    
+4. **Many-to-Many**: Handles sequences of inputs to produce sequences of outputs. [[Machine Translation]] is a prime example, where a sentence in one language (input sequence) is translated into a sentence in another language (output sequence).
+
 
 ---
 ![[Pasted image 8.png]]

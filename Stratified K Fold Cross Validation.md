@@ -1,8 +1,6 @@
 >`Stratification` - The Process of representing all strata of data in each fold. This is done in a supervised way to ensure equal representation of data
 
-Essentially this is done since the general algorithm gives more weightage to the over-represented class and therefore will have poor accuracy.In essense it is the process of re-arranging the data.
-
-Stratified Cross Validation - Split data into k folds and each fold has the same proportion of different class as that is there in the main population. 
+Essentially this is done since the general algorithm gives more weightage to the over-represented class and therefore will have poor accuracy.It is the process of re-arranging the data. Stratified Cross Validation - Split data into k folds and each fold has the same proportion of different class as that is there in the main population. 
 
 Code to do [[K Fold Cross Validation]] and allow for Models
 
@@ -33,7 +31,4 @@ stratified_cv(X, y, svm.SVC)
 stratified_cv(X,y, ensemble.RandomForestClassifier)
 stratified_cv(X,y, neighbors.KNeighborsClassifier)
 stratified_cv(X, y, linear_model.LogisticRegression))))
-
-
-
 ```
