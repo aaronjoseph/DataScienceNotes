@@ -2,7 +2,7 @@ Google created MapReduce. Google's challenge was to figure out how to index the 
 
 In MapReduce, it breaks down into the following steps
 - `Map` - A step that can be performed in parallel, here the mapping takes place, that is each machine will start looking for the document and assign a key-value pair to the mapper
-- `Shuffle` - This is the intermediate step wherein, the value from the mapper is extracted and stored seperately in each of the machines  
+- `Shuffle` - This is the intermediate step wherein, the value from the mapper is extracted and stored separately in each of the machines  
 - `Reduce` - This step will thereafter reduce the values in the shuffle stage, and save it
 - `Result` -  The values from the reduce stage is finally collated in Result stage
 

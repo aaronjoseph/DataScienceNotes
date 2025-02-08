@@ -1,9 +1,9 @@
-- This technique samples data intellegently
+- This technique samples data intelligently
 	- Herein, unlabelled data are sampled based on the most value that can be derived out of labelling it
 - This is very useful in scenario wherein
 	- There is constrained budget : you can only afford to label a few points
 	- Imbalanced dataset : Help select rare classes for training
-	- Target metrics : when baseline sampling strategy does not imporve selected metrics
+	- Target metrics : when baseline sampling strategy does not improve selected metrics
 
 ## Active Learning Sampling techniques
 

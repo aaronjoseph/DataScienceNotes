@@ -1,6 +1,8 @@
 [[AB Testing]]
 [[Z-Test]]
 [[Chi-Squared Hypothesis Testing]]
+[[T-test]]
+
 
 ![[Attachements/Pasted image 1.png]]
 

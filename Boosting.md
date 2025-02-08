@@ -8,7 +8,7 @@ Boosting differs from bagging in the order of execution, boosting is implemented
 ### Algorithms
 
 - [[AdaBoost]]
-- [[Gradient Boosting (GBM)]]
+- [[Gradient Boosting Machines (GBM)]]
 - [[XGBoost]]
 - [[Light GBM]]
 - [[CatBoost]]

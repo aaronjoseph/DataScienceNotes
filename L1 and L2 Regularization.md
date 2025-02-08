@@ -3,12 +3,12 @@
 
 In general, simple linear regression is not prone to overfitting, however, higher degree polynomial regression functions or deep learning algorithms will be prone to overfitting due to its complex architecture
 
-`Regularisation` - The process of adding noise in the model to prevent the model from overfitting. In the general sense, regularization is a mathematical constraint injected into the loss function. A loss function by function tries to minimize the error between y and $\hat{y}$
+`Regularisation` - The process of adding noise in the model to prevent the model from overfitting. In the general sense, regularisation is a mathematical constraint injected into the loss function. A loss function by function tries to minimise the error between y and $\hat{y}$
 
-### L1 and L2 Regularization
+### L1 and L2 Regularisation
 
 
-L1 and L2 Regularization gets its name from [[L0, L1, L2 & L-Infinity Norm| L1 & L2 Norm]]
+L1 and L2 Regularisation gets its name from [[L0, L1, L2 & L-Infinity Norm| L1 & L2 Norm]]
 
 A linear Regression Model that uses L1 norm for regularisation is called Lasso Regression.
 

@@ -3,6 +3,14 @@ Collinearity/MultiCollinearity is a phenomenon related to regression, in which t
 Essentially, when some predictors are collinear to each other, we can reduce the predictors since the model anyways considers the impact of collinear variables to the target variable - this also keeps the model simple.
 
 Correlation Coefficient or Pearson Correlation Coefficient R lies between -1 to 1
+$$
+r = \frac{n(\sum xy) - (\sum x)(\sum y)}{\sqrt{[n\sum x^2 - (\sum x)^2][n\sum y^2 - (\sum y)^2]}}$$
+
+- $n$ is the number of data points.
+- $∑xy$  is the sum of the product of paired scores.
+- $∑x$ and $∑y$ are the sums of the _x_ and _y_ scores, respectively.
+- $∑x^2$  and $∑y^2$ are the sums of the squared _x_ and _y_ scores, respectively.
+
 
 If |R| >= 0.75, then the variables are highly correlated
 If |R| > 0.25 and |R| < 0.75, variables are moderate to strong correlation

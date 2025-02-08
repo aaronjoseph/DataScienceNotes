@@ -1,4 +1,4 @@
-Model that is used to predict a sequence, is called sequence modeling.
+Model that is used to predict a sequence, is called sequence modelling.
 
 ### Model Criteria
 

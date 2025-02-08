@@ -7,11 +7,9 @@ L2 stands for Least Square Errors - LS
 
 $$L1_{Loss} = \sum_{i=1}^{n}|y_{true}-y_{pred}|$$
 
-
 ### L2 Loss Function
 
 $$L2_{Loss} = \sum_{i=1}^{n}(y_{true}-y_{pred})^2$$
-
 ### Choice Between L1 and L2 Loss
 
 L2 is the preferred algorithm
