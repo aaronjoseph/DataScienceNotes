@@ -4,82 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "78a3b02f3ddb4dc4",
+        "id": "fb624db5df762e9f",
         "type": "tabs",
         "children": [
           {
-            "id": "fd539c3a79ea4ae4",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md"
-              }
-            }
-          },
-          {
-            "id": "ed2181f67ef6e0db",
+            "id": "3c50057602ff7f7e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Finance/Cash Flow Statement.md",
+                "file": "Job Interviews/Communication/How to Speak.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "How to Speak"
             }
           }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "4ab1aaa1858c6d1a",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "3ef7e783cfe022d6",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "MGT_8803/Week 1- Introduction to Financial Accounting.pdf"
-              }
-            }
-          },
-          {
-            "id": "305ec19bd2469b5f",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md"
-              }
-            }
-          },
-          {
-            "id": "442ff650f1735b63",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md"
-              }
-            }
-          },
-          {
-            "id": "f6fb5c4ed9147bb2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "MGT_8803/Financial Accounting.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -108,28 +53,32 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "gradient",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
-            "id": "abf281b8131e0a7f",
+            "id": "ac067e6cb9aac8b8",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 305.5
+    "width": 313.5
   },
   "right": {
     "id": "a0444c96ed4a9f15",
@@ -138,7 +87,7 @@
       {
         "id": "2775fe9b91aa9e07",
         "type": "tabs",
-        "dimension": 33.26271186440678,
+        "dimension": 66.50943396226415,
         "children": [
           {
             "id": "fb9df67c642ce810",
@@ -146,82 +95,31 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MGT_8803/Financial Accounting.md",
-                "collapseAll": false,
+                "file": "Gradient Descent.md",
+                "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Gradient Descent"
             }
           },
           {
-            "id": "e07cdd9a65e88eb8",
+            "id": "fbea1fae8e47aeb2",
             "type": "leaf",
             "state": {
-              "type": "git-history-view",
-              "state": {}
-            }
-          },
-          {
-            "id": "8bbf350e56d0349f",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          },
-          {
-            "id": "6379cf370921c3ec",
-            "type": "leaf",
-            "state": {
-              "type": "advanced-tables-toolbar",
-              "state": {}
-            }
-          }
-        ],
-        "currentTab": 3
-      },
-      {
-        "id": "cb753ac662c1aa16",
-        "type": "tabs",
-        "dimension": 36.97033898305085,
-        "children": [
-          {
-            "id": "5be399f28746b09e",
-            "type": "leaf",
-            "state": {
-              "type": "localgraph",
+              "type": "all-properties",
               "state": {
-                "file": "MGT_8803/Financial Accounting.md",
-                "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
-                  "localBacklinks": true,
-                  "localForelinks": true,
-                  "localInterlinks": false,
-                  "showTags": false,
-                  "showAttachments": false,
-                  "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
-                  "collapse-display": true,
-                  "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
-                  "lineSizeMultiplier": 1,
-                  "collapse-forces": true,
-                  "centerStrength": 0.518713248970312,
-                  "repelStrength": 10,
-                  "linkStrength": 1,
-                  "linkDistance": 250,
-                  "scale": 0.6666666666666666,
-                  "close": true
-                }
-              }
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
         ]
@@ -229,7 +127,7 @@
       {
         "id": "61e9249072ff4efc",
         "type": "tabs",
-        "dimension": 29.76694915254237,
+        "dimension": 33.490566037735846,
         "children": [
           {
             "id": "e25d073af8d35c1f",
@@ -239,7 +137,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -248,67 +148,80 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MGT_8803/Financial Accounting.md"
-              }
+                "file": "Gradient Descent.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Gradient Descent"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 251.5
+    "width": 263,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-kanban:Create new board": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "command-palette:Open command palette": false,
       "zk-prefixer:Create new unique note": false,
-      "random-note:Open random note": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "obsidian-kanban:Create new board": false
+      "random-note:Open random note": false
     }
   },
-  "active": "f6fb5c4ed9147bb2",
+  "active": "3c50057602ff7f7e",
   "lastOpenFiles": [
-    "Excalidraw/Relation Between Cash Flow, Income Statement & Balance Sheet.md",
+    "Job Interviews/Communication/Hiring Manager Questions.md",
+    "Job Interviews/Communication/Handling Interview Questions.md",
+    "Job Interviews/Communication/Expected Salary.md",
+    "Job Interviews/Communication/Elevator Pitch.md",
+    "Job Interviews/Communication/Eisenhower Decision Matrix.md",
+    "Job Interviews/Communication/Confidence Booster.md",
+    "Job Interviews/Communication/Building Rapo with the Job Interviewer.md",
+    "Job Interviews/Communication/Body Language.md",
+    "Job Interviews/Communication/Behavioral Questions.md",
+    "Job Interviews/Communication/3 P's & SMART Action Plan.md",
+    "Job Interviews/Communication/Amazon Leadership Principles.md",
+    "Job Interviews/Communication/Amazon Behavioural Questions.md",
+    "Job Interviews/Communication/Asking for Promotion.md",
+    "Job Interviews/Preparation.md",
+    "SQL/Questions List.md",
+    "Job Interviews/Untitled.md",
+    "Gradient Descent.md",
+    "Benford's Law.md",
+    "Transformer Papers.md",
+    "Tim-Sort.md",
+    "Policy Gradients & Actor-Critic.md",
+    "Markov Decision Process.md",
+    "MLE Study Prep.md",
+    "MGT_8803/Week 2- Classification and Measurement.pdf",
     "MGT_8803/Week 1- Introduction to Financial Accounting.pdf",
     "MGT_8803/Financial Accounting.md",
-    "MGT_8803/Week 2- Classification and Measurement.pdf",
-    "Finance/Cash Flow Statement.md",
-    "Finance/Non-Current Liabilities.md",
-    "Finance/Liabilities - Balance Sheet.md",
-    "Finance/Current Liability.md",
-    "Finance/Balance Sheet.md",
-    "Excalidraw/Drawing 2024-04-13 12.10.53.excalidraw.md",
-    "Excalidraw/Drawing 2024-05-12 14.42.03.excalidraw.md",
     "MGT_8803/Costco Financial Statements.pdf",
-    "Finance/P&L Statement.md",
-    "Finance/Financial Annual Report.md",
-    "Finance/Shareholder Equity.md",
-    "Untitled.md",
-    "Finance/Assets - Balance Sheet.md",
-    "Finance/Non Current Asset.md",
-    "Finance/Account Receivables & Account Payable.md",
-    "Finance/Connecting P&L and Balance Sheet & Cash Flow.md",
-    "MLE Study Prep.md",
-    "Transformers.md",
-    "Tim-Sort.md",
-    "Job Interviews/Communication/What are the most Important things for you in a Job.md",
-    "Gradient Descent.md",
-    "Confusion Matrix & Metrics.md",
-    "Transformer Papers.md",
-    "RNN.md",
-    "Attachements/Masked_SA&SA.png",
+    "MGT_8803",
+    "Locality of Reference.md",
+    "Layer Normalization.md",
     "Excalidraw",
-    "Attachements/Transformers-1.png",
     "Attachements/Transformers.png",
-    "Attachements/Pasted image 20221211215417.png",
-    "Attachements/Pasted image 20240317181814.png",
-    "Attachements/Pasted image 20240317174326.png",
+    "Attachements/Transformers-1.png",
+    "Attachements/Masked_SA&SA.png",
     "Research_Paper/pytorch2_internals.pdf",
     "Research_Paper/Databases.pdf",
+    "Vim",
+    "Research_Paper/Papers/HardWare_Lottery.pdf",
+    "Research_Paper/Papers/Attention_is_all_you_need.pdf",
+    "Job Interviews/Company_Interviews/Attachements/Pasted image.png",
+    "Job Interviews/Company_Interviews/Attachements/Pasted image 2.png",
+    "Job Interviews/Company_Interviews/Attachements/Pasted image 1.png",
+    "Attachements/Types-of-Hypothesis-Tests.jpg",
+    "Attachements/Pasted image 8.png",
+    "Attachements/Pasted image 6.png",
+    "Attachements/Pasted image 5.png",
     "Untitled.canvas"
   ]
 }

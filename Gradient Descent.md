@@ -1,4 +1,15 @@
 #DL 
+
+Question 
+### **Gradient Descent Variants and Performance Considerations**
+
+- Explain the differences between **batch gradient descent, stochastic gradient descent (SGD), and mini-batch gradient descent**.
+- In a high-dimensional dataset with **sparse features**, which method would be optimal in terms of convergence speed and stability?
+- Considering **memory constraints (RAM & GPU utilization)**, how does the choice of batch size impact the training efficiency?
+- **Empirically**, does **mini-batch gradient descent mitigate noise better than SGD**? Justify your answer with an example of a real-world dataset.
+- If **mini-batch** introduces bias in convergence, what mitigation strategies would you employ?
+---
+
 ### Gradient Descent Overview
 
 Gradient descent is an optimization algorithm widely used in deep learning to find the minimum of a function. It iteratively moves towards the minimum of the cost function by updating the parameters in the opposite direction of the gradient of the cost function.
