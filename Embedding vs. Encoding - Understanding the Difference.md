@@ -1,5 +1,6 @@
 [[Encoding]]
 
+![[Embeddings]]
 ### Main Concepts
 
 **Word Encoding** refers to the process of converting words into numerical representations so they can be used in machine learning models. This process doesn't necessarily capture the meaning or relationships between words but focuses on transforming text into numbers. Common techniques include:

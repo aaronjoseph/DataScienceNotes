@@ -70,6 +70,8 @@ Gradient descent is an iterative optimization algorithm for finding the minimum 
 
 4. **Automatic Differentiation**: Breaks down complex differentiations into simpler parts, using the chain rule, and then combines them to get the overall gradient. This method is highly efficient and accurate, and is widely used in modern deep learning frameworks.
 
+Automatic differentiation (AD) is preferred over manual, symbolic, and numerical differentiation for calculating the partial derivatives in gradient descent because it balances efficiency, accuracy, and ease of implementation.
+
 ### Analytical Derivation of the Partial Derivative:
 
 For some functions, especially linear functions, we can analytically derive the partial derivatives. For example, consider a simple linear regression model:

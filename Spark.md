@@ -20,7 +20,7 @@ Apache Spark offers several advantages over Hadoop [[MapReduce]], making it a pr
 	2. **Partitions (with locality information):**
 	    - **Definition:** Partitions are logical chunks of data that Spark processes in parallel.
 	    - **Parallelism:** By dividing data into partitions, Spark enables parallel computation across executors.
-	    - **Locality Optimization:** In cases like reading from HDFS, Spark uses locality information to assign tasks to executors near the data, reducing network overhead and improving performance.
+	    - **Locality Optimisation:** In cases like reading from HDFS, Spark uses locality information to assign tasks to executors near the data, reducing network overhead and improving performance.
 	3. **Compute Function (`Partition => Iterator[T]`):**
 	    - **Definition:** Each RDD has a compute function that takes a partition and produces an iterator of elements (`Iterator[T]`).
 	    - **Purpose:** Defines the logic for processing the data stored in each partition.
@@ -30,17 +30,49 @@ While Hadoop MapReduce remains effective for certain batch processing tasks, Spa
 
 ---
 
-### Key Spark Terminology
+## Apache Spark Architecture
 
-**Spark Session** - The main entry point to interact with Spark functionalities, including DataFrame and Dataset APIs. It allows you to use Spark's features programmatically. In an interactive shell, Spark automatically creates a `SparkSession`, while in a Spark application, you need to create it manually.
+**Key Components**
 
-**Spark Driver** - The Spark Driver is the central coordinator of a Spark Application. It is responsible for converting the user's code into executable tasks, distributing them across the cluster, and managing their execution. The Driver maintains information about the application's status and oversees the allocation of resources in collaboration with the cluster manager.
+**1. Spark Driver**
 
-**Spark Application** - designed to perform a specific data processing task.
+The **Spark Driver** is the central coordinator of a Spark application. It is responsible for:
+- Converting user code into executable tasks.
+- Distributing these tasks across the cluster.
+- Managing the execution of tasks.
 
-**Spark Jobs**: The driver breaks a Spark application into one or more jobs, each represented as a Directed Acyclic Graph (DAG), Spark's execution plan.
+The Driver maintains information about the application’s status and collaborates with the cluster manager to allocate resources.
 
-**Spark Stages**: DAG nodes are divided into stages based on operations that can be executed serially or in parallel. Stages often align with data transfer boundaries among executors.
+**2. Spark Executors**
 
-**Spark Tasks**: Stages consist of tasks, the smallest execution unit, each working on a single data partition. Tasks are distributed across executors, enabling parallel processing.
+**Executors** are worker processes launched on each node of the cluster. Their responsibilities include:
+- Executing code assigned by the Driver.
+- Reporting the status of computation back to the Driver.
+- Storing data for in-memory processing.
 
+Each application has its own set of Executors, which remain active for the duration of the application, ensuring data isolation and consistency.
+
+**3. Cluster Manager**
+
+The **Cluster Manager** oversees resource allocation across the cluster. Spark can integrate with various cluster managers, including:
+- **Standalone**: Spark’s built-in cluster manager.
+- **Apache Hadoop YARN**: Resource manager for Hadoop clusters.
+- **Apache Mesos**: General-purpose cluster manager.
+- **Kubernetes**: Container orchestration platform.
+
+The choice of cluster manager dictates how resources like CPU and memory are allocated to Spark applications.
+
+---
+
+## Reasons why Hadoop went out of Favour
+
+| **Aspect**                       | **Hadoop (MapReduce)**                                | **Spark**                                                              | **Why Spark Wins?**                                         |
+| -------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Processing Speed**             | Disk-based; slower data processing                    | In-memory computation; significantly faster                            | Faster results and lower latency                            |
+| **Ease of Use**                  | Complex and verbose APIs                              | Simpler, user-friendly APIs (e.g., DataFrames, Spark SQL)              | Easier learning curve and productivity boost                |
+| **Real-Time Processing**         | Primarily batch processing, limited real-time support | Native support for real-time and streaming analytics                   | Supports a broader range of use cases (batch and streaming) |
+| **Multi-language Support**       | Mostly Java-centric                                   | Multi-language: Java, Scala, Python, R                                 | Greater flexibility and developer adoption                  |
+| **Advanced Libraries**           | Limited built-in advanced analytics libraries         | Rich set of libraries (MLlib, GraphX, Spark SQL, Structured Streaming) | Provides comprehensive analytics capabilities               |
+| **Interactive Queries**          | Poor support for interactive analysis                 | Strong interactive support (e.g., Spark SQL, notebooks)                | Supports interactive analytics and exploration              |
+| **Fault Tolerance & Efficiency** | Fault-tolerant but requires frequent disk writes      | Fault-tolerant with optimized execution plans                          | Efficient, optimized resource use                           |
+| **Community & Ecosystem**        | Mature but declining community growth                 | Active, growing community with frequent updates                        | Better future-proofing and feature evolution                |

@@ -16,6 +16,7 @@ There are 7 types of databases
 
 ### Wide-Column Database
 
+
 - Examples
 	- Cassandra
 	- Apache [[HBase]]

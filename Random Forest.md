@@ -1,37 +1,19 @@
-Random-Forest is basically [[Bagging| bagging technique]]
+Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) of the individual trees. This approach enhances predictive accuracy and controls overfitting.Random-Forest is basically [[Bagging| bagging technique]].
 
-Random Forest is an ensemble tool which takes a subset of observation and a subset of variables to build a decision trees.
+**Key Characteristics of Random Forest:**
 
-Random Forest is called Random because
-1. It takes random samples of training dataset when building trees
-2. Random subsets of features are considered when splitting nodes
+1. **Ensemble Technique**: Combines the predictions of several decision trees to improve overall model performance.
+2. **Random Sampling (Bagging)**: Each tree is trained on a random subset of the training data, selected with replacement (bootstrap sampling).
+3. **Feature Randomness**: At each split in a tree, a random subset of features is considered, promoting diversity among trees and reducing correlation.
 
-In bagging technique, a data set is divided into N samples using randomized sampling. Then, using a single learning algorithm a model is built on all samples. Later, the resultant predictions are combined using voting or averaging in parallel.
+**How the Random Forest Algorithm Works:**
+1. **Bootstrap Sampling**: From the original dataset containing _N_ instances, create _B_ bootstrap samples by randomly selecting _N_ instances with replacement.
+2. **Tree Construction**: For each bootstrap sample, grow an unpruned decision tree:
+	1. At each node, select _m_ features randomly from the total _M_ features (_m_ << _M_).
+	2. Determine the best split among the _m_ features.
+	3. Split the node into child nodes.
+	4. Repeat until the maximum depth is reached or further splitting is not possible.
+3. **Aggregation**:
+	1. **For Classification**: Each tree votes for a class, and the class with the majority votes is the final prediction.
+	2. **For Regression**: The predictions from all trees are averaged to produce the final output.
 
-```py
-from sklearn.ensemble import RandomForestClassifier
-RandomForestClassifier(
-n_estimators=500,# 500 Trees
-max_leaf_node=16, # Each tree limited to 16 nodes
-n_jobs=-1 #No of CPU = All
-)
-```
-
----
-
-Sklearn Hyperparameters
-
-1. max_features - Defined as the maximum number of features random forest is allowed to try in individual tress. Here the options are
-	1. Auto/None 
-	2. sqrt : Sqrt of the number of features available
-	3. 0.2 : Fixed value (here it will indicate 20% of the features)
-	> Right balanced needs to be striked, lower number of features will make the model less diverse, while more features will increase the computation complexity
-2. n_estimators - The number of trees built to make the final decision, higher the trees, slower the code, use GridSearchCV to find the optimal number of tress. Typical Values lies between `[10,30,100]`
-	Also, more uncorrelated trees there are, closer their individual errors get to averaging out
-	1. With more number of trees, more samples are created, the more samples that has been created, the more you reduce biasness of the data, with excessive number of trees, data will repeat, therefore optimal number of trees are required
-3. min_sample_leaf - is the minimum number of samples required to be at the leaf node. Lower the number of samples at the leaf-node will indicate higher degree of noise capture.
-	(or)The min_samples_leaf parameter specifies the minimum number of samples required to be at a leaf node.
-
-4. max_depth - dictates how many splits deep you want the each tree to go. max_split = 50, means it would limit trees to at most 50 splits down any given branch. This will consequently limit the Random Forest to fit the training data closely, and is therefore more stable. It will have lower variance, giving model lower error
-
- Early stopping with some large no of trees to handle overfitting - Best approach

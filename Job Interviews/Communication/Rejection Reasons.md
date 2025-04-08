@@ -1,4 +1,5 @@
 # Rejection Reasons
+
 - Inability to articulate the ability with the fit & qualification of the employer
 - Qualification get you an interview, your ability/background gets you the job
 - Good way to approach this is
