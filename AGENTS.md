@@ -13,7 +13,26 @@ These instructions apply throughout the repository. Follow the user's requested 
 - Notes range from link-only stubs and `#TODO` items to derivations, command tables, study plans, and long explanations. Use a structure appropriate to the note's purpose.
 - Obsidian currently creates new notes at the root and stores new attachments in `Attachements/`. Preserve that exact folder spelling. Existing attachments also occur in nested folders.
 - Excalidraw documents occur in both `Excalidraw/` and `System_Design/`. A `.md` extension does not necessarily mean ordinary prose.
-- Existing filenames contain abbreviations, inconsistent capitalization, and occasional spelling errors. Search before creating a similarly named note; preserve existing paths unless a rename is part of the task.
+- Existing filenames contain abbreviations, inconsistent capitalization, and occasional spelling errors. Search before creating a similarly named note; prefer existing paths until a deliberate rename is needed; follow the naming and migration rules below.
+
+## Search-engineering learning priorities
+
+The owner is a search engineer strengthening fundamentals. Use `Search Engineering.md` as the learning map. Connect theory to query understanding, indexing, retrieval, ranking, evaluation, and reliable serving without forcing unrelated subjects into a search framing.
+
+- Add the literal tag `#search-eng` once near the top of ordinary notes directly relevant to search or its selected prerequisites. Preserve existing tags and frontmatter. A tag means relevance, not that the note has been fact-checked.
+- Include a concrete example, assumptions, common failure modes, and a short exercise when they improve understanding. Define prerequisites before introducing advanced terminology.
+- Keep retrieval coverage, ranking quality, online outcomes, and serving performance distinct. State evaluation units, cutoffs, relevance-label conventions, and missing-data handling.
+- For broad improvement requests, inventory the vault, then work through connected topics. Record what was substantively reviewed versus tagged or linked only, and keep unresolved review work visible in the learning map.
+
+## Note names and link labels
+
+- Use stable, generic concept filenames: `Go Language.md`, `Information Retrieval.md`, `Cosine Similarity.md`. Put angles such as design principles, worked examples, and performance under headings within the note.
+- Keep the title aligned with the concept. Avoid sentence-like filenames, redundant subtitles, and a new file for each question about the same concept.
+- Generic does not mean vague: `BM25.md` and `NDCG.md` remain distinct concepts. A comparison such as `Rust and Go.md` can remain separate from each language's general note.
+- Use display aliases when the prose calls for a shorter label: `[[Go Language|Go]]`. The user's spaced form `[[Go Language | Go]]` expresses the same intent; prefer consistent syntax without surrounding spaces.
+- Use section links for a specific subtopic, for example `[[Go Language#Core Principles|Go design principles]]`, after checking the heading exists. Escape alias pipes as `\|` inside Markdown tables.
+- For a rename, check collisions and inbound wikilinks, embeds, heading/block links, and Markdown file links across the vault. Update the actual targets, including links in renamed files; preserve display aliases and fragments. Retain the former name as an Obsidian frontmatter alias when useful.
+- Do not rewrite plugin-managed drawing payloads as text. If a rename affects a drawing, preserve its structure and verify the affected link explicitly. Never claim a rename is safe based only on outbound links.
 
 ## Workflow
 
