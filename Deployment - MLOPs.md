@@ -1,3 +1,6 @@
+
+#search-eng
+
 ```mermaid
  flowchart LR 
  A[Scoping] -->B[Data] --> C[Modeling] --> D[Deployment]
@@ -52,3 +55,9 @@ B --> C[AI Assistance]
 C --> D[Partial Automation]
 D --> E[Full Automation]
 ```
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

@@ -1,3 +1,6 @@
+
+#search-eng
+
 Data Labeling is important since most of ML is supervised and Data Labeling solves this issue.
 
 ## Data Labeling
@@ -35,3 +38,8 @@ Label consistency is the practice of having consistent labels. This can be exten
 	- Standardize Labels : Here, different labels can be standardized
 	- Merge Class : Whenever two classes are almost the same, it is best to classifiy it as the same
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Evaluation|Search evaluation]]
+- [[Judgement List|Relevance judgments]]

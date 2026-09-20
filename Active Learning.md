@@ -1,3 +1,6 @@
+
+#search-eng
+
 - This technique samples data intelligently
 	- Herein, unlabelled data are sampled based on the most value that can be derived out of labelling it
 - This is very useful in scenario wherein
@@ -14,3 +17,9 @@
 **Query by committee** : Train an ensemble of models and sample points that generate disagreement
 
 **Region based sampling** : Runs several active learning algorithms in different paritions of the space
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Evaluation|Search evaluation]]
+- [[Judgement List|Relevance judgments]]

@@ -1,3 +1,6 @@
+
+#search-eng
+
 > Coming up with features is difficult, time-consuming, and requires expert knowledge. Applied machine learning often requires carful engineering of the features and dataset - Andrew NG
 
 Feature Engineering is used for
@@ -58,4 +61,8 @@ Easy Iterations | Expensive transforms
 Transformation guarantees | Long model latency
 . | Transformations per batch : Skew
 
- 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

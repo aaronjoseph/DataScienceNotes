@@ -1,10 +1,12 @@
-# Go Language — Core Ideas and Design Behind the Language
+# Go Language
 
-## Overview
+#search-eng
+
+## Core Ideas and Design
 
 Go was designed to make building and maintaining substantial software easier. Its creators wanted three qualities together: **fast compilation, efficient execution, and ease of programming**. They also wanted the language to fit networked systems and multicore hardware. These are design goals, not a promise that every Go program builds or runs faster than every alternative. [^1]
 
-This note explains the reasoning behind the language. For memory management, scheduling, and performance comparisons, see [[Rust and Go - Execution, Memory and Performance]].
+This note explains the reasoning behind the language. For memory management, scheduling, and performance comparisons, see [[Rust and Go]].
 
 ## Why Create Go?
 
@@ -101,7 +103,7 @@ For a team, this reduces the cost of keeping a maintained application on a newer
 | Capability | What it enables |
 |---|---|
 | Static typing with type inference | Check types at compile time while avoiding some repeated annotations, such as with `:=`. [^1] |
-| Native compilation and a runtime | Compile ordinary programs to machine code while providing scheduling and GC services. See [[Rust and Go - Execution, Memory and Performance]]. |
+| Native compilation and a runtime | Compile ordinary programs to machine code while providing scheduling and GC services. See [[Rust and Go]]. |
 | Structs, methods, interfaces, and embedding | Model data and assemble behaviour without class inheritance. [^3] |
 | Functions as values and closures | Pass behaviour to other functions and capture surrounding variables. [^3] |
 | Goroutines, channels, and `select` | Coordinate concurrent tasks. [^3] |
@@ -132,6 +134,12 @@ These choices are documented in the FAQ; they do not mean the omitted features a
 - **Concurrency support does not prevent data races.** Shared mutable data still needs appropriate coordination. Go's race detector can find races on paths exercised during execution, not prove their absence everywhere. [^9]
 - **Garbage collection does not prevent memory retention.** Objects that remain reachable may remain allocated even when the application no longer needs them. [^4]
 - **Simple language rules do not make system design trivial.** Timeouts, cancellation, overload, and service dependencies remain application concerns; connect this to [[System Design]].
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]
 
 ## References & Useful Links
 

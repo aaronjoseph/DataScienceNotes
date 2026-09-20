@@ -1,3 +1,6 @@
+
+#search-eng
+
 #dl 
 `Overfitting` - the phenomenon, wherein the model has higher accuracy score for the training data, but fails to generalize for any other model.
 
@@ -59,3 +62,9 @@ $$=  w + \alpha [2x(wx+b-y) + \lambda \frac{d|w|^2}{dw}] $$
 $$ = w - \alpha [2x(wx+b-y) + 2\lambda w] $$
 
 On close observation, L1 Regularisation has effects of pushing the weights close to 0, as in when the value is greater than 0, it negates the weights and less than zero, it has an additive effect. This is quite useful in multi-collinearity situtaion, wherein, it has effects of removing unnecessary variables.
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

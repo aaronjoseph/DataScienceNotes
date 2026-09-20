@@ -1,3 +1,6 @@
+
+#search-eng
+
 MLOps comprises a set of tools and principles to support progress through the ML project lifecycle
 
 [[Machine Learning Life Cycle - MLOPs]]
@@ -15,3 +18,9 @@ MLOps comprises a set of tools and principles to support progress through the ML
 2. Platform Automation
 3. Data Automation
 4. DEVOPs
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

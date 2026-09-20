@@ -1,3 +1,6 @@
+
+#search-eng
+
 Semi-Supervised Labeling requires two types of data
 - Human Labelled data
 - Unlabelled data
@@ -11,3 +14,9 @@ Semi-Supervised Labeling requires two types of data
 	- Based on similarity or "community structure"
 - **Graph based techniques**
 	- Unlabeled examples can be assigned labels based on their neighbours
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Evaluation|Search evaluation]]
+- [[Judgement List|Relevance judgments]]

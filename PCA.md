@@ -1,4 +1,5 @@
 
+#search-eng
 
 PCA or Principal Component Analysis is a dimensionality reduction method that transforms large sets of variables into smaller ones with most of the information in the large set.
 
@@ -30,3 +31,8 @@ Feature Vector stage, removes features that will result in `dimensionality reduc
  
 src ="https://twitter.com/Jeande_d/status/1417093660244594688?s=20"</iframe>
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Embeddings]]
+- [[Tokenization]]

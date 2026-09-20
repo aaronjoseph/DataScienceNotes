@@ -1,3 +1,6 @@
+
+#search-eng
+
 **Cross-entropy loss** (also called log loss) is a widely used loss function in machine learning and deep learning for tasks involving classification.
 
 **Formula**:
@@ -27,3 +30,8 @@ $$
 - **Differentiability**: Cross-entropy is a differentiable loss function, which is essential for training neural networks using gradient-based optimization techniques like stochastic gradient descent (SGD).
 - **Probability Interpretation**: It works well with models that output probability distributions, such as softmax classifiers.
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

@@ -1,3 +1,6 @@
+
+#search-eng
+
 Model Degradation comes in two form
 - Slow Problems : Includes [[Data Drift]]
 - Fast Problems : Bad Sensor, Bad Software Update
@@ -31,3 +34,9 @@ Bad software update|
 Loss of network connectivity|
 System down|
 Bad credentials|
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

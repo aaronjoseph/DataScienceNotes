@@ -1,34 +1,34 @@
->`Stratification` - The Process of representing all strata of data in each fold. This is done in a supervised way to ensure equal representation of data
+# Stratified K Fold Cross Validation
 
-Essentially this is done since the general algorithm gives more weightage to the over-represented class and therefore will have poor accuracy.It is the process of re-arranging the data. Stratified Cross Validation - Split data into k folds and each fold has the same proportion of different class as that is there in the main population. 
+#search-eng
 
-Code to do [[K Fold Cross Validation]] and allow for Models
+## Core Idea
 
-For K-Fold Cross Validation - Use StratifiedKFold() & Run it within a loop
+Stratification approximately preserves each class's proportion across folds. It does not make classes equally frequent and does not fix label bias, dependence, or leakage. Ensure enough examples of the smallest class for the chosen fold count; inspect the actual folds.
 
-```py
-from sklearn import cross_validation
-def stratified_cv(X, y, clf_class, shuffle=True, n_folds=10, **kwargs):
-    stratified_k_fold = cross_validation.StratifiedKFold(y, n_folds=n_folds, shuffle=shuffle)
-    y_pred = y.copy()
-    # ii -> train
-    # jj -> test indices
-    for ii, jj in stratified_k_fold: 
-        X_train, X_test = X[ii], X[jj]
-        y_train = y[ii]
-        clf = clf_class(**kwargs)
-        clf.fit(X_train,y_train)
-        y_pred[jj] = clf.predict(X_test)
-    return y_pred
-	
-# Different Classification Models
-from sklearn import ensemble
-from sklearn import svm
-from sklearn import neighbors
+## Executable Example
 
-stratified_cv(X, y, ensemble.GradientBoostingClassifier)
-stratified_cv(X, y, svm.SVC)
-stratified_cv(X,y, ensemble.RandomForestClassifier)
-stratified_cv(X,y, neighbors.KNeighborsClassifier)
-stratified_cv(X, y, linear_model.LogisticRegression))))
+This example uses scikit-learn's bundled Iris data, without a network download. Each fold fits its own scaler. Replace the classifier with another estimator while keeping the split and metric fixed for a controlled comparison.
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+X, y = load_iris(return_X_y=True)
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+model = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000))
+scores = cross_val_score(model, X, y, cv=cv, scoring='accuracy')
+print(scores, scores.mean())
 ```
+
+Use the current `sklearn.model_selection` namespace. A plain stratified splitter knows nothing about time or users. For [[Learning to Rank]], preserving query groups takes priority over balancing individual document labels; see [[K Fold Cross Validation]] and [[Data Leakage]].
+
+## Exercise
+
+For 90 negatives and 10 positives, five folds contain approximately 18 negatives and two positives each. Explain why oversampling before splitting can put duplicated examples on both sides of evaluation.
+
+## References & Useful Links
+
+- [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html) — Class proportions and limitations.

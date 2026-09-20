@@ -1,33 +1,34 @@
-Cross validation is a resampling procedure used to evaluate machine learning models over a limited sample of data. In essence it is used to estimate the skill of a Machine Learning Model over unseen data and `ensures the model fits the data well and not overfit`
+# Cross Validation
 
-It tests the performance of the model on the data that it hasn't seen before.
+#search-eng
 
-### Steps followed in Cross Validation
+## Overview
 
-The general procedure is as follows:
+Cross-validation evaluates a learning procedure across multiple training/validation splits. It estimates generalisation under the split assumptions; it does not guarantee absence of overfitting or leakage. [^1]
 
-1. Shuffle the dataset randomly
-2. Split the dataset into k groups
+## K-Fold Procedure
 
-For each group:
+Divide examples into $k$ folds. For each fold, train on the others and evaluate on that fold. Aggregate the validation results. Fit all learned preprocessing inside each training fold. See [[K Fold Cross Validation]] for split choices and computational cost.
 
-1. Take the group as a holdout or test data set
-2. Take the remaining as train dataset
-3. Fit a model on the training dataset and evaluate it on the test data set
-4. Retain the evaluation score and `discard the model`
+## Choose the Split for the Task
 
-> Cross-validation can be employed to understand how well any machine learning algorithm work and compare and will also give a sense of how well they will work in practice
+- **Ordinary K-fold:** Appropriate when its exchangeability assumptions fit the data.
+- **Stratified folds:** Preserve approximate class proportions; they do not solve group or time leakage.
+- **Grouped folds:** Keep related examples, such as all rows for a held-out query, together.
+- **Time-aware splits:** Evaluate on later data when the deployment question concerns the future. [^1]
 
-### K-Fold
+Do not shuffle automatically. Scikit-learn's `KFold` and `StratifiedKFold` default to `shuffle=False`; specify it explicitly when shuffling is appropriate. [^1]
 
-In K-fold, the data is split into k-splits and is used for model training
+## Search Example
 
-### Stratification
+If ten rows belong to one query, distributing them over random folds can measure performance on already encountered query patterns. Grouping by query asks a different question about unseen queries. Neither split substitutes for describing the intended deployment.
 
-Stratification is the process of rearranging the data, such that each fold is a good representation of the population
+## Related Notes
 
-### Stratified K-Fold 
+- [[Model Evaluation]] — Selection versus final assessment.
+- [[Data Leakage]] — Invalid features and preprocessing contamination.
+- [[Stratified K Fold Cross Validation]] — Current pipeline example and limits of stratification.
 
-In stratified K-Fold, the folds are mode preserving the percentage of samples for each class.
+## References & Useful Links
 
-Also, StratifiedKFold shuffles the data by default. But when shuffle=True, it shuffles by random state (default is np.random)
+[^1]: [Scikit-learn cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html) — K-fold, grouping, stratification, and time-aware splitting.

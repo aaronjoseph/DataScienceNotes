@@ -1,28 +1,39 @@
-Light GBM is a gradient boosting framework that uses tree based learning algorithm and is a fast processing algorithm.
+# Light GBM
 
-Light GBM has better predictive power for the same running time, compared to XGBoost.
+#search-eng
 
-Light GBM grows tree vertically while other tree based models grows trees horizontally. Light GBM grows tree leaf-wise while other algorithm grows level wise. It will choose the leaf with max delta loss to grow.  When growing the same leaf, leaf-wise algorithm can reduce more loss than a level-wise algorithm.
+## Core Idea
 
-Light GBM advantages
-- Like the name suggests, it is light (has higher speed)
-- Light GBM can hanle the large size of data
-- Takes lower memory to run
+LightGBM is a tree-boosting library. Its histogram-based splitting and leaf-wise growth can be efficient, but runtime and quality depend on data, settings, hardware, and the comparison. Leaf-wise growth chooses a promising leaf rather than expanding every node at the same depth; control complexity to avoid overfitting.
 
-> Light GBM cannot work well with small datasets, since it will overfit the data
+## Parameters to Understand
 
-Control Parameters
+| Parameter | Main role |
+|---|---|
+| `num_leaves`, `max_depth` | Tree complexity; tune together |
+| `min_data_in_leaf` | Minimum leaf-size constraint |
+| `learning_rate`, `num_iterations` | Step size and number of boosting rounds |
+| `feature_fraction` | Feature subsampling |
+| `bagging_fraction`, `bagging_freq` | Row subsampling; frequency must enable bagging |
+| `lambda_l1`, `lambda_l2`, `min_gain_to_split` | Regularisation and split constraints |
+| `max_cat_threshold` | Limit categorical split candidates; not `max_cat_group` |
 
-```py
-import lightgbm as lgb
-```
+Validate rather than assuming small datasets are unsuitable or more leaves always help. Use an appropriate held-out set and the early-stopping callback where supported; “best 20” is not a complete training rule.
 
-- `max_depth` Describes the max depth of tree. This can handle model overfitting
-- `min_data_in_leaf` Minimum number of the records a leaf may have. The default value is 20, optimum value. It is also used to deal over-fitting
-- `feature_fraction`  Used when your boosting is random forest
-- `bagging_fraction` Specifies the fraction of data to be used for each iteration and is generally used to speed up the training and avoid overfitting
-- `early_stopping_round` This parameter can help you speed up your analysis
-- `lambda` Specifies regularization
-- `min_gain_to_split` Minimum gain to make a split
-- `max_cat_group` when the number of category is large, finding the split point on it is easily over-fitting
+## Search Ranking
 
+`LGBMRanker` supports objectives such as `lambdarank` and `rank_xendcg`. Labels encode relevance grades. Rows for each query must be contiguous, and `group` contains **group sizes**, not a query-ID value for every row. For query sizes `[3, 2]`, five feature rows are required. Validation needs its own group sizes.
+
+Separate queries or time periods before fitting; document-level random splitting can leak query context. Choose metric cutoffs and label gains consistent with [[NDCG]] and [[Learning to Rank]].
+
+## Exercise
+
+Arrange six examples from three queries into contiguous groups. Write their group-size vector and check that it sums to six. Compare with the `qid` convention in [[XGBoost]].
+
+Documentation checked 20 September 2026; pin the installed library version when implementing.
+
+## References & Useful Links
+
+- [LightGBM features](https://lightgbm.readthedocs.io/en/latest/Features.html) — Histogram and leaf-wise algorithms.
+- [Parameters](https://lightgbm.readthedocs.io/en/latest/Parameters.html) — Parameter names and objectives.
+- [LGBMRanker](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRanker.html) — Query groups and fitting API.

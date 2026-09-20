@@ -1,36 +1,28 @@
-### **K-Fold Cross-Validation**
+# K Fold Cross Validation
 
-In standard machine learning practices, a model trained and tested using a simple train-test split might achieve, for example, **95% accuracy** on the test set. While this result may seem impressive, it is often overly optimistic, as the model’s performance on unseen real-world data is likely to be worse.
+#search-eng
 
-To address this issue and obtain a more robust evaluation, **K-Fold Cross-Validation** can be employed. This method utilizes the entire dataset for both training and validation, ensuring a more reliable measure of the model's performance.
+## Core Idea
 
----
+Split observations into $K$ folds. Fit a fresh model on $K-1$ folds, evaluate on the held-out fold, and repeat until each fold has been held out. Summarise the fold scores and their variation; do not treat overlapping training sets as independent experiments.
 
-### **How K-Fold Cross-Validation Works**
+K-fold estimates performance under the chosen sampling scheme. It neither prevents overfitting nor guarantees a better model. Tuning against the same folds can overfit the validation process; retain a final test set or use nested validation. Fit preprocessing separately inside each training fold using a pipeline.
 
-- The dataset is divided into **K subsets (or folds)** of roughly equal size.
-- Iteratively, the model is trained on K−1K-1 folds and validated on the remaining fold.
-- This process repeats **K times**, each time using a different fold as the validation set.
-- Finally, the model’s performance is averaged over the K iterations to provide a more generalized estimate.
+## Choose the Split
 
----
+- Independent observations: shuffled K-fold with a recorded seed can be appropriate.
+- Class imbalance: [[Stratified K Fold Cross Validation]] approximately preserves label proportions.
+- Repeated users, products, or queries: keep the relevant groups together.
+- Future performance: train on past data and validate on later data.
 
-### **Key Characteristics of K-Fold Cross-Validation**
+For [[Learning to Rank]], document rows from one query must stay together. Decide whether the target is new queries, later traffic, or new users before choosing the grouping.
 
-- **Resampling Technique**: Ensures that all data points are used for both training and validation, reducing the risk of overfitting or underfitting.
-- **Improved Performance Estimates**: Produces a more reliable and less biased assessment of the model’s performance compared to a single train-test split.
-- **Reduced Bias**: Since every data point gets included in a validation set once, the results reflect a broader evaluation of the dataset.
-- **Higher Computational Cost**: Requires training the model KK times, making it computationally expensive, especially for large datasets.
+## Cost and Exercise
 
----
+A configuration generally requires $K$ fits; tuning $M$ configurations costs approximately $KM$ fits before final refitting. This can be expensive for neural models, but expense is a tradeoff, not a prohibition.
 
-### **Limitations of K-Fold Cross-Validation**
+With 100 independent examples and five folds, each fit trains on 80 and validates on 20. Explain why a scaler fitted on all 100 before splitting introduces [[Data Leakage]]. See [[Cross Validation]] for the broader workflow.
 
-- **Costly for Large Datasets**: The need to train KK separate models makes this method resource-intensive, particularly for complex datasets or models.
-- **Rarely Used for Deep Learning**: Due to the significant computational requirements of training deep learning models, K-Fold Cross-Validation is not commonly applied in such scenarios. Instead, techniques like holdout validation or single validation splits are preferred.
+## References & Useful Links
 
----
-
-### **Summary**
-
-K-Fold Cross-Validation is a powerful tool for evaluating machine learning models, offering better generalization and more reliable performance metrics. However, its computational cost limits its applicability in certain cases, such as large datasets or deep learning models.
+- [KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html) — Splitter behaviour and shuffling.

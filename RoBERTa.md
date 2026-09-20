@@ -1,3 +1,6 @@
+
+#search-eng
+
 RoBERTa - `A Robustly Optimized BERT Pretrained Approach`
 
 RoBERTa was proposed with several improvements on top of BERT, with the main assumption that BERT model was "significatly undertrained", the modification over BERT includes
@@ -6,3 +9,8 @@ RoBERTa was proposed with several improvements on top of BERT, with the main ass
 - Training on longer sequences
 - Dynamically changing the masking pattern applied to the training data
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Embeddings]]
+- [[Tokenization]]

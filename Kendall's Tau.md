@@ -1,21 +1,31 @@
-Kendall's Tau is a non-parametric measure that evaluates the strength and direction of the association between two ranked variables. Unlike Pearson's correlation, which requires data to be normally distributed and measures linear relationships, Kendall's Tau assesses ordinal associations without assuming a specific distribution.
+# Kendall's Tau
 
-**Key Points:**
-- **Definition:** Kendall's Tau, denoted as τ (tau), quantifies the ordinal association between two variables. It ranges from -1 to +1, where:
-	- +1 indicates a perfect positive association.
-	- -1 indicates a perfect negative association.
-	- 0 indicates no association.
+#search-eng
 
-- **Calculation Steps:**
-1. **Identify Concordant and Discordant Pairs:** For each pair of observations, determine if the ranks of both variables move in the same direction (concordant) or in opposite directions (discordant).
-2. **Compute Tau:** Use the formula:
-\[ τ = \frac{C - D}{C + D} \]
-where \( C \) is the number of concordant pairs and \( D \) is the number of discordant pairs.
-- **Interpretation:** The value of τ indicates the strength and direction of the ordinal association. Values close to +1 or -1 signify strong associations, while values near 0 suggest weak or no association.
-- **Advantages:**
-- Does not assume a normal distribution of the data.
-- Suitable for ordinal data and for data with many tied ranks.
-- Provides a more accurate measure of association in small sample sizes compared to Spearman's rank correlation.
-- **Limitations:**
-- Only detects monotonic relationships; it may not accurately reflect the strength of more complex associations.
-- Less powerful than parametric tests when the assumptions of the parametric tests are met.
+## Overview
+
+Kendall's tau measures ordinal association by comparing pairs of observations. A pair is concordant when its order agrees in both variables and discordant when it reverses. Rank agreement does not directly measure search relevance. [^1]
+
+## Formula
+
+With no ties:
+
+$$\tau_a=\frac{C-D}{\binom n2}$$
+
+Here $C$ and $D$ are concordant and discordant pair counts. For ties, a common correction is:
+
+$$\tau_b=\frac{C-D}{\sqrt{(C+D+T)(C+D+U)}}$$
+
+$T$ counts pairs tied only in the first variable, and $U$ only in the second. Pairs tied in both do not enter those counts. Degenerate inputs can make the denominator zero. [^1]
+
+## Search Example
+
+Two rankings of A, B, C are `[A,B,C]` and `[A,C,B]`. Two pairs agree and one disagrees, giving $\tau=1/3$.
+
+This describes how much the order changed. It does not say which ranking is better; use judgments and [[NDCG]] for that. Compare the same item set and define how missing items are handled.
+
+Pearson correlation does not require normal inputs merely to calculate its coefficient. There is also no universal rule that Kendall is more accurate than [[Spearman Correlation]] on small samples.
+
+## References & Useful Links
+
+[^1]: [SciPy kendalltau](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html) — Concordance, ties, and tau variants.

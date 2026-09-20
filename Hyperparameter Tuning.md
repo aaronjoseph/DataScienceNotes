@@ -1,3 +1,6 @@
+
+#search-eng
+
 - `Hyperparameter`  is a parameter whose value is set before the learning process begins
 - This is not updated in each training steps
 - And it is not scalable
@@ -48,3 +51,9 @@ rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,
                                 n_iter=10, cv=5, scoring='neg_mean_squared_error', random_state=42)
 rnd_search.fit(housing_prepared, housing_labels)
 ``
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

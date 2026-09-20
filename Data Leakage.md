@@ -1,38 +1,37 @@
-Data Leakage is the creation of unexpected additional information in the training data, allowing a model or machine learning algorithm to make unrealistically good predictions
+# Data Leakage
 
-Due to Data Leakage, `model will seem to perform well in training data, till it is used in production systems`
+#search-eng
 
-There are two types of leakage
-- Leaky Predictor
-- Leaky Validation Strategies
+## Overview
 
-### Leaky Predictors
+Data leakage occurs when model development uses information unavailable at the intended prediction time or lets evaluation information influence fitting and selection. It can make validation look unrealistically good, not merely improve training accuracy. [^1]
 
-This happens when your predictors include data that will not be available at the time when you make predictions.
+## Two Main Routes
 
-Leaky Predictors cannot be identified by a simple boilerplate technique. 
-- To screen for possible leaky predictors, look for columns that are statistically correlated to the target
-- If you build a model and find it extremely accurate, you have a leakage problem
+- **Leaky predictors:** Future outcomes, target-derived fields, or identifiers that reveal information unavailable in real use.
+- **Leaky validation:** Overlapping examples, preprocessing fitted before the split, or repeated tuning against the supposed test set.
 
-Sources of Leaky Predictors
-- ID-Leaks
-- Leaking future information into past
-- Leaking target information into feature matrices
+High accuracy or strong correlation is a reason to investigate, not proof of leakage.
 
-### Leaky Validation Strategy
+## Preserve the Original Scaling Example
 
-Based on the data-preprossing strategies, there are subtle ways of affecting the [[Cross Validation|validation]] process. 
+If [[Feature Scaling|StandardScaler]] learns its mean and standard deviation from all rows before splitting, evaluation data influence the transformation. Fit imputers, scalers, and feature selection only on each training split; transform validation/test data with those fitted objects. Pipelines help enforce this within [[Cross Validation]]. [^1]
 
-Scenario
-- Validating model on already seen data
+## Search-Specific Checks
 
-Controling LVS
--  Make use of Scikit-Learn pipeline to streamline the process
+Illustrative examples:
 
+- A click feature for a request must not include clicks occurring after that request.
+- Repeated query–document pairs across splits can exaggerate generalisation.
+- A query-level split and a time-based split answer different deployment questions; choose intentionally.
+- Do not repeatedly tune against the final [[Judgement List|evaluation judgment set]].
 
-### Other examples
+A pipeline cannot repair an invalid split or a feature whose definition already leaks the target.
 
-- During Data Pre-processing Stage
-	- Pre-processors like [[Imputing Missing Values| Imputers]], [[Feature Scaling|Normalizer/Standardization]], Log Transformers tap into the underlying data distribution during the fit time
-	- For example, if we use StandardScaler, which subtracts the mean from every observation and then divides it with the standard deviation. Calling it on the entire data, will cause the transformer to learn the mean and SD of the entire distribution of each feature. After this if we are to split the data into train and test sets, the train set is contaminated - since the StandardScaler leaked important information from the actual distribution
-		- To avoid this, always try to use the `built-in pipeline features` 
+## Practice
+
+For every ranking feature, write its event time, availability time, and data source. Identify which values could actually have been obtained when the historical request arrived.
+
+## References & Useful Links
+
+[^1]: [Scikit-learn: Common pitfalls and data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage) — Splits, preprocessing, and pipelines.

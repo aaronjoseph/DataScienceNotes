@@ -1,161 +1,106 @@
-[[AB Testing]]
-[[Z-Test]]
-[[Chi-Squared Hypothesis Testing]]
-[[T-test]]
+# Hypothesis Testing
 
+#search-eng
+
+## What a Test Tells You
+
+A hypothesis test asks how incompatible observations are with a specified null model. A [[P-Value]] is a probability of a result at least as extreme **under that model**, not the probability that the null is true. Rejecting a null provides statistical evidence, not proof of a mechanism; failure to reject does not establish equivalence.
+
+Choose the outcome, independent sampling unit, null, direction, and significance level before inspecting results. Report effect size and a [[Confidence Interval]], not only a threshold decision. Repeated users, query variants, and repeated testing require appropriate dependence and multiplicity handling; see [[AB Testing]].
+
+## Choose the Test from the Design
+
+| Question | Starting point | Important condition |
+|---|---|---|
+| One binary proportion vs a value | One-proportion z test or exact binomial test | Independent trials; normal approximation needs adequate expected counts |
+| Two independent proportions | Pooled two-proportion z test under equality | Use actual success counts, not simulated observations |
+| One mean vs a value | One-sample t test | Unknown population variance; independent observations and suitable sampling distribution |
+| Two independent means | Welch t test | Unequal variances allowed; observations still independent |
+| Same units before/after | Paired analysis | Analyse within-unit differences |
+
+Sample size 30 is not a universal rule for choosing z rather than t. See [[Z-Test]], [[T-test]], and [[Chi-Squared Hypothesis Testing]] for related test families.
+
+## Recalculated Examples
+
+The Python below uses NumPy and SciPy. The first two examples originally supplied rounded percentages, not integer counts: their reconstructed counts are **illustrations**, not recovered source data.
+
+### 1. Parents, Social Media, and Sleep
+
+For 1,018 parents, compare a reported 56% with $p_0=0.52$, using $H_1:p>0.52$. Illustratively take 570 positive answers, or 55.992%. Under the null, use its variance:
+
+$$z=\frac{\hat p-p_0}{\sqrt{p_0(1-p_0)/n}}.$$
+
+```python
+from scipy import stats
+from math import sqrt
+n, successes, p0 = 1018, 570, 0.52
+z = (successes / n - p0) / sqrt(p0 * (1 - p0) / n)
+print(z, stats.norm.sf(z))  # 2.5495, 0.005394 (one-sided)
+```
+
+This would reject at a preselected 5% level under the assumptions. Obtain the actual count before reporting a source-data result.
+
+### 2. Swimming Lessons: Two Proportions
+
+The original figures were 36.8% of 247 Black parents and 38.9% of 308 Hispanic parents. Use illustrative counts 91 and 120; these approximate but do not exactly reproduce both reported percentages. Test equality against a two-sided difference. Generating random Bernoulli data and t-testing it adds invented evidence.
+
+```python
+from scipy import stats
+from math import sqrt
+k1, n1, k2, n2 = 91, 247, 120, 308
+pooled = (k1 + k2) / (n1 + n2)
+z = (k1/n1 - k2/n2) / sqrt(pooled*(1-pooled)*(1/n1+1/n2))
+print(z, 2*stats.norm.sf(abs(z)))  # -0.5111, 0.6093
+```
+
+Failure to reject here does not demonstrate equal population proportions. The original integer counts remain necessary for an exact reconstruction.
+
+### 3. Cartwheel Distance
+
+Test $H_0:\mu=80$ against $H_1:\mu>80$. Population variance is unknown, so estimate it and use a t test.
+
+```python
+import numpy as np
+from scipy import stats
+x = np.array([80.57,98.96,85.28,83.83,69.94,89.59,91.09,66.25,
+              91.21,82.7,73.54,81.99,54.01,82.89,75.88,98.32,
+              107.2,85.53,79.08,84.3,89.32,86.35,78.98,92.26,87.01])
+print(x.mean(), x.std(ddof=1))  # 83.8432, 10.9370
+print(stats.ttest_1samp(x, 80, alternative='greater'))
+# t=1.75697, df=24, p=0.0458374
+```
+
+This narrowly crosses 5% if the direction was specified beforehand and the independent-sample/normality assumptions are reasonable. Inspect outliers and the sampling process. The former normal-tail p-value of 0.03946 understated the t-test p-value.
+
+### 4. BMI: Two Summary Samples
+
+Female summary: $n=2976$, mean 29.94, SD 7.75. Male summary: $n=2759$, mean 28.78, SD 6.25. The original question asked whether men have higher BMI, but these means point the other way. Here explicitly test a **two-sided** difference using Welch's test.
+
+```python
+from scipy import stats
+result = stats.ttest_ind_from_stats(
+    mean1=29.94, std1=7.75, nobs1=2976,
+    mean2=28.78, std2=6.25, nobs2=2759, equal_var=False)
+print(result)  # t=6.25972, p=4.14198e-10
+```
+
+The observed female-minus-male difference is 1.16 BMI units. This computation treats the summaries as independent simple samples; NHANES uses a complex survey design, so this is a classroom calculation, not a survey-weighted population inference. No raw-data reproduction is claimed.
+
+## Search Exercise
+
+Compare two rankers on the same queries. Explain why query-level paired differences differ from treating every returned document as independent. Define practical importance before selecting a statistical test.
+
+## Existing Illustrations
 
 ![[Attachements/Pasted image 1.png]]
 
----
-### Basic requirements
-
-Hypothesis Testing required 3 important factors
-1. Data for testing - `Test Statistics`
-2. Null or Primary Hypothesis or Status Quo - It needs something to reject or fail to reject
-3. Alternative Hypothesis - A decision about whether or not to reject or fail to reject the Null Hypothesis
-Hypothesis testing is used when given a sample and an apparent effect, what is the probability of seeing such an effect by chance?
-
-
->This is a mathematical method of `proof by contradiction`, wherein to prove a phenomenon A, we assume it to be false, then contradict the assumption, thereby concluding A is true
-
----
 ![[Types-of-Hypothesis-Tests.jpg]]
 
-`Two-Sided or Two Tailed Test` - In these situation, the alternative hypothesis is generally expressed in the form "x is not equal to y"
+## References & Useful Links
 
-`One-sided or One-tailed test` - In these situation, the alternative hypothesis will be in the form "x is greater/lesser than y"
+- [SciPy one-sample t test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html) — One-sample test and alternatives.
+- [SciPy summary-statistic t test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind_from_stats.html) — Welch computation from summaries.
+- [Proportion z test](https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html) — Counts and null-variance options.
 
----
-### Examples of Hypothesis testing with code
-- One Population Proportion
-
-Research Question : In previous years, 52% of parents believed that electronics and social media was the cause of their teenager’s lack of sleep. Do more parents today believe that their teenager’s lack of sleep is caused due to electronics and social media?
-
-Null Hypothesis : 0.52
-Alternate Hypothesis : p > 0.52 (`One Tailed Test`)
-
-Data : 1018 people surveyed. 56% of the samples belive sleep deprivation is due to electronics and social media.
-
-Approach : Single group proportion uses z-statistics test.
-
-```py
-from statsmodel.api as sm
-import numpy as np
-import matplotlib.pyplot as plt
-
-n = 1018
-pnull = 0.52
-phat = 0.56
-
-# Alternative here is larger indicates one-sided test
-sm.stats.proportions_ztest(phat*1018, 1018, 0.52, alternative='larger')
-
-#>> (2.571067795759113, 0.005069273865860533)
-```
-
-Since p-value is 0.05, we can reject the null hypothesis and therefore, consider the fact there is a good chance of this proportion being more than 52%
-
-
-- Difference in population proportions
-
-Research question: Is there a significant difference between the population proportions of parents of black children and parents of Hispanic children who report that their child has had some swimming lessons?
-
-Population Parameter : All children between 6-18 with parents being Black or Hispanic
-
-Parameter of Interest : P1-P2, where p1 = Black and p2 = Hispanic
-Null Hypothesis : p1-p2 = 0
-Alternate Hypothesis : p1 - p2 $\neq$ 0
-
-Data: 247 Parents of Black Children. 36.8% of parents report that their child has had some swimming lessons. 308 Parents of Hispanic Children. 38.9% of parents report that their child has had some swimming lessons.
-
-Approach: Difference in population proportion needs t-test.
-
-```py
-n1 = 247
-p1 = .37
-
-n2 = 308
-p2 = .39
-
-population1 = np.random.binomial(1, p1, n1)
-population2 = np.random.binomial(1, p2, n2)
-sm.stats.ttest_ind(population1, population2)
-```
-
-- One population Mean
-
-Research Question: Let’s say a cartwheeling competition was organized for some adults. The data looks like following,
-(80.57, 98.96, 85.28, 83.83, 69.94, 89.59, 91.09, 66.25, 91.21, 82.7 , 73.54, 81.99, 54.01, 82.89, 75.88, 98.32, 107.2 , 85.53, 79.08, 84.3 , 89.32, 86.35, 78.98, 92.26, 87.01)
-
-Is the average cartwheel distance (in inches) for adults more than 80 inches?
-
-Population: All adults
-
-Parameter of Interest: μ, the population mean cartwheel distance.
-
-Null Hypothesis: μ = 80
-Alternative Hypothesis: μ > 80
-
-Data:
-25 adult participants.
-μ=83.84
-σ=10.72
-
-Approach : use Z-test with alternate = 'larger' to denote one-tailed test
-
-```py
-sm.stats.ztest(cwdata, value = 80, alternative = "larger")
->> (1.756973189172546, 0.039461189601168366)
-# Hence reject Null Hypothesis
-```
-
-- Difference in population mean
-
-Research Question: Considering adults in the NHANES data, do males have a significantly higher mean Body Mass Index than females?
-
-Population: Adults in the NHANES data.
-
-Parameter of Interest: μ1−μ2 of Body Mass Index.
-
-Null Hypothesis: μ1=μ2
-Alternative Hypothesis: μ1≠μ2
-
-Data: 2976 Females, μ1=29.94, σ1=7.75
-          2759 Male Adults, μ2=28.78, σ2=6.25
-           μ1−μ2=1.16
-		   
-Approach: We can again use the z-statistic for this hypothesis testing. But here the test has to be “two-sided” as an inequality appears in the alternative hypothesis i.e. the BMI can be either higher or lower for males than females. Both side probabilities have to be added for p-value calculation.
-
-```py
-url = "https://raw.githubusercontent.com/kshedden/statswpy/master/NHANES/merged/nhanes_2015_2016.csv"
-da = pd.read_csv(url)
-females = da[da["RIAGENDR"] == 2]
-male = da[da["RIAGENDR"] == 1]
-sm.stats.ztest(females["BMXBMI"].dropna(), male["BMXBMI"].dropna(),alternative='two-sided')
->> (6.1755933531383205, 6.591544431126401e-10)
-# Hence reject Null Hypothesis
-
-```
-
----
-### Formulae
-
-Z-Score
-$$\frac{\mu_1 - \mu_2}{\frac{\sigma}{\sqrt{No of Observations}}}$$
-
----
-### Pointers
-
-Chi-Square - Used as a test of independence of two categorical variables
-
-Z-test - A z-test is a stastical test to determine whether two population means are different when the variances are known and the sample size > 30
-
-t-test hypothesis testing is used for variance is unknown and sample size < 30. It is a type of inferential statistics. It is used to decide whether that is a significant difference between the means of two groups
-
-`P-Value`  The probability that an effect could occur by chance. The true meaning of p-value is that alternative hypothesis is never accepted, it just show sufficient/not-sufficient evidence in favor of rejecting the null hypothesis
-
-A p-value is the probability of observing results at least as extreme as those measured when the null hypothesis is true
-
-`Statistically Significant`  An effect is statistically significant if it is unlikely to occur by chance
-
-`Null hypothesis`  A model of a system, based on the assumption that an apparent effect is due to chance
+Previously saved resources (retained for further reading; not used to verify this revision):
+- [raw.githubusercontent.com — nhanes_2015_2016.csv"](https://raw.githubusercontent.com/kshedden/statswpy/master/NHANES/merged/nhanes_2015_2016.csv")

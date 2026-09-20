@@ -1,36 +1,36 @@
-### Premium Service and Regular Service
+# Product Metrics
 
-If 5% of the customer base is a part of Premium service, then the business can be considered good.
+#search-eng
 
-### Financial Metrics
+## Define the Decision and Denominator
 
-`Annual Recurring Revenue (ARR)` - Annual Value of every single subscription
+A metric needs a population, event definition, time window, and aggregation rule. No universal 5% premium-conversion threshold determines product success. Compare against the product's economics, historical baseline, and experiment design.
 
-`Average Revenue Per User (ARPU)` - $ARPU = \frac{ARR}{Number of Users}$
+## Common Measures
 
-`Churn Rate` - [[Churn Analysis | Notes on Churn Analysis]] Churn Rate is defined as the average number of subscribers that cancelled their subscription/service over the number of active subscribers in a fixed time period. The time range can be 7,14 and 30 days. Longer ranges help smooth out irregularities due to inactivity.
+| Measure | Working definition and caveat |
+|---|---|
+| DAU / MAU | Distinct active users per day/month; define “active” and identity resolution |
+| Conversion rate | Converting eligible units divided by eligible units in a stated window |
+| ARPU | Period revenue divided by the chosen user population for that period |
+| MRR / ARR | Normalised recurring monthly revenue / annualised recurring revenue; exclude one-off charges and document adjustments |
+| Customer churn | Lost customers divided by customers at period start, with a consistent definition |
+| Net revenue retention | $(starting\ recurring\ revenue+expansion-contraction-churn)/starting\ recurring\ revenue$ for the starting cohort; excludes new customers |
+| CAC | Attributed acquisition costs divided by acquired customers, with cost and attribution scope stated |
 
-This is a lagging metric, can be calculated retrospectively
+Lifetime value is an estimate of discounted future contribution, not just revenue. A simplified recurring model with constant per-period contribution $m$, retention $r$, discount rate $d$, and first contribution after surviving one period gives $mr/(1+d-r)$. This follows from a geometric series and requires $r/(1+d)<1$; timing, changing retention, margins, and acquisition costs alter the model. Do not treat it as a forecast without checking those assumptions.
 
-`Net Revenue Retention` -  This accounts for churn financially
-Herein, cohorts are compared and the revenue inflow is taken into account
+Lead scoring predicts a chosen sales outcome; it is not automatically a causal propensity score.
 
-$$NetRevenueRetention = \frac{MRR of Cohort at Present}{MRR of cohort one year ago}$$
+## Search Outcomes
 
-MRR refers to Monthly Recurring Revenue
+Measure query/session success, zero-result rate, reformulation, abandonment, latency, and conversion with explicit attribution windows. More clicks can mean more engagement or more difficulty finding an answer. Pair online measures with [[Search Evaluation]], [[Click Bias]], and [[AB Testing]].
 
-`DAU & MAU` - Daily Average User & Monthly Average User
+## Exercise
 
-`DNU & MNU` - Daily New Users & Monthly New Users - Can track new users joining the platform - an indicator for marketing efforts
+A starting cohort contributes 100 revenue units, expands by 20, contracts by 5, and loses 10. NRR is 105%. Adding 40 from new customers changes total revenue but not this cohort's NRR.
 
-### Marketing Metrics
+## References & Useful Links
 
-`LTV - Lifetime Value` 
-
-$$LTV = Gross Contribution * \frac{RetentionRate}{1+DiscountRate-RetentionRate}$$
-
-`Customer Acquisition Cost`
-
-$$CAC = \frac{Cost of Sale + Cost of Marketing}{New Customers Acquired}$$
-
-`Lead Scoring` - This is to find the free users who are likely to subscribe. Propensity score is taken from this. 
+- [Stripe subscription analytics](https://docs.stripe.com/billing/subscriptions/analytics) — Recurring revenue and cohort metrics.
+- [Amplitude user identity](https://amplitude.com/docs/data/sources/instrument-track-unique-users) — Counting distinct users consistently.

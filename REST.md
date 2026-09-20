@@ -1,3 +1,6 @@
+
+#search-eng
+
 - REST stands for Representational State Transfer
 - Protocol Independent
 	- HTTP is the most common
@@ -43,3 +46,9 @@ Delete   -> Delete
 	- 500 codes for server errors
 - Response Body : contains resource representation
 	- JSON, XML, HTML
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

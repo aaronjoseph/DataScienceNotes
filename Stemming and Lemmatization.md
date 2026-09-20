@@ -1,34 +1,33 @@
-Stemming and Lemmatization are text normalization techniques in NLP, which is used to prepare text, words and documents for further processing.
+# Stemming and Lemmatization
 
-Lemmatization takes more time than stemming
+#search-eng
 
-### Stemming
+## Overview
 
-Stemming is the process of producing morphological variants of a root/base word. Stemming is a crude technique for cataloging related words, it essentially chops off letters from the end until the stem is reached.
+Both techniques group morphological variants. **Stemming** applies rules that reduce word forms, sometimes producing a non-word. **Lemmatization** seeks a dictionary base form and may use vocabulary, morphology, or part-of-speech information. Exact output depends on the implementation and language. [^1]
 
-Input | Stem-Word
---|--
-History, Historical | Histori
-Finally, Final, Finalized | Fina
-Going, Goes, Gone | Go
+| Approach | Intuition | Risk |
+|---|---|---|
+| Stemming | Reduce related spellings to a shared stem. | Merge words whose meanings should remain distinct. |
+| Lemmatization | Map an inflected form to its lemma. | Wrong linguistic analysis or missing vocabulary. |
 
-#### Porter Stemmer
+Porter and Snowball/Porter2 are examples of stemming approaches. More aggressive rules are not automatically better. Lemmatization may require more processing, but speed must be measured for the chosen implementation. [^1]
 
-Porter stemmer is the most common and an effective stemming technique. The algorithm employs five phases of word reduction, each with its own set of mapping rules.
+## In Search
 
-#### Snowball Stemmer
+Normalisation can improve recall when `boots` should match `boot`. It can hurt precision when distinct meanings collapse. Evaluate the change using a [[Judgement List]] and [[Search Evaluation]], including identifier and brand queries.
 
-This offers slight improvements over the original Porter stemmer both in logic and speed. Also called as Porter2stemming algorithm. 
+The old example table implied that all stemmers map `going`, `goes`, and `gone` to `go`; that is not a universal stemming rule. Record outputs from the actual analyser instead of assuming a linguistic result.
 
-#### Lancaster Stemmer
+## Practice
 
-This is the most aggressive stemming algorithm of the bunch.
+Compare an unchanged field, a stemmed field, and a lemmatized field on ten queries. Record both recovered matches and newly introduced false matches.
 
----
-### Lemmatization
+## Related Notes
 
-> Lemma of a word is its dictionary or canonical form
+- [[Tokenization]] — Determines the units being normalised.
+- [[Inverted Index]] — Stores the resulting terms.
 
-In contrast to stemming, lemmatization looks beyond word reduction and considers a language's full vocabulary to apply a morphological analysis to words. Lemmatization is considered to be more informative than stemming. Lemmatization looks at surrounding text to determine a given word's part of speech, it doesn't categorize phrases.
+## References & Useful Links
 
-Also, it is harder to form lemmatizer for a new language than it is in a stemming algorithm.
+[^1]: [Stemming and lemmatization](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) — Definitions, algorithms, and retrieval tradeoffs.

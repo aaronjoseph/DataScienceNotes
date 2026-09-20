@@ -1,3 +1,6 @@
+
+#search-eng
+
 ### Need for Feature Importance
 
 For any business application, there is a need to understand how the model provides the results
@@ -32,3 +35,9 @@ importance = model.feature_importances_
 ```
  
  > Results of a tree based model will differ based on the Stocastic nature of the model
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

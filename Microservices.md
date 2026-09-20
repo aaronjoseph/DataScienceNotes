@@ -1,3 +1,6 @@
+
+#search-eng
+
 Microservices divides a large program into multiple smaller, independent services. In a monolith application, all features are stored in a single code base. In microservices, there are multiple codebases, and each service manages its own data.
 
 > A good microservice design is loosely coupled
@@ -45,3 +48,9 @@ Disposability | App instances should scale quickly when needed
 Dev/Prod parity | Containers like Docker makes it easier. Leverage infra as code to make env easy to create
 Logs | Write log messages to standard output and aggregate all logs to a single source
 Admin Processes | Admin tasks should be repeatable processes, not one-off manual tasks
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

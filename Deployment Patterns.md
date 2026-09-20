@@ -1,3 +1,6 @@
+
+#search-eng
+
 ## Rolling Deployment
 
 In rolling deployment, if there exisits multiple servers, in rolling deployment, only one server is updated at a time.
@@ -9,3 +12,9 @@ Canary deployments are a pattern for rolling out releases to a subset of users o
 ## Blue Green Deployment
 
 Blue green deployment is an application release model that gradually transfers user traffic from a previous version of an app or microservice to a nearly identical new release—both of which are running in production.
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

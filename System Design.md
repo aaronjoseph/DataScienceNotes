@@ -1,27 +1,30 @@
-  
-**1. Fundamental Principles:**
-• **Read-Intensive Systems:** Implement caching mechanisms to expedite data retrieval for frequently accessed information.
-• **Write-Intensive Systems:** Utilize queuing systems to handle write operations asynchronously, preventing bottlenecks.
-• **Performance Optimization:** Combine caching strategies with Content Delivery Networks (CDNs) to deliver content swiftly to a global user base.
+# System Design
 
-**2. Technology Selection:**
-• **Structured Data:** Opt for SQL databases when managing reliable and structured datasets, such as banking records.
-• **Unstructured Data:** Choose NoSQL databases for flexible data types, like social media content.
-• **Large Files and Media:** Employ blob storage solutions to efficiently store and manage sizable objects, including images and videos.
-• **Real-Time Communication:** Implement WebSockets to facilitate instantaneous user-to-user interactions.
+#search-eng
 
-**3. Scalability and Performance:**
-• **Database Sharding:** Distribute large SQL databases across multiple servers to enhance performance and manageability.
-• **Load Balancing:** Deploy load balancers to evenly distribute incoming traffic, ensuring system reliability under high demand.
-• **Global Content Delivery:** Leverage CDNs to serve content from servers closest to users, reducing latency and improving load times.
+## Begin with Requirements
 
-**4. Advanced Strategies:**
-• **Graph Data Management:** Utilize graph databases to analyze and manage complex relationships within data.
-• **Horizontal Scaling:** Expand system capacity by adding more servers, enabling the system to handle increased loads effectively.
-• **Database Indexing:** Implement indexing to significantly speed up query responses and improve data retrieval efficiency.
+State the workload, data size and growth, latency and availability targets, correctness requirements, and cost constraints before selecting technology. “SQL for structured data, NoSQL for unstructured data” is too coarse: compare access patterns, transactions, indexes, consistency, and operations.
 
-**5. Additional Recommendations:**
-• **Task Segmentation:** Break down extensive tasks into smaller batches for more efficient data processing and management.
-• **Overload Prevention:** Apply rate limiting to safeguard the system against denial-of-service attacks and ensure stability.
-• **API Management:** Use API gateways to oversee and regulate communication between various services within the system.
-• **System Redundancy:** Incorporate redundancy to maintain system functionality even in the event of component failures.
+## Components and Tradeoffs
+
+- **Caching:** saves repeated work but needs key design, invalidation, bounded memory, and a staleness policy.
+- **Queues:** absorb bursts and decouple stages; sustained input above service capacity still grows backlog. Bound queues and define overload behaviour.
+- **Replication:** maintains copies for resilience or reads, depending on the system; replication lag and failover semantics matter.
+- **[[Database Sharding|Sharding]]:** distributes partitions; hot keys, fan-out, rebalancing, and cross-partition operations add cost.
+- **Timeouts and retries:** use deadlines, bounded retries, backoff, and idempotency. Retrying overload can amplify it.
+
+## Search Request Example
+
+A query passes through [[Query Understanding]], retrieval, filtering, [[Search Ranking|ranking]], and response construction. Decide where eligibility is enforced and what happens if one retrieval source times out. A fallback changes candidate coverage, so record that outcome in [[Monitoring - MLOPS|Monitoring]].
+
+Index updates take a separate path from serving requests. Define the freshness target and correctness checks in [[Index Updates]]. Capacity planning must include indexing and background work, not only query traffic.
+
+## Exercise
+
+Suppose incoming traffic is 120 requests/s and capacity is 100 requests/s. Under this simple constant-rate model, backlog grows by 20 requests/s. Explain why adding a queue does not close the capacity gap. Then propose measured scaling, load shedding, or bounded degradation. Connect this to [[Latency vs Throughput]] and [[Big O]].
+
+## References & Useful Links
+
+- [Google SRE overload](https://sre.google/sre-book/handling-overload/) — Queues, retries, and overload handling.
+- [Azure sharding pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/sharding) — Partitioning tradeoffs.

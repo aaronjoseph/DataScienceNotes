@@ -1,29 +1,38 @@
-### Term Frequency - Inverse Document Frequency (TF-IDF)
+# TF-IDF
 
-When using a word vectoriser like the [[Bag of Words (BOW)| bag of words]] model, a major issue arises:
-- **Common words receive disproportionately high weightage** because they appear frequently across many documents. This requires normalization to ensure that the word importance is appropriately represented.
+#search-eng
 
-To address this, we use **TF-IDF**, which is defined as:
+## Overview
 
-$$ \text{TF-IDF} = \text{TF} \times \text{IDF} $$
+Term frequency–inverse document frequency weights a term using its occurrence in a document and its rarity across a collection. It extends [[Bag of Words]] counts; it is not itself a semantic understanding model. [^1]
 
-### Term Frequency (TF)
+## Formula and Conventions
 
-**Term Frequency (TF)** measures how often a word appears in a sentence (or document) relative to the total number of words in that sentence (or document):
+One teaching convention is:
 
-$$ \text{TF} = \frac{\text{Number of Occurrences of the Word in the Document}}{\text{Total Number of Words in the Document}} $$
+$$\operatorname{tfidf}(t,d)=\operatorname{tf}(t,d)\log\frac{N}{\operatorname{df}(t)}$$
 
-### Inverse Document Frequency (IDF)
+Here $N$ is the document count and $\operatorname{df}(t)$ counts documents containing term $t$. Term frequency can be a raw count, a count divided by document length, or a sublinear transform. State which one is used. [^1][^3]
 
-**Inverse Document Frequency (IDF)** measures how unique or rare a word is across all documents in the corpus. It helps to penalize common words:
+The original note used length-normalised frequency:
 
-$$ \text{IDF} = \log\left(\frac{\text{Total Number of Documents}}{\text{Number of Documents Containing the Word}}\right) $$
+$$\operatorname{tf}(t,d)=\frac{\operatorname{count}(t,d)}{|d|}$$
 
-- If a word appears in many documents, the IDF value decreases, reducing its overall TF-IDF score.
-- If a word appears in only a few documents, the IDF value increases, boosting its TF-IDF score.
+Example: `boots` appears twice in a 10-token document and in 10 of 100 documents. With natural logarithms, its weight is $0.2\ln(10)\approx0.4605$. A term in all 100 documents has zero IDF under this particular formula.
 
-### Key Aspects of TF-IDF
+Libraries can smooth IDF and normalise the final vector. Do not compare scores until these conventions match. [^2]
 
-- **Uncommon words in a document** tend to have a higher TF-IDF score because they are more unique and therefore more significant for that specific document.
-- **Common words in a document** tend to have a lower TF-IDF score, often close to zero, because they appear frequently across many documents and are less distinctive.
+## Search Interpretation
 
+Rare terms can be discriminative, but rarity is not proof of relevance: a typo or product code can also be rare. [[Cosine Similarity]] compares vector directions; [[BM25]] uses a different treatment of term frequency and document length.
+
+## Practice
+
+Recalculate the example using raw term counts. Explain why its score changes even though the document has not changed.
+
+## References & Useful Links
+
+[^1]: [Term frequency and weighting](https://nlp.stanford.edu/IR-book/html/htmledition/term-frequency-and-weighting-1.html) — Frequency-based term weights.
+[^2]: [Scikit-learn text feature extraction](https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction) — TF-IDF implementation conventions.
+
+[^3]: [Inverse document frequency](https://nlp.stanford.edu/IR-book/html/htmledition/inverse-document-frequency-1.html) — Corpus rarity and the basic IDF formula.

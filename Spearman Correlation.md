@@ -1,30 +1,29 @@
-Spearman's rank correlation coefficient is a non-parametric measure that assesses the strength and direction of the monotonic relationship between two variables. Unlike Pearson's correlation, which evaluates linear relationships, Spearman's correlation focuses on the ranks of the data rather than their raw values, making it particularly useful for ordinal data or data that do not meet the assumptions of parametric tests.
+# Spearman Correlation
 
-**Key Points:**
+#search-eng
 
-- **Definition:** Spearman's rank correlation coefficient, denoted by ρ (rho) or $r_s$, measures the strength and direction of the association between two ranked variables. It ranges from -1 to +1, where:
-	- +1 indicates a perfect positive monotonic relationship.
-	- -1 indicates a perfect negative monotonic relationship.
-	- 0 indicates no monotonic relationship.
+## Overview
 
-- **Calculation Steps:**
+Spearman correlation measures monotonic association by correlating ranks. Use average ranks for tied values. It ranges from -1 to 1 for nonconstant inputs; constant inputs make the coefficient undefined. [^1]
 
-1. **Rank the Data:** Assign ranks to the data points for both variables. In cases of tied values, assign the average of the ranks that would have been assigned if there were no ties.
-2. **Compute Rank Differences:** For each pair of observations, calculate the difference between the ranks  $d_i$ of the two variables.
-3. **Square the Differences:** Square each of the rank differences to get $d_i^2$
-4. **Sum of Squared Differences:** Sum all the squared differences to obtain $\sum d_i^2$.
-5. **Apply the Formula:** Use the formula to calculate the coefficient:
-$$r_s = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)}$$
-where \( n \) is the number of data pairs.
+## Formula and Ties
 
-- **Interpretation:** The value of $r_s$ indicates the strength and direction of the monotonic relationship between the variables. A value close to +1 or -1 signifies a strong monotonic relationship, while a value close to 0 suggests a weak or no monotonic relationship.
+With no ties, an equivalent shortcut is:
 
-- **Advantages:**
+$$\rho=1-\frac{6\sum_i d_i^2}{n(n^2-1)}$$
 
-- Does not assume a normal distribution of the data.
-- Suitable for ordinal data and continuous data that do not meet parametric assumptions.
-- Less sensitive to outliers compared to Pearson's correlation.
+$d_i$ is the difference between the two ranks for observation $i$. With ties, compute Pearson correlation on the assigned ranks instead of assuming the shortcut remains exact. [^1]
 
-- **Limitations:**
-- Only detects monotonic relationships; it may not accurately reflect the strength of more complex associations.
-- Less powerful than parametric tests when the assumptions of the parametric tests are met.
+## Search Example
+
+For the same three documents, ranks `[1,2,3]` and `[1,3,2]` give squared rank differences summing to 2, so $\rho=0.5$.
+
+Like [[Kendall's Tau]], this measures agreement between orderings. Two equally poor search rankings can correlate perfectly. [[NDCG]] instead measures ordering against relevance grades.
+
+## Practice
+
+Construct a nonlinear but increasing relationship with perfect rank correlation. Explain why a zero coefficient need not imply statistical independence.
+
+## References & Useful Links
+
+[^1]: [SciPy spearmanr](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html) — Rank correlation, constant inputs, and significance-test limitations.

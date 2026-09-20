@@ -1,76 +1,46 @@
-# Sampling 
-> When conducting research about a population, it is rarely possible to collect data from each datapoint. Instead sampling is done for which valid conclusion is made
+# Sampling
 
-`Population` is the entire group that you want to draw conclusion about
-`Sample` is the specific group of individual that you will collect data from
+#search-eng
 
-```mermaid
-graph TD
-	A[Sampling] --> B(Probability Sample)
-	A --> C(Non-Probability Sample)
-```
+## Choose the Population and Unit
 
-```mermaid
-graph TD
-	B[Probability Sampling] --> B1(Simple Random Sample)
-	B --> B2(Systematic Sample)
-	B --> B3(Stratified Sample)
-	B --> B4(Cluster Sample)
-```
-```mermaid
-graph TD
-	C[Non-Probability Sampling] --> C1(Convenience Sample)
-	C --> C2(Voluntary Response Sample)
-	C --> C3(Purposive Sample)
-	C --> C4(Snowball Sample)
-```
+Sampling selects observations from a target population. A large sample can still be systematically biased. Define whether a search sample represents distinct queries, query requests, sessions, users, or documents; these answer different questions.
 
----
-## Probability Sampling
+## Probability Designs
 
-### Simple Random Sample
-Here, every member of the population of being selected
+- **Simple random:** each population unit has equal selection probability in the basic design.
+- **Systematic:** choose a random start and then every kth unit. Periodic ordering can distort representation.
+- **Stratified:** sample within each stratum, such as language or query-frequency band. Allocation may be proportional or intentionally disproportionate; population estimates then need appropriate weights.
+- **Cluster:** randomly select clusters, such as stores or users, and sample all or some units within them. Similarity within clusters affects uncertainty.
 
-### Systematic Sampling
-Is similar to Simple Random Sampling, however there is pattern to the selection techniques Ex: In a ordered list, the selected samples have ID that is a multiple of 5
+Stratification does not require equal group sizes. Convenience, voluntary-response, purposive, and snowball samples do not automatically support population-wide inference.
 
-### Stratifed Sampling
-This form of sampling ensures that selected sample has equal representation of all the groups present, this is quite useful when the population has mixed characteristics
+## Positional Split Example
 
-```py
+```python
+import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
-
-split = StratifiedShuffleSplit(n_splits=1, test_size=0.2,random_state=42)
-
-for train_index, test_index in split.split(Test_DF,Test_DF['Target']):
-	Stratified_train = Test_DF.loc[train_index]
-	Stratified_test = Test_DF.loc[test_index]
+frame = pd.DataFrame({'value': range(20), 'label': [0]*12+[1]*8},
+                     index=range(100, 120))
+splitter = StratifiedShuffleSplit(n_splits=1, test_size=0.25, random_state=42)
+train_pos, test_pos = next(splitter.split(frame[['value']], frame['label']))
+train, test = frame.iloc[train_pos], frame.iloc[test_pos]
+print(len(train), len(test))  # 15, 5
 ```
 
-### Stratified K-Fold
-This should be used of K-Fold when the dataset is quite large
+Splitters return positions, so use `.iloc`, not index-label lookup with `.loc`. Stratified sampling still does not account for repeated users or time.
 
-### Cluster Sampling
-Cluster sampling clusters the population into subgroups
-- The subgroup has characteristics of the population
-- Then at sampling stage, each subgroup is selected
+## Search Exercise
+
+Suppose 90% of requests are common queries and 10% are rare queries. If you label equal numbers from both strata, report either a deliberately balanced diagnostic or a correctly weighted traffic estimate. Do not silently call the balanced mean traffic performance. Hard negatives may aid training but are not a representative evaluation sample; see [[Judgement List]], [[Search Evaluation]], and [[Confidence Interval]].
+
+## Existing Illustrations
 
 ![[Attachements/Pasted image 2.png]]
 
----
-## Non-Probability Sampling
-
-### Convenience Sampling
-The samples are easiest to come across and this technique may not be representative of population
-
-### Voluntary Response Sampling
-Again similar to convenience sampling, the responses are biased
-
-### Purposive Sampling
-Using judgement to sample 
-
-### Snowball Sampling
-Sample that refer other samples
-
-
 ![[Pasted image 3.png]]
+
+## References & Useful Links
+
+- [Statistics Canada probability sampling](https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch13/prob/5214899-eng.htm) — Sampling designs.
+- [StratifiedShuffleSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedShuffleSplit.html) — Stratified positional splits.

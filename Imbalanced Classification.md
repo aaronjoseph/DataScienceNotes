@@ -1,3 +1,6 @@
+
+#search-eng
+
 [[Classification Algorithms]]
 
 - Here, the class distribution has a severe skew, generally in the order of 1:100, 1:1000
@@ -13,3 +16,8 @@ classifier.fit(X_train,y_train)
 
 - Undersampling and Oversampling can also be done [[Undersampling]] [[OverSampling]]
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Evaluation|Search evaluation]]
+- [[Judgement List|Relevance judgments]]

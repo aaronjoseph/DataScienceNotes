@@ -1,1 +1,10 @@
+
+#search-eng
+
 **Singular Value Decomposition (SVD)** is a fundamental matrix factorisation technique in linear algebra that is widely used in data science, machine learning, and statistics. It decomposes a matrix into three other matrices, each with specific mathematical properties, and has various applications such as dimensionality reduction, noise filtering, and more.
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Embeddings]]
+- [[Tokenization]]

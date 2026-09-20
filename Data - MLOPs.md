@@ -1,3 +1,6 @@
+
+#search-eng
+
 ```mermaid
  flowchart LR 
  A[Scoping] -->B[Data] --> C[Modeling] --> D[Deployment]
@@ -72,3 +75,9 @@ E --> F
 F --> G[Detect Anomalies]
 G --> H[Alert and Analyze]
 ```
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

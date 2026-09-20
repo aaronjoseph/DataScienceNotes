@@ -1,3 +1,6 @@
+
+#search-eng
+
 `Curse of Dimensionality` - Having a lot of features slows down any learning algorithm.
 
 Dimensionality Reduction - Process of removing features.
@@ -41,3 +44,9 @@ PCA | T-SNE
 Emerged in 1933 | Emerged in 2008
 Linear dimension reduction technique that seeks to maximise variance and preserve pairwise distances | t-SNE differs in the fact that,  it preserves only pair-wise distances or local similarities whereas PCA is concered with preserving large pairwise distances to maximize variance
 Very fast for large dataset | Will be extremely slow for large dataset, due to computational complexity
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Embeddings]]
+- [[Tokenization]]

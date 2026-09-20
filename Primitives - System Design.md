@@ -1,3 +1,6 @@
+
+#search-eng
+
 In system design interviews, **primitives** refer to fundamental components or building blocks used to construct complex systems. These are essential services or modules that provide specific functionalities, which can be combined and orchestrated to design scalable and efficient systems. Common primitives include:
 
 • **Load Balancers:** Distribute incoming network traffic across multiple servers to ensure no single server becomes a bottleneck, enhancing system reliability and performance.
@@ -14,3 +17,8 @@ In system design interviews, **primitives** refer to fundamental components or b
 
 • **Content Delivery Networks (CDNs):** Distribute content to servers closer to end-users, reducing latency and improving load times.
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Latency vs Throughput|Latency and throughput]]
+- [[Information Retrieval|Retrieval pipeline]]

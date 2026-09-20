@@ -1,4 +1,6 @@
 
+#search-eng
+
 https://www.geeksforgeeks.org/k-nearest-neighbours/
 
 ### **K-Nearest Neighbours (KNN)**
@@ -38,3 +40,9 @@ https://www.geeksforgeeks.org/k-nearest-neighbours/
 - Recommender systems
 - Anomaly detection
 - Image classification
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Embeddings]]
+- [[Tokenization]]

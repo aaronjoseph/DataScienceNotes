@@ -1,19 +1,26 @@
-`Corpus` - Is a collection of documents
+# NLP Basic Terminology
 
-`Vocabulary` - Collection of all words present in a corpus
+#search-eng
 
-`Term Frequency` - Is the number of times a word occurs in a document
+## Core Vocabulary
 
-`Inverse Document Frequency` - Number of documents that contain the word.
+- **Corpus:** A collection of documents.
+- **Token:** One occurrence produced by [[Tokenization]].
+- **Vocabulary:** The distinct token types or indexed terms represented by the system.
+- **Term frequency (TF):** Occurrences of a term within a document, or a stated transform of that count.
+- **Document frequency (DF):** Number of documents containing a term.
+- **Inverse document frequency (IDF):** A weight based on document rarity, not DF itself. A basic form is $\log(N/df(t))$ for a term present in a corpus of $N$ documents. [^1]
 
-$$idf(t,D) = log(\frac{N}{d \epsilon D : t \epsilon d})$$
+[[TF-IDF]] multiplies a TF weight by an IDF weight; it does not add them.
 
-N -> Total Number of Documents
-t -> Term
-d -> Document
+## Representation Vocabulary
 
-[[TF-IDF]] = TF + IDF 
+[[Bag of Words]] uses vocabulary dimensions and ignores ordering. [[N-Grams]] represents adjacent units. [[Embeddings]] uses learned vectors, while [[Cosine Similarity]] is a way to compare vectors rather than a representation itself.
 
-`Bag of words` - Here, all the words that is present in the corpus is aggregated and represented in a vector representation - It has all the words present in the corpus. It is called `bag` since there is no ordering or preservation of ordering of the sentences.
+## Practice
 
-`Word Vectors/Word Embedding` - Basically a downstream task wherein we are encoding aspects of a word's meaning in a lower dimensional space.
+In documents `red red boots` and `red shoes`, `red` has collection frequency 3 and document frequency 2. Its raw term frequency in the first document is 2. Explain why these counts answer different questions.
+
+## References & Useful Links
+
+[^1]: [Inverse document frequency](https://nlp.stanford.edu/IR-book/html/htmledition/inverse-document-frequency-1.html) — DF, rarity, and IDF weighting.

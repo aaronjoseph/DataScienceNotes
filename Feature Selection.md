@@ -1,3 +1,6 @@
+
+#search-eng
+
 ### What is Feature Selection ?
 
 Feature selection is a part of data science project. The steps that preceed feature selection are
@@ -123,3 +126,9 @@ Scikit methods
 ### Scikit-learn Libararies
 - sklearn.feature_selection.SelectFromModel
 - sklearn.feature_selection.RFE(estimator=model,n_features_to_select=3)
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

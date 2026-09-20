@@ -1,3 +1,6 @@
+
+#search-eng
+
 ### Reasoning
 
 Here, the top-level goal is to predict a scalar-valued target from a set of features, the scalar values is binary in nature for logistic regression
@@ -49,3 +52,9 @@ Actual - y | Predicted - $\hat{y}$ | Loss Function Result
 ---
 Mathematics : 
 ![[Logistic_Regression_Derivation.pdf]] [[Sigmoid Function]]
+
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]

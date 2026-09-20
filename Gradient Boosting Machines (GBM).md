@@ -1,3 +1,6 @@
+
+#search-eng
+
 **Gradient Boosting Machine (GBM)** is an ensemble machine learning technique that builds models sequentially, each new model attempting to correct the errors of the previous ones. This approach is effective for both regression and classification tasks.
 
 **How Gradient Boosting Works:**
@@ -18,3 +21,8 @@
 
 These improvements position XGBoost as a more robust and scalable version of traditional gradient boosting methods.
 
+## Search Connections
+
+- [[Search Engineering]] — Learning map and review status.
+- [[Search Ranking|Ranking]]
+- [[Data Leakage|Data leakage]]
