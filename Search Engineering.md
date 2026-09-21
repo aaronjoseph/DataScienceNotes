@@ -122,22 +122,6 @@ Validation: four standalone NumPy snippets executed successfully; five additiona
 
 This brings substantive concept coverage from the recorded 55 to 74 notes. The remaining 24 originally navigation-only notes are not certified by their tags. Prioritise label collection and imbalance next, followed by deployment and operational fundamentals. Existing unresolved Git conflicts in `.obsidian/workspace.json` are outside this content review and were left unchanged.
 
-## Labels and Feedback Review — 21 September 2026
-
-This pass changes **14 files**: eight existing concept notes, three new pages, two existing navigation connections, and this map.
-
-- **Expanded:** [[Data Labeling]], [[Active Learning]], [[Weak Supervision]], [[Semi-Supervised Labeling]], [[Imbalanced Classification]], [[Multi-Armed Bandits]], [[Undersampling]], and [[OverSampling|Oversampling]].
-- **New:** [[Annotation Agreement]], [[Probability Calibration]], and [[Relevance Pooling]]. Each has supporting references, an example, and connections to existing notes.
-- **Linked:** [[Judgement List]] and [[Search Evaluation]] now lead to the new material.
-
-Corrected the undersampling definition, replaced obsolete resampling API names, clarified ADASYN and SMOTETomek, and separated bandit objectives from fixed-allocation experiments. Added clickable footnotes and bottom reference sections throughout the eight expanded and three new notes.
-
-Suggested reading sequence: [[Data Labeling]] → [[Annotation Agreement]] → [[Relevance Pooling]] → [[Active Learning]] → [[Weak Supervision]] / [[Semi-Supervised Labeling]] → [[Imbalanced Classification]] → [[Probability Calibration]] → [[Multi-Armed Bandits]].
-
-Validation: internal note and incoming heading targets, footnote definitions, Python syntax, Markdown fences, and preserved attachments/tags/resources checked. The agreement example executed successfully; calibration arithmetic, sampling ratios, and pool size were checked independently. Resampling examples were checked against documentation but not executed because their dependencies are unavailable. Obsidian visual preview was not checked.
-
-Six of the 24 remaining originally navigation-only notes received substantive review here, leaving 18 from that original set. Undersampling and oversampling were additional adjacent reviews. Including the three new pages, the recorded substantive concept total rises from 74 to 85; this does not certify the rest of the vault. Application settings were untouched; Git currently reports no unmerged files.
-
 ## How to Continue
 
 Work through one connected group at a time. For each note, verify the main claims, preserve useful examples and attachments, add an exercise, link prerequisites and follow-on topics, and record unresolved work here. Use stable concept filenames and short display labels such as `[[Go Language|Go]]`.

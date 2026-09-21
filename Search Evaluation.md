@@ -43,11 +43,6 @@ Construct a system that improves reciprocal rank while lowering recall. Explain 
 - [[Click Bias]] — Interpret observed feedback and exposure.
 - [[Approximate Nearest Neighbours]] — Separate vector-index recall from relevance recall.
 
-## Label Quality and Coverage
-
-- [[Probability Calibration]] — Assess probability accuracy separately from ranking.
-- [[Relevance Pooling]] — Understand how incomplete judgments affect comparisons.
-
 ## References & Useful Links
 
 [^1]: [Evaluating ranked retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html) — Precision/recall tradeoffs and ranking evaluation.

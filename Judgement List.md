@@ -40,11 +40,6 @@ Write a rubric for ten product queries, then independently label the same pairs 
 - [[Search Evaluation]] — How judgments become metrics.
 - [[Data Leakage]] — Protect evaluation data.
 
-## Label Quality and Coverage
-
-- [[Annotation Agreement]] — Measure independent assessor consistency before adjudication.
-- [[Relevance Pooling]] — Choose assessment candidates and account for unjudged results.
-
 ## References & Useful Links
 
 [^1]: [IR system evaluation](https://nlp.stanford.edu/IR-book/html/htmledition/information-retrieval-system-evaluation-1.html) — Test collections and relevance assessments.
