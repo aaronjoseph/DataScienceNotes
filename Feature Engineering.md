@@ -1,68 +1,39 @@
+# Feature Engineering
 
 #search-eng
 
-> Coming up with features is difficult, time-consuming, and requires expert knowledge. Applied machine learning often requires carful engineering of the features and dataset - Andrew NG
+## Purpose
 
-Feature Engineering is used for
-- Getting the most out of the data
-	- Here, you make the data useful 
-	- Increasing predictive quality
-	- Reducing dimensionality with feature engineering
+Feature engineering makes raw data usable for a model through cleaning, extraction, transformation, and construction. It can improve prediction or efficiency, but additional features are hypotheses to test, not automatic improvements. The earlier attributed quotation is treated here as a paraphrased motivation because no original quotation source was recorded.
 
-- Feature engineering can be difficult and time consuming, but also very important to success
-- Squeezing the most out of data through feature engineering enables models to learn better
-- Concentrating predictive information in fewer features enables more efficient use of compute resource
+## A Practical Workflow
 
-## Main Preprocessing Operations
-- Data Cleansing
-- Feature Tuning
-- Representation transformation
-- Feature Extraction
-- Feature Construction
+1. Define the prediction target and what information exists at prediction time.
+2. Check schema, missing values, units, and joins.
+3. Construct representations such as buckets, [[Bag of Words]], [[Encoding]], [[Feature Scaling]], or [[Feature Cross|crosses]].
+4. Fit learned transformations on training partitions only.
+5. Compare a baseline using held-out quality and serving cost.
+6. Version transformations and monitor training/serving consistency.
 
-## Feature Engineering Flow Chart
 ```mermaid
 flowchart LR
-B[Tune Objective Function] --> A[Combine Feature] 
-A --> C[Make New Feature]
-C --> D[Launch & Reiterate]
-D --> B
+    A[Define target and available data] --> B[Construct features]
+    B --> C[Fit within training split]
+    C --> D[Validate quality and cost]
+    D --> E[Deploy and monitor]
+    E --> A
 ```
 
-## Feature Engineering Techniques
+## Where Transformations Run
 
-Numerical Range
-- [[Feature Scaling | Normalization & Standardization]]
+Offline precomputation can reduce serving cost, but requires freshness and consistent transformation logic. In-model transformations can package logic with the model but increase inference work. Neither location guarantees correctness. Avoid fitting preprocessing on the entire dataset before evaluation.
 
-Grouping
-- Bucketizing
-- Bag of words
+[[Dimensionality Reduction]] and [[PCA]] may reduce coordinates; [[T-SNE]] is primarily an exploratory visualisation tool, not a default serving transform.
 
-Other Techniques
-- [[Dimensionality Reduction]]
-	- [[PCA]]
-	- [[T-SNE]]
+## Search Exercise
 
-[[Feature Cross]]
+Construct a query–product feature for exact brand match and another for historical conversion. State when each is available, how missing values differ from zero, and how future conversions could cause [[Data Leakage]]. Evaluate the features in [[Learning to Rank]] before adopting them.
 
-## Pre-processing Training Dataset
+## References & Useful Links
 
-Pros | Cons
---|--
-Run-once | Transformations reproduced at serving
-Compute on entire dataset | Slower iterations
-
-
-## Feature Transformation within the model
-
-Pros | Cons
---|--
-Easy Iterations | Expensive transforms
-Transformation guarantees | Long model latency
-. | Transformations per batch : Skew
-
-## Search Connections
-
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+- [Google rules of machine learning](https://developers.google.com/machine-learning/guides/rules-of-ml) — Primary reference for the explanation above.

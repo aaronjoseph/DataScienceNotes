@@ -1,37 +1,34 @@
+# Cross Entropy Loss
 
 #search-eng
 
-**Cross-entropy loss** (also called log loss) is a widely used loss function in machine learning and deep learning for tasks involving classification.
+## Definition
 
-**Formula**:
+For target distribution q and predicted class distribution p:
 
-$$
-L = - \sum_{i=1}^{V} y_i \log(p_i)
-$$
-- $y_i$ is the true distribution (usually one-hot encoded). 
-- $p_i$ is the predicted probability for word $i$.
+$$H(q,p)=-\sum_{j=1}^{K}q_j\log p_j.$$
 
-| **Application**                    | **Description**                                                                                          | **Examples**                                                                                      |
-|-------------------------------------|----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| **Binary Classification**           | Measures performance in tasks where the output is either 0 or 1.                                           | Spam detection, image classification (yes/no)                                                     |
-| **Multiclass Classification**       | Used when there are more than two classes, and the output is a probability distribution across classes.    | Image classification (e.g., dog, cat, car), text classification (news categories)                 |
-| **Multilabel Classification**       | Applies cross-entropy loss to each label independently in tasks where an instance can have multiple labels.| Image tagging (e.g., predicting multiple tags for an image), document classification               |
-| **Deep Learning (Neural Networks)** | Standard loss function for neural networks, especially with softmax output layers.                        | CNNs (image classification), RNNs/Transformers (text generation, translation)                     |
-| **Logistic Regression**             | Used in logistic regression for binary classification tasks.                                               | Predicting purchase likelihood, predicting medical conditions                                     |
-| **NLP and Language Modeling**       | Measures the error in predicting the next word in language modeling or translation tasks.                  | Next-word prediction, machine translation, text generation                                        |
-| **Recommender Systems**             | Used in collaborative filtering when the problem is framed as a classification task.                       | Predicting user-item interactions, product or movie recommendations                               |
-| **Generative Models (GANs)**        | In GANs, the discriminator uses cross-entropy to classify real vs. generated data.                        | Image generation, deepfake generation                                                             |
-| **Speech Recognition**              | Used in models that predict sequences of words from spoken audio.                                          | Converting speech to text, text-to-speech systems                                                 |
+With a one-hot target in class c, this becomes $-\log p_c$. Classes can be words/tokens, image categories, or relevance labels. With natural logarithms, assigning probability 0.8 to the correct class gives loss about 0.2231; probability 0.2 gives about 1.6094.
 
+## Binary, Multiclass, and Multilabel
 
-### **Why is Cross-Entropy Loss Used?**
+- **Binary:** $-y\log p-(1-y)\log(1-p)$.
+- **Multiclass:** one distribution across mutually exclusive classes, commonly produced by [[Softmax Function]].
+- **Multilabel:** independent binary losses per label, typically using separate sigmoid outputs; labels do not have to sum to one.
 
-- **Smooth Probability Outputs**: Cross-entropy loss is effective when the model produces probabilities. It penalizes low probabilities assigned to the correct class and high probabilities assigned to incorrect classes.
-- **Differentiability**: Cross-entropy is a differentiable loss function, which is essential for training neural networks using gradient-based optimization techniques like stochastic gradient descent (SGD).
-- **Probability Interpretation**: It works well with models that output probability distributions, such as softmax classifiers.
+Applications include classification, [[Logistic Regression]], token prediction, and recommendation framed as interaction classification. Some GAN discriminators use this loss, but not every GAN objective does. Speech systems may use token cross-entropy or different alignment objectives; the application name alone does not fix the loss.
 
-## Search Connections
+## Implementation Pitfalls
 
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+PyTorch `CrossEntropyLoss` expects unnormalised logits, not softmax probabilities, and supports class-index or suitable probability targets. `BCEWithLogitsLoss` combines a sigmoid with binary cross-entropy for stability. Check shape, class axis, masks, weights, and reduction. Avoid applying softmax/sigmoid twice.
+
+Differentiability and probability interpretation make these objectives useful, but they do not guarantee calibrated predictions or factual output.
+
+## Exercise
+
+A model improves token loss while search answers become less helpful. Explain why [[Language Model|language modelling]] performance and [[Search Evaluation|search quality]] can diverge.
+
+## References & Useful Links
+
+- [PyTorch CrossEntropyLoss](https://docs.pytorch.org/docs/2.8/generated/torch.nn.CrossEntropyLoss.html) — Primary reference for the explanation above.
+- [PyTorch BCEWithLogitsLoss](https://docs.pytorch.org/docs/2.8/generated/torch.nn.BCEWithLogitsLoss.html) — Primary reference for the explanation above.

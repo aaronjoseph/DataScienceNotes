@@ -1,52 +1,29 @@
+# Dimensionality Reduction
 
 #search-eng
 
-`Curse of Dimensionality` - Having a lot of features slows down any learning algorithm.
+## Core Idea
 
-Dimensionality Reduction - Process of removing features.
-In high-dimension data, the distance between two points can be quite large. Hence for high dimensional data number of datapoints required is quite high else the high-dimensional space will remain quite sparse.
+Dimensionality reduction represents data using fewer coordinates. Feature selection retains a subset of original variables; feature extraction constructs new ones. Reducing dimensions can save storage and computation but can discard useful signal.
 
-Herein, we have to reduce the number of random variables in consideration
-- One can combine, transform or select variables 
-- Or make use of linear or non-linear operations
+The curse of dimensionality concerns sparse coverage and statistical/geometric difficulties as dimensions grow; it is not simply “every algorithm becomes slow”. Some datasets have useful low-dimensional structure, but the manifold hypothesis is an assumption to assess, not a universal fact.
 
-**Need for Dimensionality Reduction**
-1. Visulizing, exploring and understanding the data
-2. Extracting featurs and dominant modes
-3. Cleaning data
+## Methods and Uses
 
-**Applications**
-1. Image Compression
-2. Face recognition (Eigenface)
-3. NLP (Latent semantic analysis)
+| Method | Main goal | Limitation |
+|---|---|---|
+| [[PCA]] | Linear directions preserving variance | High variance need not predict the target |
+| [[Singular Value Decomposition|Truncated SVD]] | Low-rank matrix approximation; useful for sparse text | Uncentred text decomposition differs from PCA |
+| [[T-SNE]] | Visualise local neighbourhood structure | Plot distances between clusters need not reflect original global distances |
+| [[Feature Selection]] | Keep selected original features | Selection must be fitted within training data |
 
-**Steps to handle Dimensionality Reduction**
-1. Projection
-2. Manifold Learning
+Applications include image compression, eigenface representations, and latent semantic analysis. PCA does not preserve all pairwise distances after truncation; t-SNE does not promise exact local distances. Speed depends on dimensions, algorithm, implementation, and data size.
 
-**Manifold Assumption/ Manifold Hypothesis**
-Most real-world high-dimensional datasets lie close to a much lower-dimensional manifold
+## Search Exercise
 
-Dimensionality reduction will usually speed up training but will not guarentee better or simpler solution
+Reduce document vectors from 768 to 128 dimensions, applying the same fitted transformation to queries. Compare storage, nearest-neighbour recall, and judged relevance. Explain why variance retained is not enough to approve the change. See [[Embeddings]] and [[Approximate Nearest Neighbours]].
 
-### [[PCA|Principal Component Analysis]] 
-- Is the most popular dimensionality reduction algorithm
-- It finds the hyperplane closest to the data, and then projects the data onto it
+## References & Useful Links
 
-### [[T-SNE]]
-
-T-SNE is another approach for dimensionality reduction
-
-### Difference between T-SNE and PCA
-
-PCA | T-SNE
-----|-----
-Emerged in 1933 | Emerged in 2008
-Linear dimension reduction technique that seeks to maximise variance and preserve pairwise distances | t-SNE differs in the fact that,  it preserves only pair-wise distances or local similarities whereas PCA is concered with preserving large pairwise distances to maximize variance
-Very fast for large dataset | Will be extremely slow for large dataset, due to computational complexity
-
-## Search Connections
-
-- [[Search Engineering]] — Learning map and review status.
-- [[Embeddings]]
-- [[Tokenization]]
+- [Scikit-learn decomposition](https://scikit-learn.org/stable/modules/decomposition.html) — Primary reference for the explanation above.
+- [Manifold learning and t-SNE](https://scikit-learn.org/stable/modules/manifold.html) — Primary reference for the explanation above.

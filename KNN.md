@@ -1,48 +1,28 @@
+# KNN
 
 #search-eng
 
-https://www.geeksforgeeks.org/k-nearest-neighbours/
+## Core Idea
 
-### **K-Nearest Neighbours (KNN)**
+K-nearest neighbours predicts from nearby labelled examples: majority vote for classification or averaging for regression, optionally weighted by distance. It is non-parametric and often called lazy learning because it retains training examples rather than fitting a fixed-size prediction formula. Building a neighbour index still takes work.
 
-- **KNN** is a **lazy learning, non-parametric** algorithm used for **classification and regression**.
-- It makes predictions based on the **majority class** (for classification) or the **average value** (for regression) of its **K nearest neighbours**.
+Euclidean distance is $\sqrt{\sum_j(x_j-y_j)^2}$; Manhattan distance sums absolute differences. Metric and feature scale determine what “near” means. Choose [[Feature Scaling]] based on feature meaning, and fit it inside validation folds.
 
-### **Key Concepts**
+## Tradeoffs
 
-- **Distance Metrics:**
-    - Commonly used distances:
-        - **Euclidean Distance** ($d = \sqrt{\sum (x_i - y_i)^2}$)
-        - **Manhattan Distance**
-        - **Minkowski Distance**
-- **Choice of K:**
-    - A **small K** (e.g., K=1) → High variance, sensitive to noise.
-    - A **large K** → More generalised, but may blur decision boundaries.
-    - **Optimal K** is often chosen via **cross-validation**.
-- **Lazy Learning:**
-    - KNN **stores** all training data and makes predictions **only at query time**.
-- **Feature Scaling is Important:**
-    - KNN is **sensitive** to feature magnitudes, so **normalisation** or **standardisation** is needed.
+Small k can follow noise; larger k smooths predictions but may mix distinct classes. Select k and weighting with [[Cross Validation]], not test-set tuning. Exact search cost depends on data and indexing: trees do not guarantee fast queries in high dimensions. Irrelevant features can obscure meaningful neighbours.
 
-### **Pros and Cons**
+Uses include classification, regression, neighbour-based recommendation, and anomaly-score construction. A small dataset alone does not guarantee good accuracy.
 
-✅ **Advantages:**
-- Simple to understand and implement.
-- Works well with small datasets.
-- No explicit training phase (lazy learning).
-❌ **Disadvantages:**
-- Computationally expensive for large datasets.
-- Requires efficient memory storage.
-- Performance is affected by irrelevant or redundant features.
+## Worked Example and Exercise
 
-### **Use Cases**
-- Pattern recognition
-- Recommender systems
-- Anomaly detection
-- Image classification
+For a one-dimensional query at 3, training points 1:A, 2:A, and 4:B give neighbours 2:A and 4:B tied at distance one. With k=1, the tie policy matters; with k=3, majority vote predicts A. Specify ties and weights for reproducibility.
 
-## Search Connections
+Distinguish KNN prediction from retrieving vectors with [[Approximate Nearest Neighbours]]: retrieval need not produce a class label. Explain how approximate neighbours could change a vote.
 
-- [[Search Engineering]] — Learning map and review status.
-- [[Embeddings]]
-- [[Tokenization]]
+## References & Useful Links
+
+- [Scikit-learn neighbours](https://scikit-learn.org/stable/modules/neighbors.html) — Primary reference for the explanation above.
+
+Previously saved reading (preserved; not used to verify this revision):
+- [Original KNN tutorial](https://www.geeksforgeeks.org/k-nearest-neighbours/)

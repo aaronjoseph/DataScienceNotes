@@ -1,134 +1,44 @@
+# Feature Selection
 
 #search-eng
 
-### What is Feature Selection ?
+## Purpose
 
-Feature selection is a part of data science project. The steps that preceed feature selection are
+Feature selection retains original variables to reduce storage, computation, or statistical complexity. It differs from constructing new components through [[PCA]]. There is no mandatory universal preprocessing order: fit the entire chosen workflow inside training folds.
 
-- [[Feature Engineering]]
-- Missing Value Treatment
-- Normalization
-- Imbalanced Dataset
-- `Feature Selection`
+## Method Families
 
-There is a concept of [[Dimensionality Reduction| Curse of dimensionality]], wherein due to large number of features, the model may not perform well. 
+| Family | Mechanism | Limitation |
+|---|---|---|
+| Unsupervised | Ignore labels, for example remove constant columns | Low variance does not mean low predictive value |
+| Filter | Score relationships, for example F tests or mutual information | Univariate scores can miss interactions |
+| Wrapper | Evaluate subsets with an estimator, including forward selection or RFE | Search is costly and generally not globally optimal |
+| Embedded | Selection arises during fitting, for example L1 sparsity | Depends on model, scale, and penalty |
 
-## Need for Feature Selection
-- Reduce storage and I/O requirements
-- Minimize training and inference costs
+Pearson correlation captures linear association. [[Spearman Correlation]] and [[Kendall's Tau]] measure rank association; sample size alone does not dictate one. Mutual information can capture nonlinear dependence but must be estimated. Chi-square selection in scikit-learn expects suitable nonnegative features; an F test has different assumptions.
 
-## Types of Feature Selection
+Correlated predictors are not automatically disposable. They may differ in freshness, missingness, or robustness. L2 regularisation usually shrinks coefficients without selecting exact zeros.
 
-```mermaid
-flowchart LR
-A([Feature Selection]) --> B[Unsupervised Feature Selection]
-A --> C[Supervised Feature Selection]
+## Tools and Example
+
+`SelectKBest`, `SelectPercentile`, and `GenericUnivariateSelect` control univariate selection. `RFE` recursively removes features; `SelectFromModel` thresholds model-derived importance. `VarianceThreshold` removes columns below a variance threshold.
+
+```python
+import numpy as np
+X = np.array([[1., 0., 2.], [1., 1., 3.], [1., 0., 4.]])
+keep = X.var(axis=0) > 0
+assert keep.tolist() == [False, True, True]
 ```
 
+This illustrates zero-variance removal, not a trained predictive selector. Fit selectors on training data, then apply the same mask to validation/serving data.
 
-`Unsupervised Feature Selection`
-- Features-target variable relationship not considered
-- Removes redundant features (correlation)
+## Search Exercise
 
-`Supervised Feature Selection`
-- Uses features-target variable relationship
-- Selects those contributing the most
+Remove one expensive feature, retrain the ranker, and compare [[Search Evaluation|quality]] plus latency. Explain why a low [[Feature Importance|importance]] score alone does not approve removal.
 
-## Supervised Feature Selection
+## References & Useful Links
 
-```mermaid
-flowchart LR
-A([Supervised Feature Selection]) --> B[Filter Methods]
-A --> C[Wrapper Methods]
-A --> D[Embedded Methods]
-```
+- [Scikit-learn feature selection](https://scikit-learn.org/stable/modules/feature_selection.html) — Primary reference for the explanation above.
 
-
-## `Filter Methods`
-
-Have 3 types 
-- Correlation
-- Univariate Feature selection
-
-**Correlation**
-- Correlated features are usually redundant
-	- And it's ideal to remove them
-- Methods
-	- Pearson Correlation
-	- Univariate Feature Selection
-
-For comparing feature comparision, to evaluate how close the features are we have
-- Pearson's correlation: Linear relationships
-- Kendall Tau Rank Correlation Coefficient : Monotonic relationships & small sample size
-- Spearman's Rank Correlation Coefficient : Monotonic relationships
-- Mutual Information
-- F-test
-- Chi-Squared test
-
-**Univariate Feature Selection**
-
-1. SelectKBest
-2. SelectPercentile
-3. GenericUnivariateSelect
-
-**Correlation Filter Method Approach**
-
-```mermaid
-flowchart LR
-A[Set of All Features] --> B[Selecting the Best Subset]
-B --> C[ML Model]
-C --> D[Model Performance]
-```
-
-
-## `Wrapper Methods`
-
-This is a search method that goes throught the data and finds the optimal selection 
-- Forward Elimination
-- Backward Elimination
-- Recursive Feature Elimination
-
-```mermaid
-flowchart LR
-A[Set of All Fetures] --> B[Generate a subset]
-B <--> C[ML Model]
-C --> D[Performance]
-```
-
-## `Embedded Methods`
-Methods 
-- [[L1 and L2 Regularization|L1 Regularization]]
-- [[Feature Importance]]
-
-
-### Variance Threshold
-
-Here, based on the variance threshold features are identified which have variance below the threshold specified - the same will be removed 
-
-```py
-from sklearn.feature_selection import VarianceThreshold
-var_threshold = VarianceThreshold(threshold=0)
-var_threshold.fit(df)
-```
-
-### Univariate Feature Selection
-`Scoring each feature against a target`
-
-Some of the common methods in Uni-variate analysis are
-- Mutual Information
-- ANOVA F-test
-- $chi^2$
-
-Scikit methods
-- SelectKBest - Keeps the top-k scoring features
-- SelectPercentile - It keeps the top features which are in percentage specified by the user
-
-### Scikit-learn Libararies
-- sklearn.feature_selection.SelectFromModel
-- sklearn.feature_selection.RFE(estimator=model,n_features_to_select=3)
-
-## Search Connections
-
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+- [VarianceThreshold](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html) — Variance-based removal.
+- [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) — Recursive elimination and estimator requirements.

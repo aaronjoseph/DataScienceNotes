@@ -1,38 +1,41 @@
+# PCA
 
 #search-eng
 
-PCA or Principal Component Analysis is a dimensionality reduction method that transforms large sets of variables into smaller ones with most of the information in the large set.
+## Core Idea
 
-### Steps in PCA
-1. Standardization
-This is the first step in the, wherein the variance is contained. PCA is prone to high variance, standardization helps in solving this issue.
-2. Covariance Matrix Computation
-Covariance Matrix will determine the relationship between multiple independent variables
-Covariance matrix for 3 independent variables x,y,z is
-$$\begin{bmatrix}
-Cov(x,x) & Cov(x,y) & Cov(x,z)\\
-Cov(y,x) & Cov(y,y) & Cov(y,z)\\
-Cov(z,x) & Cov(z,y) & Cov(z,z)\\
-\end{bmatrix}$$
+Principal component analysis finds orthogonal linear directions of greatest variance in centred data. Keeping the first k directions gives a rank-k representation. “Most information” here means retained variance or squared reconstruction error, not guaranteed task relevance.
 
-Cov(x,y) = Cov(y,x), Covariance table is the table of summary of correlations between all possible pairs of variables
+## Mechanics
 
-3. Compute EigenVectors and EigenValues of Covariance Matrix to Identify Principal Components
-This is the most important step in the process
-- Every Eigenvector has eigenvalue, their number is equal to the number of dimensions
-- Eigenvectors and eigenvalues form the basis for PCA, since, Eigenvectors of the covariance matrix are actually the directions of the axes where there is the most amount of variance, which is known as Principal Component
+For $X\in\mathbb R^{n\times d}$, subtract each training-column mean to form $X_c$. Its sample covariance is $C=X_c^TX_c/(n-1)$ for $n>1$. Entry $C_{ij}$ is a covariance, not generally a correlation. Columns need not be statistically independent.
 
-4. Feature Vector
-Feature Vector stage, removes features that will result in `dimensionality reduction`
+Eigenvectors of C provide principal directions; eigenvalues give variance along them. Project onto the first k directions: $Z=X_cV_k$. These are new combinations of variables, not simply retained original columns. [[Singular Value Decomposition|SVD]] can compute the directions without explicitly constructing C.
 
-5. Recasting the data along the principal component axes
+Standardising feature scales is a modelling choice: appropriate when units would otherwise dominate, but not compulsory for every PCA problem. Fit centring, scaling, and components only on training data.
 
-<iframe border=0 frameborder=0 height=500 width=550  
- 
-src ="https://twitter.com/Jeande_d/status/1417093660244594688?s=20"</iframe>
+## Worked Example
 
-## Search Connections
+```python
+import numpy as np
+X = np.array([[1., 1.], [2., 2.], [3., 3.]])
+mean = X.mean(axis=0)
+U, s, Vt = np.linalg.svd(X - mean, full_matrices=False)
+Z = (X - mean) @ Vt[:1].T
+reconstructed = Z @ Vt[:1] + mean
+assert np.allclose(reconstructed, X)
+assert np.isclose(s[0]**2 / (s**2).sum(), 1)
+```
 
-- [[Search Engineering]] — Learning map and review status.
-- [[Embeddings]]
-- [[Tokenization]]
+Both coordinates vary together, so one component reconstructs all centred variation. Component signs may flip without changing the reconstruction.
+
+## Exercise
+
+Could a low-variance feature encode an important product constraint? Explain why removing it based only on variance might hurt [[Search Ranking]]. See [[Feature Scaling]] and [[Dimensionality Reduction]].
+
+## References & Useful Links
+
+- [PCA estimator and centring behaviour](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) — Primary reference for the explanation above.
+
+Previously saved reading (preserved; not used to verify this revision):
+- [Original PCA illustration](https://twitter.com/Jeande_d/status/1417093660244594688?s=20)

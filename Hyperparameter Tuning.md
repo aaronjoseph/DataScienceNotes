@@ -1,59 +1,47 @@
+# Hyperparameter Tuning
 
 #search-eng
 
-- `Hyperparameter`  is a parameter whose value is set before the learning process begins
-- This is not updated in each training steps
-- And it is not scalable
+## Purpose
 
-# Grid Search
-The idea of grid search is to search the hyper-parameter space within the grid-values. The grid value defines for each hyperparameter which values should be tested.
+Hyperparameters configure the learning procedure: tree count, depth, regularisation, or learning rate, for example. They are distinct from model parameters fitted during training, although schedules and adaptive procedures can change some settings during a run. They are not inherently “unscalable”.
 
-In all does an exhaustive search on the specified parameters.
+Grid search evaluates a specified finite set. Randomised search samples from lists or distributions under a trial budget; it is not limited to points on a fixed grid. Compare using the same validation design and metric. More trials can overfit validation choices, so retain a final test set or use nested validation.
 
-```py
-from sklearn.model_selection import GridSearchCV
+## Self-Contained Search Example
 
-param_grid = [
-    # try 12 (3×4) combinations of hyperparameters
-    {'n_estimators': [3, 10, 30], 'max_features': [2, 4, 6, 8]},
-    # then try 6 (2×3) combinations with bootstrap set as False
-    {'bootstrap': [False], 'n_estimators': [3, 10], 'max_features': [2, 3, 4]},
-  ]
+Requires NumPy, SciPy, and scikit-learn. Synthetic data replaces the earlier undefined housing variables. This demonstrates API use, not a meaningful model benchmark.
 
-forest_reg = RandomForestRegressor(random_state=42)
-# train across 5 folds, that's a total of (12+6)*5=90 rounds of training 
-grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
-                           scoring='neg_mean_squared_error',
-                           return_train_score=True)
-grid_search.fit(housing_prepared, housing_labels)
-
-# Best Parameters
-grid_search.best_params_
-```
-# Randomized Search
-
-In random search, the process is as follows
-1. Take a random point on the grid and measure the objective function
-2. If the value is better than the best one acheived so far, keep the point in memory
-3. Repeat for a certain, pre-defined number of times
-
-```py
-from sklearn.model_selection import RandomizedSearchCV
+```python
+from sklearn.datasets import make_regression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, KFold
 from scipy.stats import randint
+X, y = make_regression(n_samples=120, n_features=8, noise=5, random_state=42)
+cv = KFold(n_splits=5, shuffle=True, random_state=42)
+forest = RandomForestRegressor(random_state=42, n_jobs=1)
+grid = [
+    {'n_estimators': [3, 10, 30], 'max_features': [2, 4, 6, 8]},
+    {'bootstrap': [False], 'n_estimators': [3, 10], 'max_features': [2, 3, 4]},
+]
+search = GridSearchCV(forest, grid, cv=cv, scoring='neg_mean_squared_error')
+search.fit(X, y)
+assert len(search.cv_results_['params']) == 18
+print(search.best_params_, -search.best_score_)
+random_search = RandomizedSearchCV(
+    forest, {'n_estimators': randint(1, 200), 'max_features': randint(1, 8)},
+    n_iter=10, cv=cv, scoring='neg_mean_squared_error', random_state=42)
+random_search.fit(X, y)
+print(random_search.best_params_, -random_search.best_score_)
+```
 
-param_distribs = {
-        'n_estimators': randint(low=1, high=200),
-        'max_features': randint(low=1, high=8),
-    }
+The grid uses 18 configurations × five folds = 90 validation fits, plus one final refit under the default `refit=True`. Random search uses 50 validation fits plus a refit. Negative MSE follows scikit-learn's higher-is-better scoring convention; negate it to report MSE. `randint` excludes its upper bound.
 
-forest_reg = RandomForestRegressor(random_state=42)
-rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,
-                                n_iter=10, cv=5, scoring='neg_mean_squared_error', random_state=42)
-rnd_search.fit(housing_prepared, housing_labels)
-``
+## Search Exercise
 
-## Search Connections
+For [[Learning to Rank]], keep query groups intact and tune a query-level metric. Do not pass ranking rows into this regression example and assume the split is valid. Fit any learned preprocessing within the folds; see [[Data Leakage]] and [[Cross Validation]].
 
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+## References & Useful Links
+
+- [Scikit-learn tuning guide](https://scikit-learn.org/stable/modules/grid_search.html) — Primary reference for the explanation above.
+- [GridSearchCV API](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) — Primary reference for the explanation above.

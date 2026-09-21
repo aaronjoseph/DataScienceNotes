@@ -1,28 +1,31 @@
+# Gradient Boosting Machines (GBM)
 
 #search-eng
 
-**Gradient Boosting Machine (GBM)** is an ensemble machine learning technique that builds models sequentially, each new model attempting to correct the errors of the previous ones. This approach is effective for both regression and classification tasks.
+## Core Idea
 
-**How Gradient Boosting Works:**
-1. **Initialisation**: Start with an initial prediction, often the mean of the target variable for regression tasks.
-2. **Iterative Training**:
-	1. **Compute Residuals**: Calculate the difference between the actual and predicted values (residuals).
-	2. **Fit Weak Learner**: Train a weak model (typically a decision tree) to predict these residuals.
-	3. **Update Model**: Adjust the existing model by adding the new weak learner, scaled by a learning rate, to improve predictions.
-3. **Repeat**: Continue this process for a specified number of iterations or until the residuals are minimized.
+Gradient boosting builds an additive predictor by fitting successive learners to a loss-improvement direction. “Fit the residuals” is exact for squared-error boosting, but is not the general rule for every objective.
 
-**XGBoost as a Successor to GBM:**
+At round m, pseudo-residuals are negative derivatives with respect to current predictions:
 
-**XGBoost (eXtreme Gradient Boosting)** is an advanced implementation of the gradient boosting framework. While it shares the foundational principles of traditional GBM, XGBoost introduces enhancements that make it more efficient and powerful:
-- **Regularization**: Incorporates L1 and L2 regularization to prevent overfitting.
-- **Parallel Processing**: Utilizes parallel computation to speed up model training.
-- **Tree Pruning**: Employs a depth-first approach with a maximum depth parameter to control model complexity.
-- **Handling Missing Values**: Automatically learns the best way to handle missing data during training.
+$$r_{im}=-\left.\frac{\partial L(y_i,F(x_i))}{\partial F(x_i)}\right|_{F=F_{m-1}}.$$
 
-These improvements position XGBoost as a more robust and scalable version of traditional gradient boosting methods.
+Fit a learner $h_m$ to this signal and update $F_m=F_{m-1}+\eta\gamma_mh_m$, where $\eta$ is a learning rate and $\gamma_m$ represents an appropriate step/leaf-value choice. For squared error, initialise at the training mean; other losses have different optimal constants.
 
-## Search Connections
+## Worked Example
 
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+Using half squared error, targets `[1, 3]` and initial predictions `[2, 2]` give negative gradients `[-1, 1]`. If a learner fits them exactly, a learning rate of 0.1 produces `[1.9, 2.1]`. Ordinary squared residual error falls from 2 to 1.62; this training improvement does not prove better generalisation.
+
+## Implementations and Tradeoffs
+
+[[XGBoost]] and [[Light GBM]] implement related boosting frameworks with specific objectives, regularisation, and algorithms. They are not universal successors that dominate every GBM setup. Successive rounds depend on earlier predictions even when work within a round is parallelised.
+
+Tune learning rate, tree complexity, number of rounds, and validation-based stopping together. Regularisation reduces overfitting risk without guaranteeing its absence.
+
+## Search Exercise
+
+Explain why applying a regression residual recipe to relevance grades is different from [[Learning to Rank|query-aware ranking]]. Keep query groups intact and compare held-out [[NDCG]].
+
+## References & Useful Links
+
+- [Scikit-learn gradient boosting](https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting) — Primary reference for the explanation above.

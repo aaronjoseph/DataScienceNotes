@@ -1,43 +1,36 @@
+# Feature Importance
 
 #search-eng
 
-### Need for Feature Importance
+## What Importance Means
 
-For any business application, there is a need to understand how the model provides the results
-- Which Variables are most engaged in the model
-- Presence of Correlations
-- Possible causation relationships
+Feature importance describes a fitted model's dependence on inputs under a particular method, dataset, and metric. It does **not** establish that changing a feature causes the outcome. Different models or correlated substitutes can assign different importance to the same variable.
 
-For such tasks, `Tree` based methods are quite useful, they are scalable and permits to compute variable explanation very easily.
+## Methods
 
-For neural networks, [[Permuatation Importance]] can be used to understand which variable is most engaged
+- **Coefficients:** interpret direction and scale in linear models; compare magnitudes only with units and transformations in mind. For [[Logistic Regression]], coefficients affect log-odds, not probability by a constant amount.
+- **Tree impurity importance:** attributes training split improvements to features. It can favour high-cardinality features and need not reflect held-out performance.
+- **[[Permuatation Importance|Permutation importance]]:** measure score degradation when a feature is shuffled. It can apply to any compatible estimator, including neural models, rather than only one model family.
 
-- Feature Importance can provide insights into the dataset - relative score can highlight which feature may be most relevant to the target and the converse, which features are the least relevant. 
-- Feature Importance can vary from model to model 
-- Feature Importance can help understand which feature to drop based on the scores and [[Dimensionality Reduction]] can be done on the same
+Correlated features can mask one another under permutation. Shuffling may create unrealistic combinations; results depend on the chosen data and metric. Model stochasticity is one source of variation, not a reason every tree necessarily changes between runs.
 
----
+## Reading Estimator Outputs
 
-### Feature Importance Code
+Illustrative inspection, assuming a fitted compatible estimator:
 
-- Linear Regression & Logistic Regression
-```py
-# For Linear Regression we can obtain the coefficients
-importance = model.coef_
-for i,v in enumerate(importance):
-	print(i,v)
+```python
+# Linear estimators: rows may represent classes or output targets.
+coefficients = model.coef_
+# Tree estimators exposing impurity-based importance:
+# importance = model.feature_importances_
 ```
 
-- DecisionTrees
-```
-# For Trees Based Models
-importance = model.feature_importances_
-```
- 
- > Results of a tree based model will differ based on the Stocastic nature of the model
+This is an API illustration, not a standalone executable example. Do not flatten multiclass coefficients into a single unexplained ranking.
 
-## Search Connections
+## Search Exercise
 
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+A popularity feature is important in a click-trained ranker. Explain why this might reflect exposure bias, correlation, or a useful signal. Compare an ablation using fixed candidates and held-out [[NDCG]], then inspect [[Click Bias]]. Use [[Feature Selection]] only after validating the proposed removal.
+
+## References & Useful Links
+
+- [Permutation feature importance](https://scikit-learn.org/stable/modules/permutation_importance.html) — Primary reference for the explanation above.

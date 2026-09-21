@@ -1,70 +1,35 @@
+# L1 and L2 Regularization
 
-#search-eng
+#search-eng #dl
 
-#dl 
-`Overfitting` - the phenomenon, wherein the model has higher accuracy score for the training data, but fails to generalize for any other model.
+## Purpose
 
-In general, simple linear regression is not prone to overfitting, however, higher degree polynomial regression functions or deep learning algorithms will be prone to overfitting due to its complex architecture
+Overfitting means fitting training-specific patterns that do not generalise well. Even linear models can overfit relative to available data. L1 and L2 regularisation add coefficient penalties; they are not defined as injecting noise and do not guarantee prevention of overfitting.
 
-`Regularisation` - The process of adding noise in the model to prevent the model from overfitting. In the general sense, regularisation is a mathematical constraint injected into the loss function. A loss function by function tries to minimise the error between y and $\hat{y}$
+For data loss $J_0(w)$ and $\lambda\ge0$:
 
-### L1 and L2 Regularisation
+$$J_{L1}=J_0+\lambda\sum_j|w_j|,\qquad J_{L2}=J_0+\lambda\sum_jw_j^2.$$
 
+L1 can yield exact zeros under suitable optimisation; L2 usually shrinks weights without making them exactly zero. Squared-error regression with these penalties gives lasso and ridge respectively. L2 here uses the **squared** Euclidean norm. Penalty scaling and intercept treatment vary across implementations.
 
-L1 and L2 Regularisation gets its name from [[L0, L1, L2 & L-Infinity Norm| L1 & L2 Norm]]
+## Correct Descent Direction
 
-A linear Regression Model that uses L1 norm for regularisation is called Lasso Regression.
+Gradient descent subtracts a derivative: $w_{new}=w-\alpha\partial J/\partial w$, with $\alpha>0$. For one example and $J_0=(wx+b-y)^2$:
 
-One that implements L2 is called Ridge Regression.
+$$\frac{\partial J_0}{\partial w}=2x(wx+b-y).$$
 
-In both cases, the hypothesis function remains the same. However, there are changes in the loss function.
+L2 adds $2\lambda w$ to that derivative. L1 adds $\lambda\operatorname{sign}(w)$ when $w\ne0$; at zero, use a subgradient or a suitable proximal solver rather than pretending an ordinary derivative exists.
 
-Hypothesis Function
-$$\hat{y} = w_1x_1 + ..+ w_Nx_N$$
+## Worked Example
 
-Standard Loss Function
-$$Loss = Error(y,\hat{y})$$
-Loss Function with L1 regularization
-$$Loss = Error(y,\hat{y}) + \lambda \sum_{i=1}^{N}|w_i|$$
-Loss Function with L2 regularization
-$$Loss = Error(y,\hat{y}) + \lambda \sum_{i=1}^{N}|w_i^2|$$
+For $x=1,y=0,b=0,w=2,\lambda=0.5,\alpha=0.1$, the data gradient is 4. An L2 step gives $2-0.1(4+2)=1.4$; an L1 step away from zero gives $2-0.1(4+0.5)=1.55$.
 
-> In the absolute sense, L2 regularization uses L2 Norm with the exception of square root, this is not present in the equation
+## Practical Choice and Exercise
 
-Here, $Error(\hat{y}-y) = (\hat{y}-y)^2$
-For Simple Linear Regression, where y = wx + b, we have
-$Error(\hat{y}-y) = (wx+b-y)^2$
+Scale features deliberately before penalising coefficients; otherwise their units affect the penalty. Correlated inputs can make L1 selection unstable. Choose strength within [[Cross Validation]], then assess an untouched test set.
 
-For [[Gradient Descent| Gradient Update]] we have the following,
+For a [[Learning to Rank|ranker]], compare feature cost, validation quality, and sparsity. Explain why removing one correlated feature does not prove it was causally irrelevant. See [[Gradient Descent]], [[Feature Selection]], and [[L0, L1, L2 & L-Infinity Norm|norms]].
 
-Standard Equation 
-$$w_{new} = w + \alpha \frac{\partial{L}}{\partial{w}} $$
+## References & Useful Links
 
-Update Rule for Standard Regression Function
-
-$$w_{new} = w + \alpha \frac{\partial{L}}{\partial{w}} $$
-$$=  w + \alpha [2x(wx+b-y)] $$
-
-Update for L1 Regularisation
-
-$$w_{new} = w + \alpha \frac{\partial{L}}{\partial{w}} $$
-$$=  w + \alpha [2x(wx+b-y) + \lambda \frac{d|w|}{dw}] $$
-$$ \begin{cases}
-    w - \alpha [2x(wx+b-y) + \lambda] & \text{if w > 0}\\
-    w - \alpha [2x(wx+b-y) - \lambda] & \text{if w < 0}
-  \end{cases}
-$$
-
-Update for L2 Regularisation
-
-$$w_{new} = w + \alpha \frac{\partial{L}}{\partial{w}} $$
-$$=  w + \alpha [2x(wx+b-y) + \lambda \frac{d|w|^2}{dw}] $$
-$$ = w - \alpha [2x(wx+b-y) + 2\lambda w] $$
-
-On close observation, L1 Regularisation has effects of pushing the weights close to 0, as in when the value is greater than 0, it negates the weights and less than zero, it has an additive effect. This is quite useful in multi-collinearity situtaion, wherein, it has effects of removing unnecessary variables.
-
-## Search Connections
-
-- [[Search Engineering]] — Learning map and review status.
-- [[Search Ranking|Ranking]]
-- [[Data Leakage|Data leakage]]
+- [Ridge and lasso formulations](https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification) — Primary reference for the explanation above.
