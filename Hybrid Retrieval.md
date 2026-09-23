@@ -25,7 +25,7 @@ The fused order is B, A, D, C. Choosing 10 here makes arithmetic easy; it is not
 
 ## Practical Choices
 
-Deduplicate using stable document identity. Apply eligibility consistently across sources, log missing-source fallbacks, and distinguish source candidate limits from reranking depth. Score-based fusion is another option, but requires justified calibration/normalisation and validation; arbitrary addition can let one scale dominate.
+Deduplicate using stable document identity. Apply eligibility consistently across sources, log missing-source fallbacks, and distinguish source candidate limits from reranking depth. Score-based fusion is another option, but requires justified calibration/normalisation and validation; arbitrary addition can let one scale dominate. See [[Candidate Generation]] for channel design and merging, [[Score Normalization]] for score-based combination, and [[SPLADE]] for a learned sparse source.
 
 ## Exercise
 

@@ -37,6 +37,10 @@ For one failed query, record candidate IDs after each stage, the scoring method,
 
 - [[Learning to Rank]] — Objectives, labels, and query groups.
 - [[Hybrid Retrieval]] — Combine candidate sources before reranking.
+- [[Cross-Encoder]] — Joint query–candidate relevance scoring for reranking.
+- [[ESCI]] — Graded product-search relevance classes.
+- [[Score Normalization]] — Combining signals and lexicographic business ordering.
+- [[Search Architecture]] — Where ranking sits in the full pipeline.
 
 ## References & Useful Links
 

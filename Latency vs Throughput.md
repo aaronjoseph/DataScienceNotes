@@ -25,6 +25,7 @@ Aim for useful throughput within quality, latency, and reliability constraints r
 ## Related Notes
 
 - [[Monitoring - MLOPS|Monitoring]] — Observability across the pipeline.
+- [[Tail Latency]] — Fan-out amplification and tail-tolerant techniques.
 - [[Rust and Go]] and [[Go Language|Go]] — Execution costs and runtime design.
 
 ## References & Useful Links

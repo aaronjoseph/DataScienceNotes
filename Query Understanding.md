@@ -9,7 +9,7 @@ Query understanding turns an expressed query into retrieval decisions while pres
 ## Distinguish the Operations
 
 - **Text analysis:** [[Tokenization]], case handling, [[Stemming and Lemmatization]], and [[Stopwords]] affect indexed and searched terms.
-- **Entity interpretation:** recognise a product type, brand, size, or identifier with uncertainty and context.
+- **Entity interpretation:** recognise a product type, brand, size, or identifier with uncertainty and context. See [[Named Entity Recognition]]; routing by query type is covered in [[Query Intent Classification]].
 - **Expansion:** add alternatives while controlling precision loss.
 - **Constraint handling:** decide whether an attribute is mandatory or a preference; make that a product rule rather than a silent model guess.
 

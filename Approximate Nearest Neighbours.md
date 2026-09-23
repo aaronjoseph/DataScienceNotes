@@ -23,7 +23,7 @@ $$\mathrm{ANN\ recall@k}=|E_k\cap A_k|/k.$$
 
 If exact neighbours are `{A,B,C,D}` and ANN returns `{A,C,E,F}`, recall@4 is 0.5. This measures recovery of vector neighbours, not judged relevant documents. Define ties consistently.
 
-Sweep search effort and report recall, latency tails, memory, build/update cost, and query slices. Filters can reduce available candidates; test the actual filtered workload. See [[Embeddings]], [[Cosine Similarity]], [[Search Evaluation]], and [[Index Updates]].
+Sweep search effort and report recall, latency tails, memory, build/update cost, and query slices. Filters can reduce available candidates; test the actual filtered workload (see [[Filtered Vector Search]]). See [[Embeddings]], [[Cosine Similarity]], [[Search Evaluation]], and [[Index Updates]].
 
 ## Exercise
 

@@ -4,7 +4,7 @@
 
 ## Core Idea
 
-Learning to rank trains a scoring or ordering model for documents **within a query context**. Typical data contains a query ID, candidate document, query–document features, and a relevance grade. Candidate generation remains a separate constraint: the model cannot rank an item it never receives.
+Learning to rank trains a scoring or ordering model for documents **within a query context**. Typical data contains a query ID, candidate document, query–document features, and a relevance grade. Candidate generation remains a separate constraint: the model cannot rank an item it never receives (see [[Candidate Generation]]).
 
 ## Objective Families
 
