@@ -119,12 +119,14 @@
             "id": "20cf302ab5813756",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "split-diff-view",
               "state": {
-                "file": "Excalidraw/Project.md"
+                "aFile": "Bag of Words.md",
+                "bFile": "Bag of Words.md",
+                "aRef": ""
               },
-              "icon": "excalidraw-icon",
-              "title": "Project"
+              "icon": "diff",
+              "title": "Diff: Bag of Words  (Working Tree)"
             }
           }
         ],
@@ -261,7 +263,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Excalidraw/Project.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -318,7 +319,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/Project.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -352,8 +352,8 @@
   },
   "active": "20cf302ab5813756",
   "lastOpenFiles": [
-    "Untitled 2.base",
     "Excalidraw/Project.md",
+    "Untitled 2.base",
     "Untitled 1.base",
     "Untitled.base",
     "Untitled.md",
