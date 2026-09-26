@@ -33,6 +33,8 @@ Preserve the original concern about optimising engagement at users' expense: a h
 
 - [[P-Value]] and [[Confidence Interval]] — Evidence and uncertainty.
 - [[Product Metrics]] — Business outcomes; definitions need their own review.
+- [[Interleaving]] — A more sensitive paired comparison for rankers; complements rather than replaces A/B tests.
+- [[Shadow Deployment]] — Compare a new version on mirrored traffic before exposing users.
 
 ## References & Useful Links
 

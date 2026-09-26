@@ -16,7 +16,7 @@ For intuition, suppose click probability at a position is examination probabilit
 
 Editorial [[Judgement List|judgments]], carefully designed randomised exposure, and logged presentation information provide complementary evidence. Inverse propensity weighting can correct specific observation biases when propensities are valid and positive for the target comparisons. Small propensities cause high variance; clipping trades bias for stability. Weighting is not a blanket cure for every bias or missing variable.
 
-Record displayed positions, candidate eligibility, experiment assignment, and relevant policy versions subject to privacy constraints. Evaluate assumptions before using clicks for [[Learning to Rank]] or [[Product Metrics]].
+Record displayed positions, candidate eligibility, experiment assignment, and relevant policy versions subject to privacy constraints. Evaluate assumptions before using clicks for [[Learning to Rank]] or [[Product Metrics]]. For comparing two rankers, [[Interleaving]] uses paired click preferences within one result list; it reduces between-user noise but still inherits these biases.
 
 ## Exercise
 

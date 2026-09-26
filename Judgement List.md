@@ -39,6 +39,7 @@ Write a rubric for ten product queries, then independently label the same pairs 
 - [[Data Labeling]] — Annotation methods.
 - [[Search Evaluation]] — How judgments become metrics.
 - [[Data Leakage]] — Protect evaluation data.
+- [[ESCI]] — A four-class product-search rubric with published agreement figures.
 
 ## References & Useful Links
 

@@ -25,14 +25,28 @@
             "id": "c87dfd7544638965",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "System Design.md",
-                "mode": "source",
-                "source": false
+                "aFile": "AB Testing.md",
+                "bFile": "AB Testing.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "System Design"
+              "icon": "diff",
+              "title": "Diff: AB Testing  (Working Tree)"
+            }
+          },
+          {
+            "id": "62112b68c5f556fc",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://arxiv.org/html/2206.06588v1",
+                "title": "Shopping Queries Dataset: A Large-Scale ESCI Benchmark for Improving Product Search",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Shopping Queries Dataset: A Large-Scale ESCI Benchmark for Improving Product Search"
             }
           },
           {
@@ -134,7 +148,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -146,7 +162,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "system design",
+                "query": "tag:#search-eng",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -233,7 +249,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       },
       {
         "id": "cb753ac662c1aa16",
@@ -246,7 +262,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Spark Lazy Evaluation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -274,7 +289,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Spark Lazy Evaluation"
+              "title": "Local graph"
             }
           }
         ]
@@ -303,10 +318,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spark Lazy Evaluation.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Spark Lazy Evaluation"
+              "title": "Outline"
             }
           }
         ],
@@ -314,11 +331,11 @@
       }
     ],
     "direction": "horizontal",
-    "width": 352.5,
-    "collapsed": true
+    "width": 352.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "obsidian-kanban:Create new board": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
@@ -326,13 +343,18 @@
       "graph:Open graph view": false,
       "command-palette:Open command palette": false,
       "zk-prefixer:Create new unique note": false,
-      "random-note:Open random note": false
+      "random-note:Open random note": false,
+      "realclaudian:Open Claudian": false,
+      "copilot:Open Copilot Agent Chat": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "c87dfd7544638965",
   "lastOpenFiles": [
-    "Primitives - System Design.md",
+    "ESCI.md",
+    "Search Engineering.md",
     "System Design.md",
+    "Primitives - System Design.md",
     "Embedding vs. Encoding - Understanding the Difference.md",
     "Embeddings.md",
     "L1 and L2 Regularization.md",
@@ -355,8 +377,6 @@
     "Ridge, Lasso Regression & Elastic Net.md",
     "Bagging.md",
     "Confusion Matrix & Metrics.md",
-    "Research_Paper/Attention is not all you need.md",
-    "7 Database Paradigms.md",
     "System_Design",
     "Job Interviews/Data_Science_Question.pdf",
     "Job Interviews/Behavioural",

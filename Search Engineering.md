@@ -15,8 +15,8 @@ Use this map to build search fundamentals from the existing vault. Follow the ma
 4. **Understand vector representations:** [[Embedding and Encoding]], [[Word2Vec]], [[Embeddings]], [[Cosine Similarity]], [[Dense Retrieval]], [[SPLADE]], [[Approximate Nearest Neighbours]], and [[Filtered Vector Search]]. Distinguish learned similarity from exact constraints and measured relevance.
 5. **Separate retrieval from ranking:** [[Candidate Generation]], [[Hybrid Retrieval]], [[Search Ranking|Ranking]], [[Cross-Encoder]], [[Learning to Rank]], [[Score Normalization]], and [[Search Result Diversification]]. Trace candidate coverage before judging the final ordering.
 6. **Measure search quality:** [[Judgement List|Relevance judgments]], [[ESCI]], [[Search Evaluation]], [[NDCG]], and [[Click Bias]]. Define the corpus, unit, cutoff, label rubric, and aggregation. Use [[Kendall's Tau]] or [[Spearman Correlation]] for rank agreement, not as replacements for relevance metrics.
-7. **Evaluate learning and experiments:** [[Model Evaluation]], [[Cross Validation]], [[Data Leakage]], [[Feature Scaling]], [[AB Testing|A/B testing]], and [[P-Value]]. Match splits and randomisation to the question being answered.
-8. **Connect quality to serving:** [[Index Updates]], [[Monitoring - MLOPS|Monitoring]], [[Latency vs Throughput]], [[Tail Latency]], [[Go Language|Go]], and [[Rust and Go]]. Explain the resource cost of increasing candidate counts or using a more expensive ranker.
+7. **Evaluate learning and experiments:** [[Model Evaluation]], [[Cross Validation]], [[Data Leakage]], [[Feature Scaling]], [[AB Testing|A/B testing]], [[Interleaving]], and [[P-Value]]. Match splits and randomisation to the question being answered.
+8. **Connect quality to serving:** [[Index Updates]], [[Search Caching]], [[Shadow Deployment]], [[Monitoring - MLOPS|Monitoring]], [[Latency vs Throughput]], [[Tail Latency]], [[Go Language|Go]], and [[Rust and Go]]. Explain the resource cost of increasing candidate counts or using a more expensive ranker.
 
 ```mermaid
 flowchart LR
@@ -135,6 +135,16 @@ Suggested order: [[Search Architecture]] → [[Query Intent Classification]] →
 - **Open:** Broder's query taxonomy and intent-aware diversity metrics are recorded as `#TODO` items in their notes. Obsidian preview was not checked.
 
 Next candidates from the same architecture: search caching and session state, query rewriting, engagement features and feedback loops in LTR, and interleaving for online ranking comparison.
+
+### Follow-Up Pass: 23 September 2026
+
+All four next candidates above were addressed:
+
+- **New notes:** [[Search Caching]] and [[Interleaving]].
+- **Expanded:** [[Query Understanding#Query Rewriting|query rewriting]] in [[Query Understanding]], and [[Learning to Rank#Engagement Features|engagement features]] in [[Learning to Rank]], including XGBoost's missing-versus-zero behaviour.
+- **Rewritten:** [[Shadow Deployment]], previously a stub. The original human-in-the-loop definition is preserved as one of two meanings, alongside service traffic mirroring.
+- **Links only:** [[Click Bias]], [[AB Testing]], [[Judgement List]], and [[Index Updates]].
+- **Sources:** Radlinski et al. (2008) and Chapelle et al. (2012) full texts, Redis `EXPIRE`, Istio mirroring, and the XGBoost FAQ. The Team-Draft example and cache arithmetic were executed and checked. Obsidian preview was not checked.
 
 ## How to Continue
 

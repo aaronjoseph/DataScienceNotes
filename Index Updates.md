@@ -20,6 +20,8 @@ Track source version, ingestion, transformation, index acknowledgement, and obse
 
 Changing token analysis or embedding models can require rebuilding data. Keep query/document representations compatible, validate a replacement index, catch up intervening updates, and use a controlled cutover with a rollback plan. Measure both freshness and relevance after cutover.
 
+Attributes that change faster than the index refreshes, such as price and availability, are often re-checked in a live store after retrieval rather than trusted from index filters; see [[Filtered Vector Search]] and [[Search Caching]].
+
 ## Exercise
 
 A product changes price at 10:00, reaches ingestion at 10:01, is acknowledged at 10:02, and becomes searchable at 10:03. Source-to-search lag is three minutes; acknowledgement-to-search lag is one. Decide which reflects the user's experience. See [[Inverted Index]], [[Approximate Nearest Neighbours]], and [[Monitoring - MLOPS|Monitoring]].

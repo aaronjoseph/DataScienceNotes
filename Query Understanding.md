@@ -19,6 +19,28 @@ Index and query analysis should be compatible, not necessarily identical. Preser
 
 For `red waterproof hiking boots size 9`, extract candidate attributes, then ask whether size is expressed in a known sizing system and whether red is a hard constraint. Blindly expanding boots to every shoe type can hurt precision. For an identifier such as `AB-123`, punctuation or stemming changes may destroy the match.
 
+## Query Rewriting
+
+A rewrite replaces or augments the user's query before retrieval. Common sources:
+
+| Source | Example | Main risk |
+|---|---|---|
+| Spelling correction | `hedphones` → `headphones` | Correcting a valid brand or model name |
+| Curated rewrite map | Exact normalised query → replacement | Stale entries; silent coverage gaps |
+| Synonym expansion | `tv` also matches `television` | Precision loss from loose synonyms |
+| Relaxation | Drop a term after zero results | Returning results that ignore a hard constraint |
+| Model-generated rewrite | Paraphrase from a language model | Changed identifiers, negation, or intent |
+
+Practices:
+
+- **Keep the original query.** Log the original, the rewrite, and its source for every request.
+- **Decide the order.** Rewriting before [[Named Entity Recognition|NER]] changes which entities are found; rewriting after changes only retrieval text.
+- **Key exact rewrite maps by the normalised query** and normalise the same way when writing and reading. Cached rewrites need a refresh path; see [[Search Caching]].
+- **Make fallbacks visible.** A zero-result retry with a relaxed query should be flagged in the response and logs, so its quality can be measured separately.
+- **Protect identifiers.** Route identifier-like queries away from rewriting; see [[Query Intent Classification]].
+
+Evaluate each rewrite source separately: queries affected, change in zero-result rate, and judged quality on affected queries only. An aggregate over all traffic dilutes a harmful rewrite that affects few queries.
+
 ## Evaluation and Exercise
 
 Create query cases with expected interpretations, including ambiguity, negation, typos, identifiers, and multilingual input. Track both parsing correctness and downstream retrieval quality. Compare the original query with any [[Decoder-Only Model (Transformers)|model-generated rewrite]] instead of treating fluency as fidelity.
