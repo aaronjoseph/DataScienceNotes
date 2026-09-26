@@ -10,7 +10,11 @@ search_stage: query_understanding
 
 ## Overview
 
-An n-gram is a contiguous sequence of $n$ units. Specify whether those units are characters or tokens. An n-gram representation records local sequences; an n-gram language model additionally assigns probabilities to sequences. [^1]
+An n-gram is a contiguous sequence of $n$ units.
+
+Specify whether those units are characters or tokens.
+
+An n-gram representation records local sequences; an n-gram language model additionally assigns probabilities to sequences. [^1]
 
 ## Worked Examples
 
@@ -30,20 +34,53 @@ Word n-grams retain some local order that [[Bag of Words]] loses. Character n-gr
 
 ## Occurrences, Features, and Order
 
-The count $\max(0,L-n+1)$ counts windows, not distinct features. For `aaaa`, character bigrams are `aa`, `aa`, `aa`: three occurrences but one distinct bigram. A count vector stores 3, whereas a presence vector stores 1. Boundary padding, spaces, and case normalisation change which windows exist, so specify them before comparing implementations.
+The count $\max(0,L-n+1)$ counts windows, not distinct features.
 
-For a token sequence $w_1,\ldots,w_L$, the window at position $i$ is $(w_i,\ldots,w_{i+n-1})$. Combining unigrams and bigrams lets a representation retain broad term evidence and some phrase evidence. It still does not encode arbitrary long-range order.
+For `aaaa`, character bigrams are `aa`, `aa`, `aa`: three occurrences but one distinct bigram.
 
-> [!example]- Calculate character overlap
-> With no padding, `boot` produces the bigram set $A=\{bo,oo,ot\}$; `boots` produces $B=\{bo,oo,ot,ts\}$.
->
-> Their Jaccard overlap is
-> $$J(A,B)=\frac{|A\cap B|}{|A\cup B|}=\frac34.$$
-> This is a set-overlap calculation, so repeated grams count once. A count-based similarity would need a different definition. A high overlap suggests a spelling relationship; it does not prove relevance to a query or interchangeability in a sentence.
+A count vector stores 3, whereas a presence vector stores 1.
+
+Boundary padding, spaces, and case normalisation change which windows exist, so specify them before comparing implementations.
+
+For a token sequence $w_1,\ldots,w_L$, the window at position $i$ is $(w_i,\ldots,w_{i+n-1})$.
+
+Combining unigrams and bigrams lets a representation retain broad term evidence and some phrase evidence.
+
+It still does not encode arbitrary long-range order.
+
+### Calculate character overlap
+
+With no padding, `boot` produces the bigram set $A=\{bo,oo,ot\}$; `boots` produces $B=\{bo,oo,ot,ts\}$.
+
+Their Jaccard overlap is
+
+$$
+J(A,B)=\frac{|A\cap B|}{|A\cup B|}=\frac34.
+$$
+
+This is a set-overlap calculation, so repeated grams count once.
+
+A count-based similarity would need a different definition.
+
+A high overlap suggests a spelling relationship; it does not prove relevance to a query or interchangeability in a sentence.
 
 ## Index-Size Tradeoff
 
-Generating every length from $a$ to $b$ creates $\sum_{n=a}^{b}\max(0,L-n+1)$ occurrences before deduplication. For a five-character token and lengths 2 through 4, that is $4+3+2=9$. Edge-prefix n-grams would keep only prefixes and generate fewer features; they serve a different matching goal, such as prefix completion. Measure vocabulary, postings, and false matches when selecting lengths.
+Generating every length from $a$ to $b$ creates the following number of occurrences before deduplication:
+
+$$
+\sum_{n=a}^{b}\max(0,L-n+1).
+$$
+
+For a five-character token and lengths 2 through 4:
+
+$$
+4+3+2=9\text{ occurrences}.
+$$
+
+Edge-prefix n-grams would keep only prefixes and generate fewer features; they serve a different matching goal, such as prefix completion.
+
+Measure vocabulary, postings, and false matches when selecting lengths.
 
 ## Practice
 

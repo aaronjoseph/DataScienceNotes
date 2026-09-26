@@ -26,19 +26,56 @@ search_stage: foundations
 
 For a collection $\mathcal D$ with $N$ documents and analysed term $t$, define
 
-$$\operatorname{tf}(t,d)=\operatorname{count}(t\text{ in }d),\qquad
-\operatorname{df}(t)=\sum_{d\in\mathcal D}\mathbf1[\operatorname{tf}(t,d)>0],$$
+**Term frequency:**
 
-$$\operatorname{cf}(t)=\sum_{d\in\mathcal D}\operatorname{tf}(t,d).$$
+$$
+\operatorname{tf}(t,d)=\operatorname{count}(t\text{ in }d)
+$$
 
-Here $\mathbf1[\cdot]$ is 1 when its condition is true and 0 otherwise. Collection frequency counts occurrences; document frequency counts containing documents. A repeated term increases CF without necessarily increasing DF. These definitions assume one fixed field and analysis policy; title statistics and description statistics need not agree.
+**Document frequency:**
 
-> [!example]- Work through the two-document corpus
-> D1 is `red red boots`; D2 is `red shoes`. There are five token occurrences and three token types: `red`, `boots`, `shoes`.
->
-> For `red`, TF in D1 is 2, CF is 3, DF is 2, and $N=2$. The unsmoothed IDF is $\ln(2/2)=0$. For `boots`, TF in D1 is 1, CF and DF are 1, and IDF is $\ln2\approx0.6931$.
->
-> Adding D3=`red red red` changes red's CF to 6 and DF to 3. Adding a fourth `red` to D3 changes only CF and D3's TF.
+$$
+\operatorname{df}(t)=\sum_{d\in\mathcal D}\mathbf1[\operatorname{tf}(t,d)>0]
+$$
+
+$$
+\operatorname{cf}(t)=\sum_{d\in\mathcal D}\operatorname{tf}(t,d).
+$$
+
+Here $\mathbf1[\cdot]$ is 1 when its condition is true and 0 otherwise.
+
+Collection frequency counts occurrences; document frequency counts containing documents.
+
+A repeated term increases CF without necessarily increasing DF.
+
+These definitions assume one fixed field and analysis policy; title statistics and description statistics need not agree.
+
+### Work through the two-document corpus
+
+D1 is `red red boots`; D2 is `red shoes`. There are five token occurrences and three token types: `red`, `boots`, `shoes`.
+
+**1. Count occurrences of `red`.**
+
+- TF in D1: 2.
+- Collection frequency (CF): 3.
+- Document frequency (DF): 2.
+- Collection size: $N=2$.
+
+Its unsmoothed IDF is
+
+$$
+\ln\left(\frac{2}{2}\right)=0.
+$$
+
+**2. Count occurrences of `boots`.**
+
+TF in D1, CF, and DF are all 1. Its IDF is
+
+$$
+\ln\left(\frac{2}{1}\right)=\ln2\approx0.6931.
+$$
+
+Adding D3=`red red red` changes red's CF to 6 and DF to 3. Adding a fourth `red` to D3 changes only CF and D3's TF.
 
 ## From Vocabulary to Retrieval
 

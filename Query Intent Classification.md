@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: query_understanding
+---
+
 # Query Intent Classification
 
 #search-eng
@@ -52,6 +57,33 @@ print(route("call 8005551234", False, [], active))                  # PRODUCT_LO
 
 The last case shows how a pattern rule can misroute. Decide whether a lookup miss should fall back to product search.
 
+## User Goals and Product Routes
+
+Broder's web-search taxonomy distinguishes **navigational** queries seeking a particular site, **informational** queries seeking information, and **transactional** queries seeking a web-mediated activity.[^taxonomy] These describe user goals. The routes in the table above are implementation choices inside a product; an identifier lookup is not a fourth category of Broder's taxonomy.
+
+For example, a query about cleaning a laptop is informational, while a query intended to buy one supports a transaction. An exact model-number query still needs domain context to decide whether to show a product, support documentation, or another resource.
+
+## Choose Routes with Error Costs in Mind
+
+Define the decision inputs:
+
+- $P(y\mid q)$: the classifier's calibrated probability of intent $y$ for query $q$.
+- $C(a,y)$: the cost of choosing action $a$ when the true intent is $y$.
+
+A decision rule can minimise expected cost:
+
+$$
+a^*(q)=\arg\min_a\sum_y C(a,y)P(y\mid q).
+$$
+
+This is a decision-theory model, not a claim that current classifier scores are calibrated. A general-search fallback or clarification can be an action in the same model. High-confidence forced routing is unnecessary when the cost of a wrong specialised route is large.
+
+### Interpret a numeric query safely
+
+`2026 laptop` contains digits but is not necessarily an identifier. `6501234` matches the sample heuristic, but the catalogue lookup might return nothing. Record whether the system attempted exact lookup, found an item, or fell back; an intent metric based only on the final response hides that path.
+
+Separate explicit UI signals from text inference. An item-similarity button supplies a source item even if the accompanying text happens to contain digits.
+
 ## Evaluation
 
 - Build a labelled query set with an expected intent per query and report a [[Confusion Matrix & Metrics|confusion matrix]]. Intents are usually imbalanced; see [[Imbalanced Classification]].
@@ -71,8 +103,10 @@ Label these queries, state the signal you used, and name the downstream failure 
 
 ## Open Questions
 
-- #TODO Read Broder (2002), "A taxonomy of web search". Only the title, author, and year were verified; its categories are not summarised here.
+- #TODO Define a domain-specific cost table and evaluate the fallback policy on ambiguous and out-of-catalogue queries. Broder’s original taxonomy was read for the distinction above; historical query proportions are not treated as current traffic estimates.
 
 ## References & Useful Links
 
 [^1]: [Reddy et al., "Shopping Queries Dataset: A Large-Scale ESCI Benchmark for Improving Product Search", 2022](https://arxiv.org/abs/2206.06588) — Query selection strategies for hard product-search queries, including negations and parse patterns.
+
+[^taxonomy]: [Andrei Broder, A taxonomy of web search, SIGIR Forum 36(2), 2002](https://sigir.hosting.acm.org/files/forum/F2002/broder.pdf) — Original user-goal taxonomy and its evaluation implications.

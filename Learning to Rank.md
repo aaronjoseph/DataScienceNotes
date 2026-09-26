@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: ranking
+---
+
 # Learning to Rank
 
 #search-eng
@@ -41,13 +46,60 @@ Product-search rankers often use behavioural counts as features: clicks, product
 
 For online comparison of two rankers, [[Interleaving]] is often more sensitive than an [[AB Testing|A/B test]]; confirm important launches with an A/B test.
 
+## A Pairwise Loss Makes the Preference Concrete
+
+For documents $d_i$ and $d_j$ under the same query, with $d_i$ preferred, write their scores as $s_i$ and $s_j$. A pairwise logistic loss is
+
+$$
+\ell_{ij}=\log(1+\exp(-(s_i-s_j))).
+$$
+
+Compare three score margins under the same loss:
+
+**Tied scores:** $s_i-s_j=0$.
+
+$$
+L=\ln(1+e^0)=\ln2\approx0.6931
+$$
+
+**Correct ordering:** $s_i-s_j=2$.
+
+$$
+L=\ln(1+e^{-2})\approx0.1269
+$$
+
+**Reversed ordering:** $s_i-s_j=-2$.
+
+$$
+L=\ln(1+e^2)\approx2.1269
+$$
+
+The loss encourages a useful ordering rather than a particular absolute score.
+
+Metric-aware methods weight or construct updates using the importance of ranking changes.[^pairwise]
+
+### Build the training unit correctly
+
+For Q1, grades A=3, B=1, C=0 yield three strict preferences. For Q2, D=3 and E=3 yield no strict grade preference between D and E. Do not manufacture an A>D preference from row order: they belong to different queries and their grades are equal anyway.
+
+A train/validation split by query keeps these comparison groups intact. A time split asks a different question and requires features reconstructed as they were available at each request time.
+
+## Check the Serving Feature Contract
+
+A ranker trained with missing engagement values can respond differently to a real count of zero. Log feature coverage and the missing-value convention. An item with no impressions, an observed item with zero clicks, and a failed feature-store lookup describe three different states, even when an implementation later maps some of them to the same model input.
+
+Before comparing algorithms, establish that feature names, units, windows, and preprocessing match between training and serving. A better offline loss does not compensate for a feature contract that changes at deployment.
+
 ## Exercise
 
-Compare the same ranker on two candidate generators. Report candidate recall separately from [[NDCG]], and explain why a higher ranking score on an easier candidate set does not establish a better whole search system.
+Compare the same ranker on two candidate generators.
+
+Report candidate recall separately from [[NDCG]], and explain why a higher ranking score on an easier candidate set does not establish a better whole search system.
 
 ## References & Useful Links
 
-- [XGBoost ranking tutorial](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) — LambdaMART and query-group requirements.
 - [LightGBM ranker](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRanker.html) — Grouped ranking interface.
 
 [^1]: [XGBoost FAQ: How to deal with missing values](https://xgboost.readthedocs.io/en/stable/faq.html) — Missing values and learned default branch directions in tree boosters; `gblinear` treats missing as zero.
+
+[^pairwise]: [XGBoost: Learning to rank objectives](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) — Pairwise logistic loss, ranking-sensitive gradients, and query grouping.

@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: query_understanding
+---
+
 # Named Entity Recognition
 
 #search-eng
@@ -41,12 +46,20 @@ NER output is not yet a query plan. Several further decisions are needed:
 
 ## Worked Example
 
+A tagging or linking error can remove relevant products before the ranker sees them.
+
 Query: `sony wireless headphones under 200`.
 
-- Filters: `brand = sony`, `product_type = headphones`, `price <= 200`.
-- In a vector index these become token restricts plus a numeric restrict with `LESS_EQUAL`; see [[Filtered Vector Search]].
+- Filters: `brand = sony`, `product_type = headphones`, `price < 200`.
+- In a vector index these become token restricts plus a numeric restrict with `LESS`; see [[Filtered Vector Search]].
 
-Now suppose the model tags `wireless` as a product type and it links to "wireless earbuds". The filtered channel searches only earbuds, and over-ear headphones never enter the pool. A later ranker cannot recover them. A broad channel that converts the predicted type into a deny list or drops it can still retrieve them.
+Now suppose the model tags `wireless` as a product type and it links to "wireless earbuds".
+
+The filtered channel searches only earbuds, and over-ear headphones never enter the pool.
+
+A later ranker cannot recover them.
+
+A broad channel that converts the predicted type into a deny list or drops it can still retrieve them.
 
 ## Failure Modes
 
@@ -57,9 +70,53 @@ Now suppose the model tags `wireless` as a product type and it links to "wireles
 - **Over-filtering.** Every extra hard filter shrinks the candidate pool; monitor zero-result and low-result rates.
 - **Latency.** A model call on the critical path adds to [[Tail Latency]]. Cache results per session or normalised query, keyed so that a changed query cannot reuse stale entities.
 
+## Evaluate Spans, Linked Values, and Actions Separately
+
+Under strict span-and-type matching, let TP be correctly recovered entities, FP predicted entities that do not match a gold entity, and FN missed gold entities. Then
+
+**Precision:**
+
+$$
+P=\frac{TP}{TP+FP}
+$$
+
+**Recall:**
+
+$$
+R=\frac{TP}{TP+FN}
+$$
+
+**F1:**
+
+$$
+F_1=\frac{2TP}{2TP+FP+FN}
+$$
+
+State the zero-denominator convention and whether partial spans count. Entity detection is only the first boundary: a correct span can map to the wrong catalogue ID, or a correct value can be used with the wrong operator. Measure these downstream decisions separately.[^1]
+
+### A correct number can still produce the wrong filter
+
+In `headphones under 200`, detecting the span `200` is not enough.
+
+The parser also needs the comparator, currency, and field.
+
+Under a literal interpretation, the constraint is $price<200$; `at most 200` gives $price\le200$.
+
+A 200-unit item distinguishes these two behaviours. Include boundary values in evaluation cases. If the product intentionally treats `under` inclusively, document that policy instead of presenting it as the mathematical meaning of the word.
+
+## Handle Uncertainty Before Applying Hard Filters
+
+Keep span confidence separate from linking confidence and from a product decision to enforce a filter. A broad channel may protect against a mistaken inferred type, but it should not silently undo an explicit exclusion. For `not curved`, represent negation and its scope before constructing the predicate.
+
+For the exercise below, preserve `samsung` as a brand, `55 inch` as a size with units, `qled` as a technology attribute, and `tv` as a type under an illustrative schema. The exclusion `not curved` needs a polarity-aware interpretation beyond ordinary positive entity tags.
+
 ## Exercise
 
-Tag `samsung 55 inch qled tv not curved` with BIO labels. Decide which entities become hard filters, which become soft signals, and which you would ignore. Then name the recall channel that protects each hard filter against a tagging error.
+Tag `samsung 55 inch qled tv not curved` with BIO labels.
+
+Decide which entities become hard filters, which become soft signals, and which you would ignore.
+
+Then name the recall channel that protects each hard filter against a tagging error.
 
 ## References & Useful Links
 

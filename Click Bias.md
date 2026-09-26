@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: evaluation
+---
+
 # Click Bias
 
 #search-eng
@@ -18,11 +23,42 @@ Editorial [[Judgement List|judgments]], carefully designed randomised exposure, 
 
 Record displayed positions, candidate eligibility, experiment assignment, and relevant policy versions subject to privacy constraints. Evaluate assumptions before using clicks for [[Learning to Rank]] or [[Product Metrics]]. For comparing two rankers, [[Interleaving]] uses paired click preferences within one result list; it reduces between-user noise but still inherits these biases.
 
+## Write the Assumptions Behind a Weighted Estimate
+
+In a simplified position-based model, a click $C_i$ requires examination $O_i$ and an attractive result $A_i$.
+
+Assume $P(O_i=1)=e_i>0$ and that examination is independent of attraction conditional on the modelled context.
+
+Then $\mathbb E[C_i]=e_iP(A_i=1)$, so
+
+$$
+\mathbb E\left[\frac{C_i}{e_i}\right]=P(A_i=1).
+$$
+
+This illustrates why inverse propensity weighting can remove a specified observation effect.[^ips] It does not equate attraction with editorial relevance, correct all trust or presentation biases, or recover outcomes for items with zero exposure probability.
+
+### See the variance cost of rare exposure
+
+A clicked observation with examination propensity 0.5 receives weight 2; one with propensity 0.01 receives weight 100. A few rare observations can therefore dominate an estimate. Clipping the second propensity to 0.05 reduces its weight to 20 but changes the estimator and introduces bias.
+
+Compare clipped and unclipped results, coverage, and uncertainty. Do not choose the clipping level merely because it gives the most favourable ranker comparison.
+
+## Keep the Logging Policy Attached to the Data
+
+Record what could have been displayed, what was displayed, position, presentation, and experiment assignment. An unexposed product and a displayed-but-unclicked product are different observations. Also identify the event being predicted: a click can lead to satisfaction, disappointment, or a later purchase.
+
+For an offline counterfactual evaluation, the target policy must have adequate support in the logged policy and the propensity model must match the assignment or observation mechanism. A deterministic historical top ten usually provides no direct evidence about never-shown products. Complement behavioural analysis with independent relevance judgments and controlled experiments.
+
 ## Exercise
 
-A document moves from rank five to rank one and its clicks double. List evidence needed to distinguish relevance improvement from exposure effects. Explain why non-exposed documents cannot automatically be treated as negatives.
+A document moves from rank five to rank one and its clicks double.
+
+List evidence needed to distinguish relevance improvement from exposure effects.
+
+Explain why non-exposed documents cannot automatically be treated as negatives.
 
 ## References & Useful Links
 
 - [Interpreting clickthrough data](https://www.cs.cornell.edu/people/tj/publications/joachims_etal_05a.pdf) — Eye-tracking study and presentation biases.
-- [Unbiased learning to rank](https://www.cs.cornell.edu/~adith/docs/UbLTR.pdf) — Propensity-weighted learning and assumptions.
+
+[^ips]: [Joachims, Swaminathan, and Schnabel, Unbiased Learning-to-Rank with Biased Feedback](https://www.cs.cornell.edu/~adith/docs/UbLTR.pdf) — Propensity-weighted learning, observation assumptions, and clipping tradeoffs.

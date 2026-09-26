@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: indexing
+---
+
 # Index Updates
 
 #search-eng
@@ -22,9 +27,48 @@ Changing token analysis or embedding models can require rebuilding data. Keep qu
 
 Attributes that change faster than the index refreshes, such as price and availability, are often re-checked in a live store after retrieval rather than trusted from index filters; see [[Filtered Vector Search]] and [[Search Caching]].
 
+## Trace One Update Through the System
+
+Define the milestones:
+
+- $t_0$: source commit time.
+- $t_1$: ingestion time.
+- $t_2$: index acknowledgement.
+- $t_3$: first observed searchable version.
+
+For ordered milestones on comparable clocks:
+
+$$
+L_{\mathrm{freshness}}=t_3-t_0=(t_1-t_0)+(t_2-t_1)+(t_3-t_2).
+$$
+
+The decomposition tells you where to investigate. A refresh change cannot repair a large source-to-ingestion backlog. Polling search visibility adds observation delay, so record the polling interval and distinguish the measured upper bound from the exact visibility time.
+
+### Out-of-order updates
+
+Product P has version 101 at price 200 and version 102 at price 180. Version 102 arrives first; a delayed retry of 101 arrives later. Blind last-arrival-wins indexing restores an obsolete price. A per-product version check should reject the older event while allowing an idempotent retry of the same version.
+
+Deletes need the same ordering rule. Otherwise a late old update can recreate a deleted product. Retaining deletion versions or another source-of-truth reconciliation mechanism prevents that class of error.
+
+## Rebuild Without Losing Intervening Changes
+
+1. Record a consistent source snapshot and the associated change-stream position.
+2. Build the replacement with a named schema, analyser, and embedding version.
+3. Replay later changes, including deletions, until the new index catches up.
+4. Compare document counts, representative content, filtered retrieval, and version compatibility.
+5. Switch query traffic at a defined boundary and retain a rollback path with its freshness limitations documented.
+
+This is a general design checklist, not a claim that every engine provides these steps automatically. If old and new indexes use different embeddings, the query encoder must switch compatibly; see [[Embeddings]] and [[Shadow Deployment]].
+
 ## Exercise
 
-A product changes price at 10:00, reaches ingestion at 10:01, is acknowledged at 10:02, and becomes searchable at 10:03. Source-to-search lag is three minutes; acknowledgement-to-search lag is one. Decide which reflects the user's experience. See [[Inverted Index]], [[Approximate Nearest Neighbours]], and [[Monitoring - MLOPS|Monitoring]].
+A product changes price at 10:00, reaches ingestion at 10:01, is acknowledged at 10:02, and becomes searchable at 10:03.
+
+Source-to-search lag is three minutes; acknowledgement-to-search lag is one.
+
+Decide which reflects the user's experience.
+
+See [[Inverted Index]], [[Approximate Nearest Neighbours]], and [[Monitoring - MLOPS|Monitoring]].
 
 ## References & Useful Links
 

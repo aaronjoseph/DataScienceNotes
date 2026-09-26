@@ -46,6 +46,8 @@ Rank fusion such as RRF is an alternative to priority concatenation when channel
 
 ## Worked Example
 
+Standalone channel recall can differ from the value a channel adds to the union.
+
 Judged relevant set $R=\{A,B,C,D,E\}$. Channel outputs, in priority order:
 
 - Filtered dense: `[A, F, B]`
@@ -77,6 +79,41 @@ Report these separately from final [[NDCG]]; see [[Search Evaluation]].
 - **Wrong deduplication key.** Deduplicating by variant instead of parent, or the reverse, changes what the ranker sees.
 - **Filter drift.** Channels built by separate code can disagree on base exclusions. Centralise their construction.
 - **Cost.** Each channel adds index load and latency tail risk; remove channels with no measured marginal value.
+
+## Quantify Union and Marginal Coverage
+
+For channel candidate sets $C_1,\ldots,C_m$, let $U=\bigcup_j C_j$ and let $R$ contain the judged relevant eligible items. With $|R|>0$,
+
+**Union recall:**
+
+$$
+\operatorname{Recall}(U)=\frac{|U\cap R|}{|R|}
+$$
+
+**Contribution of channel $j$:**
+
+$$
+\Delta_j=\frac{|U\cap R|-|(\bigcup_{i\ne j}C_i)\cap R|}{|R|}.
+$$
+
+Here $\Delta_j$ measures a leave-one-channel-out contribution before any later truncation.
+
+If a merged pool is capped, removing one channel can change which items from other channels survive that cap.
+
+Recompute the actual downstream pool rather than assuming the uncapped set formula describes serving behaviour.
+
+> [!example]- Add the fourth channel from the exercise
+> Adding `[E,F,G]` recovers E, so the union contains all five relevant items and recall becomes 1.
+>
+> The new channel's marginal recall is $1/5$.
+>
+> Filtered sparse and unfiltered dense still uniquely supply C and D respectively; filtered dense has no unique relevant item in this example.
+>
+> This does not prove filtered dense has no operational value: it might have better availability, lower latency, or better ordering under a later pool cap. Compare those properties explicitly before removing it.
+
+## Keep the Identity Unit Consistent
+
+If the judgments are at product level but channels return variants, collapse variants consistently before calculating coverage. Conversely, a product-level hit does not prove that the required size or colour variant was available. Record both identities when expansion occurs, and state whether the relevant denominator contains products, variants, or passages.
 
 ## Exercise
 

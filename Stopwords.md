@@ -23,10 +23,11 @@ Low weighting and deletion have different consequences. A retained term can stil
 
 Apply stopword decisions per field and task. A lexical title field, a phrase field, and a neural encoder input do not need the same preprocessing. In particular, do not apply a lexical stop list to a pretrained model's input without evaluating the resulting change from its expected input distribution.
 
-> [!example]- Compare two queries after removal
-> Consider `laptop with touchscreen` and `laptop without touchscreen`. If a rule removes both `with` and `without`, each becomes `laptop touchscreen`. The representation has lost the distinction between requiring and excluding an attribute.
->
-> Keeping the words is necessary for a parser to see that distinction, but it is not sufficient: the parser must understand the negation and map it to the correct filter. Test the full route from text to [[Query Understanding|query plan]].
+### Compare two queries after removal
+
+Consider `laptop with touchscreen` and `laptop without touchscreen`. If a rule removes both `with` and `without`, each becomes `laptop touchscreen`. The representation has lost the distinction between requiring and excluding an attribute.
+
+Keeping the words is necessary for a parser to see that distinction, but it is not sufficient: the parser must understand the negation and map it to the correct filter. Test the full route from text to [[Query Understanding|query plan]].
 
 ## Empty and Phrase Queries
 

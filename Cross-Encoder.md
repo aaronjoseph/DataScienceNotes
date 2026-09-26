@@ -1,10 +1,15 @@
+---
+note_type: concept
+search_stage: ranking
+---
+
 # Cross-Encoder
 
 #search-eng
 
 ## Overview
 
-A cross-encoder scores relevance by passing the query and one candidate **together** through a transformer and producing a single score. Attention can compare every query token with every document token, so it is usually more accurate than a [[Dense Retrieval|bi-encoder]]. The cost is that nothing can be precomputed per document: every query–candidate pair needs its own forward pass. Cross-encoders are therefore used to **rerank** a small candidate set, not to search a whole catalogue.[^1]
+A cross-encoder scores relevance by passing the query and one candidate **together** through a transformer and producing a single score. Attention can compare every query token with every document token, which can improve ranking compared with a [[Dense Retrieval|bi-encoder]] when the model and task are well matched. A conventional cross-encoder must jointly score each query–candidate pair at query time. Cross-encoders are therefore used to **rerank** a small candidate set, not to search a whole catalogue.[^1]
 
 ## Mechanics
 
@@ -16,13 +21,15 @@ Nogueira and Cho re-implemented BERT for query-based passage reranking. They rep
 
 ## Cost Arithmetic
 
-For $N$ candidates, a cross-encoder performs $N$ joint forward passes per query. A bi-encoder performs one query encoding and an index lookup, reusing precomputed document vectors.
+For $N$ candidates, a cross-encoder evaluates $N$ joint query–candidate inputs per query, potentially in batches.
 
-Illustrative: 200 candidates at 5 ms each is 1 s of sequential compute. Batching on an accelerator can cut wall-clock time, but not total compute. This is why reranking depth is a quality–latency–cost decision; see [[Latency vs Throughput]].
+A bi-encoder performs one query encoding and an index lookup, reusing precomputed document vectors.
+
+Illustrative: 200 candidates at 5 ms each is 1 s of sequential compute. Batching can improve utilisation and amortise overhead, while the model still processes all candidate pairs. This is why reranking depth is a quality–latency–cost decision; see [[Latency vs Throughput]].
 
 ## In Product Search
 
-- **ESCI baseline.** The Shopping Queries Dataset baseline fine-tuned an MS MARCO cross-encoder on query and product title. It reached nDCG ≈ 0.85 on the public test, compared with about 0.56 for a default-configuration BM25. The authors state this comparison is not fair: BM25 used defaults and handled Japanese poorly.[^3] See [[ESCI]].
+- **ESCI baseline.** The Shopping Queries Dataset used a fine-tuned cross-encoder for English and MPNet-based models for Spanish and Japanese. Table 4 reports aggregate nDCG 0.852 for that neural baseline and 0.563 for BM25; the English scores are 0.857 and 0.675 respectively. The authors state this comparison is not fair: BM25 used defaults and handled Japanese poorly.[^3] See [[ESCI]].
 - **Managed rerankers.** Cloud ranking APIs expose pretrained query–text relevance models for reranking retrieved candidates.[^4]
 - **Caching.** Scores can be cached when the key includes query, item ID, item text version, and model version.
 - **Relevance classes.** A classifier head can output ESCI-style classes rather than one score, supporting filtering and presentation decisions.
@@ -36,9 +43,54 @@ Illustrative: 200 candidates at 5 ms each is 1 s of sequential compute. Batching
 - **Latency tails.** Remote reranking calls add a dependency on the critical path; define a timeout and a fallback order. See [[Tail Latency]].
 - **Domain shift.** A model trained on web passages may misjudge product attributes such as size or compatibility.
 
+## Understand What Is and Is Not Precomputed
+
+A conventional cross-encoder computes $s(q,d)=g_\theta([q;d])$ using a joint query–document input.
+
+The document's relevance representation depends on the query, so a single cached document vector cannot reproduce this score for arbitrary queries.
+
+Tokenisation, static fields, and scores for previously seen pairs may still be cached when versions and inputs match.
+
+Batching groups many pairs into one model invocation.
+
+It can improve hardware utilisation and reduce overhead, so $N$ pairs do not necessarily mean $N$ separate API calls or a fixed total runtime.
+
+Sequence lengths, batch size, padding, concurrency, and the accelerator all affect observed cost.
+
+> [!example]- Solve the reranking-depth budget
+> **1. Write the timing model.**
+>
+> $$
+> T(N)=8+0.15N\text{ milliseconds}
+> $$
+>
+> **2. Apply the 40 ms budget.**
+>
+> $$
+> 8+0.15N\le40
+> $$
+>
+> **3. Solve for the candidate count.**
+>
+> $$
+> N\le\frac{40-8}{0.15}\approx213.33
+> $$
+>
+> The largest whole-number depth is **213** under this illustrative model.
+>
+> This leaves no allowance for queueing, network variation, or other work. Treat it as arithmetic under an assumed model, then measure the actual latency distribution. Candidate recall@213 estimates the relevant material available to the model; final NDCG measures how it orders that material.
+
+## Inspect the Pair the Model Actually Sees
+
+For a failed product query, inspect the concatenated fields, truncation boundary, query instruction, and model version. A compatibility requirement hidden beyond the token limit cannot influence the score. Keep score interpretation explicit: a raw logit, sigmoid value, and four-class probability vector require different downstream handling. Evaluate domain quality on a fixed candidate set before assuming a larger model will improve the served page.
+
 ## Exercise
 
-Your latency budget allows 40 ms for reranking and one batched call costs 8 ms plus 0.15 ms per candidate. What is the maximum reranking depth? What recall would you want to measure before choosing that depth?
+Your latency budget allows 40 ms for reranking and one batched call costs 8 ms plus 0.15 ms per candidate.
+
+What is the maximum reranking depth?
+
+What recall would you want to measure before choosing that depth?
 
 ## References & Useful Links
 

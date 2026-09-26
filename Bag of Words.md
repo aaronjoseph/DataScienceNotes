@@ -21,7 +21,9 @@ Retain the original three sentences, using a case-normalised teaching vocabulary
 | Data science is fun. | `[0,0,1,1,1,1,0]` |
 | I love learning data. | `[1,1,1,0,0,0,1]` |
 
-This is a manually specified vocabulary, not a claim about a library's default token pattern. For example, a vectorizer can exclude single-character tokens unless configured otherwise. [^1]
+This is a manually specified vocabulary, not a claim about a library's default token pattern.
+
+For example, a vectorizer can exclude single-character tokens unless configured otherwise. [^1]
 
 ## Strengths and Limitations
 
@@ -31,16 +33,31 @@ The method is simple and gives interpretable dimensions. It does not distinguish
 
 ## From a Vocabulary to a Matrix
 
-Let $V=(t_1,\ldots,t_p)$ be an ordered vocabulary and let the collection contain $N$ documents. The count matrix $X\in\mathbb R^{N\times p}$ has
+Define the representation:
 
-$$X_{ij}=\operatorname{count}(t_j,d_i).$$
+- $V=(t_1,\ldots,t_p)$: an ordered vocabulary.
+- $N$: the number of documents.
+- $X\in\mathbb R^{N\times p}$: the document–term count matrix.
 
-A binary representation replaces each entry with $\mathbf1[X_{ij}>0]$. The column order is part of the representation: comparing vectors from independently built vocabularies can silently compare different words even when the shapes match.
+Each matrix entry is
 
-> [!example]- Use the original three sentences as a retrieval problem
-> Under the seven-word vocabulary above, the query `data science` is $q=(0,0,1,1,0,0,0)$. Its dot product with the three document vectors is 2, 2, and 1. The first two tie because this representation sees the same query-word evidence in both.
->
-> Repeating `data` ten times would raise a raw-count dot product without establishing greater usefulness. [[TF-IDF]] changes term weights, while [[BM25]] limits the benefit of repetition. Neither restores all the word order that bag of words discarded.
+$$
+X_{ij}=\operatorname{count}(t_j,d_i).
+$$
+
+A binary representation replaces each entry with $\mathbf1[X_{ij}>0]$.
+
+The column order is part of the representation: comparing vectors from independently built vocabularies can silently compare different words even when the shapes match.
+
+### Use the original three sentences as a retrieval problem
+
+Under the seven-word vocabulary above, the query `data science` is $q=(0,0,1,1,0,0,0)$.
+
+Its dot product with the three document vectors is 2, 2, and 1.
+
+The first two tie because this representation sees the same query-word evidence in both.
+
+Repeating `data` ten times would raise a raw-count dot product without establishing greater usefulness. [[TF-IDF]] changes term weights, while [[BM25]] limits the benefit of repetition. Neither restores all the word order that bag of words discarded.
 
 ## Vocabulary and Sparsity
 

@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: experiments
+---
+
 # Interleaving
 
 #search-eng
@@ -51,13 +56,71 @@ With A = `(a, b, c, d)`, B = `(b, e, a, f)`, and coin flips `1, 0, 1`, the shown
 - Clicks on `b` and `c`: one credit each, so a tie.
 - Clicks on `b` and `e`: two credits for B, so B wins.
 
-Item `b` is ranked highly by both rankers but credited only to B, because B happened to pick it. Randomisation balances this across impressions.
+Item `b` is ranked highly by both rankers but credited only to B.
+
+For these particular input lists, B always drafts `b`: either B picks first, or A picks `a` and B then picks `b`.
+
+Fairness under a no-preference click model does not require every shared item to have equal ownership probability.
 
 ## Aggregating and Testing
 
 - Aggregate per query or per user. In the arXiv study, a per-user vote was the majority of that user's click preferences.[^1]
 - Test whether A's share of non-tie outcomes differs from 0.5, for example with a binomial test.[^1]
 - Report the tie rate. Team-Draft produces a strict preference for any query with a single click, even when the two rankings are identical, which can add variance for very similar rankers.[^1]
+
+## From Impressions to a Decision
+
+Keep the displayed order, item ownership, randomisation choices, experiment version, and attributed clicks together in the impression record. Recomputing ownership from the two original rankings later is insufficient: shared items can be drafted by either team. Missing or delayed clicks also need a declared observation window.
+
+After applying a predefined aggregation rule, count:
+
+- $W_A$: independent units preferring A.
+- $W_B$: independent units preferring B.
+- $T$: ties.
+
+Report both measures below.
+
+**A's share of non-tie outcomes:**
+
+$$
+\hat p_A=\frac{W_A}{W_A+W_B}
+$$
+
+**Tie rate:**
+
+$$
+\text{tie rate}=\frac{T}{W_A+W_B+T}.
+$$
+
+If all outcomes are ties, the preference share is undefined.
+
+Under the no-preference null, a binomial test compares non-tie outcomes with $p_A=0.5$.
+
+Many impressions from one user are not automatically independent trials; choose user or query aggregation to match the experiment and account for remaining dependence.[^1]
+
+### A preference share is not a success rate
+
+**Inputs:** 1,000 aggregated units produce:
+
+- 330 wins for A.
+- 270 wins for B.
+- 400 ties.
+
+**A's non-tie preference share:**
+
+$$
+\frac{330}{330+270}=55\%
+$$
+
+**Tie rate:**
+
+$$
+\frac{400}{1000}=40\%
+$$
+
+This does not mean 55% of all users completed their task, nor that conversion increased by 5 percentage points.
+
+For the exercise with flips `0, 1, 0`, the list is `b, a, c, e, f`; A owns `a, c`, while B owns `b, e, f`. Item `b` still belongs to B. Now make the two rankings identical: random draft choices can change which team owns each position, even though the rankers have equal quality.
 
 ## When to Use It
 
@@ -79,7 +142,13 @@ A common workflow screens candidates with interleaving and confirms the winner w
 
 ## Exercise
 
-Run `team_draft` with coin flips `0, 1, 0`. Which team owns `b` now? Then explain why aggregating preferences over many impressions with random flips removes the ownership advantage of commonly ranked items.
+Trace `team_draft` with coin flips `0, 1, 0`.
+
+Which team owns `b` now?
+
+Then use identical input rankings and explain how a single click can produce a strict preference even though the two rankers are equally good.
+
+The distinction is between a random individual outcome and an unbiased aggregate comparison under the method's assumptions.
 
 ## References & Useful Links
 

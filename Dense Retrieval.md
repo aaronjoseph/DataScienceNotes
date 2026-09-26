@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: retrieval
+---
+
 # Dense Retrieval
 
 #search-eng
@@ -14,7 +19,9 @@ Other names for the same architecture include **bi-encoder**, **dual encoder**, 
 
 Dense Passage Retrieval (DPR) scores a question $q$ and passage $p$ by an inner product:[^1]
 
-$$\operatorname{sim}(q,p)=E_Q(q)^\top E_P(p).$$
+$$
+\operatorname{sim}(q,p)=E_Q(q)^\top E_P(p).
+$$
 
 The similarity must be **decomposable** so that the passage side can be precomputed. For unit-length vectors, inner product and [[Cosine Similarity]] give the same ranking.[^1]
 
@@ -22,7 +29,9 @@ The similarity must be **decomposable** so that the passage side can be precompu
 
 Each training instance has a query, one positive passage, and $n$ negatives. DPR minimises the negative log-likelihood of the positive:[^1]
 
-$$L=-\log\frac{e^{\operatorname{sim}(q,p^+)}}{e^{\operatorname{sim}(q,p^+)}+\sum_{j=1}^{n}e^{\operatorname{sim}(q,p_j^-)}}.$$
+$$
+L=-\log\frac{e^{\operatorname{sim}(q,p^+)}}{e^{\operatorname{sim}(q,p^+)}+\sum_{j=1}^{n}e^{\operatorname{sim}(q,p_j^-)}}.
+$$
 
 This is a [[Softmax Function|softmax]] [[Cross Entropy Loss|cross-entropy]] over candidates.
 
@@ -31,10 +40,33 @@ This is a [[Softmax Function|softmax]] [[Cross Entropy Loss|cross-entropy]] over
 
 ## Worked Example
 
+The same positive can receive a lower candidate-set probability when a strong negative is added.
+
 One query row of a batch has scores `[2.0, 0.5, 0.1]`; the first is the positive.
 
-- $p^+ = e^{2.0}/(e^{2.0}+e^{0.5}+e^{0.1}) \approx 0.728$, so $L \approx 0.317$.
-- Add a hard negative with score 1.9. Now $p^+ \approx 0.439$ and $L \approx 0.823$.
+**1. Calculate the positive's probability.**
+
+$$
+p^+=\frac{e^{2.0}}{e^{2.0}+e^{0.5}+e^{0.1}}\approx0.728
+$$
+
+**2. Calculate the loss.**
+
+$$
+L=-\ln p^+\approx0.317
+$$
+
+**3. Add a hard negative with score 1.9.**
+
+$$
+p^+=\frac{e^{2.0}}{e^{2.0}+e^{0.5}+e^{0.1}+e^{1.9}}\approx0.439
+$$
+
+**4. Recalculate the loss.**
+
+$$
+L=-\ln p^+\approx0.823
+$$
 
 The hard negative produces a much larger loss, so it gives a stronger training signal. Easy random negatives quickly contribute little.
 
@@ -53,9 +85,43 @@ The hard negative produces a much larger loss, so it gives a stronger training s
 - Changing embedding dimensionality or model requires a compatible index.
 - Measure ANN recall separately from relevance; see [[Approximate Nearest Neighbours]].
 
+## Follow One Training Row into Serving
+
+The loss compares the positive with the sampled candidates, not with every document in the collection.
+
+For that row, define each candidate's probability:
+
+$$
+p_j=\frac{\exp(s_j)}{\sum_k\exp(s_k)}.
+$$
+
+Its score gradient is
+
+$$
+\frac{\partial L}{\partial s_j}=p_j-\mathbf1[j=+].
+$$
+
+This follows by differentiating the displayed softmax loss. A high-scoring negative receives a larger downward pressure than a very low-scoring negative. The candidate-set probability depends on the chosen negatives and is not a calibrated collection-wide relevance probability.
+
+### Why can in-batch negatives be wrong?
+
+Suppose two training queries both have product A as a valid answer. Treating the other query's positive as a negative creates a contradictory signal. Repeated products, near-duplicate passages, and multiple correct answers need attention when constructing batches. Inspect labels and masking rules before attributing training instability to the optimiser.
+
+## Evaluate the Three Sources of Error
+
+First, run exact vector search on a manageable fixed corpus to inspect representation quality. Second, compare ANN with that exact ordering to measure index approximation. Third, evaluate the deployed pipeline after filters, truncation, and reranking. Record model versions and the corpus snapshot at each step; otherwise a representation change can masquerade as an index regression.
+
+In an illustrative batch of four, the $4\times4$ similarity matrix has four designated diagonal positives and twelve off-diagonal comparisons.
+
+The arithmetic counts comparisons, not verified negative labels.
+
+More comparisons help only when their training interpretation is suitable.
+
 ## Exercise
 
-For a batch of four queries, write the $4\times4$ score matrix and mark positives and in-batch negatives. Then explain why two queries with the same positive product in one batch would create a false negative.
+For a batch of four queries, write the $4\times4$ score matrix and mark positives and in-batch negatives.
+
+Then explain why two queries with the same positive product in one batch would create a false negative.
 
 ## References & Useful Links
 

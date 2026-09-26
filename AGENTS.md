@@ -70,10 +70,30 @@ The owner is a search engineer strengthening fundamentals. Use `Search Engineeri
 
 ### Obsidian callouts and properties
 
-- Callouts are Markdown blockquotes with a marker such as `> [!info]`. Use them to preserve the reading flow while highlighting a concise aside, not to wrap ordinary sections or whole notes. Keep callout titles descriptive and bodies brief; use foldable callouts only when hiding secondary detail helps the reader.
+- Callouts are Markdown blockquotes with a marker such as `> [!info]`. Reserve them for brief asides, warnings, or tips: normally one short paragraph with a short, descriptive title. Put multi-paragraph explanations, worked examples, and comparison tables in the ordinary note body under headings; large coloured panels make these harder to scan.
+- Keep the main learning path visible. Use foldable callouts only for optional detail, such as a supplementary derivation or exercise solution; do not collapse the only explanation of a core concept. Avoid adjacent or nested callouts used purely for decoration.
 - Properties live in YAML frontmatter at the start of a note. Use atomic values and stable names; quote internal links in property values and use a list for multiple values. Do not put Markdown formatting or long prose in properties.
 - For search pages, `note_type` is a text value such as `learning_map` or `concept`; `search_stage` is a text value from the controlled vocabulary in `Search Engineering.md`. Keep these values consistent so Obsidian's property search can filter related notes. Add a new stage only when the map is deliberately extended.
 - Preserve existing tags and aliases when adding properties. Do not migrate inline tags to YAML as an incidental part of metadata work.
+
+### Visual layout and readability
+
+- Prefer native Markdown that inherits the reader's theme and text size. Start visual fixes with the note's structure; do not add hard-coded colours, font sizes, HTML layout wrappers, or vault-wide CSS for a local formatting issue unless requested.
+- Use headings and short paragraphs for the main explanation. Reserve blockquotes for quotations and callout syntax; do not use a plain `>` block as decorative indentation for ordinary prose.
+- Present worked calculations and exercise solutions one step at a time: state the inputs, separate each calculation, then explain the result. Use short numbered steps or labels, with a blank line between distinct ideas; avoid packing several calculations and interpretations into one paragraph. Apply this inside optional foldable solutions too, using a `>`-only line between paragraphs so the spacing renders in Obsidian. A single source-line break may render as a space, so use paragraph breaks or list items for visible separation.
+- Show small comparisons in compact tables with short headers and cells. Put interpretation below the table, and use labelled bullets when long cells or many columns would make a table difficult to read at normal note width.
+- Use bold for short labels or key terms, not entire paragraphs. Break a dense paragraph into a list only when its points are parallel or sequential. Avoid repeating the same example in prose, a table, and a callout.
+- Keep brief symbol references inline. Put calculations that the reader must follow in separate display blocks, with `$$` delimiters on their own lines and readable notation such as `\frac{a}{b}`. Leave blank lines around headings, paragraphs, lists, tables, and display math.
+- For layout changes, inspect the affected section in Obsidian reading view when available, at normal note width. Check wrapping, table width, hierarchy, and callout size. If preview is unavailable, check the Markdown and state that the rendered layout remains unverified; preserve formulas, links, metadata, and examples while changing presentation.
+
+### Equation sections and worked examples
+
+- Apply the spacing rule throughout the entire note: formula introductions, notation, main worked examples, comparisons, derivations, and optional exercise solutions all need the same readable treatment.
+- Put multiple input values or symbol definitions in a short list. Do not pack the inputs, substitutions, intermediate results, final answer, and interpretation into one paragraph.
+- Give each calculation a short label or numbered step. Follow it with its own displayed equation, then a separate paragraph explaining what the result means. Keep a short chain of equivalent transformations together only when it represents one calculation.
+- Separate different cases or parameter settings into distinct steps or list items. Avoid putting several independent equations into one sentence or one wide display merely to save lines.
+- Use actual blank lines, not just source-line wrapping. Inside callouts, preserve `>` on blank lines and on every equation line. Keep code, tables, links, and math syntax intact when adding spacing.
+- When asked to fix a dense example, review the rest of the requested note set for the same pattern. Before finishing, check every equation-bearing paragraph and worked-example section in scope, and report the exact scope and any rendered-preview limitation.
 
 ### 4. Connect knowledge with Obsidian links
 
@@ -113,7 +133,7 @@ Explain what the topic is, why it matters, and when it is useful.[^1]
 Develop the intuition and mechanics. Define notation and assumptions.
 
 ## Worked Example
-Show a concrete calculation, scenario, or code example where appropriate.
+List the inputs, show each calculation as a separate labelled step with a displayed equation, and put the interpretation in its own paragraph. For a scenario or code example, separate the setup, steps, and outcome in the same way.
 
 ## Limitations & Common Pitfalls
 Explain important caveats, failure modes, or common misconceptions.

@@ -27,15 +27,23 @@ Use callouts for concise caveats, practical tips, or open questions that should 
 
 Obsidian uses typed Markdown blockquotes for callouts, supports custom titles and foldable blocks, and renders supported types with distinct styles.[^2]
 
+### Reading and Folding Longer Notes
+
+Keep the overview, assumptions, and main worked example visible on the first read. Use the arrow beside a heading to collapse its section; the command palette also provides **Fold all headings and lists** and **Unfold all headings and lists**. Native heading folds keep tables, code, and multi-paragraph explanations in the ordinary note layout.[^folding]
+
+Optional derivations and exercise answers use a short titled foldable callout: `> [!example]- Exercise solution`. The minus sign starts the callout collapsed; click its title to expand it. Try the exercise before revealing the answer. Folding changes presentation, not the underlying content.[^2]
+
+The current pass uses `note_type` and `search_stage` on every substantively revised concept note. For example, `[note_type:concept] [search_stage:retrieval]` finds reviewed and other classified retrieval concepts; properties alone still do not certify factual review.[^1]
+
 ## Main Learning Path
 
-0. **See the whole system:** [[Search Architecture]]. Name each stage, the question it answers, and how it fails, before studying the stages individually.
+0. **See the whole system:** [[Search Architecture]]. Name each stage, the question it answers, and how it fails, before studying the stages individually. For a source-backed implementation walkthrough, read [[Search2.0 architecture]]: Rust startup, request branches, recall, reranking, caches, deployment, and failure behavior at a recorded revision.
 1. **Define the problem:** [[Information Retrieval]] and [[NLP Basic Terminology]]. Explain the information need and the difference between a query, a document, and a relevance judgment.
 2. **Understand text analysis:** [[Query Understanding]], [[Tokenization]], [[N-Grams]], [[Stemming and Lemmatization]], [[Stopwords]], and [[Levenshtein Distance]]. Predict which terms are indexed and which query terms can match them. Then study [[Named Entity Recognition]] and [[Query Intent Classification]]: how entities become filters and how a query is routed.
 3. **Build lexical retrieval:** [[Inverted Index]], [[Bag of Words]], [[TF-IDF]], and [[BM25]]. Build a small postings index and explain why two documents receive different scores.
 4. **Understand vector representations:** [[Embedding and Encoding]], [[Word2Vec]], [[Embeddings]], [[Cosine Similarity]], [[Dense Retrieval]], [[SPLADE]], [[Approximate Nearest Neighbours]], and [[Filtered Vector Search]]. Distinguish learned similarity from exact constraints and measured relevance.
 5. **Separate retrieval from ranking:** [[Candidate Generation]], [[Hybrid Retrieval]], [[Search Ranking|Ranking]], [[Cross-Encoder]], [[Learning to Rank]], [[Score Normalization]], and [[Search Result Diversification]]. Trace candidate coverage before judging the final ordering.
-6. **Measure search quality:** [[Judgement List|Relevance judgments]], [[ESCI]], [[Search Evaluation]], [[NDCG]], and [[Click Bias]]. Define the corpus, unit, cutoff, label rubric, and aggregation. Use [[Kendall's Tau]] or [[Spearman Correlation]] for rank agreement, not as replacements for relevance metrics.
+6. **Measure search quality:** [[Judgement List|Relevance judgments]], [[ESCI]], [[Search Evaluation]], [[NDCG]], and [[Click Bias]]. Define the corpus, unit, cutoff, label rubric, and aggregation. Use [[Kendall's Tau]] or [[Spearman Correlation]] for rank agreement, not as replacements for relevance metrics. Study [[Relevance Pooling]] and [[Annotation Agreement]] to understand how the judgments were collected; use [[Probability Calibration]] when scores must represent probabilities.
 7. **Evaluate learning and experiments:** [[Model Evaluation]], [[Cross Validation]], [[Data Leakage]], [[Feature Scaling]], [[AB Testing|A/B testing]], [[Interleaving]], and [[P-Value]]. Match splits and randomisation to the question being answered.
 8. **Connect quality to serving:** [[Index Updates]], [[Search Caching]], [[Shadow Deployment]], [[Monitoring - MLOPS|Monitoring]], [[Latency vs Throughput]], [[Tail Latency]], [[Go Language|Go]], and [[Rust and Go]]. Explain the resource cost of increasing candidate counts or using a more expensive ranker.
 
@@ -167,6 +175,59 @@ All four next candidates above were addressed:
 - **Links only:** [[Click Bias]], [[AB Testing]], [[Judgement List]], and [[Index Updates]].
 - **Sources:** Radlinski et al. (2008) and Chapelle et al. (2012) full texts, Redis `EXPIRE`, Istio mirroring, and the XGBoost FAQ. The Team-Draft example and cache arithmetic were executed and checked. Obsidian preview was not checked.
 
+## Review on 26 September 2026
+
+**Scope: 54 existing concept notes substantively revised, plus this learning map — 55 notes.** The starting inventory contained 515 visible Markdown files including instructions and drawings, with 116 ordinary notes carrying `#search-eng`. This pass is a targeted review of the following concepts, not a factual review of the entire vault.
+
+| Group | Notes | Main improvements |
+|---|---:|---|
+| Text and lexical foundations | 12 | Analysis contracts, term counts, edit-distance recurrence, postings, TF-IDF and BM25 calculations |
+| Representations and retrieval | 9 | Vector compatibility, training objectives, sparse weights, filtered top-k and fusion |
+| Architecture and ranking | 9 | Stage contracts, intent and entities, candidate coverage, ranking losses, normalisation and diversity |
+| Judgments and label learning | 12 | Evaluation units, gains, pooling, agreement, click bias, calibration and annotation workflows |
+| Experiments and validation | 5 | Randomisation units, interleaving ownership, leakage, fold aggregation and nested selection |
+| Indexing and serving | 7 | Update ordering, freshness, cache failure load, shadow coverage, deadlines and metric denominators |
+
+### Exact Notes Revised
+
+- **Text and lexical foundations (12):** [[Information Retrieval]], [[NLP Basic Terminology]], [[Tokenization]], [[N-Grams]], [[Stemming and Lemmatization]], [[Stopwords]], [[Levenshtein Distance]], [[Inverted Index]], [[Bag of Words]], [[TF-IDF]], [[BM25]], [[Query Understanding]].
+- **Representations and retrieval (9):** [[Embedding and Encoding]], [[Embeddings]], [[Word2Vec]], [[Cosine Similarity]], [[Dense Retrieval]], [[SPLADE]], [[Approximate Nearest Neighbours]], [[Filtered Vector Search]], [[Hybrid Retrieval]].
+- **Architecture and ranking (9):** [[Search Architecture]], [[Query Intent Classification]], [[Named Entity Recognition]], [[Candidate Generation]], [[Search Ranking]], [[Cross-Encoder]], [[Learning to Rank]], [[Score Normalization]], [[Search Result Diversification]].
+- **Judgments and label learning (12):** [[Search Evaluation]], [[Judgement List]], [[NDCG]], [[ESCI]], [[Click Bias]], [[Annotation Agreement]], [[Probability Calibration]], [[Relevance Pooling]], [[Data Labeling]], [[Active Learning]], [[Weak Supervision]], [[Semi-Supervised Labeling]].
+- **Experiments and validation (5):** [[AB Testing]], [[Interleaving]], [[Data Leakage]], [[Cross Validation]], [[Model Evaluation]].
+- **Indexing and serving (7):** [[Index Updates]], [[Search Caching]], [[Shadow Deployment]], [[Tail Latency]], [[Latency vs Throughput]], [[Monitoring - MLOPS|Monitoring]], [[Product Metrics]].
+
+### What Changed
+
+Added plain-language explanations, concrete search scenarios, explicitly defined equations, assumptions, failure cases, and exercises. Rebuilt the four short label-learning notes into connected guides. Corrected strict price comparisons, benchmark attribution, universal cross-encoder performance claims, cache-tail claims, and the interleaving ownership example. Added consistent page properties while preserving existing tags and aliases.
+
+Long explanations and comparison tables use ordinary headings that support native folding. Selected optional solutions and derivations use collapsed callouts. The main explanation remains visible. Existing filenames and meaningful heading targets were retained; no note renames were needed.
+
+Sources for substantive additions include official library and service documentation and original papers. Broder's taxonomy and the definition of alpha-DCG are now covered. Worked examples are illustrative calculations, not evidence of a deployed system's measured quality or latency.
+
+### Checks for This Pass
+
+- Checked all 55 notes against the starting snapshot for preserved metadata, tags, attachment embeds, and original source URLs. Checked internal note links, affected incoming heading links, final reference sections, footnote definitions, code fences, math delimiters, and whitespace.
+- Independently recalculated worked numerical results for retrieval scores, ranking metrics, calibration, experiments, cache load, and latency. Parsed the four Python snippets for syntax; model, service, and code examples were not executed in this pass.
+- Obsidian reading-view verification remains incomplete: the app window became unavailable during the preview attempt. Markdown structure was checked; rendered equations, table layout, and folding interactions were not fully verified.
+
+### Equation Readability Follow-Up
+
+Reviewed the full 55-note set above for equation and worked-example spacing. Reformatted 51 concept notes, including the main BM25 example as well as its optional solution. The review covered formula introductions, notation, calculations, comparisons, and folded answers; this was a presentation pass rather than a new factual review of the wider vault.
+
+- Separated inputs, intermediate calculations, results, and interpretations with actual paragraph breaks.
+- Moved calculations into individual display blocks and split wide groups of independent equations. Kept short symbol references and compact per-item comparisons inline where already readable.
+- Checked all 162 display-math blocks for delimiter balance and surrounding spacing, plus links, heading targets, references, preserved metadata, embeds, and unchanged code examples. Recalculated the expanded numerical steps.
+- Obsidian reading-view inspection was attempted but interrupted by changes to the active app. The Markdown checks passed; rendered layout remains unverified.
+
+The repository-wide writing rule is recorded in `AGENTS.md` under **Equation sections and worked examples**.
+
+### Remaining Work and Review Boundary
+
+- **Outside this pass:** 61 other search-tagged notes were not revised here. Some have earlier recorded reviews; this number is a scope boundary, not a count of wholly unreviewed notes.
+- **Still open:** full-text verification of the original MMR paper; an explicit ideal-ranking calculation for alpha-NDCG; application of nested evaluation to an actual ranking dataset; domain-specific intent costs and annotation decisions. These remain visible in the relevant notes.
+- **Continue next:** [[Imbalanced Classification]], [[Multi-Armed Bandits]], and the broader deployment and operational prerequisites. Preserve the historical review records above rather than treating a tag or property as a completion flag.
+
 ## How to Continue
 
 Work through one connected group at a time. For each note, verify the main claims, preserve useful examples and attachments, add an exercise, link prerequisites and follow-on topics, and record unresolved work here. Use stable concept filenames and short display labels such as `[[Go Language|Go]]`.
@@ -175,3 +236,4 @@ Work through one connected group at a time. For each note, verify the main claim
 
 [^1]: [Properties — Obsidian Help](https://obsidian.md/help/properties) — Property types, YAML frontmatter, and searching properties.
 [^2]: [Callouts — Obsidian Help](https://obsidian.md/help/callouts) — Callout syntax, supported types, titles, and foldable blocks.
+[^folding]: [Folding — Obsidian Help](https://obsidian.md/help/Editing%2Band%2Bformatting/Folding) — Heading and list folding, command-palette actions, and folding controls.

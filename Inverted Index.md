@@ -47,16 +47,23 @@ See [[Tokenization]], [[Stemming and Lemmatization]], and [[Stopwords]] for anal
 
 ## Why Posting Lists Make Search Efficient
 
-For an AND query, traverse sorted document IDs in the relevant posting lists. If the current IDs differ, advance the smaller one; if they agree, emit the document and advance both. Intersecting lists of lengths $a$ and $b$ this way takes $O(a+b)$ comparisons in the worst case. Starting with a selective term can keep intermediate candidate sets small.[^merge]
+For an AND query, traverse sorted document IDs in the relevant posting lists.
+
+If the current IDs differ, advance the smaller one; if they agree, emit the document and advance both.
+
+Intersecting lists of lengths $a$ and $b$ this way takes $O(a+b)$ comparisons in the worst case.
+
+Starting with a selective term can keep intermediate candidate sets small.[^merge]
 
 An OR query takes the union instead. It broadens candidates and leaves ranking to distinguish partial matches. The choice between AND and OR changes eligibility under that lexical query; it is not just a different ranking weight.
 
-> [!example]- Add frequencies and positions
-> Add D4=`red red boots`, with positions numbered from 1. Its postings include `red: (D4, frequency=2, positions=[1,2])` and `boots: (D4, frequency=1, positions=[3])`.
->
-> The phrase `red boots` matches through positions 2 and 3. The reversed phrase `boots red` does not. A document-ID-only index could tell you both words occur but could not decide their order. A positional index provides that extra evidence.[^positions]
->
-> With `red` in D1, D3, D4, its DF is 3. Repeating red within D4 affects its local TF but contributes only one document to DF.
+### Add frequencies and positions
+
+Add D4=`red red boots`, with positions numbered from 1. Its postings include `red: (D4, frequency=2, positions=[1,2])` and `boots: (D4, frequency=1, positions=[3])`.
+
+The phrase `red boots` matches through positions 2 and 3. The reversed phrase `boots red` does not. A document-ID-only index could tell you both words occur but could not decide their order. A positional index provides that extra evidence.[^positions]
+
+With `red` in D1, D3, D4, its DF is 3. Repeating red within D4 affects its local TF but contributes only one document to DF.
 
 ## What the Index Does Not Decide
 

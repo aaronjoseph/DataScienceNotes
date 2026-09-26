@@ -22,7 +22,11 @@ Index and query analysis should be compatible, not necessarily identical. Preser
 
 ## Worked Scenario
 
-For `red waterproof hiking boots size 9`, extract candidate attributes, then ask whether size is expressed in a known sizing system and whether red is a hard constraint. Blindly expanding boots to every shoe type can hurt precision. For an identifier such as `AB-123`, punctuation or stemming changes may destroy the match.
+For `red waterproof hiking boots size 9`, extract candidate attributes, then ask whether size is expressed in a known sizing system and whether red is a hard constraint.
+
+Blindly expanding boots to every shoe type can hurt precision.
+
+For an identifier such as `AB-123`, punctuation or stemming changes may destroy the match.
 
 ## Query Rewriting
 
@@ -52,10 +56,11 @@ Represent the interpretation as explicit fields: original text, normalised text,
 
 An important invariant is that a rewrite should preserve explicit requirements. If the user says `not curved`, the transformed request must still express that exclusion. A fluent rewrite can violate this invariant. Likewise, `under 200` and `at most 200` need different numeric operators when interpreted literally.
 
-> [!example]- Resolve an ambiguous price and size request
-> For `red hiking boots size 9 under 200`, an inspectable plan might record product type `hiking boots`, colour `red`, size text `9`, and price operator `<`. The currency and sizing system require context; do not invent US sizing or a currency merely because a number was recognised.
->
-> If red is mandatory, it belongs in eligibility. If the product deliberately treats red as a preference, record that policy and evaluate its effect. A broad fallback can help when interpretation is uncertain, but it must still respect explicit constraints that the system has accepted as hard requirements.
+### Resolve an ambiguous price and size request
+
+For `red hiking boots size 9 under 200`, an inspectable plan might record product type `hiking boots`, colour `red`, size text `9`, and price operator `<`. The currency and sizing system require context; do not invent US sizing or a currency merely because a number was recognised.
+
+If red is mandatory, it belongs in eligibility. If the product deliberately treats red as a preference, record that policy and evaluate its effect. A broad fallback can help when interpretation is uncertain, but it must still respect explicit constraints that the system has accepted as hard requirements.
 
 ## Measure Decisions at Their Boundaries
 
@@ -63,9 +68,17 @@ Track route accuracy, entity span accuracy, catalogue-link accuracy, and filter 
 
 ## Evaluation and Exercise
 
-Create query cases with expected interpretations, including ambiguity, negation, typos, identifiers, and multilingual input. Track both parsing correctness and downstream retrieval quality. Compare the original query with any [[Decoder-Only Model (Transformers)|model-generated rewrite]] instead of treating fluency as fidelity.
+Create query cases with expected interpretations, including ambiguity, negation, typos, identifiers, and multilingual input.
 
-Change only one analysis rule on the tiny collection in [[Search Engineering]]. Explain new matches and lost matches. Follow through [[Inverted Index]], [[Hybrid Retrieval]], and [[Search Evaluation]].
+Track both parsing correctness and downstream retrieval quality.
+
+Compare the original query with any [[Decoder-Only Model (Transformers)|model-generated rewrite]] instead of treating fluency as fidelity.
+
+Change only one analysis rule on the tiny collection in [[Search Engineering]].
+
+Explain new matches and lost matches.
+
+Follow through [[Inverted Index]], [[Hybrid Retrieval]], and [[Search Evaluation]].
 
 ## References & Useful Links
 

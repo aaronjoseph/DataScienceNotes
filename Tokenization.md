@@ -19,7 +19,13 @@ For `USB-C charger 65W`, compare these deliberately chosen policies:
 - Preserve identifiers: `usb-c`, `charger`, `65w`.
 - Split punctuation: `usb`, `c`, `charger`, `65w`.
 
-Neither policy is universally best. Test whether each matches the catalogue's language and the user's intent. Store exact identifiers separately when exact matching is required. Lowercasing is normalisation, not the act of splitting itself.
+Neither policy is universally best.
+
+Test whether each matches the catalogue's language and the user's intent.
+
+Store exact identifiers separately when exact matching is required.
+
+Lowercasing is normalisation, not the act of splitting itself.
 
 ## Vocabulary and Unknown Tokens
 
@@ -33,10 +39,11 @@ Separate three decisions: where tokens begin and end, how their surface forms ar
 
 An illustrative product can have an exact identifier field containing `AB-123`, a title field containing analysed words, and a numeric power field containing `65`. These fields support different operations: exact lookup, text retrieval, and numeric filtering. Splitting the title token `65W` does not by itself create a typed watts constraint.
 
-> [!example]- Trace a mismatch before adjusting ranking
-> Suppose the index stores `usb-c` as one token, while the query analyser emits `usb` and `c`. A simple exact-term match finds neither token in that indexed field. A synonym or multi-field strategy could deliberately bridge the representations; increasing the BM25 weight cannot create a missing term match.
->
-> For `size 9.5`, preserving the decimal matters if a later parser interprets sizes. For `C++`, removing punctuation can merge a programming language with an unrelated letter. For another writing system, whitespace may not identify word boundaries at all.
+### Trace a mismatch before adjusting ranking
+
+Suppose the index stores `usb-c` as one token, while the query analyser emits `usb` and `c`. A simple exact-term match finds neither token in that indexed field. A synonym or multi-field strategy could deliberately bridge the representations; increasing the BM25 weight cannot create a missing term match.
+
+For `size 9.5`, preserving the decimal matters if a later parser interprets sizes. For `C++`, removing punctuation can merge a programming language with an unrelated letter. For another writing system, whitespace may not identify word boundaries at all.
 
 ## Boundary Cases to Inspect
 

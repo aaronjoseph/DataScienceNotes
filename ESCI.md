@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: evaluation
+---
+
 # ESCI
 
 #search-eng
@@ -37,11 +42,27 @@ All figures are from the paper and repository.[^1][^2]
 
 ## Worked Example
 
+The example applies the paper’s gains directly, with no additional exponential transform.
+
 A system returns `[S, E, I, C]` for one query. With the ESCI gains and discount $1/\log_2(i+1)$:
 
-$$\mathrm{DCG@4}=\frac{0.1}{1}+\frac{1.0}{\log_2 3}+\frac{0}{2}+\frac{0.01}{\log_2 5}\approx0.7352.$$
+$$
+\mathrm{DCG@4}=\frac{0.1}{1}+\frac{1.0}{\log_2 3}+\frac{0}{2}+\frac{0.01}{\log_2 5}\approx0.7352.
+$$
 
-The ideal order `[E, S, C, I]` gives $\mathrm{IDCG@4}\approx1.0681$, so $\mathrm{NDCG@4}\approx0.688$. This uses the gains directly; an $2^{rel}-1$ gain formulation would give a different number. State the convention.
+**Ideal ranking:** `[E, S, C, I]`.
+
+$$
+\mathrm{IDCG@4}\approx1.0681
+$$
+
+**Normalise the returned ranking's DCG:**
+
+$$
+\mathrm{NDCG@4}=\frac{\mathrm{DCG@4}}{\mathrm{IDCG@4}}\approx0.688.
+$$
+
+This uses the gains directly; a $2^{rel}-1$ gain formulation would give a different number. State the convention.
 
 ## Using ESCI in a Search Pipeline
 
@@ -57,9 +78,34 @@ The ideal order `[E, S, C, I]` gives $\mathrm{IDCG@4}\approx1.0681$, so $\mathrm
 - **Sampling bias:** hard-query sampling means offline scores do not transfer directly to traffic-weighted outcomes.
 - **Gains are a choice:** 1.0/0.1/0.01 is the paper's convention, not a universal value of substitutes.
 
+## Separate Class Prediction from Ranking Utility
+
+Suppose a classifier outputs probabilities $p_E,p_S,p_C,p_I$ summing to 1. Under the paper's gains, an expected-gain ranking score would be
+
+$$
+s=p_E+0.1p_S+0.01p_C.
+$$
+
+This is one possible scoring rule, derived from the chosen gains. Taking the most likely class and sorting by class is a different rule and can discard uncertainty. Neither method makes an uncalibrated probability vector reliable; evaluate the served ranking and any thresholds on representative judgments.
+
+> [!example]- Classify the bread exercise using an explicit rubric
+> Suppose `gluten-free bread 500g` requires gluten-free ingredients but allows a modest pack-size substitution. A matching 500 g loaf is Exact; a 400 g gluten-free loaf may be Substitute. Gluten-free flour and a bread knife do not fulfil the loaf request and need a stated complement policy. A wheat loaf violating the dietary constraint is Irrelevant.
+>
+> If 500 g is a hard requirement, the smaller loaf's label may change. The example demonstrates why the central-versus-optional boundary belongs in the rubric. It is not a universal label assignment for every product catalogue.
+
+## Interpret Benchmark Results in Their Setting
+
+Keep the dataset's hard-query sampling and query-level splits in view. Its published annotation agreement concerns that collection and audit procedure; it does not certify a new team or label model. Similarly, gains that heavily favour Exact items encode one evaluation preference. If a product wants accessories in a separate slot, evaluate that slot's task independently rather than assuming the same ordering objective applies everywhere.
+
+For a deployed classifier, report a confusion matrix and per-class quality as well as the aggregate. Confusing Substitute with Irrelevant can alter candidate filtering, while confusing Exact with Substitute can mostly affect ordering; trace the actual downstream policy.
+
 ## Exercise
 
-Label five results for `gluten-free bread 500g`: a 500 g gluten-free loaf, a 400 g gluten-free loaf, a gluten-free flour, a wheat loaf, and a bread knife. Then compute NDCG@5 for one ordering. Which label was hardest, and what rubric sentence would resolve it?
+Label five results for `gluten-free bread 500g`: a 500 g gluten-free loaf, a 400 g gluten-free loaf, a gluten-free flour, a wheat loaf, and a bread knife.
+
+Then compute NDCG@5 for one ordering.
+
+Which label was hardest, and what rubric sentence would resolve it?
 
 ## References & Useful Links
 

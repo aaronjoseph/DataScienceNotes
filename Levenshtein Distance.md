@@ -27,20 +27,33 @@ Example: `cat` and `car` differ by one substitution, but a query for one should 
 
 Let $D_{i,j}$ be the distance between the first $i$ units of $a$ and the first $j$ units of $b$. With unit costs,
 
-$$D_{i,0}=i,\qquad D_{0,j}=j,$$
-$$D_{i,j}=\min\left\{D_{i-1,j}+1,\ D_{i,j-1}+1,\ D_{i-1,j-1}+\mathbf1[a_i\ne b_j]\right\}.$$
+$$
+\begin{aligned}
+D_{i,0}&=i,\\
+D_{0,j}&=j.
+\end{aligned}
+$$
 
-The three choices delete, insert, or substitute/match the last unit. Each cell reuses solutions to shorter-prefix problems rather than enumerating all edit sequences.[^1] The final answer is $D_{m,n}$. Two rows suffice if only the distance is needed; reconstructing a particular edit path requires retaining or recomputing more information.
+$$
+D_{i,j}=\min\left\{D_{i-1,j}+1,\ D_{i,j-1}+1,\ D_{i-1,j-1}+\mathbf1[a_i\ne b_j]\right\}.
+$$
 
-> [!example]- Fill the table for `cat` and `cut`
-> | Prefix | empty | c | cu | cut |
-> |---|---:|---:|---:|---:|
-> | empty | 0 | 1 | 2 | 3 |
-> | c | 1 | 0 | 1 | 2 |
-> | ca | 2 | 1 | 1 | 2 |
-> | cat | 3 | 2 | 2 | 1 |
->
-> The diagonal path matches `c`, substitutes `a` with `u`, and matches `t`. One substitution is sufficient, so the distance is 1. The table also handles unequal lengths through its insertion and deletion cases.
+The three choices delete, insert, or substitute/match the last unit.
+
+Each cell reuses solutions to shorter-prefix problems rather than enumerating all edit sequences.[^1] The final answer is $D_{m,n}$.
+
+Two rows suffice if only the distance is needed; reconstructing a particular edit path requires retaining or recomputing more information.
+
+### Fill the table for `cat` and `cut`
+
+| Prefix | empty | c | cu | cut |
+|---|---:|---:|---:|---:|
+| empty | 0 | 1 | 2 | 3 |
+| c | 1 | 0 | 1 | 2 |
+| ca | 2 | 1 | 1 | 2 |
+| cat | 3 | 2 | 2 | 1 |
+
+The diagonal path matches `c`, substitutes `a` with `u`, and matches `t`. One substitution is sufficient, so the distance is 1. The table also handles unequal lengths through its insertion and deletion cases.
 
 ## Candidate Generation Versus Correction
 

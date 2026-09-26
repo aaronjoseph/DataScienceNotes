@@ -13,6 +13,8 @@ A search system turns a request into a short, ordered, eligible result list. Mos
 
 This note is the hub for the architecture track in [[Search Engineering]]. It describes the stages generically, then records transferable lessons from a production hybrid product-search pipeline that was being migrated from Python to Rust.
 
+For the concrete Rust implementation at a recorded source revision, see [[Search2.0 architecture]]. It includes end-to-end diagrams, foldable explanations, exact fallback boundaries, and known gaps; use it to distinguish current code from the generalized case study below.
+
 ## Reference Pipeline
 
 ```mermaid
@@ -46,6 +48,30 @@ This is a conceptual diagram. Real systems move eligibility checks, deduplicatio
 | Serving | Is it fast and reliable enough? | p99 spikes, timeouts, restart loops | [[Tail Latency]], [[Latency vs Throughput]] |
 
 Diagnose in pipeline order. A ranking change cannot rescue an item removed by a wrong filter upstream. [[Search Ranking]] develops this separation.
+
+## Follow the Data Contract Between Stages
+
+Each stage needs an input contract, an output contract, and a failure policy. A useful candidate record carries stable identity, parent/variant identity, retrieval sources, raw source scores, eligibility state, feature availability, and later ranking scores. Keep these meanings explicit: a vector similarity, an ESCI class, and a final business-order position describe different things.
+
+At a boundary, ask whether IDs still refer to the same unit, whether order is meaningful, whether missing values have changed representation, and whether a cap has removed items. Parent-to-variant expansion can increase counts, while deduplication reduces them. Candidate count alone therefore cannot establish that the expected items survived.
+
+### Diagnose one missing boot from recorded stages
+
+Suppose the eligible corpus contains relevant products A, B, C, D. Retrieval returns A, B, C, X. Deduplication preserves all four, but metadata enrichment drops B because its join key uses a parent ID where a variant ID is expected. The ranker then receives A, C, X.
+
+Candidate recall was $3/4$ immediately after retrieval and $2/4$ at the ranker boundary.
+
+D was a retrieval miss; B was lost during enrichment.
+
+These are two different defects.
+
+A final NDCG score alone does not identify either owner.
+
+## Make Fallbacks Part of the Architecture
+
+Describe the output when a source times out, a feature join fails, or reranking misses its deadline. Returning a fallback ordering changes relevance behaviour even when the request succeeds with HTTP 200. Record the branch, source versions, and candidate set so quality and latency can be compared for full and degraded requests.
+
+The private-system case study below is historical context. Its specific routing, class mapping, and business priorities illustrate one design; they are not universal requirements for a search service.
 
 ## Case Study: A Hybrid Product-Search Pipeline
 
@@ -89,6 +115,10 @@ The production system is documented in a private repository. This section record
 7. **Cache deterministic work.** Embeddings per normalised query and parsed entities per session are good candidates. Caching reduces average cost but does not by itself fix tail latency.[^3]
 
 ## Migration and Parity Checks
+
+Compare equivalent versions and request state, then identify the first stage where candidate identity or ordering changes.
+
+### Expand the migration comparison procedure
 
 Reimplementing a pipeline in another language can change results without any intended behaviour change. Common causes include tie-breaking order, per-channel K, filter value types, timeouts that trigger fallbacks, normalisation over a different candidate set, and floating-point differences.
 

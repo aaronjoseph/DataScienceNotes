@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.hasTag("search-eng")
+    order:
+      - file.name
+      - file.tags
+      - aliases
+      - note_type

@@ -28,6 +28,50 @@ For `waterproof hiking boots`, suppose candidate retrieval returns only trainers
 
 A learned ranker uses training signals and features to predict an ordering. Before choosing a model, define query groups, labels, available-at-serving-time features, and the evaluation split. [[Feature Engineering]], [[Judgement List]], and [[Data Leakage]] are prerequisites.
 
+## A Score Orders a Candidate Set
+
+Let $C(q)$ be the candidates for query $q$.
+
+A scorer assigns $s(q,d)$, and sorting produces a permutation $\pi_q$ of those candidates.
+
+Changing score values without changing this permutation leaves rank-only metrics unchanged, except for tie handling.
+
+A calibrated probability is a stronger claim; see [[Probability Calibration]].
+
+After scoring, eligibility, business priorities, and diversification can change the displayed order. Record the raw relevance score and the final position separately so an observed ranking error can be traced to scoring or to a later policy.
+
+### Calculate a ceiling imposed by retrieval
+
+**Inputs**
+
+- A has relevance grade 3.
+- B has relevance grade 2.
+- C has relevance grade 0.
+- Gain function: $2^r-1$.
+- Evaluation cutoff: 2.
+
+The full ideal ranking places A before B:
+
+$$
+IDCG@2=7+\frac{3}{\log_2 3}\approx8.8928.
+$$
+
+If the ranker receives only B and C, even its best order earns DCG 3.
+
+The end-to-end NDCG ceiling is therefore
+
+$$
+\frac{3}{8.8928}\approx0.3374.
+$$
+
+Reporting an ideal denominator built only from B and C would give 1 and conceal the missing A.
+
+## Choose Reranking Depth Deliberately
+
+Increasing depth gives a stronger ranker more opportunities to recover a useful candidate from below the first-stage cutoff. It also increases feature fetching and pair-scoring work. Measure candidate recall at each proposed depth, final relevance at the display cutoff, and serving latency under comparable load.
+
+A practical comparison holds candidates fixed to isolate ranker quality, then evaluates the full pipeline to measure system quality. Both are useful, provided the report states which question each comparison answers.
+
 ## Practice
 
 For one failed query, record candidate IDs after each stage, the scoring method, and the first point where a known relevant item disappears. Keep raw model scores separate from final business ordering.

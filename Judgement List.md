@@ -1,3 +1,7 @@
+---
+note_type: concept
+search_stage: evaluation
+---
 # Judgement List
 
 #search-eng
@@ -29,6 +33,24 @@ Keep query context, corpus snapshot, assessor/rubric version, and label provenan
 5. Reserve evaluation queries rather than tuning repeatedly on the entire list.
 
 Pooling cannot guarantee that all relevant documents were judged. Report coverage and a missing-judgment policy when calculating [[NDCG]] or recall. [^1]
+
+## Turn an Intent into an Annotation Decision
+
+Write the information need before showing results to assessors. Include accepted substitutes, explicit exclusions, locale or context, and the unit being judged. A product family, a sellable SKU, and a page passage can deserve different labels. The rubric should make these choices reproducible without exposing which system retrieved the item.
+
+Keep three states separate: judged relevant, judged irrelevant, and unjudged. “Cannot decide from the available information” is another useful annotation outcome that can trigger review; it should not silently become grade zero.
+
+### Make a colour disagreement actionable
+
+For `red hiking boots`, one assessor gives a black hiking boot grade 1, while another gives it 0. First inspect the rubric: was colour mandatory or a preference? If that was unspecified, the disagreement exposes a missing task definition rather than proving either assessor careless.
+
+Add the decision to the rubric, retain the original labels, and adjudicate the affected examples under the new version. Recompute all compared systems with the same updated judgments. Updating labels only for the proposed system would make the comparison inconsistent.
+
+## Protect the Evaluation Set
+
+Use a development judgment set to inspect errors and tune choices. Keep a separate final set for the assessment claimed in a report. Repeatedly inspecting and adapting to the final set makes it part of development, even when no gradient is calculated on it.
+
+Include provenance fields such as annotation method, assessor or model version, timestamp, rationale, and adjudication status. Human review, implicit feedback, and model-generated labels supply different evidence. Use [[Annotation Agreement]] to diagnose rubric consistency and [[Relevance Pooling]] to understand which documents were selected for judgment.
 
 ## Practice
 
