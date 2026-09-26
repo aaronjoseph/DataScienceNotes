@@ -47,7 +47,9 @@ The owner is a search engineer strengthening fundamentals. Use `Search Engineeri
 
 - For new or substantially rewritten prose notes, use one `# Topic Title` followed by meaningful `##` and `###` headings. Small edits need not reformat an entire file.
 - Lead with a plain-language explanation, then develop intuition, mechanics, examples, assumptions, and limitations as appropriate.
-- Use concise paragraphs, bullets for parallel ideas, numbered lists for procedures, and tables for comparisons. Use Obsidian callouts sparingly for important caveats or open questions.
+- Use concise paragraphs, bullets for parallel ideas, numbered lists for procedures, and tables for comparisons. Use Obsidian callouts sparingly when a short aside should stand apart from the main explanation. The syntax is a blockquote beginning with a typed marker, for example `> [!warning] Check the assumption`; use `note` or `info` for context, `tip` for practical guidance, `warning` for material caveats, and `question` for a genuine open question. Keep ordinary explanation in the note body. Callout types and aliases are case-insensitive; `+` or `-` immediately after the type makes a callout foldable. See [Obsidian Callouts](https://obsidian.md/help/callouts).
+- Use YAML frontmatter properties for small, structured metadata that improves filtering, grouping, or automation. Prefer a small controlled vocabulary, preserve existing frontmatter, and keep each property name's type consistent across the vault. Avoid duplicating prose, using properties as a second outline, or adding metadata that cannot be maintained accurately. Obsidian properties support text, lists, numbers, checkboxes, dates, date-times, and tags; Markdown formatting is not rendered in property values. See [Obsidian Properties](https://obsidian.md/help/properties).
+- For search-learning notes that benefit from consistent navigation, use the documented `note_type` and `search_stage` text properties described in `Search Engineering.md`. Add them to central search notes and other directly relevant pages when useful; do not bulk-edit every prerequisite note merely because it has `#search-eng`.
 - Preserve useful examples, personal context, and learning goals. Do not invent personal experiences, interview answers, achievements, or financial holdings.
 - Expand acronyms on first use where helpful. Distinguish related concepts rather than treating similar names as interchangeable.
 - Remove repetition within the edited scope. Do not pad short notes with empty sections or generic introductions.
@@ -65,6 +67,13 @@ The owner is a search engineer strengthening fundamentals. Use `Search Engineeri
 - For SQL and code examples, identify the dialect or environment when relevant. Distinguish logical query processing from physical execution; verify performance advice against the engine and context.
 - Use language-labelled code fences such as `python`, `sql`, or `bash`. Make examples self-contained when practical and label pseudocode. Only claim execution or testing when actually performed.
 - For finance notes, identify jurisdiction and time period when relevant; distinguish educational examples from current facts or personal recommendations.
+
+### Obsidian callouts and properties
+
+- Callouts are Markdown blockquotes with a marker such as `> [!info]`. Use them to preserve the reading flow while highlighting a concise aside, not to wrap ordinary sections or whole notes. Keep callout titles descriptive and bodies brief; use foldable callouts only when hiding secondary detail helps the reader.
+- Properties live in YAML frontmatter at the start of a note. Use atomic values and stable names; quote internal links in property values and use a list for multiple values. Do not put Markdown formatting or long prose in properties.
+- For search pages, `note_type` is a text value such as `learning_map` or `concept`; `search_stage` is a text value from the controlled vocabulary in `Search Engineering.md`. Keep these values consistent so Obsidian's property search can filter related notes. Add a new stage only when the map is deliberately extended.
+- Preserve existing tags and aliases when adding properties. Do not migrate inline tags to YAML as an incidental part of metadata work.
 
 ### 4. Connect knowledge with Obsidian links
 

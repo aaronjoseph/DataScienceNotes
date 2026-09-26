@@ -1,5 +1,7 @@
 ---
 aliases: ["Information Retreival"]
+note_type: concept
+search_stage: foundations
 ---
 
 # Information Retrieval

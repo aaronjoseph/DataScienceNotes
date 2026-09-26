@@ -128,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -162,7 +162,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#search-eng",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -183,8 +183,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -262,6 +261,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "Excalidraw/Project.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -318,6 +318,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Excalidraw/Project.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -349,8 +350,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c87dfd7544638965",
+  "active": "20cf302ab5813756",
   "lastOpenFiles": [
+    "Untitled 2.base",
+    "Excalidraw/Project.md",
+    "Untitled 1.base",
+    "Untitled.base",
+    "Untitled.md",
+    "Untitled 3.base",
+    "SPLADE.md",
     "ESCI.md",
     "Search Engineering.md",
     "System Design.md",
@@ -364,7 +372,6 @@
     "SQL/SQL Best Practices.md",
     "System_Design/Shein_Recommendation_System.md",
     "System_Design/Recommendation_System_System_Design.md",
-    "Excalidraw/Project.md",
     "Spark.md",
     "Hadoop.md",
     "Job Interviews/Communication/Questions To be Asked.md",
@@ -374,23 +381,16 @@
     "Kolmogorov-Smirnov (K-S) Test.md",
     "KNN.md",
     "Kendall's Tau.md",
-    "Ridge, Lasso Regression & Elastic Net.md",
-    "Bagging.md",
-    "Confusion Matrix & Metrics.md",
     "System_Design",
     "Job Interviews/Data_Science_Question.pdf",
     "Job Interviews/Behavioural",
     "ISYE_6501/ISYE6501glossaryalphabeticalFeb7_2018.pdf",
     "ISYE_6501/ISYE6501glossarybytopicFeb7_2018.pdf",
     "ISYE_6501",
-    "MGT_8803/Week 1- Introduction to Financial Accounting.pdf",
-    "MGT_8803",
     "Attachements/Masked_SA&SA.png",
-    "Excalidraw",
     "Attachements/Transformers.png",
     "Attachements/Transformers-1.png",
     "Attachements/Masked_SA&SA.png",
-    "Research_Paper/pytorch2_internals.pdf",
     "Job Interviews/Company_Interviews/Attachements/Pasted image.png",
     "Job Interviews/Company_Interviews/Attachements/Pasted image 2.png",
     "Job Interviews/Company_Interviews/Attachements/Pasted image 1.png",

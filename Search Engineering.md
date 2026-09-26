@@ -1,3 +1,8 @@
+---
+note_type: learning_map
+search_stage: overview
+---
+
 # Search Engineering
 
 #search-eng
@@ -5,6 +10,22 @@
 ## Purpose
 
 Use this map to build search fundamentals from the existing vault. Follow the main path first, then use supporting notes when you need more depth. The `#search-eng` tag means a note is relevant to this learning path; it does not certify factual review.
+
+## Page Properties and Callouts
+
+Central search pages use two text properties to make the map easier to filter without repeating note content:
+
+- `note_type`: `learning_map` for this page, or `concept` for a focused topic note.
+- `search_stage`: one controlled stage describing the page's main place in the learning path: `overview`, `foundations`, `query_understanding`, `indexing`, `retrieval`, `ranking`, `evaluation`, `experiments`, or `serving`.
+
+These are navigation labels, not claims that a page has been fully reviewed. Keep the property types and values consistent; add metadata to directly relevant notes when it helps retrieval rather than applying it to every broad prerequisite. Obsidian properties can be queried alongside ordinary search terms.[^1]
+
+Use callouts for concise caveats, practical tips, or open questions that should be visually distinct from the main explanation. For example:
+
+> [!warning] Evaluation boundary
+> Candidate coverage and ranking quality answer different questions; report them separately.
+
+Obsidian uses typed Markdown blockquotes for callouts, supports custom titles and foldable blocks, and renders supported types with distinct styles.[^2]
 
 ## Main Learning Path
 
@@ -149,3 +170,8 @@ All four next candidates above were addressed:
 ## How to Continue
 
 Work through one connected group at a time. For each note, verify the main claims, preserve useful examples and attachments, add an exercise, link prerequisites and follow-on topics, and record unresolved work here. Use stable concept filenames and short display labels such as `[[Go Language|Go]]`.
+
+## References & Useful Links
+
+[^1]: [Properties — Obsidian Help](https://obsidian.md/help/properties) — Property types, YAML frontmatter, and searching properties.
+[^2]: [Callouts — Obsidian Help](https://obsidian.md/help/callouts) — Callout syntax, supported types, titles, and foldable blocks.

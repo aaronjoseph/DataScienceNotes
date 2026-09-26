@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: evaluation
+---
+
 # Search Evaluation
 
 #search-eng

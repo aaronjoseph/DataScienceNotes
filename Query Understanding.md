@@ -1,3 +1,8 @@
+---
+note_type: concept
+search_stage: query_understanding
+---
+
 # Query Understanding
 
 #search-eng
