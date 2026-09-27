@@ -1,11 +1,9 @@
 ---
 note_type: learning_map
 search_stage: overview
+tags:
+  - "search-eng"
 ---
-
-# Search Engineering
-
-#search-eng
 
 ## Purpose
 
@@ -87,7 +85,11 @@ These connections identify useful prerequisites and follow-on topics. Unless lis
 
 ### Representations and Neural Models
 
-[[GloVe]], [[BERT]], [[RoBERTa]], [[Transformers]], [[Encoder-Only Model (Transformers)|Encoder models]], [[Decoder-Only Model (Transformers)|Decoder models]], [[Encoder-Decoder Model (Transformers)|Encoder–decoder models]], [[Language Model]], [[Encoding]], [[Softmax Function]], [[Dimensionality Reduction]], [[PCA]], [[Singular Value Decomposition]], and [[KNN]].
+[[GloVe]], [[BERT]], [[RoBERTa]], [[Transformers]], [[Encoder-Only Model (Transformers)|Encoder models]], [[Decoder-Only Model (Transformers)|Decoder models]], [[Encoder-Decoder Model (Transformers)|Encoder–decoder models]], [[Language Model]], [[Layer Normalization]], [[Sequence Models]], [[Machine Translation]], [[Encoding]], [[Softmax Function]], [[Dimensionality Reduction]], [[PCA]], [[Singular Value Decomposition]], and [[KNN]]. [[Transformer Papers]] is the reading list.
+
+### LLM Applications
+
+[[Retrieval-Augmented Generation]], [[LLM Evaluation]], [[Prompt Injection]], and [[Tool Calling]]. These support the portfolio project in [[Action-Plan]].
 
 ### Learning to Rank
 
@@ -227,6 +229,25 @@ The repository-wide writing rule is recorded in `AGENTS.md` under **Equation sec
 - **Outside this pass:** 61 other search-tagged notes were not revised here. Some have earlier recorded reviews; this number is a scope boundary, not a count of wholly unreviewed notes.
 - **Still open:** full-text verification of the original MMR paper; an explicit ideal-ranking calculation for alpha-NDCG; application of nested evaluation to an actual ranking dataset; domain-specific intent costs and annotation decisions. These remain visible in the relevant notes.
 - **Continue next:** [[Imbalanced Classification]], [[Multi-Armed Bandits]], and the broader deployment and operational prerequisites. Preserve the historical review records above rather than treating a tag or property as a completion flag.
+
+## GCP Folder Review: 26–27 September 2026
+
+Substantively expanded **all 28 existing notes in `GCP/`**, covering project and identity boundaries, networking, compute and delivery, storage and databases, data pipelines, analytics, feature management, and exam preparation. [[GCP]] contains the exact inventory, reading sequence, an illustrative end-to-end search-platform diagram, and the review boundary.
+
+Corrected outdated transaction, consistency, storage-class, and compute assumptions; added current product-lifecycle context for Datalab, managed Spark, functions, and feature serving. Examples connect duplicate handling, late events, historical features, and serving freshness to the search learning path. Tags use YAML properties, and optional details use brief folded callouts.
+
+This was a documentation review with primary sources, not a cloud deployment or lab execution. The SQL, build example, permissions, performance assumptions, and recovery procedures still need validation in a designated environment. Obsidian rendered layout remains unverified. Other linked notes retain their earlier review status.
+
+## Transformer and LLM Track: 27 September 2026
+
+Expanded the transformer notes from short summaries into study notes, and added four notes that close gaps identified in [[Action-Plan]].
+
+- **Substantively rewritten (13):** [[Transformers]], [[Encoder-Only Model (Transformers)]], [[Decoder-Only Model (Transformers)]], [[Encoder-Decoder Model (Transformers)]], [[BERT]], [[RoBERTa]], [[Language Model]], [[Layer Normalization]], [[Sequence Models]], [[Machine Translation]], [[Transformer Papers]], [[Research_Paper/Attention is not all you need]], and the new subword section of [[Tokenization]].
+- **Corrected:** [[Layer Normalization]] previously described batch-wise, per-feature statistics, which is batch normalization, and presented internal covariate shift as settled. [[Tokenization - NLP]] now points to [[Tokenization]] and no longer calls tokenization mandatory.
+- **New notes (4):** [[Retrieval-Augmented Generation]], [[LLM Evaluation]], [[Prompt Injection]], and [[Tool Calling]], including the Model Context Protocol.
+- **Sources opened:** the original Transformer, BERT, and RoBERTa papers in full (arXiv HTML); abstracts of Layer Normalization, Pre-LN, RMSNorm, Santurkar et al., seq2seq, Bahdanau et al., T5, BART, GPT-3, nucleus sampling, GQA, PagedAttention, RAG, Lost in the Middle, Ragas, LLM-as-a-judge, Greshake et al., the rank-collapse paper, and GPT-4 Can't Reason; Hugging Face BERT, RoBERTa, tokenizer, cache, and generation docs; OWASP LLM01:2025; OpenAI function-calling docs; and the MCP specification. Only the BLEU paper's bibliographic record was opened.
+- **Checked:** every worked-example number was recalculated in Python; the Layer Normalization and Tool Calling code snippets were executed; the tool-schema JSON was parsed. Obsidian rendered layout was not checked.
+- **Open:** a separate note on LLM serving metrics (time to first token, tokens per second, cost accounting) was not written; the serving basics live in [[Decoder-Only Model (Transformers)#Serving and the KV Cache|the decoder note]]. [[Autoencoders]] and [[Customer Transformer - SkLearn]] matched the search for "transformer" but are unrelated to this architecture and were left unchanged.
 
 ## How to Continue
 

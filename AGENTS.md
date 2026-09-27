@@ -1,128 +1,139 @@
 # Agent Instructions: Knowledge Repository & Research Workflows
 
-## Purpose and scope
+## Purpose and priorities
 
-Act as a knowledge assistant and curator for this Obsidian vault. Make notes accurate, clear, useful for revision, and connected to related knowledge. Preserve the author's insights and examples while improving their explanation; do not preserve factual errors merely because they are already written down.
+Act as a knowledge assistant and curator for this Obsidian vault. Make notes accurate, clear, useful for revision, and connected to related knowledge. Preserve the author's insights and examples while improving their explanation; correct factual errors rather than preserving them because they are already written down.
 
-These instructions apply throughout the repository. Follow the user's requested scope: improving one note does not authorize reorganizing the entire vault.
+When guidance competes, apply this order:
 
-## Understand this vault
+1. The user's explicit request and scope.
+2. Factual accuracy.
+3. Preservation of the author's unique content, links, embeds, and metadata.
+4. The conventions in this file.
+5. The existing style of the note being edited.
+
+Stay within the requested scope: improving one note does not authorise reorganising the vault, bulk metadata edits, or unrelated cleanup. If a request is ambiguous and a wrong guess would be costly to undo, ask first; otherwise choose the most useful interpretation and state it in the final summary.
+
+## Vault layout
 
 - Most root notes cover statistics, mathematics, machine learning, NLP, deep learning, MLOps, programming, and data engineering.
-- Topic folders include `SQL/`, `GCP/`, `AWS/`, `DevOps/`, `Finance/`, `Vim/`, `Research_Paper/`, `System_Design/`, `Job Interviews/`, `MGT_8803/`, and `Excel & PPT/`.
-- Notes range from link-only stubs and `#TODO` items to derivations, command tables, study plans, and long explanations. Use a structure appropriate to the note's purpose.
-- Obsidian currently creates new notes at the root and stores new attachments in `Attachements/`. Preserve that exact folder spelling. Existing attachments also occur in nested folders.
-- Excalidraw documents occur in both `Excalidraw/` and `System_Design/`. A `.md` extension does not necessarily mean ordinary prose.
-- Existing filenames contain abbreviations, inconsistent capitalization, and occasional spelling errors. Search before creating a similarly named note; prefer existing paths until a deliberate rename is needed; follow the naming and migration rules below.
+- Topic folders include `SQL/`, `GCP/`, `AWS/`, `DevOps/`, `Finance/`, `Vim/`, `Research_Paper/`, `System_Design/`, `Job Interviews/`, `MGT_8803/`, and `ISYE_6501/`.
+- Notes range from link-only stubs and `TODO:` items to derivations, command tables, study plans, and long explanations. Match the structure to the note's purpose.
+- Obsidian creates new notes at the vault root and stores new attachments in `Attachements/`; preserve that exact spelling. Older attachments also occur in nested folders.
+- Excalidraw drawings occur in `Excalidraw/` and `System_Design/`. Identify them by `excalidraw-plugin` frontmatter or drawing payload, not by the `.md` extension or folder alone.
+- Filenames contain abbreviations, inconsistent capitalisation, and occasional misspellings. Search before creating a similarly named note, and link to existing paths as they are.
+- Leave `.obsidian/`, `.idea/`, and other application settings unchanged unless the task concerns them.
+- The working tree may contain uncommitted, in-progress edits. Never discard, revert, or overwrite changes you did not make.
 
-## Search-engineering learning priorities
+## Search-engineering focus
 
-The owner is a search engineer strengthening fundamentals. Use `Search Engineering.md` as the learning map. Connect theory to query understanding, indexing, retrieval, ranking, evaluation, and reliable serving without forcing unrelated subjects into a search framing.
+The owner is a search engineer strengthening fundamentals. `Search Engineering.md` is the learning map and defines the controlled vocabulary for search metadata. Connect theory to query understanding, indexing, retrieval, ranking, evaluation, and reliable serving where the connection is real; do not force unrelated subjects into a search framing.
 
-- Add the literal tag `#search-eng` once near the top of ordinary notes directly relevant to search or its selected prerequisites. Preserve existing tags and frontmatter. A tag means relevance, not that the note has been fact-checked.
-- Include a concrete example, assumptions, common failure modes, and a short exercise when they improve understanding. Define prerequisites before introducing advanced terminology.
+- Add `search-eng` to the YAML `tags` list of notes directly relevant to search or its selected prerequisites. The tag signals relevance, not factual review.
+- On central search notes and substantively revised search concept notes, set the `note_type` and `search_stage` text properties using values defined in `Search Engineering.md`. Do not bulk-add them to every `search-eng` prerequisite, and add a new stage only when the map is deliberately extended.
 - Keep retrieval coverage, ranking quality, online outcomes, and serving performance distinct. State evaluation units, cutoffs, relevance-label conventions, and missing-data handling.
-- For broad improvement requests, inventory the vault, then work through connected topics. Record what was substantively reviewed versus tagged or linked only, and keep unresolved review work visible in the learning map.
-
-## Note names and link labels
-
-- Use stable, generic concept filenames: `Go Language.md`, `Information Retrieval.md`, `Cosine Similarity.md`. Put angles such as design principles, worked examples, and performance under headings within the note.
-- Keep the title aligned with the concept. Avoid sentence-like filenames, redundant subtitles, and a new file for each question about the same concept.
-- Generic does not mean vague: `BM25.md` and `NDCG.md` remain distinct concepts. A comparison such as `Rust and Go.md` can remain separate from each language's general note.
-- Use display aliases when the prose calls for a shorter label: `[[Go Language|Go]]`. The user's spaced form `[[Go Language | Go]]` expresses the same intent; prefer consistent syntax without surrounding spaces.
-- Use section links for a specific subtopic, for example `[[Go Language#Core Principles|Go design principles]]`, after checking the heading exists. Escape alias pipes as `\|` inside Markdown tables.
-- For a rename, check collisions and inbound wikilinks, embeds, heading/block links, and Markdown file links across the vault. Update the actual targets, including links in renamed files; preserve display aliases and fragments. Retain the former name as an Obsidian frontmatter alias when useful.
-- Do not rewrite plugin-managed drawing payloads as text. If a rename affects a drawing, preserve its structure and verify the affected link explicitly. Never claim a rename is safe based only on outbound links.
+- Include a concrete example, assumptions, common failure modes, and a short exercise when they aid understanding. Define prerequisites before advanced terminology.
+- For broad improvement requests, inventory the vault first, then work through connected topics. Record what was substantively reviewed versus only tagged or linked, and keep unresolved review work visible in the learning map.
 
 ## Workflow
 
 ### 1. Inspect before editing
 
-1. Read the target note and relevant neighboring or linked notes. Search filenames and content for synonyms, abbreviations, and overlapping topics.
-2. Identify whether the material is a concept note, practical guide, paper summary, interview exercise, study plan, or drawing.
-3. Check existing references, equations, code, embeds, tags, frontmatter, and unfinished work. Distinguish content to preserve from claims that need verification.
-4. Prefer updating an existing note over creating a duplicate. Place new notes in an established topic folder when it clearly fits; otherwise use the root. Do not introduce a new taxonomy without a task-specific reason.
+1. Read the target note and relevant linked or neighbouring notes. Search filenames and content for synonyms, abbreviations, and overlapping topics.
+2. Classify the material: concept note, practical guide, paper summary, interview exercise, study plan, comparison, or drawing.
+3. Note existing frontmatter, tags, aliases, embeds, block identifiers, equations, code, references, and unfinished work. Separate content to preserve from claims to verify.
+4. Prefer updating an existing note over creating a duplicate. Put a new note in an established topic folder when it clearly fits; otherwise use the root. Do not introduce a new taxonomy without a task-specific reason.
 
 ### 2. Refine structure and substance
 
-- For new or substantially rewritten prose notes, use one `# Topic Title` followed by meaningful `##` and `###` headings. Small edits need not reformat an entire file.
+- Obsidian shows the filename as the inline title, so do not open the body with a `#` heading that repeats it; start with a concise lead or the first meaningful `##` section. Keep a body `#` heading only when it adds a distinct title. Before removing a duplicate heading from an existing note, check that no links target it.
+- Use meaningful `##` and `###` headings for new or substantially rewritten notes. Small edits need not reformat the whole file.
 - Lead with a plain-language explanation, then develop intuition, mechanics, examples, assumptions, and limitations as appropriate.
-- Use concise paragraphs, bullets for parallel ideas, numbered lists for procedures, and tables for comparisons. Use Obsidian callouts sparingly when a short aside should stand apart from the main explanation. The syntax is a blockquote beginning with a typed marker, for example `> [!warning] Check the assumption`; use `note` or `info` for context, `tip` for practical guidance, `warning` for material caveats, and `question` for a genuine open question. Keep ordinary explanation in the note body. Callout types and aliases are case-insensitive; `+` or `-` immediately after the type makes a callout foldable. See [Obsidian Callouts](https://obsidian.md/help/callouts).
-- Use YAML frontmatter properties for small, structured metadata that improves filtering, grouping, or automation. Prefer a small controlled vocabulary, preserve existing frontmatter, and keep each property name's type consistent across the vault. Avoid duplicating prose, using properties as a second outline, or adding metadata that cannot be maintained accurately. Obsidian properties support text, lists, numbers, checkboxes, dates, date-times, and tags; Markdown formatting is not rendered in property values. See [Obsidian Properties](https://obsidian.md/help/properties).
-- For search-learning notes that benefit from consistent navigation, use the documented `note_type` and `search_stage` text properties described in `Search Engineering.md`. Add them to central search notes and other directly relevant pages when useful; do not bulk-edit every prerequisite note merely because it has `#search-eng`.
-- Preserve useful examples, personal context, and learning goals. Do not invent personal experiences, interview answers, achievements, or financial holdings.
-- Expand acronyms on first use where helpful. Distinguish related concepts rather than treating similar names as interchangeable.
-- Remove repetition within the edited scope. Do not pad short notes with empty sections or generic introductions.
-- Preserve unfinished tasks until they are addressed. Use `#TODO` or a specific open question for remaining gaps; do not make an incomplete note appear complete.
+- Expand acronyms on first use where helpful, and distinguish related concepts instead of treating similar names as interchangeable.
+- Preserve useful examples, personal context, and learning goals. Never invent personal experiences, interview answers, achievements, or financial holdings.
+- Remove repetition within the edited scope. Do not pad short notes with empty sections or generic introductions; short definitions may stay short.
+- Keep unfinished tasks until they are addressed. Record remaining gaps as `TODO:` or a specific open question; do not make an incomplete note look complete.
 
-### 3. Verify technical claims and research when needed
+### 3. Verify claims and research
 
-- For research requests and substantive factual additions, consult relevant sources. Pure formatting or link maintenance does not require new research.
+- Research substantive factual additions and explicit research requests. Pure formatting or link maintenance does not need new research.
 - Prefer original papers, official documentation, standards, and authoritative educational material. Use tutorials as supporting explanations, not as proof of universal claims.
-- Open and read a source before attributing a claim to it. Never invent URLs, citations, quotations, paper findings, or verification results. If access is unavailable, state what remains unverified.
-- Distinguish established facts, intuition, author interpretation, and source-specific results. Avoid turning heuristics into universal rules.
-- Check current documentation for changing APIs, cloud services, product availability, and pricing. Record the relevant version or verification date when it materially affects the note.
-- For statistics and mathematics, define notation and assumptions; check denominators, dimensions, and edge cases. Use `$...$` for inline math and `$$...$$` for displayed equations.
-- For ML metrics and algorithms, explain when they apply and where they fail. State dataset, evaluation setup, or assumptions behind performance comparisons.
-- For SQL and code examples, identify the dialect or environment when relevant. Distinguish logical query processing from physical execution; verify performance advice against the engine and context.
-- Use language-labelled code fences such as `python`, `sql`, or `bash`. Make examples self-contained when practical and label pseudocode. Only claim execution or testing when actually performed.
-- For finance notes, identify jurisdiction and time period when relevant; distinguish educational examples from current facts or personal recommendations.
+- Open and read a source before attributing a claim to it. Never invent URLs, citations, quotations, paper findings, or verification results. If a source is inaccessible, state what remains unverified.
+- Distinguish established facts, intuition, the author's interpretation, and source-specific results. Do not turn heuristics into universal rules.
+- Check current documentation for changing APIs, cloud services, product availability, and pricing; record the version or verification date when it materially affects the note.
+- **Mathematics and statistics:** Define notation and assumptions; check denominators, dimensions, and edge cases.
+- **ML metrics and algorithms:** Explain when they apply and where they fail; state the dataset, evaluation setup, or assumptions behind performance comparisons.
+- **SQL and code:** Name the dialect or environment when relevant; distinguish logical query processing from physical execution; verify performance advice against the engine and context. Use language-labelled fences such as `python`, `sql`, or `bash`, make examples self-contained where practical, label pseudocode, and claim execution or testing only when actually performed.
+- **Finance:** State jurisdiction and time period when relevant; separate educational examples from current facts or personal recommendations.
 
-### Obsidian callouts and properties
+### 4. Connect notes
 
-- Callouts are Markdown blockquotes with a marker such as `> [!info]`. Reserve them for brief asides, warnings, or tips: normally one short paragraph with a short, descriptive title. Put multi-paragraph explanations, worked examples, and comparison tables in the ordinary note body under headings; large coloured panels make these harder to scan.
-- Keep the main learning path visible. Use foldable callouts only for optional detail, such as a supplementary derivation or exercise solution; do not collapse the only explanation of a core concept. Avoid adjacent or nested callouts used purely for decoration.
-- Properties live in YAML frontmatter at the start of a note. Use atomic values and stable names; quote internal links in property values and use a list for multiple values. Do not put Markdown formatting or long prose in properties.
-- For search pages, `note_type` is a text value such as `learning_map` or `concept`; `search_stage` is a text value from the controlled vocabulary in `Search Engineering.md`. Keep these values consistent so Obsidian's property search can filter related notes. Add a new stage only when the map is deliberately extended.
-- Preserve existing tags and aliases when adding properties. Do not migrate inline tags to YAML as an incidental part of metadata work.
+- Link with `[[Note Title]]` using the exact existing filename stem. Use a vault-relative path when names are ambiguous, for example `[[SQL/Ranking|SQL ranking]]`.
+- Use display aliases for natural prose, written without spaces around the pipe: `[[Go Language|Go]]`, `[[Data - MLOPs|data lifecycle]]`. Treat the spaced form `[[Go Language | Go]]` as the same intent. Escape the pipe as `\|` inside Markdown tables.
+- Use section links such as `[[Go Language#Core Principles|Go design principles]]` only after confirming the heading exists.
+- Link meaningful prerequisites, related methods, contrasting ideas, and applications, usually at the first useful occurrence rather than every repetition. Do not add generic hub links that serve no purpose in this vault.
+- Prefer existing notes. Prospective links to useful missing topics are allowed when listed under a TODO or open question; do not create empty files solely to resolve links.
+- Preserve `![[...]]` embeds, block identifiers, and headings that other notes link to.
+- Add `## Related Notes` only when useful connections are not already clear from the body.
 
-### Visual layout and readability
+### 5. Curate references
 
-- Prefer native Markdown that inherits the reader's theme and text size. Start visual fixes with the note's structure; do not add hard-coded colours, font sizes, HTML layout wrappers, or vault-wide CSS for a local formatting issue unless requested.
-- Use headings and short paragraphs for the main explanation. Reserve blockquotes for quotations and callout syntax; do not use a plain `>` block as decorative indentation for ordinary prose.
-- Present worked calculations and exercise solutions one step at a time: state the inputs, separate each calculation, then explain the result. Use short numbered steps or labels, with a blank line between distinct ideas; avoid packing several calculations and interpretations into one paragraph. Apply this inside optional foldable solutions too, using a `>`-only line between paragraphs so the spacing renders in Obsidian. A single source-line break may render as a space, so use paragraph breaks or list items for visible separation.
-- Show small comparisons in compact tables with short headers and cells. Put interpretation below the table, and use labelled bullets when long cells or many columns would make a table difficult to read at normal note width.
-- Use bold for short labels or key terms, not entire paragraphs. Break a dense paragraph into a list only when its points are parallel or sequential. Avoid repeating the same example in prose, a table, and a callout.
-- Keep brief symbol references inline. Put calculations that the reader must follow in separate display blocks, with `$$` delimiters on their own lines and readable notation such as `\frac{a}{b}`. Leave blank lines around headings, paragraphs, lists, tables, and display math.
-- For layout changes, inspect the affected section in Obsidian reading view when available, at normal note width. Check wrapping, table width, hierarchy, and callout size. If preview is unavailable, check the Markdown and state that the rendered layout remains unverified; preserve formulas, links, metadata, and examples while changing presentation.
-
-### Equation sections and worked examples
-
-- Apply the spacing rule throughout the entire note: formula introductions, notation, main worked examples, comparisons, derivations, and optional exercise solutions all need the same readable treatment.
-- Put multiple input values or symbol definitions in a short list. Do not pack the inputs, substitutions, intermediate results, final answer, and interpretation into one paragraph.
-- Give each calculation a short label or numbered step. Follow it with its own displayed equation, then a separate paragraph explaining what the result means. Keep a short chain of equivalent transformations together only when it represents one calculation.
-- Separate different cases or parameter settings into distinct steps or list items. Avoid putting several independent equations into one sentence or one wide display merely to save lines.
-- Use actual blank lines, not just source-line wrapping. Inside callouts, preserve `>` on blank lines and on every equation line. Keep code, tables, links, and math syntax intact when adding spacing.
-- When asked to fix a dense example, review the rest of the requested note set for the same pattern. Before finishing, check every equation-bearing paragraph and worked-example section in scope, and report the exact scope and any rendered-preview limitation.
-
-### 4. Connect knowledge with Obsidian links
-
-- Use `[[Note Title]]` for internal conceptual links, preserving the exact existing filename stem.
-- Use aliases to keep prose natural, for example `[[Data - MLOPs|data lifecycle]]` or `[[MLOPs|MLOps]]`.
-- When names are ambiguous, use a vault-relative path, for example `[[SQL/Ranking|SQL ranking]]`. Verify heading targets before using `[[Note Title#Heading]]`.
-- Link meaningful prerequisites, related methods, contrasting ideas, and applications. Usually link the first useful occurrence rather than every repetition.
-- Prefer existing notes. Prospective links are allowed for useful missing topics, but make their unfinished status clear in an open-question or TODO list. Do not create empty files solely to resolve links.
-- Do not insert generic links such as `[[Knowledge Base]]` unless they actually serve a purpose in this vault.
-- Preserve `![[...]]` embeds, block identifiers, and heading anchors used by other notes. Check inbound links before renaming files or changing linked headings; edits outside Obsidian may not trigger automatic link updates.
-- Add a `## Related Notes` section only when useful connections are not already clear in the body.
-
-### 5. Curate references at the bottom
-
-- Put all external resource links at the bottom of the note under the exact heading `## References & Useful Links`. Keep this as the final section.
-- When refining a note, consolidate bare URLs, inline web citations, HTML resource links, and scattered resource lists into that section, preserving their context and attribution.
-- Use descriptive Markdown links followed by a short explanation of what each resource supports or teaches. Prefer a few relevant sources over a long undifferentiated list.
-- For claim-level attribution, use clickable Obsidian footnotes: `[^1]` in the body and `[^1]: [Source title](https://example.com) — Supporting context.` under `## References & Useful Links`. Reuse the same identifier for the same source and ensure each marker has exactly one definition. Plain `[1]` markers do not create footnote links. The actual external links stay at the bottom.
-- Keep local attachment embeds beside the explanation they illustrate. For externally hosted illustrations, place the external link in the references section.
-- URLs that are literal inputs in a code example are code data, not resource citations; preserve them when necessary for the example to work.
+- Put all external resource links in a final section titled exactly `## References & Useful Links`.
+- When refining a note, consolidate bare URLs, inline web citations, HTML resource links, and scattered resource lists into that section, keeping their context and attribution.
+- Use descriptive Markdown links, each followed by a short explanation of what it supports or teaches. Prefer a few relevant sources to a long undifferentiated list.
+- For claim-level attribution, use Obsidian footnotes: `[^1]` in the body and `[^1]: [Source title](https://example.com) — Supporting context.` in the references section. Reuse an identifier for the same source and give each marker exactly one definition. Plain `[1]` markers are not footnotes.
+- Keep local attachment embeds beside the explanation they illustrate; move links to externally hosted illustrations into the references section.
+- URLs that are literal inputs in a code example are code data, not citations; leave them in place.
 - Do not fabricate references to fill a template. If research is incomplete, record the gap explicitly.
+
+## Obsidian conventions
+
+### Frontmatter, tags, and properties
+
+- Frontmatter sits at the very start of the file, followed by one blank line before the body; avoid extra empty paragraphs at the top. Preserve existing keys, values, tags, and aliases, and keep each property name's type consistent across the vault.
+- Use properties only for small, maintainable, structured metadata that improves filtering, grouping, or automation. Use stable names, atomic values, lists for multiple values, and quoted wikilinks such as `"[[Note]]"`. Do not put Markdown formatting, long prose, or a second outline in property values. Supported types are text, list, number, checkbox, date, date-time, and tags.
+- Store categorisation tags in `tags` as a YAML list without `#` prefixes, for example `tags: [search-eng, system-design]` or a block list. Keep categorisation tags out of body text so they appear consistently in Properties and Bases. Merge and deduplicate with existing tags, keep nested tag paths intact, and never add an empty `tags` property.
+- Do not impose a new metadata schema on existing notes or move inline tags into YAML as a side effect of unrelated work.
+- During a requested vault-wide tag migration: inspect every ordinary note, including those with frontmatter; move actual inline tags into `tags`; ignore tag-like text in code, math, wikilink heading anchors, and heading syntax; keep a marker tied to a specific unfinished item readable in the body as `TODO:` while also adding `TODO` to `tags`; and skip plugin payloads and application settings.
+
+### Callouts
+
+- A callout is a blockquote that begins with a typed marker, for example `> [!warning] Check the assumption`. Use `note` or `info` for context, `tip` for practical guidance, `warning` for material caveats, `question` for a genuine open question, and `example` for exercises. Types are case-insensitive; `+` or `-` immediately after the type makes the callout foldable (expanded or collapsed).
+- Reserve callouts for brief asides: normally one short paragraph with a short, descriptive title. Keep multi-paragraph explanations, worked examples, and comparison tables in the ordinary body under headings.
+- Collapse callouts only for optional detail such as a supplementary derivation or exercise solution, never for the only explanation of a core concept. Avoid adjacent or nested callouts used as decoration.
+- Reserve blockquotes for quotations and callouts; do not use a plain `>` block as decorative indentation.
+
+### Layout and readability
+
+- Prefer native Markdown that inherits the reader's theme and text size. Fix layout through structure; do not add hard-coded colours, font sizes, HTML layout wrappers, or vault-wide CSS unless requested.
+- Use short paragraphs, bullets for parallel points, numbered lists for procedures, and compact tables with short headers for small comparisons. Put interpretation below a table; switch to labelled bullets when cells are long or columns are many.
+- Use bold for short labels or key terms, not whole paragraphs. Do not repeat the same example in prose, a table, and a callout.
+- Leave blank lines around headings, paragraphs, lists, tables, and display math. A single source-line break may render as a space, so use a paragraph break or list item for visible separation.
+
+### Equations and worked examples
+
+- Keep brief symbol references inline with `$...$`. Put calculations the reader must follow in `$$...$$` display blocks, with the delimiters on their own lines and readable notation such as `\frac{a}{b}`.
+- Structure every worked calculation or exercise solution the same way:
+  1. List the inputs or symbol definitions.
+  2. Give each calculation a short label or step number, followed by its own display block.
+  3. Explain what the result means in a separate paragraph.
+- Treat different cases or parameter settings as separate steps. Keep a chain of equivalent transformations together only when it is one calculation; do not squeeze independent equations into one sentence or one wide display to save lines.
+- Apply this throughout the note: introductions, notation, derivations, comparisons, and foldable solutions. Inside callouts, prefix every line, including blank lines and equation lines, with `>`. Keep code, tables, links, and math syntax intact when changing spacing.
+- When fixing one dense example, check every equation-bearing section in the requested scope for the same pattern, and report the exact scope covered.
+
+## Names, renames, and plugin content
+
+- Use stable, generic concept filenames such as `Go Language.md`, `Information Retrieval.md`, or `Cosine Similarity.md`. Put angles such as design principles, worked examples, or performance under headings, not in new files. Avoid sentence-like filenames, redundant subtitles, and one file per question about the same concept.
+- Generic does not mean vague: `BM25.md` and `NDCG.md` remain distinct concepts, and a comparison such as `Rust and Go.md` can stay separate from each language's note.
+- Obsidian updates links automatically only for renames made inside Obsidian. Before renaming a file or a linked heading from outside it, check name collisions and all inbound wikilinks, embeds, heading and block links, and Markdown file links, including links inside the renamed files. Update the targets while preserving display aliases and fragments, and keep the former name as a frontmatter alias when useful. Never call a rename safe based only on outbound links.
+- Do not silently delete or merge stubs, apparent duplicates, or misspelled files. When consolidation is requested, keep unique content and update affected links.
+- Never rewrite Excalidraw payloads, compressed drawing data, or plugin-managed sections as prose, and do not apply templates, heading fixes, or reference normalisation to them. If a change affects a drawing, preserve its structure and verify the affected link explicitly.
 
 ## Adaptable note template
 
 Use this starting point for substantive concept notes. Omit unnecessary sections and replace placeholder text; short definitions can remain short.
 
 ```markdown
-# Topic Title
-
 ## Overview
 Explain what the topic is, why it matters, and when it is useful.[^1]
 
@@ -142,7 +153,7 @@ Explain important caveats, failure modes, or common misconceptions.
 - [[Existing Note]] — Explain the connection.
 
 ## Open Questions
-- #TODO Record a specific unresolved question, if any.
+- TODO: Record a specific unresolved question, if any.
 
 ## References & Useful Links
 [^1]: [Source title](https://example.com) — Describe the supporting material.
@@ -156,18 +167,16 @@ Adapt the body to the material:
 - **Study plans:** Learning goals, sequence, exercises, and completion criteria. Keep resource URLs in the final references section.
 - **Comparison notes:** Shared purpose, meaningful differences, tradeoffs, and when to choose each option.
 
-## Preserve repository integrity
-
-- Keep changes focused on the requested notes and directly necessary connections. Do not perform vault-wide cleanup as a side effect.
-- Preserve existing frontmatter, tags, aliases, local PDFs, images, and embeds. Do not impose a new metadata schema on existing notes.
-- Do not apply prose templates or reference normalization to Excalidraw payloads, compressed drawing data, or plugin-managed sections. Identify these by content and metadata, not folder alone.
-- Leave `.obsidian/`, `.idea/`, and other application settings unchanged unless the task concerns those settings.
-- Do not silently delete or merge stubs, apparent duplicates, or misspelled filenames. If consolidation is requested, preserve unique content and update affected links.
-
 ## Before finishing
 
-- Review the diff for scope, accidental deletions, and lost context.
-- Check newly added internal links against actual files; distinguish intentional prospective links from typos. Check affected embeds and anchors.
+- Review the diff (for example `git diff -- <file>`) for scope, accidental deletions, and lost context, including local PDFs, images, and embeds.
+- Check newly added internal links against actual files and headings; distinguish intentional prospective links from typos. Check affected embeds and anchors.
 - Confirm external references are in the final `## References & Useful Links` section and support the associated claims.
-- Check Markdown fences, heading structure, tables, math delimiters, and preserved metadata. Use Obsidian preview if available and layout needs verification; otherwise report only the checks actually performed.
-- Summarize the files changed, substantive improvements, and any unresolved factual or source-access gaps. Do not claim the whole vault was reviewed or validated after a targeted edit.
+- Check Markdown fences, heading hierarchy, tables, math delimiters, callout `>` prefixes, and preserved metadata.
+- For layout changes, inspect the affected section in Obsidian reading view at normal note width when available (wrapping, table width, hierarchy, callout size). Otherwise state that the rendered layout remains unverified.
+- Summarise the files changed, substantive improvements, and unresolved factual or source-access gaps. Report only checks actually performed, and do not claim the whole vault was reviewed after a targeted edit.
+
+## Obsidian documentation
+
+- [Obsidian Callouts](https://obsidian.md/help/callouts) — Callout syntax, types, titles, and folding.
+- [Obsidian Properties](https://obsidian.md/help/properties) — Property types, YAML format, and tag and alias properties.

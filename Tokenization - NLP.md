@@ -1,14 +1,19 @@
-Tokenization is a key and mandatory aspect of working with text data.
+> [!note] Main note
+> [[Tokenization]] is the fuller, reviewed note on this topic and lists `Tokenization - NLP` as an alias. This page keeps the original summary; see [[Tokenization#Subword Tokenizers for Transformers|subword tokenizers]] for how Transformer models split text.
 
-Tokenization is essentially splitting a phrase, sentence, paragraph or an entire text document into smaller units, such as individual words or terms. Each of these smaller units are called tokens. Tokenization is the first step for [[Stemming and Lemmatization]].
+Tokenization is a key first step in most text-processing pipelines.
 
-Most DL techniques such as transformers, RNN's & LSTM's use tokens as input.
+Tokenization splits a phrase, sentence, paragraph, or entire document into smaller units, such as words, subwords, or characters. Each of these units is called a token. Tokenization usually comes before optional steps such as [[Stemming and Lemmatization]], because those operate on individual tokens.
 
-Tokenization can be used to develop a vocabulary and then K frequently occuring words can be extracted. 
+Most deep-learning models for text, including [[Transformers]], [[RNN|RNNs]], and [[LSTM|LSTMs]], take sequences of token IDs as input.
+
+Tokenization can be used to build a vocabulary, from which the $K$ most frequent tokens can be extracted.
 
 > In the context of natural language processing tasks, tokenization involves breaking down a given text, such as 'My grandma makes the best apple pie,' into a sequence of individual units of meaning, referred to as tokens. This process enables the representation of the original text as a series of discrete elements that can be analyzed and manipulated by algorithms 
 
 ### Drawbacks of Tokenization
 
-OOV - Out of Vocabulary, refers to the new words which are encountered at testing and are not part of the vocabulary
-- A small trick to rescue word tokenizers from OOV is to form vocabulary with the Top K Frequenct Words and replace the rare words in training data with unknown tokens (UNK). This will help the model to learn the representation of OOV words in terms of UNK tokens
+OOV (out of vocabulary) refers to new words encountered at test time that are not part of the vocabulary.
+
+- A common workaround for word-level tokenizers is to keep the top $K$ most frequent words and replace rarer words in the training data with an unknown token (`UNK`). The model then learns one representation shared by all unknown words. This keeps the vocabulary small, but every unknown word looks the same to the model, so distinctions between them are lost.
+- Subword tokenizers, such as the byte-pair encoding used by many Transformer models, largely avoid this problem by splitting rare words into known pieces.

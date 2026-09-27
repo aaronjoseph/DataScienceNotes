@@ -2,11 +2,9 @@
 aliases: ["Tokenization - NLP"]
 note_type: concept
 search_stage: query_understanding
+tags:
+  - "search-eng"
 ---
-
-# Tokenization
-
-#search-eng
 
 ## Overview
 
@@ -49,6 +47,48 @@ For `size 9.5`, preserving the decimal matters if a later parser interprets size
 
 Check empty input, punctuation-only queries, case, accents, composed versus decomposed Unicode, and long text truncated by a model. Record both the original input and token output in a small diagnostic fixture. If the analysis pipeline changes, determine whether stored text or embeddings must be rebuilt; query-only changes cannot recover distinctions already erased at indexing time.
 
+## Subword Tokenizers for Transformers
+
+Neural models such as [[BERT]] and GPT-style [[Decoder-Only Model (Transformers)|decoders]] use **subword** vocabularies. Common words stay whole, while rare words split into known pieces. `annoyingly` might become `annoying` + `ly`, for example. This keeps the vocabulary compact while largely avoiding unknown tokens.[^3]
+
+| Algorithm | How the vocabulary is built | Used by |
+|---|---|---|
+| Byte-pair encoding (BPE) | Repeatedly merge the most frequent adjacent pair | GPT, many recent models |
+| Byte-level BPE | BPE over the 256 byte values, so any text can be encoded | GPT-2, [[RoBERTa]] |
+| WordPiece | Merge the pair that most increases training-data likelihood | [[BERT]] |
+| Unigram | Start large and remove pieces that least reduce likelihood | T5 and others |
+
+SentencePiece is a library that runs BPE or Unigram directly on raw text, including spaces, which helps languages that do not separate words with spaces.[^3]
+
+### Worked example: learning BPE merges
+
+Inputs: word counts `hug` 10, `pug` 5, `pun` 12, `bun` 4, `hugs` 5, split into characters.[^3]
+
+**Step 1 — count adjacent pairs.** `u g` appears in `hug`, `pug`, and `hugs`:
+
+$$
+10 + 5 + 5 = 20
+$$
+
+No other pair is as frequent, so the first merge creates `ug`.
+
+**Step 2 — recount after the merge.** Words now read `h ug`, `p ug`, `p u n`, `b u n`, `h ug s`. The pair `u n` appears in `pun` and `bun`:
+
+$$
+12 + 4 = 16
+$$
+
+It is now the most frequent pair, so the second merge creates `un`. The pair `p u` had 17 occurrences before the first merge, but `pug` no longer contains it, so it drops to 12.
+
+**Interpretation.** Merges are learned greedily from counts and must be recomputed after each merge. The vocabulary size equals the base symbols plus the number of merges. GPT-2's byte-level vocabulary has 50,257 entries: 256 bytes, 50,000 merges, and one end-of-text token.[^3]
+
+### What this means for search
+
+- **Identifiers split unpredictably.** A SKU such as `XJ-4471B` may become several pieces, so a neural model does not see it as one unit. Keep an exact-match field for identifiers.
+- **Length limits count tokens, not words.** A 512-token model sees fewer words when text contains many rare terms, numbers, or non-English script.
+- **The tokenizer belongs to the model.** Token IDs from one model's vocabulary are meaningless to another; [[RoBERTa]] cannot reuse BERT's IDs.
+- **Spaces can matter.** Byte-level BPE tokenizers may treat a leading space as part of a word, so `boots` and ` boots` can receive different IDs.
+
 ## Related Notes
 
 - [[Inverted Index]] — Consumes analysed terms.
@@ -63,3 +103,4 @@ Write expected tokens for `C++`, `AB-123`, `size 9.5`, and a query in another la
 
 [^1]: [Tokenization in information retrieval](https://nlp.stanford.edu/IR-book/html/htmledition/tokenization-1.html) — Token boundaries and language-dependent decisions.
 [^2]: [Hugging Face: Tokenizers](https://huggingface.co/learn/llm-course/en/chapter2/4) — Word/subword tokenization, unknown tokens, and model-compatible preprocessing.
+[^3]: [Hugging Face Transformers — Tokenization algorithms](https://huggingface.co/docs/transformers/tokenizer_summary) — BPE, byte-level BPE, WordPiece, Unigram, SentencePiece, and the BPE merge example.
