@@ -128,7 +128,6 @@ Write two sentences with identical word counts but different meanings. Identify 
 
 ## Related Notes
 
-- [[Bag of Words (BOW)]] — An older, longer write-up of the same concept.
 - [[Inverted Index]] — How term counts are stored for retrieval.
 - [[NLP Basic Terminology]] — Tokens, vocabulary, and representations.
 

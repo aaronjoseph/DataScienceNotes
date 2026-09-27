@@ -70,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#clustering  ",
+                "query": "BOW",
                 "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -262,6 +262,9 @@
   },
   "active": "fdf069b47dd84a04",
   "lastOpenFiles": [
+    "Bagging.md",
+    "Bagging Meta-Estimator.md",
+    "Bag of Words.md",
     "K Means.md",
     "Gaussian Mixture Models.md",
     "DBSCAN.md",
@@ -270,9 +273,7 @@
     "Adagrad and RMSProp.md",
     "L1 and L2 Regularization.md",
     "Encoding.md",
-    "Bagging.md",
     "Bag of Words (BOW).md",
-    "Bag of Words.md",
     "Autoencoders.md",
     "Association Rule Mining.md",
     "ARIMA.md",
@@ -290,7 +291,6 @@
     "LLM Evaluation.md",
     "BM25.md",
     "Judgement List.md",
-    "Search2.0 architecture.md",
     "Untitled 2.base",
     "Untitled 1.base",
     "Untitled.base",

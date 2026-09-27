@@ -1,9 +1,6 @@
 ---
 tags:
-  - "ml"
   - "clustering"
-  - "kmeans"
-  - "unsupervised"
   - "ds-foundations"
 ---
 ### K-Means Clustering Algorithm

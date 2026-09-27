@@ -1,11 +1,12 @@
 ---
+aliases: ["Bootstrap Aggregation"]
 tags:
   - "ds-foundations"
 ---
 
 ## Overview
 
-Bagging (**B**ootstrap **Agg**regat**ing**) trains many copies of one learning algorithm, each on a different bootstrap sample of the training data, and combines their predictions. Averaging reduces the **variance** of an unstable model such as a deep decision tree; it does little for a model's **bias**.[^sk-guide] See [[Bias-Variance Tradeoff]].
+Bagging (**B**ootstrap **Agg**regat**ing**) trains many copies of one learning algorithm, each on a different bootstrap sample of the training data, and combines their predictions. It is a model-averaging ensemble that makes predictions more stable and often more accurate. Averaging reduces the **variance** of an unstable model such as a deep decision tree, which helps against overfitting; it does little for a model's **bias**.[^sk-guide] See [[Bias-Variance Tradeoff]].
 
 The earlier version of this note summarised the idea as "a suitably large number of uncorrelated errors average out to zero". That is the right intuition, with two corrections:
 
@@ -136,7 +137,7 @@ print("OOB accuracy:", bagging.oob_score_)
 print("Test accuracy:", bagging.score(X_test, y_test))
 ```
 
-The base-model parameter is `estimator`; it was called `base_estimator` before scikit-learn 1.2.[^sk-api] Older examples, including the one in [[Bagging Meta-Estimator]], use the former name.
+The base-model parameter is `estimator`; it was called `base_estimator` before scikit-learn 1.2.[^sk-api]
 
 ## Limitations & Common Pitfalls
 
@@ -156,7 +157,6 @@ A bagged ensemble of 500 deep trees has almost the same validation error as one 
 
 - [[Random Forest]] — Bagging plus per-split feature sampling.
 - [[Bagging Meta-Estimator]] — scikit-learn's general bagging wrapper.
-- [[Bootstrap Aggregation]] — An earlier short note on the same topic.
 - [[Ensemble Learning]] — Voting, averaging, stacking, bagging versus pasting.
 
 ## References & Useful Links
