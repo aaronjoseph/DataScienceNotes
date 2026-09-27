@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Decision Trees.md",
+                "file": "GCP/BigQuery ML Cheatsheet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Decision Trees"
+              "title": "BigQuery ML Cheatsheet"
             }
           },
           {
@@ -109,7 +109,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -187,7 +187,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Decision Trees.md",
+                "file": "GCP/BigQuery ML Cheatsheet.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -244,7 +244,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Decision Trees.md",
+                "file": "GCP/BigQuery ML Cheatsheet.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -276,6 +276,11 @@
   },
   "active": "fdf069b47dd84a04",
   "lastOpenFiles": [
+    "Action Plan.base",
+    "Action-Plan.md",
+    "Light GBM.md",
+    "AdaBoost.md",
+    "Decision Trees.md",
     "Adam Optimizer.md",
     "XGBoost Classification.md",
     "ReLU Function.md",
@@ -293,8 +298,6 @@
     "Heirarchical Clustering.md",
     "DBSCAN.md",
     "Active Learning.md",
-    "Action-Plan.md",
-    "Action Plan.base",
     "AB Testing.md",
     "7 Database Paradigms.md",
     "catboost_info/tmp/cat_feature_index.5cbd830b-3728ebbd-41cb0b56-f9e33bd1.tmp",
@@ -308,10 +311,6 @@
     "Initialization.md",
     "XGBoost.md",
     "Bagging.md",
-    "Bagging Meta-Estimator.md",
-    "Bag of Words.md",
-    "Search Engineering.md",
-    "Finance/Current Liability.md",
     "Attachements/Agoda Search Service - Interview Architecture.png",
     "Attachements/Masked_SA&SA.png",
     "Attachements/Transformers.png",
