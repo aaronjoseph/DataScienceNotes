@@ -25,14 +25,14 @@
             "id": "fdf069b47dd84a04",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "Finance/10 Year Treasury Note.md",
-                "bFile": "Finance/10 Year Treasury Note.md",
-                "aRef": ""
+                "file": "System_Design/Accommodation Booking System.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: 10 Year Treasury Note  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "Accommodation Booking System"
             }
           },
           {
@@ -112,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#sim  ",
                 "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -214,6 +214,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "System_Design/Accommodation Booking System.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -270,6 +271,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "System_Design/Accommodation Booking System.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -301,35 +303,35 @@
   },
   "active": "fdf069b47dd84a04",
   "lastOpenFiles": [
-    "Retrieval-Augmented Generation.md",
+    "System_Design/Shein_Recommendation_System.md",
+    "System_Design/Accommodation Booking System.md",
+    "System_Design/Recommendation_System_System_Design.md",
+    "System_Design/File Storage System.md",
+    "System_Design/Design a Personalized Search Recommendation System for Rapido.md",
+    "System_Design/Agoda Search Service.md",
+    "Variance & Standard Deviation.md",
+    "Random Variables, Expected Value & LOTUS.md",
+    "Random Number Generator.md",
+    "Probability Density Function.md",
+    "Log and Expectation.md",
+    "Integral.md",
+    "Formulae's for Series, Taylor Series & Maclaurin Series.md",
+    "Central Limit Theorem.md",
+    "Calculus.md",
     "Action-Plan.md",
+    "Anomaly Detection Algorithms.md",
+    "Annotation Agreement.md",
+    "AGENTS.md",
+    "Advanced Pandas.md",
+    "Adam Optimizer.md",
+    "Adagrad and RMSProp.md",
+    "Retrieval-Augmented Generation.md",
     "Action Plan.base",
     "AB Testing.md",
     "7 Database Paradigms.md",
     "Research_Paper/pytorch2_internals.pdf",
     "Research_Paper/Deep and confident predictions for Time Series at Uber.md",
     "Research_Paper/Databases.pdf",
-    "Research_Paper/Attention is not all you need.md",
-    "Finance/Accounts Receivable Turnover Ratio.md",
-    "Finance/Amortization & Depreciation.md",
-    "Finance/Account Receivables & Account Payable.md",
-    "Finance/10 Year Treasury Note.md",
-    "GCP/Cloud Run.md",
-    "GCP/Cloud Load Balancing.md",
-    "GCP/Cloud Functions.md",
-    "AGENTS.md",
-    "GCP/BigQuery ML Cheatsheet.md",
-    "GCP/BigQuery.md",
-    "XGBoost.md",
-    "N-Grams.md",
-    "ESCI.md",
-    "CUSUM (Cumulative Sum Control Chart).md",
-    "CatBoost.md",
-    "BERT.md",
-    "AdaBoost.md",
-    "Gradient Descent.md",
-    "MLE Study Prep.md",
-    "Job Interviews/Preparation.md",
     "catboost_info/tmp/cat_feature_index.bc7e27e0-7c3b124e-12f6abe1-c9c29f69.tmp",
     "catboost_info/test/events.out.tfevents",
     "catboost_info/test",
