@@ -1,7 +1,7 @@
 ---
 tags:
   - "search-eng"
-  - "dl"
+  - "ds-foundations"
 ---
 
 ## Choose the Quantity Before the Model

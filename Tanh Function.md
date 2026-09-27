@@ -1,108 +1,104 @@
 ---
 tags:
-  - "dl"
+  - "ds-foundations"
 ---
-The hyperbolic tangent function, often referred to as the tanh function, is a rescaled version of the sigmoid function and is used as an activation function in neural networks. Here are its key features:
 
-### Characteristics of the Tanh Function
+The hyperbolic tangent, $\tanh$, is a rescaled [[Sigmoid Function|sigmoid]] that maps real numbers into $(-1, 1)$. Because its output is zero-centred, it is generally preferred to the sigmoid for hidden layers, but it still saturates.
 
-- **Output Range**: The tanh function outputs values in the range of -1 to 1. This is its fundamental difference from the sigmoid function, which outputs values between 0 and 1.
-  
-- **Centered at Zero**: The tanh function is zero-centered, which means it outputs negative values for negative inputs and positive values for positive inputs. This can help with the convergence during training because it tends to produce mean activations closer to zero.
-
-- **Saturation**: Similar to the sigmoid function, the tanh function also saturates at both ends of the output range. This means for inputs with large magnitudes, the function will approach -1 or 1, and the gradient will be close to zero.
-
-- **Gradients**: The gradients of the tanh function vanish at both ends as well, which means it also suffers from the vanishing gradient problem. However, the gradients are stronger for values in the range between -1 and 1 compared to the sigmoid function.
-
-- **Computation**: While tanh is computationally heavier than some other activation functions like ReLU, it is still widely used, especially in problems where having a zero-centered activation is beneficial.
-
-### Formula and Derivative
-
-The tanh function is mathematically represented as:
-
-$$ \tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} $$
-
-Its derivative, which is used in the backpropagation algorithm, is:
-
-$$ \frac{d}{dx} \tanh(x) = 1 - \tanh^2(x) $$
-
-The derivative is also always positive and only vanishes as the input approaches positive or negative infinity.
-
-### Application in Neural Networks
-
-In neural networks, the tanh function can be used as the activation function for hidden layers. Given an input $h^{t-1}$, the output at layer $t$ would be $h^t = \tanh(h^{t-1})$.
-
-When updating the weights, the chain rule is applied, incorporating the derivative of the tanh function:
-
-$$ \frac{\partial \mathcal{L}}{\partial W} = \frac{\partial \mathcal{L}}{\partial h^t} \frac{\partial h^t}{\partial W} $$
-
-### Vanishing Gradient Issue
-
-Although tanh functions have stronger gradients than sigmoid functions (due to their range being between -1 and 1), they can still lead to vanishing gradients in deep networks with many layers. Since the gradients are strongest near the origin and decrease as the input values move away from zero, during backpropagation, compounded small gradients can diminish as they propagate back through the layers, causing the earlier layers to learn very slowly or not at all.
-
-
-### Derivative of Tanh(x)
-
-The hyperbolic tangent function, or \(\tanh(x)\), is commonly used as an activation function in neural networks. It is defined as:
+## Definition and Characteristics
 
 $$
-\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}
+\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} = 2\sigma(2x) - 1
 $$
 
-To find the derivative of the \(\tanh\) function, denoted as \(\tanh'(x)\) or \(\frac{d}{dx}\tanh(x)\), we can use the quotient rule of calculus, which states that if we have a function \(f(x) = \frac{g(x)}{h(x)}\), then its derivative is:
+- **Output range.** $(-1, 1)$, compared with $(0, 1)$ for the sigmoid.
+- **Zero-centred.** Negative inputs give negative outputs and positive inputs give positive outputs, so activations tend to have mean closer to zero. This avoids the same-sign weight-gradient problem of sigmoid units; CS231n notes that tanh is therefore preferred to sigmoid in practice.[^cs231n-nn1]
+- **Odd function.** $\tanh(-x) = -\tanh(x)$ and $\tanh(0) = 0$.
+- **Saturation.** For inputs of large magnitude the output approaches $\pm 1$ and the gradient approaches zero, so tanh also suffers from vanishing gradients.
+- **Computation.** It needs exponentials, so it is more expensive than ReLU, which simply thresholds at zero.
+
+## Derivative
 
 $$
-f'(x) = \frac{g'(x)h(x) - g(x)h'(x)}{(h(x))^2}
+\frac{d}{dx}\tanh(x) = 1 - \tanh^2(x)
 $$
 
-Applying this to the \(\tanh\) function:
+The derivative is always positive, peaks at $1$ when $x = 0$, and approaches zero only as $|x| \to \infty$. Compared with the sigmoid's maximum of $0.25$, tanh passes back up to four times as much gradient near the origin. This is the precise sense in which its gradients are "stronger". Far from zero, tanh saturates faster than the sigmoid, so the advantage disappears (see the worked example).
 
-Let \(g(x) = e^{x} - e^{-x}\) and \(h(x) = e^{x} + e^{-x}\), then:
+### Derivation with the Quotient Rule
 
-$$
-g'(x) = \frac{d}{dx}(e^{x} - e^{-x}) = e^{x} + e^{-x}
-$$
-
-and
+Write $\tanh(x) = g(x) / h(x)$ with $g(x) = e^{x} - e^{-x}$ and $h(x) = e^{x} + e^{-x}$. The quotient rule is:
 
 $$
-h'(x) = \frac{d}{dx}(e^{x} + e^{-x}) = e^{x} - e^{-x}
+\left(\frac{g}{h}\right)' = \frac{g' h - g h'}{h^2}
 $$
 
-Now, using the quotient rule:
+**Step 1: derivatives of the numerator and denominator.**
 
 $$
-\tanh'(x) = \frac{(e^{x} + e^{-x})(e^{x} + e^{-x}) - (e^{x} - e^{-x})(e^{x} - e^{-x})}{(e^{x} + e^{-x})^2}
+g'(x) = e^{x} + e^{-x} = h(x), \qquad h'(x) = e^{x} - e^{-x} = g(x)
 $$
 
-Simplify the numerator:
+**Step 2: substitute.**
 
 $$
-\tanh'(x) = \frac{(e^{2x} + 2 + e^{-2x}) - (e^{2x} - 2 + e^{-2x})}{(e^{x} + e^{-x})^2}
+\tanh'(x) = \frac{h^2 - g^2}{h^2}
 $$
 
-After simplifying, we have:
+**Step 3: expand the numerator.**
 
 $$
-\tanh'(x) = \frac{4}{(e^{x} + e^{-x})^2}
+h^2 - g^2 = (e^{2x} + 2 + e^{-2x}) - (e^{2x} - 2 + e^{-2x}) = 4
 $$
 
-But we know that:
+**Step 4: rewrite in terms of $\tanh$.** Splitting the fraction from Step 2 instead gives:
 
 $$
-\tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}
+\tanh'(x) = 1 - \frac{g^2}{h^2} = 1 - \tanh^2(x) = \frac{4}{(e^{x} + e^{-x})^2}
 $$
 
-And therefore:
+Expressing the derivative through $\tanh(x)$ itself is convenient in backpropagation: the forward output is already stored, so the local gradient costs one multiplication and one subtraction.
+
+## Worked Example
+
+**Inputs.** Evaluate $\tanh$ and its derivative at $x = 0, 2, 4$, and compare with the sigmoid derivatives from [[Sigmoid Function]].
+
+**Step 1: at $x = 0$.**
 
 $$
-1 - \tanh^2(x) = 1 - \left( \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} \right)^2 = \frac{4}{(e^{x} + e^{-x})^2}
+\tanh(0) = 0, \qquad \tanh'(0) = 1 \quad (\text{sigmoid: } 0.25)
 $$
 
-So, we get the final derivative of the \(\tanh\) function as:
+**Step 2: at $x = 2$.**
 
 $$
-\tanh'(x) = 1 - \tanh^2(x)
+\tanh(2) \approx 0.964, \qquad \tanh'(2) \approx 0.071 \quad (\text{sigmoid: } 0.105)
 $$
 
-This result shows that the derivative of \(\tanh(x)\) can be expressed in terms of \(\tanh(x)\) itself, which is particularly useful in computations, especially when implementing backpropagation in neural networks.
+**Step 3: at $x = 4$.**
+
+$$
+\tanh(4) \approx 0.9993, \qquad \tanh'(4) \approx 0.0013 \quad (\text{sigmoid: } 0.018)
+$$
+
+Near zero, tanh passes back four times as much gradient as the sigmoid. By $x = 2$, it passes back less. Keeping pre-activations in the non-saturated range, through [[Initialization|initialisation]] and normalisation, matters more than the choice between the two. The values were recalculated in Python.
+
+## Use in Neural Networks
+
+For a hidden layer with pre-activation $z^{t} = W^{t} h^{t-1} + b^{t}$ and output $h^{t} = \tanh(z^{t})$, the chain rule gives:
+
+$$
+\frac{\partial \mathcal{L}}{\partial W^{t}} = \left(\frac{\partial \mathcal{L}}{\partial h^{t}} \odot \big(1 - \tanh^2(z^{t})\big)\right) \big(h^{t-1}\big)^\top
+$$
+
+In deep networks these factors multiply across layers. Saturated units contribute factors near zero, so early layers can learn very slowly; see [[Vanishing & Exploding Gradients]]. Tanh remains common where a bounded, signed output is useful, for example inside [[LSTM]] and [[RNN]] cells. For deep feed-forward hidden layers, CS231n recommends ReLU-family activations and expects tanh to work worse.[^cs231n-nn1]
+
+## Related Notes
+
+- [[Sigmoid Function]] — The unscaled, non-zero-centred counterpart.
+- [[Initialization]] — Xavier-style scaling for tanh units (PyTorch gain $5/3$).
+- [[Calculus]] — The quotient rule used in the derivation.
+
+## References & Useful Links
+
+[^cs231n-nn1]: [CS231n: Neural Networks Part 1 — Setting up the Architecture](https://cs231n.github.io/neural-networks-1/) — Tanh as a zero-centred scaled sigmoid, $\tanh(x) = 2\sigma(2x) - 1$, and practical activation recommendations.

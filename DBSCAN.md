@@ -23,7 +23,9 @@ Every point then falls into one of three roles:
 - **Border point:** not core itself, but within $\varepsilon$ of a core point. It joins that core point's cluster.
 - **Noise point:** neither core nor within $\varepsilon$ of any core point. scikit-learn labels it `-1`.
 
-A cluster is built by starting at a core point, adding its neighbours, and continuing to expand through any neighbour that is also a core point.[^sk-guide] Core points reached this way always end up in the same cluster. A border point near two clusters can be assigned to either, depending on processing order.
+A cluster is built by starting at a core point, adding its neighbours, and continuing to expand through any neighbour that is also a core point.[^sk-guide] Core points reached this way always end up in the same cluster. A border point within reach of two clusters goes to the cluster discovered first. Apart from that case, the original paper proves that the result does not depend on the order in which points are visited.[^ester]
+
+The paper's definitions are more precise. $N_{\varepsilon}(p)$ is the set of points within $\varepsilon$ of $p$, including $p$ itself, and $p$ is a core point if $\lvert N_{\varepsilon}(p) \rvert \ge \text{MinPts}$. A cluster is a maximal set of points that are density-connected, and noise is every point that belongs to no cluster.[^ester]
 
 ## Worked Example
 
@@ -78,7 +80,7 @@ Raising `min_samples` demands higher density: the small second group dissolves i
 
 ## Python Example
 
-Taken from the scikit-learn API example, which documents the output below; not executed locally, because scikit-learn is not installed.
+Taken from the scikit-learn API example and executed with scikit-learn 1.9.1; the printed output matches the comments.
 
 ```python
 import numpy as np
@@ -87,7 +89,7 @@ from sklearn.cluster import DBSCAN
 X = np.array([[1, 2], [2, 2], [2, 3], [8, 7], [8, 8], [25, 80]])
 clustering = DBSCAN(eps=3, min_samples=2).fit(X)
 print(clustering.labels_)               # [ 0  0  0  1  1 -1]
-print(clustering.core_sample_indices_)  # indices of core points
+print(clustering.core_sample_indices_)  # [0 1 2 3 4]
 ```
 
 The defaults are `eps=0.5` and `min_samples=5`. The documentation notes that `eps` usually cannot be left at its default and must suit the data and distance function.[^sk-api]
@@ -98,12 +100,14 @@ The defaults are `eps=0.5` and `min_samples=5`. The documentation notes that `ep
 2. **Pick `min_samples`** by how much noise you want to tolerate. Larger values suit larger, noisier datasets.[^sk-guide]
 3. **Pick `eps`** with a k-distance plot: for each point, compute the distance to its `min_samples`-th nearest neighbour, sort these distances, and look for a knee where they start rising sharply.[^sk-guide] Treat the knee as a starting point and inspect the resulting clusters.
 
+The original paper proposed this heuristic. It sorts the 4-distance (distance to the 4th nearest neighbour) in descending order, and a user picks the threshold at the first "valley"; points to its left are treated as noise. For 2-D data the authors fixed MinPts at 4, because $k$-distance graphs for $k > 4$ did not differ much and cost more to compute.[^ester] Note the off-by-one: the $k$-th nearest neighbour excludes the point itself, while $N_{\varepsilon}$ includes it.
+
 ## Limitations & Common Pitfalls
 
 - **One global density.** A single `eps` struggles when clusters have different densities. HDBSCAN and OPTICS relax this by considering a range of densities.[^sk-guide]
 - **High dimensions.** Distances become less informative as dimensions grow, which makes a density threshold hard to set; reduce dimensionality first when appropriate. See [[Dimensionality Reduction]].
 - **No `predict` for new points.** scikit-learn classes DBSCAN as transductive: it labels the data it was fitted on, not unseen points.[^sk-guide]
-- **Memory.** scikit-learn's implementation computes neighbourhoods in bulk and can need up to $O(n^2)$ memory when `eps` is large and `min_samples` is low.[^sk-api]
+- **Memory.** scikit-learn's implementation computes neighbourhoods in bulk and can need up to $O(n^2)$ memory when `eps` is large and `min_samples` is low.[^sk-api] The paper's $O(n \log n)$ average run time assumes a spatial index such as an R*-tree and small $\varepsilon$-neighbourhoods, with one region query per point.[^ester]
 - **Convex-biased metrics.** Silhouette and similar internal scores tend to favour convex clusters, so they can undervalue a good DBSCAN result.[^sk-guide]
 
 ## Exercise
@@ -125,4 +129,4 @@ You cluster store locations with DBSCAN. Half the stores are in a dense city cen
 [^sk-guide]: [scikit-learn User Guide: Clustering — DBSCAN, HDBSCAN, OPTICS, and evaluation](https://scikit-learn.org/stable/modules/clustering.html#dbscan) — Core and non-core samples, effects of `eps` and `min_samples`, k-distance heuristic, transductive methods, and silhouette bias towards convex clusters.
 [^sk-api]: [scikit-learn `DBSCAN` API](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html) — Parameter defaults, `min_samples` counting the point itself, `-1` noise label, memory note, worked example, and the Ester et al. (1996) citation.
 
-- [Ester et al. (1996), "A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise"](https://www.dbs.ifi.lmu.de/Publikationen/Papers/KDD-96.final.frame.pdf) — The original DBSCAN paper, linked from the scikit-learn API page. It could not be opened in this pass, so no claim above relies on it directly.
+[^ester]: [Ester, Kriegel, Sander and Xu (1996), "A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise", KDD-96](https://cdn.aaai.org/KDD/1996/KDD96-037.pdf) — Full paper read. Definitions 1 to 6, the core-point condition, order independence except for shared border points, $O(n \log n)$ average run time with an R*-tree, and the sorted 4-dist heuristic.

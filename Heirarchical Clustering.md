@@ -83,7 +83,7 @@ Both linkages merged in the same order here, but at different heights, so the sa
 
 ## Python Example
 
-Checked against the scikit-learn documentation but **not executed**; scikit-learn is not installed locally.
+Executed with scikit-learn 1.9.1.
 
 ```python
 import numpy as np
@@ -96,7 +96,7 @@ for linkage in ("single", "complete"):
     print(linkage, model.fit_predict(X))
 ```
 
-Expected, from the worked example: single linkage returns two clusters and complete linkage three. Label numbers are arbitrary. To draw the dendrogram, SciPy's `scipy.cluster.hierarchy.linkage` and `dendrogram` functions are a common choice.
+It printed `single [0 0 0 1]` (two clusters) and `complete [0 0 2 1]` (three clusters), as in the worked example. Label numbers are arbitrary. To draw the dendrogram, SciPy's `scipy.cluster.hierarchy.linkage` and `dendrogram` functions are a common choice.
 
 ## Limitations & Common Pitfalls
 

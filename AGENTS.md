@@ -37,11 +37,11 @@ The owner is a search engineer strengthening fundamentals. `Search Engineering.m
 
 ## Data-science foundations tag
 
-`ds-foundations` marks notes on core data-science fundamentals: statistics and probability, classical machine-learning algorithms and ensembles, time series, basic text and data representations, and everyday data tooling such as pandas and regular expressions.
+`ds-foundations` marks notes on core data-science fundamentals: statistics and probability, the calculus and linear algebra behind model training, classical machine-learning algorithms and ensembles, deep-learning fundamentals (optimisers, activations, initialisation, automatic differentiation, and basic architectures such as CNNs), introductory reinforcement learning such as MDPs, time series, basic text and data representations, and everyday data tooling such as pandas and regular expressions.
 
 - Add it to the YAML `tags` list of notes you create or substantively revise in these areas, alongside `search-eng` when both apply. Like `search-eng`, it signals scope, not factual review.
 - Do not bulk-tag the vault; add it as notes are revised, or during an explicitly requested tag migration.
-- It replaced the ambiguous `oan` tag on 27 September 2026. Do not reintroduce `oan` or create near-synonyms such as `ds-basics` or `fundamentals`.
+- It replaced the ambiguous `oan` tag on 27 September 2026, and absorbed the `dl` and `DL` tags the same day. Do not reintroduce `oan`, `dl` or `DL`, or create near-synonyms such as `ds-basics`, `dl-foundations` or `fundamentals`.
 - This tag alone does not justify `note_type` or `search_stage`; those properties remain reserved for search notes as described above.
 - Topic tags can sit alongside it. Use `clustering` for clustering algorithms, clustering evaluation, and segmentation notes built on clustering, such as `K Means.md`, `DBSCAN.md`, and `RFM.md`. Reuse an existing topic tag before creating a new one.
 

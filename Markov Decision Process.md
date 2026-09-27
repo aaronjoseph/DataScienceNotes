@@ -1,156 +1,164 @@
 ---
 tags:
-  - "dl"
+  - "ds-foundations"
 ---
-`Markov Decision Processes or MDPs`
 
-MDPs provide a mathematical framework for modeling decision-making where outcomes are partly random and partly under the control of a decision maker. MDPs are useful in studying optimization problems solved via dynamic programming and reinforcement learning.
+A Markov decision process (MDP) is a mathematical framework for sequential decision-making in which outcomes are partly random and partly under the control of a decision maker. MDPs are the standard setting for dynamic programming and [[Reinforcement Learning|reinforcement learning]] (RL).
 
-An MDP is formally defined as a tuple $(S, A, R, T, \gamma)$ where:
+## Definition
 
-- $S$: Set of possible states
-- $A$: Set of possible actions
-- $R(s, a, s')$: Distribution of reward, received after transitioning from state $s$ to state $s'$, due to action $a$
-- $T(s, a, s')$: Transition probability distribution, the probability of transitioning to state $s'$ from state $s$ after taking action $a$, also noted as $p(s'|s,a)$
-- $\gamma$: Discount factor, which represents the difference in importance between future rewards and present rewards
+An MDP is a tuple $(S, A, T, R, \gamma)$:
 
-MDPs are a key element in Reinforcement Learning (RL), providing the structure needed for agents to learn how to act optimally in stochastic environments over time.
+- $S$: the set of possible states.
+- $A$: the set of possible actions.
+- $T(s, a, s')$: the transition probability of moving to state $s'$ after taking action $a$ in state $s$, also written $p(s' \mid s, a)$.
+- $R$: the reward. Some texts use a reward distribution for each transition $(s, a, s')$; this note writes the expected immediate reward as $r(s, a)$.
+- $\gamma$: the discount factor, which sets how much future rewards count relative to immediate ones.
 
+**Markov property.** The next state and reward depend only on the current state and action, not on the earlier history. This is what lets value functions be written recursively.
 
----
-In Reinforcement Learning (RL), the framework of Markov Decision Processes (MDPs) is utilised with some components typically `unknown`, specifically:
+## MDPs in Reinforcement Learning
 
-- Transition probability distribution $T$: Defines the likelihood of moving from one state to another given a particular action.
-- Reward distribution $R$: Specifies the reward received after a transition from one state to another due to an action.
+In RL the MDP framework is used but some components are typically **unknown**:
 
-### Evaluative Feedback in RL
+- **Transition probabilities $T$**: how likely each next state is after an action.
+- **Rewards $R$**: what reward follows each transition.
 
-Within RL, evaluative feedback is essential. This feedback is not provided upfront but is instead discovered through the process of trial and error. Agents learn from the consequences of their actions, which in turn informs their decision-making process.
+**Evaluative feedback.** The agent is not told which action was correct. It sees only the consequences of the actions it tried, and must learn by trial and error. This is the key difference from supervised learning. A [[Multi-Armed Bandits|multi-armed bandit]] is the simplest case: a single state, where each action's reward must be learned.
 
---- 
-### Solving MDPs: Optimal Policy
+## Policies and Returns
 
-- **Defining a Policy**:
-  - A policy is a strategy used by an agent to decide which action to take in each state.
-  - **Deterministic Policy**: Represented as $\pi(s) = a$, it specifies a single action $a$ to be taken when in state $s$.
-  - **Stochastic Policy**: Represented as $\pi(a|s) = \mathbb{P}(A_t = a|S_t = s)$, it defines the probability of taking action $a$ when in state $s$.
+- **Deterministic policy.** $\pi(s) = a$ picks one action in each state.
+- **Stochastic policy.** $\pi(a \mid s) = \mathbb{P}(A_t = a \mid S_t = s)$ gives a probability for each action.
 
-- **Characteristics of a Good Policy**:
-  - The objective is not just to maximize the immediate reward but also to consider the entire sequence of future rewards.
-  - A good policy aims for the **discounted sum of future rewards**, where rewards received in the future are worth less than immediate rewards, reflecting the concept of the time value of money or utility.
-  
-- **Discount Factor ($\gamma$)**:
-  - The discount factor $\gamma$ ranges between 0 and 1 ($\gamma \in [0,1]$) and determines the present value of future rewards.
-  - A value of $\gamma$ close to 0 makes the agent short-sighted (cares mostly about immediate rewards), while a value close to 1 makes it far-sighted (cares about long-term rewards).
+A good policy maximises not the immediate reward but the **return**, the discounted sum of future rewards. Future rewards are worth less, much like the time value of money.
 
-- **Optimization Goal**:
-  - The goal in solving MDPs is to find an optimal policy $\pi^*$ that maximises the expected return (discounted sum of future rewards) from any given state.
+**Discount factor.** $\gamma \in [0, 1]$. Values near 0 make the agent short-sighted and values near 1 make it far-sighted. For continuing tasks with no terminal state, $\gamma < 1$ keeps the infinite sum finite; $\gamma = 1$ is used only when episodes are guaranteed to end.
 
-- **Optimal Policy**
-- The optimal policy $\pi^*$ in a Markov Decision Process is defined mathematically as:
+**Optimal policy.** The goal is a policy that maximises the expected return from every state:
 
 $$
-\pi^* = \underset{\pi}{\mathrm{arg\,max}}\ \mathbb{E}\left[\sum_{t \geq 0} \gamma^t r_t \bigg| \pi\right]
+\pi^* = \underset{\pi}{\arg\max} \; \mathbb{E}\left[\sum_{t \geq 0} \gamma^t r_t \,\middle|\, \pi\right]
 $$
 
-Here's what this formula represents:
+- $\arg\max_\pi$ selects the policy that achieves the largest value.
+- $\mathbb{E}[\cdot \mid \pi]$ averages over the randomness in transitions and in a stochastic policy, when actions follow $\pi$.
+- $\gamma^t r_t$ is the reward at step $t$, discounted more heavily the later it arrives.
 
-- $\pi^*$: This symbol represents the optimal policy, which is the policy that maximises the expected sum of discounted rewards.
+The formula captures the trade-off between immediate and future rewards, valuing the latter less.
 
-- $\mathrm{arg\,max}$: This operator finds the argument (in this case, the policy $\pi$) that maximises the following expected value.
+## Value Functions
 
-- $\mathbb{E}$: The expected value operator, indicating that we are interested in the expected sum of rewards, which accounts for the probabilistic nature of the rewards received under policy $\pi$.
+**State value.** $V^\pi(s)$ is the expected return when starting from state $s$ and following $\pi$. It measures how good it is to be in $s$:
 
-- $\sum_{t \geq 0} \gamma^t r_t$: This is the sum of discounted rewards over time. For each time step $t$, the reward $r_t$ received is discounted by $\gamma^t$. 
+$$
+V^\pi(s) = \mathbb{E}\left[\sum_{t \geq 0} \gamma^t r_t \,\middle|\, s_0 = s, \pi\right]
+$$
 
-- $\gamma$: The discount factor, which ranges from 0 to 1 ($\gamma \in [0, 1]$), determines the present value of future rewards. It makes future rewards worth less in the present term than immediate rewards.
+**State–action value.** $Q^\pi(s, a)$ is the expected return when taking action $a$ in state $s$ and following $\pi$ afterwards. It measures the long-term effect of a particular action:
 
-- $\gamma^t$: This raises the discount factor $\gamma$ to the power of $t$, increasing the discount with each time step.
+$$
+Q^\pi(s, a) = \mathbb{E}\left[\sum_{t \geq 0} \gamma^t r_t \,\middle|\, s_0 = s, a_0 = a, \pi\right]
+$$
 
-- $r_t$: The reward received at time step $t$.
+The optimal functions $V^*$ and $Q^*$ are the same quantities under an optimal policy $\pi^*$. They are related by:
 
-- $\big| \pi$: This notation means that the expected sum of discounted rewards is being evaluated under the policy $\pi$.
+$$
+V^*(s) = \max_a Q^*(s, a), \qquad \pi^*(s) = \underset{a}{\arg\max} \; Q^*(s, a)
+$$
 
-In essence, this equation states that the optimal policy is the one that, for any given state, chooses the action that maximizes the expected total of the rewards that are discounted over time, starting from the current time step. It captures the trade-off between immediate and future rewards, valuing the latter less than the former, and informs the strategy that the agent should adopt to maximize its returns in the long run.
+## Bellman Optimality Equations
 
-### Value Functions
+The definitions above become recursive once the return is split into the first reward plus the discounted value of the next state. For the optimal state value:
 
-- **Value Function**: Predicts the total amount of reward an agent can expect to accumulate over the future, starting from a specific state or state-action pair, discounted by a factor of $\gamma$.
+$$
+V^*(s) = \max_a \sum_{s'} p(s' \mid s, a) \big[r(s, a) + \gamma V^*(s')\big]
+$$
 
-- **State Value Function ($V^\pi(s)$)**: 
-  - Estimates the expected return from a state $s$, under policy $\pi$.
-  - Defined as the expected discounted sum of future rewards starting from state $s$:
-    $$ V^\pi(s) = \mathbb{E} \left[\sum_{t \geq 0} \gamma^t r_t \bigg| s_0 = s, \pi \right] $$
-  - It assesses the "goodness" of a state, predicting the likely outcome (win/loss) from that state onward.
+For the optimal action value:
 
-- **State-Action Value Function ($Q^\pi(s, a)$)**:
-  - Evaluates the expected return from taking action $a$ in state $s$, under policy $\pi$.
-  - Defined as the expected discounted sum of future rewards starting from state $s$, taking action $a$, and thereafter following policy $\pi$:
-    $$ Q^\pi(s, a) = \mathbb{E} \left[\sum_{t \geq 0} \gamma^t r_t \bigg| s_0 = s, a_0 = a, \pi \right] $$
-  - It measures the "goodness" of performing a particular action in a given state, forecasting the long-term impact of that action.
+$$
+Q^*(s, a) = \sum_{s'} p(s' \mid s, a) \Big[r(s, a) + \gamma \max_{a'} Q^*(s', a')\Big]
+$$
 
-Both functions are central to many reinforcement learning algorithms, enabling an agent to make informed decisions that consider both the immediate and potential future rewards.
+Solving an MDP means solving these fixed-point equations. When $T$ and $R$ are known, dynamic programming can do it directly.
 
----
 ## Algorithms for Solving MDPs
 
-### Bellman Optimality Equations
-The Bellman optimality equations for value functions and Q-functions establish the recursive nature of solving MDPs.
+### Value Iteration
 
-- **Value Function ($V^*(s)$)**:
-  The optimal value function represents the expected return from a given state, assuming the optimal policy $\pi^*$ is followed.
+1. **Initialise** $V^0(s)$ for every state, for example to 0.
+2. **Iterate.** For every state, apply the Bellman optimality equation as an update:
 
-  $$V^*(s) = \mathbb{E}\left[ \sum_{t \geq 0} \gamma^t r_t | s_0 = s, \pi^* \right]$$
+$$
+V^{i+1}(s) \leftarrow \max_a \sum_{s'} p(s' \mid s, a) \big[r(s, a) + \gamma V^{i}(s')\big]
+$$
 
-- **Q-Function ($Q^*(s, a)$)**:
-  The optimal Q-function represents the expected return from a given state and action, assuming the optimal policy is followed thereafter.
+3. **Stop** when the values change by less than a tolerance: $V^0 \to V^1 \to \cdots \to V^*$.
+4. **Extract the policy** by choosing the action that achieves the maximum in each state.
 
-  $$Q^*(s, a) = \mathbb{E}\left[ \sum_{t \geq 0} \gamma^t r_t | s_0 = s, a_0 = a, \pi^* \right]$$
+Each iteration costs $O(|S|^2 |A|)$: for every state and action, the update sums over all next states.
 
-### Equations Relating Optimal Quantities
-These equations illustrate the relationship between the optimal value function, optimal Q-function, and optimal policy.
+### Q-Iteration
 
-- **Optimal Policy ($\pi^*(s)$)**:
-  The optimal policy is derived from the optimal Q-function, yielding the action with the highest expected return.
+Q-iteration applies the same idea to state–action values:
 
-  $$\pi^*(s) = \operatorname{arg\,max}_a Q^*(s, a)$$
+$$
+Q^{i+1}(s, a) \leftarrow \sum_{s'} p(s' \mid s, a) \Big[r(s, a) + \gamma \max_{a'} Q^{i}(s', a')\Big]
+$$
 
-- **Optimal Value Function as Maximum of Q-Function**:
-  This equation shows that the optimal value function for a state is the maximum over the expected returns for all possible actions.
+It loops over actions as well as states. Implemented directly, with the inner maximum recomputed inside the sum, each iteration costs $O(|S|^2 |A|^2)$. Precomputing $\max_{a'} Q^{i}(s', a')$ once per next state brings it back to $O(|S|^2 |A|)$, the same as value iteration. Storing $Q$ makes policy extraction trivial, and it is the quantity that [[Deep Q-Learning]] approximates with a neural network when $T$ is unknown.
 
-  $$V^*(s) = \max_a Q^*(s, a)$$
+**Policy iteration** is a common alternative. It alternates between evaluating the current policy and making it greedy with respect to the resulting values.
 
-### Value Iteration Algorithm
-- **Initialization**:
-  - Begin by initialising the values of all states.
+## Worked Example
 
-- **Iteration**:
-  - Continue iterating while the values have not yet converged.
-  - For each state $s$ in the state space, update the value function $V^{i+1}(s)$ using the Bellman optimality equation:
+**Inputs.** Two states, $A$ and $B$, with deterministic transitions and $\gamma = 0.9$. Start from $V^0(A) = V^0(B) = 0$.
 
-    $$V^{i+1}(s) \leftarrow \max_a \sum_{s'} p(s' | s, a) \left[ r(s, a) + \gamma V^i(s') \right]$$
+- In $A$: **stay** gives reward 1 and stays in $A$; **go** gives reward 0 and moves to $B$.
+- In $B$: **stay** gives reward 2 and stays in $B$; **go** gives reward 0 and moves to $A$.
 
-- **Convergence**:
-  - The process is repeated until there is no significant change in the values across states, signifying convergence.
-  - Iteratively, this is shown as: $V^0 \rightarrow V^1 \rightarrow V^2 \rightarrow \cdots \rightarrow V^i \rightarrow \cdots \rightarrow V^*$.
+**Iteration 1.**
 
-- **Time Complexity**:
-  - The time complexity per iteration of the algorithm is $O(|S|^2 |A|)$, where $|S|$ is the number of states and $|A|$ is the number of actions.
+$$
+V^1(A) = \max(1 + 0.9 \cdot 0, \; 0 + 0.9 \cdot 0) = 1, \qquad V^1(B) = \max(2, 0) = 2
+$$
 
-This iterative process is used to approximate the optimal value function $V^*$, which in turn can be used to derive an optimal policy.
+**Iteration 2.**
 
-### Value Iteration Update
-- The Value Iteration algorithm updates the value function for each state based on the expected return from future states, optimised over all possible actions.
-- This update follows the Bellman optimality equation:
+$$
+V^2(A) = \max(1 + 0.9 \cdot 1, \; 0 + 0.9 \cdot 2) = \max(1.9, 1.8) = 1.9
+$$
 
-  $$V^{i+1}(s) \leftarrow \max_a \sum_{s'} p(s' | s, a) \left[ r(s, a) + \gamma V^{i}(s') \right]$$
+$$
+V^2(B) = \max(2 + 0.9 \cdot 2, \; 0 + 0.9 \cdot 1) = 3.8
+$$
 
-### Q-Iteration Update
-- The Q-Iteration algorithm is similar to Value Iteration, with the main difference being that it loops over actions as well as states.
-- The Q-Iteration update computes the Q-value for each state-action pair:
+**Iteration 3.**
 
-  $$Q^{i+1}(s, a) \leftarrow \sum_{s'} p(s' | s, a) \left[ r(s, a) + \gamma \max_{a'} Q^{i}(s', a') \right]$$
+$$
+V^3(A) = \max(1 + 0.9 \cdot 1.9, \; 0 + 0.9 \cdot 3.8) = \max(2.71, 3.42) = 3.42
+$$
 
-- Both Value Iteration and Q-Iteration aim to converge to an optimal policy. However, Q-Iteration involves a more complex computation due to the inclusion of action values in the loop.
+$$
+V^3(B) = \max(2 + 0.9 \cdot 3.8, \; 0.9 \cdot 1.9) = 5.42
+$$
 
-These updates are foundational for determining optimal policies in MDPs, each providing a way to converge on an optimal solution through iterative calculations.
+**Convergence.** The values converge to:
+
+$$
+V^*(B) = \frac{2}{1 - 0.9} = 20, \qquad V^*(A) = 0 + 0.9 \times 20 = 18
+$$
+
+In the first two iterations, "stay" looks better in $A$ because it pays immediately. From iteration 3 onwards the look-ahead shows that giving up one reward to reach $B$ is worth more: staying in $A$ forever is worth only $1/(1 - 0.9) = 10$. The optimal policy is to go from $A$ to $B$ and stay there. The values were recalculated in Python.
+
+## Related Notes
+
+- [[Reinforcement Learning]] — Learning when $T$ and $R$ are unknown.
+- [[Deep Q-Learning]] — Approximating $Q^*$ with a neural network.
+- [[Policy Gradients & Actor-Critic]] — Optimising the policy directly.
+- [[Multi-Armed Bandits]] — The single-state special case.
+
+## References & Useful Links
+
+- [Reinforcement Learning: An Introduction, 2nd ed. (Sutton and Barto, 2018)](http://incompleteideas.net/book/the-book-2nd.html) — Standard textbook treatment of finite MDPs, Bellman equations, dynamic programming, and evaluative feedback, with a free full PDF. Only the book page was opened in this revision; the chapter text was not re-read.

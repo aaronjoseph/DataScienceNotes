@@ -1,61 +1,102 @@
 ---
 tags:
-  - "dl"
+  - "ds-foundations"
 ---
-## Notes on Momentum in Optimization
 
-Momentum is an optimization technique used to accelerate gradient descent, making it faster and more reliable, especially for functions with many shallow regions or for dealing with the vanishing gradient problem. Here's a detailed look at the concept of Momentum:
+Momentum accelerates [[Gradient Descent|gradient descent]] by accumulating past gradients into a velocity. Directions where the gradient is consistent build up speed, while directions where it keeps changing sign partly cancel.
 
-### Momentum Overview
+## Intuition
 
-- **Intuitive Idea**: Imagine a ball rolling down a loss surface. Momentum allows the ball to use its inertia to continue moving in the same direction, helping it to pass over flat surfaces and small humps, potentially avoiding getting stuck in local minima.
+Picture a ball rolling on the loss surface. With inertia it keeps moving across flat stretches and small bumps instead of stopping wherever the local slope is tiny. The analogy has limits: the momentum coefficient behaves more like friction, because it damps the velocity so the ball can eventually settle.[^cs231n-nn3] Momentum may carry the parameters past shallow local minima, but nothing guarantees that.
 
-### Momentum Mechanics
+## Update Rule
 
-- **Velocity Update**: The 'velocity' term $v_i$ is a combination of the past velocity and the current gradient. It is given by the equation:
+**Notation.** $w_t$ are the weights after step $t$, $g_t = \nabla_w \mathcal{L}(w_{t-1})$ is the gradient, $\alpha$ is the learning rate, and $\beta \in [0, 1)$ is the momentum coefficient.
 
-$$ v_i = \beta v_{i-1} + \frac{\partial \mathcal{L}}{\partial w_{i-1}} $$
+Two equivalent conventions appear in the literature and in code.
 
-Here, $\beta$ is a hyperparameter known as the momentum term, typically set close to 1 (e.g., 0.9 or 0.99). This term dictates the contribution of the past velocity to the current update.
+**Convention A (PyTorch).** The velocity accumulates raw gradients:
 
-- **Weight Update**: Weights are updated by subtracting the product of learning rate $\alpha$ and the velocity from the previous weights:
+$$
+v_t = \beta v_{t-1} + g_t
+$$
 
-$$ w_i = w_{i-1} - \alpha v_i $$
+$$
+w_t = w_{t-1} - \alpha v_t
+$$
 
-### Exponential Moving Average
+**Convention B (Sutskever et al. and CS231n).** The learning rate sits inside the velocity:
 
-- The velocity term $v_i$ can also be thought of as an exponential moving average of the gradients, which helps in smoothing out the updates and provides a notion of 'direction' to the optimization process.
+$$
+v_t = \beta v_{t-1} - \alpha g_t
+$$
 
-- **Expanded Form**: By expanding the recursive definition of velocity, we can see the influence of previous gradients:
-  
-$$ v_i = \beta(\beta v_{i-2} + \frac{\partial \mathcal{L}}{\partial w_{i-2}}) + \frac{\partial \mathcal{L}}{\partial w_{i-1}} = \beta^2 v_{i-2} + \beta \frac{\partial \mathcal{L}}{\partial w_{i-2}} + \frac{\partial \mathcal{L}}{\partial w_{i-1}} $$
+$$
+w_t = w_{t-1} + v_t
+$$
 
-### Exponentially Weighted Averages
-It calculates a moving average of the gradients to smooth out the updates, with higher $\beta$ values giving more weight to past observations.
-### Generalization to Stochastic Gradient Descent (SGD)
+With a constant learning rate the two give identical weights, because the convention B velocity equals $-\alpha$ times the convention A velocity. They differ slightly when a schedule changes $\alpha$ during training. PyTorch also initialises its buffer to the first gradient rather than to zero.[^pytorch-sgd]
 
-- Momentum can be considered a generalization of SGD, with SGD being a special case where $\beta = 0$. This implies no momentum term and each update depends only on the current gradient.
+Setting $\beta = 0$ recovers plain gradient descent, where each update depends only on the current gradient.
 
-### Equivalent Formulation
+## Velocity as an Exponentially Weighted Sum
 
-- An equivalent formulation of the momentum update rule involves incorporating the learning rate directly into the velocity calculation:
+Expanding convention A once shows the influence of earlier gradients:
 
-$$ v_i = \beta v_{i-1} - \alpha \frac{\partial \mathcal{L}}{\partial w_{i-1}} $$
-  
-- The weight update is then simply adding the new velocity to the previous weights:
+$$
+v_t = \beta (\beta v_{t-2} + g_{t-1}) + g_t = \beta^2 v_{t-2} + \beta g_{t-1} + g_t
+$$
 
-$$ w_i = w_{i-1} + v_i $$
+Continuing back to $v_0 = 0$:
 
-### Benefits of Momentum
+$$
+v_t = \sum_{k=0}^{t-1} \beta^k \, g_{t-k}
+$$
 
-- **Faster Convergence**: Momentum can lead to faster convergence by propelling the weights across flat regions of the loss landscape.
-  
-- **Dampening Oscillations**: It can help to dampen oscillations in directions of high curvature, leading to smoother convergence.
-  
-- **Avoiding Poor Local Minima**: By accumulating velocity, the optimizer can potentially escape shallow local minima.
+Older gradients are down-weighted geometrically, so higher $\beta$ gives past gradients more weight. Because there is no $(1 - \beta)$ factor, this is a weighted *sum*, not an average. If the gradient stays at $g$, the velocity approaches $g / (1 - \beta)$, so the effective step becomes $\alpha / (1 - \beta)$: ten times the learning rate for $\beta = 0.9$. [[Adam Optimizer|Adam]]'s first moment includes the $(1 - \beta)$ factor and is a true moving average.
 
-### Accelerated Descent Methods
+Typical values are around $\beta = 0.9$. CS231n reports cross-validating values such as 0.5, 0.9, 0.95 and 0.99, and sometimes increasing momentum during training.[^cs231n-nn3]
 
-- Momentum is part of a broader class of accelerated gradient methods, which aim to speed up gradient descent by considering past gradients in the update rule.
-  
-- **Theoretical Analysis**: These methods often come with some theoretical guarantees under certain assumptions about the loss function's shape and gradient behavior.
+## Worked Example
+
+**Inputs.** $\mathcal{L}(w) = w^2$, so $g = 2w$. Start at $w_0 = 1$ with $\alpha = 0.1$, $\beta = 0.9$, $v_0 = 0$, using convention A.
+
+**Step 1.**
+
+$$
+g_1 = 2, \qquad v_1 = 2, \qquad w_1 = 1 - 0.1 \times 2 = 0.8
+$$
+
+**Step 2.**
+
+$$
+g_2 = 1.6, \qquad v_2 = 0.9 \times 2 + 1.6 = 3.4, \qquad w_2 = 0.8 - 0.34 = 0.46
+$$
+
+**Step 3.**
+
+$$
+g_3 = 0.92, \qquad v_3 = 0.9 \times 3.4 + 0.92 = 3.98, \qquad w_3 = 0.46 - 0.398 = 0.062
+$$
+
+Plain gradient descent with the same learning rate reaches only $0.8$, $0.64$ and $0.512$. Momentum gets much closer to the minimum in three steps, but its velocity keeps it moving: the iterate passes zero and reaches about $-0.709$ at step 6 before turning back. Faster progress and overshoot come from the same inertia. [[Nesterov Momentum]] reduces the overshoot on this problem. The values were recalculated in Python.
+
+## Benefits and Pitfalls
+
+- **Faster progress along consistent directions**, including across flat regions of the loss surface.
+- **Damped oscillations** across steep, narrow valleys, because alternating gradient signs cancel in the velocity.
+- **Overshoot.** High momentum with a large learning rate can overshoot or become unstable; retune $\alpha$ when changing $\beta$.
+- **Implementation details matter.** Compare convention, dampening and buffer initialisation before reproducing results across frameworks.
+
+Momentum is one of a broader family of accelerated gradient methods that use past gradients in the update. Some of these methods have convergence guarantees under assumptions about the loss, such as convexity.
+
+## Related Notes
+
+- [[Optimization Algorithms]] — Comparison of optimisers.
+- [[Nesterov Momentum]] — Evaluates the gradient at a look-ahead point.
+- [[Adam Optimizer]] — Combines a momentum-like first moment with per-parameter scaling.
+
+## References & Useful Links
+
+[^cs231n-nn3]: [CS231n: Neural Networks Part 3 — Learning and Evaluation](https://cs231n.github.io/neural-networks-3/) — Physical interpretation, convention B update, typical values and momentum schedules.
+[^pytorch-sgd]: [PyTorch 2.14: torch.optim.SGD](https://docs.pytorch.org/docs/2.14/generated/torch.optim.SGD.html) — PyTorch's momentum formula, how it differs from Sutskever et al., and buffer initialisation.

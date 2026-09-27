@@ -79,7 +79,7 @@ D1 and D2 tie because the representation sees the same query-term evidence in bo
 
 ## Python Example
 
-The following sketch uses scikit-learn's `CountVectorizer`. It was **not executed** because scikit-learn is not installed locally. The expected output was derived from the documented defaults (`lowercase=True` and a token pattern that keeps tokens of two or more word characters) with a small regular-expression reimplementation.[^1]
+The following sketch uses scikit-learn's `CountVectorizer`, executed with scikit-learn 1.9.1. The output follows from the documented defaults: `lowercase=True` and a token pattern that keeps tokens of two or more word characters, which is why "I" is dropped.[^1]
 
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
@@ -92,7 +92,7 @@ print(vectorizer.get_feature_names_out())
 print(X.toarray())
 ```
 
-Expected output:
+Output:
 
 ```text
 ['data' 'fun' 'is' 'learning' 'love' 'science']

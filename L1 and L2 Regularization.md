@@ -1,7 +1,7 @@
 ---
 tags:
   - "search-eng"
-  - "dl"
+  - "ds-foundations"
 ---
 
 ## Purpose

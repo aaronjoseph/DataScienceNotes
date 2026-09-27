@@ -1,54 +1,119 @@
 ---
 tags:
-  - "dl"
+  - "ds-foundations"
 ---
-[[Gradient Descent]]
 
-## Jacobian in Deep Learning and Backpropagation Algorithms
+The Jacobian collects every first-order partial derivative of a vector-valued function. In deep learning it describes how each layer's outputs respond to its inputs or weights, and chaining layer Jacobians is what backpropagation does to compute gradients for [[Gradient Descent]].
 
-The Jacobian matrix is a fundamental concept in mathematics, particularly in the realm of vector calculus. In the context of deep learning and backpropagation algorithms, the Jacobian plays a significant role in understanding and computing the gradients of functions with respect to the inputs.
+## Definition
 
-### What is a Jacobian?
-
-The Jacobian matrix is a matrix of all first-order partial derivatives of a vector-valued function. If we have a function $\mathbf{v}^1(\mathbf{v}^2)$ that maps an input vector $\mathbf{v}^2$ to an output vector $\mathbf{v}^1$, the Jacobian matrix of this function would be represented as:
+For $f : \mathbb{R}^n \to \mathbb{R}^m$ with input $x$ and output $y = f(x)$, the Jacobian is the $m \times n$ matrix:
 
 $$
-\frac{\partial \mathbf{v}^1}{\partial \mathbf{v}^2} = \begin{bmatrix}
-\frac{\partial v^1_1}{\partial v^2_1} & \cdots & \frac{\partial v^1_1}{\partial v^2_j} \\
+J = \frac{\partial y}{\partial x} =
+\begin{bmatrix}
+\frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
 \vdots & \ddots & \vdots \\
-\frac{\partial v^1_i}{\partial v^2_1} & \cdots & \frac{\partial v^1_i}{\partial v^2_j} \\
+\frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
 \end{bmatrix}
 $$
 
-In this matrix, each entry $\frac{\partial v^1_i}{\partial v^2_j}$ represents the partial derivative of the $i^{th}$ component of the output with respect to the $j^{th}$ component of the input.
+Entry $J_{ij} = \partial y_i / \partial x_j$ says how much output $i$ moves per unit change in input $j$. Row $i$ is the gradient of $y_i$. A scalar function ($m = 1$) has a $1 \times n$ Jacobian, which is its gradient written as a row.
 
-### Importance of Jacobian in Deep Learning
+## Numerator and Denominator Layout
 
-#### Understanding Gradient Flow
-In deep learning, especially in neural networks, the Jacobian helps to understand how changes in the input layer affect the output layer. During training, we need to know how the loss changes with respect to each weight in the network to perform [[gradient descent]].
+The same partial derivatives can be arranged in two ways. Take $f$ with components $(f_1, f_2, f_3)$ and weights $w = (w_1, w_2)$.
 
-#### Backpropagation Algorithm
-The backpropagation algorithm relies heavily on the chain rule of calculus, where the Jacobian naturally arises. It computes the gradient of the loss function with respect to each weight by propagating the error backward from the output layer to the input layer. The entries of the Jacobian correspond to the partial derivatives needed for this computation.
+**Numerator layout.** Rows follow the function components and columns follow the variables, giving shape $3 \times 2$:
 
-#### Weight Updates
-The Jacobian is used to update the weights in the network. If the function from the input to the output is $\mathbf{v}^1(\mathbf{v}^2)$, and we have a loss function $L(\mathbf{v}^1)$, then the gradient of $L$ with respect to $\mathbf{v}^2$ is given by the product of the Jacobian $\frac{\partial \mathbf{v}^1}{\partial \mathbf{v}^2}$ and the gradient $\frac{\partial L}{\partial \mathbf{v}^1}$. This product gives the direction in which we should adjust $\mathbf{v}^2$ to decrease $L$.
+$$
+\frac{\partial f}{\partial w} =
+\begin{bmatrix}
+\frac{\partial f_1}{\partial w_1} & \frac{\partial f_1}{\partial w_2} \\
+\frac{\partial f_2}{\partial w_1} & \frac{\partial f_2}{\partial w_2} \\
+\frac{\partial f_3}{\partial w_1} & \frac{\partial f_3}{\partial w_2}
+\end{bmatrix}
+$$
 
-#### Sensitivity Analysis
-The Jacobian can be used to perform sensitivity analysis, which determines how sensitive the predictions are to changes in the input features. This is important for understanding the model's behavior and for feature selection.
+**Denominator layout.** Rows follow the variables and columns follow the function components, giving shape $2 \times 3$:
 
-#### Numerical Stability and Efficiency
-In deep learning frameworks, efficient computation of the Jacobian is crucial for numerical stability and computational efficiency. Sparse or structured Jacobians can be exploited to reduce computation time and memory usage.
+$$
+\frac{\partial f}{\partial w} =
+\begin{bmatrix}
+\frac{\partial f_1}{\partial w_1} & \frac{\partial f_2}{\partial w_1} & \frac{\partial f_3}{\partial w_1} \\
+\frac{\partial f_1}{\partial w_2} & \frac{\partial f_2}{\partial w_2} & \frac{\partial f_3}{\partial w_2}
+\end{bmatrix}
+$$
 
-### Why is Jacobian Needed in Deep Learning?
+The denominator layout is the transpose of the numerator layout. Papers and libraries use both, so check the convention before multiplying Jacobians together.[^parr] This note uses the numerator layout.
 
-1. **Gradient Computation**: To compute gradients for network parameters during the training process.
-   
-2. **Chain Rule Application**: To apply the chain rule in backpropagation when layers are composed of multiple functions.
-   
-3. **Weight Update Direction**: To determine the direction in which to update weights to minimize the loss function.
-   
-4. **Model Sensitivity**: To understand the model’s sensitivity to inputs and to identify which inputs influence the model's predictions the most.
-   
-5. **Optimization**: To enable [[optimization algorithms]] to converge more quickly and reliably by providing accurate gradient information.
+## Chain Rule and Backpropagation
 
-In summary, the Jacobian matrix is integral to the training and analysis of neural networks in deep learning. It encapsulates how the derivative of the output with respect to the input propagates through the network, which is essential for updating model parameters and understanding the model's behavior.
+For a composition $y = f(u)$ with $u = g(x)$, the Jacobians multiply:
+
+$$
+\frac{\partial y}{\partial x} = \frac{\partial y}{\partial u} \, \frac{\partial u}{\partial x}
+$$
+
+A network is a long composition ending in a scalar loss $L$. In numerator layout the gradient with respect to a layer's input is a **vector–Jacobian product**:
+
+$$
+\nabla_x L = J^\top \, \nabla_y L
+$$
+
+Here $J = \partial y / \partial x$ is that layer's Jacobian. Reverse-mode automatic differentiation computes $J^\top r$ directly for a given vector $r$ without building $J$ explicitly, which is essential when a layer has millions of inputs and outputs.[^baydin] See [[Computational Graph]] for the mechanics.
+
+## Worked Example
+
+**Inputs.** Weights $w = (w_1, w_2) = (2, 3)$ and a function $f : \mathbb{R}^2 \to \mathbb{R}^3$:
+
+$$
+f(w) = \big(w_1 w_2,\; w_1 + w_2,\; w_1^2\big)
+$$
+
+**Step 1: Jacobian (numerator layout, $3 \times 2$).**
+
+$$
+J =
+\begin{bmatrix}
+w_2 & w_1 \\
+1 & 1 \\
+2 w_1 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+3 & 2 \\
+1 & 1 \\
+4 & 0
+\end{bmatrix}
+$$
+
+**Step 2: gradient of the scalar loss $L = f_1 + f_2 + f_3$.** Here $\nabla_f L = (1, 1, 1)$, so:
+
+$$
+\nabla_w L = J^\top \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 3 + 1 + 4 \\ 2 + 1 + 0 \end{bmatrix} = \begin{bmatrix} 8 \\ 3 \end{bmatrix}
+$$
+
+**Step 3: direct check.** $L = w_1 w_2 + w_1 + w_2 + w_1^2$, so $\partial L / \partial w_1 = w_2 + 1 + 2w_1 = 8$ and $\partial L / \partial w_2 = w_1 + 1 = 3$.
+
+The vector–Jacobian product matched direct differentiation. Transposing $J$ is what sends the loss sensitivity from the three outputs back to the two weights.
+
+## Why Jacobians Matter in Deep Learning
+
+- **Gradient computation.** Every backward step through a layer is a vector–Jacobian product.
+- **Gradient flow and stability.** Glorot and Bengio link training difficulty to layer Jacobians whose singular values are far from 1: repeated products then shrink or amplify signals.[^glorot] See [[Vanishing & Exploding Gradients]] and [[Initialization]].
+- **Structure and efficiency.** Element-wise operations, such as activation functions, have diagonal Jacobians, so frameworks apply them as element-wise multiplications.[^parr]
+- **Sensitivity analysis.** The Jacobian of outputs with respect to inputs shows which input features most affect a prediction locally. It is a local, first-order view, not a causal explanation.
+- **Optimisation.** Accurate gradients let the [[Optimization Algorithms|optimisers]] make informed updates.
+
+## Related Notes
+
+- [[Calculus]] — Scalar derivative rules that fill each Jacobian entry.
+- [[Computational Graph]] — Forward and reverse modes, and when each is efficient.
+- [[Sigmoid Function]] and [[Tanh Function]] — Diagonal Jacobians whose entries shrink when units saturate.
+
+## References & Useful Links
+
+[^parr]: [The Matrix Calculus You Need for Deep Learning (Parr and Howard)](https://explained.ai/matrix-calculus/index.html) — Jacobian shapes, numerator versus denominator layout, diagonal Jacobians of element-wise operations, and the vector chain rule.
+[^baydin]: [Automatic Differentiation in Machine Learning: a Survey (Baydin et al., JMLR 2018)](https://arxiv.org/abs/1502.05767) — Reverse mode computes transposed Jacobian–vector products without forming the full Jacobian.
+[^glorot]: [Understanding the Difficulty of Training Deep Feedforward Neural Networks (Glorot and Bengio, AISTATS 2010)](https://proceedings.mlr.press/v9/glorot10a.html) — Abstract links training difficulty to layer-Jacobian singular values far from 1.

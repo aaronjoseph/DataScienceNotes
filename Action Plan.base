@@ -1,8 +1,6 @@
 filters:
   and:
-    - file.ext == "md"
     - file.hasTag("search-eng")
-    - file.name != "AGENTS"
 properties:
   file.name:
     displayName: Note
@@ -26,6 +24,8 @@ views:
       - aliases
       - file.tags
       - file.mtime
+      - file.backlinks
+    sort: []
   - type: table
     name: By search stage
     groupBy:

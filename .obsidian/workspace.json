@@ -27,12 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "K Means.md",
+                "file": "Decision Trees.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "K Means"
+              "title": "Decision Trees"
+            }
+          },
+          {
+            "id": "bb3471907c962a0b",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://xgboost.readthedocs.io/en/stable/treemethod.html",
+                "title": "Tree Methods — xgboost 3.4.2 documentation",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Tree Methods — xgboost 3.4.2 documentation"
             }
           }
         ],
@@ -70,7 +84,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "BOW",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -173,7 +187,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "K Means.md",
+                "file": "Decision Trees.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -230,7 +244,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "K Means.md",
+                "file": "Decision Trees.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -262,43 +276,43 @@
   },
   "active": "fdf069b47dd84a04",
   "lastOpenFiles": [
+    "Adam Optimizer.md",
+    "XGBoost Classification.md",
+    "ReLU Function.md",
+    "Backpropagation.md",
+    "catboost_info/tmp/cat_feature_index.bc7e27e0-7c3b124e-12f6abe1-c9c29f69.tmp",
+    "CatBoost.md",
+    "Unsupervised Learning.md",
+    "catboost_info/test/events.out.tfevents",
+    "catboost_info/test",
+    "catboost_info/test_error.tsv",
+    "catboost_info/tmp/cat_feature_index.bde97bd9-24777d4e-44a2fccb-332fdb61.tmp",
+    "Gaussian Mixture Models.md",
+    "RFM.md",
+    "K Means.md",
+    "Heirarchical Clustering.md",
+    "DBSCAN.md",
+    "Active Learning.md",
+    "Action-Plan.md",
+    "Action Plan.base",
+    "AB Testing.md",
+    "7 Database Paradigms.md",
+    "catboost_info/tmp/cat_feature_index.5cbd830b-3728ebbd-41cb0b56-f9e33bd1.tmp",
+    "catboost_info/learn/events.out.tfevents",
+    "catboost_info/tmp",
+    "catboost_info/time_left.tsv",
+    "Adagrad and RMSProp.md",
+    "Markov Decision Process.md",
+    "L1 and L2 Regularization.md",
+    "Jacobians.md",
+    "Initialization.md",
+    "XGBoost.md",
     "Bagging.md",
     "Bagging Meta-Estimator.md",
     "Bag of Words.md",
-    "K Means.md",
-    "Gaussian Mixture Models.md",
-    "DBSCAN.md",
     "Search Engineering.md",
     "Finance/Current Liability.md",
-    "Adagrad and RMSProp.md",
-    "L1 and L2 Regularization.md",
-    "Encoding.md",
-    "Bag of Words (BOW).md",
-    "Autoencoders.md",
-    "Association Rule Mining.md",
-    "ARIMA.md",
-    "Action-Plan.md",
-    "Super().md",
-    "GCP/Feature Store.md",
-    "Search.base",
-    "Retrieval-Augmented Generation.md",
-    "AWS/Search.base",
-    "System_Design/Design a Personalized Search Recommendation System for Rapido.md",
-    "System_Design/Agoda Search Service.md",
     "Attachements/Agoda Search Service - Interview Architecture.png",
-    "Tool Calling.md",
-    "Prompt Injection.md",
-    "LLM Evaluation.md",
-    "BM25.md",
-    "Judgement List.md",
-    "Untitled 2.base",
-    "Untitled 1.base",
-    "Untitled.base",
-    "Untitled 3.base",
-    "System_Design",
-    "Job Interviews/Data_Science_Question.pdf",
-    "Job Interviews/Behavioural",
-    "ISYE_6501/ISYE6501glossaryalphabeticalFeb7_2018.pdf",
     "Attachements/Masked_SA&SA.png",
     "Attachements/Transformers.png",
     "Attachements/Transformers-1.png",
