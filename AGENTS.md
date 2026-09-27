@@ -35,6 +35,16 @@ The owner is a search engineer strengthening fundamentals. `Search Engineering.m
 - Include a concrete example, assumptions, common failure modes, and a short exercise when they aid understanding. Define prerequisites before advanced terminology.
 - For broad improvement requests, inventory the vault first, then work through connected topics. Record what was substantively reviewed versus only tagged or linked, and keep unresolved review work visible in the learning map.
 
+## Data-science foundations tag
+
+`ds-foundations` marks notes on core data-science fundamentals: statistics and probability, classical machine-learning algorithms and ensembles, time series, basic text and data representations, and everyday data tooling such as pandas and regular expressions.
+
+- Add it to the YAML `tags` list of notes you create or substantively revise in these areas, alongside `search-eng` when both apply. Like `search-eng`, it signals scope, not factual review.
+- Do not bulk-tag the vault; add it as notes are revised, or during an explicitly requested tag migration.
+- It replaced the ambiguous `oan` tag on 27 September 2026. Do not reintroduce `oan` or create near-synonyms such as `ds-basics` or `fundamentals`.
+- This tag alone does not justify `note_type` or `search_stage`; those properties remain reserved for search notes as described above.
+- Topic tags can sit alongside it. Use `clustering` for clustering algorithms, clustering evaluation, and segmentation notes built on clustering, such as `K Means.md`, `DBSCAN.md`, and `RFM.md`. Reuse an existing topic tag before creating a new one.
+
 ## Workflow
 
 ### 1. Inspect before editing

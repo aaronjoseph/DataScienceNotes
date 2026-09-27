@@ -1,3 +1,9 @@
+---
+tags:
+  - "clustering"
+  - "ds-foundations"
+---
+
 RFM - Recency, Frequency and Monetary Value
 
 ### Recency

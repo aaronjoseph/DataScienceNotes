@@ -1,6 +1,6 @@
 ---
 tags:
-  - "oan"
+  - "ds-foundations"
 ---
 Symbol | Relevance
 ---|---

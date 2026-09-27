@@ -29,7 +29,109 @@ NDCG is not directly differentiable through discrete sorting. LambdaMART-style a
 4. Select on held-out query metrics; test once on a separate set.
 5. Evaluate the serving pipeline's actual candidate distribution and feature freshness.
 
-[[Light GBM]] supplies contiguous group sizes; [[XGBoost]] supports aligned sorted `qid` values. Check the library's objective and label requirements. Click labels need [[Click Bias|bias analysis]].
+[[Light GBM]] supplies contiguous group sizes; [[XGBoost]] supports aligned sorted `qid` values (see [[#Training a LambdaMART Ranker with XGBoost]]). Check the library's objective and label requirements. Click labels need [[Click Bias|bias analysis]].
+
+## Training a LambdaMART Ranker with XGBoost
+
+XGBoost's default ranking objective, `rank:ndcg`, implements **LambdaMART**: gradient-boosted trees trained on pairwise comparisons within each query, with each pair's gradient scaled by how much swapping the two documents would change NDCG.[^pairwise] It is a common first learned ranker over hand-built query–document features. The general boosting controls are in [[XGBoost]].
+
+### Data layout
+
+Each row is one query–document pair. A separate `qid` array groups rows by query and must be sorted in non-decreasing order, so every query's rows are contiguous:[^pairwise]
+
+| qid | label | features |
+|---|---|---|
+| 1 | 3 | $x_1$ |
+| 1 | 0 | $x_2$ |
+| 1 | 1 | $x_3$ |
+| 2 | 2 | $x_4$ |
+| 2 | 2 | $x_5$ |
+
+The `qid` is a grouping key, not a feature. Labels are relevance grades; pairs are formed only within a query and only between different grades, so query 2 above contributes no pairs.
+
+### Choosing the objective
+
+- **`rank:ndcg`** (default): binary or graded labels; the safe default when unsure. Supports position debiasing for click data.[^params]
+- **`rank:map`**: binary labels (0/1); targets mean average precision.
+- **`rank:pairwise`**: the original RankNet pairwise logistic loss, with no metric-based scaling; see [[#A Pairwise Loss Makes the Preference Concrete]].
+
+XGBoost's tutorial suggests matching the objective to the target metric when there is plenty of training data, and preferring `rank:ndcg` or `rank:pairwise` with the `mean` pair strategy when data is limited, because that yields more *effective pairs* (pairs that produce a non-zero gradient).[^pairwise] Treat this as a starting point for tuning, not a guarantee.
+
+### Key ranking parameters
+
+Checked against the XGBoost documentation on 27 September 2026:[^params]
+
+- **`lambdarank_pair_method`** (default `topk`): `topk` builds pairs for the top-$k$ documents as currently ranked by the model; `mean` samples a fixed number of pairs per document.
+- **`lambdarank_num_pair_per_sample`**: the truncation $k$ for `topk`, or the pairs per document for `mean`. To train towards NDCG@6, use `topk` with 6.
+- **`ndcg_exp_gain`** (default `true`): use the gain $2^{\text{rel}} - 1$ rather than the raw grade. With this setting, labels cannot exceed 31.
+- **`lambdarank_unbiased`** (default `false`): Unbiased LambdaMART position debiasing for click labels; documented as experimental, and not supported by the distributed interfaces.
+- **`eval_metric`**: `ndcg@k`, `map@k`, or `pre@k`. XGBoost scores a query with no relevant documents as 1 for NDCG and MAP; append `-` (for example `ndcg@5-`) to score it as 0.
+
+### Worked example: exponential versus linear gain
+
+**Inputs:** relevance grades 1 and 3 for two documents in one query.
+
+**Step 1: linear gains** use the grades directly.
+
+$$
+\text{gain}(3) = 3, \qquad \text{gain}(1) = 1
+$$
+
+**Step 2: exponential gains** with `ndcg_exp_gain=true`.
+
+$$
+\text{gain}(3) = 2^3 - 1 = 7, \qquad \text{gain}(1) = 2^1 - 1 = 1
+$$
+
+Under linear gain the grade-3 document is worth three times the grade-1 document; under exponential gain it is worth seven times. Training therefore penalises misplacing highly relevant documents more heavily with the default. Use the same gain convention in training and in offline [[NDCG]] evaluation; see [[NDCG#Grade Values Are a Modelling Choice|grade values]].
+
+### Python example
+
+This script uses XGBoost's native API and was executed locally with XGBoost 3.0.5 and NumPy. The data is synthetic: a hidden signal generates graded labels from 0 to 3.
+
+```python
+import numpy as np
+import xgboost as xgb
+
+rng = np.random.default_rng(0)
+n_queries, docs_per_query = 60, 8
+qid = np.repeat(np.arange(n_queries), docs_per_query)  # sorted, contiguous groups
+X = rng.normal(size=(qid.size, 3))
+signal = 1.5 * X[:, 0] + 0.5 * X[:, 1] + rng.normal(scale=0.5, size=qid.size)
+y = np.digitize(signal, [-1.0, 0.5, 1.5])  # graded labels 0..3
+
+train = qid < 45  # split by query, never by row
+dtrain = xgb.DMatrix(X[train], label=y[train], qid=qid[train])
+dvalid = xgb.DMatrix(X[~train], label=y[~train], qid=qid[~train])
+
+params = {
+    "objective": "rank:ndcg",
+    "lambdarank_pair_method": "topk",
+    "lambdarank_num_pair_per_sample": 5,
+    "eval_metric": "ndcg@5",
+    "tree_method": "hist",
+    "max_depth": 3,
+    "eta": 0.1,
+}
+booster = xgb.train(params, dtrain, num_boost_round=50,
+                    evals=[(dvalid, "valid")], verbose_eval=False)
+print(booster.eval(dvalid))
+
+scores = booster.predict(dvalid)
+valid_qid, valid_y = qid[~train], y[~train]
+first = valid_qid == valid_qid[0]
+print("labels in model order:", valid_y[first][np.argsort(-scores[first])])
+```
+
+In that run, validation NDCG@5 was about 0.95 and the first validation query's labels in model order were `[3 3 2 3 2 3 1 1]`. On easy synthetic data this only shows that the pipeline works; it says nothing about performance on real queries.
+
+### Pitfalls specific to XGBoost ranking
+
+- **Scores are only comparable within a query.** `predict` returns ordering scores, not probabilities; sort each query's candidates by them.
+- **`XGBRanker` needs scikit-learn.** The scikit-learn-style wrapper raised `ImportError` in an environment without scikit-learn; the native `DMatrix(..., qid=...)` API does not need it.
+- **Group-aware splitting and metrics.** Use `GroupKFold` or `StratifiedGroupKFold` with `groups=qid`. scikit-learn's `ndcg_score` does not know about query groups, so do not apply it to the concatenated rows of many queries.[^pairwise]
+- **Distributed training.** If a framework scatters a query's rows across workers, pairs and IDCG are computed on fragments; the tutorial warns that performance can then be disastrous.[^pairwise]
+- **Version changes.** XGBoost 2.0 changed the ranking defaults (for example `topk` pairs and NDCG-weighted gradients). Record the library version and all ranking parameters with each experiment.
 
 ## Engagement Features
 
@@ -100,4 +202,6 @@ Report candidate recall separately from [[NDCG]], and explain why a higher ranki
 
 [^1]: [XGBoost FAQ: How to deal with missing values](https://xgboost.readthedocs.io/en/stable/faq.html) — Missing values and learned default branch directions in tree boosters; `gblinear` treats missing as zero.
 
-[^pairwise]: [XGBoost: Learning to rank objectives](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) — Pairwise logistic loss, ranking-sensitive gradients, and query grouping.
+[^pairwise]: [XGBoost: Learning to rank tutorial](https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html) — LambdaMART default objective, sorted `qid` layout, pair construction, effective pairs, group-aware cross-validation, distributed-training caveats, and 2.0 default changes.
+
+[^params]: [XGBoost parameters: learning to rank](https://xgboost.readthedocs.io/en/stable/parameter.html) — `rank:ndcg`/`rank:map`/`rank:pairwise`, `lambdarank_*` parameters, `ndcg_exp_gain`, and ranking evaluation metrics.

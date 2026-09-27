@@ -4,6 +4,7 @@ tags:
   - "clustering"
   - "kmeans"
   - "unsupervised"
+  - "ds-foundations"
 ---
 ### K-Means Clustering Algorithm
 
@@ -14,13 +15,49 @@ K-Means is a widely used clustering algorithm that partitions data into $k$ dist
 ### Steps in the K-Means Algorithm:
 
 1. **Initialisation:**
-    - Randomly select $k$ initial centroids within the data domain.
+    - Choose $k$ initial centroids. The most basic method picks $k$ samples from the data; scikit-learn defaults to **k-means++**, which spreads the initial centroids apart and generally gives better results than random initialisation.[^sk-kmeans]
 2. **Iterative Process:**
     - **Assignment Step:** Assign each data point to the nearest centroid based on the squared Euclidean distance.
     - **Update Step:** Recalculate centroids by computing the mean of all data points assigned to each cluster.
 3. **Convergence:**
-    - Repeat the assignment and update steps until the centroids no longer change.
-    - Note: K-Means may converge to a local minimum and does not guarantee finding the global optimum.
+    - Repeat the assignment and update steps until the centroids no longer change (in practice, until they move less than a tolerance).
+    - Note: K-Means may converge to a local minimum and does not guarantee finding the global optimum. The result depends on initialisation, so it is common to run several initialisations and keep the one with the lowest within-cluster sum of squares.[^sk-kmeans]
+
+The objective being minimised is the **within-cluster sum of squares (WCSS)**, also called inertia:
+
+$$
+\text{WCSS} = \sum_{i=1}^{N} \min_{j} \lVert x_i - \mu_j \rVert^2
+$$
+
+where $\mu_j$ is the centroid of cluster $j$.
+
+### Worked Example
+
+**Inputs:** six 1-D points $1, 2, 3, 10, 11, 12$, $k = 2$, and deliberately poor starting centroids $\mu_1 = 1$ and $\mu_2 = 2$.
+
+**Iteration 1, assignment.** Point 1 is nearest $\mu_1$; points 2, 3, 10, 11, 12 are nearest $\mu_2$.
+
+**Iteration 1, update.**
+
+$$
+\mu_1 = 1, \qquad \mu_2 = \frac{2 + 3 + 10 + 11 + 12}{5} = 7.6
+$$
+
+**Iteration 2, assignment.** Points 1, 2, 3 are now nearer $\mu_1 = 1$ (for example, $|3 - 1| = 2 < |3 - 7.6| = 4.6$); points 10, 11, 12 are nearer $\mu_2$.
+
+**Iteration 2, update.**
+
+$$
+\mu_1 = \frac{1 + 2 + 3}{3} = 2, \qquad \mu_2 = \frac{10 + 11 + 12}{3} = 11
+$$
+
+**Iteration 3.** The assignments do not change, so the algorithm has converged.
+
+$$
+\text{WCSS} = (1 + 0 + 1) + (1 + 0 + 1) = 4
+$$
+
+Even from a poor start, the two natural groups are recovered here because they are well separated. With overlapping or unevenly sized groups, a poor start can instead settle on a worse local minimum. These iterations were recalculated in Python.
 
 ---
 
@@ -47,12 +84,13 @@ silhouette_score(X, kmeans.labels_)
 
 - **A2:** Some common approaches include:
     - **K-Means Clustering:** Partitions data into $k$ clusters by minimising variance within each cluster.
-    - **Hierarchical Clustering:** Builds a hierarchy of clusters:
+    - **[[Heirarchical Clustering|Hierarchical Clustering]]:** Builds a hierarchy of clusters:
         - **Agglomerative (Bottom-Up):** Merges smaller clusters into larger ones.
         - **Divisive (Top-Down):** Splits larger clusters into smaller ones.
-    - **DBSCAN (Density-Based Spatial Clustering of Applications with Noise):**
+    - **[[DBSCAN]] (Density-Based Spatial Clustering of Applications with Noise):**
         - Forms clusters based on the density of data points.
         - Identifies arbitrarily shaped clusters and handles noise.
+    - **[[Gaussian Mixture Models]]:** Fits a mixture of Gaussian distributions and gives each point a probability of belonging to each cluster. K-Means can be seen as a special case with equal covariance per component.[^sk-overview]
 
 ---
 
@@ -64,9 +102,9 @@ silhouette_score(X, kmeans.labels_)
 
 |**Aspect**|**K-Means Clustering**|**Hierarchical Clustering**|
 |---|---|---|
-|**Number of Clusters**|Requires pre-defining $k$.|Does not require specifying the number of clusters.|
-|**Cluster Shape**|Assumes convex-shaped (e.g., spherical) clusters.|Identifies clusters of various shapes.|
-|**Scalability**|Efficient for large datasets (linear time complexity).|Less efficient for large datasets (higher time complexity).|
+|**Number of Clusters**|Requires pre-defining $k$.|Not fixed before fitting; chosen afterwards by cutting the dendrogram at a height or cluster count.|
+|**Cluster Shape**|Assumes convex, isotropic (roughly spherical) clusters.[^sk-kmeans]|Depends on linkage: single linkage can follow non-globular shapes, while Ward favours compact clusters.|
+|**Scalability**|Scales well to large datasets; each iteration is linear in the number of samples.|Works from pairwise distances; expensive for large datasets without connectivity constraints.|
 |**Use Case**|Large datasets with well-separated clusters.|Smaller datasets or when the cluster hierarchy matters.|
 
 ---
@@ -82,7 +120,18 @@ silhouette_score(X, kmeans.labels_)
 
 ---
 
-### Further Reading
+### Related Notes
+
+- [[DBSCAN]], [[Heirarchical Clustering]], and [[Gaussian Mixture Models]] — Other clustering families.
+- [[RFM]] — Customer segmentation with K-Means.
+- [[Unsupervised Learning]] — Where clustering fits.
+
+---
+
+## References & Useful Links
+
+[^sk-kmeans]: [scikit-learn User Guide: K-means](https://scikit-learn.org/stable/modules/clustering.html#k-means) — Inertia objective and its convex, isotropic assumption, Lloyd's algorithm, k-means++ initialisation, and local minima.
+[^sk-overview]: [scikit-learn User Guide: Overview of clustering methods](https://scikit-learn.org/stable/modules/clustering.html#overview-of-clustering-methods) — Comparison of clustering algorithms, and K-Means as a special case of a Gaussian mixture.
 
 - [K-Means Clustering Algorithm - Javatpoint](https://www.javatpoint.com/k-means-clustering-algorithm-in-machine-learning)
 - [Difference Between K-Means and Hierarchical Clustering - GeeksforGeeks](https://www.geeksforgeeks.org/difference-between-k-means-and-hierarchical-clustering/)

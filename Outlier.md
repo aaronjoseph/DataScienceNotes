@@ -10,7 +10,7 @@ Not Sensitive to Outliers
 - Tree Based Models
 - XGBoost
 - Naive Bayes
-- DBScan Clustering
+- [[DBSCAN|DBScan Clustering]]
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 tags:
-  - "oan"
+  - "ds-foundations"
 ---
 In Association Rule Mining we try to uncover relationships between different items sold by a retailer or find patterns that were not discovered earlier.
 

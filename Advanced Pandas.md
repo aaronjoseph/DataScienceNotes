@@ -1,6 +1,6 @@
 ---
 tags:
-  - "oan"
+  - "ds-foundations"
 ---
 **To send one column into a function and get the output** 
 ```python

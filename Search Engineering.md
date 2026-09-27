@@ -249,6 +249,13 @@ Expanded the transformer notes from short summaries into study notes, and added 
 - **Checked:** every worked-example number was recalculated in Python; the Layer Normalization and Tool Calling code snippets were executed; the tool-schema JSON was parsed. Obsidian rendered layout was not checked.
 - **Open:** a separate note on LLM serving metrics (time to first token, tokens per second, cost accounting) was not written; the serving basics live in [[Decoder-Only Model (Transformers)#Serving and the KV Cache|the decoder note]]. [[Autoencoders]] and [[Customer Transformer - SkLearn]] matched the search for "transformer" but are unrelated to this architecture and were left unchanged.
 
+## Foundations and Ranking Pass: 27 September 2026
+
+- **Search notes revised (3):** [[Learning to Rank]] gained [[Learning to Rank#Training a LambdaMART Ranker with XGBoost|a LambdaMART training section]] (data layout, objectives, ranking parameters, gain conventions, and pitfalls), synced with the ranking section of [[XGBoost]]. [[Bag of Words]] was restructured, with step-by-step scoring and library defaults.
+- **Foundation notes rewritten (3, not search-tagged):** [[ARIMA]], [[Autoencoders]], and [[Bagging]].
+- **Tags:** the ambiguous `oan` tag was replaced by `ds-foundations` on its four notes; the convention is recorded in `AGENTS.md`.
+- **Checked:** the XGBoost ranking example and the autoencoder–PCA check were executed (XGBoost 3.0.5, NumPy); worked-example arithmetic was recalculated. The scikit-learn and statsmodels snippets were not executed because those packages are not installed. Obsidian rendered layout was not checked.
+
 ## How to Continue
 
 Work through one connected group at a time. For each note, verify the main claims, preserve useful examples and attachments, add an exercise, link prerequisites and follow-on topics, and record unresolved work here. Use stable concept filenames and short display labels such as `[[Go Language|Go]]`.
