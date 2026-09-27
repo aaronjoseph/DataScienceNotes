@@ -22,31 +22,17 @@
             }
           },
           {
-            "id": "fdf069b47dd84a04",
+            "id": "746e8082fc3aee48",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "System_Design/Accommodation Booking System.md",
+                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Accommodation Booking System"
-            }
-          },
-          {
-            "id": "746e8082fc3aee48",
-            "type": "leaf",
-            "state": {
-              "type": "webviewer",
-              "state": {
-                "url": "https://obsidian.md/help/properties",
-                "title": "Properties - Obsidian Help",
-                "mode": "webview"
-              },
-              "icon": "globe-2",
-              "title": "Properties - Obsidian Help"
+              "title": "Koko Eating Bananas"
             }
           },
           {
@@ -214,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "System_Design/Accommodation Booking System.md",
+                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -271,7 +257,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "System_Design/Accommodation Booking System.md",
+                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -301,10 +287,20 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "fdf069b47dd84a04",
+  "active": "746e8082fc3aee48",
   "lastOpenFiles": [
-    "System_Design/Shein_Recommendation_System.md",
+    "MGT_8803/Week 2- Classification and Measurement.pdf",
+    "Finance/Week 2- Classification and Measurement.pdf",
+    "Finance/Week 1- Introduction to Financial Accounting.pdf",
+    "Finance/Financial Accounting.md",
+    "MGT_8803/Week 1- Introduction to Financial Accounting.pdf",
+    "MGT_8803/Costco Financial Statements.pdf",
+    "LeetCode/Binary Search/Koko Eating Bananas.md",
+    "MGT_8803/Financial Accounting.md",
+    "LeetCode/Binary Search",
+    "LeetCode",
     "System_Design/Accommodation Booking System.md",
+    "System_Design/Shein_Recommendation_System.md",
     "System_Design/Recommendation_System_System_Design.md",
     "System_Design/File Storage System.md",
     "System_Design/Design a Personalized Search Recommendation System for Rapido.md",
@@ -325,20 +321,10 @@
     "Advanced Pandas.md",
     "Adam Optimizer.md",
     "Adagrad and RMSProp.md",
-    "Retrieval-Augmented Generation.md",
     "Action Plan.base",
-    "AB Testing.md",
-    "7 Database Paradigms.md",
     "Research_Paper/pytorch2_internals.pdf",
-    "Research_Paper/Deep and confident predictions for Time Series at Uber.md",
     "Research_Paper/Databases.pdf",
     "catboost_info/tmp/cat_feature_index.bc7e27e0-7c3b124e-12f6abe1-c9c29f69.tmp",
-    "catboost_info/test/events.out.tfevents",
-    "catboost_info/test",
-    "catboost_info/test_error.tsv",
-    "catboost_info/tmp/cat_feature_index.bde97bd9-24777d4e-44a2fccb-332fdb61.tmp",
-    "catboost_info/tmp/cat_feature_index.5cbd830b-3728ebbd-41cb0b56-f9e33bd1.tmp",
-    "catboost_info/learn/events.out.tfevents",
     "Attachements/Agoda Search Service - Interview Architecture.png",
     "Attachements/Masked_SA&SA.png",
     "Attachements/Transformers.png",
