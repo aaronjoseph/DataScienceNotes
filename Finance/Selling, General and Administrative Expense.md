@@ -1,37 +1,39 @@
-- This comes in [[P&L Statement] | Income Statement]]
--  The umbrella term Selling, General & Adminstrative (SG&A) Expense is where the company reports it costs for direct and indirect sellintg expenses and all general and administrative expenses occured during the accounting period
-	- It includes all costs not directly tied to making a product/ performing a service
-- During cost reduction, SGA is the first part of the Income statement that takes a hit, since it doesn't affect the manufacturing or production of goods directly
+---
+tags:
+  - "finance"
+---
 
+Selling, general and administrative (SG&A) expense is the [[P&L Statement|income statement]] line for selling costs and general and administrative costs: everything not directly tied to making a product or performing a service, so everything not in [[Cost of Goods Sold]]. It is part of [[Operating Expense|operating expenses]]. Because it does not affect production directly, it is often the first area cut during cost reduction.
 
-### Components of SG&A
+## Components
 
-- SG&A includes everything that isn't included in the [[Cost of Goods Sold]] (COGS).
-- This includes
-	- Employee Salary
-	- Commissions
-	- Advertising
-	- Rent, utilities and supplies that are not part of manufacturing
-- `Selling` expense are the cost associated with selling a product.
-- It can be broken down into 
-	- Direct Costs
-		- Direct selling expenses occur when the product is sold and may include shipping supplies, delivery charges and sales commissions
-	- Indirect Costs
-		- This is the cost that occurs throughout the manufacturing process and after the product is finished such as advertising and marketing
-		- Telephone bills
-		- Travel costs
-		- Salaries of sales personnel
-- `G&A` are fixed in nature than selling
-- It includes
-	- Rent or Mortgage
-	- Utilities
-	- Insurance
-	- Salaries of dept other than sales or production 
+- **Selling expenses**, the costs of selling the product:
+  - **Direct:** incurred when a sale is made, such as shipping supplies, delivery charges and sales commissions.
+  - **Indirect:** incurred before or after the sale, such as advertising and marketing, telephone bills, travel costs and sales staff salaries.
+- **General and administrative (G&A)** expenses, more fixed than selling costs: rent or mortgage, utilities, insurance, and salaries of departments other than sales and production.
 
-### SG&A / Gross Profit
+## Author's Ratio: SG&A to Gross Profit
 
-This ratio gives light into the amount of money being spent for general expenses. Companies with fluctuating SG&A/Gross Profit, indicates poor business.
+$$
+\text{SG\&A ratio} = \frac{\text{SG\&A}}{\text{Gross profit}}
+$$
 
-Companies that have low SG&A/Gross Profit, could have higher R&D expenditure.
+## Worked Example
 
-Avoid companies with high SG&A/Gross Profit, they are unable to contain running expenses, while revenue might be dropping
+**Inputs:** SG&A of 2,100 and [[Gross Profit]] of 7,000.
+
+**Step 1: ratio.**
+
+$$
+\frac{2{,}100}{7{,}000} = 30\%
+$$
+
+Thirty per cent of gross profit goes on selling and overheads, leaving 70% for R&D, depreciation, interest, tax and profit.
+
+## Interpretation
+
+The author's rules of thumb:
+
+- A ratio that fluctuates a lot from year to year suggests a poor business.
+- A low ratio can coexist with high [[R&D Costs|R&D spending]], so check both.
+- Avoid companies with a high ratio: they cannot contain running costs, and revenue may be falling.

@@ -1,19 +1,47 @@
-[[P&L Statement]] and [[Balance Sheet]] can be connected in some way or another.
+---
+tags:
+  - "finance"
+---
 
-Connecting List between  P&L and Balance Sheet
+The three financial statements are linked: changes on the [[Balance Sheet]] are reflected in the revenues and expenses of the [[P&L Statement]], and the [[Cash Flow Statement]] explains the change in cash. No single statement tells the whole story.[^sec-guide]
 
-P&L Statement | The Balance Sheet Statement
-----|----
-Sales Revenue	| Receivable and Cash Balance
-[[Operating Expense]] | Inventory and Trade Payables
-Depreciation & Amortization | Accumulated Depreciation
-Other Income | Investments
-Finance Cost | Debt
-PAT | Shareholder Equity
+## P&L Items and Their Balance-Sheet Counterparts
 
-## Basic Pointers
+| P&L statement | Balance sheet |
+|---|---|
+| Sales revenue | Receivables and cash |
+| [[Operating Expense]] | Inventory and trade payables |
+| Depreciation and amortisation | Accumulated depreciation |
+| Other income | Investments |
+| Finance cost | Debt |
+| PAT | Shareholders' equity (via retained earnings) |
 
-- Balance sheet is made on a flow basis
-- [[Cash Flow Statement| Cash Flow]] and [[P&L Statement]] are prepared on standalone basis - Representing the given years financial position
-- The P&L statement discusses how much the company earned as revenues versus how much the company expanded in terms of expenses. The company’s retained earnings, also called the surplus of the company, are carried forward to the balance sheet. The P&L also incorporates the depreciation number. The depreciation mentioned in the P&L statement is carried forward to the balance sheet
-- The Balance Sheet details the company’s assets and liabilities. On the liabilities side of the Balance sheet, the company represents the shareholders’ funds. The assets should always be equal to the liabilities; only then do we say the balance sheet has balanced. One of the key details on the balance sheet is the cash and cash equivalents of the firm. This number tells us how much money the company has in its bank account. This number comes from the `cash flow statement`.
+## Key Links
+
+- **Period versus point in time.** The P&L and cash flow statement cover a period; the balance sheet is a snapshot at the period end, with cumulative balances.[^sec-guide]
+- **Profit to equity.** Profit after tax, less dividends, is added to retained earnings (the "surplus") in shareholders' equity.
+- **Depreciation.** The P&L charge for the year is added to accumulated depreciation, reducing the net book value of fixed assets.
+- **Cash.** The closing cash on the balance sheet equals the opening cash plus the net change reported in the cash flow statement.
+- **The balance sheet balances.** Assets equal liabilities **plus** shareholders' equity. The earlier version said assets equal liabilities, treating equity as part of the liabilities side.
+
+## Worked Example
+
+**Inputs:** opening retained earnings 500, PAT 120, dividends 40; opening cash 60 and a net cash increase of 25 from the cash flow statement.
+
+**Step 1: closing retained earnings.**
+
+$$
+500 + 120 - 40 = 580
+$$
+
+**Step 2: closing cash.**
+
+$$
+60 + 25 = 85
+$$
+
+Both closing figures appear on the balance sheet. If either did not match, one of the statements would contain an error.
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — How the balance sheet, income statement and cash flow statement relate.

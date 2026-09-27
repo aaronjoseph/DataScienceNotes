@@ -1,29 +1,24 @@
-An Annual Report is filed at the end of financial year. 
-
-Some of the sections of an Annual Report are
-
-
-- `Management Statement` - This section goes through what the company management has to say about their business and the industry in general. All words mentioned in this section is quite vital to get a sense of what the company has in mind. 
-	- The investor gets a perspective of how the man sitting right on top is thinking about his business. The content here is usually broad-based and gives a sense of how the business is positioned.
-- `Management Discussion & Analysis (‘MD&A)` - This is one of the most important part of the Annual Report. The most standard way for any company to start this section is by talking about the macro trends in the economy. They discuss the overall economic activity of the country and the business sentiment across the corporate world. If the company has high exposure to exports, they even talk about global economic and business sentiment.
-
+---
+tags:
+  - "finance"
 ---
 
--`Human Resources Report` - Talks about company man-power related points
-- `R&D Report`
-- `Technology Report`
+An annual report is published after the end of each financial year. It combines management's narrative with the audited financial statements, and it is stage I of the author's [[Stock Selection Methodology]]. US-listed companies file the equivalent Form 10-K with the SEC.
 
---- 
+## Main Sections
 
-- `Financial Report` - This is generally the last part of the AR (Annual Report). It contains 3 parts to it
-	- [[P&L Statement]]
-	- [[Balance Sheet]] 
-	- [[Cash Flow Statement]]
+- **Management statement.** What management says about the business and its industry. It shows how the people at the top think about the business and how they position it; the content is usually broad.
+- **Management discussion and analysis (MD&A).** One of the most important sections. It usually opens with macroeconomic and industry trends, and exporters also discuss global conditions. It explains the results and the trends, events and uncertainties management expects to matter.[^sec-guide]
+- **Other reports.** Human resources, research and development, and technology.
+- **Financial statements.** Usually the last part: the [[P&L Statement]], [[Balance Sheet]] and [[Cash Flow Statement]], plus the notes to the accounts. The notes disclose accounting policies, tax details, pension obligations and stock options, and are worth reading.[^sec-guide]
 
-### Consolidated and Standalone Financial Statements
-- Financial statements come in two forms
-	- Standalone Financial Statement/ Standalone Numbers
-	- Consolidated Financial Statement/ Consolidated Numbers
-- When companies have multiple subsidaries, then consolidated numbers make more sense
-- However, when you want to have a viewpoint of the company without it's subsidaries profits, then standalone statement makes sense
+## Standalone and Consolidated Statements
 
+- **Standalone** statements cover the parent company alone.
+- **Consolidated** statements combine the parent with its subsidiaries.
+
+For a group with many subsidiaries, consolidated numbers give the fuller picture. Standalone numbers are useful when you want to see the parent without its subsidiaries' profits, for example to check whether value is being moved around the group. See [[Stock Selection Checklist]] for the author's caution about companies with many subsidiaries.
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — The purpose of MD&A and what the footnotes to the financial statements disclose.

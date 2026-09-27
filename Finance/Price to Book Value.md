@@ -1,12 +1,40 @@
-**Book Value** : Indicates the amount of money that can be liquidated incase the company goes under
+---
+tags:
+  - "finance"
+---
 
-$$Book \ Value = \frac{Share \ Capital + Reserves - \ Revalution \ Reserves)}{Total Number \ of \ Shares}$$
+The price-to-book value (P/BV) ratio compares a company's share price with its book value per share: the accounting value of shareholders' equity per share. It is one of the [[Valuation Ratios]].
 
-The value generated from above formulae, indicates the amount of money you will get per share, incase the company goes under
+## Book Value per Share
 
-## Price to Book Value (P/BV)
+The author's formula excludes revaluation reserves, which arise when assets are written up and do not represent capital or earnings:
 
-**Price to Book Value = Stock Price / BV**
+$$
+\text{Book value per share} = \frac{\text{Share capital} + \text{Reserves} - \text{Revaluation reserves}}{\text{Number of shares}}
+$$
 
-- Higher Ratio indicates overvaluation relative to book value
-- Lower Ratio indicates undervaluation relative to book value
+The earlier version described book value as what shareholders would receive per share if the company went under. That is only a rough guide: in a liquidation, assets are often sold for less than book value, and some intangibles may be worth little.
+
+## Price to Book Value
+
+$$
+\text{P/BV} = \frac{\text{Share price}}{\text{Book value per share}}
+$$
+
+## Worked Example
+
+**Inputs:** share capital 100, reserves 900 including a revaluation reserve of 50, 50 shares, and a share price of 38.
+
+**Step 1: book value per share.**
+
+$$
+\frac{100 + 900 - 50}{50} = 19
+$$
+
+**Step 2: P/BV.**
+
+$$
+\frac{38}{19} = 2
+$$
+
+Investors pay twice the accounting value of the equity. A higher ratio suggests overvaluation relative to book value, a lower one undervaluation, but asset-light businesses (software, brands) naturally trade at high multiples of book, while banks are commonly compared on this ratio.

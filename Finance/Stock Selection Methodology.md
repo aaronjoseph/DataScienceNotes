@@ -1,13 +1,18 @@
+---
+tags:
+  - "finance"
+---
+
+The author's process for choosing individual stocks, from a broad screen to a valuation.
+
 ## Methodology
 
-The process follows the major steps
-
-1. Stock [[Stock Screening - Financial Ratios|screening]] - Using pre-defined conditions which you are looking for
-2. Understanding the business - Requires reading the [[Financial Annual Report| annual report]]
-3. [[Stock Selection Checklist]] - has to pass the requirements that the checklist has
-4. Valuation - Understand the instrinsic value of the business
-	1. Identify if it is a [[Value Trap| value trap]]
-	2. Use DCF analysis
+1. **Screen:** filter stocks on predefined conditions; see [[Stock Screening - Financial Ratios|screening]].
+2. **Understand the business:** read the [[Financial Annual Report|annual reports]].
+3. **Check the ratios:** the company must pass the [[Stock Selection Checklist]].
+4. **Value it:** estimate the [[Intrinsic Value & Margin of Safety|intrinsic value]].
+   1. Check whether it is a [[Value Trap|value trap]].
+   2. Use a [[Discounted Cash Flow (DCF)|DCF analysis]].
 
 ## Difference between Institution & Retail Investor
 
@@ -22,7 +27,7 @@ Have access to Company Management | Limited Access
 - This is the most fundamental step when we need to invest in any company
 	- This requires through read-up of the annual report, atleast the last `5 years`
 
-**Checklist Questions for Understanding the business **
+**Checklist questions for understanding the business**
 
 S. No | Question | The rationale behind the question
 --|--|--
@@ -43,7 +48,7 @@ S. No | Question | The rationale behind the question
 15 |  How many employees do they have? Does the company have labour issues? |  Gives us a sense of how labour-intensive the company’s operations are. Also, if the company requires a lot of people with a niche skillset, then this could be another red flag
 16 |  What are the entry barriers for new participants to enter the industry? |  Helps us understand how easy or difficult it is for new companies to enter the market and eat away the margins
 17 |  Is the company manufacturing products that can be easily replicated in a country with cheap labour? |  If yes, the company may be sitting on a time bomb – think about companies manufacturing computer hardware, mobile handsets, garments etc
-18 |  Does the company have too many subsidiaries? |  If yes, you need to question why? Is it away for the company to siphon off funds? | |
+18 |  Does the company have too many subsidiaries? |  If yes, you need to question why? Is it a way for the company to siphon off funds?
 
 ## Stage 2 : Ratio Check
 

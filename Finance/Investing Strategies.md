@@ -1,26 +1,51 @@
+---
+tags:
+  - "finance"
+---
 
-### Fundamental Analysis
+This note records the author's personal investing framework. It is an educational outline, not a recommendation.
 
-For fundamental analysis the following is required
-- Understanding the financial statements
-- Understanding businesses concerning the industry in which it operates
-- Future understanding of the moats
+## Fundamental Analysis
 
-### Allocation Framework
+Fundamental analysis requires:
 
-One of the ideas of investing that can be considered is as below, here 100% of all assets are to be invested in equity. However, this idea can be leveraged with the 60-40 equity - debt portfolio split 
+- Understanding the financial statements: [[Balance Sheet]], [[P&L Statement]] and [[Cash Flow Statement]].
+- Understanding the business and the industry it operates in.
+- A view of the company's future competitive advantages (moats).
 
-- Core Portfolio (~70%) `Fundamental Analysis`
-	- 10-15 High quality companies
-	- Consistent compounders
-	- Stringent selection criteria
-	- Long time horizon
-- Satellite (0-30%) `Technical Analysis`
-	- Trigger based
-	- Price Volume Action
-	- Earnings Momentum
-	- Tracking Framework
+## Allocation Framework
+
+In this framework the equity portion is split into a core and a satellite. As written, 100% of assets go to equity; the same split can instead be applied to the equity part of a 60/40 equity–debt portfolio.
+
+- **Core portfolio (about 70%), chosen by fundamental analysis.**
+  - 10–15 high-quality companies.
+  - Consistent compounders.
+  - Stringent selection criteria; see [[Stock Selection Methodology]].
+  - Long time horizon.
+- **Satellite (0–30%), chosen by technical analysis.**
+  - Trigger-based entries.
+  - Price and volume action; see [[Technical Indicators]].
+  - Earnings momentum.
+  - A tracking framework, for example with [[Stop & Stop-Limit Order|stop orders]].
+
+## Worked Example
+
+**Inputs:** a portfolio of 1,000,000 split 60/40 between equity and debt, with the equity part divided 70/30 between core and satellite.
+
+**Step 1: equity allocation.**
+
+$$
+0.6 \times 1{,}000{,}000 = 600{,}000
+$$
+
+**Step 2: core and satellite.**
+
+$$
+0.7 \times 600{,}000 = 420{,}000, \qquad 0.3 \times 600{,}000 = 180{,}000
+$$
+
+With 12 core holdings, each would get about 35,000, or 3.5% of the whole portfolio.
 
 ## Stock Screening
 
-[[Stock Screening - Financial Ratios]]
+See [[Stock Screening - Financial Ratios]]. For risk-based allocation across asset classes, see [[Risk Parity]].

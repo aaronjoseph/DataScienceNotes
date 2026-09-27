@@ -1,13 +1,36 @@
-Non-current liabilities or Long-term liabilities represent the long term obligations, which the company intends to settle/pay off within 365 days/12 months of the balance sheet date.
+---
+tags:
+  - "finance"
+---
 
-Non-current liabilities are generally settled after 12 months after the reporting period.
+Non-current (long-term) liabilities are obligations due **more than one year** after the balance-sheet date.[^sec-guide] The earlier version's first sentence said "within 365 days", which describes [[Current Liability|current liabilities]].
 
-Some of the line item that comes under Non-Current Liabilities are 
+## Main Line Items
 
-**The long term borrowing** is the first line item within the non-current liabilities. Long term borrowing is one of the most important line items in the entire balance sheet as it represents the amount of money that the company has borrowed through various sources. Long term borrowing is also one of the key inputs while calculating some of the financial ratios.
+- **Long-term borrowings.** Usually the first and most important line: money borrowed from banks, bondholders and other lenders. It feeds ratios such as [[Debt to Equity Ratio|debt to equity]].
+- **Deferred tax liability.** Tax that will become payable in future because of timing differences between accounting profit and taxable profit, for example faster depreciation for tax purposes.
+- **Long-term provisions.** Amounts set aside for obligations such as employee benefits; in India, gratuity, leave encashment and provident funds.
 
-> Ensure the long term borrowing isn't too much. A rule of thumb is, if the company has the earnings power to pay off its long-term debt in 3-4 years
+## Author's Rule of Thumb
 
-**Deferred Tax Liability** - The deferred tax liability is basically a provision for future tax payments. The company foresees a situation where it may have to pay additional taxes in the future; hence they set aside some funds for this purpose.
+Long-term debt should not be too large: a company should have the earnings power to pay off its long-term debt within about 3–4 years.
 
- **Long term provisions** are usually money set aside for employee benefits such as gratuity; leave encashment, provident funds etc.
+$$
+\text{Payoff years} = \frac{\text{Long-term debt}}{\text{Annual net earnings}}
+$$
+
+## Worked Example
+
+**Inputs:** long-term debt of 900 and annual net earnings of 300.
+
+**Step 1: payoff years.**
+
+$$
+\frac{900}{300} = 3
+$$
+
+The company could clear its long-term debt from three years of earnings, within the author's 3–4 year guide. The measure assumes all earnings go to debt, so treat it as a rough screen.
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — Long-term liabilities as obligations due more than one year away.

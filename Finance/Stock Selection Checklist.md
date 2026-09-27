@@ -1,4 +1,11 @@
-##  Criteria
+---
+tags:
+  - "finance"
+---
+
+The author's checklist of financial tests a company must pass before valuation. It is embedded in [[Stock Selection Methodology]]. The thresholds are personal rules of thumb, not standards.
+
+## Criteria
 
 S.No | Variable | Comments | Significance
 ---|---|---|---

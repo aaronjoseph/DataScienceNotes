@@ -1,22 +1,49 @@
-Current liabilities are a company’s obligations which are expected to be settled within 365 days (less than 1 year). The term ‘Current’ is used to indicate that the obligation will be settled soon, within a year. Going by that ‘non-current’ clearly means obligations that extend beyond 365 days.
+---
+tags:
+  - "finance"
+---
 
-Some of the line items that can come under this segment are
+Current liabilities are obligations a company expects to pay within one year of the balance-sheet date.[^sec-guide] Obligations due later are [[Non-Current Liabilities]].
 
-**Short-term borrowings/debt**
+## Main Line Items
 
-Short-term loans are used towards meeting the working capital requirements for short durations.
+- **Short-term borrowings.** Loans used to fund working capital for short periods, plus the part of long-term debt due within the year.
+- **[[Account Receivables & Account Payable|Accounts payable]].** Money owed to suppliers for goods and services received on credit.
+- **Accrued expenses.** Costs incurred but not yet paid, such as wages, sales tax and rent payable.
+- **Other current liabilities.** Short-term obligations that do not fit the categories above.
 
-Short term money historically has been cheaper than long-term money. Hence companies borrow for the short term and lend for the long term. Since long term gives better rates. 
+## Short-Term versus Long-Term Debt
 
-> Therefore, it is good to take the ratio of `Short term Debt by Long term` to understand the leverage company has gotten into
+Short-term borrowing is often cheaper than long-term borrowing, but it must be repaid or refinanced soon. A company that relies heavily on short-term debt is exposed if lenders stop rolling it over or rates rise. (The earlier version said companies "borrow for the short term and lend for the long term"; that describes banks, not typical companies.)
 
-**Account Payable, Accrued Expenses and Other Current Liabilities**
+**Author's heuristic:** compare short-term debt with long-term debt to see how much of the company's leverage must be refinanced soon.
 
-- [[Account Receivables & Account Payable| Account Payable]] is the money owed to suppliers that have provided goods and services to the company on credit
-- Accured Expenses, this includes
-	- Sales Tax Payable
-	- Wages Payable
-	- Accrued rent payable
-- Other current liability is a slush fund for all short term debts that didn't qualify to be included in the above 2 categories
+$$
+\text{Short-term debt share} = \frac{\text{Short-term debt}}{\text{Long-term debt}}
+$$
 
-> Current liabilities are considered more risky than [[Non-Current Liabilities]]
+## Worked Example
+
+**Inputs:** short-term borrowings 120, long-term borrowings 300, accounts payable 90 and accrued expenses 40.
+
+**Step 1: total current liabilities.**
+
+$$
+120 + 90 + 40 = 250
+$$
+
+**Step 2: short-term to long-term debt.**
+
+$$
+\frac{120}{300} = 0.4
+$$
+
+The company owes 250 within a year, and 0.4 of short-term debt for every 1 of long-term debt must be refinanced or repaid soon. Compare the 250 with current assets using the [[Current Ratio]].
+
+## Interpretation
+
+Current liabilities carry more near-term risk than non-current ones, because they must be paid soon. Some, such as supplier credit, are a normal and cheap source of funding.
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — Current liabilities as obligations due within one year, and long-term liabilities as those due later.

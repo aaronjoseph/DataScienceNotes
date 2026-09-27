@@ -1,18 +1,48 @@
-### Intrinsic Value
-Intrinsic value is the perceived value of an investment's future cash flow, expected growth and risk. In other words, instrinsic value is the future cash flow discounted back to a present value. 
+---
+tags:
+  - "finance"
+---
 
-There are several ways to calculate the Intrinsic Value of a stock.
+## Intrinsic Value
 
-> The purpose of estimating the intrinsic value is to take advantage of mis-priced assets. If the market value is above the intrinsic value, there is no need to purchase and when the market value is below the intrinsic value, it's good to buy the asset
+Intrinsic value is an estimate of what an investment is worth based on its future cash flows, expected growth and risk: the future cash flows discounted back to today. It is an estimate, not an observable price, and there are several ways to calculate it; see [[Discounted Cash Flow (DCF)]].
 
-### Margin of Safety
+The purpose of estimating it is to exploit mispricing: when the market price is above intrinsic value there is no reason to buy, and when it is below, the asset may be worth buying.
 
-`Margin of Safety` is the amount of discount (below the intrinsic value) a investor needs to account for before purchasing the asset. 
+## Margin of Safety
 
-The margin of safety for an investment is the difference between the real or fundamental value and the price you pay. The goal of the value investor is to pay less than the real value.
+The margin of safety is the discount below intrinsic value that an investor insists on before buying. It protects against errors in the estimate. The goal of the value investor is to pay much less than the value.
 
-> "The secret  to investing is to figure out the value of something - and then pay a lot less - Joel Greenblatt"
+> "The secret to investing is to figure out the value of something – and then pay a lot less."
 
-### Relationship between Intrinsic Value 
+This quotation is attributed to Joel Greenblatt; the source was not checked here.
 
-Calculating the intrinsic value of bond is easier than stocks. Often time for stocks there are tangible and intangible factors to be considered and therefore the fluctuations are quite high. Hence when the variance or range of instrinsic value is quite high - it is a good idea to have a higher margin of safety.
+$$
+\text{Margin of safety} = \frac{\text{Intrinsic value} - \text{Price}}{\text{Intrinsic value}}
+$$
+
+## Worked Example
+
+**Inputs:** an estimated intrinsic value of 100 per share, a required margin of safety of 30%, and a market price of 85.
+
+**Step 1: maximum buying price.**
+
+$$
+100 \times (1 - 0.30) = 70
+$$
+
+**Step 2: margin at the current price.**
+
+$$
+\frac{100 - 85}{100} = 15\%
+$$
+
+The stock trades below its estimated value, but the 15% margin is less than the 30% required, so the rule says wait.
+
+## Uncertainty and the Size of the Margin
+
+Bond values are easier to estimate than stock values, because the cash flows are contractual. Stocks depend on tangible and intangible factors, so estimates vary widely. The wider the plausible range of intrinsic value, the larger the margin of safety should be. The author uses 30–50%; see [[Discounted Cash Flow - Method 1]].
+
+## Related Notes
+
+- [[Value Trap]] — when a low price is cheap for a reason.

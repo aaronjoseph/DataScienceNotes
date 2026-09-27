@@ -1,12 +1,23 @@
-This comes in 2 types
+---
+tags:
+  - "finance"
+---
 
-> This has future detriment
+Liabilities are amounts a company owes to others: an obligation that will require a future outflow of resources. They include bank loans, money owed to suppliers, wages, taxes, and obligations to deliver goods or services to customers in the future.[^sec-guide] They are one of the three sections of the [[Balance Sheet]].
 
-- [[Current Liability]]
-- [[Non-Current Liabilities]]
+## Types
 
-Then there are elements which needs to be paid for in the future
-- Account Payable (A/P) - Which indicates the money to be paid to the suppliers in the near future
-- Note Payable (N/P) - Here this indicates the money to be paid to financial institutions
-- Wages Payable
+Liabilities are listed by due date:[^sec-guide]
 
+- [[Current Liability]] — due within one year.
+- [[Non-Current Liabilities]] — due after more than one year.
+
+## Common Examples
+
+- **Accounts payable (A/P).** Money owed to suppliers in the near future; see [[Account Receivables & Account Payable]].
+- **Notes payable (N/P).** Formal borrowings from banks and other lenders.
+- **Wages payable.** Salaries earned by employees but not yet paid.
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — Definition of liabilities and the current versus long-term split.

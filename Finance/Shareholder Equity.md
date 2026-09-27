@@ -1,35 +1,61 @@
-Subtracting [[Assets - Balance Sheet]] with [[Liabilities - Balance Sheet]] gives shareholder equity or book value of the business.
+---
+tags:
+  - "finance"
+---
 
-This is the amount of money the shareholders/owners have put in and left it to keep it running. 
+Shareholders' equity, also called book value or net worth, is what remains when [[Liabilities - Balance Sheet|liabilities]] are subtracted from [[Assets - Balance Sheet|assets]]. It equals the amount owners invested plus the earnings the company has kept since it started.[^sec-guide]
 
-## Components of Shareholder Equity
+$$
+\text{Equity} = \text{Assets} - \text{Liabilities}
+$$
 
-## Equity
+## Components
 
-This comes under two types
-- Preferred Stocks
-- Common Stocks
+### Share Capital: Common and Preferred Stock
 
-	When company raises capital using either of the two, the company doesn't need to pay it back. It can do with as it pleases.
-	
-**Common Stocks**
+When a company raises capital by issuing shares, it does not have to pay the money back.
 
-Common stocks represents ownership in the company. Common stock owners are the owners of the company and have the right to elect a board of directors, which, in turn , will hire a CEO to run the company. Common stockholders receive dividends if the board directors votes to pay them. If the company is sold, the common stockholders get the loot.
+- **Common stock** represents ownership. Common shareholders elect the board of directors, which hires the CEO. They receive dividends only if the board declares them, and they have the residual claim if the company is sold or wound up.
+- **Preferred stock** usually carries no voting rights, but has a right to a fixed or adjustable dividend that must be paid before common shareholders receive anything. Preferred shareholders also rank ahead of common shareholders in bankruptcy.
 
-**Preferred Stocks**
+### Additional Paid-in Capital
 
-Preferred shareholders don't have voting rights. They have a right to a fixed or adjustable dividend that must be paid before the common stock owners receive a dividend. Prefered shareholders also have priority over common shareholders in the event that the company falls into bankruptcy.
+Shares are carried at their par (face) value. Anything investors paid above par when the shares were issued is recorded as **additional paid-in capital** (share premium).
 
-**Additional Paid-in Capital**
+### Retained Earnings
 
-Common stocks & Preferred Stocks are carried on the books at their par value. Any money in excess of par that was paid in when the company sold the stock will be carried on the books as "paid in capital"
+Retained earnings accumulate: each year's profit not paid as dividends is added to the total from all prior years, and losses are subtracted. See [[Balance Sheet]] for the update formula.
 
-## Retained Earnings
+**Author's heuristic:** steadily growing retained earnings are a key sign of a durable competitive advantage.
 
-Retained earnings is an accumulated number, which means that each year, new retained earnings are added to the total of accumulated retained earnings from all prior years. Likewise, if the company loses money, the loss is subtractedfrom what the company has accumulated in the past.
+### Treasury Stock
 
-`This is a critical line-item to assess the competitive advantage`
+Treasury stock is shares the company has bought back. They are issued but no longer outstanding, receive no dividends, and are excluded from [[Earnings Per Share]]. They reduce equity. See [[Shares Outstanding]].
 
-## Treasury Stock
+## Worked Example
 
-Treasury stock, also known as treasury shares or reacquired stock refers to outstanding stock that is bought back from the shareholders by the issuing company. These shares are issued but no longer outstanding and are not included in the distribution of dividends or the calculation of [[Earnings Per Share]]
+**Inputs:** the company issues 100 shares with a par value of 10 at a price of 25, and has assets of 5,000 and liabilities of 2,000.
+
+**Step 1: share capital at par.**
+
+$$
+100 \times 10 = 1{,}000
+$$
+
+**Step 2: additional paid-in capital.**
+
+$$
+100 \times (25 - 10) = 1{,}500
+$$
+
+**Step 3: total equity.**
+
+$$
+5{,}000 - 2{,}000 = 3{,}000
+$$
+
+Of the 3,000 of equity, 2,500 was paid in by shareholders; the remaining 500 is retained earnings.
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — Shareholders' equity as owners' investment plus or minus earnings since inception.

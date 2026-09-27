@@ -1,82 +1,104 @@
-In the free cash flow method, we inspect the money after accounting for all expenditures. 
+---
+tags:
+  - "finance"
+---
 
-**FCF = Cash from Operating Activities - Capital Expenditures**
+The free cash flow method values a company from the cash left after operating expenses and capital spending, projected forward and discounted to today. It is one of the two techniques in [[Discounted Cash Flow (DCF)]]. The example below is in Indian rupees, in crores (1 crore = 10 million).
 
-The steps are as follows
+## Free Cash Flow
 
-1. Identify the Average Free Cash Flow of the company
-2. Identify the growth rate
-	1. Here, for smaller companies, assume 18% in the first 5 years into the future
-	2. For larger companies, assume 15% and 10% growth for the first 5 and the last 5 years
-3. Estimate the future cash flows
-	1. Table below shows a sample
+$$
+\text{FCF} = \text{Cash from operating activities} - \text{Capital expenditures}
+$$
 
-Assume, it started with 100 Crs in Free Cash Flow
+See [[Free Cash Flow]] and [[Capital Expenditure]].
 
-Type| Year | Growth Rate | Future Cash Flow (INR Crs)
----|---|---|---
-First 5|2021 | 18% | 118
-First 5|2022 | 18% | 139.24
-First 5|2023 | 18% | 164.30
-First 5|2024 | 18% | 193.87
-First 5|2025 | 18% | 228.77
-Last 5|2026 | 10% | 251.65
-Last 5|2027 | 10% | 276.81
-Last 5|2028 | 10% | 304.50
-Last 5|2029 | 10% | 334.95
-Last 5|2030 | 10% | 368.44
+## Steps
 
-- Some of the key aspects when generating this table is be conservative with the growth numbers
+1. **Base FCF.** Estimate the company's recent average free cash flow.
+2. **Growth rates.** The author's defaults: for smaller companies, 18% for the first 5 years; for larger companies, 15% for the first 5 years and 10% for the next 5. Be conservative with growth.
+3. **Project** FCF for 10 years.
+4. **Terminal value** for all years after year 10.
+5. **Discount** everything to today and add it up.
+6. **Per-share value** after adjusting for net debt.
 
 ## Terminal Value
 
-`Terminal Growth Rate` is the rate at which the free cash flow grows beyond 10 years 
+The terminal growth rate $g$ is the rate at which FCF is assumed to grow forever after year 10. With discount rate $r > g$, the Gordon growth formula gives the value at year 10 of all later cash flows:
 
-`Terminal Value` is the sum of all the future free cash flow beyond the 10th year, also called the **terminal year**. In simple words, how much the company makes post the 10th year mark to $\infty$
+$$
+\text{TV}_{10} = \frac{\text{FCF}_{10} \times (1 + g)}{r - g}
+$$
 
-Formulae for Terminal Value
+Keep $g$ low, below 5%, and never above the long-run growth of the economy.
 
-$$Terminal \ Value = \frac{FCF * (1 + Terminal \ Growth \ Rate)}{Discount \ Rate - Terminal \ Growth \ Rate}$$
+## Worked Example
 
-Also,
-- FCF here is the FCF at the 10th Year
-- Terminal Growth Rate = 3.5% (Keep it low, < 5%)
-- Discount Rate - 9%
+**Inputs:** base FCF of 100 crore, growing 18% a year for years 1–5 and 10% a year for years 6–10; discount rate $r = 9\%$; terminal growth $g = 3.5\%$.
 
-Terminal Value = 368.44 *(1+0.035) / (0.09 - 0.035) = 6931.30 Crs
+| Year | Growth | FCF (₹ Cr) | Present value at 9% |
+|---|---|---|---|
+| 1 | 18% | 118.00 | 108.26 |
+| 2 | 18% | 139.24 | 117.20 |
+| 3 | 18% | 164.30 | 126.87 |
+| 4 | 18% | 193.88 | 137.35 |
+| 5 | 18% | 228.78 | 148.69 |
+| 6 | 10% | 251.65 | 150.05 |
+| 7 | 10% | 276.82 | 151.43 |
+| 8 | 10% | 304.50 | 152.82 |
+| 9 | 10% | 334.95 | 154.22 |
+| 10 | 10% | 368.45 | 155.64 |
 
-$\therefore$ The company's Net Free cashflow post the 10th year till infinity is Rs. 6931.30 Crores
+**Step 1: present value of year 1.**
 
-## Net Present Value (NPV)
+$$
+\frac{118}{1.09} = 108.26
+$$
 
-- Assumption, discount rate at 9 %
-- Divide 118/1.09
+**Step 2: sum of the ten present values.**
 
-Type| Year | Growth Rate | Future Cash Flow (INR Crs) | Present Value
----|---|---|---| ---
-First 5|2021 | 18% | 118 | 108.25
-First 5|2022 | 18% | 139.24 | 117.19
-First 5|2023 | 18% | 164.30 | 126.87
-First 5|2024 | 18% | 193.87 | 137.34
-First 5|2025 | 18% | 228.77 | 148.68
-Last 5|2026 | 10% | 251.65 | 150.05
-Last 5|2027 | 10% | 276.81 | 151.42
-Last 5|2028 | 10% | 304.50 | 152.81 
-Last 5|2029 | 10% | 334.95 | 154.22
-Last 5|2030 | 10% | 368.44 | 155.63
-| | | |  Net Present Value for Future Cash Flow on 6931.3 Cr | 2927.85
+$$
+108.26 + 117.20 + \dots + 155.64 = 1{,}402.52
+$$
 
-Sum of Present Value of cash flow = NPV of future free cash flows + PV of the terminal value = 2927.85 + 1402.51 = 4330.37 Crs
+**Step 3: terminal value at year 10.**
 
-Which can be the assumed total free cash flow, all of which will belong to the investors of the said company
+$$
+\frac{368.45 \times 1.035}{0.09 - 0.035} = 6{,}933.48
+$$
 
-## Share Price Calculation
+**Step 4: present value of the terminal value.**
 
-This is the last stage of the DCF Method.
+$$
+\frac{6{,}933.48}{1.09^{10}} = 2{,}928.78
+$$
 
-- First we need to calculate the Net Debt
-	- **Net Debt = Current Year Total Debt - Cash & Cash Balance**
-- This needs to be added to the NPV of future cash flow
-- Then the share price can be calculated as follows
-	- **Share Price = (Total Present Value of Free Cash Flow - Net Debt)/Total Number of Shares**
-- On the obtain Share Price, have a +/_ 10% band to account for inaccuracies, if the actual share price is below the 10% band, it is undervalued & above 10% band then overvalued 
+**Step 5: enterprise value.**
+
+$$
+1{,}402.52 + 2{,}928.78 = 4{,}331.29
+$$
+
+About two-thirds of the value comes from the terminal value, so the result is very sensitive to $g$ and $r$. The earlier version's figures differed slightly because of rounding; it also swapped the labels of the two present values. Recalculated in Python.
+
+## Share Price
+
+Free cash flow to the firm belongs to lenders as well as shareholders, so subtract net debt before dividing by the share count:
+
+$$
+\text{Net debt} = \text{Total debt} - \text{Cash and cash equivalents}
+$$
+
+$$
+\text{Value per share} = \frac{\text{Enterprise value} - \text{Net debt}}{\text{Number of shares}}
+$$
+
+The earlier version said net debt "needs to be added"; it must be subtracted, as in the formula it then gave.
+
+**Step 6: illustrative per-share value.** Assume total debt of 500 crore, cash of 200 crore and 50 crore shares.
+
+$$
+\frac{4{,}331.29 - (500 - 200)}{50} = 80.63
+$$
+
+**Author's rule:** allow a ±10% band for inaccuracy, here roughly 72.6 to 88.7. A market price below the band suggests the stock is undervalued; above it, overvalued. See [[Intrinsic Value & Margin of Safety]].

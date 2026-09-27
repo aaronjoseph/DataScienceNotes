@@ -1,30 +1,51 @@
-Current assets are assets that can be easily converted to cash, and the company foresees a situation of consuming these assets within 365 days. Current assets are the assets that a company uses to fund its day to day operations and ongoing expenses.
+---
+tags:
+  - "finance"
+---
 
-Current Asset is made up of
-- Cash and cash equivalents
-- Short-term investments
-- Net Receivables
-- Inventory
-- Other Assets [Includes slush fund]
+Current assets are assets a company expects to convert to cash, sell or use up within one year, such as inventory and receivables.[^sec-guide] They fund day-to-day operations. On the [[Balance Sheet]] they are usually listed first, roughly in order of liquidity.
 
-Generally, the parts of the balance sheet is placed in order of their liquidity
+## Components
 
-## Components of Current Assets
+- **Cash and short-term investments.** The most liquid part: cash, short-term certificates of deposit, 3-month Treasury bills and similar instruments. A company can raise cash in three ways: issuing bonds or shares, selling part of the business, or running operations that generate more cash than they use.
+- **Inventory.** Goods held for sale to customers, including raw materials and work in progress for manufacturers.
+- **[[Account Receivables & Account Payable|Net receivables]].** Amounts customers owe, less an allowance for bad debts.
+- **Prepaid expenses.** Payments for goods or services the company will receive soon, such as insurance paid in advance.
+- **Other current assets.** A catch-all for smaller items.
 
-- Cash & Short-Term Investments
-	- This is the most liquid part of the Current Assets
-	- Includes short term CD
-	- 3 Month Treasuries
-	- Other liquid assets
-	- This component is required, since it helps run the day to day operations of the company
-	- Company has 3 ways of creating cash
-		- Selling new bonds/equity to the public
-		- Selling exisiting business
-		- Ongoing business that generates more cash than the business burns
-> When a business has lot of cash and marketable securities and little or no debt, the business can sail through troubled times. `Cash is king in troubled times, so if the competitors don't, the company gets to rule`
-- Total Inventory
-	- This is the amount of products that the company has warehoused to sell to its vendor
-	- `Critical Variable` Take **Total Inventory / Net Earnings** and check if there is a corresponding rise, if there is, then the comapny has a profitable way to increase sales and increase in sales has called for an increase in inventory. However, if this is not the case, then this company is going through boom and bust cycle
-- [[Account Receivables & Account Payable| Net Receivables]]
-- Prepaid Expenses
-	- Business pays for goods and services, that they will receive in the near future. Although they have not yet taken possession of the goods or received the benefits of the service
+> [!tip] Cash in hard times
+> A business with plenty of cash and marketable securities and little or no debt can sail through troubled times, and may gain ground on weaker competitors.
+
+## Working Capital
+
+$$
+\text{Working capital} = \text{Current assets} - \text{Current liabilities}
+$$
+
+See [[Current Ratio]] and [[Working Capital Turnover]].
+
+## Worked Example
+
+**Inputs:** cash 80, short-term investments 40, net receivables 150, inventory 200 and prepaid expenses 30; current liabilities 350.
+
+**Step 1: total current assets.**
+
+$$
+80 + 40 + 150 + 200 + 30 = 500
+$$
+
+**Step 2: working capital.**
+
+$$
+500 - 350 = 150
+$$
+
+The company could pay all its short-term obligations from current assets and still have 150 left. 40% of current assets is inventory, which is the least liquid component, so how quickly it sells matters.
+
+## Author's Heuristic: Inventory versus Earnings
+
+Track inventory alongside net earnings over several years. If inventory rises together with earnings, the company is growing sales profitably and needs more stock to do it. If inventory rises while earnings do not, the company may be in a boom-and-bust cycle or building unsold stock. See [[Inventory Turnover]].
+
+## References & Useful Links
+
+[^sec-guide]: [SEC, "Beginners' Guide to Financial Statements"](https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements) — Current assets as items expected to convert to cash within one year, and the working-capital definition.

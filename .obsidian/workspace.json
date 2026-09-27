@@ -13,26 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "XGBoost.md",
+                "file": "GCP/BigQuery ML Cheatsheet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "XGBoost"
+              "title": "BigQuery ML Cheatsheet"
             }
           },
           {
             "id": "fdf069b47dd84a04",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "AGENTS.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Finance/10 Year Treasury Note.md",
+                "bFile": "Finance/10 Year Treasury Note.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "AGENTS"
+              "icon": "diff",
+              "title": "Diff: 10 Year Treasury Note  (Working Tree)"
             }
           },
           {
@@ -77,7 +77,8 @@
               "title": "Tree Methods — xgboost 3.4.2 documentation"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -111,7 +112,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "kanb",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -135,8 +136,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -214,7 +214,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "XGBoost.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -271,7 +270,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "XGBoost.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -301,44 +299,44 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d6daf4e703631878",
+  "active": "fdf069b47dd84a04",
   "lastOpenFiles": [
+    "Retrieval-Augmented Generation.md",
+    "Action-Plan.md",
+    "Action Plan.base",
+    "AB Testing.md",
+    "7 Database Paradigms.md",
+    "Research_Paper/pytorch2_internals.pdf",
+    "Research_Paper/Deep and confident predictions for Time Series at Uber.md",
+    "Research_Paper/Databases.pdf",
+    "Research_Paper/Attention is not all you need.md",
+    "Finance/Accounts Receivable Turnover Ratio.md",
+    "Finance/Amortization & Depreciation.md",
+    "Finance/Account Receivables & Account Payable.md",
+    "Finance/10 Year Treasury Note.md",
+    "GCP/Cloud Run.md",
+    "GCP/Cloud Load Balancing.md",
+    "GCP/Cloud Functions.md",
+    "AGENTS.md",
+    "GCP/BigQuery ML Cheatsheet.md",
+    "GCP/BigQuery.md",
+    "XGBoost.md",
     "N-Grams.md",
     "ESCI.md",
     "CUSUM (Cumulative Sum Control Chart).md",
     "CatBoost.md",
     "BERT.md",
-    "Retrieval-Augmented Generation.md",
-    "AGENTS.md",
     "AdaBoost.md",
     "Gradient Descent.md",
     "MLE Study Prep.md",
     "Job Interviews/Preparation.md",
-    "Action-Plan.md",
-    "Action Plan.base",
-    "GCP/BigQuery ML Cheatsheet.md",
-    "Light GBM.md",
-    "Decision Trees.md",
-    "Adam Optimizer.md",
-    "XGBoost Classification.md",
-    "ReLU Function.md",
-    "Backpropagation.md",
     "catboost_info/tmp/cat_feature_index.bc7e27e0-7c3b124e-12f6abe1-c9c29f69.tmp",
-    "Unsupervised Learning.md",
     "catboost_info/test/events.out.tfevents",
     "catboost_info/test",
     "catboost_info/test_error.tsv",
     "catboost_info/tmp/cat_feature_index.bde97bd9-24777d4e-44a2fccb-332fdb61.tmp",
-    "Gaussian Mixture Models.md",
-    "RFM.md",
-    "K Means.md",
-    "Heirarchical Clustering.md",
-    "DBSCAN.md",
-    "Active Learning.md",
     "catboost_info/tmp/cat_feature_index.5cbd830b-3728ebbd-41cb0b56-f9e33bd1.tmp",
     "catboost_info/learn/events.out.tfevents",
-    "catboost_info/tmp",
-    "catboost_info/time_left.tsv",
     "Attachements/Agoda Search Service - Interview Architecture.png",
     "Attachements/Masked_SA&SA.png",
     "Attachements/Transformers.png",

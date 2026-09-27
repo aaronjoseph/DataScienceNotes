@@ -1,8 +1,38 @@
-`Accounts receivable/ Net receivable` is the balance of money due to a firm for good or services delivered or used but not yet paid for by customers. Accounts receivables are listed on the balance sheet as [[Current Asset]]. Additionally, certain percentage of purchasers that were sold goods will not pay, an estimated amount for bad debts is deducted from the Receivables, which will give us `Net Receivables`
+---
+tags:
+  - "finance"
+---
 
-> Accounts receivable is an asset account on the balance sheet that represents money due to a company in the short-term.
+**Accounts receivable** is money customers owe the company for goods or services already delivered but not yet paid for. It is a [[Current Asset]] on the [[Balance Sheet]]. Because some customers will not pay, companies deduct an estimated allowance for bad debts; the remainder is **net receivables**.
 
-> If a company has consistently lower percentage of Net Receivables to Gross Sales, relative to its competitors, it has a competitive advantage
+**Accounts payable** is the mirror image: money the company owes its suppliers for goods and services received on credit. It is a [[Current Liability]].
 
-`Accounts payable` is similar to accounts receivable, but instead of money to be received, it’s money owed.
+## Net Receivables
 
+$$
+\text{Net receivables} = \text{Gross receivables} - \text{Allowance for doubtful accounts}
+$$
+
+## Worked Example
+
+**Inputs:** gross receivables of 500, an allowance of 25, and annual sales of 4,000.
+
+**Step 1: net receivables.**
+
+$$
+500 - 25 = 475
+$$
+
+**Step 2: net receivables as a share of sales.**
+
+$$
+\frac{475}{4{,}000} \approx 11.9\%
+$$
+
+About 12% of a year's sales is still uncollected. Comparing this share with competitors and with the company's own history shows whether it sells on unusually generous credit.
+
+## Interpretation
+
+- **Author's heuristic:** a company with a consistently lower ratio of net receivables to gross sales than its competitors may have a competitive advantage, because customers pay promptly or the company does not need to offer credit to win sales.
+- Receivables growing much faster than sales can mean aggressive revenue recognition or weakening customers; see [[Accounts Receivable Turnover Ratio]] and [[Days Sales Outstanding (DSO)]].
+- A rising payables balance funds the business at suppliers' expense, which helps cash flow but can signal strain if payments are being delayed.
