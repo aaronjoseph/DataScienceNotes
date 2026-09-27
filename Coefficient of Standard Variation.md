@@ -1,1 +1,5 @@
-Coefficient of Variation = $\frac{Std Deviation}{Mean}$
+Coefficient of Variation:
+
+$$
+\text{CV} = \frac{\text{Standard deviation}}{\text{Mean}}
+$$

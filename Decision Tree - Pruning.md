@@ -29,7 +29,13 @@ $$
 R_\alpha(T) = R(T) + \alpha |\tilde{T}|
 $$
 
-$R(T)$ is traditionally the misclassification rate. scikit-learn uses the **total sample-weighted impurity of the leaves**, $\sum_{\text{leaves}} \frac{n_t}{N} H(t)$. For squared error that is SSE divided by the total sample count $N$.
+$R(T)$ is traditionally the misclassification rate. scikit-learn uses the **total sample-weighted impurity of the leaves**:
+
+$$
+R(T) = \sum_{t \in \text{leaves}} \frac{n_t}{N} H(t)
+$$
+
+For squared error that is SSE divided by the total sample count $N$.
 
 ### 2. One node versus its branch
 

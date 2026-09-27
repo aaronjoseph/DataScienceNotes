@@ -1,4 +1,8 @@
-Entropy $H(p)=-\sum_{i}p_ilog_2(p_i)$
+Entropy:
+
+$$
+H(p) = -\sum_{i} p_i \log_2 p_i
+$$
 
 Entropy/Chaos theory originated in thermodynamics as a measure of molecular disorder, entropy approaches zero when molecules are still and well ordered. Entropy reached 'Shannons Information Theory' where it indicated average information content of message, entropy is zero when all messages are identical.
 

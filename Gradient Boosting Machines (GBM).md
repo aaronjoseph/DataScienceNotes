@@ -12,7 +12,13 @@ At round m, pseudo-residuals are negative derivatives with respect to current pr
 
 $$r_{im}=-\left.\frac{\partial L(y_i,F(x_i))}{\partial F(x_i)}\right|_{F=F_{m-1}}.$$
 
-Fit a learner $h_m$ to this signal and update $F_m=F_{m-1}+\eta\gamma_mh_m$, where $\eta$ is a learning rate and $\gamma_m$ represents an appropriate step/leaf-value choice. For squared error, initialise at the training mean; other losses have different optimal constants.
+Fit a learner $h_m$ to this signal and update the model:
+
+$$
+F_m = F_{m-1} + \eta \gamma_m h_m
+$$
+
+Here $\eta$ is a learning rate and $\gamma_m$ represents an appropriate step/leaf-value choice. For squared error, initialise at the training mean; other losses have different optimal constants.
 
 In one sentence for an interview: *gradient boosting is gradient descent in function space: each tree approximates the negative gradient of the loss at the current predictions, and a small step is taken in that direction.*[^sk-gb]
 
@@ -56,9 +62,29 @@ The learning rate $\nu$ (`learning_rate`) scales each tree; smaller values need 
 
 | Loss | Pseudo-residual $r_i$ | $F_0$ | Leaf value $\gamma_j$ |
 |---|---|---|---|
-| Squared error $\frac{1}{2}(y - F)^2$ | $y_i - F(x_i)$ | Mean of $y$ | Mean residual in the leaf |
+| Squared error | $y_i - F(x_i)$ | Mean of $y$ | Mean residual in the leaf |
 | Absolute error $\lvert y - F\rvert$ | $\operatorname{sign}(y_i - F(x_i))$ | Median of $y$ | Median residual in the leaf |
-| Log loss, $F$ = log-odds, $p = \sigma(F)$ | $y_i - p_i$ | $\ln \frac{\bar{y}}{1 - \bar{y}}$ | $\frac{\sum r_i}{\sum p_i (1 - p_i)}$ (one Newton step) |
+| Log loss, $F$ = log-odds, $p = \sigma(F)$ | $y_i - p_i$ | Log-odds of $\bar{y}$ | One Newton step |
+
+The formulas behind the table are below.
+
+**Squared-error loss.**
+
+$$
+L = \frac{1}{2}(y - F)^2
+$$
+
+**Log loss: initial constant.**
+
+$$
+F_0 = \ln \frac{\bar{y}}{1 - \bar{y}}
+$$
+
+**Log loss: leaf value** (one Newton step).
+
+$$
+\gamma_j = \frac{\sum_{i \in R_j} r_i}{\sum_{i \in R_j} p_i (1 - p_i)}
+$$
 
 For squared error, the pseudo-residuals are the ordinary residuals, so "fit the residuals" is exact. For absolute error, any value between the two middle residuals minimises the leaf loss; scikit-learn 1.9.1 gave $F_0 = 10$ for $y = [1, 2, 3, 10, 11, 12, 40]$ and a leaf value of 1 (the lower middle value) for residuals $[0, 1, 2, 30]$. For log loss the leaf value has no closed form, so a single Newton step is used; that step is the same formula XGBoost uses with $\lambda = 0$ (see [[XGBoost#The Math, Step by Step|the XGBoost derivation]]).
 

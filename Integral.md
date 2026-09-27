@@ -10,17 +10,53 @@ Reference formulae for integration, the inverse of differentiation covered in [[
 
 $C$ is an arbitrary constant of integration.
 
-| Integrand | Antiderivative | Condition |
-|---|---|---|
-| $x^k$ | $\dfrac{x^{k+1}}{k+1} + C$ | $k \neq -1$ |
-| $\dfrac{1}{x}$ | $\ln\lvert x\rvert + C$ | $x \neq 0$ |
-| $e^{x}$ | $e^{x} + C$ | |
-| $e^{ax}$ | $\dfrac{e^{ax}}{a} + C$ | $a \neq 0$ |
-| $\cos x$ | $\sin x + C$ | |
-| $\dfrac{1}{1 + x^2}$ | $\arctan x + C$ | |
-| $\ln x$ | $x(\ln x - 1) + C$ | $x > 0$ |
+**Power rule** ($k \neq -1$).
 
-The power rule excludes $k = -1$ because it would divide by zero; that case is the $1/x$ row. Every row can be checked by differentiating the right-hand side; for example, $\frac{d}{dx}\, e^{ax}/a = e^{ax}$.
+$$
+\int x^k \, dx = \frac{x^{k+1}}{k+1} + C
+$$
+
+**Reciprocal** ($x \neq 0$).
+
+$$
+\int \frac{1}{x} \, dx = \ln\lvert x\rvert + C
+$$
+
+**Exponential.**
+
+$$
+\int e^{x} \, dx = e^{x} + C
+$$
+
+**Scaled exponential** ($a \neq 0$).
+
+$$
+\int e^{ax} \, dx = \frac{e^{ax}}{a} + C
+$$
+
+**Cosine.**
+
+$$
+\int \cos x \, dx = \sin x + C
+$$
+
+**Arctangent form.**
+
+$$
+\int \frac{1}{1 + x^2} \, dx = \arctan x + C
+$$
+
+**Logarithm** ($x > 0$).
+
+$$
+\int \ln x \, dx = x(\ln x - 1) + C
+$$
+
+The power rule excludes $k = -1$ because it would divide by zero; that case is the reciprocal rule. Every rule can be checked by differentiating the right-hand side; for example:
+
+$$
+\frac{d}{dx} \frac{e^{ax}}{a} = e^{ax}
+$$
 
 ## Properties of the Definite Integral
 
@@ -64,7 +100,13 @@ The integrand on the right is $f(u)$, not $f'(u)$. Substitution undoes the chain
 
 ## Integration by Riemann Sum
 
-Split $[a, b]$ into $n$ strips of width $\Delta x = (b - a)/n$ and add up rectangle areas. With right endpoints $x_i = a + i \, \Delta x$:
+Split $[a, b]$ into $n$ strips and add up rectangle areas. Each strip has width:
+
+$$
+\Delta x = \frac{b - a}{n}
+$$
+
+With right endpoints $x_i = a + i \, \Delta x$:
 
 $$
 \int_{a}^{b} f(x) \, dx \approx \sum_{i=1}^{n} f(x_i) \, \Delta x = \frac{b - a}{n} \sum_{i=1}^{n} f\!\left(a + \frac{i(b - a)}{n}\right)
@@ -76,7 +118,11 @@ The approximation improves as $n$ grows. Monte Carlo integration replaces the ev
 
 ### Integration by Parts
 
-**Integral.** $\int x e^{x} \, dx$.
+**Integral.**
+
+$$
+\int x e^{x} \, dx
+$$
 
 **Step 1: choose the parts.**
 
@@ -90,11 +136,19 @@ $$
 \int x e^{x} \, dx = x e^{x} - \int e^{x} \, dx = x e^{x} - e^{x} + C
 $$
 
-Differentiating $x e^{x} - e^{x}$ gives $e^{x} + x e^{x} - e^{x} = x e^{x}$, which confirms the result.
+Differentiating the result confirms it:
+
+$$
+\frac{d}{dx}\left(x e^{x} - e^{x}\right) = e^{x} + x e^{x} - e^{x} = x e^{x}
+$$
 
 ### Substitution
 
-**Integral.** $\int 2x \cos(x^2) \, dx$.
+**Integral.**
+
+$$
+\int 2x \cos(x^2) \, dx
+$$
 
 **Step 1: substitute.**
 
@@ -110,7 +164,11 @@ $$
 
 ### Riemann Sum
 
-**Inputs.** $\int_0^1 x^2 \, dx$ with $n = 4$ right-endpoint strips, so $\Delta x = 0.25$.
+**Inputs.** The integral below, with $n = 4$ right-endpoint strips, so $\Delta x = 0.25$:
+
+$$
+\int_0^1 x^2 \, dx
+$$
 
 **Step 1: approximate.**
 
@@ -134,5 +192,5 @@ Right endpoints overestimate an increasing function, so the four-strip sum is to
 
 ## References & Useful Links
 
-- [Substitution Rule for Indefinite Integrals (Paul's Online Math Notes)](https://tutorial.math.lamar.edu/Classes/CalcI/SubstitutionRuleIndefinite.aspx) — The substitution rule $\int f(g(x))g'(x)\,dx = \int f(u)\,du$, with worked examples.
-- [Integration by Parts (Paul's Online Math Notes)](https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationByParts.aspx) — Derivation from the product rule, $\int u\,dv = uv - \int v\,du$, and examples including $\int \ln x\,dx$.
+- [Substitution Rule for Indefinite Integrals (Paul's Online Math Notes)](https://tutorial.math.lamar.edu/Classes/CalcI/SubstitutionRuleIndefinite.aspx) — The substitution rule stated above, with worked examples.
+- [Integration by Parts (Paul's Online Math Notes)](https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationByParts.aspx) — Derivation from the product rule, the integration-by-parts formula stated above, and examples including the integral of $\ln x$.

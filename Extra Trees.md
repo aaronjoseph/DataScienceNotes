@@ -44,7 +44,13 @@ Average the trees' predictions (class probabilities or values), exactly as in a 
 
 ### 4. Why it lowers variance
 
-The ensemble variance is $\rho\sigma^2 + \frac{1 - \rho}{B}\sigma^2$ (see [[Bagging]]). Random thresholds make trees less alike, so $\rho$ falls further. Each tree is also less tuned to the data, which is where the extra bias comes from.
+The ensemble variance is (see [[Bagging]]):
+
+$$
+\rho\sigma^2 + \frac{1 - \rho}{B}\sigma^2
+$$
+
+Random thresholds make trees less alike, so $\rho$ falls further. Each tree is also less tuned to the data, which is where the extra bias comes from.
 
 ### 5. Why it is faster
 

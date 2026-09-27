@@ -124,21 +124,39 @@ Shrinkage reduces each tree's influence and leaves room for later trees; column 
 
 ### 10. Gradients and Hessians for common losses
 
-**Squared error**, $l = \frac{1}{2}(y_i - \hat{y}_i)^2$:
+**Squared error.** The loss is:
+
+$$
+l = \frac{1}{2}(y_i - \hat{y}_i)^2
+$$
+
+Its gradient and Hessian are:
 
 $$
 g_i = \hat{y}_i - y_i, \qquad h_i = 1
 $$
 
-So $G_j$ is minus the sum of residuals and $H_j$ is the number of examples in the leaf. The leaf weight becomes
+So $G_j$ is minus the sum of residuals and $H_j$ is the number of examples in the leaf. The leaf weight becomes:
 
 $$
-w_j^{*} = \frac{\sum_{i \in I_j} (y_i - \hat{y}_i)}{n_j + \lambda},
+w_j^{*} = \frac{\sum_{i \in I_j} (y_i - \hat{y}_i)}{n_j + \lambda}
 $$
 
-and $G_j^2 / (H_j + \lambda)$ is the "similarity score" $(\sum \text{residuals})^2 / (n_j + \lambda)$ in [[XGBoost Regression]]. The numerator is the square of the *sum* of residuals, not the sum of squared residuals. With $\lambda = 0$, the leaf value is just the mean residual.
+The leaf's term in the structure score is the "similarity score" in [[XGBoost Regression]]:
 
-**Log loss for binary classification**, with $\hat{y}_i$ the log-odds and $p_i = \sigma(\hat{y}_i) = 1 / (1 + e^{-\hat{y}_i})$:
+$$
+\frac{G_j^2}{H_j + \lambda} = \frac{\left(\sum_{i \in I_j} (y_i - \hat{y}_i)\right)^2}{n_j + \lambda}
+$$
+
+The numerator is the square of the *sum* of residuals, not the sum of squared residuals. With $\lambda = 0$, the leaf value is just the mean residual.
+
+**Log loss for binary classification.** Here $\hat{y}_i$ is the log-odds, and the predicted probability is:
+
+$$
+p_i = \sigma(\hat{y}_i) = \frac{1}{1 + e^{-\hat{y}_i}}
+$$
+
+The loss, gradient and Hessian are:
 
 $$
 l = -\left[ y_i \ln p_i + (1 - y_i)\ln(1 - p_i) \right]
@@ -148,7 +166,13 @@ $$
 g_i = p_i - y_i, \qquad h_i = p_i (1 - p_i)
 $$
 
-This gives the classification similarity score $(\sum (y_i - p_i))^2 / (\sum p_i(1 - p_i) + \lambda)$ in [[XGBoost Classification]]. Leaf values are in log-odds, not probabilities. Confident predictions ($p_i$ near 0 or 1) have small $h_i$ and contribute little to $H_j$.
+This gives the classification similarity score in [[XGBoost Classification]]:
+
+$$
+\frac{\left(\sum_{i \in I_j} (y_i - p_i)\right)^2}{\sum_{i \in I_j} p_i(1 - p_i) + \lambda}
+$$
+
+Leaf values are in log-odds, not probabilities. Confident predictions ($p_i$ near 0 or 1) have small $h_i$ and contribute little to $H_j$.
 
 ### 11. Why the Hessian acts as an example weight
 
@@ -285,7 +309,7 @@ The tree algorithm is the same as above. The ranking objective computes gradient
 
 **Why does XGBoost use second-order information?**
 
-The Hessian gives a Newton-style step size ($w^{*} = -G/(H + \lambda)$) instead of a fixed step along the gradient. It also lets one solver serve any twice-differentiable loss, since the tree only needs $g_i$ and $h_i$.[^model]
+The Hessian gives a Newton-style step size (the leaf-weight formula in step 6) instead of a fixed step along the gradient. It also lets one solver serve any twice-differentiable loss, since the tree only needs $g_i$ and $h_i$.[^model]
 
 **What is the difference between $\lambda$, $\gamma$, and $\eta$?**
 
@@ -297,7 +321,7 @@ It builds the regularisation into the split criterion and leaf values, uses seco
 
 **Why can a leaf value explode in classification, and what stops it?**
 
-When predictions are confident, $h_i = p_i(1 - p_i)$ is tiny, so $G/(H + \lambda)$ can be large with $\lambda = 0$. `lambda`, `min_child_weight`, and `max_delta_step` limit this; the parameter documentation notes `max_delta_step` can help logistic regression on extremely imbalanced classes.[^params]
+When predictions are confident, $h_i = p_i(1 - p_i)$ is tiny, so the leaf weight from step 6 can be large with $\lambda = 0$. `lambda`, `min_child_weight`, and `max_delta_step` limit this; the parameter documentation notes `max_delta_step` can help logistic regression on extremely imbalanced classes.[^params]
 
 **Do boosted trees differ from a random forest as a model?**
 

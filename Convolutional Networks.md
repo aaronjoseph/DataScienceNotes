@@ -61,7 +61,17 @@ $$
 \text{params} = (F \cdot F \cdot C_{\text{in}} + 1) \cdot K
 $$
 
-**Pooling output width.** Use $(W - F)/S + 1$. Pooling has no parameters. With stride 1, padding $P = (F - 1)/2$ preserves the spatial size.[^cs231n-cnn]
+**Pooling output width.** Pooling has no parameters, and its output width is:
+
+$$
+\frac{W - F}{S} + 1
+$$
+
+With stride 1, the following padding preserves the spatial size:[^cs231n-cnn]
+
+$$
+P = \frac{F - 1}{2}
+$$
 
 ## Worked Example
 
@@ -120,7 +130,13 @@ graph TD
 
 - **Parameter sharing can be the wrong assumption.** For centred, structured inputs such as aligned face images, different positions need different features, and locally connected layers without sharing may fit better.[^cs231n-cnn]
 - **Memory versus parameters.** Most memory and compute are spent on activations in early convolution layers, while most parameters often sit in the final fully connected layers. In VGGNet the first fully connected layer holds about 100 million of 140 million parameters.[^cs231n-cnn]
-- **Hyperparameters that do not fit.** For example, $W = 10$, $F = 3$, $P = 0$, $S = 2$ gives $(10 - 3)/2 + 1 = 4.5$. A library may then pad, crop or raise an error.
+- **Hyperparameters that do not fit.** For example, $W = 10$, $F = 3$, $P = 0$, $S = 2$ gives a non-integer width:
+
+  $$
+  \frac{10 - 3}{2} + 1 = 4.5
+  $$
+
+  A library may then pad, crop or raise an error.
 
 ## Exercise
 

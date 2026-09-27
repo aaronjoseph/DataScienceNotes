@@ -25,10 +25,29 @@ Candidate-window size controls what can enter the sum; it is distinct from the f
 
 For lists `[A,B,C]` and `[B,D,A]`, with illustrative $c=10$:
 
-- A: $1/11+1/13\approx0.1678$.
-- B: $1/12+1/11\approx0.1742$.
-- C: $1/13\approx0.0769$.
-- D: $1/12\approx0.0833$.
+**A.**
+
+$$
+\frac{1}{11} + \frac{1}{13} \approx 0.1678
+$$
+
+**B.**
+
+$$
+\frac{1}{12} + \frac{1}{11} \approx 0.1742
+$$
+
+**C.**
+
+$$
+\frac{1}{13} \approx 0.0769
+$$
+
+**D.**
+
+$$
+\frac{1}{12} \approx 0.0833
+$$
 
 The fused order is B, A, D, C. Choosing 10 here makes arithmetic easy; it is not a recommended universal setting.
 

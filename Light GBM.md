@@ -58,7 +58,13 @@ $$
 
 so their sums estimate the full remainder without bias. LightGBM's source ranks rows by $\lvert g_i h_i \rvert$, applies this weight, and skips GOSS for the first $1/\text{learning\_rate}$ iterations.[^goss]
 
-The paper differs from the implementation in two details.[^paper] It ranks rows by $\lvert g_i \rvert$, and it states the gain as a first-order "variance gain", $\frac{1}{n}\left(\frac{(\sum_{l} g_i)^2}{n_l} + \frac{(\sum_{r} g_i)^2}{n_r}\right)$, which uses gradients and row counts instead of Hessians. Its Algorithm 2 samples $b \times \text{len}(I)$ rows, which is where $(1 - a)/b$ comes from; the prose in Section 3.2 instead says $b \times \lvert A^c \rvert$, for which the matching multiplier would be $1/b$. The implementation follows Algorithm 2.[^goss] The paper also proves a bound showing that the approximation error shrinks as the data grow, provided the split is not too unbalanced.[^paper] In a NumPy simulation with $a = 0.2$ and $b = 0.1$, the mean relative error of the GOSS gain estimate was 6.1%, 2.0%, and 0.65% for 1,000, 10,000, and 100,000 rows. That is roughly the $1/\sqrt{n}$ rate of the bound's leading term.
+The paper differs from the implementation in two details.[^paper] It ranks rows by $\lvert g_i \rvert$, and it states the gain for splitting feature $j$ at point $d$ as a first-order "variance gain", which uses gradients and row counts instead of Hessians:
+
+$$
+V_j(d) = \frac{1}{n}\left(\frac{\left(\sum_{x_{ij} \le d} g_i\right)^2}{n_l(d)} + \frac{\left(\sum_{x_{ij} > d} g_i\right)^2}{n_r(d)}\right)
+$$
+
+Its Algorithm 2 samples $b \times \text{len}(I)$ rows, which is where $(1 - a)/b$ comes from; the prose in Section 3.2 instead says $b \times \lvert A^c \rvert$, for which the matching multiplier would be $1/b$. The implementation follows Algorithm 2.[^goss] The paper also proves a bound showing that the approximation error shrinks as the data grow, provided the split is not too unbalanced.[^paper] In a NumPy simulation with $a = 0.2$ and $b = 0.1$, the mean relative error of the GOSS gain estimate was 6.1%, 2.0%, and 0.65% for 1,000, 10,000, and 100,000 rows. That is roughly the $1/\sqrt{n}$ rate of the bound's leading term.
 
 ### 6. Exclusive Feature Bundling (EFB)
 
@@ -68,7 +74,13 @@ The paper proves NP-hardness by reduction from graph colouring. The greedy algor
 
 ### 7. Categorical splits
 
-Instead of one-hot encoding, LightGBM sorts a categorical feature's categories by $\sum g / \sum h$ and finds the best split point on that ordering, about $O(k \log k)$ for $k$ categories rather than the $2^{k-1} - 1$ possible partitions.[^features]
+Instead of one-hot encoding, LightGBM sorts a categorical feature's categories by the ratio of their summed gradients to their summed Hessians:
+
+$$
+\frac{\sum_{i \in \text{category}} g_i}{\sum_{i \in \text{category}} h_i}
+$$
+
+It then finds the best split point on that ordering, about $O(k \log k)$ for $k$ categories rather than the $2^{k-1} - 1$ possible partitions.[^features]
 
 ## Worked Example: One Tree, Checked Against LightGBM
 
@@ -217,4 +229,4 @@ Documentation checked 20 September 2026 and 27 September 2026; the worked exampl
 [^params]: [LightGBM parameters](https://lightgbm.readthedocs.io/en/latest/Parameters.html) — Parameter names, defaults, objectives, GOSS rates, and EFB switch.
 [^paper]: [Ke et al. (2017), "LightGBM: A Highly Efficient Gradient Boosting Decision Tree", NIPS 2017](https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf) — Full paper read. Histogram algorithm costs, GOSS (Algorithm 2, variance gain, Theorem 3.2), EFB (NP-hardness, greedy bundling, bin offsets), and Tables 2 to 4.
 [^supp]: [Ke et al. (2017), supplementary material](https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Supplemental.zip) — Section 3 read in full; the proofs of Theorem 3.2 and Proposition 2.1 were not read. Experiment parameter settings, GOSS $a$ and $b$ per sampling ratio, the effect of the EFB conflict rate $\gamma$, and time–accuracy notes.
-[^goss]: [LightGBM source: `src/boosting/goss.hpp`](https://github.com/microsoft/LightGBM/blob/master/src/boosting/goss.hpp) — Ranking by $\lvert g h \rvert$, the $(\text{cnt} - \text{top}_k)/\text{other}_k$ multiplier, and skipping the first $1/\text{learning\_rate}$ iterations.
+[^goss]: [LightGBM source: `src/boosting/goss.hpp`](https://github.com/microsoft/LightGBM/blob/master/src/boosting/goss.hpp) — Ranking by $\lvert g h \rvert$, the multiplier computed from the top-$k$ and other-$k$ row counts, and skipping the first $1/\text{learning\_rate}$ iterations.

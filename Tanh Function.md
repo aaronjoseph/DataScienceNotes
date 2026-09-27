@@ -85,7 +85,13 @@ Near zero, tanh passes back four times as much gradient as the sigmoid. By $x = 
 
 ## Use in Neural Networks
 
-For a hidden layer with pre-activation $z^{t} = W^{t} h^{t-1} + b^{t}$ and output $h^{t} = \tanh(z^{t})$, the chain rule gives:
+For a hidden layer, the pre-activation and output are:
+
+$$
+z^{t} = W^{t} h^{t-1} + b^{t}, \qquad h^{t} = \tanh(z^{t})
+$$
+
+The chain rule gives:
 
 $$
 \frac{\partial \mathcal{L}}{\partial W^{t}} = \left(\frac{\partial \mathcal{L}}{\partial h^{t}} \odot \big(1 - \tanh^2(z^{t})\big)\right) \big(h^{t-1}\big)^\top

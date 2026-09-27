@@ -58,7 +58,13 @@ A unit at $x = 4$ passes back less than 2% of the gradient it receives. Across f
 
 ## Vanishing Gradients
 
-For a layer with weights $W^{t}$, bias $b^{t}$ and input $h^{t-1}$, the pre-activation is $z^{t} = W^{t} h^{t-1} + b^{t}$ and the output is $h^{t} = \sigma(z^{t})$. By the chain rule:
+For a layer with weights $W^{t}$, bias $b^{t}$ and input $h^{t-1}$, the pre-activation and output are:
+
+$$
+z^{t} = W^{t} h^{t-1} + b^{t}, \qquad h^{t} = \sigma(z^{t})
+$$
+
+By the chain rule:
 
 $$
 \frac{\partial \mathcal{L}}{\partial W^{t}} = \left(\frac{\partial \mathcal{L}}{\partial h^{t}} \odot \sigma'(z^{t})\right) \big(h^{t-1}\big)^\top

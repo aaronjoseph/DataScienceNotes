@@ -11,7 +11,13 @@ For numerical features, $x_1x_2$ is an interaction. For categorical features, a 
 
 ## Worked Example
 
-Consider $s=b+w_1x_1+w_2x_2+w_{12}x_1x_2$. With $b=w_1=w_2=0$ and $w_{12}=2$, the score is two only when both binary inputs are one. This expresses a combination-specific effect absent from the corresponding additive model without the cross.
+Consider the score:
+
+$$
+s = b + w_1 x_1 + w_2 x_2 + w_{12} x_1 x_2
+$$
+
+With $b=w_1=w_2=0$ and $w_{12}=2$, the score is two only when both binary inputs are one. This expresses a combination-specific effect absent from the corresponding additive model without the cross.
 
 ## Costs and Pitfalls
 

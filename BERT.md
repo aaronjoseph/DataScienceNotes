@@ -32,13 +32,21 @@ The Hugging Face default configuration, matching `bert-base-uncased`, also sets 
 > [!example]- Where do 110 million parameters come from?
 > Using the Hugging Face configuration (vocabulary 30,522, 512 positions, 2 segment types, $H=768$, feed-forward 3072):
 >
-> 1. **Embeddings:** $(30{,}522 + 512 + 2) \times 768$ plus one LayerNorm $\approx 23.8$M.
+> 1. **Embeddings,** including one LayerNorm:
+>
+>    $$
+>    (30{,}522 + 512 + 2) \times 768 + 2 \times 768 \approx 23.8\text{M}
+>    $$
 >
 > 2. **One encoder layer:** four attention projections, two feed-forward matrices, their biases, and two LayerNorms $\approx 7.09$M.
 >
 > 3. **Twelve layers:** $12 \times 7.09\text{M} \approx 85.1$M.
 >
-> 4. **Pooler:** $768 \times 768 + 768 \approx 0.59$M.
+> 4. **Pooler:**
+>
+>    $$
+>    768 \times 768 + 768 \approx 0.59\text{M}
+>    $$
 >
 > The total is about 109.5M, which the paper rounds to 110M. About a fifth of the parameters are in the embedding tables.
 
@@ -162,7 +170,13 @@ $$
 P_i^{\text{start}} = \frac{e^{S\cdot T_i}}{\sum_j e^{S\cdot T_j}}
 $$
 
-The predicted span maximises $S\cdot T_i + E\cdot T_j$ with $j \ge i$.[^bert] For SQuAD 2.0, where some questions have no answer, "no answer" is represented as a span that starts and ends at `[CLS]`. A threshold chosen on development data decides when to abstain.
+The predicted span maximises the following score, subject to $j \ge i$:[^bert]
+
+$$
+S \cdot T_i + E \cdot T_j
+$$
+
+For SQuAD 2.0, where some questions have no answer, "no answer" is represented as a span that starts and ends at `[CLS]`. A threshold chosen on development data decides when to abstain.
 
 Extractive question answering selects a span from the passage. It cannot write an answer that is not in the text.
 

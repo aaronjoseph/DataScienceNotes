@@ -22,7 +22,11 @@ A sequential analysis technique used to detect small shifts in a process mean or
    For each observation ( $x_t$):  
    ( $d_t = x_t - \mu_0$)  
 3. **Update Cumulative Sum**:  
-	($S_t = \max(0, S_{t-1} + d_t)$)  
+
+   $$
+   S_t = \max(0,\ S_{t-1} + d_t)
+   $$
+
 1. **Check Signal**:  
    If ( $S_t \geq h$), trigger a change alert.  
 5. **Reset**:  

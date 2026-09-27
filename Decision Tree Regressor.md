@@ -110,7 +110,11 @@ print(tree.predict([[100.0]]))       # [21.]
 
 ## Interview Questions
 
-**Why is the leaf value the mean?** It minimises the sum of squared errors of a constant prediction; set the derivative of $\sum (y_i - c)^2$ to zero to get $c = \bar{y}$.
+**Why is the leaf value the mean?** It minimises the sum of squared errors of a constant prediction. Setting the derivative to zero gives the mean:
+
+$$
+\frac{d}{dc} \sum_i (y_i - c)^2 = -2 \sum_i (y_i - c) = 0 \;\Rightarrow\; c = \bar{y}
+$$
 
 **How is this related to gradient boosting?** Each boosting round fits a regression tree like this one to the current residuals (for squared error) or pseudo-residuals (for other losses).
 

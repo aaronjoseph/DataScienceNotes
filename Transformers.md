@@ -249,7 +249,11 @@ Compare separately encoded query and document vectors with jointly encoding `[qu
 >
 > 2. Joint encoding. With separate encoding, query and document tokens never attend to each other; they interact only through the final similarity score.
 >
-> 3. The joint sequence has 210 tokens, so one head computes $210^2 = 44{,}100$ scores. Query-to-document and document-to-query pairs account for $2 \times 10 \times 200 = 4{,}000$ of them.
+> 3. The joint sequence has 210 tokens, so one head computes $210^2 = 44{,}100$ scores. Query-to-document and document-to-query pairs account for 4,000 of them:
+>
+>    $$
+>    2 \times 10 \times 200 = 4{,}000
+>    $$
 >
 > This cost is why cross-encoders usually rerank a short candidate list; see [[Search Ranking]].
 

@@ -24,9 +24,19 @@ The gradient points in the direction of steepest local increase, so its negative
 The ingredients are:
 
 1. **Model**, for example $f(x; W) = Wx$ for a linear model.
-2. **Loss**, for example the squared error $\ell_i = (y_i - W x_i)^2$.
+2. **Loss**, for example the squared error:
+
+   $$
+   \ell_i = (y_i - W x_i)^2
+   $$
+
 3. **Partial derivatives** $\partial L / \partial w_j$ for every parameter.
-4. **Update** $w_j \leftarrow w_j - \eta \, \partial L / \partial w_j$.
+4. **Update** each weight:
+
+   $$
+   w_j \leftarrow w_j - \eta \frac{\partial L}{\partial w_j}
+   $$
+
 5. **Learning rate** $\eta$. Too small and progress is slow; too large and the iterates oscillate or diverge (see the worked example).
 
 ## Batch, Stochastic and Mini-Batch Variants
@@ -59,7 +69,18 @@ The noise is visible in training curves: with batch size 1 the loss "wiggles" a 
 There are four ways to obtain the partial derivatives:[^baydin]
 
 1. **Manual differentiation.** Derive and code the derivatives by hand. Exact but slow and error-prone for large models.
-2. **Numerical differentiation.** Finite differences such as $\big(f(x + h) - f(x)\big)/h$. Simple, but it needs $O(n)$ function evaluations for $n$ parameters and suffers from truncation and round-off error. It remains useful for *gradient checking*, where the centred difference $\big(f(x+h) - f(x-h)\big)/2h$ is preferred.[^cs231n-nn3]
+2. **Numerical differentiation.** Finite differences such as the forward difference:
+
+   $$
+   \frac{f(x + h) - f(x)}{h}
+   $$
+
+   Simple, but it needs $O(n)$ function evaluations for $n$ parameters and suffers from truncation and round-off error. It remains useful for *gradient checking*, where the centred difference is preferred:[^cs231n-nn3]
+
+   $$
+   \frac{f(x + h) - f(x - h)}{2h}
+   $$
+
 3. **Symbolic differentiation.** A computer algebra system manipulates expressions. Exact, but expressions can grow very large ("expression swell") and control flow is hard to handle.
 4. **Automatic differentiation (AD).** Applies the chain rule to each elementary operation while the program runs. It gives derivatives accurate to machine precision with a small constant-factor overhead. Backpropagation is reverse-mode AD applied to a scalar loss; see [[Computational Graph]] and [[Jacobians]].
 
@@ -83,7 +104,19 @@ Each example pushes $w_j$ in proportion to its residual and its feature value.
 
 ### Sigmoid Output with Squared Error
 
-Now pass the linear score through the [[Sigmoid Function|sigmoid]] $\sigma(z) = 1/(1 + e^{-z})$, whose derivative is $\sigma'(z) = \sigma(z)\big(1 - \sigma(z)\big)$. Write $\sigma_i = \sigma(w^\top x_i)$ and $\delta_i = y_i - \sigma_i$:
+Now pass the linear score through the [[Sigmoid Function|sigmoid]]:
+
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}
+$$
+
+Its derivative is:
+
+$$
+\sigma'(z) = \sigma(z)\big(1 - \sigma(z)\big)
+$$
+
+Write $\sigma_i = \sigma(w^\top x_i)$ and $\delta_i = y_i - \sigma_i$. The loss is:
 
 $$
 L = \sum_{i=1}^{N} \big(y_i - \sigma_i\big)^2
@@ -95,13 +128,19 @@ $$
 \frac{\partial L}{\partial w_j} = -2 \sum_{i=1}^{N} \delta_i \, \sigma_i (1 - \sigma_i) \, x_{ij}
 $$
 
-Substituting into $w_j \leftarrow w_j - \eta \, \partial L / \partial w_j$ turns the two minus signs into a plus:
+Substituting into the update rule above turns the two minus signs into a plus:
 
 $$
 w_j \leftarrow w_j + 2\eta \sum_{i=1}^{N} \delta_i \, \sigma_i (1 - \sigma_i) \, x_{ij}
 $$
 
-The factor $\sigma_i(1 - \sigma_i)$ is at most $0.25$ and approaches zero when the sigmoid saturates, so a confidently wrong prediction produces almost no update. With the [[Cross Entropy Loss|cross-entropy (log) loss]] instead of squared error, that factor cancels and the gradient becomes $\sum_i (\sigma_i - y_i) x_{ij}$. This is one reason [[Logistic Regression]] is trained with log loss.
+The factor $\sigma_i(1 - \sigma_i)$ is at most $0.25$ and approaches zero when the sigmoid saturates, so a confidently wrong prediction produces almost no update. With the [[Cross Entropy Loss|cross-entropy (log) loss]] instead of squared error, that factor cancels and the gradient becomes:
+
+$$
+\frac{\partial L}{\partial w_j} = \sum_i (\sigma_i - y_i) x_{ij}
+$$
+
+This is one reason [[Logistic Regression]] is trained with log loss.
 
 ## Worked Example
 
@@ -131,7 +170,19 @@ $$
 w_2 = 1 - 0.05 \times (-10) = 1.5
 $$
 
-The distance to the optimum halves each step: $2 \to 1 \to 0.5$. The curvature of this loss is $L'' = 2\sum_i x_i^2 = 10$, and gradient descent on a quadratic is stable only when $\eta < 2 / L'' = 0.2$. With $\eta = 0.1$ the first step lands exactly on $w^* = 2$; with $\eta = 0.2$ the iterates bounce between $0$ and $4$ forever; above $0.2$ they diverge. Poorly scaled features create very different curvatures in different directions, which is why [[Feature Scaling]] often speeds up training.
+The distance to the optimum halves each step: $2 \to 1 \to 0.5$. The curvature of this loss is:
+
+$$
+L'' = 2\sum_i x_i^2 = 10
+$$
+
+Gradient descent on a quadratic is stable only when:
+
+$$
+\eta < \frac{2}{L''} = 0.2
+$$
+
+With $\eta = 0.1$ the first step lands exactly on $w^* = 2$; with $\eta = 0.2$ the iterates bounce between $0$ and $4$ forever; above $0.2$ they diverge. Poorly scaled features create very different curvatures in different directions, which is why [[Feature Scaling]] often speeds up training.
 
 ## Interview Questions: Variants and Performance
 
@@ -147,7 +198,11 @@ Questions preserved from the original note, with reasoning-based answers. The em
 
 **Setup.** The Wisconsin breast-cancer dataset bundled with scikit-learn: 569 examples and 30 standardised features, plus an intercept.[^sk-bc] The model is logistic regression trained on mean log loss with plain mini-batch SGD at learning rate $0.1$, starting from $w = 0$. Batches are drawn without replacement and data is reshuffled every epoch. Everything below is **training** loss with one random seed; it says nothing about generalisation. scikit-learn itself calls the dataset "very easy", so the loss keeps falling for a long time and larger, harder datasets may behave differently.
 
-**Measurement 1: gradient noise.** At $w = 0$, sample 5,000 mini-batches and measure the mean squared distance between the mini-batch gradient and the full gradient. The prediction scales the $B = 1$ value by $\frac{1}{B} \cdot \frac{N - B}{N - 1}$, the variance formula for sampling without replacement.
+**Measurement 1: gradient noise.** At $w = 0$, sample 5,000 mini-batches and measure the mean squared distance between the mini-batch gradient and the full gradient. The prediction scales the $B = 1$ value by the variance factor for sampling without replacement:
+
+$$
+\frac{1}{B} \cdot \frac{N - B}{N - 1}
+$$
 
 | Batch size $B$ | Measured | Predicted |
 |---|---|---|

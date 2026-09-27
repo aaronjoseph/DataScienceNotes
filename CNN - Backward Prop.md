@@ -26,7 +26,7 @@ $$
 \frac{\partial L}{\partial k} = \frac{\partial L}{\partial h^{l}} \frac{\partial h^{l}}{\partial k}
 $$
 
-where $\frac{\partial L}{\partial h^{l-1}}$ is the gradient that will be passed back to the previous layer, and $\frac{\partial L}{\partial k}$ is the gradient used to update the kernel weights.
+where $\partial L / \partial h^{l-1}$ is the gradient that will be passed back to the previous layer, and $\partial L / \partial k$ is the gradient used to update the kernel weights.
 
 
 ---
@@ -36,7 +36,7 @@ In the backpropagation process for convolutional neural networks, the gradient o
 
 ### Understanding the Chain Rule Application
 
-The gradient computation involves applying the chain rule to propagate errors from the output back to the weights. Given an output feature map $y$, the kernel weights $k$, and the loss function $L$, we need to compute $\frac{\partial L}{\partial k(a', b')}$, which is the gradient of the loss function with respect to each weight in the kernel.
+The gradient computation involves applying the chain rule to propagate errors from the output back to the weights. Given an output feature map $y$, the kernel weights $k$, and the loss function $L$, we need to compute $\partial L / \partial k(a', b')$, which is the gradient of the loss function with respect to each weight in the kernel.
 
 This gradient is calculated by accumulating the gradient contributions from all the pixels in the output feature map. The chain rule over all output pixels is mathematically expressed as:
 

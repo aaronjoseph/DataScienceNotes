@@ -13,11 +13,21 @@ Steps followed
 	1. Here, each feature is runned through decision stump
 	2. The decision stump with the lowest weighted impurity is selected (scikit-learn's default stump uses Gini on the weighted samples)
 3. Subsequent calculations are made
-	1. Total Error = $\frac{E}{T}$
+	1. Total Error:
+
+		$$
+		\text{Total Error} = \frac{E}{T}
+		$$
+
 		1. Here, E is the number of errors made
 		2. T refers to the total number of data points
 		3. This is only true while all weights are equal. In general, Total Error is the **sum of the weights of the misclassified records**
-	2. Performace of Stump = $\frac{1}{2}log_e\frac{1-TotalError}{TotalError}$
+	2. Performace of Stump:
+
+		$$
+		\text{Performance of Stump} = \frac{1}{2} \ln \frac{1 - \text{Total Error}}{\text{Total Error}}
+		$$
+
 	3. Using the above equations, weights are updated for each record. Here, the incorrect predictions should get the higher weights
 		1. First is the updation cycle wherein the weights are updated as per the formulae, summation of all the weights will not be equal to 1
 			1. Here, the incorrect predictions are assigned the new value = $OldWeight * e^{Performance of Stump}$
@@ -46,7 +56,13 @@ $$
 L = \sum_{i=1}^{n} \exp\big(-y_i F(x_i)\big)
 $$
 
-Its population minimiser is half the log-odds, $F^{*}(x) = \frac{1}{2} \log \frac{P(y = 1 \mid x)}{P(y = -1 \mid x)}$, which is where the $\frac{1}{2}$ in the classic $\alpha$ comes from.[^samme]
+Its population minimiser is half the log-odds:
+
+$$
+F^{*}(x) = \frac{1}{2} \log \frac{P(y = 1 \mid x)}{P(y = -1 \mid x)}
+$$
+
+That factor of one half is where the ½ in the classic $\alpha$ comes from.[^samme]
 
 ### 3. Weights come from the loss
 
@@ -68,7 +84,13 @@ $$
 
 ### 5. Best learner weight (amount of say)
 
-Splitting the loss into correct and incorrect examples gives $L = (1 - \varepsilon)e^{-\alpha} + \varepsilon e^{\alpha}$. Setting $dL/d\alpha = 0$:
+Splitting the loss into correct and incorrect examples gives:
+
+$$
+L = (1 - \varepsilon)e^{-\alpha} + \varepsilon e^{\alpha}
+$$
+
+Setting $dL/d\alpha = 0$:
 
 $$
 \alpha_t = \frac{1}{2} \ln \frac{1 - \varepsilon_t}{\varepsilon_t}
@@ -94,7 +116,7 @@ $$
 
 with learning rate $\eta$ and $K$ classes. For $K = 2$ this is exactly twice the classic $\alpha$, and only misclassified examples are upweighted, by $e^{\alpha}$. After normalisation, both conventions give the same example weights and the same sign of $F$.
 
-Zhu et al. explain the extra $\ln(K - 1)$ term.[^samme] Plain AdaBoost needs each learner's error below $\frac{1}{2}$, or $\alpha$ turns negative. For $K > 2$ classes that is much harder than beating random guessing, whose accuracy is $1/K$. With the extra term, $\alpha > 0$ whenever accuracy exceeds $1/K$. The term also makes SAMME equivalent to forward stage-wise fitting with a multi-class exponential loss.
+Zhu et al. explain the extra $\ln(K - 1)$ term.[^samme] Plain AdaBoost needs each learner's error below 0.5, or $\alpha$ turns negative. For $K > 2$ classes that is much harder than beating random guessing, whose accuracy is $1/K$. With the extra term, $\alpha > 0$ whenever accuracy exceeds $1/K$. The term also makes SAMME equivalent to forward stage-wise fitting with a multi-class exponential loss.
 
 ### 8. The original formulation and its error bound
 
@@ -116,7 +138,13 @@ $$
 \varepsilon \le 2^{T} \prod_{t=1}^{T} \sqrt{\varepsilon_t (1 - \varepsilon_t)} \le \exp\left(-2 \sum_{t=1}^{T} \gamma_t^2\right), \qquad \varepsilon_t = \tfrac{1}{2} - \gamma_t.
 $$
 
-So if every learner is slightly better than chance, the training error falls exponentially in $T$.[^freund] For example, with $\varepsilon_t = 0.2$ each round contributes $2\sqrt{0.2 \times 0.8} = 0.8$:
+So if every learner is slightly better than chance, the training error falls exponentially in $T$.[^freund] For example, with $\varepsilon_t = 0.2$, each round contributes:
+
+$$
+2\sqrt{0.2 \times 0.8} = 0.8
+$$
+
+The bound after $T$ rounds is therefore:
 
 $$
 \varepsilon \le 0.8^{T}, \qquad 0.8^{10} \approx 0.107.
@@ -148,7 +176,13 @@ $$
 \text{misclassified: } 0.2\, e^{0.693} = 0.4, \qquad \text{correct: } 0.2\, e^{-0.693} = 0.1
 $$
 
-**Step 4: normalise.** The total is $0.4 + 4 \times 0.1 = 0.8$.
+**Step 4: normalise.** The total weight is:
+
+$$
+0.4 + 4 \times 0.1 = 0.8
+$$
+
+Dividing each weight by the total:
 
 $$
 \text{misclassified: } \frac{0.4}{0.8} = 0.5, \qquad \text{correct: } \frac{0.1}{0.8} = 0.125

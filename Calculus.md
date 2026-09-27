@@ -25,9 +25,14 @@ The derivative is the instantaneous rate of change of $f$ at $x$: the slope of t
 | $\ln x$ | $1/x$ for $x > 0$ |
 | $\sin x$ | $\cos x$ |
 | $\cos x$ | $-\sin x$ |
-| $\arctan x$ | $\dfrac{1}{1 + x^{2}}$ |
 | $e^{f(x)}$ | $e^{f(x)} \, f'(x)$ |
 | $a^{f(x)}$ | $a^{f(x)} \ln a \; f'(x)$ |
+
+**Arctangent.**
+
+$$
+\frac{d}{dx} \arctan x = \frac{1}{1 + x^{2}}
+$$
 
 Do not confuse the power rule, where the variable is in the base ($x^k$), with the exponential rule, where it is in the exponent ($a^x$).
 
@@ -129,7 +134,7 @@ After three steps Newton's method is within $0.000003$ of $\sqrt{2} \approx 1.41
 
 ## L'Hôpital's Rule
 
-**Theorem.** Suppose $\lim_{x \to a} f(x)$ and $\lim_{x \to a} g(x)$ are both $0$, or both $\pm\infty$. Suppose also that $f$ and $g$ are differentiable near $a$, with $g'(x) \neq 0$ there, and that the limit on the right exists. Then:
+**Theorem.** Suppose $f(x)$ and $g(x)$ both tend to $0$, or both to $\pm\infty$, as $x \to a$. Suppose also that $f$ and $g$ are differentiable near $a$, with $g'(x) \neq 0$ there, and that the limit on the right exists. Then:
 
 $$
 \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}

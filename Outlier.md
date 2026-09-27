@@ -40,7 +40,13 @@ A --> |Univariate|C(IsolationForest)
 
 ### Z-Score
 
-Formula for Z-Score is as follows $z = \frac{Observation - Mean}{Standard Deviation}$, if the value is < -3 or > 3, then it is a outlier
+Formula for Z-Score is as follows:
+
+$$
+z = \frac{\text{Observation} - \text{Mean}}{\text{Standard Deviation}}
+$$
+
+If the value is < -3 or > 3, then it is a outlier
 
 As per Normal Distribution, we have 
 1. 68% for 1 SD

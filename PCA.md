@@ -9,7 +9,13 @@ Principal component analysis finds orthogonal linear directions of greatest vari
 
 ## Mechanics
 
-For $X\in\mathbb R^{n\times d}$, subtract each training-column mean to form $X_c$. Its sample covariance is $C=X_c^TX_c/(n-1)$ for $n>1$. Entry $C_{ij}$ is a covariance, not generally a correlation. Columns need not be statistically independent.
+For $X\in\mathbb R^{n\times d}$, subtract each training-column mean to form $X_c$. For $n>1$, its sample covariance is:
+
+$$
+C = \frac{X_c^\top X_c}{n - 1}
+$$
+
+Entry $C_{ij}$ is a covariance, not generally a correlation. Columns need not be statistically independent.
 
 Eigenvectors of C provide principal directions; eigenvalues give variance along them. Project onto the first k directions: $Z=X_cV_k$. These are new combinations of variables, not simply retained original columns. [[Singular Value Decomposition|SVD]] can compute the directions without explicitly constructing C.
 

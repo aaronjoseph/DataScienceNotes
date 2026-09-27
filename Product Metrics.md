@@ -18,8 +18,14 @@ A metric needs a population, event definition, time window, and aggregation rule
 | ARPU | Period revenue divided by the chosen user population for that period |
 | MRR / ARR | Normalised recurring monthly revenue / annualised recurring revenue; exclude one-off charges and document adjustments |
 | Customer churn | Lost customers divided by customers at period start, with a consistent definition |
-| Net revenue retention | $(starting\ recurring\ revenue+expansion-contraction-churn)/starting\ recurring\ revenue$ for the starting cohort; excludes new customers |
+| Net revenue retention | Recurring revenue kept from the starting cohort, net of expansion, contraction and churn (formula below); excludes new customers |
 | CAC | Attributed acquisition costs divided by acquired customers, with cost and attribution scope stated |
+
+**Net revenue retention.**
+
+$$
+\text{NRR} = \frac{\text{starting recurring revenue} + \text{expansion} - \text{contraction} - \text{churn}}{\text{starting recurring revenue}}
+$$
 
 Lifetime value is an estimate of discounted future contribution, not just revenue.
 

@@ -88,13 +88,29 @@ w_2 & w_1 \\
 \end{bmatrix}
 $$
 
-**Step 2: gradient of the scalar loss $L = f_1 + f_2 + f_3$.** Here $\nabla_f L = (1, 1, 1)$, so:
+**Step 2: gradient of the scalar loss.** The loss is:
+
+$$
+L = f_1 + f_2 + f_3
+$$
+
+Here $\nabla_f L = (1, 1, 1)$, so:
 
 $$
 \nabla_w L = J^\top \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 3 + 1 + 4 \\ 2 + 1 + 0 \end{bmatrix} = \begin{bmatrix} 8 \\ 3 \end{bmatrix}
 $$
 
-**Step 3: direct check.** $L = w_1 w_2 + w_1 + w_2 + w_1^2$, so $\partial L / \partial w_1 = w_2 + 1 + 2w_1 = 8$ and $\partial L / \partial w_2 = w_1 + 1 = 3$.
+**Step 3: direct check.** Expanding the loss:
+
+$$
+L = w_1 w_2 + w_1 + w_2 + w_1^2
+$$
+
+Differentiating directly:
+
+$$
+\frac{\partial L}{\partial w_1} = w_2 + 1 + 2w_1 = 8, \qquad \frac{\partial L}{\partial w_2} = w_1 + 1 = 3
+$$
 
 The vector–Jacobian product matched direct differentiation. Transposing $J$ is what sends the loss sensitivity from the three outputs back to the two weights.
 

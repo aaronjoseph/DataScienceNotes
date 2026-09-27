@@ -18,7 +18,12 @@ $$
 p(x) = \sum_{k=1}^{K} \pi_k\, \mathcal{N}(x \mid \mu_k, \Sigma_k).
 $$
 
-- $\pi_k$: the **mixing weight** of component $k$, with $\pi_k \ge 0$ and $\sum_k \pi_k = 1$.
+- $\pi_k$: the **mixing weight** of component $k$, with $\pi_k \ge 0$ and:
+
+  $$
+  \sum_{k=1}^{K} \pi_k = 1
+  $$
+
 - $\mu_k$: the component mean, a cluster centre.
 - $\Sigma_k$: the component covariance, which sets the cluster's spread, shape, and orientation.
 - $\mathcal{N}(x \mid \mu, \Sigma)$: the multivariate normal density; see [[Probability Density Function]].
@@ -37,7 +42,13 @@ scikit-learn fits `GaussianMixture` with the expectation–maximisation (EM) alg
 
 1. **Initialise** the weights, means, and covariances. scikit-learn's default initialises the responsibilities with k-means.[^sk-api]
 2. **E-step:** compute each point's responsibilities under the current parameters.
-3. **M-step:** re-estimate the parameters from the responsibility-weighted points. With $N_k = \sum_i \gamma_{ik}$:
+3. **M-step:** re-estimate the parameters from the responsibility-weighted points, using the effective number of points in component $k$:
+
+$$
+N_k = \sum_{i=1}^{n} \gamma_{ik}
+$$
+
+The updates are:
 
 $$
 \pi_k = \frac{N_k}{N}, \qquad \mu_k = \frac{1}{N_k}\sum_{i=1}^{N} \gamma_{ik}\, x_i

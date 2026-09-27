@@ -33,7 +33,13 @@ The differenced series has one fewer value. A second difference models the "chan
 
 ### AR($p$): autoregression
 
-The original version of this note wrote the AR model as $Y = B_0 + B_1 Y_{lag1} + \dots + B_n Y_{lagn}$: lagged values of the target act as the predictors. In the usual notation, with $\phi$ for the coefficients and an explicit error term:
+The original version of this note wrote the AR model with lagged values of the target as the predictors:
+
+$$
+Y = B_0 + B_1 Y_{\text{lag}1} + \dots + B_n Y_{\text{lag}n}
+$$
+
+In the usual notation, with $\phi$ for the coefficients and an explicit error term:
 
 $$
 y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + \dots + \phi_p y_{t-p} + \varepsilon_t

@@ -34,6 +34,9 @@ Retained earnings refer to the portion of net income that a company retains and 
 4. **Equals Ending Retained Earnings**: The result is the ending retained earnings for the current period.
 
 The formula can be summarized as:
-$Ending Retained Earnings = Beginning Retained Earnings + Net Income - Dividends$
+
+$$
+\text{Ending Retained Earnings} = \text{Beginning Retained Earnings} + \text{Net Income} - \text{Dividends}
+$$
 
 This amount is reported on the balance sheet under shareholders' equity and is a critical indicator of a company’s ability to fund its operations and growth internally.

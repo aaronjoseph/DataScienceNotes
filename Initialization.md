@@ -46,7 +46,13 @@ $$
 \text{std} = \frac{\text{gain}}{\sqrt{\text{fan\_mode}}}
 $$
 
-For ReLU the gain is $\sqrt{2}$. With the default $\text{fan\_mode} = \text{fan\_in}$, this gives $\text{std} = \sqrt{2 / \text{fan\_in}}$. Choosing `fan_in` preserves variance in the forward pass; choosing `fan_out` preserves it in the backward pass.
+For ReLU the gain is $\sqrt{2}$. With the default $\text{fan\_mode} = \text{fan\_in}$, this gives:
+
+$$
+\text{std} = \sqrt{\frac{2}{\text{fan\_in}}}
+$$
+
+Choosing `fan_in` preserves variance in the forward pass; choosing `fan_out` preserves it in the backward pass.
 
 ## Worked Example
 

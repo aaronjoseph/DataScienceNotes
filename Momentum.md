@@ -53,7 +53,13 @@ $$
 v_t = \sum_{k=0}^{t-1} \beta^k \, g_{t-k}
 $$
 
-Older gradients are down-weighted geometrically, so higher $\beta$ gives past gradients more weight. Because there is no $(1 - \beta)$ factor, this is a weighted *sum*, not an average. If the gradient stays at $g$, the velocity approaches $g / (1 - \beta)$, so the effective step becomes $\alpha / (1 - \beta)$: ten times the learning rate for $\beta = 0.9$. [[Adam Optimizer|Adam]]'s first moment includes the $(1 - \beta)$ factor and is a true moving average.
+Older gradients are down-weighted geometrically, so higher $\beta$ gives past gradients more weight. Because there is no $(1 - \beta)$ factor, this is a weighted *sum*, not an average. If the gradient stays at $g$, the velocity and the effective step approach:
+
+$$
+v \to \frac{g}{1 - \beta}, \qquad \text{step} \to \frac{\alpha}{1 - \beta}
+$$
+
+That is ten times the learning rate for $\beta = 0.9$. [[Adam Optimizer|Adam]]'s first moment includes the $(1 - \beta)$ factor and is a true moving average.
 
 Typical values are around $\beta = 0.9$. CS231n reports cross-validating values such as 0.5, 0.9, 0.95 and 0.99, and sometimes increasing momentum during training.[^cs231n-nn3]
 

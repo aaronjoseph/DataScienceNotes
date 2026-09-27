@@ -170,7 +170,11 @@ The OOB estimate (0.911) was close to the held-out accuracy (0.904). Both import
 With $p = 16$ and $k = 2$ strong features, how large must $m$ be for at least one strong feature to be available at 80% of splits?
 
 > [!example]- Exercise solution
-> **Inputs:** $p = 16$, $k = 2$; we need $\binom{14}{m} / \binom{16}{m} \le 0.2$.
+> **Inputs:** $p = 16$ and $k = 2$. We need:
+>
+> $$
+> \frac{\binom{14}{m}}{\binom{16}{m}} \le 0.2
+> $$
 >
 > **Step 1: simplify the ratio.**
 >

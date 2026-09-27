@@ -40,7 +40,13 @@ $$
 \mu_1 = 1, \qquad \mu_2 = \frac{2 + 3 + 10 + 11 + 12}{5} = 7.6
 $$
 
-**Iteration 2, assignment.** Points 1, 2, 3 are now nearer $\mu_1 = 1$ (for example, $|3 - 1| = 2 < |3 - 7.6| = 4.6$); points 10, 11, 12 are nearer $\mu_2$.
+**Iteration 2, assignment.** Points 1, 2, 3 are now nearer $\mu_1 = 1$. For example, for point 3:
+
+$$
+\lvert 3 - 1 \rvert = 2 < \lvert 3 - 7.6 \rvert = 4.6
+$$
+
+Points 10, 11, 12 are nearer $\mu_2$.
 
 **Iteration 2, update.**
 

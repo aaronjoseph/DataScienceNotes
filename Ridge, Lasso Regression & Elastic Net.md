@@ -8,17 +8,33 @@ The end goal of any model is to have [[Bias-Variance Tradeoff| low bias and low 
  
  [[L1 and L2 Regularization| Equations and Intuition on L1 and L2 regularization]]
  
-`Ridge Regression` Regularized version of linear regression wherein the regularization term$\alpha/2\sum_{i=1}^{n}\theta_i^2$is used on the cost function. [[Collinearity]] can be reduced using Ridge regression.
+`Ridge Regression` Regularized version of linear regression wherein the following regularization term is used on the cost function:
+
+$$
+\frac{\alpha}{2} \sum_{i=1}^{n} \theta_i^2
+$$
+
+[[Collinearity]] can be reduced using Ridge regression.
 - Penalises where the slope is large
 	- This will make the line less steep
 
-`Least Absolute Shrinkage and Selection Operator Regression` or  Lasso Regression uses  $l_1$ norm that is  $\alpha\sum_{i=1}^{n}|\theta_i|$ in the cost function
+`Least Absolute Shrinkage and Selection Operator Regression` or  Lasso Regression uses the $l_1$ norm in the cost function:
+
+$$
+\alpha \sum_{i=1}^{n} \lvert \theta_i \rvert
+$$
 - Lasso reduces overfitting
 	- Also, helps in [[Feature Selection]]
 
 Elastic Net is a middle ground between Ridge Regression and Lasso Regression
 
-$(r)*  \alpha\sum_{i=1}^{n}|\theta_i| + ((1-r)/2)*  \alpha/2\sum_{i=1}^{n}\theta_i^2$
+With mix ratio $r$, the penalty added to the cost function is:
+
+$$
+r \alpha \sum_{i=1}^{n} \lvert \theta_i \rvert + \frac{1 - r}{2} \alpha \sum_{i=1}^{n} \theta_i^2
+$$
+
+$r = 0$ gives the Ridge term above and $r = 1$ gives Lasso. (The earlier version of this formula halved the L2 term twice.)
 
 ---
 Selection Criteria

@@ -42,7 +42,11 @@ All figures are from the paper and repository.[^1][^2]
 
 The example applies the paper’s gains directly, with no additional exponential transform.
 
-A system returns `[S, E, I, C]` for one query. With the ESCI gains and discount $1/\log_2(i+1)$:
+A system returns `[S, E, I, C]` for one query. With the ESCI gains and the rank-$i$ discount:
+
+$$
+\frac{1}{\log_2(i + 1)}
+$$
 
 $$
 \mathrm{DCG@4}=\frac{0.1}{1}+\frac{1.0}{\log_2 3}+\frac{0}{2}+\frac{0.01}{\log_2 5}\approx0.7352.

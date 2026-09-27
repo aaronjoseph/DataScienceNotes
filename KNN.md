@@ -7,7 +7,19 @@ tags:
 
 K-nearest neighbours predicts from nearby labelled examples: majority vote for classification or averaging for regression, optionally weighted by distance. It is non-parametric and often called lazy learning because it retains training examples rather than fitting a fixed-size prediction formula. Building a neighbour index still takes work.
 
-Euclidean distance is $\sqrt{\sum_j(x_j-y_j)^2}$; Manhattan distance sums absolute differences. Metric and feature scale determine what “near” means. Choose [[Feature Scaling]] based on feature meaning, and fit it inside validation folds.
+Euclidean distance is:
+
+$$
+d(x, y) = \sqrt{\sum_j (x_j - y_j)^2}
+$$
+
+Manhattan distance sums absolute differences:
+
+$$
+d_1(x, y) = \sum_j \lvert x_j - y_j \rvert
+$$
+
+Metric and feature scale determine what “near” means. Choose [[Feature Scaling]] based on feature meaning, and fit it inside validation folds.
 
 ## Tradeoffs
 

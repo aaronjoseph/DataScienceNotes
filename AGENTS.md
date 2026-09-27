@@ -122,7 +122,19 @@ The owner is a search engineer strengthening fundamentals. `Search Engineering.m
 
 ### Equations and worked examples
 
-- Keep brief symbol references inline with `$...$`. Put calculations the reader must follow in `$$...$$` display blocks, with the delimiters on their own lines and readable notation such as `\frac{a}{b}`.
+- **Inline math is for short symbol references only.** Use `$...$` for:
+  - a symbol or parameter, such as $\lambda$, $g_i$ or $\hat{y}$;
+  - a short value or condition, such as $\lambda = 1$, $k \neq -1$ or $0 < \alpha < 1$;
+  - a shape or complexity, such as $32 \times 32 \times 3$ or $O(n \log n)$;
+  - a short term that names a quantity rather than states or computes a formula, such as $1/K$, $p(1 - p)$, $n(n - 1)/2$ or $\sqrt{d_k}$;
+  - a single ratio or product with its result, such as $2/4 = 0.5$.
+- **Every other formula goes on its own lines.** Write it as a `$$...$$` display block, with the delimiters on separate lines and readable notation such as `\frac{a}{b}`. This applies to:
+  - anything using `\frac`, `\dfrac`, `\tfrac`, `\sum`, `\prod`, `\int`, `\lim`, `\binom`, `\left...\right` or an environment;
+  - any definition, loss, metric, score or update rule being stated;
+  - any calculation with two or more operations.
+- **Do not embed a formula mid-sentence.** End the lead-in sentence before the display, often with a colon, then continue in a new paragraph. When prose refers back to a displayed formula, name it ("the leaf-weight formula above") instead of repeating it inline.
+- **Formulas in lists and tables.** Inside a list item, put the display block on its own lines, indented under the item. Tables cannot hold display math, so keep cells to inline-sized content. If a row needs a formula, move the formulas below the table as labelled display blocks, or replace the table with labelled blocks, and keep the table for names, conditions and interpretation.
+- **Do not hide formulas.** Do not use slash or word forms, or leave a formula in a table or reference description, to avoid a display block.
 - Structure every worked calculation or exercise solution the same way:
   1. List the inputs or symbol definitions.
   2. Give each calculation a short label or step number, followed by its own display block.

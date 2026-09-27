@@ -7,14 +7,41 @@ tags:
 
 For binary labels, scikit-learn uses rows for actual labels and columns for predictions. With label order `[0, 1]`, the matrix is `[[TN, FP], [FN, TP]]`. Decide what “positive” means before interpreting it.
 
-| Metric | Formula |
-|---|---|
-| Precision | $TP/(TP+FP)$ |
-| Recall / true-positive rate | $TP/(TP+FN)$ |
-| Specificity / true-negative rate | $TN/(TN+FP)$ |
-| False-positive rate | $FP/(FP+TN)$ |
-| Accuracy | $(TP+TN)/(TP+TN+FP+FN)$ |
-| $F_\beta$ | $(1+\beta^2)TP/[(1+\beta^2)TP+\beta^2FN+FP]$ |
+**Precision.**
+
+$$
+\text{Precision} = \frac{TP}{TP + FP}
+$$
+
+**Recall / true-positive rate.**
+
+$$
+\text{TPR} = \frac{TP}{TP + FN}
+$$
+
+**Specificity / true-negative rate.**
+
+$$
+\text{TNR} = \frac{TN}{TN + FP}
+$$
+
+**False-positive rate.**
+
+$$
+\text{FPR} = \frac{FP}{FP + TN}
+$$
+
+**Accuracy.**
+
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+**$F_\beta$ score.**
+
+$$
+F_\beta = \frac{(1 + \beta^2)\,TP}{(1 + \beta^2)\,TP + \beta^2 FN + FP}
+$$
 
 $F_1$ weights precision and recall equally through their harmonic mean. Larger $\beta$ puts more weight on recall. Define behaviour for zero denominators rather than silently comparing incompatible conventions.
 

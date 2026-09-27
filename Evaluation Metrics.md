@@ -14,24 +14,59 @@ Accuracy is the fraction of correct labels. Macro averaging gives classes equal 
 
 For binary labels $y_i\in\{0,1\}$ and predicted positive probabilities $p_i$:
 
-$$L_{\log}=-\frac1n\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)].$$
+$$
+L_{\log} = -\frac{1}{n} \sum_i \left[y_i \log p_i + (1 - y_i) \log(1 - p_i)\right]
+$$
 
-For labels $y_i\in\{-1,+1\}$ and decision scores $f_i$, hinge loss is $\frac1n\sum_i\max(0,1-y_if_i)$. Scores are not necessarily calibrated probabilities.
+For labels $y_i\in\{-1,+1\}$ and decision scores $f_i$, hinge loss is:
+
+$$
+L_{\text{hinge}} = \frac{1}{n} \sum_i \max(0,\ 1 - y_i f_i)
+$$
+
+Scores are not necessarily calibrated probabilities.
 
 ## Regression
 
 Let $e_i=y_i-\hat y_i$.
 
-| Measure | Formula | Interpretation or pitfall |
-|---|---|---|
-| MAE | $\frac1n\sum_i\lvert e_i\rvert$ | Same units as target |
-| MSE | $\frac1n\sum_i e_i^2$ | Squared units; emphasises large errors |
-| RMSE | $\sqrt{\mathrm{MSE}}$ | Same units as target |
-| MAPE | $\frac{100}{n}\sum_i\lvert e_i/y_i\rvert$ | Undefined at zero; unstable near zero |
-| MSLE | $\frac1n\sum_i(\log(1+y_i)-\log(1+\hat y_i))^2$ | Nonnegative inputs; compares on a log scale |
-| $R^2$ | $1-\frac{\sum_i e_i^2}{\sum_i(y_i-\bar y)^2}$ | Can be negative; constant targets need special handling |
+**MAE** has the same units as the target.
 
-MSLE is not a general instruction to prefer underprediction. Adjusted $R^2=1-(1-R^2)(n-1)/(n-p-1)$ is associated with regression using $p$ predictors and requires $n>p+1$; it is not a universal model-selection score.
+$$
+\text{MAE} = \frac{1}{n} \sum_i \lvert e_i \rvert
+$$
+
+**MSE** has squared units and emphasises large errors.
+
+$$
+\text{MSE} = \frac{1}{n} \sum_i e_i^2
+$$
+
+**RMSE** is $\sqrt{\mathrm{MSE}}$, in the same units as the target.
+
+**MAPE** is undefined at zero and unstable near zero.
+
+$$
+\text{MAPE} = \frac{100}{n} \sum_i \left\lvert \frac{e_i}{y_i} \right\rvert
+$$
+
+**MSLE** needs nonnegative inputs and compares on a log scale.
+
+$$
+\text{MSLE} = \frac{1}{n} \sum_i \big(\log(1 + y_i) - \log(1 + \hat{y}_i)\big)^2
+$$
+
+**$R^2$** can be negative, and constant targets need special handling.
+
+$$
+R^2 = 1 - \frac{\sum_i e_i^2}{\sum_i (y_i - \bar{y})^2}
+$$
+
+MSLE is not a general instruction to prefer underprediction. Adjusted $R^2$ is associated with regression using $p$ predictors and requires $n>p+1$; it is not a universal model-selection score:
+
+$$
+R^2_{\text{adj}} = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}
+$$
 
 ## Search and Exercise
 

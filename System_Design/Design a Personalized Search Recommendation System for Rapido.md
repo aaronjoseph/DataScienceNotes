@@ -620,7 +620,13 @@ The confirmed destination is an observed positive, not proof that every unchosen
 | Freshness | Accepted-event-to-readable-profile delay; explicit-edit visibility checks |
 | Performance | p50/p95/p99 latency, errors, saturation, and fallback rate |
 
-With one observed positive per session, Hit@3 is also recall@3 for that labeling convention. If using binary NDCG@3, the positive contributes $1/\log_2(r+1)$ when at rank $r\leq3$, otherwise zero; unobserved alternatives are treated as zero **for the metric**, not asserted to be irrelevant. See [[NDCG]].
+With one observed positive per session, Hit@3 is also recall@3 for that labeling convention. If using binary NDCG@3, the positive contributes the following when at rank $r\leq3$, and zero otherwise:
+
+$$
+\frac{1}{\log_2(r + 1)}
+$$
+
+Unobserved alternatives are treated as zero **for the metric**, not asserted to be irrelevant. See [[NDCG]].
 
 Evaluate the full request population and slices: new users, sparse users, favorite users, travelers, dayparts, and regions. Reporting ranker quality only when the positive was retrieved conceals candidate misses; publish that conditional diagnostic alongside end-to-end results.
 

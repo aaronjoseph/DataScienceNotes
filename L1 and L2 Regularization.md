@@ -16,15 +16,43 @@ L1 can yield exact zeros under suitable optimisation; L2 usually shrinks weights
 
 ## Correct Descent Direction
 
-Gradient descent subtracts a derivative: $w_{new}=w-\alpha\partial J/\partial w$, with $\alpha>0$. For one example and $J_0=(wx+b-y)^2$:
+Gradient descent subtracts a derivative, with $\alpha>0$:
 
-$$\frac{\partial J_0}{\partial w}=2x(wx+b-y).$$
+$$
+w_{\text{new}} = w - \alpha \frac{\partial J}{\partial w}
+$$
+
+For one example, the squared-error loss is:
+
+$$
+J_0 = (wx + b - y)^2
+$$
+
+Its derivative is:
+
+$$
+\frac{\partial J_0}{\partial w} = 2x(wx + b - y)
+$$
 
 L2 adds $2\lambda w$ to that derivative. L1 adds $\lambda\operatorname{sign}(w)$ when $w\ne0$; at zero, use a subgradient or a suitable proximal solver rather than pretending an ordinary derivative exists.
 
 ## Worked Example
 
-For $x=1,y=0,b=0,w=2,\lambda=0.5,\alpha=0.1$, the data gradient is 4. An L2 step gives $2-0.1(4+2)=1.4$; an L1 step away from zero gives $2-0.1(4+0.5)=1.55$.
+**Inputs:** $x=1$, $y=0$, $b=0$, $w=2$, $\lambda=0.5$, $\alpha=0.1$. The data gradient is 4.
+
+**Step 1: L2 step.** The penalty adds $2\lambda w = 2$ to the gradient.
+
+$$
+2 - 0.1(4 + 2) = 1.4
+$$
+
+**Step 2: L1 step** (away from zero). The penalty adds $\lambda = 0.5$ to the gradient.
+
+$$
+2 - 0.1(4 + 0.5) = 1.55
+$$
+
+For this large weight, L2 shrinks more than L1, because its penalty gradient grows with $w$.
 
 ## Practical Choice and Exercise
 

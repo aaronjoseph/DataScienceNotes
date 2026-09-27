@@ -13,5 +13,10 @@ tags:
 - This starts with Unif(0,1) PRN
 - Starts with U(i)
 - Then transformation is applied
-	- $-\frac{1}{\lambda} ln(U(i)) = Exp(\lambda)$
+	- The inverse transform:
+
+		$$
+		X(i) = -\frac{1}{\lambda} \ln U(i) \sim \text{Exp}(\lambda)
+		$$
+
 	- The above equation is sometimes close to 

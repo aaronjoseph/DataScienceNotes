@@ -29,7 +29,11 @@ In RL the MDP framework is used but some components are typically **unknown**:
 ## Policies and Returns
 
 - **Deterministic policy.** $\pi(s) = a$ picks one action in each state.
-- **Stochastic policy.** $\pi(a \mid s) = \mathbb{P}(A_t = a \mid S_t = s)$ gives a probability for each action.
+- **Stochastic policy.** It gives a probability for each action:
+
+  $$
+  \pi(a \mid s) = \mathbb{P}(A_t = a \mid S_t = s)
+  $$
 
 A good policy maximises not the immediate reward but the **return**, the discounted sum of future rewards. Future rewards are worth less, much like the time value of money.
 
@@ -150,7 +154,13 @@ $$
 V^*(B) = \frac{2}{1 - 0.9} = 20, \qquad V^*(A) = 0 + 0.9 \times 20 = 18
 $$
 
-In the first two iterations, "stay" looks better in $A$ because it pays immediately. From iteration 3 onwards the look-ahead shows that giving up one reward to reach $B$ is worth more: staying in $A$ forever is worth only $1/(1 - 0.9) = 10$. The optimal policy is to go from $A$ to $B$ and stay there. The values were recalculated in Python.
+In the first two iterations, "stay" looks better in $A$ because it pays immediately. From iteration 3 onwards the look-ahead shows that giving up one reward to reach $B$ is worth more: staying in $A$ forever is worth only:
+
+$$
+\frac{1}{1 - 0.9} = 10
+$$
+
+The optimal policy is to go from $A$ to $B$ and stay there. The values were recalculated in Python.
 
 ## Related Notes
 

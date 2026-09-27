@@ -68,9 +68,21 @@ Weights act as relative multipliers. This is a common hand-tuned pattern, not a 
 
 Compare the same raw signals before and after adding one candidate.
 
-Three candidates with relevance $r=[0.92,0.80,0.40]$ and checkout counts $c=[10,200,50]$.
+Three candidates with relevance $r=[0.92,0.80,0.40]$ and checkout counts $c=[10,200,50]$. After min–max normalising both signals, compare two blends.
 
-| | $r$ min–max | $c$ min–max | $0.7r+0.3c$ | $(1+4r)(1+c)$ |
+**Additive blend.**
+
+$$
+0.7r + 0.3c
+$$
+
+**Multiplicative blend.**
+
+$$
+(1 + 4r)(1 + c)
+$$
+
+| | $r$ min–max | $c$ min–max | Additive | Multiplicative |
 |---|---|---|---|---|
 | P1 | 1.000 | 0.000 | 0.700 | 5.000 |
 | P2 | 0.769 | 1.000 | 0.838 | 8.154 |

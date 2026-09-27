@@ -24,7 +24,11 @@ For the character sequence `AGCTTCGA`, using a sliding window with stride 1:
 | 2 | AG, GC, CT, TT, TC, CG, GA |
 | 3 | AGC, GCT, CTT, TTC, TCG, CGA |
 
-For word tokens `red hiking boots`, bigrams are `red hiking` and `hiking boots`. Without padding, a sequence of length $L$ has $\max(0,L-n+1)$ n-gram occurrences.
+For word tokens `red hiking boots`, bigrams are `red hiking` and `hiking boots`. Without padding, the number of n-gram occurrences in a sequence of length $L$ is:
+
+$$
+\max(0,\ L - n + 1)
+$$
 
 ## Search Use
 
@@ -32,7 +36,7 @@ Word n-grams retain some local order that [[Bag of Words]] loses. Character n-gr
 
 ## Occurrences, Features, and Order
 
-The count $\max(0,L-n+1)$ counts windows, not distinct features.
+The occurrence count above counts windows, not distinct features.
 
 For `aaaa`, character bigrams are `aa`, `aa`, `aa`: three occurrences but one distinct bigram.
 

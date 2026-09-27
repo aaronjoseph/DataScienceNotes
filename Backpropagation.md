@@ -55,7 +55,13 @@ Step 3 is the vector–Jacobian product described in [[Jacobians]]. Dimension an
 
 ## Worked Example
 
-**Inputs.** A two-layer network with input $x = (1, 2)$, no biases, a [[ReLU Function|ReLU]] hidden layer, and squared-error loss $L = \tfrac{1}{2}(y - t)^2$ with target $t = 1$:
+**Inputs.** A two-layer network with input $x = (1, 2)$, no biases, a [[ReLU Function|ReLU]] hidden layer, target $t = 1$, and squared-error loss:
+
+$$
+L = \frac{1}{2}(y - t)^2
+$$
+
+The weights are:
 
 $$
 W_1 = \begin{bmatrix} 0.5 & -1 \\ 1 & 0.5 \end{bmatrix}, \qquad w_2 = (1, -1)

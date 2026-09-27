@@ -19,9 +19,21 @@ $$
 
 If the sums include row $i$ itself (a *greedy* target statistic), row $i$'s own label leaks into its feature. A category seen only once gets its own label as the feature value, which is a perfect but fake predictor.
 
-The paper makes this concrete.[^paper] Suppose every category is unique and $P(y = 1) = 0.5$ in each. On training rows the greedy statistic is $\frac{y_k + ap}{1 + a}$, so one threshold separates the classes perfectly. On test rows every value is just $p$, and accuracy falls to 0.5. The paper's general fix is to compute row $k$'s statistic from a subset $\mathcal{D}_k$ that excludes row $k$. The common choice for $p$ is the dataset's average target.[^paper]
+The paper makes this concrete.[^paper] Suppose every category is unique and $P(y = 1) = 0.5$ in each. On training rows the greedy statistic is:
 
-**Leave-one-out is not enough.** Excluding only row $k$ still leaks. With a constant category and $n^{+}$ positives, the statistic is $\frac{n^{+} - y_k + ap}{n - 1 + a}$. Positives get a slightly lower value than negatives, so a single threshold again separates the training rows perfectly.[^paper]
+$$
+\hat{x}_k = \frac{y_k + ap}{1 + a}
+$$
+
+One threshold therefore separates the classes perfectly. On test rows every value is just $p$, and accuracy falls to 0.5. The paper's general fix is to compute row $k$'s statistic from a subset $\mathcal{D}_k$ that excludes row $k$. The common choice for $p$ is the dataset's average target.[^paper]
+
+**Leave-one-out is not enough.** Excluding only row $k$ still leaks. With a constant category and $n^{+}$ positives, the statistic is:
+
+$$
+\hat{x}_k = \frac{n^{+} - y_k + ap}{n - 1 + a}
+$$
+
+Positives get a slightly lower value than negatives, so a single threshold again separates the training rows perfectly.[^paper]
 
 ### 2. Ordered target statistics
 
@@ -102,9 +114,19 @@ $$
 \frac{2 + 0.5}{3 + 1} = 0.625
 $$
 
-**Step 5: `pop` rows.** Row 2 gets $\frac{0 + 0.5}{0 + 1} = 0.5$; row 5 (one earlier `pop`, label 0) gets $\frac{0 + 0.5}{1 + 1} = 0.25$.
+**Step 5: row 2** (first `pop`; no earlier `pop` rows).
 
-**Step 6: greedy statistic for comparison.** Using all four `rock` rows, every `rock` row gets $3/4 = 0.75$, including row 3 whose own label is 0.
+$$
+\frac{0 + 0.5}{0 + 1} = 0.5
+$$
+
+**Step 6: row 5** (one earlier `pop`, label 0).
+
+$$
+\frac{0 + 0.5}{1 + 1} = 0.25
+$$
+
+**Step 7: greedy statistic for comparison.** Using all four `rock` rows, every `rock` row gets $3/4 = 0.75$, including row 3 whose own label is 0.
 
 The ordered values never use a row's own label, so the encoding available at training time matches what a new row will see at prediction time. The early rows get noisy values close to the prior; that noise is the price of avoiding leakage, and multiple permutations reduce it.
 

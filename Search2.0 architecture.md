@@ -457,13 +457,21 @@ When the range is effectively zero, every value becomes **0.5**. Boost normaliza
 
 Let $m$ be normalized model score, $b$ normalized boost, $c$ normalized cheapness, and $a$ normalized availability. Current `combine_score` uses the following branches; these are source constants for this revision, not general ranking recommendations:
 
-| Condition | Final score |
-|---|---|
-| Coming soon or sold out | $1+b$ |
-| Pre-order | $(1+b\cdot 1/1.1)(1+c\cdot 0.1/1.1)$ |
-| Buy/in-store and available | $(1+m\cdot 4/9)(1+a\cdot 5/9)$ |
-| Buy/in-store, unavailable, new/open-box | $1+m$ |
-| Other current branches | $1+b$ |
+- **Coming soon or sold out:** $1+b$.
+- **Pre-order:**
+
+  $$
+  \left(1 + b \cdot \frac{1}{1.1}\right)\left(1 + c \cdot \frac{0.1}{1.1}\right)
+  $$
+
+- **Buy/in-store and available:**
+
+  $$
+  \left(1 + m \cdot \frac{4}{9}\right)\left(1 + a \cdot \frac{5}{9}\right)
+  $$
+
+- **Buy/in-store, unavailable, new/open-box:** $1+m$.
+- **Other current branches:** $1+b$.
 
 Both model branches currently use these same combination factors, but their ONNX scores and feature schemas differ. The historical blueprint's long multiplicative formula is not the executed formula in this checkout.[^scoring]
 

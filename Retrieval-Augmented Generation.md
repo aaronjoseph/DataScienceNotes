@@ -4,7 +4,7 @@ aliases:
 note_type: concept
 search_stage: retrieval
 tags:
-  - "search-eng"
+  - search-eng
 ---
 
 Retrieval-augmented generation (RAG) answers a question by first **retrieving** relevant passages from a document collection, then asking a language model to **generate** an answer from those passages. It combines a search system with a [[Decoder-Only Model (Transformers)|generative model]], so answers can draw on current, private, or specialised documents and cite their sources.

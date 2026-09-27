@@ -50,7 +50,12 @@ Non-linear encoders and decoders can capture curved structure that PCA cannot. H
 **Inputs:**
 
 - Normal training data lies close to the line $x_2 = x_1$.
-- A linear undercomplete autoencoder with one code unit has learned the direction $w = \left(\tfrac{1}{\sqrt{2}}, \tfrac{1}{\sqrt{2}}\right)$.
+- A linear undercomplete autoencoder with one code unit has learned the direction:
+
+  $$
+  w = \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)
+  $$
+
 - Encoder: $h = w^\top x$. Decoder: $\hat{x} = h\,w$.
 - Two inputs to score: $a = (3, 3.2)$ and $b = (3, -3)$.
 

@@ -13,7 +13,12 @@ With a one-hot target in class c, this becomes $-\log p_c$. Classes can be words
 
 ## Binary, Multiclass, and Multilabel
 
-- **Binary:** $-y\log p-(1-y)\log(1-p)$.
+- **Binary:**
+
+  $$
+  -y \log p - (1 - y) \log(1 - p)
+  $$
+
 - **Multiclass:** one distribution across mutually exclusive classes, commonly produced by [[Softmax Function]].
 - **Multilabel:** independent binary losses per label, typically using separate sigmoid outputs; labels do not have to sum to one.
 

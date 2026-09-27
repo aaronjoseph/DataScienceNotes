@@ -98,7 +98,11 @@ Entropy and Gini impurity calculates the impurity of a split in a decision tree
 
 ### [[Entropy, Cross-Entropy, Sparse_Cross_Entropy and KL Divergence|Entropy]]
 
-Formulae $H(p)=-\sum_{i}p_ilog_2(p_i)$
+Formulae:
+
+$$
+H(p) = -\sum_{i} p_i \log_2 p_i
+$$
 
 Split | Entropy Value
 -------|-----------
@@ -113,7 +117,9 @@ Hence, entropy has to be close to 0 when possible, when building the tree. With 
 
 A node is pure if all training instances it applies to belong to the same class.
 
-$G_i=1-\sum_{k=1}^{n}P_{i,k}^2$
+$$
+G_i = 1 - \sum_{k=1}^{n} P_{i,k}^2
+$$
 
 CART uses Gini indexmethod to create split
 Also, Gini Impurity is computationally less expensive
@@ -238,7 +244,7 @@ $$
 \text{Gini} = 0, \qquad \text{Entropy} = 0
 $$
 
-**Step 3: right child** with proportions $\frac{1}{3}$ and $\frac{2}{3}$.
+**Step 3: right child** with proportions $1/3$ and $2/3$.
 
 $$
 \text{Gini} = 1 - \left(\tfrac{1}{9} + \tfrac{4}{9}\right) \approx 0.444
