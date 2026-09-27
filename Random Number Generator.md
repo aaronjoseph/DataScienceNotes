@@ -1,4 +1,7 @@
-#sim
+---
+tags:
+  - "sim"
+---
 ## Unif(0,1) PRN
 - It is a deterministic algorithm
 - Linear Congruential Generator Approach

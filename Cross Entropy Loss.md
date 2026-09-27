@@ -1,6 +1,7 @@
-# Cross Entropy Loss
-
-#search-eng
+---
+tags:
+  - "search-eng"
+---
 
 ## Definition
 

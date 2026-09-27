@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: query_understanding
+tags:
+  - "search-eng"
 ---
-
-# Stopwords
-
-#search-eng
 
 ## Overview
 

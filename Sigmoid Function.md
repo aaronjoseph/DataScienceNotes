@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 ## Augmented Notes on the Sigmoid Function
 
 The sigmoid function, denoted by $\sigma(x)$, is a widely used activation function in neural networks, particularly for binary classification problems. It maps any input value to a value between 0 and 1, making it useful for interpreting the output as a probability.

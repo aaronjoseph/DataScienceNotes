@@ -1,4 +1,8 @@
-#dl 
+---
+tags:
+  - "dl"
+  - "TODO"
+---
 Deep Learning is a subfield of machine learning concerned with algorithms inspired by the structure and function of the brain called artificial neural networks. It is characterized by its capacity to learn from a large amount of data and capture complex patterns. Here are some key concepts that define how deep learning is different:
 
 ### Hierarchical Compositionality
@@ -25,5 +29,5 @@ Deep learning is powerful due to its ability to:
 - **Achieve State-of-the-Art Results**: In many domains such as vision, language, and speech, deep learning has set new records for accuracy.
 
 ## References
-#TODO 
+TODO:
 - [Mathematics of Deep Learning](https://explained.ai/matrix-calculus/index.html)

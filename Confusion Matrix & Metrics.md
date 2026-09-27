@@ -1,6 +1,7 @@
-# Confusion Matrix & Metrics
-
-#search-eng
+---
+tags:
+  - "search-eng"
+---
 
 ## Counts at a Chosen Threshold
 

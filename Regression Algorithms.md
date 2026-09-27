@@ -1,3 +1,7 @@
+---
+tags:
+  - "mgt"
+---
 [[Classification Algorithms]]
 
 >`Regression` is a way to extrapolate your dataset to predict values on the basis of independent variables. Regression is an important problem in its own right
@@ -37,6 +41,5 @@ Ridge regression is used to analyze multiple regression lines that suffer from m
 [[Light GBM]]
 
 ---
-#mgt
 
 

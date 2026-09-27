@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: serving
+tags:
+  - "search-eng"
 ---
-
-# Shadow Deployment
-
-#search-eng
 
 ## Overview
 

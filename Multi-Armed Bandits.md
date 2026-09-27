@@ -1,6 +1,7 @@
-
-#search-eng
-
+---
+tags:
+  - "search-eng"
+---
 MAB is a form of [[AB Testing]] that uses machine leanring to learn from the data gathered during the test to dynamically increse the visitor allocation in favour of better performing variations. The core concept of MAB is `dynamic traffic allocation`. 
 
 Unlike A/B tests, MAB maximizes the total number of conversions during the course of the test. The trade-off is that statistical certainty takes a backseat because the focus is on conversions and finding out the exact conversion rates.

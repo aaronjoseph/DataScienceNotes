@@ -1,5 +1,7 @@
-#dl 
-
+---
+tags:
+  - "dl"
+---
 The hyperbolic tangent function, often referred to as the tanh function, is a rescaled version of the sigmoid function and is used as an activation function in neural networks. Here are its key features:
 
 ### Characteristics of the Tanh Function

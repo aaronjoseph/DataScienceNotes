@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: retrieval
+tags:
+  - "search-eng"
 ---
-
-# TF-IDF
-
-#search-eng
 
 ## Overview
 

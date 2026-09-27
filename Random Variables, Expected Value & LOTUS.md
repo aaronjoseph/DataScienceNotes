@@ -1,5 +1,7 @@
-#sim 
-
+---
+tags:
+  - "sim"
+---
 Theorem : If X is a continous random variable with cdf F(x), then the random variable F(X) ~ Unif(0,1)
 
 ## Expected Value

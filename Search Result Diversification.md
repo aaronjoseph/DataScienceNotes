@@ -1,11 +1,10 @@
 ---
 note_type: concept
 search_stage: ranking
+tags:
+  - "search-eng"
+  - "TODO"
 ---
-
-# Search Result Diversification
-
-#search-eng
 
 ## Overview
 
@@ -164,7 +163,7 @@ Rerun the worked example with $\lambda=0.9$ and $\lambda=0.5$. At what $\lambda$
 
 ## Open Questions
 
-- #TODO Work through alpha-NDCG normalisation with a multi-intent product judgment set, including the ideal-ranking approximation used by the evaluator.
+- TODO: Work through alpha-NDCG normalisation with a multi-intent product judgment set, including the ideal-ranking approximation used by the evaluator.
 
 ## References & Useful Links
 

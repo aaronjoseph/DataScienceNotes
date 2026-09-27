@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: experiments
+tags:
+  - "search-eng"
 ---
-
-# Product Metrics
-
-#search-eng
 
 ## Define the Decision and Denominator
 

@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: evaluation
+tags:
+  - "search-eng"
 ---
-
-# Click Bias
-
-#search-eng
 
 ## Clicks Are Observations, Not Direct Relevance Labels
 

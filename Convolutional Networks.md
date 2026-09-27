@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 ### Convolutional Networks/CNNs
 
 > Convolutional networks, also referred to as CNNs,  are neural networks that uses convolution in plae of general matrix multiplication in at least one of their layers.

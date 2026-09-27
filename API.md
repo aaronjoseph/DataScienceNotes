@@ -1,6 +1,7 @@
-
-#search-eng
-
+---
+tags:
+  - "search-eng"
+---
 API - `Application Programming Interface`refers to programming instructions and standards for accessing a web tool or database. An API can be packaged in [[SDK]]. 
 
 - API is a computing interface which defines interactions between multiple software intermediaries. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow.

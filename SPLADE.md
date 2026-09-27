@@ -3,11 +3,9 @@ aliases:
   - Learned Sparse Retrieval
 note_type: concept
 search_stage: retrieval
+tags:
+  - "search-eng"
 ---
-
-# SPLADE
-
-#search-eng
 
 ## Overview
 

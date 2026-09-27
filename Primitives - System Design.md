@@ -1,6 +1,7 @@
-
-#search-eng
-
+---
+tags:
+  - "search-eng"
+---
 In system design interviews, **primitives** refer to fundamental components or building blocks used to construct complex systems. These are essential services or modules that provide specific functionalities, which can be combined and orchestrated to design scalable and efficient systems. Common primitives include:
 
 • **Load Balancers:** Distribute incoming network traffic across multiple servers to ensure no single server becomes a bottleneck, enhancing system reliability and performance.

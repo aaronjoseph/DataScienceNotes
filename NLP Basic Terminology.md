@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: foundations
+tags:
+  - "search-eng"
 ---
-
-# NLP Basic Terminology
-
-#search-eng
 
 ## Core Vocabulary
 

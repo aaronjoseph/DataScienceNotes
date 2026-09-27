@@ -1,6 +1,7 @@
-
-#search-eng
-
+---
+tags:
+  - "search-eng"
+---
 Model Degradation comes in two form
 - Slow Problems : Includes [[Data Drift]]
 - Fast Problems : Bad Sensor, Bad Software Update

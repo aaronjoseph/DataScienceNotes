@@ -2,11 +2,9 @@
 aliases: ["N-Gram Model"]
 note_type: concept
 search_stage: query_understanding
+tags:
+  - "search-eng"
 ---
-
-# N-Grams
-
-#search-eng
 
 ## Overview
 

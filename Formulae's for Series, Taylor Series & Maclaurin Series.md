@@ -1,5 +1,7 @@
-#sim 
-
+---
+tags:
+  - "sim"
+---
 $$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$$
 $$\sum_{k=1}^{n}k^2 = \frac{n(n+1)(2n+1)}{6}$$
 $$\sum_{k=0}^{\infty}p^k = \frac{1}{1-p}, for -1 < p < 1$$

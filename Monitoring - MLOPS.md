@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: serving
+tags:
+  - "search-eng"
 ---
-
-# Monitoring - MLOPS
-
-#search-eng
 
 ## Purpose
 

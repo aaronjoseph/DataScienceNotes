@@ -1,6 +1,7 @@
-# Confidence Interval
-
-#search-eng
+---
+tags:
+  - "search-eng"
+---
 
 ## Meaning
 

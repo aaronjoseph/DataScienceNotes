@@ -1,4 +1,7 @@
-#DL 
+---
+tags:
+  - "DL"
+---
 ## Need for Computation Graphs
 
 > Basically to decompose a model into basic components, that are differentiable, to support gradient computations for [[gradient descent]]. The computation graph tends to be a Directed Acyclic Graph

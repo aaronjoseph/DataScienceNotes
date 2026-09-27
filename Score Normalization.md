@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: ranking
+tags:
+  - "search-eng"
 ---
-
-# Score Normalization
-
-#search-eng
 
 ## Overview
 

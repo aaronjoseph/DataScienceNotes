@@ -1,5 +1,3 @@
-
-# Command Line Mode
 Command line mode differs a bit from the other modes, in the sense that it can impact the entire text file. Many commands can be given a range of lines to act upon. We can specify the start and end of a range with either a line number, a mark, or a pattern.
 
 Command | Significance

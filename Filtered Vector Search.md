@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: retrieval
+tags:
+  - "search-eng"
 ---
-
-# Filtered Vector Search
-
-#search-eng
 
 ## Overview
 

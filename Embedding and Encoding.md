@@ -2,11 +2,9 @@
 aliases: ["Embedding vs. Encoding - Understanding the Difference"]
 note_type: concept
 search_stage: foundations
+tags:
+  - "search-eng"
 ---
-
-# Embedding and Encoding
-
-#search-eng
 
 ## Overview
 

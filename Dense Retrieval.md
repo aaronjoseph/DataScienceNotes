@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: retrieval
+tags:
+  - "search-eng"
 ---
-
-# Dense Retrieval
-
-#search-eng
 
 ## Overview
 

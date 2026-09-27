@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: ranking
+tags:
+  - "search-eng"
 ---
-
-# Cross-Encoder
-
-#search-eng
 
 ## Overview
 

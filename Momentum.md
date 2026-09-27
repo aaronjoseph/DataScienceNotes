@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 ## Notes on Momentum in Optimization
 
 Momentum is an optimization technique used to accelerate gradient descent, making it faster and more reliable, especially for functions with many shallow regions or for dealing with the vanishing gradient problem. Here's a detailed look at the concept of Momentum:

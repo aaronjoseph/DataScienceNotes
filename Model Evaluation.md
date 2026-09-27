@@ -1,11 +1,10 @@
 ---
 note_type: concept
 search_stage: evaluation
+tags:
+  - "search-eng"
+  - "TODO"
 ---
-
-# Model Evaluation
-
-#search-eng
 
 ## Overview
 
@@ -95,7 +94,7 @@ Four queries are a teaching example, not a convincing product evaluation.
 
 ## Open Questions
 
-- #TODO Apply the nested procedure and paired uncertainty analysis below to a concrete ranking dataset. Record the split groups, seeds, selected configurations, and query-level metric differences; the worked arithmetic is not an empirical evaluation.
+- TODO: Apply the nested procedure and paired uncertainty analysis below to a concrete ranking dataset. Record the split groups, seeds, selected configurations, and query-level metric differences; the worked arithmetic is not an empirical evaluation.
 
 ## References & Useful Links
 

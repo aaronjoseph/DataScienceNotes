@@ -1,5 +1,7 @@
-#DL 
-
+---
+tags:
+  - "DL"
+---
 Question 
 ### **Gradient Descent Variants and Performance Considerations**
 

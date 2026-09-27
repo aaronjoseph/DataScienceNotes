@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 Initializations are a critical starting step in training deep neural networks. They determine how the outputs, given certain inputs, behave and can greatly influence how well the gradients flow at the beginning of training. This is particularly important because a poor initialization can limit the use of the model's full capacity. If the initial weights are set too close to each other or to a constant value, this can lead to a degenerate model where all weights are updated to the same values, essentially not learning anything useful.
 
 Here are some key points about initialization:

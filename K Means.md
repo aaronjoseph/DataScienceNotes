@@ -1,3 +1,10 @@
+---
+tags:
+  - "ml"
+  - "clustering"
+  - "kmeans"
+  - "unsupervised"
+---
 ### K-Means Clustering Algorithm
 
 K-Means is a widely used clustering algorithm that partitions data into $k$ distinct clusters based on feature similarity. It is often referred to as Lloyd's Algorithm. The steps involved are:
@@ -82,5 +89,3 @@ silhouette_score(X, kmeans.labels_)
 - [K-Means Clustering in Python: Step-by-Step Example - Statology](https://www.statology.org/k-means-clustering-in-python/)
 
 ---
-
-Tags: #ml #clustering #kmeans #unsupervised

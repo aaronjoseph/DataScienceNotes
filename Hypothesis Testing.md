@@ -1,6 +1,7 @@
-# Hypothesis Testing
-
-#search-eng
+---
+tags:
+  - "search-eng"
+---
 
 ## What a Test Tells You
 

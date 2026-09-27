@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: foundations
+tags:
+  - "search-eng"
 ---
-
-# Data Leakage
-
-#search-eng
 
 ## Overview
 

@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 Neural networks, employed to solve large-scale data problems, depend heavily on optimization algorithms for efficient and faster convergence. These algorithms are crucial in navigating the high-dimensional landscape of neural network parameters to find a set of weights that minimizes the loss function effectively.
 
 ### Optimization Challenges

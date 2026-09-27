@@ -1,43 +1,73 @@
-- Dataflow models the flow of data through a set of transformations
-- DAG based representation is used
-- Dataflow is modeled on `Apache Beam`
-	- Apache Beam is used for both batch and streaming data-parallel processing pipelines
-	- It is particularly useful for paralled data processing tasks
-- DataFlow is serverless and No-Ops
-- It can auto-scale during mid-job
+---
+note_type: concept
+search_stage: indexing
+tags:
+  - gcp
+  - search-eng
+aliases:
+  - "Dataflow"
+---
 
-## Cloud Data Flow Streaming Features
+Dataflow runs batch and streaming data pipelines using Apache Beam. Beam describes the transformations; a **runner** executes them on a platform. Dataflow manages worker resources, but the pipeline owner still defines correctness, schemas, late-data handling, and external effects.[^overview]
 
-Dataflow provides serverless service both for batch and streaming data. Also, allows low-latency data.
+## Pipeline model
 
-`Challenges of Streaming Data`
+A `PCollection` represents distributed data, and transforms read, validate, map, group, join, or write that data. The logical pipeline forms a directed acyclic graph (DAG); the runner can optimize its physical execution.
 
-1. Scalability
-2. Fault Tolerance
-3. Model - Streaming or Repeated Batch
-4. Timing- If data arrives late
-5. Aggregation on Unbounded set
+```mermaid
+flowchart LR
+    P["Pub/Sub events"] --> V["Parse and validate"]
+    V --> T["Assign event timestamps"]
+    T --> W["Window and aggregate"]
+    W --> B["BigQuery or serving output"]
+    V --> E["Rejected records with reason"]
+    B --> M["Freshness and correctness checks"]
+```
 
-> To solve for aggregation on unbounded set, it is preferrable to divide time into windows and obtain average in a given window. [[PubSub]] data have timestamp, it can be used for the windowing
+## Time, windows, and triggers
 
+- **Event time:** when the event occurred according to its timestamp.
+- **Processing time:** when the pipeline processes it.
+- **Window:** the logical time grouping for an aggregation.
+- **Watermark:** a progress estimate for event-time completeness, not proof that no older event will arrive.
+- **Trigger:** when to emit a result; **allowed lateness** helps define how long late events remain relevant to a window.[^beam]
 
-## Types of Trigger
+| Window | Useful question |
+|---|---|
+| Fixed | How many searches occurred in each five-minute interval? |
+| Sliding | What is the count over the last hour, updated every five minutes? |
+| Session | Which events belong to a period of activity separated by inactivity gaps? |
 
-1. Event Time Trigger
-	1. Here, based on the AfterWatermark
-2. Processing Time Triggers
-	1. Processing time triggers
-3. AfterCount
-	1. Data Driven Trigger
+Choose accumulation and sink-update behavior alongside triggers. Multiple emissions for the same window are not automatically independent counts to sum.
 
-## Windowing
+## Worked example: a delayed click
 
-1. Tumbling windows/Fixed Window
-	1. Windows of fixed interval duration, uniform across all keys, no overlaps between two consecutive windows
-		2. Use Case - Aggregation use case
-2. Sliding Window
-	1. Windows of fixed interval duration, uniform across all the keys, overlap between two windows
-	2. Use Case - Moving Average
-3. Session Window
-	1. Windows of dynamically set intervals, non-uniform across keys, no overlap between two windows
-	2. Use Case - User Session data, click data, real time gaming data analysis
+Assume a five-minute window covers 10:00–10:05. A click occurred at 10:04 but arrives at 10:08.
+
+1. Its event time assigns it to the 10:00–10:05 window.
+2. Its acceptance depends on the watermark, allowed lateness, and state still retained.
+3. If accepted after an earlier result, the pipeline may emit a correction according to its trigger configuration.
+4. The sink must update the right window result or interpret an incremental pane correctly.
+
+These are design choices. Reporting a final count before deciding the late-data policy leaves the metric undefined.
+
+## Correctness and operations
+
+Exactly-once processing does not mean user code executes once. Dataflow can retry transforms; external side effects need a compatible sink or an idempotent design. A remote call inside a transform can repeat.[^exactly-once]
+
+Deploy with pinned dependencies, appropriate runtime identity, and a known source/sink schema. Test malformed records and late events locally where supported, then validate runner-specific behavior in a controlled environment. Monitor backlog age, watermarks, hot keys, throughput, and sink errors.
+
+Autoscaling cannot make a single heavily skewed aggregation key fully parallel without changing the aggregation design. “No operations” is therefore misleading: infrastructure is managed while data and operational contracts remain yours.
+
+## Exercise
+
+A dashboard sums every emitted pane and reports too many clicks. Explain the difference between accumulating and discarding panes, then choose a sink representation that avoids double-counting.
+
+> [!example]- Pane-counting hint
+> An accumulating pane includes earlier contributions, so adding it to earlier panes counts those contributions again. Store a replacement result per key and window, or use a correctly defined incremental output contract.
+
+## References & Useful Links
+
+[^overview]: [Dataflow overview](https://docs.cloud.google.com/dataflow/docs/overview) — Beam runners, managed execution, and pipeline lifecycle.
+[^beam]: [Apache Beam programming guide](https://beam.apache.org/documentation/programming-guide/) — Windowing, watermarks, triggers, and accumulation modes.
+[^exactly-once]: [Exactly-once in Dataflow](https://docs.cloud.google.com/dataflow/docs/concepts/exactly-once) — Processing guarantees and external side-effect limitations.

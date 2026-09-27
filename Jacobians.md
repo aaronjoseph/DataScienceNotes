@@ -1,5 +1,7 @@
-#dl 
-
+---
+tags:
+  - "dl"
+---
 [[Gradient Descent]]
 
 ## Jacobian in Deep Learning and Backpropagation Algorithms

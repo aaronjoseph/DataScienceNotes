@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: indexing
+tags:
+  - "search-eng"
 ---
-
-# Index Updates
-
-#search-eng
 
 ## Freshness Is a Serving Requirement
 

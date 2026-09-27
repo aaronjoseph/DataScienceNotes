@@ -1,50 +1,69 @@
-- Relational database
-- Cloud SQL is open source, fully managed RDBMS
-- Cloud Spanner is proprietary
-- Both support ACID Properties - relevant for OLTP (transaction processing)
-- Cloud Spanner supports ACID++
-- OLTP needs strict write consistency, OLAP does not
+---
+note_type: concept
+search_stage: serving
+tags:
+  - gcp
+  - search-eng
+  - system-design
+---
 
-## Cloud SQL vs Cloud Spanner
+Cloud SQL and Spanner both support transactional applications, but they expose different scaling and operational models. Choose from compatibility, workload, geography, and recovery requirements—not a rule that one is for “small data” and the other is automatically faster.
 
-- Cloud Spanner is Google Proprietary & more advanced that CloudSQL
-- Cloud Spanner supports "[[Horizontal & Vertical Scaling|horizontal scaling]]"
+## Start with the access pattern
 
-## [[BigQuery]] Vs Cloud SQL, Cloud Spanner
-- Cloud SQL & Cloud Spanner are RDBMs, and due to its stringent write consistencies, it cannot really scale up to BigData level
-- If your data is massive and unstructured, use BigQuery
-- However, if the data is quite small and is very structured, use Cloud SQL & Cloud Spanner
+| Requirement | Cloud SQL starting point | Spanner starting point |
+|---|---|---|
+| Existing relational application | Managed MySQL, PostgreSQL, or SQL Server compatibility | Assess dialect and feature compatibility explicitly |
+| Write scaling | Plan instance capacity and application architecture | Distributed data placement and compute capacity |
+| Availability | Configure HA and a separate regional recovery plan | Select an appropriate instance configuration |
+| Schema performance | Indexes, query plans, contention | Those concerns plus key distribution |
 
-## Cloud SQL
+[[BigQuery]] is primarily an analytical system; it is not interchangeable with an application's transactional database. [[Horizontal & Vertical Scaling]] explains why adding read capacity and distributing writes are different decisions.
 
-- CloudSQL is not `serverless`
-- `High Availability Configuration`
-	- This means, the DB has a failover replica
-	- The failover replica must be in a different zone than the original instance, also called master
-	- All changes made to the data on the master, including to user tables, are replicated to the failover replica using semisynchronous replication	
-- Key Features of Cloud SQL
-1. Flexible Pricing - You pay for what you use
-2. Managed backups - GCP manages the backup
-	1. Also handles automated repliation
-3. Faster connection from [[G Compute Engine (GCE)]] and [[G App Engine]]
-4. Google Security
+## Cloud SQL: HA is not multi-region writing
 
-## Cloud Spanner
+For Cloud SQL for PostgreSQL, regional high availability (HA) uses a primary and standby across two zones in one region, with synchronous storage replication. A failover changes the primary; applications still need to handle disrupted connections and in-flight operations.[^sql-ha]
 
-- Cloud Spanner is Google proprietary, more advanced than Cloud SQL
-- Cloud Spanner offers "horizontal scaling" - bigger data, more instances, replication
-- Cloud Spanner should be used when
-	- Need high availability
-	- Strong consistency
-	- `Transactional reads and writes (It's write optimized)`
-- Avoid using Cloud Spanner for
-	- Data is not relatoinal, or not even structured
-	- Want an open source RDBMS
-	- Strong consistency and availability is overkill
-- There is subtle similarity with [[HBase]] and therefore hotspotting is an issue in Cloud Spanner
-- `Hotspotting` is the occurance of a node servicing all the read or write requests, despite having multiple nodes
-	- In the [[HBase]] architecture, all the read and write requests are based on the row key. The row key is instrumental for HBase to be able to take advantage of all regions equally
-	- Avoinding hotspotting
-		- Do not use monotonically increasing values, else wirtes will be on same locations
-		- Use hash of key value - this will share data in different shards evenly
-- Cloud spanner is preferred for mission critical use cases, and should be deployed in locations where you expect maximum traffic 
+```mermaid
+flowchart LR
+    A["Application and connection pool"] --> P["Primary - zone A"]
+    P -->|"Synchronous storage replication"| S["Standby - zone B"]
+    P -.->|"Separate recovery design"| R["Another region or restore target"]
+```
+
+The dotted recovery path is a design requirement, not an automatically configured component. A read replica, HA standby, and backup have different purposes. Document the actual replication and promotion mechanism before promising recovery times or data-loss bounds.
+
+## Spanner: transactions and distribution
+
+With its default serializable isolation, Spanner provides external consistency: transaction ordering respects the real-time ordering described by its consistency contract. Other supported isolation choices have different guarantees; “ACID++” is not a useful substitute for stating the actual contract.[^consistency]
+
+Data distribution depends on keys and access patterns. A leading monotonically increasing timestamp can concentrate writes into a narrow key range. Distributed identifiers or a deliberate shard prefix can spread writes, but may make range queries more complex. Secondary indexes also need workload-aware design.[^schema]
+
+## End-to-end design example
+
+Assume a destination service stores users' favorite places and updates them transactionally:
+
+1. Define the user lookup and update queries, including ownership checks.
+2. Choose keys and indexes matching those queries; inspect plans using realistic data.
+3. Bound connection pools and transaction duration.
+4. Retry only retryable failures, with an idempotency strategy for ambiguous outcomes.
+5. Choose backup retention and restoration procedures.
+6. Test zonal failure, regional recovery, and application reconnection independently.
+
+Start with the simplest platform meeting measured requirements. A migration to distributed SQL needs evidence that its scale, availability, or geographic model warrants changes in schema and operations.
+
+## Recovery vocabulary and pitfalls
+
+**Recovery point objective (RPO)** is the acceptable amount of data loss expressed in time. **Recovery time objective (RTO)** is the acceptable time to restore service. They are targets to validate, not benefits automatically supplied by the word “managed.”
+
+Watch for single-writer bottlenecks, index write amplification, long transactions, hot keys, and retries that duplicate business effects. Backups must be restored in a drill to establish that the recovery path works.
+
+## Exercise
+
+A team requires writes in two regions during a network partition. Clarify its consistency and availability expectations before choosing a database. Explain why a regional standby alone does not meet the requirement.
+
+## References & Useful Links
+
+[^sql-ha]: [Cloud SQL for PostgreSQL high availability](https://docs.cloud.google.com/sql/docs/postgres/high-availability) — Regional primary/standby topology and failover.
+[^consistency]: [Spanner TrueTime and external consistency](https://docs.cloud.google.com/spanner/docs/true-time-external-consistency) — Transaction guarantees and isolation distinctions.
+[^schema]: [Spanner schema design](https://docs.cloud.google.com/spanner/docs/schema-design) — Key distribution and hotspot avoidance.

@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 `Markov Decision Processes or MDPs`
 
 MDPs provide a mathematical framework for modeling decision-making where outcomes are partly random and partly under the control of a decision maker. MDPs are useful in studying optimization problems solved via dynamic programming and reinforcement learning.

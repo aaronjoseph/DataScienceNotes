@@ -1,5 +1,7 @@
-#sim 
-
+---
+tags:
+  - "sim"
+---
 ## Log Rules
 
 $$log_b(xy) = log_bx + log_by$$

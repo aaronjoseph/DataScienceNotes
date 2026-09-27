@@ -1,11 +1,10 @@
 ---
 note_type: concept
 search_stage: overview
+tags:
+  - "search-eng"
+  - "TODO"
 ---
-
-# Search2.0 architecture
-
-#search-eng
 
 ## Overview and Reading Guide
 
@@ -731,8 +730,8 @@ Two documentation traps were resolved by reading code: the public API now saniti
 - Linked as prerequisites: the existing conceptual notes. This pass is not a fresh factual review of those notes or the whole vault.
 - No Rust source was changed, no Rust tests or compile checks were run, and no deployment, model inference, benchmark, or live parity result is claimed.
 - Documentation checks: all 14 diagrams passed the installed Mermaid parser in a parse-only harness; internal links, heading targets, footnotes, source targets, and Markdown structure were checked. The note opened in Obsidian, but a complete visual/layout and folding-interaction review was not completed because the app was in active use.
-- #TODO Capture one matched, result-bearing request for each branch: ordinary baseline/test, lookup hit/miss, MLT found/missing, multiple type groups, prompt-selected empty result, and degraded dependencies.
-- #TODO Trace the upstream writers and version/freshness contracts for the vector index, embedding/ESCI caches, metadata, availability, and LTR tables.
+- TODO: Capture one matched, result-bearing request for each branch: ordinary baseline/test, lookup hit/miss, MLT found/missing, multiple type groups, prompt-selected empty result, and degraded dependencies.
+- TODO: Trace the upstream writers and version/freshness contracts for the vector index, embedding/ESCI caches, metadata, availability, and LTR tables.
 
 ## References & Useful Links
 

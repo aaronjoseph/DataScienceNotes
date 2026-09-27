@@ -2,11 +2,9 @@
 aliases: ["Information Retreival"]
 note_type: concept
 search_stage: foundations
+tags:
+  - "search-eng"
 ---
-
-# Information Retrieval
-
-#search-eng
 
 ## Overview
 

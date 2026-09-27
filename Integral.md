@@ -1,4 +1,7 @@
-#sim 
+---
+tags:
+  - "sim"
+---
 ## Integral Formulae
 
 $$\int x^k dx = \frac{x^{k+1}}{k+1} + C, k \neq 1$$

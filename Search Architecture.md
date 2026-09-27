@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: overview
+tags:
+  - "search-eng"
 ---
-
-# Search Architecture
-
-#search-eng
 
 ## Overview
 

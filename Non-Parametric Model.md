@@ -1,4 +1,8 @@
-#dl Non-parametric models do not assume a predefined form for the model. Instead, they determine the model structure based on the data. Here are some examples of non-parametric models:
+---
+tags:
+  - "dl"
+---
+ Non-parametric models do not assume a predefined form for the model. Instead, they determine the model structure based on the data. Here are some examples of non-parametric models:
 
 - Nearest neighbor classifier
 - [[Decision Trees]]

@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: indexing
+tags:
+  - "search-eng"
 ---
-
-# Inverted Index
-
-#search-eng
 
 ## Overview
 

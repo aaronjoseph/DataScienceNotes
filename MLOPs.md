@@ -1,6 +1,7 @@
-
-#search-eng
-
+---
+tags:
+  - "search-eng"
+---
 MLOps comprises a set of tools and principles to support progress through the ML project lifecycle
 
 [[Machine Learning Life Cycle - MLOPs]]

@@ -11,13 +11,10 @@
             "id": "d6daf4e703631878",
             "type": "leaf",
             "state": {
-              "type": "bases",
-              "state": {
-                "file": "AWS/Search.base",
-                "viewName": "Table"
-              },
-              "icon": "lucide-table",
-              "title": "Search"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -153,7 +150,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "AWS/Search.base",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -230,21 +226,26 @@
     "hiddenItems": {
       "bases:Create new base": false,
       "obsidian-kanban:Create new board": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "command-palette:Open command palette": false,
       "zk-prefixer:Create new unique note": false,
       "random-note:Open random note": false,
-      "realclaudian:Open Claudian": false,
-      "copilot:Open Copilot Agent Chat": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
   "active": "8bbf350e56d0349f",
   "lastOpenFiles": [
+    "System_Design/Design a Personalized Search Recommendation System for Rapido.md",
+    "System_Design/Agoda Search Service.md",
+    "Search.base",
+    "Attachements/Agoda Search Service - Interview Architecture.png",
+    "Tool Calling.md",
+    "Retrieval-Augmented Generation.md",
+    "Prompt Injection.md",
+    "LLM Evaluation.md",
     "BM25.md",
     "AWS/Search.base",
     "Judgement List.md",
@@ -270,16 +271,10 @@
     "Embedding vs. Encoding - Understanding the Difference.md",
     "Embeddings.md",
     "L1 and L2 Regularization.md",
-    "L1 and L2 Loss Functions.md",
-    "Gradient Boosting Machines (GBM).md",
-    "Boosting.md",
-    "SQL/SQL Best Practices.md",
-    "System_Design/Shein_Recommendation_System.md",
     "System_Design",
     "Job Interviews/Data_Science_Question.pdf",
     "Job Interviews/Behavioural",
     "ISYE_6501/ISYE6501glossaryalphabeticalFeb7_2018.pdf",
-    "ISYE_6501/ISYE6501glossarybytopicFeb7_2018.pdf",
     "Attachements/Masked_SA&SA.png",
     "Attachements/Transformers.png",
     "Attachements/Transformers-1.png",
@@ -289,7 +284,6 @@
     "Job Interviews/Company_Interviews/Attachements/Pasted image 1.png",
     "Attachements/Types-of-Hypothesis-Tests.jpg",
     "Attachements/Pasted image 8.png",
-    "Attachements/Pasted image 6.png",
     "Untitled.canvas"
   ]
 }

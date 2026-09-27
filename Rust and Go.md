@@ -1,10 +1,8 @@
 ---
 aliases: ["Rust and Go - Execution, Memory and Performance"]
+tags:
+  - "search-eng"
 ---
-
-# Rust and Go
-
-#search-eng
 
 ## Overview
 

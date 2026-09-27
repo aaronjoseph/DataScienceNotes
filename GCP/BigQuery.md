@@ -1,109 +1,74 @@
-- BigQuery is Fully managed, no server/serverless , no resources deployed, enterprise warehouse
-- It is a common sink or staging area for data analytics workload
-- Bigquery semantically maps to [[Hive]] technology
-	- However it is faster than Hive in terms of giving outputs
-	- This is due to the use of Columnar data storage format, which is proprietary as well
-	- Therefore Bigquery has differences compared to Hive, `this has to do with the implementation details where BigQuery differs`
-- However, Bigquery's latency is higher than [[BigTable]] & [[DataStore]]
-- No ACID properties, cannot be used for transaction processing (OLTP)
-- Great for analytics/business intelligence/data warehouse (OLAP)
-- Dataset = Set of tables and views
-	- Table must belong to dataset
-	- Tables contains records with rows and columns
-- Dataset must belong to a project, so as to be billed
-
-> BigQuery is a columnar DB, so if you reduce the amount of columns in the query, the amount of data processed reduces as well, thereby reducing the query cost. `It doesn't depend on the where condition of the query`
-
-> ML Cheatsheet link [[BigQuery ML Cheatsheet]]
-
-## Managed Service
-
-Bigquery can be split into two distinct service
-- BigQuery Storage Service
-- Bigquery Query Service
-
-Here, the data in BigQuery Storage Service is stored in the colossus system.
-
-## Table Schema 
-
-- Can be specified at creation time
-- Can also specify schema during initial load
-- Can update schema later on as well
-
-## Schema Autodetection
-
-- BigQuery selects a random file in the data source and scans upto 100 rows of data to use as a representative sample
-- Then examines each field and attemps to assign a data type to that field based on the values in the sample
-- Big query can convert data from Cloud Datastore backup files to BigQuery Data
-
-## Querying and Viewing
-
-The different ways interacting with data in BigQuery
-- Interactive Queries
-- Batch Queries
-- Views
-- Partitioned Tables
-
-## Interactive Queries
-
-- Default mode - the query is executed as soon as possible
-- Use of interactive queries counts towards daily/concurrent usage limits
-
-## Batch Queries
-
-- BigQuery will schedule this form of query whenever possible (idle resources)
-- Don't count towards limit on concurrent usage, but on daily usage
-- If not started within 24 hours, BQ will convert this into interactive query
-
-## Views
-
-- BigQuery views are logical, not materialised
-- Underlying query will execute each time view is accessed
-- Billing will happen accordingly
-- Can't assign access control - based on user running view
-- Can create authorised view : Share query results with groups without giving read access to underlying data 
-- Can give row-level permissions to different users within same view
-- Can't export data from a view
-- Can't use JSON API to retrieve data
-- Can't mix standard and legacy SQL
-- No user-defined functions allowed
-- No wildcard table references allowed
-- Limit of 1000 authorised views per dataset
-
-## Partitioned Tables
-
-- Special table where data is partitioned by you
-- No need to create partitions manually or programmatically
-- Manual partitions - performance degrades
-- Limit of 1000 tables per query does not apply
-- Date partitioned tables offered by BigQuery
-- Need to declare tablee as partitioned at ceration time
-- No need to specity schema (can do while loading data)
-- BigQuery automatically creates date partitions 
-
-## Struct
-
-The easiest way to think about a STRUCT is to consider it conceptually like a separate table that is already pre-joined into your main table.
-
-A STRUCT can have:
-
--   one or many fields in it
--   the same or different data types for each field
--   it's own alias
-
-> The main advantage of having STRUCTs in a single table is it allows you to run queries without having to do any JOINs
-
+---
+note_type: concept
+search_stage: evaluation
+tags:
+  - gcp
+  - search-eng
 ---
 
-## Query Plan Explanation
+BigQuery is a managed data platform for analytical work. Its storage and compute layers are separated, and GoogleSQL supports queries over large datasets. Use it to understand behavior, prepare features, and evaluate systems; do not assume an analytical query belongs on a latency-sensitive application request path.[^overview]
 
-- In the web UI, click on "Explanation"
+## End-to-end analytical workflow
 
-## Slots 
+```mermaid
+flowchart LR
+    S["Files, events and database exports"] --> R["Raw tables"]
+    R --> V["Validation and deduplication"]
+    V --> C["Curated tables"]
+    C --> A["Analysis and dashboards"]
+    C --> F["Features and model evaluation"]
+    A --> Q["Quality, cost and freshness monitoring"]
+    F --> Q
+```
 
-- Unit of Computational capacity needed to run queries 
-- Bigquery calculates on basis of query size, complexity
-- Usually default slots sufficient
-- Might need to be expanded for very large, complex queries
-- Slots are subject to quota policies
-- Can use StackDriver Monitoring to track slot usage
+1. Define the row's meaning, identifiers, timestamps, and schema before ingestion.
+2. Choose batch loading or streaming according to freshness and replay needs.
+3. Retain enough provenance to reproduce a result: source version, event ID, transformation version, and load time.
+4. Validate raw data, then publish curated tables with explicit deduplication and missing-data rules.
+5. Run analysis using appropriate permissions, location, and cost controls.
+6. Monitor data freshness and correctness as well as query failures.
+
+Schema inference is a convenience for exploration. An explicit schema and compatibility checks are safer for repeatable production ingestion; do not rely on a remembered fixed sampling count.
+
+## Tables, nested data, and views
+
+A dataset groups resources and has a location and access configuration. Choose partitioning around common filters, and clustering around useful access patterns. These physical choices should follow observed queries rather than a universal cardinality rule.
+
+A `STRUCT` groups named fields; an `ARRAY` represents repeated values. Repeated records can be modeled as arrays of structs. `UNNEST` expands repeated elements, which changes the row count and therefore the unit being aggregated.[^nested]
+
+A logical view stores a query definition and executes that query when read. It is not a stored result or automatically a cheaper query. Use it to express a reusable interface and review access to underlying data.[^views]
+
+## Transactions and workload fit
+
+BigQuery supports multi-statement transactions with ACID properties and snapshot isolation. Supported statements and external-data behavior still have limits. The old claim that BigQuery has no transactions is incorrect.[^transactions]
+
+Transaction support does not make it equivalent to [[Cloud SQL, Cloud Spanner]] for every operational workload. Compare access shape, concurrency, write behavior, latency, and economics. Similarly, “faster than [[Hive]]” requires a controlled workload comparison, not a blanket assertion.
+
+## Performance and cost
+
+Read only needed columns, filter eligible partitions, and avoid unnecessary join expansion. `WHERE` can reduce scanned data when pruning applies; an arbitrary filter is not automatically a cost reduction. Inspect the execution plan for skew, shuffle, and unexpectedly large intermediate results.[^performance]
+
+Use query estimates or dry runs and, for on-demand queries, a maximum-bytes-billed limit where appropriate. `LIMIT` alone is not a reliable scan-cost control. Capacity-based and on-demand pricing require different cost reasoning; elapsed time, bytes read, and compute consumption are separate measurements.[^cost]
+
+See [[BigQuery Query CheatSheet]] for concrete GoogleSQL examples and [[BigQuery ML Cheatsheet]] for a model workflow.
+
+## Worked example: search click-through rate
+
+Assume one deduplicated row per search request contains a nullable `clicked` value. Define click-through rate as clicked requests divided by requests with a known outcome. Report missing outcomes separately. Treating missing telemetry as “no click” changes the metric.
+
+A request-weighted metric can be dominated by frequent queries. If the question is average quality across queries, define a different aggregation and weighting explicitly. Neither metric alone establishes ranking relevance or causality; connect the analysis to [[Search Evaluation]] and [[Click Bias]].
+
+## Failure modes and exercise
+
+Watch for duplicate event ingestion, joins multiplying rows, time-zone boundary errors, late events changing previous reports, and dashboards comparing differently filtered populations.
+
+**Exercise:** A daily report doubles after adding a product-category join. Check join cardinality before concluding user activity increased.
+
+## References & Useful Links
+
+[^overview]: [BigQuery overview](https://docs.cloud.google.com/bigquery/docs/introduction) — Storage/compute separation and analytical capabilities.
+[^nested]: [Nested and repeated columns](https://docs.cloud.google.com/bigquery/docs/nested-repeated) — Records, structs, and arrays.
+[^views]: [Logical views](https://docs.cloud.google.com/bigquery/docs/views-intro) — Query-backed virtual tables.
+[^transactions]: [Multi-statement transactions](https://docs.cloud.google.com/bigquery/docs/transactions) — ACID, snapshot isolation, and transaction boundaries.
+[^performance]: [Optimize query computation](https://docs.cloud.google.com/bigquery/docs/best-practices-performance-compute) — Projection, pruning, joins, and execution plans.
+[^cost]: [Estimate and control costs](https://docs.cloud.google.com/bigquery/docs/best-practices-costs) — Estimates, dry runs, billing limits, and `LIMIT` caveats.

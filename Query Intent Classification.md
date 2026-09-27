@@ -1,11 +1,10 @@
 ---
 note_type: concept
 search_stage: query_understanding
+tags:
+  - "search-eng"
+  - "TODO"
 ---
-
-# Query Intent Classification
-
-#search-eng
 
 ## Overview
 
@@ -103,7 +102,7 @@ Label these queries, state the signal you used, and name the downstream failure 
 
 ## Open Questions
 
-- #TODO Define a domain-specific cost table and evaluate the fallback policy on ambiguous and out-of-catalogue queries. Broder’s original taxonomy was read for the distinction above; historical query proportions are not treated as current traffic estimates.
+- TODO: Define a domain-specific cost table and evaluate the fallback policy on ambiguous and out-of-catalogue queries. Broder’s original taxonomy was read for the distinction above; historical query proportions are not treated as current traffic estimates.
 
 ## References & Useful Links
 

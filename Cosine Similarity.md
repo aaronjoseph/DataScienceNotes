@@ -2,11 +2,9 @@
 aliases: ["Cosine Similarity & Cosine DIstance"]
 note_type: concept
 search_stage: foundations
+tags:
+  - "search-eng"
 ---
-
-# Cosine Similarity
-
-#search-eng
 
 ## Overview
 

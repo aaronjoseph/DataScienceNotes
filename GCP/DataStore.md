@@ -1,54 +1,68 @@
-This is the No-Sql variant in GCP eco-system
+---
+note_type: concept
+search_stage: serving
+tags:
+  - gcp
+  - search-eng
+aliases:
+  - "Firestore in Datastore mode"
+---
 
-- Alternative to MongoDB/CouchDB
-	- Suited for document data - XML/HTML
-- Key-value structure
-- Typically not used either for OLTP/OLAP
-	- It's key advantage lies in fast lookup on keys, which is the common use case
-- Most common use case is the for fast lookup on keys
-- `Query execution time depends on size of returned result (not size of data set)`
-	- Ideal for "needle in a haystack" type applications       
-- This is not meant for write-intensive tasks, but for read-intensive
+The current service is **Firestore in Datastore mode**. It stores entities with properties and serves indexed queries for operational applications. “Document database” describes the data model; it does not mean a database specifically for HTML or XML files.[^overview]
 
-## Differences & Similarities between RDBMS & DataStore
+## Data model and access path
 
-RDBMS | DataStore
---|--
-Similarities | 
-Atomic Transaction | Atomic Transaction
-Indices for fast lookup | Indices for fast lookup
-Some queries use indices - not all | All queries use indices
-Query time depend on both size of data set and size of result set | Query time independent of data set, depends on result set alone
-Differences | 
-Structured relational data | Sturctured hierarchical data (XML,HTML)
-Rows stored in Tables | Entities of different in Kinds (think HTML tags)
-Rows consist of fields | Entities consist of Properties
-Primary keys for unique ID | Keys for unique ID
-Rows of table same properties (Schema is strongly enforced) | Entities of a kind can have different properties
-Types of all values in a column are the same | Types of different properties with same name in an entity can be different
-Joins are supported | Joins are not supported
-Filtering on subqueries | No filtering on subqueries
-Multiple inequality conditions | Only one inequality filter
+| Term | Meaning |
+|---|---|
+| Kind | Category of entities, such as `FavoriteDestination` |
+| Entity | One stored record |
+| Key | Stable entity identity |
+| Property | Named value on an entity |
+| Index | Structure supporting a query's filters and ordering |
 
-## Avoid DataStore When
+Different entities can have different properties, but the application should still define and validate a schema. Schemaless storage moves responsibility; it does not remove it.
 
-- Don't use if you need very strong transaction support (OLTP) - OK for basic ACID support though
-- Don't use for non-hierarchical or unstructured data - [[BigTable]] is better
-- Avoid it for OLAP use cases - Analytics, BI & Data Warehousing - [[BigQuery]] is a better usecase
-- Don't use for immutable blobs like movies each >10MB - Use [[Cloud Storage]]
-- Avoid if there is lot of writes and updates on the key columns
+```mermaid
+flowchart LR
+    A["Application"] --> V["Validate entity and authorization"]
+    V --> W["Write entity or transaction"]
+    W --> I["Indexes"]
+    Q["Query filters and ordering"] --> I
+    I --> R["Matching entities"]
+```
 
-## When DataStore is to be used
+## Query-first design
 
-- Use for significant scaling of read performance - to virtually any size
-- Use for hierarchical documents with key/value data
+1. List the application's key lookups and filtered queries.
+2. Choose keys and property types that remain stable across versions.
+3. Define required indexes and test them against realistic distributions.
+4. Denormalize only when it simplifies required reads, then define how copied values are updated.
+5. Paginate results and measure read volume, index growth, and write cost.
 
-## Multi-tenancy
+Datastore mode does not offer relational joins. Current dedicated documentation supports range and inequality filters on multiple properties; the older “only one inequality property” rule is not a safe general statement. The overview still contains an inconsistent older sentence, so use the feature-specific documentation for this capability.[^ranges]
 
-- Seperate data partitions for each client organization
-- Can use the same schema for all clients, but vary the values
+## Consistency and transactions
 
-## Transaction Support
+Current Datastore mode supports strongly consistent queries and atomic transactions. Do not copy legacy Cloud Datastore eventual-consistency constraints into a current design without checking the database mode.[^overview]
 
-- Transaction Support exists, however, Cloud Spanner cloud be a better alternative
+A commit error can have an ambiguous outcome: the change might already have committed. Make repeated application operations safe, keep transaction bodies bounded, and handle contention with a retry policy.[^transactions]
 
+## Example: saved destinations
+
+Store each favorite under a stable identity based on the user and destination. Require the authenticated user to own that record. Repeatedly saving the same destination should update the intended entity rather than create duplicates.
+
+If a separate entity tracks the favorite count, update the record and count in an appropriate transaction or derive the count through another explicit consistency policy. A namespace or key prefix alone is not an authorization boundary.
+
+## When to choose something else
+
+Use [[Cloud SQL, Cloud Spanner]] when relational queries and transactions fit better. Use [[BigQuery]] for analytical scans, [[Cloud Storage]] for large objects, and evaluate [[BigTable]] for suitable high-throughput key-based access patterns. These are workload distinctions, not rigid dataset-size thresholds.
+
+## Exercise
+
+Two requests save the same favorite simultaneously. Define the entity key and expected result, then explain how a retry after a lost response behaves.
+
+## References & Useful Links
+
+[^overview]: [Datastore overview](https://docs.cloud.google.com/datastore/docs/concepts/overview) — Entity model, strong consistency, and application uses.
+[^ranges]: [Multiple range and inequality filters](https://docs.cloud.google.com/datastore/docs/multiple-range-fields) — Current query capability and index considerations; checked September 2026.
+[^transactions]: [Datastore transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions) — Atomic operations, failures, and ambiguous commit outcomes.

@@ -1,5 +1,8 @@
-#sim #dl 
-
+---
+tags:
+  - "sim"
+  - "dl"
+---
 ## Derivative Formulae
 
 $$\frac{d}{dx}f(x) = f'(x) = lim_{h-> 0}\frac{f(x+h) - f(x)}{h}$$

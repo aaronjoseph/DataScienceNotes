@@ -2,10 +2,9 @@
 aliases: ["Bag of Words (BOW)"]
 note_type: concept
 search_stage: foundations
+tags:
+  - "search-eng"
 ---
-# Bag of Words
-
-#search-eng
 
 ## Overview
 

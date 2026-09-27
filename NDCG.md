@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: evaluation
+tags:
+  - "search-eng"
 ---
-
-# NDCG
-
-#search-eng
 
 ## Overview
 

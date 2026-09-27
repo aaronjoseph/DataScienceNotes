@@ -1,4 +1,7 @@
-#dl 
+---
+tags:
+  - "dl"
+---
 Nesterov Momentum is an enhancement of the traditional momentum method that aims to accelerate the convergence of the gradient descent optimization algorithm. It does this by making a key modification: it calculates the gradient at a position ahead in the direction of the current momentum.
 
 ### Key Idea of Nesterov Momentum

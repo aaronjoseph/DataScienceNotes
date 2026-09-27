@@ -1,4 +1,7 @@
-#dl
+---
+tags:
+  - "dl"
+---
 Adagrad is an adaptive learning rate method designed to allocate different learning rates for each parameter. It is particularly effective for dealing with sparse data.
 
 ### Key Features of Adagrad

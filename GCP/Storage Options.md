@@ -1,78 +1,68 @@
-Usecae vs Storage Option
-1. Block storage for compute VMs - Persistent Disk or SSD
-2. Immutabe blobs like video/image - Cloud Storage
-3. OLTP - Cloud SQL or Cloud Spanner
-4. NoSQL Documents like HTML/XML - Datastore
-5. NoSQL Key-values - BigTable (~[[HBase]])
-6. Getting data into Cloud Storage - Transfer Service
+---
+note_type: concept
+search_stage: foundations
+tags:
+  - gcp
+  - search-eng
+---
 
-## Mapping Opensource with GCP Offering
-1. [[Hive]] -> BigQuery
-2. HBase -> Big Table
-3. MongoDB ->DataStore
+Choose storage by its access contract: what is read or written together, how quickly it must respond, and what consistency and recovery the application requires. “Structured versus unstructured” is useful vocabulary, but it is too coarse to select a service on its own.
 
+## Storage and database families
 
+| Need | Starting option | Key question |
+|---|---|---|
+| Objects and dataset files | [[Cloud Storage]] | Whole-object access and retention? |
+| VM block devices | Hyperdisk or Persistent Disk | Disk performance and recovery? |
+| Shared filesystem | Filestore | Shared file semantics required? |
+| Relational application data | [[Cloud SQL, Cloud Spanner]] | Compatibility, transactions, scale? |
+| Entity-oriented application data | [[DataStore]] | Indexed query patterns fit? |
+| Large key/range workloads | [[BigTable]] | Row key and access distribution? |
+| Analytical queries | [[BigQuery]] | Scan, aggregation, freshness? |
 
-## Storage Specific
+Object, block, and file storage expose different interfaces. Cloud Storage for Firebase is not a block-storage product; do not confuse **Firebase** with **Filestore**.[^storage]
 
-Type of Need | Open Source | GCP Option
----|---|---
-Storage for Compute, Block Storage | Persistent (Hard Disk), SSD | Persistent (hard disks),SSD
-Storing media, Blob Storage | File System or [[HDFS]] | [[Cloud Storage]]
-SQL Interface atop file data | [[Hive]](SQL-like but [[MapReduce]] on HDFS) | [[BigQuery]] 
-Document database, NoSQL | CouchDB, MongoDB (key-value/indexed database) | [[DataStore]]
-Fast scanning, NoSQL | [[HBase]] (columnar database) | [[BigTable]]
-Transaction Processing (OLTP) | RDBMS | [[Cloud SQL, Cloud Spanner]]
-Analytics/Data Warehouse (OLAP) | [[Hive]] (SQL-like, but MapReduce on HDFC) | [[BigQuery]]
+Bigtable stores data organized by row keys and column families. It is useful when its access pattern fits; calling it an “unstructured blob store” hides the most important schema decision.[^bigtable]
 
-## Points
+## End-to-end selection process
 
-`Block Storage` 
-- Data is not **structured**
-- Lowest level of storage - no abstraction at all
-- **Meant for use from VMs**
-- Location tied to VM location
+```mermaid
+flowchart TD
+    R["Write down reads, writes and recovery targets"] --> F{"File or object interface?"}
+    F -->|Yes| S["Choose object, block or shared file storage"]
+    F -->|No| Q{"Operational lookups or analytical scans?"}
+    Q -->|Operational| D["Compare relational, document and key-based stores"]
+    Q -->|Analytical| B["Evaluate BigQuery and data lake access"]
+    S --> T["Test performance, permissions and restore"]
+    D --> T
+    B --> T
+```
 
-Types of GCP Options onto which **block storage** can be stored
-- Persistent Disk
-- Standard
-- SSD
-- Local SSD
+1. Estimate record size, data growth, read/write rates, and skew.
+2. Specify consistency, transaction boundaries, and query shapes.
+3. Identify location, access-control, retention, and deletion requirements.
+4. Measure the busiest realistic workload and a recovery scenario.
+5. Include replicas, indexes, backups, operations, and network transfer in cost estimates.
 
-## Transfering data to GCP
+## Example: a search system uses several stores
+
+A proposed architecture can keep raw catalog exports in Cloud Storage, transactional product metadata in a relational store, and behavioral aggregates in BigQuery. A separate online cache can hold derived values with a freshness contract.
+
+Each store has an owner and source-of-truth role. A cache miss must not silently turn into an unbounded analytical query on the request path. A delayed pipeline should be visible through data-age metrics, even if the serving API remains available.
+
+## Hadoop ecosystem connections
+
+[[HDFS]] provides a distributed filesystem; [[HBase]] provides a different data-serving abstraction; [[Hive]] is a SQL-oriented processing layer. They are not interchangeable storage classes. A [[MapReduce]] or Spark pipeline can read from external object storage through supported connectors without requiring every dataset to be permanently copied onto cluster-local disks.
+
+The existing transfer note remains embedded for ingestion planning:
+
 ![[Transfer Service]]
 
-## Mobile Specific Use Case
+## Exercise
 
-Type of Need | GCP Option
----|---
-Storage for Compute, Block Storage along with mobile SDKs | Cloud Storage for Firebase
-Fast random access with mobile SDKs | Firebase Realtime DB
+Separate the storage needs of user uploads, order updates, daily reports, and temporary processing files. For each, name one recovery test and one cost driver.
 
+## References & Useful Links
 
-## Choosing the right DB
-
- Type | Cloud Storage | Cloud SQL | Datastore | Bigtable | BigQuery
- -|-|-|-|-|-|
- Capacity | Petabytes + | Gigabytes | Terabytes | Petabytes | Petabytes
- Access metaphor |Like files in a file system | Relational DB | Persistent Hashmap | Key-value,HBase API |Data warehouse
- Read | Have to copy to local disk | Select Rows | filter objects on property | scan rows | Select rows
- Write | One file | Insert row | put object | put row | Batch/stream
- Update granularity | An object (a file) | Field | Attribute | Row | Field
- Usage | Store blobs | No-ops SQL DB on Cloud | Structred data from App Engine apps | No-ops, high throughput, scalable, flattened data | Interactive SQL* querying fully managed warehouse
- 
- ## Selection Flow Chart
- 
-```mermaid
-graph TD;
-
-A[If your Data is] --Unstructured--- B[Cloud Storage/Filestore]
-A --Structured--- C[Data Analytics]
-A --Structured--- D[Transactional Workload]
-C --Millisecond Latency --- C1[(Cloud Bigtable)]
-C --Latency in Seconds --- C2[(Bigquery)]
-D --> D1[SQL DataBase]
-D --No Sql Database--- D2[Cloud Datastore]
-D1 --One DB--- D3[Cloud SQL]
-D1 --Horizontal Scale--- D4[Cloud Spanner]
-```
+[^storage]: [Google Cloud storage products](https://cloud.google.com/products/storage) — Object, block, and file storage families.
+[^bigtable]: [Bigtable overview](https://docs.cloud.google.com/bigtable/docs/overview) — Row-oriented access model and suitable workloads.

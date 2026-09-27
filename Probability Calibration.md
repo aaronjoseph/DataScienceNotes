@@ -1,11 +1,9 @@
 ---
 note_type: concept
 search_stage: evaluation
+tags:
+  - "search-eng"
 ---
-
-# Probability Calibration
-
-#search-eng
 
 ## Core Idea
 

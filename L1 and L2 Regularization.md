@@ -1,6 +1,8 @@
-# L1 and L2 Regularization
-
-#search-eng #dl
+---
+tags:
+  - "search-eng"
+  - "dl"
+---
 
 ## Purpose
 

@@ -1,5 +1,7 @@
-#oan 
-
+---
+tags:
+  - "oan"
+---
 **To send one column into a function and get the output** 
 ```python
 zip(*df[columns].map(function_name))

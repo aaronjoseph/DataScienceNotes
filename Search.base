@@ -1,0 +1,49 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.hasTag("search-eng")
+    - file.name != "AGENTS"
+properties:
+  file.name:
+    displayName: Note
+  note.search_stage:
+    displayName: Search stage
+  note.note_type:
+    displayName: Note type
+  note.aliases:
+    displayName: Also known as
+  file.mtime:
+    displayName: Last modified
+  file.tags:
+    displayName: Tags
+views:
+  - type: table
+    name: All search notes
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - aliases
+      - file.tags
+      - file.mtime
+  - type: table
+    name: By search stage
+    groupBy:
+      property: search_stage
+      direction: ASC
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
+  - type: table
+    name: Missing classification
+    filters:
+      or:
+        - "!note.search_stage"
+        - "!note.note_type"
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - file.tags
