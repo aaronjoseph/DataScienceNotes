@@ -89,7 +89,7 @@ These connections identify useful prerequisites and follow-on topics. Unless lis
 
 ### LLM Applications
 
-[[Retrieval-Augmented Generation]], [[LLM Evaluation]], [[Prompt Injection]], and [[Tool Calling]]. These support the portfolio project in [[Action-Plan]].
+[[Retrieval-Augmented Generation]], [[LLM Evaluation]], [[Prompt Injection]], [[Tool Calling]], [[Model Context Protocol]], [[Structured Outputs]], and [[Multi-Agent Systems]]. These support the portfolio project in [[Action-Plan]].
 
 ### Learning to Rank
 
@@ -272,6 +272,20 @@ Expanded the transformer notes from short summaries into study notes, and added 
 - **Corrected:** a `Boosting` code bug that never trained the third tree; `early_stopping_rounds`, which XGBoost 3.x accepts only in the constructor; "sum of squared residuals" in the XGBoost similarity score; the `eta` range; several decision-tree claims (leaf purity, ID3 naming, entropy maximum, missing-value support); and the outdated `friedman_mse` default.
 - **Sources opened in full:** the LightGBM paper and supplement (proofs not read), CatBoost (main text and Appendices C.2, D and G), Extra Trees (Sections 1–4), and DBSCAN papers; Breiman's *Random Forests* (2001) and *Bagging Predictors* (1994) technical reports; and the scikit-learn tree and ensemble guides. For AdaBoost, the introduction and Section 4 of Freund and Schapire's journal article were read, as was the start of the SAMME preprint by Zhu et al. The Friedman, Hastie and Tibshirani (2000) PDF is a scan without a text layer, so its exponential-loss view is cited through Zhu et al.
 - **Checked:** worked examples and library claims were reproduced with scikit-learn 1.9.1, XGBoost 3.2.0, LightGBM 4.7.0, CatBoost 1.2.10, and statsmodels 0.15.0 in a temporary environment. The earlier unexecuted snippets in [[ARIMA]], [[Bag of Words]], [[Bagging]], [[DBSCAN]], [[Gaussian Mixture Models]], and [[Heirarchical Clustering]] now run, and their notes record the outputs. Links, heading anchors, footnotes, fences, and math delimiters were checked. Every equation in these notes typesets without errors in MathJax 3, the engine Obsidian uses. An approximate reading-view render at Obsidian's default 700 px line width showed no overflowing equations, tables, or text after one wide display in [[Light GBM]] was split. Dense exercise solutions were rewritten as displayed steps. In Obsidian's reading view, [[AdaBoost]] and [[Light GBM]] were then inspected directly: collapsed and expanded callouts, displayed steps inside callouts, and footnote markers rendered correctly. The theorems quoted from the AdaBoost, Random Forest, CatBoost, and LightGBM papers were checked numerically rather than by reading their proofs.
+
+## Decision Models and Agents: 29 September 2026
+
+- **New notes (4):** [[Structured Outputs]] and [[Multi-Agent Systems]] (search-tagged, in the LLM Applications group), [[System One Models]] (TypeSafe's Jev; tagged `ai-engineering` only), and [[Discriminative and Generative Models]] (`ds-foundations`).
+- **Links added** from [[Tool Calling]], [[Probability Calibration]], [[Logistic Regression]], [[Naive Bayes]], and [[Action-Plan]].
+- **Sources opened:** the TypeSafe announcement blog and documentation pages (introduction, System One, AI primer, confidence, Noul); OpenAI's Structured Outputs guide; Anthropic's "Building effective agents" and multi-agent research-system posts; the scikit-learn naive Bayes and LDA/QDA guides; and the JEM paper (HTML). Only abstracts were read for Ng and Jordan (2001), Willard and Louf, Grammar-Aligned Decoding, MAST, InstructGPT, and Tulu 3.
+- **Checked:** worked-example arithmetic was recalculated in Python. Obsidian rendered layout was not checked.
+- **Open:** TypeSafe's speed, cost, and calibration claims are vendor-reported and unverified; the blog's FAQ answers did not load.
+
+## MCP Server Note: 29 September 2026
+
+- **New note:** [[Model Context Protocol]] (aliases MCP and MCP Server) covers hosts, clients, and servers; tools, resources, and prompts; the stateless 2026-07-28 revision; the stdio and Streamable HTTP transports; a Python server; security risks; and an exercise. [[Tool Calling]] now links to it.
+- **Sources opened:** the MCP specification pages on the overview, architecture, versioning, server features, tools, resources, transports, stdio, and Streamable HTTP; the security best-practices guide; the build-a-server quickstart; and the Python SDK README.
+- **Checked:** the example server was run over stdio with `mcp` 2.2.0 and an SDK client. The run covered tool listing, tool calls, a validation error, resource reads, and a prompt, and the wire-level result in the note was copied from it. The authorisation specification itself was not read; the note's authorisation claims come from the best-practices guide. Obsidian rendered layout was not checked.
 
 ## How to Continue
 

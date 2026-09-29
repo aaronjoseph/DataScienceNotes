@@ -111,7 +111,7 @@ Build one focused project: a **search-grounded assistant for a bounded document 
 ### Weeks 9–10: Add one useful tool workflow and safety checks
 
 - Add one deterministic tool that improves the chosen use case, such as a metadata filter, calculator, or lookup API. Use a bounded workflow with explicit tool schemas and validation; see [[Tool Calling]].
-- Define when the system may call the tool, what inputs it accepts, and what happens on failure. Do not add multi-agent orchestration unless the problem genuinely needs multiple independent roles.
+- Define when the system may call the tool, what inputs it accepts, and what happens on failure. Do not add [[Multi-Agent Systems|multi-agent orchestration]] unless the problem genuinely needs multiple independent roles.
 - Test prompt injection in user input and retrieved documents, unauthorized tool requests, malformed tool outputs, and attempts to expose secrets. See [[Prompt Injection]].
 - Add a simple policy for citations, abstention, and escalation to a human or a safe fallback.
 - Document known limitations and data handling. Keep credentials out of the repository and avoid collecting unnecessary user data.

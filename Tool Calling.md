@@ -73,6 +73,8 @@ Guidance from the same documentation:[^openai]
 
 `tool_choice` can let the model decide, require a tool call, force one specific tool, or restrict it to a subset of tools.[^openai] Names and parameters differ between providers; check the current documentation for the provider you use.
 
+Strict mode relies on the same schema-constrained decoding as [[Structured Outputs]]. When several tool-using agents cooperate, see [[Multi-Agent Systems]].
+
 ## Validate Every Call in Code
 
 Schema enforcement makes arguments well-formed; it does not make them safe or authorised. Validate ranges, permissions, and business rules in the application.
@@ -146,6 +148,8 @@ The specification's security principles apply to tool calling generally:[^mcp]
 - The protocol cannot enforce these principles itself, so implementers must build consent, authorisation, and access controls into their applications.
 
 Use MCP when you need to expose tools or context to several AI applications in a standard way. For one application with one or two tools, provider-native function calling is usually enough. The specification changes between dated versions, so record which version you target.
+
+[[Model Context Protocol]] covers MCP servers in depth: the three primitives, transports, a tested Python server, and security risks.
 
 ## Common Failure Modes
 

@@ -85,6 +85,8 @@ Then explain why changing training class weights or prevalence requires checking
 
 Connect [[Imbalanced Classification]], [[Active Learning]], and [[Click Bias]].
 
+Vendor claims of calibrated outputs, such as those for [[System One Models]], need the same reliability check on representative traffic.
+
 ## References & Useful Links
 
 [^1]: [Scikit-learn calibration guide](https://scikit-learn.org/stable/modules/calibration.html) — Reliability, calibration methods, and data separation.

@@ -12,6 +12,8 @@ $$z=w^Tx+b,\qquad p=\sigma(z)=\frac1{1+e^{-z}},\qquad \log\frac p{1-p}=z.$$
 
 It does not require linearly separable data. In fact, complete separation can make unregularised maximum-likelihood coefficients diverge. Unlike an unconstrained linear-regression output, the sigmoid output stays between zero and one. Multiclass variants also exist.
 
+Logistic regression is the standard example of a discriminative classifier; [[Discriminative and Generative Models]] compares it with [[Naive Bayes]].
+
 ## Coefficients
 
 Holding other features fixed, increasing feature j by one changes log-odds by $w_j$ and multiplies odds by $e^{w_j}$. The exact percentage odds change is $100(e^{w_j}-1)$; $100w_j$ is only a small-coefficient approximation. This is association under the model, not causation.

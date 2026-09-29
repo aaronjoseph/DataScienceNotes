@@ -110,7 +110,7 @@ fn first_true(mut lo: i64, mut hi: i64, feasible: impl Fn(i64) -> bool) -> i64 {
 }
 ```
 
-These templates have not been run here; they follow the same logic as the tested-by-hand Koko example.
+These templates have not been run; they use the same loop as the Koko solution.
 
 ## Worked Example: Is It Monotonic?
 

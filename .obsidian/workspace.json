@@ -25,14 +25,14 @@
             "id": "746e8082fc3aee48",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Tool Calling.md",
+                "bFile": "Tool Calling.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Koko Eating Bananas"
+              "icon": "diff",
+              "title": "Diff: Tool Calling  (Working Tree)"
             }
           },
           {
@@ -200,7 +200,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -257,7 +256,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -287,11 +285,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8bbf350e56d0349f",
+  "active": "746e8082fc3aee48",
   "lastOpenFiles": [
-    "LeetCode/Binary Search/Binary Search.md",
-    "DevOps/Docker.md",
+    "Model Context Protocol.md",
+    "Discriminative and Generative Models.md",
     "LeetCode/Binary Search/Koko Eating Bananas.md",
+    "System_Design/Accommodation Booking System.md",
+    "LeetCode/Binary Search/Binary Search.md",
+    "Action-Plan.md",
+    "Action Plan.base",
+    "DevOps/Docker.md",
     "MGT_8803/Week 2- Classification and Measurement.pdf",
     "Finance/Week 2- Classification and Measurement.pdf",
     "Finance/Week 1- Introduction to Financial Accounting.pdf",
@@ -301,7 +304,6 @@
     "MGT_8803/Financial Accounting.md",
     "LeetCode/Binary Search",
     "LeetCode",
-    "System_Design/Accommodation Booking System.md",
     "System_Design/Shein_Recommendation_System.md",
     "System_Design/Recommendation_System_System_Design.md",
     "System_Design/File Storage System.md",
@@ -316,13 +318,9 @@
     "Formulae's for Series, Taylor Series & Maclaurin Series.md",
     "Central Limit Theorem.md",
     "Calculus.md",
-    "Action-Plan.md",
     "Anomaly Detection Algorithms.md",
     "Annotation Agreement.md",
     "AGENTS.md",
-    "Advanced Pandas.md",
-    "Adam Optimizer.md",
-    "Action Plan.base",
     "Research_Paper/pytorch2_internals.pdf",
     "Research_Paper/Databases.pdf",
     "Attachements/Agoda Search Service - Interview Architecture.png",

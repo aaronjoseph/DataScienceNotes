@@ -38,6 +38,49 @@ $$
 \left\lceil \frac{p}{k} \right\rceil = \left\lfloor \frac{p + k - 1}{k} \right\rfloor
 $$
 
+#### Why the Integer Ceiling Works
+
+Integer division rounds **down**. Adding $k - 1$ first pushes any value with a remainder past the next multiple of $k$, but never pushes an exact multiple past it. Write $p$ as a quotient $q$ and remainder $r$:
+
+$$
+p = qk + r, \qquad 0 \le r < k
+$$
+
+Then:
+
+$$
+p + k - 1 = qk + (r + k - 1)
+$$
+
+- **Case $r = 0$:** the extra part is $k - 1 < k$, so the floor is $q$, which equals the ceiling.
+- **Case $1 \le r \le k - 1$:** the extra part lies between $k$ and $2k - 2$, so it adds exactly 1 and the floor is $q + 1$, which equals the ceiling.
+
+**Check with k = 4:**
+
+$$
+p = 8: \quad \left\lfloor \frac{11}{4} \right\rfloor = 2
+$$
+
+$$
+p = 9: \quad \left\lfloor \frac{12}{4} \right\rfloor = 3
+$$
+
+$$
+p = 11: \quad \left\lfloor \frac{14}{4} \right\rfloor = 3
+$$
+
+Each matches $8/4 = 2$, $9/4 = 2.25 \to 3$ and $11/4 = 2.75 \to 3$.
+
+**Why not `math.ceil(p / k)`?** A 64-bit float represents integers exactly only up to $2^{53}$, so for very large values the division can be slightly off and the ceiling wrong by one. Koko's limits ($p \le 10^9$) are safe with floats, but the integer form is safe everywhere and avoids casts in Rust. Equivalent idioms, both assuming $p \ge 0$ and $k > 0$:
+
+```python
+-(-p // k)
+```
+
+```rust
+let hours = (p as u64).div_ceil(k as u64);
+```
+
 ### Monotonicity
 
 A faster speed never needs more hours, so feasibility looks like this as $k$ increases:
@@ -84,6 +127,57 @@ $$
 $$
 
 At k = 4 she needs 8 hours, which fits; at k = 3 she needs 10, which does not. The answer is **4**.
+
+### Iteration Trace
+
+The Python solution below, run by hand on the same input. It starts with `lo = 1` and `hi = max(piles) = 11`.
+
+**Iteration 1: range 1–11.**
+
+$$
+\text{mid} = \left\lfloor \frac{1 + 11}{2} \right\rfloor = 6, \qquad \text{hours}(6) = 1 + 1 + 2 + 2 = 6
+$$
+
+6 ≤ 8, so speed 6 works; keep it and look lower: `hi = 6`.
+
+**Iteration 2: range 1–6.**
+
+$$
+\text{mid} = \left\lfloor \frac{1 + 6}{2} \right\rfloor = 3, \qquad \text{hours}(3) = 1 + 2 + 3 + 4 = 10
+$$
+
+10 > 8, so 3 and everything below it is too slow: `lo = 4`.
+
+**Iteration 3: range 4–6.**
+
+$$
+\text{mid} = \left\lfloor \frac{4 + 6}{2} \right\rfloor = 5, \qquad \text{hours}(5) = 1 + 2 + 2 + 3 = 8
+$$
+
+8 ≤ 8, so 5 works, but a smaller speed might too: `hi = 5`.
+
+**Iteration 4: range 4–5.**
+
+$$
+\text{mid} = \left\lfloor \frac{4 + 5}{2} \right\rfloor = 4, \qquad \text{hours}(4) = 1 + 2 + 2 + 3 = 8
+$$
+
+8 ≤ 8, so 4 works: `hi = 4`.
+
+**End:** `lo = hi = 4`, so the loop stops and returns 4.
+
+| Iter | lo | hi | mid | hours(mid) | ≤ 8? | Update |
+|---|---|---|---|---|---|---|
+| 1 | 1 | 11 | 6 | 6 | Yes | hi = 6 |
+| 2 | 1 | 6 | 3 | 10 | No | lo = 4 |
+| 3 | 4 | 6 | 5 | 8 | Yes | hi = 5 |
+| 4 | 4 | 5 | 4 | 8 | Yes | hi = 4 |
+| End | 4 | 4 | — | — | — | return 4 |
+
+- The candidate range shrinks 11 → 6 → 3 → 2 → 1, about $\log_2 11 \approx 4$ iterations.
+- `hi = mid` keeps a working speed because it may be the answer, as speed 4 was in iteration 4.
+- `lo = mid + 1` is safe because a failing speed can never be the answer.
+- Speeds 5 and 4 both need 8 hours; the search continues past 5 because it wants the **smallest** working speed.
 
 ## Python
 

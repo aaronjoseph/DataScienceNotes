@@ -15,3 +15,5 @@ $$P(B|A) = \frac{P({B\cap A})}{P(A)}$$
 $$P({A\cap B})=P({B\cap A})=P(A|B)*P(B)=P(B|A)*P(A)$$
 $$P(A|B)=\frac{P(B|A)*P(A)}{P(B)}  [Bayes Formulae]$$
 
+Naive Bayes is a generative classifier. [[Discriminative and Generative Models]] compares it with [[Logistic Regression]] and works through how its independence assumption inflates probabilities.
+
