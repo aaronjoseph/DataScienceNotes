@@ -17,7 +17,7 @@ Stay within the requested scope: improving one note does not authorise reorganis
 ## Vault layout
 
 - Most root notes cover statistics, mathematics, machine learning, NLP, deep learning, MLOps, programming, and data engineering.
-- Topic folders include `SQL/`, `GCP/`, `AWS/`, `DevOps/`, `Finance/`, `Vim/`, `Research_Paper/`, `System_Design/`, `Job Interviews/`, `MGT_8803/`, and `ISYE_6501/`.
+- Topic folders include `SQL/`, `GCP/`, `Finance/`, `Vim/`, `Research_Paper/`, `System_Design/`, and `Job Interviews/`.
 - Notes range from link-only stubs and `TODO:` items to derivations, command tables, study plans, and long explanations. Match the structure to the note's purpose.
 - Obsidian creates new notes at the vault root and stores new attachments in `Attachements/`; preserve that exact spelling. Older attachments also occur in nested folders.
 - Excalidraw drawings occur in `Excalidraw/` and `System_Design/`. Identify them by `excalidraw-plugin` frontmatter or drawing payload, not by the `.md` extension or folder alone.
@@ -59,6 +59,7 @@ The owner is a search engineer strengthening fundamentals. `Search Engineering.m
 - Obsidian shows the filename as the inline title, so do not open the body with a `#` heading that repeats it; start with a concise lead or the first meaningful `##` section. Keep a body `#` heading only when it adds a distinct title. Before removing a duplicate heading from an existing note, check that no links target it.
 - Use meaningful `##` and `###` headings for new or substantially rewritten notes. Small edits need not reformat the whole file.
 - Lead with a plain-language explanation, then develop intuition, mechanics, examples, assumptions, and limitations as appropriate.
+- For an introductory or "easy to digest" note, explain the core idea with one small running example before adding a taxonomy or implementation detail. Keep the first read self-contained; link to advanced material rather than reproducing a long source article's outline.
 - Expand acronyms on first use where helpful, and distinguish related concepts instead of treating similar names as interchangeable.
 - Preserve useful examples, personal context, and learning goals. Never invent personal experiences, interview answers, achievements, or financial holdings.
 - Remove repetition within the edited scope. Do not pad short notes with empty sections or generic introductions; short definitions may stay short.
@@ -69,6 +70,7 @@ The owner is a search engineer strengthening fundamentals. `Search Engineering.m
 - Research substantive factual additions and explicit research requests. Pure formatting or link maintenance does not need new research.
 - Prefer original papers, official documentation, standards, and authoritative educational material. Use tutorials as supporting explanations, not as proof of universal claims.
 - Open and read a source before attributing a claim to it. Never invent URLs, citations, quotations, paper findings, or verification results. If a source is inaccessible, state what remains unverified.
+- When a user supplies a reference, use it as the starting point and credit its named author, who may differ from the site's owner. Label original examples as illustrative, and source material additions that the reference does not cover.
 - Distinguish established facts, intuition, the author's interpretation, and source-specific results. Do not turn heuristics into universal rules.
 - Check current documentation for changing APIs, cloud services, product availability, and pricing; record the version or verification date when it materially affects the note.
 - **Mathematics and statistics:** Define notation and assumptions; check denominators, dimensions, and edge cases.
