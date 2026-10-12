@@ -11,14 +11,28 @@
             "id": "f83204f29c4aeda6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "copilot/skills/copilot-read-pdf/SKILL.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Job Interviews/Coding Practice Index.md",
+                "bFile": "Job Interviews/Coding Practice Index.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "SKILL"
+              "icon": "diff",
+              "title": "Diff: Coding Practice Index  (Working Tree)"
+            }
+          },
+          {
+            "id": "a5e8ffb0f762e29b",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/",
+                "title": "Remove Nth Node From End of List - LeetCode",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Remove Nth Node From End of List - LeetCode"
             }
           },
           {
@@ -121,7 +135,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "copilot/skills/copilot-read-pdf/SKILL.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -172,7 +185,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "copilot/skills/copilot-read-pdf/SKILL.md",
+                "file": "System_Design/Vector Database.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -224,13 +237,43 @@
               "icon": "copilot-agent",
               "title": "Copilot Agent"
             }
+          },
+          {
+            "id": "c652f5b2124b6874",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6af2b13e086afe8f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Python Internals.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
           }
         ],
         "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 352.5
+    "width": 536.28125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -249,13 +292,26 @@
   },
   "active": "f83204f29c4aeda6",
   "lastOpenFiles": [
+    "CLAUDE.md",
+    "copilot/copilot-conversations/agent__update_this_kmeans_notes_also_use_the_AGENTS_format_can@20261006_114932.md",
+    "copilot/copilot-conversations/agent__Can_you_help_make_the_sidebar_on_the_right_more@20261001_232745.md",
+    "Python Internals.md",
+    "Action-Plan Kanban.md",
+    "Action-Plan.md",
+    "K Means.md",
+    "Search2.0 architecture.md",
+    "System_Design/Vector Database.md",
+    "System_Design/Recommendation_System_System_Design.md",
+    "System_Design/Web Application Scaling.md",
+    "Action Plan.base",
+    "Job Interviews/Coding Practice Index.md",
+    "AB Testing.md",
+    "MLE Study Prep.md",
+    "System_Design/File Storage System.md",
+    "copilot/skills/copilot-read-pdf/SKILL.md",
     "copilot/skills/copilot-fetch-x/SKILL.md",
     "copilot/skills/openartifacts-publish/SKILL.md",
-    "Job Interviews/Coding Practice Index.md",
-    "CLAUDE.md",
     "copilot/skills/obsidian-markdown/references/CALLOUTS.md",
-    "copilot/copilot-conversations/agent__Can_you_help_make_the_sidebar_on_the_right_more@20261001_232745.md",
-    "Action-Plan.md",
     "copilot/copilot-conversations/attachments/copilot-image-788c0a1676c335a53b5a3119dcf0f7b200d8bd379435cd38b3c5d2c32f96ef5f.png",
     "LeetCode/Binary Search/Koko Eating Bananas.md",
     "copilot/copilot-conversations/attachments",
@@ -273,19 +329,6 @@
     "copilot/skills/obsidian-bases/references/EXAMPLES.md",
     "copilot/skills/obsidian-bases/references/FUNCTIONS_REFERENCE.md",
     "copilot/skills/obsidian-bases/references",
-    "copilot/skills/obsidian-bases",
-    "copilot/skills/obsidian-markdown/SKILL.md",
-    "copilot/skills/obsidian-markdown/references/PROPERTIES.md",
-    "copilot/skills/obsidian-markdown/references/EMBEDS.md",
-    "copilot/skills/openartifacts-publish/themes/research-memo.md",
-    "copilot/skills/copilot-youtube-transcript/SKILL.md",
-    "copilot/skills/copilot-read-pdf/SKILL.md",
-    "copilot/skills/copilot-web-fetch/SKILL.md",
-    "copilot/skills/copilot-web-search/SKILL.md",
-    "Job Interviews/Interview Study Board.md",
-    "Research_Paper/Attention is not all you need.md",
-    "Research_Paper/Untitled Kanban.md",
-    "Research_Paper/Deep and confident predictions for Time Series at Uber.md",
     "Attachements/Agoda Search Service - Interview Architecture.png",
     "Attachements/Masked_SA&SA.png",
     "Attachements/Transformers.png",

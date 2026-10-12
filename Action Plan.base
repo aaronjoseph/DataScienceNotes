@@ -1,3 +1,5 @@
+# Search-note reading catalogue; task progress lives in Action-Plan Kanban.md.
+# Curated role views identify reading material, not reviewed content or readiness.
 filters:
   and:
     - file.hasTag("search-eng")
@@ -39,11 +41,102 @@ views:
   - type: table
     name: Missing classification
     filters:
-      or:
-        - "!note.search_stage"
-        - "!note.note_type"
+      and:
+        - 'note.note_type != "career_plan"'
+        - or:
+            - "!note.search_stage"
+            - "!note.note_type"
     order:
       - file.name
       - search_stage
       - note_type
       - file.tags
+  - type: table
+    name: Databricks Start Here
+    filters:
+      or:
+      - file.name == "Action-Plan"
+      - file.name == "Search Engineering"
+      - file.name == "Search Architecture"
+      - file.name == "Query Understanding"
+      - file.name == "Learning to Rank"
+      - file.name == "Search Evaluation"
+      - file.name == "LLM Evaluation"
+    order:
+    - file.name
+    - search_stage
+    - note_type
+    - file.mtime
+  - type: table
+    name: Databricks Query Understanding
+    filters:
+      or:
+      - file.name == "Query Understanding"
+      - file.name == "Query Intent Classification"
+      - file.name == "Named Entity Recognition"
+      - file.name == "Tokenization"
+      - file.name == "NLP Basic Terminology"
+      - file.name == "Levenshtein Distance"
+      - file.name == "Structured Outputs"
+    order:
+    - file.name
+    - search_stage
+    - note_type
+    - file.mtime
+  - type: table
+    name: Databricks Retrieval and Ranking
+    filters:
+      or:
+      - file.name == "BM25"
+      - file.name == "Dense Retrieval"
+      - file.name == "Hybrid Retrieval"
+      - file.name == "Candidate Generation"
+      - file.name == "Learning to Rank"
+      - file.name == "Cross-Encoder"
+      - file.name == "Search Ranking"
+      - file.name == "Search Result Diversification"
+      - file.name == "Click Bias"
+      - file.name == "Data Leakage"
+    order:
+    - file.name
+    - search_stage
+    - note_type
+    - file.mtime
+  - type: table
+    name: Databricks Evaluation and Experiments
+    filters:
+      or:
+      - file.name == "Judgement List"
+      - file.name == "Relevance Pooling"
+      - file.name == "Annotation Agreement"
+      - file.name == "Search Evaluation"
+      - file.name == "NDCG"
+      - file.name == "Confidence Interval"
+      - file.name == "AB Testing"
+      - file.name == "Interleaving"
+      - file.name == "Product Metrics"
+      - file.name == "LLM Evaluation"
+    order:
+    - file.name
+    - search_stage
+    - note_type
+    - file.mtime
+  - type: table
+    name: Databricks Pipelines and Serving
+    filters:
+      or:
+      - file.name == "ML Pipelines"
+      - file.name == "Experiment Tracking"
+      - file.name == "Index Updates"
+      - file.name == "Filtered Vector Search"
+      - file.name == "Search Caching"
+      - file.name == "Tail Latency"
+      - file.name == "Database Sharding"
+      - file.name == "Monitoring - MLOPS"
+      - file.name == "Shadow Deployment"
+      - file.name == "Feature Engineering"
+    order:
+    - file.name
+    - search_stage
+    - note_type
+    - file.mtime

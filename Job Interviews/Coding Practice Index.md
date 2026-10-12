@@ -3,7 +3,7 @@ tags:
   - career
 ---
 
-Problem launch list for [[Interview Study Board]], supporting [[Action-Plan]]. Track status only on the board. Its cards link to the stable block identifiers below, so moving a card does not change its problem destination.
+Problem launch list for [[Action-Plan Kanban]], supporting [[Action-Plan]]. Track status only on the board. Its cards link to the stable block identifiers below, so moving a card does not change its problem destination.
 
 The 75 entries are the `blind75` subset of NeetCode’s public dataset, retrieved on 1 October 2026. Difficulty and pattern labels reflect that source. Some destinations may require an account or paid access; use the NeetCode practice list for its available practice options. Each URL uses the source dataset’s problem slug; individual page availability was not exhaustively checked.
 
