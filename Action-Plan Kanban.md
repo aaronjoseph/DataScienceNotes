@@ -1,26 +1,8 @@
 ---
+
 kanban-plugin: board
+
 ---
-
-## This Week
-
-- [ ] **DB01 · P0** — [[Action-Plan#Role Fit and Evidence Audit|Audit role fit and real evidence]]
-	Output: education/experience, search launches, LLM relevance, leadership, open-source evidence; keep unknowns unassessed.
-- [ ] **DB02 · P0** — [[Action-Plan#Role Fit and Evidence Audit|Select the two largest role gaps]]
-	Output: requirement scorecard and next outputs; note coverage does not prove mastery.
-
-
-## In Progress
-
-
-## Review
-
-
-## Done
-
-- [x] **V1 · Ch 01** — [[System_Design/Web Application Scaling|Scaling from a single server]]
-	Related: [[Horizontal & Vertical Scaling]] @{2026-10-01}
-
 
 ## Coding Backlog
 
@@ -178,6 +160,8 @@ kanban-plugin: board
 
 ## System Design Backlog
 
+- [x] **V1 · Ch 01** — [[System_Design/Web Application Scaling|Scaling from a single server]]
+	Related: [[Horizontal & Vertical Scaling]] @{2026-10-01}
 - [ ] **V1 · Ch 02** — Capacity estimation
 - [ ] **V1 · Ch 03** — Interview structure
 - [ ] **V1 · Ch 04** — Rate limiting
@@ -215,6 +199,10 @@ kanban-plugin: board
 
 ## Databricks Backlog
 
+- [ ] **DB01 · P0** — [[Action-Plan#Role Fit and Evidence Audit|Audit role fit and real evidence]]
+	Output: education/experience, search launches, LLM relevance, leadership, open-source evidence; keep unknowns unassessed.
+- [ ] **DB02 · P0** — [[Action-Plan#Role Fit and Evidence Audit|Select the two largest role gaps]]
+	Output: requirement scorecard and next outputs; note coverage does not prove mastery.
 - [ ] **DB03 · P0** — [[Action-Plan#Asset Corpus and Search Contract|Build a bounded multi-asset corpus]]
 	Output: 100–300 public/synthetic assets; stable IDs, type-specific fields, permissions and versions.
 - [ ] **DB04 · P0** — [[Action-Plan#Asset Corpus and Search Contract|Define the asset-search contract]]
@@ -253,6 +241,50 @@ kanban-plugin: board
 	Output: Pipeline and first-divergence diagnosis; LLM/eval trade-offs, feedback and application evidence packet.
 
 
+## LinkedIn Backlog
+
+- [ ] **LI01 · P0** — [[Action-Plan#LinkedIn Fit and Product Scope|Audit production AI experience and role fit]]
+	Output: dated 8+ software / 2+ production AI evidence, personal ownership, education and hybrid fit; unknowns stay unassessed.
+- [ ] **LI02 · P0** — [[Action-Plan#LinkedIn Fit and Product Scope|Scope a skills-to-learning assistant]]
+	Output: user/task brief, product success measures, data access, failure/clarification behaviour and bounded scope.
+- [ ] **LI03 · P0** — [[Action-Plan#Skills Evidence and Learning Data|Define the skills and learning-data contract]]
+	Output: Skill IDs, profile evidence, prerequisites, role/course provenance and synthetic scenario labels.
+- [ ] **LI04 · P0** — [[Action-Plan#Production RAG Design|Compare ingestion and chunking choices]]
+	Output: Two rules, same corpus; source/permission metadata, update handling and versioned indexes.
+- [ ] **LI05 · P0** — [[Action-Plan#Production RAG Design|Benchmark retrieval for learning evidence]]
+	Output: Lexical/dense/hybrid plus reranker; labelled passages/courses, constraints and empty results.
+- [ ] **LI06 · P0** — [[Action-Plan#Production RAG Design|Evaluate grounded learning plans]]
+	Output: Citations, prerequisite/time fit, completeness and abstention; retrieval versus generation failures.
+- [ ] **LI07 · P0** — [[Action-Plan#Tool Contracts and Agent Execution|Implement validated tool contracts]]
+	Output: Profile/search/constraint tools; trusted tenant identity, schemas, errors and authorisation.
+- [ ] **LI08 · P0** — [[Action-Plan#Tool Contracts and Agent Execution|Compare a bounded agent with a fixed workflow]]
+	Output: State, dynamic tool choice, termination/budgets and paired task-quality/cost/latency.
+- [ ] **LI09 · P0** — [[Action-Plan#Tool Contracts and Agent Execution|Demonstrate agent recovery]]
+	Output: Durable state, pause/resume, stale permissions, cancellation, tool failures and idempotency.
+- [ ] **LI10 · P0** — [[Action-Plan#Prompt Engineering and Release Management|Version evaluate and release prompts]]
+	Output: Controlled prompt comparison, run manifest, owner/review, promotion and rollback.
+- [ ] **LI11 · P0** — [[Action-Plan#Model and Agent Evaluation|Build task and component regression evals]]
+	Output: Held-out tasks, explicit metric units, stochastic repeats, failure denominators and release gate.
+- [ ] **LI12 · P0** — [[Action-Plan#Model and Agent Evaluation|Audit model judges and human review]]
+	Output: Independent human subset, rubric, disagreements, injection/order bias and escalation.
+- [ ] **LI13 · P0** — [[Action-Plan#Model and Agent Evaluation|Design an online learning-product experiment]]
+	Output: Success/proxy distinction, assignment/exposure, power inputs, guardrails and rollback.
+- [ ] **LI14 · P0** — [[Action-Plan#Observability and Production Engineering|Trace retrieval model and tool execution]]
+	Output: Correlated IDs, versions, latency/tokens/errors, redaction and trace-guided diagnosis.
+- [ ] **LI15 · P0** — [[Action-Plan#Observability and Production Engineering|Demonstrate reliable backend operation]]
+	Output: APIs, quotas/backpressure, concurrency, outage/recovery, workload and compatible rollback.
+- [ ] **LI16 · P0** — [[Action-Plan#Model Strategy and AI Infrastructure|Compare model choices]]
+	Output: Held-out task quality, tool reliability, latency/cost and provider constraints; unknown results stay TODO.
+- [ ] **LI17 · P1** — [[Action-Plan#Model Strategy and AI Infrastructure|Decide prompting versus fine-tuning]]
+	Output: Error diagnosis, data/split/eval feasibility and maintenance; actual training only if justified.
+- [ ] **LI18 · P0** — [[Action-Plan#Model Strategy and AI Infrastructure|Evaluate build versus buy]]
+	Output: Infrastructure matrix: fit, operations, privacy, workload cost, portability and exit path.
+- [ ] **LI19 · P0** — [[Action-Plan#Staff Direction and Interview Evidence|Prepare AI standards and Staff evidence]]
+	Output: Product/technical roadmap, prompt/eval/tool standards, real mentoring/adoption and ecosystem judgment.
+- [ ] **LI20 · P0** — [[Action-Plan#Staff Direction and Interview Evidence|Run an applied AI mock and package evidence]]
+	Output: RAG/agent/model/distributed-system trade-offs, failed-plan diagnosis, honest production timeline and feedback.
+
+
 ## System Design Architecture
 
 - [ ] [[Accommodation Booking System]]
@@ -269,6 +301,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false,false,false],"show-checkboxes":true}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false],"show-checkboxes":true}
 ```
 %%

@@ -1,5 +1,3 @@
-# Search-note reading catalogue; task progress lives in Action-Plan Kanban.md.
-# Curated role views identify reading material, not reviewed content or readiness.
 filters:
   and:
     - file.hasTag("search-eng")
@@ -42,7 +40,7 @@ views:
     name: Missing classification
     filters:
       and:
-        - 'note.note_type != "career_plan"'
+        - note.note_type != "career_plan"
         - or:
             - "!note.search_stage"
             - "!note.note_type"
@@ -55,88 +53,155 @@ views:
     name: Databricks Start Here
     filters:
       or:
-      - file.name == "Action-Plan"
-      - file.name == "Search Engineering"
-      - file.name == "Search Architecture"
-      - file.name == "Query Understanding"
-      - file.name == "Learning to Rank"
-      - file.name == "Search Evaluation"
-      - file.name == "LLM Evaluation"
+        - file.name == "Action-Plan"
+        - file.name == "Search Engineering"
+        - file.name == "Search Architecture"
+        - file.name == "Query Understanding"
+        - file.name == "Learning to Rank"
+        - file.name == "Search Evaluation"
+        - file.name == "LLM Evaluation"
     order:
-    - file.name
-    - search_stage
-    - note_type
-    - file.mtime
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
   - type: table
     name: Databricks Query Understanding
     filters:
       or:
-      - file.name == "Query Understanding"
-      - file.name == "Query Intent Classification"
-      - file.name == "Named Entity Recognition"
-      - file.name == "Tokenization"
-      - file.name == "NLP Basic Terminology"
-      - file.name == "Levenshtein Distance"
-      - file.name == "Structured Outputs"
+        - file.name == "Query Understanding"
+        - file.name == "Query Intent Classification"
+        - file.name == "Named Entity Recognition"
+        - file.name == "Tokenization"
+        - file.name == "NLP Basic Terminology"
+        - file.name == "Levenshtein Distance"
+        - file.name == "Structured Outputs"
     order:
-    - file.name
-    - search_stage
-    - note_type
-    - file.mtime
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
   - type: table
     name: Databricks Retrieval and Ranking
     filters:
       or:
-      - file.name == "BM25"
-      - file.name == "Dense Retrieval"
-      - file.name == "Hybrid Retrieval"
-      - file.name == "Candidate Generation"
-      - file.name == "Learning to Rank"
-      - file.name == "Cross-Encoder"
-      - file.name == "Search Ranking"
-      - file.name == "Search Result Diversification"
-      - file.name == "Click Bias"
-      - file.name == "Data Leakage"
+        - file.name == "BM25"
+        - file.name == "Dense Retrieval"
+        - file.name == "Hybrid Retrieval"
+        - file.name == "Candidate Generation"
+        - file.name == "Learning to Rank"
+        - file.name == "Cross-Encoder"
+        - file.name == "Search Ranking"
+        - file.name == "Search Result Diversification"
+        - file.name == "Click Bias"
+        - file.name == "Data Leakage"
     order:
-    - file.name
-    - search_stage
-    - note_type
-    - file.mtime
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
   - type: table
     name: Databricks Evaluation and Experiments
     filters:
       or:
-      - file.name == "Judgement List"
-      - file.name == "Relevance Pooling"
-      - file.name == "Annotation Agreement"
-      - file.name == "Search Evaluation"
-      - file.name == "NDCG"
-      - file.name == "Confidence Interval"
-      - file.name == "AB Testing"
-      - file.name == "Interleaving"
-      - file.name == "Product Metrics"
-      - file.name == "LLM Evaluation"
+        - file.name == "Judgement List"
+        - file.name == "Relevance Pooling"
+        - file.name == "Annotation Agreement"
+        - file.name == "Search Evaluation"
+        - file.name == "NDCG"
+        - file.name == "Confidence Interval"
+        - file.name == "AB Testing"
+        - file.name == "Interleaving"
+        - file.name == "Product Metrics"
+        - file.name == "LLM Evaluation"
     order:
-    - file.name
-    - search_stage
-    - note_type
-    - file.mtime
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
   - type: table
     name: Databricks Pipelines and Serving
     filters:
       or:
-      - file.name == "ML Pipelines"
-      - file.name == "Experiment Tracking"
-      - file.name == "Index Updates"
-      - file.name == "Filtered Vector Search"
-      - file.name == "Search Caching"
-      - file.name == "Tail Latency"
-      - file.name == "Database Sharding"
-      - file.name == "Monitoring - MLOPS"
-      - file.name == "Shadow Deployment"
-      - file.name == "Feature Engineering"
+        - file.name == "ML Pipelines"
+        - file.name == "Experiment Tracking"
+        - file.name == "Index Updates"
+        - file.name == "Filtered Vector Search"
+        - file.name == "Search Caching"
+        - file.name == "Tail Latency"
+        - file.name == "Database Sharding"
+        - file.name == "Monitoring - MLOPS"
+        - file.name == "Shadow Deployment"
+        - file.name == "Feature Engineering"
     order:
-    - file.name
-    - search_stage
-    - note_type
-    - file.mtime
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
+  - type: table
+    name: LinkedIn Start Here
+    filters:
+      or:
+        - file.name == "Action-Plan"
+        - file.name == "Retrieval-Augmented Generation"
+        - file.name == "Tool Calling"
+        - file.name == "Multi-Agent Systems"
+        - file.name == "LLM Evaluation"
+        - file.name == "Structured Outputs"
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
+  - type: table
+    name: LinkedIn RAG and Retrieval
+    filters:
+      or:
+        - file.name == "Retrieval-Augmented Generation"
+        - file.name == "Hybrid Retrieval"
+        - file.name == "Dense Retrieval"
+        - file.name == "Cross-Encoder"
+        - file.name == "Filtered Vector Search"
+        - file.name == "Index Updates"
+        - file.name == "Search Evaluation"
+        - file.name == "Embeddings"
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
+  - type: table
+    name: LinkedIn Agents Prompts and Evaluation
+    filters:
+      or:
+        - file.name == "Tool Calling"
+        - file.name == "Multi-Agent Systems"
+        - file.name == "Structured Outputs"
+        - file.name == "Prompt Injection"
+        - file.name == "LLM Evaluation"
+        - file.name == "Annotation Agreement"
+        - file.name == "AB Testing"
+        - file.name == "Product Metrics"
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime
+  - type: table
+    name: LinkedIn Production Foundations
+    filters:
+      or:
+        - file.name == "Search Architecture"
+        - file.name == "ML Pipelines"
+        - file.name == "Experiment Tracking"
+        - file.name == "Search Caching"
+        - file.name == "Tail Latency"
+        - file.name == "Monitoring - MLOPS"
+        - file.name == "Canary Deployment"
+        - file.name == "Shadow Deployment"
+        - file.name == "Database Sharding"
+    order:
+      - file.name
+      - search_stage
+      - note_type
+      - file.mtime

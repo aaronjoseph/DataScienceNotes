@@ -16,19 +16,19 @@ This is the implementation companion to [[Search Architecture]], linked from [[S
 
 **Evidence boundary:** this note describes executable source and checked-in configuration. It does not certify a running deployment, current cache contents, model quality, or complete Python/Rust parity. The repository's knowledge bundle is a navigation aid; where older prose or comments disagree with executable code, this note follows the code. Upstream catalogue ingestion, model training, and index publishing are dependencies of serving, not audited pipelines in this review.[^map]
 
-| Read this section | To understand |
-|---|---|
-| [[#System Boundary and Responsibilities]] | What runs inside Rust and what remains remote |
-| [[#Startup and Shared State]] | What must exist before the service accepts requests |
-| [[#End-to-End Request Flow]] | The sequence from HTTP input to response |
-| [[#Query Understanding and Filters]] | How entities become routing and retrieval constraints |
-| [[#Recall and Candidate Expansion]] | Dense/sparse tiers, merging, and parent-to-SKU expansion |
-| [[#Reranking and Final Ordering]] | ESCI, engagement features, ONNX, availability, and grouping |
-| [[#Alternative Request Paths]] | Lookup, multiple type groups, and more-like-this |
-| [[#Failures and Fallbacks]] | Errors, graceful broadening, and degraded success |
-| [[#Observability and Diagnosis]] | How to locate the first divergence |
-| [[#Deployment and Runtime Lifecycle]] | Image build, deployment handoff, probes, and shutdown |
-| [[#Known Gaps and Review Questions]] | What remains incomplete or needs live verification |
+| Read this section                         | To understand                                               |
+| ----------------------------------------- | ----------------------------------------------------------- |
+| [[#System Boundary and Responsibilities]] | What runs inside Rust and what remains remote               |
+| [[#Startup and Shared State]]             | What must exist before the service accepts requests         |
+| [[#End-to-End Request Flow]]              | The sequence from HTTP input to response                    |
+| [[#Query Understanding and Filters]]      | How entities become routing and retrieval constraints       |
+| [[#Recall and Candidate Expansion]]       | Dense/sparse tiers, merging, and parent-to-SKU expansion    |
+| [[#Reranking and Final Ordering]]         | ESCI, engagement features, ONNX, availability, and grouping |
+| [[#Alternative Request Paths]]            | Lookup, multiple type groups, and more-like-this            |
+| [[#Failures and Fallbacks]]               | Errors, graceful broadening, and degraded success           |
+| [[#Observability and Diagnosis]]          | How to locate the first divergence                          |
+| [[#Deployment and Runtime Lifecycle]]     | Image build, deployment handoff, probes, and shutdown       |
+| [[#Known Gaps and Review Questions]]      | What remains incomplete or needs live verification          |
 
 ## System Boundary and Responsibilities
 

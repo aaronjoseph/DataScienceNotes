@@ -1,7 +1,7 @@
 ---
 note_type: career_plan
-role_target: Senior / Staff Machine Learning Engineer
-market_scope: India and remote India
+role_target: Senior / Staff Machine Learning and Applied AI Engineer
+market_scope: India, including hybrid and eligible remote roles
 reviewed: 2026-10-12
 tags:
   - career
@@ -15,20 +15,202 @@ tags:
 
 Target **Senior Machine Learning Engineer** and selectively **Staff Machine Learning Engineer** positions at companies building and operating their own products. Prioritise search, relevance, ranking, recommendations, and ML infrastructure where they match your experience. Use [[Search Engineering]], [[Learning to Rank]], and [[System_Design/Design a Personalized Search Recommendation System for Rapido|search system design]] as the technical foundation.
 
+**Current focus:** the supplied LinkedIn Learning Solutions Staff Applied AI role. Use the LinkedIn track below for the immediate queue; retain Databricks Search Quality as a separate target and reuse shared work. RAG, agent workflows, prompt management, and LLM evaluation are core for LinkedIn.
+
 Use the next 12 weeks to assemble convincing evidence of product impact, modelling judgment, experimentation, reliable production systems, and technical leadership. Apply as soon as the relevant evidence is ready. Completing all 104 study cards is not an application prerequisite, and a portfolio alone cannot demonstrate sustained Staff-level organisational impact.
 
 > [!note] Personal evidence still needs an audit
 > The vault suggests a strong search and production-engineering focus. Your years of experience, independently owned launches, measured outcomes, and cross-team influence have not been established here. Treat Senior as the primary preparation track and Staff as a selective track to validate against your actual work, not an automatic level assessment.
 
+## LinkedIn Role Gap Analysis
+
+**Updated 12 October 2026 against the user-supplied LinkedIn Learning Solutions Engineering India Staff Engineer description.** This is the latest preparation focus. The description states hybrid work with office days determined by the team/business; it does not identify the city or a fixed weekly cadence. TODO: verify the exact requisition, location, current availability, and office expectations before applying. This is a preparation interpretation, not a verified LinkedIn interview loop or internal architecture.
+
+The product problem connects skills, learning, career growth, and internal mobility. A useful running example is: “I know SQL and want to move into data engineering. Recommend a learning path that fits three hours a week and explain the missing skills.” A successful system needs trustworthy profile/role evidence, relevant courses, explicit constraints, and an explanation grounded in those records. Finding similar passages is only one stage.
+
+### What transfers and what is missing
+
+The current plan has a strong retrieval/ranking foundation, offline/online search evaluation, pipelines, reliability, and Staff leadership prompts. It also contains a RAG extension and links to [[Retrieval-Augmented Generation]], [[Tool Calling]], [[Multi-Agent Systems]], [[Structured Outputs]], [[Prompt Injection]], and [[LLM Evaluation]]. These are useful foundations; they do not establish shipped agent systems or two years of production LLM work.
+
+Before this update, the Kanban had 20 Databricks tasks plus 104 foundational study cards and four architecture cards. It had no LinkedIn-specific tasks for agent recovery, prompt releases, model selection, or build-versus-buy decisions. The Base had five Databricks reading views and the original three catalogue views. This pass adds a focused LinkedIn track to these same three files; supporting concept notes remain reading material and were not rewritten or fully reverified.
+
+### LinkedIn Requirement Comparison
+
+**Covered/partial/missing describe the written preparation plan, not your professional capability.** Experience and impact remain unassessed until backed by actual examples. P0 means central preparation; P1 means a bounded extension after the foundations, not a reclassification of the employer's qualifications.
+
+| Supplied requirement | Current plan | Next evidence/output | Priority |
+|---|---|---|---|
+| BS in CS/related field or related practical experience | Unassessed | Education/practical-experience record | Fit gate |
+| 8+ years software engineering; 2+ years production applied AI/LLM systems | Unassessed | Dated production ownership and operation history | Fit gate |
+| Multi-step reasoning, tool use, decision-making | Partial: optional tool workflow | Evaluated bounded agent and tool-failure cases | P0 |
+| Production RAG: chunking, embeddings, indexing, retrieval | Covered as optional extension | Make core; compare ingestion/retrieval/context choices | P0 |
+| Systematic prompt engineering | Partial: record prompts/versions | Prompt registry, controlled comparisons, promotion/rollback | P0 |
+| Offline/online model and agent evals | Partial: search and answer evals | Task outcomes, tool checks, human review, regression gates | P0 |
+| Model selection; fine-tuning versus prompting | Partial: model comparison | Decision memo and measured quality/cost/latency frontier | P0 |
+| Build versus buy for AI infrastructure | Missing explicit exercise | Operational and product decision matrix | P0 |
+| Product/data science/infra partnership | Covered broadly | Scoped skills/learning product brief with stakeholder trade-offs | P0 |
+| Staff direction and mentoring | Covered broadly; evidence unassessed | Real adoption/mentoring stories plus reusable AI standards | P0 |
+| LLM observability and tracing | Partial: stage logs/metrics | Correlated retrieval/model/tool traces and incident diagnosis | P0 |
+| Distributed systems, APIs, high-scale products | Covered broadly | Durable state, budgets, concurrency, isolation and failure drill | P0 |
+| Fine-tuning/custom training experience | Missing explicit deliverable | Data/eval feasibility plan; train only if justified | P1 |
+| Prompt/version management and human/LLM review | Partial: supporting notes | Reproducible release manifest and audited judge | P0 |
+| Ecosystem judgment and clear communication | Covered broadly | Evidence-led roadmap review and technical/product explanations | P0 |
+
+The posting puts several capabilities under **Nice to Have**, including shipped agent workflows, RAG depth, prompt management, evaluation systems, and tracing familiarity. Many also appear in **What You'll Do**, so they deserve strong preparation without relabelling them as formal minimum qualifications. Fine-tuning execution is optional; being able to defend fine-tuning versus prompting is a stated responsibility. LangGraph is an example of orchestration, not a mandated framework. A single agent with multiple tools can satisfy the learning exercise; a multi-agent architecture needs its own justification.
+
+**Most important distinction:** a portfolio can demonstrate judgment and implementation skill. It cannot retrospectively provide the stated two years of hands-on production AI/LLM experience. Audit shipped systems, dates, personal ownership, operational responsibility, and outcomes before making that claim.
+
+## LinkedIn Preparation Deliverables
+
+Build one bounded **skills-to-learning assistant** rather than a separate demo for every capability. Use a public or synthetic course catalogue, a small versioned skill vocabulary, role profiles, and synthetic learner profiles. Counts below are suggested exercise sizes, not LinkedIn requirements or statistical guarantees. Existing production work can replace a prototype output when it can be shared appropriately and meets the same evidence need.
+
+### LinkedIn Fit and Product Scope
+
+**LI01 — experience audit:** record software-engineering years and the timeline of production applied AI/LLM work separately. For each relevant system, list launch/operation dates, users/use case, personal decisions, evaluation, incidents, releases, and known impact. Distinguish hosted model integration, traditional ML, RAG, agent orchestration, prototypes, and operated production services. Keep years, outcomes, and education as `TODO: unassessed` until established. Confirm willingness and eligibility for the stated hybrid arrangement.
+
+**LI02 — one-page product brief:** define the user, task, data access, evidence of usefulness, exclusions, failure consequences, and success measures. Scope to skill-gap explanation and a learning-path recommendation, with a small backend/API and simple user flow. The team charter spans web/mobile/backend/data/AI; do not assume this role requires a full mobile app as portfolio work. Ask for missing profile/goals rather than inventing them. Show clarification, evidence-backed recommendations, and insufficient-evidence behaviour.
+
+**Completion:** honest fit scorecard, three real story candidates, and a reviewable product brief. Choose one capability gap and one evidence gap for the first iteration. Missing information in these notes is not proof that the experience is absent.
+
+### Skills Evidence and Learning Data
+
+**LI03 — domain contract:** define stable skill IDs, aliases, hierarchy/prerequisites where supplied, proficiency evidence, target-role requirements, course learning outcomes, availability, duration, language, and source/version. Distinguish a skill self-report from assessed proficiency; completing a course does not by itself prove mastery. Record evidence and uncertainty for any inferred skill rather than silently treating the inference as truth.
+
+Use a small catalogue, for example 50–100 learning items and ten synthetic learner/role scenarios. Choose whether the recommender optimises prerequisite fit, missing-skill coverage, time budget, or another explicit objective; do not collapse these into unexplained similarity scores. Preserve tenant/user access controls and time-sensitive availability. Treat internal job profiles as scoped evidence, not a promise of hiring eligibility or mobility.
+
+**Completion:** versioned data contract and expected examples covering sparse profiles, skill aliases, conflicting requirements, cold-start items, multilingual metadata, and infeasible time budgets. List what a real skills-intelligence product would need beyond this prototype.
+
+### Production RAG Design
+
+Study [[Retrieval-Augmented Generation]], [[Hybrid Retrieval]], [[Dense Retrieval]], [[Cross-Encoder]], [[Filtered Vector Search]], [[Index Updates]], and [[Search Evaluation]].
+
+**LI04 — ingestion/chunking experiment:** preserve document/course/role IDs, section boundaries, source dates, permissions, and chunk provenance. Compare two chunking rules on the same corpus and queries; record token counts, overlap, duplicate evidence, indexing work, and loss of context. Keep structured course duration and prerequisites available to deterministic filters/tools, not only buried in chunks. Record parser/chunker/embedding/index versions and handle changed/deleted content.
+
+**LI05 — retrieval comparison:** evaluate lexical, dense, and hybrid retrieval with one justified reranker. Define relevance at passage/course level, candidate depth, context cutoff, missing judgements, duplicates, filters, and empty results. Measure whether evidence for the claimed skill gap and each recommended course reaches the prompt. Inspect hard-constraint queries and rare skill names separately. Use relevant existing DB07–DB10 artifacts as scaffolding, adapting their evaluation universe to this product.
+
+**LI06 — grounded generation:** assemble a bounded context with source IDs and generate a plan supported by retrieved records and tool results. Check citation existence and support, answer completeness, prerequisite order, time constraints, abstention, and hallucinated courses/skills. Separate retrieval failure from misuse of available evidence. Demonstrate a useful supported answer, an ambiguous request, and a request the corpus cannot answer.
+
+**Completion:** reproducible retrieval/answer comparison and failure report with sources. A citation pointing at a real document does not automatically support the claim. Prototype accuracy and latency measurements must state their workload and cannot establish production scale.
+
+### Tool Contracts and Agent Execution
+
+Study [[Tool Calling]], [[Structured Outputs]], and [[Multi-Agent Systems]]. Framework documentation distinguishes fixed workflows from agents that choose their tool path; use this distinction to explain the design.[^li-patterns]
+
+**LI07 — tools:** define a small set such as `get_skill_profile`, `search_learning_items`, and `check_plan_constraints`. Document schema, trusted user/tenant context, output/provenance, errors, timeout, and permissions. Validate arguments and authorise execution in application code. The model may request a tool; it does not grant itself access. If demonstrating plan saving, use a sandbox, explicit user intent, and an idempotency key; recommend plans without enrolling users or submitting job applications.
+
+**LI08 — bounded agent:** first build a fixed baseline: profile → target-skill comparison → retrieve courses → validate plan → explain. Then implement a single agent that can choose whether to clarify, inspect a profile, search for missing skills, or replan when constraints fail. Compare final outcomes and cost/latency with the baseline. Define state, allowed transitions/tools, maximum iterations, token/time budgets, termination, and partial-result behaviour. Use LangGraph or a custom loop, recording the actual package versions. Do not require a fixed tool sequence when several valid routes produce the correct outcome.
+
+**LI09 — recovery:** demonstrate interruption/resumption, stale state, failed tools, repeated calls, cancellation, budget exhaustion, and human clarification. Store state durably for the recovery exercise and revalidate permissions when resuming. Checkpointing supports recovery but does not by itself guarantee exactly-once side effects; validate idempotency where actions can change state. LangGraph's persistence and interrupts are implementation references if choosing that framework.[^li-persistence][^li-interrupts]
+
+**Completion:** executable loop plus traces of success and failures, a comparison against the fixed workflow, and one recovery drill. Explain why model-directed tool choice helps this task. Agentic workflows are core preparation here; multiple collaborating agents are an optional design choice, not a task-count target.
+
+### Prompt Engineering and Release Management
+
+**LI10 — prompt system:** maintain explicit instructions, variables, tool descriptions, examples, evidence delimiters, response schema, and allowed abstention states. Compare a baseline and one changed prompt on development cases, then check held-out cases. Change one meaningful factor at a time where feasible. Keep error analysis for underspecified inputs, verbosity, missing constraints, and tool-selection mistakes. Do not depend on wording to enforce permissions.
+
+Store a prompt ID/version and owner alongside model/version, generation settings, tool schema, retrieval/chunking versions, dataset, and eval results. Define review, promotion, rollback, and consumer compatibility. Git-backed templates are adequate for this project; a registry is useful when ownership and reuse span use cases. MLflow documents prompt versions and deployment aliases, but mutable model configuration still needs a run-specific snapshot for reproducibility.[^li-prompts]
+
+**Completion:** a prompt comparison report, release manifest, and rollback demonstration. An alias such as production is a routing label, not a reproducible version record. Share failures and compatibility expectations, not just the preferred prompt text.
+
+### Model and Agent Evaluation
+
+Study [[LLM Evaluation]], [[Search Evaluation]], [[Annotation Agreement]], [[Prompt Injection]], [[AB Testing]], and [[Product Metrics]].
+
+**LI11 — offline harness:** start with roughly 30–50 tasks and grow the set as failures appear. Include ordinary, ambiguous, unanswerable, sparse-profile, multi-step, constraint-conflict, multilingual, permission, tool-failure, and adversarial cases. Define expected outcomes and admissible actions, rather than one “gold” tool trace. Separate development/tuning cases from held-out evaluation and preserve profile/user boundaries to avoid leakage.
+
+Measure retrieval evidence coverage, supported claims/citations, recommended-course/prerequisite validity, end-to-end task success, correct and false abstention, schema/tool errors, forbidden actions, latency, tokens, and cost. Specify each unit and denominator: task, claim, citation, or attempted tool call. Failed runs and timeouts stay in the task denominator. Run stochastic cases repeatedly when needed and record variation; one successful trace is insufficient. Establish a release gate and deliberately regress one behaviour. MLflow is one possible dataset/scorer/trace harness; tool choice does not replace the evaluation contract.[^li-evals]
+
+**LI12 — judge and human review:** define a rubric for plan usefulness, evidence support, constraints, and appropriate abstention. Use deterministic checks for IDs, budgets, and authorisation. Assess model judges against an independent human-reviewed subset; inspect disagreement, order bias, fluent but unsupported answers, and injection. Record judge model/prompt/version and escalation rules. Treat single-reviewer or small-sample limitations explicitly. Evaluation labels stay independent of prompt tuning and synthetic training-label generation.
+
+**LI13 — online proposal:** choose an instrumented product objective, such as a learner finding and accepting a useful plan, then define how subsequent learning progress would be assessed. Acceptance/clicks are proxies, not demonstrated skill acquisition or career outcomes. Specify assignment/exposure unit, clustering/interference, sample-ratio checks, power inputs, duration, guardrails, human escalation, and launch/rollback decision. Model quality monitoring is not a causal A/B test. Without live traffic, deliver a proposal and label any simulation accordingly.
+
+**Completion:** repeatable component and end-to-end reports, human/judge audit, caught regression, and an online design. Keep quality, safety, product outcomes, and operating performance separately interpretable.
+
+### Observability and Production Engineering
+
+**LI14 — correlated traces:** trace request/workflow IDs across ingestion/retrieval, context assembly, model calls, tool calls, validation, retries, and final outcome. Attach model/prompt/index/tool versions, elapsed time, tokens where reported, errors, termination reason, and redacted evidence IDs. Define sensitive-data redaction, sampling, retention, and access control. Capture execution events and results needed for diagnosis without indiscriminately storing profiles or private model reasoning. MLflow tracing documents intermediate-step metadata and latency/token monitoring as one implementation option.[^li-tracing]
+
+**LI15 — reliable service:** define typed APIs, synchronous versus queued jobs, streaming versus completed responses, cancellation, authentication, tenant isolation, quotas, bounded concurrency/retries, timeouts, provider rate-limit handling, backpressure, and degraded modes. Separate time to first visible progress from time to a correct completed plan. Keep caches scoped to permissions and versioned inputs; describe update invalidation. Estimate request/model/tool demand using explicit assumptions and measure the prototype under a stated workload.
+
+Demonstrate rollout/rollback of compatible model/prompt/tool/index versions, a provider/tool outage, and a trace-guided diagnosis. Set service-level objectives from product needs, not arbitrary universal latency numbers. Plan state-schema migrations and deletion/retention. A lightweight client is enough to demonstrate useful progress/error/clarification states; UI polish does not replace backend and evaluation evidence.
+
+**Completion:** workload report, trace examples, incident/runbook, rollback and recovery drill. LLM observability is listed as a nice-to-have, but evaluated and observable production operation is also central to the role's description.
+
+### Model Strategy and AI Infrastructure
+
+**LI16 — selection:** compare at least two feasible model/configuration options on the same held-out tasks, tool schemas, context settings, and workload. Capture task quality, tool reliability, structured-output failures, latency distribution, token costs at the recorded price/date, privacy/deployment constraints, and provider failure behaviour. If access permits only one model, retain the second comparison as TODO; do not fabricate results. Defend selective routing only when routing errors and total cost are measured.
+
+**LI17 — prompting versus fine-tuning:** diagnose whether the gap is missing/updating knowledge, retrieval coverage, inconsistent task behaviour, or format/tool reliability. Compare prompt/examples/retrieval changes before choosing a training investment. Prepare data provenance, licence/consent, target behaviour, leakage-safe splits, held-out evals, expected benefit, serving cost, maintenance, and rollback. Fine-tuning/custom training experience is nice-to-have; a feasibility memo can complete this planning task but is not training experience. Execute a bounded training experiment only when justified by available data, budget, and persistent errors, then record a real comparison.
+
+**LI18 — build versus buy:** evaluate model hosting, orchestration, vector retrieval, prompt registry, and eval/tracing components. Compare functional fit, quality, failure control, data handling, operational burden, integration, cost under an explicit workload, portability, and exit path. Include a baseline using existing infrastructure. Explain which capability differentiates the product and which can use managed/open-source tooling. No purchase or deployment is part of updating this plan.
+
+**Completion:** model decision memo, training feasibility decision, and infrastructure matrix linked to measured or explicitly unmeasured evidence. Avoid collecting framework names as a substitute for trade-off reasoning.
+
+### Staff Direction and Interview Evidence
+
+**LI19 — organisational leadership:** write a phased technical/product roadmap for the learning assistant, including dependencies across product, data science, infrastructure, and client teams. Define shared practices for tool contracts, prompt ownership, release manifests, evaluation gates, tracing, and incidents. Prioritise one reusable practice and explain adoption/migration costs. Prepare real examples of mentoring senior/mid-level engineers, resolving disagreement, changing standards, and measurable adoption; keep proposed portfolio standards separate from actual org-wide influence.
+
+Include a short recurring ecosystem review in the normal weekly cadence: choose one relevant advance, compare with the baseline, and recommend adopt, trial, or defer with reasons. This is a manual preparation habit; no automation is created. Explain a quality/cost/latency decision to an engineer and a product manager without relying on unexplained framework terminology.
+
+**LI20 — integrated mock and application packet:** design the assistant from a blank page, then defend chunking/embedding/retrieval, agent-versus-workflow choice, prompts, model strategy, distributed state, evals, and failure handling. Diagnose a case where evidence is retrieved but the plan violates the user's time constraint. Explain why a higher judge score could coincide with worse task success. Practise CS/backend/SQL fundamentals alongside the existing coding and design tracks. These are inferred preparation topics, not a confirmed company interview sequence.
+
+**Completion:** product/design memo, runnable RAG/agent demo, eval/judge report, prompt release record, traces/reliability report, strategy decisions, authentic Staff stories, and mock feedback. Mark every result prototype/production and proposal/executed as appropriate. Verify the requisition and experience fit before tailoring the application.
+
+## LinkedIn Execution Schedule
+
+Select one active company track per weekly queue. The LinkedIn track is active now; Databricks cards remain available. The 12-week phases are checkpoints, not a promise of completion or a way to acquire two years of production experience.
+
+| Phase | Main output | Cards |
+|---|---|---|
+| Weeks 1–2 | Fit, product/data contract, initial eval cases | LI01–03; start LI11 |
+| Weeks 3–4 | Ingestion/retrieval/grounded-answer baseline | LI04–06; start LI10 |
+| Weeks 5–6 | Bounded agent and recovery comparison | LI07–09; extend LI11 |
+| Weeks 7–8 | Prompt release, audited evals, online proposal, traces | LI10–14 |
+| Weeks 9–10 | Reliability and model/infrastructure decisions | LI15–18 |
+| Weeks 11–12 | Staff evidence, integrated mock, application packet | LI19–20 |
+
+Start tracing, reliability contracts, prompt versioning, and leadership evidence early; later phases harden them. At 6–8 hours/week, use approximately 3–4 hours for the project, 1 for coding, 1 for design, and 1–2 for evidence/review, extending the schedule. At 12–15 hours/week, use 6–7 for the project, 2–3 for coding, 2 for design, and 2–3 for evidence/review. Do not add the Databricks project hours on top. Recalibrate after two weeks and keep review time.
+
+### Reuse Shared Work
+
+| Existing work | LinkedIn adaptation |
+|---|---|
+| DB01–02 fit/leadership inventory | LI01: add the explicit production-LLM timeline and hybrid fit |
+| DB03–04 asset/data contract | LI02–04: skills/course/profile provenance and chunking |
+| DB07–10 retrieval/ranking/eval harness | LI05, LI11: course/passage evidence and whole-task outcomes |
+| DB06, DB13–14 LLM experiments/judge audit | LI06, LI10, LI12: answers, tool decisions, prompts, plan rubric |
+| DB12 online proposal | LI13: learning-plan product outcome and experiment unit |
+| DB15–17 pipelines/reliability | LI09, LI14–15: agent state, tool/model failures, correlated traces |
+| DB18–20 leadership/mock | LI18–20: AI infrastructure decisions, standards and mentoring |
+
+Reuse an artifact only after checking the changed task, data contract, evaluation unit, and completion criteria. Keep separate report sections for each role's outcomes. Moving one card to Done does not automatically complete its counterpart. The learning assistant is an adaptation of shared capabilities; the original asset-search benchmark remains documented.
+
+### LinkedIn Evidence Scorecard
+
+| Area | Recorded status | Next artifact |
+|---|---|---|
+| 8+ software years / 2+ production AI years / education | TODO: unassessed | LI01 dated ownership audit |
+| Skills/learning product judgment | TODO: no role-specific artifact recorded | LI02–03 brief and data contract |
+| RAG and grounded answers | TODO: no role-specific comparison recorded | LI04–06 report |
+| Agent tools/state/recovery | TODO: no execution evidence recorded | LI07–09 traces and drill |
+| Prompt practice and evaluations | TODO: no release/judge report recorded | LI10–13 reports |
+| Observability and production scale | TODO: unassessed | LI14–15 workload/incident evidence |
+| Model/training/infrastructure judgment | TODO: unassessed | LI16–18 decisions |
+| Staff standards and mentoring | TODO: unassessed | LI19–20 authentic stories and feedback |
+
+**First queue:** LI01 and LI02 are in This Week. DB01 and DB02 are returned to Databricks Backlog, with their content/status preserved. Add at most one coding/design review task after checking capacity. There are now 20 LI tasks, 20 DB tasks, 104 foundational cards, and four supplementary architecture cards; the single checked chapter remains intact.
+
+**Navigation:** detailed criteria and evidence gaps live here; task progress lives in [[Action-Plan Kanban]]; the LinkedIn views in [[Action Plan.base]] are reading queues, not mastery or card-status reports. Keep supporting notes' unresolved questions visible rather than treating links/tags as completed review.
+
 ## Databricks Role Gap Analysis
 
-**Updated 12 October 2026 against the Applied AI / Staff Engineer Search Quality description supplied in this conversation.** This is the immediate preparation benchmark; retain the broader Senior/Staff strategy below for other applications. The supplied description explicitly mentions a **2025** focus. Its current requisition, location, work model, and vacancy status have not been verified. Company marketing figures and benefits do not change the preparation tasks.
+**Updated 12 October 2026 against the Applied AI / Staff Engineer Search Quality description supplied in this conversation.** This remains the asset-search preparation benchmark; LinkedIn is now the immediate focus, with the broader Senior/Staff strategy retained below. The supplied description explicitly mentions a **2025** focus. Its current requisition, location, work model, and vacancy status have not been verified. Company marketing figures and benefits do not change the preparation tasks.
 
 The role centres on helping users find the right platform asset. For example, `revenue dashboard owned by finance` needs the system to recognise a dashboard intent and owner constraint, retrieve eligible assets, and order them by usefulness. A generic document assistant or a fast vector lookup covers only part of that problem.
 
 ### What exists today
 
-This audit inspected the three requested files and selected supporting notes, not the entire vault or your employment history.
+The original Databricks audit inspected the three requested files and selected supporting notes before the Databricks update, not the entire vault or your employment history. The bullets below retain that audit snapshot.
 
 - **[[Action-Plan]]:** six two-week phases; ML/statistics, Python/SQL, lexical/dense/hybrid retrieval, learning to rank, offline/online experiments, serving reliability, leadership, and an optional RAG extension. It already distinguishes Senior delivery from Staff influence and asks for honest evidence.
 - **[[Action-Plan Kanban]] before this update:** 75 Blind 75 cards, 29 Alex Xu chapter cards, four additional architecture cards, and an empty Interview Pipeline column. One chapter was checked: Volume 1 Chapter 1, dated 1 October 2026. There were no dedicated query-understanding, relevance-evaluation, LLM-ranking, or Staff-evidence cards, and the daily workflow columns described in this plan were absent.
@@ -56,7 +238,7 @@ This audit inspected the three requested files and selected supporting notes, no
 
 The description explicitly requests **LLM experience applied to relevance**. For this benchmark, move it into the core track. Answer generation, agents, and conversational UI remain optional unless the actual job requires them. The “one or more” domain list gives alternatives; the stated experience and contribution signals cannot be replaced by completing a course.
 
-**Preparation priority:** begin with DB01 and DB02 on the board, then complete a small evaluation set and baseline before introducing rewrites or LLM complexity. Run the leadership/evidence audit in parallel. Keep every new task unchecked until its output exists.
+**When activating the Databricks track:** begin with DB01 and DB02 on the board, then complete a small evaluation set and baseline before introducing rewrites or LLM complexity. Run the leadership/evidence audit in parallel. Keep every new task unchecked until its output exists.
 
 ## Databricks Preparation Deliverables
 
@@ -187,7 +369,7 @@ Audit leadership and LLM access in week one; do not wait until their checkpoint 
 
 At **6–8 hours/week**, allocate about 3 hours to the role project, 1–2 to coding, 1 to design, and 1–2 to evidence/review. Reduce new coding/chapter intake to fit and extend the phases. At **12–15 hours/week**, allocate 6–7 to the role project, 2–3 to coding, 2 to design, and 2–3 to evidence/review. These totals replace competing allocations for this track; they are not additional hours. Recalibrate after two weeks using actual effort.
 
-**First queue:** DB01 and DB02 are in This Week. Choose at most one coding card or design chapter after checking capacity. In Progress remains capped at two cards. The prior checked V1 Chapter 1 card is preserved in Done as recorded progress, without re-certifying its learning criteria.
+**Databricks starting queue when reactivated:** pull DB01 and DB02 from Databricks Backlog. The current This Week queue is LI01–LI02. Choose at most one coding card or design chapter after checking capacity. In Progress remains capped at two cards. The prior checked V1 Chapter 1 card is preserved in Done as recorded progress, without re-certifying its learning criteria.
 
 ### Weekly evidence scorecard
 
@@ -243,7 +425,7 @@ The experience figures belong to these specific descriptions, not a universal Se
 
 The recurring signal in the engineering-oriented roles is ownership from product problem through data, models, evaluation, and production. The Staff examples add shared capabilities and technical direction; Senior roles can also require mentoring and architectural influence.[^bloomreach][^intuit][^project44][^atlassian]
 
-**Planning decision:** prioritise ML fundamentals, data quality, learning to rank, experimental reasoning, Python/SQL, and production reliability. Keep generative AI as a role-dependent extension across the broader shortlist; for the supplied Databricks role, direct LLM-to-relevance work is core preparation. For postings that explicitly require shipped LLM systems, record that as a real gap; an optional learning module does not make the requirement optional. Do not pursue every framework or specialised research area mentioned by one employer.
+**Planning decision:** prioritise ML fundamentals, data quality, learning to rank, experimental reasoning, Python/SQL, and production reliability. Keep generative AI as a role-dependent extension across the broader shortlist; direct LLM relevance is core for Databricks, and production RAG/agents/prompts/evaluation are core for LinkedIn. For postings that explicitly require shipped LLM systems, record that as a real gap; an optional learning module does not make the requirement optional. Do not pursue every framework or specialised research area mentioned by one employer.
 
 ## Target role and positioning
 
@@ -282,9 +464,9 @@ Use a truthful version of: “I build and improve production search and ML syste
 
 ## Start here: the study board
 
-Open [[Action-Plan Kanban]] for daily execution. It retains **104 foundational study cards**: NeetCode’s Blind 75 and all **29 chapters** from Alex Xu’s *System Design Interview*, Volumes 1 and 2. It also retains four architecture cards and adds **20 Databricks preparation cards** (DB01–DB20). This note holds the career strategy, workflow, and evidence milestones; the board holds each study item’s current status.
+Open [[Action-Plan Kanban]] for daily execution. It retains **104 foundational study cards**: NeetCode’s Blind 75 and all **29 chapters** from Alex Xu’s *System Design Interview*, Volumes 1 and 2. It also retains four architecture cards, **20 Databricks preparation cards** (DB01–DB20), and **20 LinkedIn preparation cards** (LI01–LI20). This note holds the career strategy, workflow, and evidence milestones; the board holds each study item’s current status.
 
-**First session for the revised track:** start with DB01 and DB02, then select coding/design work within the time budget. The existing checked Volume 1 Chapter 1 card is retained as recorded progress; its mastery has not been independently reassessed.
+**First session for the current LinkedIn track:** start with LI01 and LI02, then select coding/design work within the time budget. The existing checked Volume 1 Chapter 1 card is retained as recorded progress; its mastery has not been independently reassessed.
 
 ### Can Obsidian work like sticky notes?
 
@@ -304,17 +486,18 @@ The existing [[MLE Study Prep]] and [[Job Interviews/Preparation|Preparation]] a
 
 ### Board columns and movement
 
-The daily columns come first; the coding, system-design, and Databricks backlogs sit to their right.
+The daily columns come first; the coding, system-design, Databricks, and LinkedIn backlogs sit to their right.
 
 | Column | Meaning | Rule |
 |---|---|---|
-| This Week | Small queue selected from the backlogs | For Databricks, start with DB01–DB02; add foundational work as capacity allows. |
+| This Week | Small queue selected from the backlogs | For LinkedIn, start with LI01–LI02; add foundational work as capacity allows. |
 | In Progress | Work being actively attempted | At most 2 cards total. |
 | Review | First attempt finished; recall or explanation still needs checking | Add a review date and the specific gap. |
 | Done | Completion criteria below demonstrated | Keep cards visible for progress counts. |
 | Coding Backlog | Remaining Blind 75 problems | Ordered by pattern; difficulty stays on the card. |
 | System Design Backlog | Remaining chapters from both books | Volume and chapter identify every card. |
-| Databricks Backlog | Role-specific preparation outputs | DB01–DB20 link to the detailed criteria above. |
+| Databricks Backlog | Asset-search preparation outputs | DB01–DB20 link to detailed criteria. |
+| LinkedIn Backlog | Applied AI preparation outputs | LI01–LI20 link to detailed criteria. |
 | System Design Architecture | Existing additional architecture exercises | Retain these as supplementary practice. |
 | Interview Pipeline | Interview/application next actions | Add actual status and next action when available. |
 
@@ -330,7 +513,7 @@ Keep the visible card short: identifier, topic, difficulty where applicable, and
 
 - **Coding — Review:** make a serious attempt, inspect the explanation if needed, and identify the missed idea. **Done:** solve again independently, explain the invariant or recurrence, justify time/space complexity, and check relevant edge cases. An accepted submission after copying a solution is not enough.
 - **System-design case study — Review:** read, draw the main flow, and record uncertainties. **Done:** explain requirements, scale assumptions, API/data model, bottleneck, at least two trade-offs, and a failure/recovery path from a blank page. Keep a diagram or concise summary as evidence.
-- **Databricks — Review:** produce the linked artifact and identify unresolved errors or assumptions. **Done:** reproduce or explain the output, attach evidence, and meet the section’s completion criteria. A proposal card can finish with a reviewable proposal, but it must never be counted as an executed experiment or production launch.
+- **Role preparation (DB/LI) — Review:** produce the linked artifact and identify unresolved errors or assumptions. **Done:** reproduce or explain the output, attach evidence, and meet the section’s completion criteria. A proposal card can finish with a reviewable proposal, but it must never be counted as an executed experiment or production launch.
 - **Foundational or closing chapter — Done:** produce the appropriate output instead of forcing a case-study template: a capacity estimate, an interview outline, or a next-learning list. Volume 1 Chapters 1–3 and 16 use this criterion.
 
 These are proposed learning checks, not claims that a fixed number of solved questions guarantees interview readiness.
@@ -369,19 +552,19 @@ The original portfolio plan assumed **6–8 hours per week**. Adding 75 coding q
 | 6–8 hours total | 2–3 coding; 1–2 design; 2 project/evidence; 1 career/review | Extend the portfolio phases beyond 12 weeks. |
 | 12–15 hours total | 4 coding; 3 design; 4–6 project/evidence; 1–2 career/review | Use week 12 as a portfolio checkpoint; study can continue. |
 
-For the broader track, the original starting pace was **3 new coding problems and 1 chapter per week**, plus review. For the focused Databricks track, use the allocation above and reduce this intake when needed. At that unchanged pace, first-pass coverage alone takes 25 weeks for coding and 29 for the books. Reviews, difficult chapters, and missed weeks can extend that; faster prior familiarity can shorten it. Do not add dates to every card before measuring your pace.
+For the broader track, the original starting pace was **3 new coding problems and 1 chapter per week**, plus review. For the active LinkedIn track or a reactivated Databricks track, use its execution schedule and reduce this intake when needed. At that unchanged pace, first-pass coverage alone takes 25 weeks for coding and 29 for the books. Reviews, difficult chapters, and missed weeks can extend that; faster prior familiarity can shorten it. Do not add dates to every card before measuring your pace.
 
 After two weeks, record actual session time, independent re-solves, and chapters you can explain. Then choose whether to increase weekly time, reduce portfolio scope, or extend the horizon. Do not silently drop review to preserve a deadline.
 
 ### Setup and first two weeks
 
 1. Open [[Action-Plan Kanban]] in Obsidian. The board frontmatter selects the existing plugin. If it opens as text, use the note’s menu to open it as Kanban.
-2. Start with DB01 and DB02 in This Week; add at most one foundational card if time allows. Move one into In Progress when beginning, then into Review after the first pass.
+2. Start with LI01 and LI02 in This Week; add at most one foundational card if time allows. Move one into In Progress when beginning, then into Review after the first pass.
 3. Follow a coding card into the index to launch its problem. Read design chapters in your own book or authorised course access; this setup imports a study inventory, not book content or solutions.
 4. Record attempt notes and choose review dates. Add evidence links as you produce useful solutions or diagrams.
 5. At the end of week one, review the queue and select the next small batch. At the end of week two, recalibrate the time budget.
 
-**Setup acceptance:** 75 unique coding cards, 16 Volume 1 cards, 13 Volume 2 cards, four retained architecture cards, 20 unique DB cards, one preserved checked chapter, and one status location per item. No new completion has been inferred. The board tracks progress locally; it does not sync completion with NeetCode, LeetCode, or ByteByteGo.
+**Setup acceptance:** 75 unique coding cards, 16 Volume 1 cards, 13 Volume 2 cards, four retained architecture cards, 20 unique DB cards, 20 unique LI cards, one preserved checked chapter, and one status location per item. No new completion has been inferred. The board tracks progress locally; it does not sync completion with NeetCode, LeetCode, or ByteByteGo.
 
 ## Twelve-week roadmap
 
@@ -392,7 +575,7 @@ Use six two-week phases as a sequence for closing gaps and packaging evidence. T
 - Expand the reviewed sample into 15–20 relevant descriptions, prioritising India eligibility and direct product ownership. Separate must-haves, preferences, specialised requirements, and level scope.
 - Complete the evidence audit. Select the two largest gaps that recur in roles you would actually accept.
 - Draft a role-specific resume and 3–5 real stories: model/product decision, production incident, evaluation result, collaboration, and a difficult trade-off. For Staff, include an initiative adopted across teams.
-- Choose one bounded project or case study with a user, measurable objective, data source, baseline, and scope limit. Default to **search quality and learning to rank**; add a grounded assistant only when target roles justify it.
+- Choose one bounded project or case study with a user, measurable objective, data source, baseline, and scope limit. Use the active role brief: the **skills-to-learning RAG/agent assistant** for LinkedIn, **asset-search quality** for Databricks, or **search quality and learning to rank** for the broader shortlist.
 
 **Deliverable:** role shortlist, evidence scorecard, resume draft, story inventory, and a one-page project brief. **Gate:** every achievement is attributable to your work; unknown results remain unknown.
 
@@ -460,6 +643,7 @@ Use six two-week phases as a sequence for closing gaps and packaging evidence. T
 | 4 | ML systems and operations | Tested service, workload report, monitoring and rollback |
 | 5 | Communication and leadership | Decision memo, collaboration story, demonstrated adoption |
 | Core for Databricks | LLMs applied to relevance | Rewrite/reranking/label comparison with human checks |
+| Core for LinkedIn | Production RAG, agents, prompts and LLM evals | Grounded task outcomes, prompt releases, traces and recovery |
 | Role-dependent | Answer generation, RAG, agents, specialised modelling | Evidence matching the actual posting |
 
 Leadership is a parallel priority throughout the plan and central to Staff applications; row order is not a reason to postpone it. Use one relevant modelling stack deeply enough to train, debug, evaluate, and serve. Frameworks, clouds, and orchestration libraries are choices, not a universal checklist. Keep [[Probability Calibration]] and other foundations in the revision loop when a model or target role needs them.
@@ -484,7 +668,7 @@ Run separate Senior and Staff searches on LinkedIn with India and suitable city 
 4. **Location and work model:** confirm India eligibility, office cadence, time zones, and work authorisation. “Remote” or “virtual first” does not mean hire-from-anywhere.
 5. **Current requisition:** use the employer's careers site or recruiter to verify status before tailoring. Record the check date; keep expired descriptions only as labelled preparation references.
 
-Start the domain-fit shortlist with Apple search and Bloomreach search, then assess other product ML teams individually. Intuit/project44 provide useful ownership benchmarks but have additional domain demands. Atlassian's reviewed US role is a benchmark only; Adobe's reviewed role belongs to the research track. These are preparation priorities, not confirmed eligibility or recommendations to apply to every listed job.
+For the current LinkedIn focus, verify the supplied Learning Solutions role and its production-AI/hybrid fit first. Databricks remains a separate search-quality benchmark. For the broader domain-fit shortlist, start with Apple search and Bloomreach search, then assess other product ML teams individually. Intuit/project44 provide useful ownership benchmarks but have additional domain demands. Atlassian's reviewed US role is a benchmark only; Adobe's reviewed role belongs to the research track. These are preparation priorities, not confirmed eligibility or recommendations to apply to every listed job.
 
 For each candidate role, record: employer/team, title and requisition ID, source and verification date, location/work model, must-haves versus preferences, your evidence and gaps, contact/referral if any, application stage, and next action. Keep any saved external URLs in this note's references section if recording them here. No application or message has been sent as part of this review.
 
@@ -506,7 +690,7 @@ Record project, leadership, and career outcomes separately so reading progress i
 
 ### Role-dependent RAG and LLM track
 
-For the supplied Databricks benchmark, complete the direct relevance tasks above first; generation is an optional extension.
+For LinkedIn, the RAG/agent/prompt/evaluation work in its dedicated track is core. This older extension remains optional for the broader shortlist and Databricks, where direct relevance work comes first.
 
 Retain the original **search-grounded assistant over a bounded document collection** when it addresses a target-role gap. Use public product documentation, policies, or technical guides. Follow [[Retrieval-Augmented Generation]]: reproducible ingestion, parsing/chunking, metadata, re-indexing, and a manually reviewed query/passage set. Reuse the core lexical/dense/hybrid comparison before adding generation.
 
@@ -560,10 +744,23 @@ Revise notes in response to the evidence audit and interview feedback. Start wit
 - **Model foundations:** [[Transformers]] → [[Encoder-Only Model (Transformers)|encoder-only]], [[Decoder-Only Model (Transformers)|decoder-only]], and [[Encoder-Decoder Model (Transformers)|encoder–decoder]] models → [[BERT]] and [[RoBERTa]] → [[Language Model|language models]]. Supporting pieces: [[Tokenization#Subword Tokenizers for Transformers|subword tokenizers]], [[Layer Normalization]], and [[Softmax Function|softmax]].
 - **Retrieval for RAG:** [[Retrieval-Augmented Generation]], [[Hybrid Retrieval]], [[Dense Retrieval]], [[Cross-Encoder]], and [[Search Evaluation]].
 - **Quality and safety:** [[LLM Evaluation]], [[Prompt Injection]], and [[Tool Calling]].
+- **LinkedIn agent execution:** [[Tool Calling]], [[Structured Outputs]], and [[Multi-Agent Systems]]; use the LinkedIn prompt/release, tracing, and model-strategy deliverables above where a dedicated concept note is absent.
 - **Serving:** [[Decoder-Only Model (Transformers)#Serving and the KV Cache|KV caching]], [[Latency vs Throughput]], and [[Tail Latency]].
 - **Reading list:** [[Transformer Papers]].
 
 ## References & Useful Links
+
+**LinkedIn preparation source:** the Learning Solutions Engineering India Staff Engineer description supplied by the user on 12 October 2026. No posting URL/requisition ID was provided. Hybrid work is stated; city, fixed office cadence, and current availability remain unverified. The requirement comparison separates Qualifications, Responsibilities, and Nice to Have without inventing a company interview loop.
+
+The following primary implementation guidance was opened on **12 October 2026**. These sources support preparation choices; they do not establish LinkedIn's technology stack. API/library versions must be recorded when implementing the exercises.
+
+[^li-patterns]: [LangChain — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents) — Fixed workflow paths versus model-directed agent tool use and orchestration patterns.
+[^li-persistence]: [LangChain — Persistence](https://docs.langchain.com/oss/python/langgraph/persistence) — Persisted graph state/checkpoints; useful when designing resumable agent execution.
+[^li-interrupts]: [LangChain — Interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts) — Pausing for external input, checkpoint-backed state, and resumption. Application-level side-effect/idempotency checks remain part of the exercise.
+[^li-prompts]: [MLflow — Prompt Registry](https://mlflow.org/docs/latest/genai/prompt-registry/) — Prompt versioning, deployment aliases, and lineage. Prompt templates are versioned while associated model configuration can be mutable; snapshot actual run settings.
+[^li-evals]: [MLflow — Evaluating LLMs and Agents](https://mlflow.org/docs/latest/genai/eval-monitor/) — Evaluation datasets, human feedback, model judges, and systematic quality evaluation.
+[^li-tracing]: [MLflow — LLM Tracing and Agent Observability](https://mlflow.org/docs/latest/genai/tracing/) — Intermediate request steps, metadata, latency, and token monitoring.
+
 
 **Databricks preparation source:** the role description supplied by the user on 12 October 2026; no posting URL or requisition ID was provided. The text's 2025 focus is preserved as source context, not a current roadmap claim. TODO: verify the current employer requisition, location, and requirements before applying.
 
