@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Reverse a singly linked list by rewiring each node's next pointer.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc206|LeetCode — LC 206]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Maintain a reversed prefix ending at prev and an unread suffix beginning at curr.
-2. Save curr.next before redirecting curr.next to prev.
-3. Advance both pointers and return prev when the unread suffix is empty.
-
-## Why It Works
-
-Each iteration transfers exactly one node from the unread suffix to the reversed prefix without losing the remaining list.
-
-## Worked Example
-
-**Illustrative input:** List `1 → 2 → 3`.
-
-**Trace:** First make 1 point to null, then 2 to 1, then 3 to 2.
-
-**Result:** Return the head of `3 → 2 → 1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Reverse a singly linked list by rewiring each node's next pointer.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc206|LeetCode — LC 206]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Maintain a reversed prefix ending at prev and an unread suffix beginning at curr.
+2. Save curr.next before redirecting curr.next to prev.
+3. Advance both pointers and return prev when the unread suffix is empty.
+
+## Why It Works
+
+Each iteration transfers exactly one node from the unread suffix to the reversed prefix without losing the remaining list.
+
+## Worked Example
+
+**Illustrative input:** List `1 → 2 → 3`.
+
+**Trace:** First make 1 point to null, then 2 to 1, then 3 to 2.
+
+**Result:** Return the head of `3 → 2 → 1`.
 
 ## Common Pitfalls
 

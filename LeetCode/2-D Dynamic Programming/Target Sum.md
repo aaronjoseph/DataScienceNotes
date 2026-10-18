@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count assignments of plus or minus signs to all numbers that reach a target.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc494|LeetCode — LC 494]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Memoize by the current index and accumulated total.
-2. Branch by adding the current number and by subtracting it.
-3. After every number has a sign, return one for a matching total and zero otherwise; add branch counts.
-
-## Why It Works
-
-Each sign assignment follows exactly one branch sequence, and identical index-total states have identical remaining choices.
-
-## Worked Example
-
-**Illustrative input:** `nums = [0, 1]`, `target = 1`.
-
-**Trace:** Both +0+1 and -0+1 are valid distinct sign assignments.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(n(S+1))$ time and space as a range-based upper bound for total absolute sum `S`; the recursion also uses $O(n)$ stack space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count assignments of plus or minus signs to all numbers that reach a target.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc494|LeetCode — LC 494]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Memoize by the current index and accumulated total.
+2. Branch by adding the current number and by subtracting it.
+3. After every number has a sign, return one for a matching total and zero otherwise; add branch counts.
+
+## Why It Works
+
+Each sign assignment follows exactly one branch sequence, and identical index-total states have identical remaining choices.
+
+## Worked Example
+
+**Illustrative input:** `nums = [0, 1]`, `target = 1`.
+
+**Trace:** Both +0+1 and -0+1 are valid distinct sign assignments.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

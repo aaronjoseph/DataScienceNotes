@@ -8,6 +8,31 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def reverseBits(self, n: int) -> int:
+        res = 0
+        for i in range(32):
+            bit = n >> i & 1
+            res += bit << 31 - i
+        return res
+```
+
+## Complexity
+
+$O(32)$ time and $O(1)$ extra space; for variable width `w`, the loop takes $O(w)$ steps. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Reverse all 32 bits of an unsigned integer, including leading zeros.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc190|LeetCode — LC 190]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,27 +54,6 @@ Every input position maps uniquely to the corresponding reversed position across
 **Trace:** The least significant input bit becomes the most significant output bit.
 
 **Result:** Return `2147483648`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def reverseBits(self, n: int) -> int:
-        res = 0
-        for i in range(32):
-            bit = n >> i & 1
-            res += bit << 31 - i
-        return res
-```
-
-## Complexity
-
-$O(32)$ time and $O(1)$ extra space; for variable width `w`, the loop takes $O(w)$ steps. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

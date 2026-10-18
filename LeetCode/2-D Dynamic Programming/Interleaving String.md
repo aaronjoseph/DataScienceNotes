@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether a third string interleaves two source strings while preserving each source's internal order.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc97|LeetCode — LC 97]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Reject if the two source lengths do not sum to the target length.
-2. Use a table indexed by the next unconsumed position in each source.
-3. At each state, consume a matching next character from either source if its successor state succeeds; the fully consumed state is true.
-
-## Why It Works
-
-The two source positions determine the next target position and enumerate exactly the allowed order-preserving choices.
-
-## Worked Example
-
-**Illustrative input:** `s1 = "ab"`, `s2 = "cd"`, `s3 = "acbd"`.
-
-**Trace:** Take a from s1, c from s2, b from s1, then d from s2.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O((m+1)(n+1))$ time and space for source lengths `m` and `n`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether a third string interleaves two source strings while preserving each source's internal order.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc97|LeetCode — LC 97]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Reject if the two source lengths do not sum to the target length.
+2. Use a table indexed by the next unconsumed position in each source.
+3. At each state, consume a matching next character from either source if its successor state succeeds; the fully consumed state is true.
+
+## Why It Works
+
+The two source positions determine the next target position and enumerate exactly the allowed order-preserving choices.
+
+## Worked Example
+
+**Illustrative input:** `s1 = "ab"`, `s2 = "cd"`, `s3 = "acbd"`.
+
+**Trace:** Take a from s1, c from s2, b from s1, then d from s2.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

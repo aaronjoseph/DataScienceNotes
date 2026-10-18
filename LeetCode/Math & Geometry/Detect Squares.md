@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Support adding points and counting axis-aligned squares using a query as one corner, with duplicate points counted separately.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc2013|LeetCode — LC 2013]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Keep both a list of added point occurrences and a coordinate-frequency map.
-2. For a query, examine each stored point as a possible opposite corner; require equal nonzero horizontal and vertical distances.
-3. For a valid opposite corner occurrence, multiply the counts of the two other required corners and add the contribution.
-
-## Why It Works
-
-Every axis-aligned square has exactly one corner diagonally opposite the query, so the scan enumerates each square with its multiplicity.
-
-## Worked Example
-
-**Illustrative input:** Add `[0, 1]`, `[1, 0]`, and `[1, 1]`; query `[0, 0]`.
-
-**Trace:** The opposite corner [1,1] finds the two required side corners.
-
-**Result:** Return `1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -62,6 +42,30 @@ class DetectSquares:
 ## Complexity
 
 Add takes expected amortized $O(1)$ time; count takes expected $O(N)$ time. Stored-point space is $O(N)$, with possible zero-valued map entries for queried missing corners in this defaultdict implementation. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Support adding points and counting axis-aligned squares using a query as one corner, with duplicate points counted separately.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc2013|LeetCode — LC 2013]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Keep both a list of added point occurrences and a coordinate-frequency map.
+2. For a query, examine each stored point as a possible opposite corner; require equal nonzero horizontal and vertical distances.
+3. For a valid opposite corner occurrence, multiply the counts of the two other required corners and add the contribution.
+
+## Why It Works
+
+Every axis-aligned square has exactly one corner diagonally opposite the query, so the scan enumerates each square with its multiplicity.
+
+## Worked Example
+
+**Illustrative input:** Add `[0, 1]`, `[1, 0]`, and `[1, 1]`; query `[0, 0]`.
+
+**Trace:** The opposite corner [1,1] finds the two required side corners.
+
+**Result:** Return `1`.
 
 ## Common Pitfalls
 

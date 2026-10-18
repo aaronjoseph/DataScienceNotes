@@ -8,6 +8,31 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def missingNumber(self, nums: List[int]) -> int:
+        res = len(nums)
+        for i in range(len(nums)):
+            res += i - nums[i]
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Find the missing value when n distinct integers are drawn from the inclusive range zero through n.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc268|LeetCode — LC 268]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,27 +54,6 @@ Every present value cancels its counterpart in the complete range, leaving only 
 **Trace:** The complete range is 0 through 3 and the input omits 2.
 
 **Result:** Return `2`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def missingNumber(self, nums: List[int]) -> int:
-        res = len(nums)
-        for i in range(len(nums)):
-            res += i - nums[i]
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

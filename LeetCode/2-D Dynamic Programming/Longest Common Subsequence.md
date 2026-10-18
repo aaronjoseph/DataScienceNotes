@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the longest subsequence shared by two strings, without requiring consecutive positions.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc1143|LeetCode — LC 1143]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use a two-dimensional table for the best shared subsequence length of each pair of suffixes.
-2. If the current characters match, include one and advance both.
-3. Otherwise take the larger result from skipping a character in either string; empty suffixes contribute zero.
-
-## Why It Works
-
-A matching pair can extend an optimal common suffix; with a mismatch, at least one current character must be skipped.
-
-## Worked Example
-
-**Illustrative input:** `text1 = "abcde"`, `text2 = "ace"`.
-
-**Trace:** Matching a, c, and e in order builds a shared sequence of length three.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(mn)$ time and $O(mn)$ space for the two string lengths. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the longest subsequence shared by two strings, without requiring consecutive positions.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc1143|LeetCode — LC 1143]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use a two-dimensional table for the best shared subsequence length of each pair of suffixes.
+2. If the current characters match, include one and advance both.
+3. Otherwise take the larger result from skipping a character in either string; empty suffixes contribute zero.
+
+## Why It Works
+
+A matching pair can extend an optimal common suffix; with a mismatch, at least one current character must be skipped.
+
+## Worked Example
+
+**Illustrative input:** `text1 = "abcde"`, `text2 = "ace"`.
+
+**Trace:** Matching a, c, and e in order builds a shared sequence of length three.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

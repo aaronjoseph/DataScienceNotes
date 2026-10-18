@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Match an entire string against a pattern containing dot and star, where star repeats its preceding character zero or more times.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc10|LeetCode — LC 10]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Define suffix-match states for a string position and pattern position; only both empty suffixes match by default.
-2. If the next pattern character is star, either skip the character-star pair or consume one matching string character while keeping that pair.
-3. Otherwise require a current-character match and advance both positions; fill the table backward.
-
-## Why It Works
-
-The star cases exhaust zero occurrences and one-or-more occurrences, while ordinary tokens must consume one character.
-
-## Worked Example
-
-**Illustrative input:** `s = "aa"`, `p = "a*"`.
-
-**Trace:** Consume a twice through the star branch, then skip the pair to match empty suffixes.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O((m+1)(n+1))$ time and space for string and pattern lengths. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Match an entire string against a pattern containing dot and star, where star repeats its preceding character zero or more times.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc10|LeetCode — LC 10]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Define suffix-match states for a string position and pattern position; only both empty suffixes match by default.
+2. If the next pattern character is star, either skip the character-star pair or consume one matching string character while keeping that pair.
+3. Otherwise require a current-character match and advance both positions; fill the table backward.
+
+## Why It Works
+
+The star cases exhaust zero occurrences and one-or-more occurrences, while ordinary tokens must consume one character.
+
+## Worked Example
+
+**Illustrative input:** `s = "aa"`, `p = "a*"`.
+
+**Trace:** Consume a twice through the star branch, then skip the pair to match empty suffixes.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

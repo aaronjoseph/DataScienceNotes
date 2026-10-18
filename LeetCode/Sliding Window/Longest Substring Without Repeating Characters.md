@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the longest contiguous substring with no repeated characters. Maintain a window whose characters are unique.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc3|LeetCode — LC 3]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Track the current window in a set.
-2. When the next character is already present, remove leftmost characters until that duplicate leaves.
-3. Insert the new character and update the best window length.
-
-## Why It Works
-
-After shrinking, the window is the longest valid suffix ending at the current right endpoint.
-
-## Worked Example
-
-**Illustrative input:** `s = "abba"`.
-
-**Trace:** The second b forces both a and the earlier b out; the final window is ba.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(u)$ space for distinct characters in the window. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the longest contiguous substring with no repeated characters. Maintain a window whose characters are unique.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc3|LeetCode — LC 3]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Track the current window in a set.
+2. When the next character is already present, remove leftmost characters until that duplicate leaves.
+3. Insert the new character and update the best window length.
+
+## Why It Works
+
+After shrinking, the window is the longest valid suffix ending at the current right endpoint.
+
+## Worked Example
+
+**Illustrative input:** `s = "abba"`.
+
+**Trace:** The second b forces both a and the earlier b out; the final window is ba.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

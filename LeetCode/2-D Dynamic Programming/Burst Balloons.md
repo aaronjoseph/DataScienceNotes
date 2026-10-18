@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Choose an order of bursting balloons that maximizes coins. Solve each interval by deciding which balloon bursts last.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc312|LeetCode — LC 312]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Pad the input with boundary balloons of value one.
-2. For every open interval, try each interior balloon as its final burst.
-3. Combine the best left and right subinterval totals with that final burst's boundary product, processing shorter intervals first.
-
-## Why It Works
-
-The final balloon has fixed surviving interval boundaries, making the left and right earlier burst problems independent.
-
-## Worked Example
-
-**Illustrative input:** `nums = [3, 1]`.
-
-**Trace:** Bursting 1 first earns 3, then bursting 3 earns another 3.
-
-**Result:** Return `6`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(n^3)$ time and $O(n^2)$ space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Choose an order of bursting balloons that maximizes coins. Solve each interval by deciding which balloon bursts last.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc312|LeetCode — LC 312]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Pad the input with boundary balloons of value one.
+2. For every open interval, try each interior balloon as its final burst.
+3. Combine the best left and right subinterval totals with that final burst's boundary product, processing shorter intervals first.
+
+## Why It Works
+
+The final balloon has fixed surviving interval boundaries, making the left and right earlier burst problems independent.
+
+## Worked Example
+
+**Illustrative input:** `nums = [3, 1]`.
+
+**Trace:** Bursting 1 first earns 3, then bursting 3 earns another 3.
+
+**Result:** Return `6`.
 
 ## Common Pitfalls
 

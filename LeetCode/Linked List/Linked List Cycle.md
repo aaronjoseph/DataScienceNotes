@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Detect a cycle without storing all visited nodes. Move two pointers at different speeds.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc141|LeetCode — LC 141]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start slow and fast at the head.
-2. Move slow once and fast twice while two fast steps exist.
-3. Return true if they meet; return false if fast reaches the end.
-
-## Why It Works
-
-Inside a cycle, the relative distance changes by one each iteration and must eventually reach zero.
-
-## Worked Example
-
-**Illustrative input:** List `1 → 2 → 3 → 2…`.
-
-**Trace:** Both pointers enter the loop between nodes 2 and 3 and eventually meet.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Detect a cycle without storing all visited nodes. Move two pointers at different speeds.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc141|LeetCode — LC 141]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start slow and fast at the head.
+2. Move slow once and fast twice while two fast steps exist.
+3. Return true if they meet; return false if fast reaches the end.
+
+## Why It Works
+
+Inside a cycle, the relative distance changes by one each iteration and must eventually reach zero.
+
+## Worked Example
+
+**Illustrative input:** List `1 → 2 → 3 → 2…`.
+
+**Trace:** Both pointers enter the loop between nodes 2 and 3 and eventually meet.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

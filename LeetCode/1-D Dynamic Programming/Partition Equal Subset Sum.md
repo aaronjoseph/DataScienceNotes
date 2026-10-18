@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Decide whether positive integers can be partitioned into two equal-sum subsets.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc416|LeetCode — LC 416]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Reject an odd total; otherwise set the target to half the total.
-2. Start reachable subset sums with zero.
-3. For each number, build a fresh set containing old sums and old sums plus that number, retaining only values at most the target; return whether target is reachable.
-
-## Why It Works
-
-Every subset either excludes or includes the current occurrence, and the fresh set prevents reusing that occurrence twice.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 5, 11, 5]`.
-
-**Trace:** The target is 11, reachable either with the 11 alone or with 1,5,5.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(nT)$ expected time and $O(T)$ space for half-total target `T`; this is pseudo-polynomial in numeric values. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Decide whether positive integers can be partitioned into two equal-sum subsets.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc416|LeetCode — LC 416]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Reject an odd total; otherwise set the target to half the total.
+2. Start reachable subset sums with zero.
+3. For each number, build a fresh set containing old sums and old sums plus that number, retaining only values at most the target; return whether target is reachable.
+
+## Why It Works
+
+Every subset either excludes or includes the current occurrence, and the fresh set prevents reusing that occurrence twice.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 5, 11, 5]`.
+
+**Trace:** The target is 11, reachable either with the 11 alone or with 1,5,5.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

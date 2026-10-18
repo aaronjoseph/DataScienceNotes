@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Maintain the kth largest value as numbers arrive. Retain only the k largest values seen so far.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc703|LeetCode — LC 703]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Heapify the starting values and remove the smallest until at most k remain.
-2. On add, push the new value and pop the smallest if the heap exceeds k.
-3. Return the heap root when the stream has at least k values.
-
-## Why It Works
-
-The heap contains the k largest occurrences; its smallest member is therefore the kth largest overall.
-
-## Worked Example
-
-**Illustrative input:** `k = 2`, initial values `[4, 1]`; add 3.
-
-**Trace:** The heap discards 1 and retains 3 and 4.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class KthLargest:
 ## Complexity
 
 Initialization takes $O(n+(n-k)_+\log(n+1))$ time for this heapify-and-trim implementation; each add takes $O(\log(k+1))$ time, with $O(k)$ retained storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Maintain the kth largest value as numbers arrive. Retain only the k largest values seen so far.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc703|LeetCode — LC 703]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Heapify the starting values and remove the smallest until at most k remain.
+2. On add, push the new value and pop the smallest if the heap exceeds k.
+3. Return the heap root when the stream has at least k values.
+
+## Why It Works
+
+The heap contains the k largest occurrences; its smallest member is therefore the kth largest overall.
+
+## Worked Example
+
+**Illustrative input:** `k = 2`, initial values `[4, 1]`; add 3.
+
+**Trace:** The heap discards 1 and retains 3 and 4.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

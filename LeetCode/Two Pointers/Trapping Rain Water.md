@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Compute trapped water above bars. Finalize the side with the smaller known boundary height.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc42|LeetCode — LC 42]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Maintain pointers and maximum heights seen from both ends.
-2. Advance the side with the smaller running maximum.
-3. Update that side's maximum and add its nonnegative difference from the current bar.
-
-## Why It Works
-
-The opposite boundary is already high enough to support the smaller side, so unseen bars cannot change that side's water level.
-
-## Worked Example
-
-**Illustrative input:** `height = [3, 0, 2, 3]`.
-
-**Trace:** The interior bars retain 3 and 1 units respectively.
-
-**Result:** Return `4`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Compute trapped water above bars. Finalize the side with the smaller known boundary height.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc42|LeetCode — LC 42]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Maintain pointers and maximum heights seen from both ends.
+2. Advance the side with the smaller running maximum.
+3. Update that side's maximum and add its nonnegative difference from the current bar.
+
+## Why It Works
+
+The opposite boundary is already high enough to support the smaller side, so unseen bars cannot change that side's water level.
+
+## Worked Example
+
+**Illustrative input:** `height = [3, 0, 2, 3]`.
+
+**Trace:** The interior bars retain 3 and 1 units respectively.
+
+**Result:** Return `4`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether repeatedly replacing a positive integer by the sum of its squared decimal digits eventually reaches one.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc202|LeetCode — LC 202]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Implement the digit-square transformation with repeated digit extraction.
-2. Run slow and fast pointers through this deterministic transformation, one and two steps at a time.
-3. When they meet, accept only if the meeting value is one.
-
-## Why It Works
-
-After the first transformation, values lie in a bounded set, so the process must reach one or enter another cycle; Floyd's method detects either.
-
-## Worked Example
-
-**Illustrative input:** `n = 19`.
-
-**Trace:** The transformation sequence is 19 → 82 → 68 → 100 → 1.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(\log n)$ initial digit work plus a bounded number of short-state steps for fixed-width input; $O(1)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether repeatedly replacing a positive integer by the sum of its squared decimal digits eventually reaches one.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc202|LeetCode — LC 202]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Implement the digit-square transformation with repeated digit extraction.
+2. Run slow and fast pointers through this deterministic transformation, one and two steps at a time.
+3. When they meet, accept only if the meeting value is one.
+
+## Why It Works
+
+After the first transformation, values lie in a bounded set, so the process must reach one or enter another cycle; Floyd's method detects either.
+
+## Worked Example
+
+**Illustrative input:** `n = 19`.
+
+**Trace:** The transformation sequence is 19 → 82 → 68 → 100 → 1.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

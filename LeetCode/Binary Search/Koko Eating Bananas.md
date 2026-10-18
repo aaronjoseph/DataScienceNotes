@@ -13,6 +13,78 @@ time_complexity: "O(n log M)"
 space_complexity: "O(1)"
 ---
 
+## Template
+
+### Template: First True
+
+```text
+lo, hi = 1, max(piles)
+while lo < hi:
+    mid = (lo + hi) // 2
+    if feasible(mid): hi = mid       # mid may be the answer; keep it
+    else:            lo = mid + 1    # mid is too slow; discard it
+return lo
+```
+
+**Complexity:** $O(n \log M)$ time, where $n$ is the number of piles and $M$ is the largest pile size; $O(1)$ extra space.
+
+## Complexity
+
+Each feasibility check visits $n$ piles and uses a constant-size integer accumulator. Binary search makes $O(\log M)$ checks for largest pile size $M$, giving $O(n\log M)$ total time and $O(1)$ auxiliary space in the Python and Rust implementations.
+
+> [!info]- Why is the time complexity O(n log M)?
+> There are two pieces of work: **checking one speed** and **deciding how many speeds to check**.
+>
+> **Example inputs:** `piles = [3, 6, 7, 11]`, `h = 8`. Here, $n = 4$ piles and $M = 11$, the largest pile size.
+>
+> **1. Checking one speed takes O(n).** For a candidate speed, calculate the required hours for every pile and add them:
+>
+> ```python
+> def hours(k):
+>     return sum((p + k - 1) // k for p in piles)
+> ```
+>
+> At $k = 4$, the four piles require `[1, 2, 2, 3]` hours. The check visits all $n$ piles, doing constant work per pile under the problem's bounded-integer assumptions.
+>
+> **2. Binary search checks O(log M) speeds.** The candidate speeds range from 1 through $M$. Each iteration removes approximately half the remaining candidates. For this example, the candidate counts shrink as follows:
+>
+> ```text
+> 11 → 6 → 3 → 2 → 1
+> ```
+>
+> Repeated halving gives a logarithmic number of checks. Roughly one million candidate speeds require only about 20 checks:
+>
+> $$
+> 2^{20} = 1{,}048{,}576
+> $$
+>
+> **3. Multiply the costs.** Every speed check scans all the piles:
+>
+> $$
+> \text{total checking work}
+> = \text{number of speed checks} \times \text{work per check}
+> $$
+>
+> $$
+> O(\log M) \times O(n) = O(n\log M)
+> $$
+>
+> In this example, binary search tries speeds **6, 3, 5, and 4**. Each attempt visits four piles:
+>
+> $$
+> 4 \times 4 = 16\text{ pile calculations}
+> $$
+>
+> Finding `max(piles)` initially also takes $O(n)$. Including that scan, a bound covering even $M = 1$ is:
+>
+> $$
+> O\bigl(n(1+\log M)\bigr)
+> $$
+>
+> For $M \ge 2$, this simplifies to the usual $O(n\log M)$. **Binary search halves the range of speeds; it still scans every pile to check each speed.**
+
+## Overview
+
 Koko Eating Bananas is a **binary search** problem, not a binary tree problem. The technique is *binary search on the answer*: search over possible speeds instead of over an array index.
 
 ## Problem
@@ -103,19 +175,6 @@ Any false-then-true pattern like this can be searched with binary search for the
 
 - **Lower bound:** $k = 1$.
 - **Upper bound:** use the largest pile size. At that speed each pile takes exactly one hour, and the problem guarantees `h >= len(piles)`.
-
-### Template: First True
-
-```text
-lo, hi = 1, max(piles)
-while lo < hi:
-    mid = (lo + hi) // 2
-    if feasible(mid): hi = mid       # mid may be the answer; keep it
-    else:            lo = mid + 1    # mid is too slow; discard it
-return lo
-```
-
-**Complexity:** $O(n \log M)$ time, where $n$ is the number of piles and $M$ is the largest pile size; $O(1)$ extra space.
 
 ## Why It Works
 
@@ -260,61 +319,6 @@ impl Solution {
 
 - **Overflow:** up to $10^4$ piles of up to $10^9$ bananas, so at k = 1 the hour total overflows `i32`.
 - **Midpoint:** `lo + (hi - lo) / 2` avoids overflow in `lo + hi`.
-
-## Complexity
-
-Each feasibility check visits $n$ piles and uses a constant-size integer accumulator. Binary search makes $O(\log M)$ checks for largest pile size $M$, giving $O(n\log M)$ total time and $O(1)$ auxiliary space in the Python and Rust implementations.
-
-> [!info]- Why is the time complexity O(n log M)?
-> There are two pieces of work: **checking one speed** and **deciding how many speeds to check**.
->
-> **Example inputs:** `piles = [3, 6, 7, 11]`, `h = 8`. Here, $n = 4$ piles and $M = 11$, the largest pile size.
->
-> **1. Checking one speed takes O(n).** For a candidate speed, calculate the required hours for every pile and add them:
->
-> ```python
-> def hours(k):
->     return sum((p + k - 1) // k for p in piles)
-> ```
->
-> At $k = 4$, the four piles require `[1, 2, 2, 3]` hours. The check visits all $n$ piles, doing constant work per pile under the problem's bounded-integer assumptions.
->
-> **2. Binary search checks O(log M) speeds.** The candidate speeds range from 1 through $M$. Each iteration removes approximately half the remaining candidates. For this example, the candidate counts shrink as follows:
->
-> ```text
-> 11 → 6 → 3 → 2 → 1
-> ```
->
-> Repeated halving gives a logarithmic number of checks. Roughly one million candidate speeds require only about 20 checks:
->
-> $$
-> 2^{20} = 1{,}048{,}576
-> $$
->
-> **3. Multiply the costs.** Every speed check scans all the piles:
->
-> $$
-> \text{total checking work}
-> = \text{number of speed checks} \times \text{work per check}
-> $$
->
-> $$
-> O(\log M) \times O(n) = O(n\log M)
-> $$
->
-> In this example, binary search tries speeds **6, 3, 5, and 4**. Each attempt visits four piles:
->
-> $$
-> 4 \times 4 = 16\text{ pile calculations}
-> $$
->
-> Finding `max(piles)` initially also takes $O(n)$. Including that scan, a bound covering even $M = 1$ is:
->
-> $$
-> O\bigl(n(1+\log M)\bigr)
-> $$
->
-> For $M \ge 2$, this simplifies to the usual $O(n\log M)$. **Binary search halves the range of speeds; it still scans every pile to check each speed.**
 
 ## Common Pitfalls
 

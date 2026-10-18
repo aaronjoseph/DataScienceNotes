@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether a parentheses string can be balanced when each star may be an opening bracket, closing bracket, or empty.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc678|LeetCode — LC 678]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Maintain the smallest and largest feasible counts of unmatched opening brackets.
-2. An opening bracket raises both, a closing bracket lowers both, and a star widens the possible range.
-3. Reject if the maximum becomes negative, clamp the minimum at zero, and accept at the end only if the minimum is zero.
-
-## Why It Works
-
-The interval captures every feasible unmatched-open count after the prefix; zero at the end means at least one complete balanced assignment exists.
-
-## Worked Example
-
-**Illustrative input:** `s = "(*)"`.
-
-**Trace:** The star can be empty, leaving the balanced string ().
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether a parentheses string can be balanced when each star may be an opening bracket, closing bracket, or empty.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc678|LeetCode — LC 678]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Maintain the smallest and largest feasible counts of unmatched opening brackets.
+2. An opening bracket raises both, a closing bracket lowers both, and a star widens the possible range.
+3. Reject if the maximum becomes negative, clamp the minimum at zero, and accept at the end only if the minimum is zero.
+
+## Why It Works
+
+The interval captures every feasible unmatched-open count after the prefix; zero at the end means at least one complete balanced assignment exists.
+
+## Worked Example
+
+**Illustrative input:** `s = "(*)"`.
+
+**Trace:** The star can be empty, leaving the balanced string ().
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

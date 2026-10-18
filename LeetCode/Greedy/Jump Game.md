@@ -8,6 +8,32 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def canJump(self, nums: List[int]) -> bool:
+        goal = len(nums) - 1
+        for i in range(len(nums) - 2, -1, -1):
+            if i + nums[i] >= goal:
+                goal = i
+        return goal == 0
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Decide whether the final array position is reachable when each value gives a maximum forward jump.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc55|LeetCode — LC 55]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,28 +55,6 @@ An index that reaches any known-good position can also reach the end; the backwa
 **Trace:** Index zero can jump directly to the final index even though the middle position cannot move.
 
 **Result:** Return `True`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def canJump(self, nums: List[int]) -> bool:
-        goal = len(nums) - 1
-        for i in range(len(nums) - 2, -1, -1):
-            if i + nums[i] >= goal:
-                goal = i
-        return goal == 0
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

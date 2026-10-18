@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether every node's left and right subtree heights differ by at most one.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc110|LeetCode — LC 110]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Recursively return both a balance flag and a height for each subtree.
-2. A node is balanced only if both child flags are true and their heights differ by at most one.
-3. Return the combined flag and one plus the larger child height.
-
-## Why It Works
-
-The returned pair contains all information a parent needs, so each subtree is evaluated only once.
-
-## Worked Example
-
-**Illustrative input:** A chain of three nodes extends only left.
-
-**Trace:** At the root, the left subtree has height 2 and the right height 0.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether every node's left and right subtree heights differ by at most one.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc110|LeetCode — LC 110]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Recursively return both a balance flag and a height for each subtree.
+2. A node is balanced only if both child flags are true and their heights differ by at most one.
+3. Return the combined flag and one plus the larger child height.
+
+## Why It Works
+
+The returned pair contains all information a parent needs, so each subtree is evaluated only once.
+
+## Worked Example
+
+**Illustrative input:** A chain of three nodes extends only left.
+
+**Trace:** At the root, the left subtree has height 2 and the right height 0.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

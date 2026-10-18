@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether brackets are balanced and properly nested. Match each closing bracket with the latest unmatched opener.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc20|LeetCode — LC 20]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Push every opening bracket onto a stack.
-2. For a closing bracket, reject an empty stack or a mismatching top; otherwise pop.
-3. Accept only when the final stack is empty.
-
-## Why It Works
-
-Nested brackets must close in reverse order of opening, exactly matching stack order.
-
-## Worked Example
-
-**Illustrative input:** `s = "([)]"`.
-
-**Trace:** When ) arrives, the top opener is [ rather than (.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether brackets are balanced and properly nested. Match each closing bracket with the latest unmatched opener.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc20|LeetCode — LC 20]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Push every opening bracket onto a stack.
+2. For a closing bracket, reject an empty stack or a mismatching top; otherwise pop.
+3. Accept only when the final stack is empty.
+
+## Why It Works
+
+Nested brackets must close in reverse order of opening, exactly matching stack order.
+
+## Worked Example
+
+**Illustrative input:** `s = "([)]"`.
+
+**Trace:** When ) arrives, the top opener is [ rather than (.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

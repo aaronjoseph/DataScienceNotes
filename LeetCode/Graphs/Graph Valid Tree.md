@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether an undirected graph is a tree: connected and acyclic.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc261|LeetCode — LC 261]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Build an adjacency list and start a depth-first search from vertex zero.
-2. Track the parent so the immediate reverse of a tree edge is skipped.
-3. Reject a revisit through any other edge, and finally require every vertex to have been reached.
-
-## Why It Works
-
-The search detects cycles, while the final visited count independently checks connectivity.
-
-## Worked Example
-
-**Illustrative input:** `n = 4`, edges `[[0, 1], [1, 2]]`.
-
-**Trace:** The component containing zero has no cycle, but vertex 3 is unreachable.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -64,6 +44,30 @@ class Solution:
 ## Complexity
 
 $O(V+E)$ time and $O(V+E)$ space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether an undirected graph is a tree: connected and acyclic.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc261|LeetCode — LC 261]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Build an adjacency list and start a depth-first search from vertex zero.
+2. Track the parent so the immediate reverse of a tree edge is skipped.
+3. Reject a revisit through any other edge, and finally require every vertex to have been reached.
+
+## Why It Works
+
+The search detects cycles, while the final visited count independently checks connectivity.
+
+## Worked Example
+
+**Illustrative input:** `n = 4`, edges `[[0, 1], [1, 2]]`.
+
+**Trace:** The component containing zero has no cycle, but vertex 3 is unreachable.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

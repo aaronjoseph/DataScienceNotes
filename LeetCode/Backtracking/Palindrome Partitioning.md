@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Split a string into all possible lists of palindromic substrings.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc131|LeetCode — LC 131]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. From the current start index, try every possible ending index.
-2. Use a two-pointer check to decide whether that substring is a palindrome.
-3. If valid, append it, recurse from its end, then undo; record a copied partition when the string is fully consumed.
-
-## Why It Works
-
-Every valid partition has a palindromic first piece, and recursion enumerates exactly its valid suffix partitions.
-
-## Worked Example
-
-**Illustrative input:** `s = "aab"`.
-
-**Trace:** Choose a then a then b, or choose aa then b.
-
-**Result:** Return `[["a", "a", "b"], ["aa", "b"]]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -66,6 +46,30 @@ class Solution:
 ## Complexity
 
 $O(n2^n)$ conservative worst-case time including palindrome checks and output; $O(n)$ path and recursion storage excluding results. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Split a string into all possible lists of palindromic substrings.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc131|LeetCode — LC 131]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. From the current start index, try every possible ending index.
+2. Use a two-pointer check to decide whether that substring is a palindrome.
+3. If valid, append it, recurse from its end, then undo; record a copied partition when the string is fully consumed.
+
+## Why It Works
+
+Every valid partition has a palindromic first piece, and recursion enumerates exactly its valid suffix partitions.
+
+## Worked Example
+
+**Illustrative input:** `s = "aab"`.
+
+**Trace:** Choose a then a then b, or choose aa then b.
+
+**Result:** Return `[["a", "a", "b"], ["aa", "b"]]`.
 
 ## Common Pitfalls
 

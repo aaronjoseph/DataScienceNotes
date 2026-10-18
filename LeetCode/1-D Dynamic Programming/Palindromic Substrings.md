@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count all palindromic substrings, counting different positions separately even if their text is identical.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc647|LeetCode — LC 647]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. For each position, expand once around that character and once around the following gap.
-2. Count every successful matching expansion.
-3. Sum across all centers.
-
-## Why It Works
-
-Every palindromic occurrence has one unique center and radius, so it is counted exactly once.
-
-## Worked Example
-
-**Illustrative input:** `s = "aaa"`.
-
-**Trace:** There are three one-character palindromes, two aa occurrences, and one aaa.
-
-**Result:** Return `6`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n^2)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count all palindromic substrings, counting different positions separately even if their text is identical.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc647|LeetCode — LC 647]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. For each position, expand once around that character and once around the following gap.
+2. Count every successful matching expansion.
+3. Sum across all centers.
+
+## Why It Works
+
+Every palindromic occurrence has one unique center and radius, so it is counted exactly once.
+
+## Worked Example
+
+**Illustrative input:** `s = "aaa"`.
+
+**Trace:** There are three one-character palindromes, two aa occurrences, and one aaa.
+
+**Result:** Return `6`.
 
 ## Common Pitfalls
 

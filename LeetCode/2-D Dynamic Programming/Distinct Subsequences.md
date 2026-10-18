@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count how many subsequences of s equal t, distinguishing choices of source positions.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc115|LeetCode — LC 115]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use a table for each pair of suffix positions.
-2. An empty target has one match; an empty source has zero matches for a nonempty target.
-3. Always allow skipping the source character; when characters match, also allow consuming both and add the counts.
-
-## Why It Works
-
-Each matching subsequence either uses the current source position or does not, so the two counts are disjoint.
-
-## Worked Example
-
-**Illustrative input:** `s = "babgbag"`, `t = "bag"`.
-
-**Trace:** Different source choices of b, a, and g can spell the same target.
-
-**Result:** Return `5`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O((m+1)(n+1))$ time and space under bounded-size integer arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count how many subsequences of s equal t, distinguishing choices of source positions.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc115|LeetCode — LC 115]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use a table for each pair of suffix positions.
+2. An empty target has one match; an empty source has zero matches for a nonempty target.
+3. Always allow skipping the source character; when characters match, also allow consuming both and add the counts.
+
+## Why It Works
+
+Each matching subsequence either uses the current source position or does not, so the two counts are disjoint.
+
+## Worked Example
+
+**Illustrative input:** `s = "babgbag"`, `t = "bag"`.
+
+**Trace:** Different source choices of b, a, and g can spell the same target.
+
+**Result:** Return `5`.
 
 ## Common Pitfalls
 

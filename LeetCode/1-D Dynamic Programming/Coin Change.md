@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the fewest coins needed to make an amount, with unlimited use of each positive denomination.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc322|LeetCode — LC 322]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Create a table of best counts, initialized to an unreachable sentinel except amount zero.
-2. For each amount in increasing order, try every coin that fits.
-3. Improve its count from the smaller amount plus one; return -1 if the target remains unreachable.
-
-## Why It Works
-
-Every optimal nonempty solution has a final coin, and removing it leaves an optimal solution for the remaining smaller amount.
-
-## Worked Example
-
-**Illustrative input:** `coins = [1, 3, 4]`, `amount = 6`.
-
-**Trace:** The table can reach 6 with two 3 coins, beating the greedy 4,1,1 choice.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the fewest coins needed to make an amount, with unlimited use of each positive denomination.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc322|LeetCode — LC 322]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Create a table of best counts, initialized to an unreachable sentinel except amount zero.
+2. For each amount in increasing order, try every coin that fits.
+3. Improve its count from the smaller amount plus one; return -1 if the target remains unreachable.
+
+## Why It Works
+
+Every optimal nonempty solution has a final coin, and removing it leaves an optimal solution for the remaining smaller amount.
+
+## Worked Example
+
+**Illustrative input:** `coins = [1, 3, 4]`, `amount = 6`.
+
+**Trace:** The table can reach 6 with two 3 coins, beating the greedy 4,1,1 choice.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

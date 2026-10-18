@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the minimum insertions, deletions, and replacements needed to transform one string into another.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc72|LeetCode — LC 72]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Build a table for the edit distance between each pair of suffixes.
-2. If one suffix is empty, its distance is the other suffix's length.
-3. Matching characters advance both for free; otherwise take one plus the minimum of insertion, deletion, and replacement successor states.
-
-## Why It Works
-
-Every optimal edit script begins with a free match or one of the three allowed edits; solving all successor states gives its minimum cost.
-
-## Worked Example
-
-**Illustrative input:** `word1 = "cat"`, `word2 = "cut"`.
-
-**Trace:** Keep c, replace a with u, and keep t.
-
-**Result:** Return `1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O(mn+m+n)$ time and space for source lengths `m` and `n`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the minimum insertions, deletions, and replacements needed to transform one string into another.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc72|LeetCode — LC 72]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Build a table for the edit distance between each pair of suffixes.
+2. If one suffix is empty, its distance is the other suffix's length.
+3. Matching characters advance both for free; otherwise take one plus the minimum of insertion, deletion, and replacement successor states.
+
+## Why It Works
+
+Every optimal edit script begins with a free match or one of the three allowed edits; solving all successor states gives its minimum cost.
+
+## Worked Example
+
+**Illustrative input:** `word1 = "cat"`, `word2 = "cut"`.
+
+**Trace:** Keep c, replace a with u, and keep t.
+
+**Result:** Return `1`.
 
 ## Common Pitfalls
 

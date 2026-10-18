@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Decide whether a string can be segmented into dictionary words. Solve suffix feasibility from the end.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc139|LeetCode — LC 139]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Set the empty suffix to feasible.
-2. For each starting position moving backward, try each dictionary word that matches there.
-3. Mark the suffix feasible if the matched word is followed by a feasible remaining suffix; stop searching that position once successful.
-
-## Why It Works
-
-Any valid segmentation consists of a first dictionary word and a valid segmentation of the remainder.
-
-## Worked Example
-
-**Illustrative input:** `s = "applepenapple"`, dictionary `["apple", "pen"]`.
-
-**Trace:** The suffix apple is feasible, which makes penapple feasible, then the full string.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(nDL)$ worst-case time for `D` words of maximum length `L`, accounting for Python slicing/comparison; $O(n+L)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Decide whether a string can be segmented into dictionary words. Solve suffix feasibility from the end.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc139|LeetCode — LC 139]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Set the empty suffix to feasible.
+2. For each starting position moving backward, try each dictionary word that matches there.
+3. Mark the suffix feasible if the matched word is followed by a feasible remaining suffix; stop searching that position once successful.
+
+## Why It Works
+
+Any valid segmentation consists of a first dictionary word and a valid segmentation of the remainder.
+
+## Worked Example
+
+**Illustrative input:** `s = "applepenapple"`, dictionary `["apple", "pen"]`.
+
+**Trace:** The suffix apple is feasible, which makes penapple feasible, then the full string.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Maximize stock profit with unlimited transactions but a mandatory one-day cooldown after selling.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc309|LeetCode — LC 309]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Memoize the best future profit by day and whether the next action may be a buy.
-2. At each state, consider waiting or taking the permitted buy/sell action.
-3. Buying advances one day; selling advances two days to enforce the cooldown; return the better branch.
-
-## Why It Works
-
-Day and holding state determine all legal future actions, and the cooldown is fully captured by skipping the day after a sale.
-
-## Worked Example
-
-**Illustrative input:** `prices = [1, 2, 3, 0, 2]`.
-
-**Trace:** Buy at 1, sell at 2, wait one day, buy at 0, and sell at 2.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -62,6 +42,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ memo/recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Maximize stock profit with unlimited transactions but a mandatory one-day cooldown after selling.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc309|LeetCode — LC 309]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Memoize the best future profit by day and whether the next action may be a buy.
+2. At each state, consider waiting or taking the permitted buy/sell action.
+3. Buying advances one day; selling advances two days to enforce the cooldown; return the better branch.
+
+## Why It Works
+
+Day and holding state determine all legal future actions, and the cooldown is fully captured by skipping the day after a sale.
+
+## Worked Example
+
+**Illustrative input:** `prices = [1, 2, 3, 0, 2]`.
+
+**Trace:** Buy at 1, sell at 2, wait one day, buy at 0, and sell at 2.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

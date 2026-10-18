@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Merge two ascending linked lists by repeatedly linking the smaller remaining head.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc21|LeetCode — LC 21]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Create a dummy head and a tail pointer.
-2. While both lists are nonempty, attach the smaller head and advance that list and the tail.
-3. Attach the entire remaining suffix and return dummy.next.
-
-## Why It Works
-
-The smaller head is the smallest unmerged value, so the growing output stays sorted.
-
-## Worked Example
-
-**Illustrative input:** Lists `1 → 4` and `2 → 3`.
-
-**Trace:** Choose 1, 2, and 3, then attach the remaining 4.
-
-**Result:** Return `1 → 2 → 3 → 4`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(n+m)$ time and $O(1)$ extra space for iterative node reuse. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Merge two ascending linked lists by repeatedly linking the smaller remaining head.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc21|LeetCode — LC 21]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Create a dummy head and a tail pointer.
+2. While both lists are nonempty, attach the smaller head and advance that list and the tail.
+3. Attach the entire remaining suffix and return dummy.next.
+
+## Why It Works
+
+The smaller head is the smallest unmerged value, so the growing output stays sorted.
+
+## Worked Example
+
+**Illustrative input:** Lists `1 → 4` and `2 → 3`.
+
+**Trace:** Choose 1, 2, and 3, then attach the remaining 4.
+
+**Result:** Return `1 → 2 → 3 → 4`.
 
 ## Common Pitfalls
 

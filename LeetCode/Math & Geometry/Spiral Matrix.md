@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return matrix values in clockwise spiral order by shrinking four boundaries.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc54|LeetCode — LC 54]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Traverse the top row and right column, then shrink those boundaries.
-2. Check that an interior rectangle remains before traversing the bottom row and left column.
-3. Shrink again and repeat until either dimension is exhausted.
-
-## Why It Works
-
-Each pass removes one perimeter without revisiting it; the boundaries always describe the remaining unvisited rectangle.
-
-## Worked Example
-
-**Illustrative input:** `matrix = [[1, 2, 3], [4, 5, 6]]`.
-
-**Trace:** Read 1,2,3 across the top, then 6 down the right, then 5,4 across the bottom.
-
-**Result:** Return `[1, 2, 3, 6, 5, 4]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -65,6 +45,30 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(1)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return matrix values in clockwise spiral order by shrinking four boundaries.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc54|LeetCode — LC 54]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Traverse the top row and right column, then shrink those boundaries.
+2. Check that an interior rectangle remains before traversing the bottom row and left column.
+3. Shrink again and repeat until either dimension is exhausted.
+
+## Why It Works
+
+Each pass removes one perimeter without revisiting it; the boundaries always describe the remaining unvisited rectangle.
+
+## Worked Example
+
+**Illustrative input:** `matrix = [[1, 2, 3], [4, 5, 6]]`.
+
+**Trace:** Read 1,2,3 across the top, then 6 down the right, then 5,4 across the bottom.
+
+**Result:** Return `[1, 2, 3, 6, 5, 4]`.
 
 ## Common Pitfalls
 

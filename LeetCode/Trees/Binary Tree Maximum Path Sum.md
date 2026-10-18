@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the greatest sum of any nonempty simple path in a binary tree. A path may turn at one node.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc124|LeetCode — LC 124]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Recursively obtain each child's best downward gain and discard negative gains.
-2. Update a global best with the current node plus both nonnegative child gains.
-3. Return the node plus only the larger child gain to its parent.
-
-## Why It Works
-
-A complete path may use two branches at its highest node, but a path extended to a parent can use only one child branch.
-
-## Worked Example
-
-**Illustrative input:** Root -10 has left child 9 and right subtree rooted at 20 with children 15 and 7.
-
-**Trace:** The best path turns at 20 and joins 15 to 7.
-
-**Result:** Return `42`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the greatest sum of any nonempty simple path in a binary tree. A path may turn at one node.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc124|LeetCode — LC 124]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Recursively obtain each child's best downward gain and discard negative gains.
+2. Update a global best with the current node plus both nonnegative child gains.
+3. Return the node plus only the larger child gain to its parent.
+
+## Why It Works
+
+A complete path may use two branches at its highest node, but a path extended to a parent can use only one child branch.
+
+## Worked Example
+
+**Illustrative input:** Root -10 has left child 9 and right subtree rooted at 20 with children 15 and 7.
+
+**Trace:** The best path turns at 20 and joins 15 to 7.
+
+**Result:** Return `42`.
 
 ## Common Pitfalls
 

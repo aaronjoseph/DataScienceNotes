@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Insert an interval into an already sorted, nonoverlapping interval list and merge any overlap.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc57|LeetCode — LC 57]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Append intervals strictly before the new interval.
-2. While intervals overlap the new interval, expand its endpoints to cover both.
-3. Append the merged interval and every remaining later interval.
-
-## Why It Works
-
-Sorted order puts every possible overlap in one contiguous run, so no earlier or later interval needs revisiting.
-
-## Worked Example
-
-**Illustrative input:** Intervals `[[1, 2], [5, 7]]`, new interval `[2, 6]`.
-
-**Trace:** The new interval touches the first and overlaps the second.
-
-**Result:** Return `[[1, 7]]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and up to $O(n)$ output storage; list slicing/concatenation in this implementation also uses $O(n)$ transient space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Insert an interval into an already sorted, nonoverlapping interval list and merge any overlap.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc57|LeetCode — LC 57]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Append intervals strictly before the new interval.
+2. While intervals overlap the new interval, expand its endpoints to cover both.
+3. Append the merged interval and every remaining later interval.
+
+## Why It Works
+
+Sorted order puts every possible overlap in one contiguous run, so no earlier or later interval needs revisiting.
+
+## Worked Example
+
+**Illustrative input:** Intervals `[[1, 2], [5, 7]]`, new interval `[2, 6]`.
+
+**Trace:** The new interval touches the first and overlaps the second.
+
+**Result:** Return `[[1, 7]]`.
 
 ## Common Pitfalls
 

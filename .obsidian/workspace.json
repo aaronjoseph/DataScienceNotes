@@ -50,16 +50,6 @@
             }
           },
           {
-            "id": "eb96264f77a487b4",
-            "type": "leaf",
-            "state": {
-              "type": "copilot-turn-diff-view",
-              "state": {},
-              "icon": "file-diff",
-              "title": "Median of Two Sorted Arrays.md"
-            }
-          },
-          {
             "id": "67956beee8d958b9",
             "type": "leaf",
             "state": {
@@ -88,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -123,7 +113,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "action",
+                "query": "tag:#leetcode  ",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -317,8 +307,9 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "67956beee8d958b9",
+  "active": "8bbf350e56d0349f",
   "lastOpenFiles": [
+    "copilot/copilot-conversations/agent__For_all_the_leetcode_notes,_that_we_have_can_we@20261018_212137.md",
     "Search2.0 architecture.md",
     "LeetCode/Binary Search/Koko Eating Bananas.md",
     "Job Interviews/Coding Practice Index.md",
@@ -348,7 +339,6 @@
     "LeetCode/Intervals/Minimum Interval to Include Each Query.md",
     "LeetCode/Intervals/Meeting Rooms II.md",
     "LeetCode/Intervals/Meeting Rooms.md",
-    "LeetCode/Intervals/Non Overlapping Intervals.md",
     "LeetCode/Intervals",
     "LeetCode/Greedy",
     "LeetCode/2-D Dynamic Programming",

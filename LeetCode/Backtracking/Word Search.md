@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether a word can be traced through horizontally or vertically adjacent board cells without reusing a cell.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc79|LeetCode — LC 79]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start a depth-first search at each cell matching the first letter.
-2. At each step, check bounds, the expected character, and path-local visitation.
-3. Mark the cell, try four neighbors for the next character, and unmark it on return.
-
-## Why It Works
-
-Backtracking enumerates all admissible adjacent paths while preventing repeated use of a cell within one candidate path.
-
-## Worked Example
-
-**Illustrative input:** `board = [["A", "B"], ["C", "D"]]`, `word = "ABD"`.
-
-**Trace:** Follow top-left A, top-right B, then bottom-right D.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -67,6 +47,30 @@ class Solution:
 ## Complexity
 
 A conservative bound is $O(RC\,4^L)$ time and $O(L)$ path space for word length `L`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether a word can be traced through horizontally or vertically adjacent board cells without reusing a cell.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc79|LeetCode — LC 79]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start a depth-first search at each cell matching the first letter.
+2. At each step, check bounds, the expected character, and path-local visitation.
+3. Mark the cell, try four neighbors for the next character, and unmark it on return.
+
+## Why It Works
+
+Backtracking enumerates all admissible adjacent paths while preventing repeated use of a cell within one candidate path.
+
+## Worked Example
+
+**Illustrative input:** `board = [["A", "B"], ["C", "D"]]`, `word = "ABD"`.
+
+**Trace:** Follow top-left A, top-right B, then bottom-right D.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return a target's index in a rotated sorted array with distinct values. At least one half around a midpoint remains sorted.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc33|LeetCode — LC 33]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Check the midpoint for equality.
-2. Determine whether the left half is sorted; otherwise the right half is sorted.
-3. Test whether the target lies inside that sorted half and discard the opposite half, or search the unsorted half when it does not.
-
-## Why It Works
-
-Range comparisons exclude a half only when sorted order proves the target cannot be there.
-
-## Worked Example
-
-**Illustrative input:** `nums = [4, 5, 6, 1, 2, 3]`, `target = 2`.
-
-**Trace:** The sorted left half excludes 2, so search the right half.
-
-**Result:** Return index `4`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(\log n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return a target's index in a rotated sorted array with distinct values. At least one half around a midpoint remains sorted.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc33|LeetCode — LC 33]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Check the midpoint for equality.
+2. Determine whether the left half is sorted; otherwise the right half is sorted.
+3. Test whether the target lies inside that sorted half and discard the opposite half, or search the unsorted half when it does not.
+
+## Why It Works
+
+Range comparisons exclude a half only when sorted order proves the target cannot be there.
+
+## Worked Example
+
+**Illustrative input:** `nums = [4, 5, 6, 1, 2, 3]`, `target = 2`.
+
+**Trace:** The sorted left half excludes 2, so search the right half.
+
+**Result:** Return index `4`.
 
 ## Common Pitfalls
 

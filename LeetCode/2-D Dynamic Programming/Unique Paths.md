@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count paths across an m by n grid when each move goes only right or down.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc62|LeetCode — LC 62]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Maintain a row of path counts, initialized to one along an edge.
-2. Fill each earlier row from right to left, combining the count to the right with the count below.
-3. Return the count at the upper-left cell.
-
-## Why It Works
-
-Every path starts with either a right move or a down move, giving disjoint choices whose counts add.
-
-## Worked Example
-
-**Illustrative input:** `m = 2`, `n = 3`.
-
-**Trace:** The paths correspond to placing one down move among the three moves.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(mn)$ time and $O(n)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count paths across an m by n grid when each move goes only right or down.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc62|LeetCode — LC 62]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Maintain a row of path counts, initialized to one along an edge.
+2. Fill each earlier row from right to left, combining the count to the right with the count below.
+3. Return the count at the upper-left cell.
+
+## Why It Works
+
+Every path starts with either a right move or a down move, giving disjoint choices whose counts add.
+
+## Worked Example
+
+**Illustrative input:** `m = 2`, `n = 3`.
+
+**Trace:** The paths correspond to placing one down move among the three moves.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

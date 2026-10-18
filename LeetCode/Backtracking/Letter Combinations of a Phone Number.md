@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-List all letter strings represented by a sequence of telephone keypad digits from 2 through 9.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc17|LeetCode — LC 17]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Map each digit to its keypad letters.
-2. Recursively choose one letter for the current digit and advance one position.
-3. Append a completed string after all digits have been consumed; return an empty list for empty input.
-
-## Why It Works
-
-Choosing one option independently per digit enumerates the Cartesian product of all keypad letter sets.
-
-## Worked Example
-
-**Illustrative input:** `digits = "23"`.
-
-**Trace:** Choose a, b, or c first, and d, e, or f second.
-
-**Result:** Return nine strings, from ad through cf in keypad order.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(L4^L)$ worst-case time including string creation and output; $O(L^2)$ live prefix-string space in this immutable-string recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+List all letter strings represented by a sequence of telephone keypad digits from 2 through 9.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc17|LeetCode — LC 17]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Map each digit to its keypad letters.
+2. Recursively choose one letter for the current digit and advance one position.
+3. Append a completed string after all digits have been consumed; return an empty list for empty input.
+
+## Why It Works
+
+Choosing one option independently per digit enumerates the Cartesian product of all keypad letter sets.
+
+## Worked Example
+
+**Illustrative input:** `digits = "23"`.
+
+**Trace:** Choose a, b, or c first, and d, e, or f second.
+
+**Result:** Return nine strings, from ad through cf in keypad order.
 
 ## Common Pitfalls
 

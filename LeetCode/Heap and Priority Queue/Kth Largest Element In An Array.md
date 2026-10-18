@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the kth largest occurrence in an unsorted array. A size-k min heap keeps only the current top k.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc215|LeetCode — LC 215]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Scan the values and push each into a min heap.
-2. Whenever the heap contains more than k values, pop its smallest.
-3. Return the root after all values have been processed.
-
-## Why It Works
-
-Discarding the smallest among k+1 candidates preserves exactly the k largest occurrences of the scanned prefix.
-
-## Worked Example
-
-**Illustrative input:** `nums = [3, 1, 5, 5, 2]`, `k = 2`.
-
-**Trace:** The retained top two values are both 5.
-
-**Result:** Return `5`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n\log(k+1))$ time and $O(k)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the kth largest occurrence in an unsorted array. A size-k min heap keeps only the current top k.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc215|LeetCode — LC 215]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Scan the values and push each into a min heap.
+2. Whenever the heap contains more than k values, pop its smallest.
+3. Return the root after all values have been processed.
+
+## Why It Works
+
+Discarding the smallest among k+1 candidates preserves exactly the k largest occurrences of the scanned prefix.
+
+## Worked Example
+
+**Illustrative input:** `nums = [3, 1, 5, 5, 2]`, `k = 2`.
+
+**Trace:** The retained top two values are both 5.
+
+**Result:** Return `5`.
 
 ## Common Pitfalls
 

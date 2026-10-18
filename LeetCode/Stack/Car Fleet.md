@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count car fleets reaching a target without passing. Process cars from nearest to the target to farthest.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc853|LeetCode — LC 853]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort position-speed pairs by descending position.
-2. Compute each car's solo arrival time.
-3. If its time is no greater than the fleet immediately ahead, merge it; otherwise begin another fleet.
-
-## Why It Works
-
-A trailing car catches the fleet ahead exactly when it would arrive no later without obstruction.
-
-## Worked Example
-
-**Illustrative input:** `target = 12`, positions `[10, 8, 0]`, speeds `[2, 4, 1]`.
-
-**Trace:** The first two cars both arrive after one unit of time and merge; the last takes twelve.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n)$ time and $O(n)$ space for sorted pairs and the fleet stack. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count car fleets reaching a target without passing. Process cars from nearest to the target to farthest.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc853|LeetCode — LC 853]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort position-speed pairs by descending position.
+2. Compute each car's solo arrival time.
+3. If its time is no greater than the fleet immediately ahead, merge it; otherwise begin another fleet.
+
+## Why It Works
+
+A trailing car catches the fleet ahead exactly when it would arrive no later without obstruction.
+
+## Worked Example
+
+**Illustrative input:** `target = 12`, positions `[10, 8, 0]`, speeds `[2, 4, 1]`.
+
+**Trace:** The first two cars both arrive after one unit of time and merge; the last takes twelve.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count decodings of a digit string under the mapping 1 to A through 26 to Z.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc91|LeetCode — LC 91]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Memoize the number of decodings starting at each index; the fully consumed suffix has one decoding.
-2. A leading zero at the current index contributes no decoding.
-3. Try one digit, and also try two digits when they form a value from 10 through 26; sum the results.
-
-## Why It Works
-
-Every decoding starts with either a valid one-digit letter or a valid two-digit letter, and those cases cannot overlap.
-
-## Worked Example
-
-**Illustrative input:** `s = "226"`.
-
-**Trace:** The valid splits are 2
-
-**Result:** 2
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ memo/recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count decodings of a digit string under the mapping 1 to A through 26 to Z.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc91|LeetCode — LC 91]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Memoize the number of decodings starting at each index; the fully consumed suffix has one decoding.
+2. A leading zero at the current index contributes no decoding.
+3. Try one digit, and also try two digits when they form a value from 10 through 26; sum the results.
+
+## Why It Works
+
+Every decoding starts with either a valid one-digit letter or a valid two-digit letter, and those cases cannot overlap.
+
+## Worked Example
+
+**Illustrative input:** `s = "226"`.
+
+**Trace:** The valid splits are 2
+
+**Result:** 2
 
 ## Common Pitfalls
 

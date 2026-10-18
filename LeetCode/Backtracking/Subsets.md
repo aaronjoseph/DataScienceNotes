@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Generate all subsets of distinct input values by deciding whether to include each position.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc78|LeetCode — LC 78]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Maintain a mutable subset and a current index.
-2. Recurse once including the current value, then undo that choice and recurse excluding it.
-3. At the end of the input, append a copy of the current subset.
-
-## Why It Works
-
-Each binary decision sequence identifies exactly one subset, so all subsets are generated without duplicates.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 2]`.
-
-**Trace:** The include/exclude paths select both, only 1, only 2, or neither.
-
-**Result:** Return `[[], [1], [2], [1, 2]]` in any order.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -59,6 +39,30 @@ class Solution:
 ## Complexity
 
 $O(n2^n)$ time including copies and $O(n)$ auxiliary recursion/path space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Generate all subsets of distinct input values by deciding whether to include each position.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc78|LeetCode — LC 78]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Maintain a mutable subset and a current index.
+2. Recurse once including the current value, then undo that choice and recurse excluding it.
+3. At the end of the input, append a copy of the current subset.
+
+## Why It Works
+
+Each binary decision sequence identifies exactly one subset, so all subsets are generated without duplicates.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 2]`.
+
+**Trace:** The include/exclude paths select both, only 1, only 2, or neither.
+
+**Result:** Return `[[], [1], [2], [1, 2]]` in any order.
 
 ## Common Pitfalls
 

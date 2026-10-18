@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the cheapest flight route with at most k intermediate stops, so at most k+1 edges may be used.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc787|LeetCode — LC 787]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Initialize source cost to zero and every other cost to infinity.
-2. Perform k+1 rounds of edge relaxation, writing into a fresh copy of the previous round's costs.
-3. After the final round, return the destination cost or -1 if still unreachable.
-
-## Why It Works
-
-Each round extends paths from the previous round by at most one edge, preserving the edge-count limit.
-
-## Worked Example
-
-**Illustrative input:** Flights `[[0, 1, 1], [1, 2, 1], [0, 2, 5]]`, source 0, destination 2, `k = 0`.
-
-**Trace:** Only one edge is allowed, so the cheap two-edge path cannot be used.
-
-**Result:** Return `5`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O((k+1)(V+E))$ time, including array copies, and $O(V)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the cheapest flight route with at most k intermediate stops, so at most k+1 edges may be used.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc787|LeetCode — LC 787]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Initialize source cost to zero and every other cost to infinity.
+2. Perform k+1 rounds of edge relaxation, writing into a fresh copy of the previous round's costs.
+3. After the final round, return the destination cost or -1 if still unreachable.
+
+## Why It Works
+
+Each round extends paths from the previous round by at most one edge, preserving the edge-count limit.
+
+## Worked Example
+
+**Illustrative input:** Flights `[[0, 1, 1], [1, 2, 1], [0, 2, 5]]`, source 0, destination 2, `k = 0`.
+
+**Trace:** Only one edge is allowed, so the cheap two-edge path cannot be used.
+
+**Result:** Return `5`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Choose two vertical lines that hold the most water. Begin with the widest container and discard its limiting side.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc11|LeetCode — LC 11]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Set pointers at the first and last lines.
-2. Compute the area from width and the shorter height; update the best area.
-3. Move a pointer on the shorter side inward and repeat.
-
-## Why It Works
-
-Keeping the shorter side while reducing width cannot improve its area, so discarding that endpoint is safe.
-
-## Worked Example
-
-**Illustrative input:** `height = [1, 3, 2, 4]`.
-
-**Trace:** The outer pair holds 3 units. Moving left gives the pair at indices 1 and 3.
-
-**Result:** Return `6`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Choose two vertical lines that hold the most water. Begin with the widest container and discard its limiting side.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc11|LeetCode — LC 11]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Set pointers at the first and last lines.
+2. Compute the area from width and the shorter height; update the best area.
+3. Move a pointer on the shorter side inward and repeat.
+
+## Why It Works
+
+Keeping the shorter side while reducing width cannot improve its area, so discarding that endpoint is safe.
+
+## Worked Example
+
+**Illustrative input:** `height = [1, 3, 2, 4]`.
+
+**Trace:** The outer pair holds 3 units. Moving left gives the pair at indices 1 and 3.
+
+**Result:** Return `6`.
 
 ## Common Pitfalls
 

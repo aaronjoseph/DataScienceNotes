@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return the maximum in every length-k window. Keep a deque of indices whose values decrease from front to back.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc239|LeetCode — LC 239]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Remove trailing deque indices with values smaller than the incoming value, then append its index.
-2. Remove the front index when it falls left of the window.
-3. Once a full window exists, output the value at the front.
-
-## Why It Works
-
-A newer, larger value outlives every smaller value it removes, so none of those removed candidates can become a future maximum.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 3, 2, 5]`, `k = 2`.
-
-**Trace:** Window maxima are 3, 3, then 5.
-
-**Result:** Return `[3, 3, 5]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(k)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return the maximum in every length-k window. Keep a deque of indices whose values decrease from front to back.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc239|LeetCode — LC 239]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Remove trailing deque indices with values smaller than the incoming value, then append its index.
+2. Remove the front index when it falls left of the window.
+3. Once a full window exists, output the value at the front.
+
+## Why It Works
+
+A newer, larger value outlives every smaller value it removes, so none of those removed candidates can become a future maximum.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 3, 2, 5]`, `k = 2`.
+
+**Trace:** Window maxima are 3, 3, then 5.
+
+**Result:** Return `[3, 3, 5]`.
 
 ## Common Pitfalls
 

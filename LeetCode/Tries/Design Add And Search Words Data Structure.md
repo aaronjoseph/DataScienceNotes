@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Store words and search patterns where a dot matches any single letter.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc211|LeetCode — LC 211]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Insert ordinary words into a trie and mark their ends.
-2. For a literal search character, follow only that child.
-3. For a dot, recursively try each child; accept only if the full pattern ends at a completed word.
-
-## Why It Works
-
-Literal steps preserve exact matches, and wildcard branching enumerates exactly the permitted one-character alternatives.
-
-## Worked Example
-
-**Illustrative input:** Insert `"bad"` and `"dad"`; search `".ad"`.
-
-**Trace:** The dot explores first-letter children, and the remaining suffix matches ad.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -78,6 +58,30 @@ class WordDictionary:
 ## Complexity
 
 Insertion takes $O(L)$ time. Search visits at most the relevant trie nodes; a loose bound is $O(L\,26^d)$ for `d` dots. Trie storage is $O(S)$. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Store words and search patterns where a dot matches any single letter.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc211|LeetCode — LC 211]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Insert ordinary words into a trie and mark their ends.
+2. For a literal search character, follow only that child.
+3. For a dot, recursively try each child; accept only if the full pattern ends at a completed word.
+
+## Why It Works
+
+Literal steps preserve exact matches, and wildcard branching enumerates exactly the permitted one-character alternatives.
+
+## Worked Example
+
+**Illustrative input:** Insert `"bad"` and `"dad"`; search `".ad"`.
+
+**Trace:** The dot explores first-letter children, and the remaining suffix matches ad.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return whether an integer appears more than once. Remember values already seen in a hash set.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc217|LeetCode — LC 217]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start with an empty set.
-2. For each value, return true if it is already in the set; otherwise insert it.
-3. Return false after scanning all values.
-
-## Why It Works
-
-Before each lookup, the set contains exactly the earlier values, so a hit proves a repeated occurrence.
-
-## Worked Example
-
-**Illustrative input:** `nums = [4, 7, 4]`.
-
-**Trace:** Insert 4, then 7. The final 4 is already present.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(n)$ extra space for `n` values. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return whether an integer appears more than once. Remember values already seen in a hash set.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc217|LeetCode — LC 217]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start with an empty set.
+2. For each value, return true if it is already in the set; otherwise insert it.
+3. Return false after scanning all values.
+
+## Why It Works
+
+Before each lookup, the set contains exactly the earlier values, so a hit proves a repeated occurrence.
+
+## Worked Example
+
+**Illustrative input:** `nums = [4, 7, 4]`.
+
+**Trace:** Insert 4, then 7. The final 4 is already present.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

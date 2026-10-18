@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Remove the nth node from the end of a singly linked list in one forward traversal.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc19|LeetCode — LC 19]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use a dummy node before the head.
-2. Advance a right pointer n nodes ahead of a left pointer positioned at the dummy.
-3. Move both until right reaches null; bypass the node after left and return dummy.next.
-
-## Why It Works
-
-The fixed gap leaves left immediately before the node to remove when right reaches the end.
-
-## Worked Example
-
-**Illustrative input:** List `1 → 2 → 3`, `n = 3`.
-
-**Trace:** The right pointer reaches null after the initial gap; left remains at the dummy.
-
-**Result:** Return `2 → 3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(L)$ time and $O(1)$ extra space for list length `L`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Remove the nth node from the end of a singly linked list in one forward traversal.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc19|LeetCode — LC 19]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use a dummy node before the head.
+2. Advance a right pointer n nodes ahead of a left pointer positioned at the dummy.
+3. Move both until right reaches null; bypass the node after left and return dummy.next.
+
+## Why It Works
+
+The fixed gap leaves left immediately before the node to remove when right reaches the end.
+
+## Worked Example
+
+**Illustrative input:** List `1 → 2 → 3`, `n = 3`.
+
+**Trace:** The right pointer reaches null after the initial gap; left remains at the dummy.
+
+**Result:** Return `2 → 3`.
 
 ## Common Pitfalls
 

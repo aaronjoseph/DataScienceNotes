@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the longest contiguous palindromic substring by expanding around every possible center.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc5|LeetCode — LC 5]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. For each character position, consider both an odd-length center and the gap after it as an even-length center.
-2. Expand outward while the two characters match.
-3. Track only the best boundaries and slice the answer once after all centers are checked.
-
-## Why It Works
-
-Every palindrome has exactly one character center or between-character center, so some expansion discovers the longest one.
-
-## Worked Example
-
-**Illustrative input:** `s = "cbbd"`.
-
-**Trace:** The gap between the two b characters expands to bb and stops at mismatched c and d.
-
-**Result:** Return `"bb"`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(n^2)$ time and $O(1)$ auxiliary space, excluding the final returned substring. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the longest contiguous palindromic substring by expanding around every possible center.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc5|LeetCode — LC 5]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. For each character position, consider both an odd-length center and the gap after it as an even-length center.
+2. Expand outward while the two characters match.
+3. Track only the best boundaries and slice the answer once after all centers are checked.
+
+## Why It Works
+
+Every palindrome has exactly one character center or between-character center, so some expansion discovers the longest one.
+
+## Worked Example
+
+**Illustrative input:** `s = "cbbd"`.
+
+**Trace:** The gap between the two b characters expands to bb and stops at mismatched c and d.
+
+**Result:** Return `"bb"`.
 
 ## Common Pitfalls
 

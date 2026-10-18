@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-For each query point, return the size of the smallest closed interval containing it, or -1.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc1851|LeetCode — LC 1851]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort intervals by start and process queries in increasing order.
-2. Push all intervals whose start is at most the query into a heap keyed by interval size.
-3. Remove heap tops ending before the query, then answer from the smallest valid top and restore original query order.
-
-## Why It Works
-
-Every newly eligible interval is inserted, while expired top intervals are removed until the heap's smallest remaining candidate actually covers the query.
-
-## Worked Example
-
-**Illustrative input:** `intervals = [[1, 4], [2, 3]]`, queries `[3, 5]`.
-
-**Trace:** At 3, the interval [2,3] is smallest; at 5, all candidates have expired.
-
-**Result:** Return `[2, -1]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -60,6 +40,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n+q\log q+(n+q)\log(n+1))$ time and $O(n+q)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+For each query point, return the size of the smallest closed interval containing it, or -1.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc1851|LeetCode — LC 1851]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort intervals by start and process queries in increasing order.
+2. Push all intervals whose start is at most the query into a heap keyed by interval size.
+3. Remove heap tops ending before the query, then answer from the smallest valid top and restore original query order.
+
+## Why It Works
+
+Every newly eligible interval is inserted, while expired top intervals are removed until the heap's smallest remaining candidate actually covers the query.
+
+## Worked Example
+
+**Illustrative input:** `intervals = [[1, 4], [2, 3]]`, queries `[3, 5]`.
+
+**Trace:** At 3, the interval [2,3] is smallest; at 5, all candidates have expired.
+
+**Result:** Return `[2, -1]`.
 
 ## Common Pitfalls
 

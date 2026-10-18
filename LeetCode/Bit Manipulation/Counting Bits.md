@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return the number of set bits for every integer from zero through n using previously solved smaller values.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc338|LeetCode — LC 338]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Initialize all counts to zero and track the greatest power of two no larger than the current value.
-2. Advance that power when the next value reaches the next power of two.
-3. The current count is one for its leading bit plus the stored count after removing that power.
-
-## Why It Works
-
-Removing the highest set bit leaves a smaller number whose count has already been computed.
-
-## Worked Example
-
-**Illustrative input:** `n = 5`.
-
-**Trace:** Counts for 4 and 5 reuse counts for 0 and 1, adding their leading bit.
-
-**Result:** Return `[0, 1, 1, 2, 1, 2]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ auxiliary space beyond the required $O(n)$ output table. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return the number of set bits for every integer from zero through n using previously solved smaller values.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc338|LeetCode — LC 338]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Initialize all counts to zero and track the greatest power of two no larger than the current value.
+2. Advance that power when the next value reaches the next power of two.
+3. The current count is one for its leading bit plus the stored count after removing that power.
+
+## Why It Works
+
+Removing the highest set bit leaves a smaller number whose count has already been computed.
+
+## Worked Example
+
+**Illustrative input:** `n = 5`.
+
+**Trace:** Counts for 4 and 5 reuse counts for 0 and 1, adding their leading bit.
+
+**Result:** Return `[0, 1, 1, 2, 1, 2]`.
 
 ## Common Pitfalls
 

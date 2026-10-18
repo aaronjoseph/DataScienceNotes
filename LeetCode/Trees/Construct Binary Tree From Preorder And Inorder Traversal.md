@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Reconstruct a binary tree from preorder and inorder traversals with distinct values.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc105|LeetCode — LC 105]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Map each inorder value to its position and maintain a pointer into preorder.
-2. For an inorder interval, take the next preorder value as its root.
-3. Split that interval around the root position, construct the left subtree first, then the right, and return the root.
-
-## Why It Works
-
-Preorder chooses roots before descendants, and inorder uniquely identifies which remaining nodes belong on each side.
-
-## Worked Example
-
-**Illustrative input:** `preorder = [2, 1, 3]`, `inorder = [1, 2, 3]`.
-
-**Trace:** Choose 2 as root, then build interval [1] and interval [3].
-
-**Result:** Recover root 2 with children 1 and 3.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -59,6 +39,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(n)$ auxiliary space for the index map and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Reconstruct a binary tree from preorder and inorder traversals with distinct values.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc105|LeetCode — LC 105]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Map each inorder value to its position and maintain a pointer into preorder.
+2. For an inorder interval, take the next preorder value as its root.
+3. Split that interval around the root position, construct the left subtree first, then the right, and return the root.
+
+## Why It Works
+
+Preorder chooses roots before descendants, and inorder uniquely identifies which remaining nodes belong on each side.
+
+## Worked Example
+
+**Illustrative input:** `preorder = [2, 1, 3]`, `inorder = [1, 2, 3]`.
+
+**Trace:** Choose 2 as root, then build interval [1] and interval [3].
+
+**Result:** Recover root 2 with children 1 and 3.
 
 ## Common Pitfalls
 

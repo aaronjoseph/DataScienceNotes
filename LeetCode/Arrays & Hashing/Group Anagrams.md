@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Group strings that are anagrams. Use a character-count tuple as a dictionary key.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc49|LeetCode — LC 49]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. For each word, build 26 counts for lowercase English letters.
-2. Convert the count list to an immutable tuple and append the word to that group.
-3. Return the dictionary's groups.
-
-## Why It Works
-
-Two words share a count tuple exactly when their letter multiplicities match.
-
-## Worked Example
-
-**Illustrative input:** `strs = ["eat", "tea", "bat"]`.
-
-**Trace:** The first two words share a signature; bat has another.
-
-**Result:** Return groups `[["eat", "tea"], ["bat"]]` in any order.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(L)$ expected time for `L` total characters; $O(g)$ signature storage for `g` groups with a fixed alphabet, plus $O(n)$ word references. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Group strings that are anagrams. Use a character-count tuple as a dictionary key.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc49|LeetCode — LC 49]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. For each word, build 26 counts for lowercase English letters.
+2. Convert the count list to an immutable tuple and append the word to that group.
+3. Return the dictionary's groups.
+
+## Why It Works
+
+Two words share a count tuple exactly when their letter multiplicities match.
+
+## Worked Example
+
+**Illustrative input:** `strs = ["eat", "tea", "bat"]`.
+
+**Trace:** The first two words share a signature; bat has another.
+
+**Result:** Return groups `[["eat", "tea"], ["bat"]]` in any order.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether the filled cells of a 9 by 9 Sudoku violate any row, column, or 3 by 3 box rule.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc36|LeetCode — LC 36]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Keep a set for each row, column, and box.
-2. Skip empty cells. Locate a box using integer division of both coordinates by 3.
-3. Reject a repeated digit in any associated set; otherwise insert it in all three.
-
-## Why It Works
-
-Each filled digit is checked against every constraint that contains it.
-
-## Worked Example
-
-**Illustrative input:** Two 5 digits occupy different cells of the first row.
-
-**Trace:** The second 5 is found in that row's set.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -60,6 +40,30 @@ class Solution:
 ## Complexity
 
 $O(1)$ time and space for the fixed 81-cell board. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether the filled cells of a 9 by 9 Sudoku violate any row, column, or 3 by 3 box rule.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc36|LeetCode — LC 36]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Keep a set for each row, column, and box.
+2. Skip empty cells. Locate a box using integer division of both coordinates by 3.
+3. Reject a repeated digit in any associated set; otherwise insert it in all three.
+
+## Why It Works
+
+Each filled digit is checked against every constraint that contains it.
+
+## Worked Example
+
+**Illustrative input:** Two 5 digits occupy different cells of the first row.
+
+**Trace:** The second 5 is found in that row's set.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

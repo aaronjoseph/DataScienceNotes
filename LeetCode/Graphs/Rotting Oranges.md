@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Compute the minutes needed for all reachable fresh oranges to rot, with all rotten oranges spreading simultaneously.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc994|LeetCode — LC 994]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Enqueue every initially rotten orange and count fresh ones.
-2. Run breadth-first search in complete levels, turning neighboring fresh oranges rotten when enqueuing them.
-3. Count elapsed levels until no fresh oranges remain; return -1 if the queue empties while fresh oranges remain.
-
-## Why It Works
-
-Queue levels represent equal arrival times from the nearest initially rotten source.
-
-## Worked Example
-
-**Illustrative input:** `grid = [[2, 1, 1]]`.
-
-**Trace:** The middle orange rots after one minute, then the last after two.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -69,6 +49,30 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(RC)$ queue space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Compute the minutes needed for all reachable fresh oranges to rot, with all rotten oranges spreading simultaneously.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc994|LeetCode — LC 994]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Enqueue every initially rotten orange and count fresh ones.
+2. Run breadth-first search in complete levels, turning neighboring fresh oranges rotten when enqueuing them.
+3. Count elapsed levels until no fresh oranges remain; return -1 if the queue empties while fresh oranges remain.
+
+## Why It Works
+
+Queue levels represent equal arrival times from the nearest initially rotten source.
+
+## Worked Example
+
+**Illustrative input:** `grid = [[2, 1, 1]]`.
+
+**Trace:** The middle orange rots after one minute, then the last after two.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

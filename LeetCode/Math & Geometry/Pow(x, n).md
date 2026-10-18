@@ -8,6 +8,32 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def power(base, exponent):
+            if exponent == 0:
+                return 1.0
+            result = power(base * base, exponent // 2)
+            return base * result if exponent % 2 else result
+        result = power(x, abs(n))
+        return result if n >= 0 else 1.0 / result
+```
+
+## Complexity
+
+$O(\log(|n|+1))$ arithmetic steps and recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Compute a real base raised to an integer exponent using exponentiation by squaring.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc50|LeetCode — LC 50]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,28 +55,6 @@ Halving an exponent and squaring the base preserves its power, with one extra fa
 **Trace:** Compute the positive power 8 by halving the exponent, then take its reciprocal.
 
 **Result:** Return `0.125`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def myPow(self, x: float, n: int) -> float:
-        def power(base, exponent):
-            if exponent == 0:
-                return 1.0
-            result = power(base * base, exponent // 2)
-            return base * result if exponent % 2 else result
-        result = power(x, abs(n))
-        return result if n >= 0 else 1.0 / result
-```
-
-## Complexity
-
-$O(\log(|n|+1))$ arithmetic steps and recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

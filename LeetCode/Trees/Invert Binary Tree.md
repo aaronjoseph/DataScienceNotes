@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Mirror a binary tree by swapping left and right children at every node.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc226|LeetCode — LC 226]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Return null for an empty subtree.
-2. Swap the current node's children.
-3. Recursively invert both resulting child subtrees and return the current root.
-
-## Why It Works
-
-A mirrored tree has the original right subtree mirrored on the left and the original left subtree mirrored on the right.
-
-## Worked Example
-
-**Illustrative input:** Tree root 1 has left child 2 and right child 3.
-
-**Trace:** Swap the two children and process their empty descendants.
-
-**Result:** The result has left child 3 and right child 2.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(h)$ recursion space for tree height `h`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Mirror a binary tree by swapping left and right children at every node.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc226|LeetCode — LC 226]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Return null for an empty subtree.
+2. Swap the current node's children.
+3. Recursively invert both resulting child subtrees and return the current root.
+
+## Why It Works
+
+A mirrored tree has the original right subtree mirrored on the left and the original left subtree mirrored on the right.
+
+## Worked Example
+
+**Illustrative input:** Tree root 1 has left child 2 and right child 3.
+
+**Trace:** Swap the two children and process their empty descendants.
+
+**Result:** The result has left child 3 and right child 2.
 
 ## Common Pitfalls
 

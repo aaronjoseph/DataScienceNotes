@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the fewest forward jumps to reach the final position. Treat reachable ranges as breadth-first-search levels.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc45|LeetCode — LC 45]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Maintain the interval reachable with the current number of jumps.
-2. Scan every position in that interval to find the farthest next reach.
-3. Advance to the next interval and increment the jump count until the end is covered.
-
-## Why It Works
-
-Every interval contains exactly the newly reachable positions for one jump count, so the first interval covering the end uses the fewest jumps.
-
-## Worked Example
-
-**Illustrative input:** `nums = [2, 3, 1, 1, 4]`.
-
-**Trace:** The first jump reaches indices 1–2; from there the next jump can reach index 4.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the fewest forward jumps to reach the final position. Treat reachable ranges as breadth-first-search levels.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc45|LeetCode — LC 45]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Maintain the interval reachable with the current number of jumps.
+2. Scan every position in that interval to find the farthest next reach.
+3. Advance to the next interval and increment the jump count until the end is covered.
+
+## Why It Works
+
+Every interval contains exactly the newly reachable positions for one jump count, so the first interval covering the end uses the fewest jumps.
+
+## Worked Example
+
+**Illustrative input:** `nums = [2, 3, 1, 1, 4]`.
+
+**Trace:** The first jump reaches indices 1–2; from there the next jump can reach index 4.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Schedule tasks with a cooldown between equal task types, minimizing total elapsed slots.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc621|LeetCode — LC 621]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Count task types, find the maximum frequency, and count how many types reach it.
-2. Build the lower bound formed by separated occurrences of the most frequent types.
-3. Return the larger of that bound and the number of tasks; the extra tasks can fill otherwise idle slots.
-
-## Why It Works
-
-Repeated maximum-frequency tasks force separated blocks, while enough other tasks fill every gap without increasing the total.
-
-## Worked Example
-
-**Illustrative input:** Tasks `[A, A, A, B, B, B]`, cooldown 2.
-
-**Trace:** A schedule is A B idle A B idle A B.
-
-**Result:** Return `8`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(n+u)$ time and $O(u)$ space for `u` task types, bounded by the fixed uppercase alphabet. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Schedule tasks with a cooldown between equal task types, minimizing total elapsed slots.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc621|LeetCode — LC 621]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Count task types, find the maximum frequency, and count how many types reach it.
+2. Build the lower bound formed by separated occurrences of the most frequent types.
+3. Return the larger of that bound and the number of tasks; the extra tasks can fill otherwise idle slots.
+
+## Why It Works
+
+Repeated maximum-frequency tasks force separated blocks, while enough other tasks fill every gap without increasing the total.
+
+## Worked Example
+
+**Illustrative input:** Tasks `[A, A, A, B, B, B]`, cooldown 2.
+
+**Trace:** A schedule is A B idle A B idle A B.
+
+**Result:** Return `8`.
 
 ## Common Pitfalls
 

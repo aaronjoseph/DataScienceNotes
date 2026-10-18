@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether s2 contains a contiguous permutation of s1. A permutation has the same frequency vector.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc567|LeetCode — LC 567]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Reject when s1 is longer than s2.
-2. Count letters in s1 and the first equally sized window of s2.
-3. Slide one position at a time, updating the entering and leaving letters; detect equality of all 26 counts.
-
-## Why It Works
-
-Equal-length strings with identical letter counts are permutations of one another.
-
-## Worked Example
-
-**Illustrative input:** `s1 = "ab"`, `s2 = "eidbaooo"`.
-
-**Trace:** Sliding reaches the window ba, whose counts match ab.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -72,6 +52,30 @@ class Solution:
 ## Complexity
 
 $O(n+m)$ time and $O(1)$ space for the fixed lowercase English alphabet. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether s2 contains a contiguous permutation of s1. A permutation has the same frequency vector.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc567|LeetCode — LC 567]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Reject when s1 is longer than s2.
+2. Count letters in s1 and the first equally sized window of s2.
+3. Slide one position at a time, updating the entering and leaving letters; detect equality of all 26 counts.
+
+## Why It Works
+
+Equal-length strings with identical letter counts are permutations of one another.
+
+## Worked Example
+
+**Illustrative input:** `s1 = "ab"`, `s2 = "eidbaooo"`.
+
+**Trace:** Sliding reaches the window ba, whose counts match ab.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

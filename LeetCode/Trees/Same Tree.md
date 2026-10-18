@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether two binary trees have identical shapes and matching values at corresponding nodes.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc100|LeetCode — LC 100]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Accept a pair of null subtrees.
-2. Reject if only one node is null or their values differ.
-3. Recursively require equality of both corresponding child pairs.
-
-## Why It Works
-
-The root value and the two child structures fully determine equality of a binary tree.
-
-## Worked Example
-
-**Illustrative input:** One tree has root 1 with left child 2; the other has root 1 with right child 2.
-
-**Trace:** The root matches, but the corresponding left children do not.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n+m)$ worst-case time bound and $O(h)$ recursion space across the compared trees. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether two binary trees have identical shapes and matching values at corresponding nodes.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc100|LeetCode — LC 100]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Accept a pair of null subtrees.
+2. Reject if only one node is null or their values differ.
+3. Recursively require equality of both corresponding child pairs.
+
+## Why It Works
+
+The root value and the two child structures fully determine equality of a binary tree.
+
+## Worked Example
+
+**Illustrative input:** One tree has root 1 with left child 2; the other has root 1 with right child 2.
+
+**Trace:** The root matches, but the corresponding left children do not.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

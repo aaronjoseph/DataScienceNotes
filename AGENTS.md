@@ -191,6 +191,14 @@ Adapt the body to the material:
 - **Study plans:** Learning goals, sequence, exercises, and completion criteria. Keep resource URLs in the final references section.
 - **Comparison notes:** Shared purpose, meaningful differences, tradeoffs, and when to choose each option.
 
+## LeetCode revision layout
+
+- Apply this layout to every problem note under `LeetCode/`, including future notes.
+- Immediately after YAML frontmatter, start the body with `## Template`, followed directly by `## Complexity`, before the problem description, reasoning, and worked examples.
+- Put the existing reusable algorithm template or primary solution implementation in the template section. Use language-labelled code fences and language subheadings where useful. If no standalone template exists, use the existing primary implementation rather than inventing a second version.
+- State both time and auxiliary-space complexity beside the template, define the size variables, and preserve distinctions between approaches, expected or worst-case bounds, and output-space accounting. Keep the complexity explanation with its section.
+- Keep detailed walkthroughs, alternative implementations, pitfalls, links, embeds, metadata, and unfinished work below these two sections. Move existing content rather than duplicating it, preserve heading targets, and keep external references in the final `## References & Useful Links` section.
+
 ## Before finishing
 
 - Review the diff (for example `git diff -- <file>`) for scope, accidental deletions, and lost context, including local PDFs, images, and embeds.

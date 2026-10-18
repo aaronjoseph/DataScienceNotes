@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count connected islands of land in a grid using horizontal and vertical adjacency.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc200|LeetCode — LC 200]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Scan all cells and keep a visited set.
-2. Whenever an unvisited land cell is found, increment the island count and flood-fill its connected land.
-3. Mark each cell before exploring neighbors so it cannot be counted again.
-
-## Why It Works
-
-Each flood fill marks exactly one connected land component, and every island eventually supplies one starting cell.
-
-## Worked Example
-
-**Illustrative input:** `grid = [["1", "0"], ["0", "1"]]`.
-
-**Trace:** The two land cells touch only diagonally, so each starts its own flood fill.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -65,6 +45,30 @@ class Solution:
 ## Complexity
 
 $O(RC)$ expected time and $O(RC)$ space for visited cells and worst-case recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count connected islands of land in a grid using horizontal and vertical adjacency.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc200|LeetCode — LC 200]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Scan all cells and keep a visited set.
+2. Whenever an unvisited land cell is found, increment the island count and flood-fill its connected land.
+3. Mark each cell before exploring neighbors so it cannot be counted again.
+
+## Why It Works
+
+Each flood fill marks exactly one connected land component, and every island eventually supplies one starting cell.
+
+## Worked Example
+
+**Illustrative input:** `grid = [["1", "0"], ["0", "1"]]`.
+
+**Trace:** The two land cells touch only diagonally, so each starts its own flood fill.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

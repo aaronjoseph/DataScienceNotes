@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find two distinct positions summing to a target in an already sorted array; return one-based indices.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc167|LeetCode — LC 167]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start pointers at both ends.
-2. If the sum is too small, move left inward; if too large, move right inward.
-3. Return both indices increased by one when the sum matches.
-
-## Why It Works
-
-Sorted order proves that discarded endpoints cannot be part of a matching pair within the remaining range.
-
-## Worked Example
-
-**Illustrative input:** `numbers = [1, 2, 5, 8]`, `target = 7`.
-
-**Trace:** The outer total is too large; reduce the right endpoint, then increase the left.
-
-**Result:** Return `[2, 3]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find two distinct positions summing to a target in an already sorted array; return one-based indices.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc167|LeetCode — LC 167]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start pointers at both ends.
+2. If the sum is too small, move left inward; if too large, move right inward.
+3. Return both indices increased by one when the sum matches.
+
+## Why It Works
+
+Sorted order proves that discarded endpoints cannot be part of a matching pair within the remaining range.
+
+## Worked Example
+
+**Illustrative input:** `numbers = [1, 2, 5, 8]`, `target = 7`.
+
+**Trace:** The outer total is too large; reduce the right endpoint, then increase the left.
+
+**Result:** Return `[2, 3]`.
 
 ## Common Pitfalls
 

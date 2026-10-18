@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether one person can attend every meeting without an overlap.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc252|LeetCode — LC 252]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort meeting intervals by start time.
-2. Compare each meeting's start with the preceding meeting's end.
-3. Reject a strict overlap; otherwise accept after all adjacent pairs pass.
-
-## Why It Works
-
-If any intervals overlap in sorted order, an overlap also appears between an adjacent pair.
-
-## Worked Example
-
-**Illustrative input:** `intervals = [[1, 2], [2, 3]]`.
-
-**Trace:** The first meeting ends exactly when the next begins.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n)$ time and $O(n)$ worst-case auxiliary sorting space in Python. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether one person can attend every meeting without an overlap.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc252|LeetCode — LC 252]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort meeting intervals by start time.
+2. Compare each meeting's start with the preceding meeting's end.
+3. Reject a strict overlap; otherwise accept after all adjacent pairs pass.
+
+## Why It Works
+
+If any intervals overlap in sorted order, an overlap also appears between an adjacent pair.
+
+## Worked Example
+
+**Illustrative input:** `intervals = [[1, 2], [2, 3]]`.
+
+**Trace:** The first meeting ends exactly when the next begins.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Generate unique subsets when input values may repeat. Sort and skip duplicate exclusion branches.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc90|LeetCode — LC 90]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort values so equal items are adjacent.
-2. At an index, first explore subsets including that occurrence.
-3. After undoing the inclusion, skip all remaining identical occurrences before exploring exclusion.
-
-## Why It Works
-
-Including successive copies controls multiplicity, while excluding a value skips every equivalent route to the same subset.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 2, 2]`.
-
-**Trace:** The 2 block contributes zero, one, or two copies to subsets with or without 1.
-
-**Result:** Return six unique subsets.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(n2^n)$ worst-case time including copies; $O(n)$ auxiliary space including sorting and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Generate unique subsets when input values may repeat. Sort and skip duplicate exclusion branches.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc90|LeetCode — LC 90]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort values so equal items are adjacent.
+2. At an index, first explore subsets including that occurrence.
+3. After undoing the inclusion, skip all remaining identical occurrences before exploring exclusion.
+
+## Why It Works
+
+Including successive copies controls multiplicity, while excluding a value skips every equivalent route to the same subset.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 2, 2]`.
+
+**Trace:** The 2 block contributes zero, one, or two copies to subsets with or without 1.
+
+**Result:** Return six unique subsets.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the smallest water level allowing travel from the top-left to bottom-right cell. A path's cost is its greatest elevation.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc778|LeetCode — LC 778]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Push the starting cell with its elevation as the path cost.
-2. Expand the lowest-cost frontier cell using a heap.
-3. For each neighbor, use the larger of the current path cost and neighbor elevation; return when the destination is popped.
-
-## Why It Works
-
-This minimax form of Dijkstra finalizes the smallest possible maximum elevation needed to reach the destination.
-
-## Worked Example
-
-**Illustrative input:** `grid = [[0, 2], [1, 3]]`.
-
-**Trace:** Either route must enter elevation 3 at the destination.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -62,6 +42,30 @@ class Solution:
 ## Complexity
 
 $O(n^2\log(n+1))$ time and $O(n^2)$ space for an `n` by `n` grid. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the smallest water level allowing travel from the top-left to bottom-right cell. A path's cost is its greatest elevation.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc778|LeetCode — LC 778]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Push the starting cell with its elevation as the path cost.
+2. Expand the lowest-cost frontier cell using a heap.
+3. For each neighbor, use the larger of the current path cost and neighbor elevation; return when the destination is popped.
+
+## Why It Works
+
+This minimax form of Dijkstra finalizes the smallest possible maximum elevation needed to reach the destination.
+
+## Worked Example
+
+**Illustrative input:** `grid = [[0, 2], [1, 3]]`.
+
+**Trace:** Either route must enter elevation 3 at the destination.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-For each position, return the product of every other element without division. Combine a product from the left with one from the right.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc238|LeetCode — LC 238]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Fill the output with prefix products, excluding the current element.
-2. Walk backward while maintaining a suffix product.
-3. Multiply each stored prefix by the suffix, then include the current value in the suffix.
-
-## Why It Works
-
-The left and right ranges are disjoint and together contain every position except the current one.
-
-## Worked Example
-
-**Illustrative input:** `nums = [2, 3, 4]`.
-
-**Trace:** Prefixes are `[1, 2, 6]`; the reverse pass supplies products to their right.
-
-**Result:** Return `[12, 8, 6]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ auxiliary space, excluding the required output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+For each position, return the product of every other element without division. Combine a product from the left with one from the right.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc238|LeetCode — LC 238]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Fill the output with prefix products, excluding the current element.
+2. Walk backward while maintaining a suffix product.
+3. Multiply each stored prefix by the suffix, then include the current value in the suffix.
+
+## Why It Works
+
+The left and right ranges are disjoint and together contain every position except the current one.
+
+## Worked Example
+
+**Illustrative input:** `nums = [2, 3, 4]`.
+
+**Trace:** Prefixes are `[1, 2, 6]`; the reverse pass supplies products to their right.
+
+**Result:** Return `[12, 8, 6]`.
 
 ## Common Pitfalls
 

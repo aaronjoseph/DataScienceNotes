@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the largest rectangle formed by consecutive histogram bars. Use increasing heights to discover each bar's widest valid range.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc84|LeetCode — LC 84]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Keep pairs of starting index and height in an increasing stack.
-2. When a shorter bar arrives, pop taller bars and evaluate their rectangles ending just before it; carry the earliest popped start forward.
-3. Push the new bar, then evaluate remaining stack entries through the histogram's end.
-
-## Why It Works
-
-A popped height has just found its first smaller right boundary; its stored start already excludes smaller bars on the left.
-
-## Worked Example
-
-**Illustrative input:** `heights = [2, 1, 2]`.
-
-**Trace:** The center height 1 spans all three bars; height 2 spans one at either end.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the largest rectangle formed by consecutive histogram bars. Use increasing heights to discover each bar's widest valid range.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc84|LeetCode — LC 84]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Keep pairs of starting index and height in an increasing stack.
+2. When a shorter bar arrives, pop taller bars and evaluate their rectangles ending just before it; carry the earliest popped start forward.
+3. Push the new bar, then evaluate remaining stack entries through the histogram's end.
+
+## Why It Works
+
+A popped height has just found its first smaller right boundary; its stored start already excludes smaller bars on the left.
+
+## Worked Example
+
+**Illustrative input:** `heights = [2, 1, 2]`.
+
+**Trace:** The center height 1 spans all three bars; height 2 spans one at either end.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Multiply two nonnegative decimal strings without converting the complete strings to integers.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc43|LeetCode — LC 43]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Allocate a digit array large enough for the sum of operand lengths.
-2. Multiply every pair of digits from least significant to most significant, adding into its aligned result position and carrying upward.
-3. Reverse the result digits, remove leading zeros, and join them into a string.
-
-## Why It Works
-
-Each digit pair contributes at its decimal place, and carry propagation preserves the value while keeping digits normalized.
-
-## Worked Example
-
-**Illustrative input:** `num1 = "12"`, `num2 = "13"`.
-
-**Trace:** The aligned partial products are 36 for multiplication by the units digit and 120 for multiplication by the tens digit.
-
-**Result:** Return `"156"`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -60,6 +40,30 @@ class Solution:
 ## Complexity
 
 $O(mn)$ time and $O(m+n)$ auxiliary space for operand lengths `m` and `n`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Multiply two nonnegative decimal strings without converting the complete strings to integers.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc43|LeetCode — LC 43]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Allocate a digit array large enough for the sum of operand lengths.
+2. Multiply every pair of digits from least significant to most significant, adding into its aligned result position and carrying upward.
+3. Reverse the result digits, remove leading zeros, and join them into a string.
+
+## Why It Works
+
+Each digit pair contributes at its decimal place, and carry propagation preserves the value while keeping digits normalized.
+
+## Worked Example
+
+**Illustrative input:** `num1 = "12"`, `num2 = "13"`.
+
+**Trace:** The aligned partial products are 36 for multiplication by the units digit and 120 for multiplication by the tens digit.
+
+**Result:** Return `"156"`.
 
 ## Common Pitfalls
 

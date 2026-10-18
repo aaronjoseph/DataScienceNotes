@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether repeated coordinatewise-maximum merges of triplets can produce the target.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc1899|LeetCode — LC 1899]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Discard any triplet exceeding the target in any coordinate.
-2. For each remaining triplet, mark coordinates that equal the corresponding target coordinate.
-3. Accept if all three coordinates are covered by eligible triplets.
-
-## Why It Works
-
-Eligible triplets can never overshoot the target, and merging a set covering every coordinate reaches the target exactly.
-
-## Worked Example
-
-**Illustrative input:** Triplets `[[2, 1, 3], [1, 4, 2]]`, target `[2, 4, 3]`.
-
-**Trace:** The first supplies coordinates zero and two; the second supplies coordinate one.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether repeated coordinatewise-maximum merges of triplets can produce the target.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc1899|LeetCode — LC 1899]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Discard any triplet exceeding the target in any coordinate.
+2. For each remaining triplet, mark coordinates that equal the corresponding target coordinate.
+3. Accept if all three coordinates are covered by eligible triplets.
+
+## Why It Works
+
+Eligible triplets can never overshoot the target, and merging a set covering every coordinate reaches the target exactly.
+
+## Worked Example
+
+**Illustrative input:** Triplets `[[2, 1, 3], [1, 4, 2]]`, target `[2, 4, 3]`.
+
+**Trace:** The first supplies coordinates zero and two; the second supplies coordinate one.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

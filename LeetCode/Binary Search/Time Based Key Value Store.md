@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Store timestamped values and retrieve the latest value at or before a requested time.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc981|LeetCode — LC 981]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. For each key, append timestamped values; the problem supplies increasing set timestamps.
-2. During get, binary search that key's history.
-3. Save a candidate whenever its timestamp is no greater than the query and continue right for a newer candidate.
-
-## Why It Works
-
-All entries after a too-large timestamp are also too new; searching right after a valid entry finds the latest admissible one.
-
-## Worked Example
-
-**Illustrative input:** Set key x to a at time 2 and b at time 5.
-
-**Trace:** A query at time 4 admits only the earlier assignment.
-
-**Result:** Return `"a"`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -63,6 +43,30 @@ class TimeMap:
 ## Complexity
 
 Set is amortized $O(1)$; get is $O(\log m)$ for `m` versions of that key; total storage is $O(N)$ assignments. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Store timestamped values and retrieve the latest value at or before a requested time.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc981|LeetCode — LC 981]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. For each key, append timestamped values; the problem supplies increasing set timestamps.
+2. During get, binary search that key's history.
+3. Save a candidate whenever its timestamp is no greater than the query and continue right for a newer candidate.
+
+## Why It Works
+
+All entries after a too-large timestamp are also too new; searching right after a valid entry finds the latest admissible one.
+
+## Worked Example
+
+**Illustrative input:** Set key x to a at time 2 and b at time 5.
+
+**Trace:** A query at time 4 admits only the earlier assignment.
+
+**Result:** Return `"a"`.
 
 ## Common Pitfalls
 

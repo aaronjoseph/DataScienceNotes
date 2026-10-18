@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether one tree contains another as a complete rooted subtree.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc572|LeetCode — LC 572]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. At each node of the larger tree, compare the entire candidate subtree using structural equality.
-2. If it fails, recursively try each child as the next candidate root.
-3. Accept a successful exact match; reject when all candidate roots are exhausted.
-
-## Why It Works
-
-Every possible subtree root is examined, and structural comparison verifies all its descendants.
-
-## Worked Example
-
-**Illustrative input:** The larger tree has root 3 with subtree rooted at 4 containing children 1 and 2.
-
-**Trace:** Compare the candidate rooted at 4 with that same structure.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(nm)$ worst-case time for tree sizes `n` and `m`; $O(h_n+h_m)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether one tree contains another as a complete rooted subtree.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc572|LeetCode — LC 572]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. At each node of the larger tree, compare the entire candidate subtree using structural equality.
+2. If it fails, recursively try each child as the next candidate root.
+3. Accept a successful exact match; reject when all candidate roots are exhausted.
+
+## Why It Works
+
+Every possible subtree root is examined, and structural comparison verifies all its descendants.
+
+## Worked Example
+
+**Illustrative input:** The larger tree has root 3 with subtree rooted at 4 containing children 1 and 2.
+
+**Trace:** Compare the candidate rooted at 4 with that same structure.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

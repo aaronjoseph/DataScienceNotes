@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Decide whether two strings contain exactly the same characters with the same multiplicities.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc242|LeetCode — LC 242]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Reject unequal lengths.
-2. Count each character in each string using two maps.
-3. Compare the maps, including the counts.
-
-## Why It Works
-
-Reordering preserves every character count; equal counts are also sufficient to reconstruct the same multiset.
-
-## Worked Example
-
-**Illustrative input:** `s = "aab"`, `t = "aba"`.
-
-**Trace:** Both maps contain two a characters and one b.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(u)$ space, where `u` is the number of distinct characters. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Decide whether two strings contain exactly the same characters with the same multiplicities.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc242|LeetCode — LC 242]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Reject unequal lengths.
+2. Count each character in each string using two maps.
+3. Compare the maps, including the counts.
+
+## Why It Works
+
+Reordering preserves every character count; equal counts are also sufficient to reconstruct the same multiset.
+
+## Worked Example
+
+**Illustrative input:** `s = "aab"`, `t = "aba"`.
+
+**Trace:** Both maps contain two a characters and one b.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

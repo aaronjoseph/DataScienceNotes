@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Generate every ordering of distinct values. Recursively choose the final value of each ordering.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc46|LeetCode — LC 46]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Rotate each candidate out of the current list in turn.
-2. Recursively permute the remaining list, append the removed value to each returned permutation, and collect them.
-3. Restore the removed value before considering the next candidate.
-
-## Why It Works
-
-Each permutation has a unique final value and a unique ordering of the remaining values.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 2]`.
-
-**Trace:** Choose 1 as the final value to obtain [2, 1], then 2 to obtain [1, 2].
-
-**Result:** Return both orderings.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O(n\,n!)$ time and $O(n\,n!)$ transient materialized permutation storage for this implementation, including intermediate results. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Generate every ordering of distinct values. Recursively choose the final value of each ordering.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc46|LeetCode — LC 46]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Rotate each candidate out of the current list in turn.
+2. Recursively permute the remaining list, append the removed value to each returned permutation, and collect them.
+3. Restore the removed value before considering the next candidate.
+
+## Why It Works
+
+Each permutation has a unique final value and a unique ordering of the remaining values.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 2]`.
+
+**Trace:** Choose 1 as the final value to obtain [2, 1], then 2 to obtain [1, 2].
+
+**Result:** Return both orderings.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Identify the extra edge that creates a cycle in an undirected tree plus one edge.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc684|LeetCode — LC 684]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Create a disjoint-set structure for the labeled vertices.
-2. Process edges in input order, finding both endpoint roots.
-3. If roots are equal, return that edge; otherwise union the components using size and path compression.
-
-## Why It Works
-
-An edge creates a cycle exactly when its endpoints already have a connecting path.
-
-## Worked Example
-
-**Illustrative input:** Edges `[[1, 2], [1, 3], [2, 3]]`.
-
-**Trace:** The first two edges connect all three vertices; the last joins vertices already connected.
-
-**Result:** Return `[2, 3]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -70,6 +50,30 @@ class Solution:
 ## Complexity
 
 $O(n\alpha(n))$ amortized time and $O(n)$ space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Identify the extra edge that creates a cycle in an undirected tree plus one edge.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc684|LeetCode — LC 684]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Create a disjoint-set structure for the labeled vertices.
+2. Process edges in input order, finding both endpoint roots.
+3. If roots are equal, return that edge; otherwise union the components using size and path compression.
+
+## Why It Works
+
+An edge creates a cycle exactly when its endpoints already have a connecting path.
+
+## Worked Example
+
+**Illustrative input:** Edges `[[1, 2], [1, 3], [2, 3]]`.
+
+**Trace:** The first two edges connect all three vertices; the last joins vertices already connected.
+
+**Result:** Return `[2, 3]`.
 
 ## Common Pitfalls
 

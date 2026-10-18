@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the longest substring that can become one repeated character after at most k replacements.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc424|LeetCode — LC 424]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Count characters as the right endpoint advances and track the greatest frequency seen.
-2. If the window length exceeds that historical frequency plus k, move its left endpoint once.
-3. Return the final nondecreasing window size.
-
-## Why It Works
-
-A historical frequency can keep an invalid window temporarily, but the window cannot grow beyond a size supported by a previously achievable replacement budget.
-
-## Worked Example
-
-**Illustrative input:** `s = "AABABBA"`, `k = 1`.
-
-**Trace:** The window AABA can become AAAA by replacing its B.
-
-**Result:** Return `4`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(u)$ space; the uppercase alphabet bounds `u` by 26. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the longest substring that can become one repeated character after at most k replacements.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc424|LeetCode — LC 424]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Count characters as the right endpoint advances and track the greatest frequency seen.
+2. If the window length exceeds that historical frequency plus k, move its left endpoint once.
+3. Return the final nondecreasing window size.
+
+## Why It Works
+
+A historical frequency can keep an invalid window temporarily, but the window cannot grow beyond a size supported by a previously achievable replacement budget.
+
+## Worked Example
+
+**Illustrative input:** `s = "AABABBA"`, `k = 1`.
+
+**Trace:** The window AABA can become AAAA by replacing its B.
+
+**Result:** Return `4`.
 
 ## Common Pitfalls
 

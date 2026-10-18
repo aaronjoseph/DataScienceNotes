@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the minimum number of meeting rooms by measuring maximum simultaneous meetings.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc253|LeetCode — LC 253]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort starts and ends into separate arrays.
-2. Compare the next start and end; a start earlier than the end requires another active room.
-3. Otherwise process an ending first and free a room; track the maximum active count.
-
-## Why It Works
-
-The minimum room requirement equals peak concurrency, which the chronological sweep measures exactly.
-
-## Worked Example
-
-**Illustrative input:** `intervals = [[0, 10], [5, 7], [7, 9]]`.
-
-**Trace:** Two meetings overlap, while the room ending at 7 can immediately host the meeting starting at 7.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n)$ time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the minimum number of meeting rooms by measuring maximum simultaneous meetings.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc253|LeetCode — LC 253]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort starts and ends into separate arrays.
+2. Compare the next start and end; a start earlier than the end requires another active room.
+3. Otherwise process an ending first and free a room; track the maximum active count.
+
+## Why It Works
+
+The minimum room requirement equals peak concurrency, which the chronological sweep measures exactly.
+
+## Worked Example
+
+**Illustrative input:** `intervals = [[0, 10], [5, 7], [7, 9]]`.
+
+**Trace:** Two meetings overlap, while the room ending at 7 can immediately host the meeting starting at 7.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

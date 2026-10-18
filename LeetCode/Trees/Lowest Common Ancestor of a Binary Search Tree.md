@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the lowest common ancestor of two existing nodes in a binary search tree.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc235|LeetCode — LC 235]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start at the root.
-2. If both target values are smaller, move left; if both are larger, move right.
-3. Return the first node where the target directions split or one target equals the current node.
-
-## Why It Works
-
-While both targets occupy one strict side, their lowest common ancestor must also be in that side.
-
-## Worked Example
-
-**Illustrative input:** BST root 6 has children 2 and 8; the targets are those children.
-
-**Trace:** Their values lie on opposite sides of 6.
-
-**Result:** Return the root node `6`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(h)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the lowest common ancestor of two existing nodes in a binary search tree.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc235|LeetCode — LC 235]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start at the root.
+2. If both target values are smaller, move left; if both are larger, move right.
+3. Return the first node where the target directions split or one target equals the current node.
+
+## Why It Works
+
+While both targets occupy one strict side, their lowest common ancestor must also be in that side.
+
+## Worked Example
+
+**Illustrative input:** BST root 6 has children 2 and 8; the targets are those children.
+
+**Trace:** Their values lie on opposite sides of 6.
+
+**Result:** Return the root node `6`.
 
 ## Common Pitfalls
 

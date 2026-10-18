@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Partition cards into groups of consecutive values of a fixed size.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc846|LeetCode — LC 846]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Reject if the number of cards is not divisible by the group size.
-2. Count values and keep the smallest remaining value in a min heap.
-3. Start a group there and consume each consecutive required value; reject missing values or inconsistent depletion order.
-
-## Why It Works
-
-The smallest remaining card must begin some group, so consuming that forced group cannot exclude a different valid partition.
-
-## Worked Example
-
-**Illustrative input:** `hand = [1, 2, 3, 2, 3, 4]`, `groupSize = 3`.
-
-**Trace:** Build groups [1,2,3] and [2,3,4].
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -65,6 +45,30 @@ class Solution:
 ## Complexity
 
 $O(n\log(u+1))$ conservative time and $O(u)$ space for `u` distinct values. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Partition cards into groups of consecutive values of a fixed size.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc846|LeetCode — LC 846]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Reject if the number of cards is not divisible by the group size.
+2. Count values and keep the smallest remaining value in a min heap.
+3. Start a group there and consume each consecutive required value; reject missing values or inconsistent depletion order.
+
+## Why It Works
+
+The smallest remaining card must begin some group, so consuming that forced group cannot exclude a different valid partition.
+
+## Worked Example
+
+**Illustrative input:** `hand = [1, 2, 3, 2, 3, 4]`, `groupSize = 3`.
+
+**Trace:** Build groups [1,2,3] and [2,3,4].
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

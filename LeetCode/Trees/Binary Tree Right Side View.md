@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return the values visible when viewing a binary tree from its right side.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc199|LeetCode — LC 199]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Traverse the tree level by level using a queue.
-2. Visit each level's nodes in left-to-right order and remember the last real node.
-3. Append that node's value to the result.
-
-## Why It Works
-
-The last node in a level is its rightmost existing node, regardless of which parent owns it.
-
-## Worked Example
-
-**Illustrative input:** Root 1 has left child 2, and node 2 has right child 5.
-
-**Trace:** The three levels have rightmost nodes 1, 2, and 5.
-
-**Result:** Return `[1, 2, 5]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(w)$ auxiliary queue space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return the values visible when viewing a binary tree from its right side.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc199|LeetCode — LC 199]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Traverse the tree level by level using a queue.
+2. Visit each level's nodes in left-to-right order and remember the last real node.
+3. Append that node's value to the result.
+
+## Why It Works
+
+The last node in a level is its rightmost existing node, regardless of which parent owns it.
+
+## Worked Example
+
+**Illustrative input:** Root 1 has left child 2, and node 2 has right child 5.
+
+**Trace:** The three levels have rightmost nodes 1, 2, and 5.
+
+**Result:** Return `[1, 2, 5]`.
 
 ## Common Pitfalls
 

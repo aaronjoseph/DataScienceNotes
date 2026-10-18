@@ -8,6 +8,30 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        for i in range(len(cost) - 3, -1, -1):
+            cost[i] += min(cost[i + 1], cost[i + 2])
+        return min(cost[0], cost[1])
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space because this implementation overwrites the input array. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Pay each visited stair's cost and reach just beyond the final stair, starting at index zero or one.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc746|LeetCode — LC 746]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,26 +53,6 @@ After paying at a stair, the only choices are advancing one or two stairs, and b
 **Trace:** Starting at stair 1 and jumping beyond the last stair costs only 15.
 
 **Result:** Return `15`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
-        for i in range(len(cost) - 3, -1, -1):
-            cost[i] += min(cost[i + 1], cost[i + 2])
-        return min(cost[0], cost[1])
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space because this implementation overwrites the input array. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

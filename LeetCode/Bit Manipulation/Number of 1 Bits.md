@@ -8,6 +8,31 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def hammingWeight(self, n: int) -> int:
+        res = 0
+        while n:
+            n &= n - 1
+            res += 1
+        return res
+```
+
+## Complexity
+
+$O(b)$ time for `b` set bits and $O(1)$ extra space under fixed-width arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Count set bits in a nonnegative integer by clearing its lowest set bit repeatedly.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc191|LeetCode — LC 191]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,27 +54,6 @@ Subtracting one flips the lowest set bit and all lower bits; AND removes exactly
 **Trace:** The transformations are 1100 → 1000 → 0000.
 
 **Result:** Return `2`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def hammingWeight(self, n: int) -> int:
-        res = 0
-        while n:
-            n &= n - 1
-            res += 1
-        return res
-```
-
-## Complexity
-
-$O(b)$ time for `b` set bits and $O(1)$ extra space under fixed-width arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

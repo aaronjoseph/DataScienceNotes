@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-For each day, report how many days until a strictly warmer temperature. Keep unresolved days in a decreasing stack.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc739|LeetCode — LC 739]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Scan temperatures from left to right.
-2. While today's temperature exceeds the stack's top temperature, pop that earlier day and store its index distance.
-3. Push today; unresolved entries retain zero in the result.
-
-## Why It Works
-
-The first later warmer day resolves each popped index, because earlier scanned days did not exceed its temperature.
-
-## Worked Example
-
-**Illustrative input:** `temperatures = [70, 70, 72]`.
-
-**Trace:** The final day resolves both earlier days, with waits of 2 and 1.
-
-**Result:** Return `[2, 1, 0]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+For each day, report how many days until a strictly warmer temperature. Keep unresolved days in a decreasing stack.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc739|LeetCode — LC 739]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Scan temperatures from left to right.
+2. While today's temperature exceeds the stack's top temperature, pop that earlier day and store its index distance.
+3. Push today; unresolved entries retain zero in the result.
+
+## Why It Works
+
+The first later warmer day resolves each popped index, because earlier scanned days did not exceed its temperature.
+
+## Worked Example
+
+**Illustrative input:** `temperatures = [70, 70, 72]`.
+
+**Trace:** The final day resolves both earlier days, with waits of 2 and 1.
+
+**Result:** Return `[2, 1, 0]`.
 
 ## Common Pitfalls
 

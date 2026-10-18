@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return the k most frequent distinct values. Bucket values by their occurrence counts.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc347|LeetCode — LC 347]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Count each value with a map.
-2. Create frequency buckets from zero through the input length and place each distinct value in its bucket.
-3. Scan buckets from largest frequency downward and collect values until k have been chosen.
-
-## Why It Works
-
-The descending scan visits every higher-frequency value before any lower-frequency value.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 1, 1, 2, 2, 3]`, `k = 2`.
-
-**Trace:** Buckets 3 and 2 hold 1 and 2.
-
-**Result:** Return `[1, 2]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return the k most frequent distinct values. Bucket values by their occurrence counts.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc347|LeetCode — LC 347]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Count each value with a map.
+2. Create frequency buckets from zero through the input length and place each distinct value in its bucket.
+3. Scan buckets from largest frequency downward and collect values until k have been chosen.
+
+## Why It Works
+
+The descending scan visits every higher-frequency value before any lower-frequency value.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 1, 1, 2, 2, 3]`, `k = 2`.
+
+**Trace:** Buckets 3 and 2 hold 1 and 2.
+
+**Result:** Return `[1, 2]`.
 
 ## Common Pitfalls
 

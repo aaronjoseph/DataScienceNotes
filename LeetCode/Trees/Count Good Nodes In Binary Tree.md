@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count nodes whose value is at least every value along their path from the root.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc1448|LeetCode — LC 1448]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Carry the greatest value seen on the ancestor path.
-2. Count the current node if its value is at least that maximum.
-3. Recurse into each child with the updated path maximum and sum the counts.
-
-## Why It Works
-
-The carried maximum exactly summarizes the only ancestors that can disqualify the current node.
-
-## Worked Example
-
-**Illustrative input:** Root 3 has left child 1 and right child 4.
-
-**Trace:** The root qualifies, 1 fails against 3, and 4 exceeds its ancestors.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count nodes whose value is at least every value along their path from the root.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc1448|LeetCode — LC 1448]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Carry the greatest value seen on the ancestor path.
+2. Count the current node if its value is at least that maximum.
+3. Recurse into each child with the updated path maximum and sum the counts.
+
+## Why It Works
+
+The carried maximum exactly summarizes the only ancestors that can disqualify the current node.
+
+## Worked Example
+
+**Illustrative input:** Root 3 has left child 1 and right child 4.
+
+**Trace:** The root qualifies, 1 fails against 3, and 4 exceeds its ancestors.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

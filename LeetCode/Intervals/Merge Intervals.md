@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Merge all overlapping closed intervals into a sorted nonoverlapping list.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc56|LeetCode — LC 56]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort intervals by their starts.
-2. Keep the most recent merged interval in the output.
-3. If the next start is no greater than that interval's end, extend its end; otherwise append a new interval.
-
-## Why It Works
-
-After sorting, only the latest merged interval can overlap the next input interval.
-
-## Worked Example
-
-**Illustrative input:** `intervals = [[5, 7], [1, 3], [2, 6]]`.
-
-**Trace:** Sorting places [1,3] first; both later intervals join its growing range.
-
-**Result:** Return `[[1, 7]]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n)$ time and $O(n)$ sorting/output storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Merge all overlapping closed intervals into a sorted nonoverlapping list.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc56|LeetCode — LC 56]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort intervals by their starts.
+2. Keep the most recent merged interval in the output.
+3. If the next start is no greater than that interval's end, extend its end; otherwise append a new interval.
+
+## Why It Works
+
+After sorting, only the latest merged interval can overlap the next input interval.
+
+## Worked Example
+
+**Illustrative input:** `intervals = [[5, 7], [1, 3], [2, 6]]`.
+
+**Trace:** Sorting places [1,3] first; both later intervals join its growing range.
+
+**Result:** Return `[[1, 7]]`.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Design posting, following, unfollowing, and the ten most recent visible tweets. Merge the heads of relevant tweet histories.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc355|LeetCode — LC 355]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Store each user's tweets in time order and followees in a set.
-2. For a feed, seed a heap with the latest tweet from each followed user and the requester.
-3. Pop the newest candidate, then push the previous tweet from that same history; stop after ten.
-
-## Why It Works
-
-Each history is sorted, so merging their current heads always exposes the newest remaining visible tweet.
-
-## Worked Example
-
-**Illustrative input:** User 1 follows user 2. User 1 posts tweet 10, then user 2 posts tweet 20.
-
-**Trace:** Both histories seed the feed heap; tweet 20 is newer.
-
-**Result:** Return `[20, 10]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -79,6 +59,30 @@ class Twitter:
 ## Complexity
 
 Posting and follow changes take expected amortized $O(1)$ time. Feed construction takes $O(F\log(F+1))$ plus at most ten heap pops; heap space is $O(F)$. Total storage includes tweets and follow relationships. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Design posting, following, unfollowing, and the ten most recent visible tweets. Merge the heads of relevant tweet histories.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc355|LeetCode — LC 355]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Store each user's tweets in time order and followees in a set.
+2. For a feed, seed a heap with the latest tweet from each followed user and the requester.
+3. Pop the newest candidate, then push the previous tweet from that same history; stop after ten.
+
+## Why It Works
+
+Each history is sorted, so merging their current heads always exposes the newest remaining visible tweet.
+
+## Worked Example
+
+**Illustrative input:** User 1 follows user 2. User 1 posts tweet 10, then user 2 posts tweet 20.
+
+**Trace:** Both histories seed the feed heap; tweet 20 is newer.
+
+**Result:** Return `[20, 10]`.
 
 ## Common Pitfalls
 

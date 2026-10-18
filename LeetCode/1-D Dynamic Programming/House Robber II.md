@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Choose nonadjacent houses arranged in a circle, where the first and last houses are also neighbors.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc213|LeetCode — LC 213]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Handle a single house directly.
-2. Solve the linear house-robber problem once excluding the first house and once excluding the last.
-3. Return the larger result.
-
-## Why It Works
-
-A valid solution cannot include both endpoints, so at least one of the two linear cases contains every optimal circular solution.
-
-## Worked Example
-
-**Illustrative input:** `nums = [2, 3, 2]`.
-
-**Trace:** Excluding either endpoint leaves a two-house linear problem whose best value is 3.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ extra space in this Python implementation because both linear cases use slices. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Choose nonadjacent houses arranged in a circle, where the first and last houses are also neighbors.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc213|LeetCode — LC 213]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Handle a single house directly.
+2. Solve the linear house-robber problem once excluding the first house and once excluding the last.
+3. Return the larger result.
+
+## Why It Works
+
+A valid solution cannot include both endpoints, so at least one of the two linear cases contains every optimal circular solution.
+
+## Worked Example
+
+**Illustrative input:** `nums = [2, 3, 2]`.
+
+**Trace:** Excluding either endpoint leaves a two-house linear problem whose best value is 3.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

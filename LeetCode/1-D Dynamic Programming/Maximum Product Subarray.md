@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the greatest product of a nonempty contiguous subarray. Track both the smallest and largest products ending at each position.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc152|LeetCode — LC 152]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start the global best from a real input value.
-2. For each value, consider starting a new subarray and extending either previous extreme.
-3. Save both new extremes before overwriting state, then update the global maximum.
-
-## Why It Works
-
-A negative multiplier swaps the roles of smallest and largest previous products, so both extremes are necessary and sufficient.
-
-## Worked Example
-
-**Illustrative input:** `nums = [-2, 3, -4]`.
-
-**Trace:** The negative product ending at 3 becomes a positive product after multiplication by -4.
-
-**Result:** Return `24`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the greatest product of a nonempty contiguous subarray. Track both the smallest and largest products ending at each position.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc152|LeetCode — LC 152]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start the global best from a real input value.
+2. For each value, consider starting a new subarray and extending either previous extreme.
+3. Save both new extremes before overwriting state, then update the global maximum.
+
+## Why It Works
+
+A negative multiplier swaps the roles of smallest and largest previous products, so both extremes are necessary and sufficient.
+
+## Worked Example
+
+**Illustrative input:** `nums = [-2, 3, -4]`.
+
+**Trace:** The negative product ending at 3 becomes a positive product after multiplication by -4.
+
+**Result:** Return `24`.
 
 ## Common Pitfalls
 

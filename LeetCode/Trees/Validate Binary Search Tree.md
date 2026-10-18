@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Verify that every node satisfies all binary-search-tree ordering constraints, including those imposed by distant ancestors.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc98|LeetCode — LC 98]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Recursively pass strict lower and upper allowed values.
-2. Reject a node outside those bounds.
-3. For the left child, tighten the upper bound to the node value; for the right child, tighten the lower bound.
-
-## Why It Works
-
-Each propagated bound encodes every ancestor restriction relevant to that subtree.
-
-## Worked Example
-
-**Illustrative input:** Root 5 has right child 7, whose left child is 4.
-
-**Trace:** The 4 is below its parent, but it violates the inherited lower bound 5.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Verify that every node satisfies all binary-search-tree ordering constraints, including those imposed by distant ancestors.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc98|LeetCode — LC 98]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Recursively pass strict lower and upper allowed values.
+2. Reject a node outside those bounds.
+3. For the left child, tighten the upper bound to the node value; for the right child, tighten the lower bound.
+
+## Why It Works
+
+Each propagated bound encodes every ancestor restriction relevant to that subtree.
+
+## Worked Example
+
+**Illustrative input:** Root 5 has right child 7, whose left child is 4.
+
+**Trace:** The 4 is below its parent, but it violates the inherited lower bound 5.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

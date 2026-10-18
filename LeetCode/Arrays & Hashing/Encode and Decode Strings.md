@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Encode a list of strings into one string and decode it exactly, even when the strings contain separators.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc271|LeetCode — LC 271]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Encode each string as its character length, a # separator, and the string itself.
-2. While decoding, scan digits up to the next # and parse the length.
-3. Read exactly that many characters, append the recovered string, and continue.
-
-## Why It Works
-
-The length determines the payload boundary, so separators inside a payload cannot confuse the decoder.
-
-## Worked Example
-
-**Illustrative input:** `strs = ["a#", ""]`.
-
-**Trace:** Encode as `"2#a#0#"`, then consume payload lengths 2 and 0.
-
-**Result:** Recover `["a#", ""]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -65,6 +45,30 @@ class Solution:
 ## Complexity
 
 $O(L+n)$ time and output space for `L` payload characters and `n` strings, including length headers. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Encode a list of strings into one string and decode it exactly, even when the strings contain separators.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc271|LeetCode — LC 271]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Encode each string as its character length, a # separator, and the string itself.
+2. While decoding, scan digits up to the next # and parse the length.
+3. Read exactly that many characters, append the recovered string, and continue.
+
+## Why It Works
+
+The length determines the payload boundary, so separators inside a payload cannot confuse the decoder.
+
+## Worked Example
+
+**Illustrative input:** `strs = ["a#", ""]`.
+
+**Trace:** Encode as `"2#a#0#"`, then consume payload lengths 2 and 0.
+
+**Result:** Recover `["a#", ""]`.
 
 ## Common Pitfalls
 

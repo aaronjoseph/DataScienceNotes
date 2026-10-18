@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Count ways to climb n stairs when each move climbs either one or two stairs.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc70|LeetCode — LC 70]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use the small cases directly.
-2. Maintain the number of ways to reach the previous two stair counts.
-3. For each next stair count, add those two counts and advance the rolling state.
-
-## Why It Works
-
-Every path ends in either a one-step move or a two-step move, producing disjoint and exhaustive cases.
-
-## Worked Example
-
-**Illustrative input:** `n = 4`.
-
-**Trace:** The previous counts are 2 ways for two stairs and 3 ways for three stairs.
-
-**Result:** Return `5`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ auxiliary space under bounded-integer accounting. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Count ways to climb n stairs when each move climbs either one or two stairs.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc70|LeetCode — LC 70]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use the small cases directly.
+2. Maintain the number of ways to reach the previous two stair counts.
+3. For each next stair count, add those two counts and advance the rolling state.
+
+## Why It Works
+
+Every path ends in either a one-step move or a two-step move, producing disjoint and exhaustive cases.
+
+## Worked Example
+
+**Illustrative input:** `n = 4`.
+
+**Trace:** The previous counts are 2 ways for two stairs and 3 ways for three stairs.
+
+**Result:** Return `5`.
 
 ## Common Pitfalls
 

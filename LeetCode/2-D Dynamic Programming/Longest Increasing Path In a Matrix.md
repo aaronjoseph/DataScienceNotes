@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the longest strictly increasing four-directional path in a matrix.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc329|LeetCode — LC 329]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Memoize the longest increasing path beginning at each cell.
-2. Try each neighbor with a strictly larger value and keep the best extension.
-3. Evaluate every starting cell and return the greatest cached length.
-
-## Why It Works
-
-Strict increases prevent cycles, so the grid induces an acyclic dependency graph and each cell's best suffix is reusable.
-
-## Worked Example
-
-**Illustrative input:** `matrix = [[9, 9, 4], [6, 6, 8], [2, 1, 1]]`.
-
-**Trace:** A valid longest path is 1 → 2 → 6 → 9.
-
-**Result:** Return `4`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -59,6 +39,30 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(RC)$ memo/recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the longest strictly increasing four-directional path in a matrix.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc329|LeetCode — LC 329]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Memoize the longest increasing path beginning at each cell.
+2. Try each neighbor with a strictly larger value and keep the best extension.
+3. Evaluate every starting cell and return the greatest cached length.
+
+## Why It Works
+
+Strict increases prevent cycles, so the grid induces an acyclic dependency graph and each cell's best suffix is reusable.
+
+## Worked Example
+
+**Illustrative input:** `matrix = [[9, 9, 4], [6, 6, 8], [2, 1, 1]]`.
+
+**Trace:** A valid longest path is 1 → 2 → 6 → 9.
+
+**Result:** Return `4`.
 
 ## Common Pitfalls
 

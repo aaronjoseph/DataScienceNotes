@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the length of the longest sequence of consecutive integer values, regardless of their input order.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc128|LeetCode — LC 128]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Put all values in a set to remove duplicates.
-2. Start a walk only at a value whose immediate predecessor is absent.
-3. Count consecutive successors and keep the longest length.
-
-## Why It Works
-
-Every run has exactly one starting value, so each distinct value is walked at most once.
-
-## Worked Example
-
-**Illustrative input:** `nums = [10, 3, 1, 2, 2]`.
-
-**Trace:** Start at 1 and walk through 2 and 3; 10 is a separate run.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the length of the longest sequence of consecutive integer values, regardless of their input order.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc128|LeetCode — LC 128]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Put all values in a set to remove duplicates.
+2. Start a walk only at a value whose immediate predecessor is absent.
+3. Count consecutive successors and keep the longest length.
+
+## Why It Works
+
+Every run has exactly one starting value, so each distinct value is walked at most once.
+
+## Worked Example
+
+**Illustrative input:** `nums = [10, 3, 1, 2, 2]`.
+
+**Trace:** Start at 1 and walk through 2 and 3; 10 is a separate run.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

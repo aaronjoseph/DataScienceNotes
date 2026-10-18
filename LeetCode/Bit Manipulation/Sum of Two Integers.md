@@ -8,6 +8,30 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        mask = 0xFFFFFFFF
+        a, b = a & mask, b & mask
+        while b:
+            a, b = (a ^ b) & mask, ((a & b) << 1) & mask
+        return a if a <= 0x7FFFFFFF else ~(a ^ mask)
+```
+
+## Complexity
+
+$O(w)$ bit-propagation rounds and $O(1)$ extra word storage for fixed width `w = 32`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Add two signed integers with bit operations. Use a fixed 32-bit mask to control Python's unlimited sign extension.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc371|LeetCode — LC 371]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,26 +53,6 @@ XOR supplies differing bits and AND identifies the carry-generating positions; r
 **Trace:** Operate on their 32-bit representations and propagate carries until none remain.
 
 **Result:** The signed interpretation is `1`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def getSum(self, a: int, b: int) -> int:
-        mask = 0xFFFFFFFF
-        a, b = a & mask, b & mask
-        while b:
-            a, b = (a ^ b) & mask, ((a & b) << 1) & mask
-        return a if a <= 0x7FFFFFFF else ~(a ^ mask)
-```
-
-## Complexity
-
-$O(w)$ bit-propagation rounds and $O(1)$ extra word storage for fixed width `w = 32`. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

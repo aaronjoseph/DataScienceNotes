@@ -8,6 +8,32 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        ways = [0] * (amount + 1)
+        ways[0] = 1
+        for coin in coins:
+            for subtotal in range(coin, amount + 1):
+                ways[subtotal] += ways[subtotal - coin]
+        return ways[amount]
+```
+
+## Complexity
+
+$O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Count order-independent ways to make an amount with unlimited use of positive coin denominations.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc518|LeetCode — LC 518]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,28 +55,6 @@ Processing coin types in an outer loop counts each multiset once; increasing amo
 **Trace:** The combinations are three 1 coins, or one 1 plus one 2.
 
 **Result:** Return `2`; reversing coin order does not create another combination.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-    def change(self, amount: int, coins: List[int]) -> int:
-        ways = [0] * (amount + 1)
-        ways[0] = 1
-        for coin in coins:
-            for subtotal in range(coin, amount + 1):
-                ways[subtotal] += ways[subtotal - coin]
-        return ways[amount]
-```
-
-## Complexity
-
-$O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

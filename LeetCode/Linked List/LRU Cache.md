@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Implement a least recently used cache with constant-time lookup, update, and eviction.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc146|LeetCode — LC 146]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Map each key to its node in a doubly linked list with sentinel endpoints.
-2. On get or an existing-key put, detach that node and move it to the most-recent end.
-3. On insertion beyond capacity, remove the least-recent real node and delete its map entry.
-
-## Why It Works
-
-The map locates nodes directly while list order records exactly the access recency needed for eviction.
-
-## Worked Example
-
-**Illustrative input:** Capacity 2: put keys 1 and 2, get 1, then put 3.
-
-**Trace:** Accessing 1 moves it to the recent end, so insertion evicts 2.
-
-**Result:** A later get of 2 returns `-1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -81,6 +61,30 @@ class LRUCache:
 ## Complexity
 
 $O(1)$ expected time per operation and $O(C)$ space for capacity `C`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Implement a least recently used cache with constant-time lookup, update, and eviction.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc146|LeetCode — LC 146]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Map each key to its node in a doubly linked list with sentinel endpoints.
+2. On get or an existing-key put, detach that node and move it to the most-recent end.
+3. On insertion beyond capacity, remove the least-recent real node and delete its map entry.
+
+## Why It Works
+
+The map locates nodes directly while list order records exactly the access recency needed for eviction.
+
+## Worked Example
+
+**Illustrative input:** Capacity 2: put keys 1 and 2, get 1, then put 3.
+
+**Trace:** Accessing 1 moves it to the recent end, so insertion evicts 2.
+
+**Result:** A later get of 2 returns `-1`.
 
 ## Common Pitfalls
 

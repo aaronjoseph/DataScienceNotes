@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Rotate a square matrix ninety degrees clockwise in place by cycling groups of four cells.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc48|LeetCode — LC 48]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Process the outer square layer, then move inward.
-2. For each offset along a layer's top edge, save the top-left cycle value.
-3. Move bottom-left to top-left, bottom-right to bottom-left, top-right to bottom-right, and the saved value to top-right.
-
-## Why It Works
-
-The four-way cycles move every layer cell to its clockwise destination exactly once.
-
-## Worked Example
-
-**Illustrative input:** `matrix = [[1, 2], [3, 4]]`.
-
-**Trace:** Cycle the four corner values clockwise.
-
-**Result:** The matrix becomes `[[3, 1], [4, 2]]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O(n^2)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Rotate a square matrix ninety degrees clockwise in place by cycling groups of four cells.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc48|LeetCode — LC 48]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Process the outer square layer, then move inward.
+2. For each offset along a layer's top edge, save the top-left cycle value.
+3. Move bottom-left to top-left, bottom-right to bottom-left, top-right to bottom-right, and the saved value to top-right.
+
+## Why It Works
+
+The four-way cycles move every layer cell to its clockwise destination exactly once.
+
+## Worked Example
+
+**Illustrative input:** `matrix = [[1, 2], [3, 4]]`.
+
+**Trace:** Cycle the four corner values clockwise.
+
+**Result:** The matrix becomes `[[3, 1], [4, 2]]`.
 
 ## Common Pitfalls
 

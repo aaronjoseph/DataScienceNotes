@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the maximum profit from one buy followed by one sell. Remember the cheapest price seen so far.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc121|LeetCode — LC 121]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Initialize the cheapest price from the first day and best profit to zero.
-2. For each later day, update the cheapest price and the profit available by selling today.
-3. Return the largest nonnegative profit.
-
-## Why It Works
-
-For a fixed sell day, the cheapest earlier buy is always optimal.
-
-## Worked Example
-
-**Illustrative input:** `prices = [7, 2, 5, 1, 4]`.
-
-**Trace:** Buying at 2 and selling at 5 earns 3; buying later at 1 and selling at 4 also earns 3.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -53,6 +33,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the maximum profit from one buy followed by one sell. Remember the cheapest price seen so far.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc121|LeetCode — LC 121]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Initialize the cheapest price from the first day and best profit to zero.
+2. For each later day, update the cheapest price and the profit available by selling today.
+3. Return the largest nonnegative profit.
+
+## Why It Works
+
+For a fixed sell day, the cheapest earlier buy is always optimal.
+
+## Worked Example
+
+**Illustrative input:** `prices = [7, 2, 5, 1, 4]`.
+
+**Trace:** Buying at 2 and selling at 5 earns 3; buying later at 1 and selling at 4 also earns 3.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

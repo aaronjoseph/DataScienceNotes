@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find a starting gas station from which a full circular trip is possible, or return -1.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc134|LeetCode — LC 134]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Track the total gas-minus-cost balance and the balance since the current candidate start.
-2. If the candidate balance becomes negative at an edge, discard every start through that edge and begin after it.
-3. Return the surviving candidate if the overall balance is nonnegative; otherwise return -1.
-
-## Why It Works
-
-If a candidate fails at an edge, any later start inside its failed segment has no greater fuel on reaching that edge and also fails.
-
-## Worked Example
-
-**Illustrative input:** `gas = [1, 2, 3]`, `cost = [2, 3, 1]`.
-
-**Trace:** Starts 0 and 1 fail at a deficit; start 2 accumulates enough fuel to pass both.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find a starting gas station from which a full circular trip is possible, or return -1.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc134|LeetCode — LC 134]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Track the total gas-minus-cost balance and the balance since the current candidate start.
+2. If the candidate balance becomes negative at an edge, discard every start through that edge and begin after it.
+3. Return the surviving candidate if the overall balance is nonnegative; otherwise return -1.
+
+## Why It Works
+
+If a candidate fails at an edge, any later start inside its failed segment has no greater fuel on reaching that edge and also fails.
+
+## Worked Example
+
+**Illustrative input:** `gas = [1, 2, 3]`, `cost = [2, 3, 1]`.
+
+**Trace:** Starts 0 and 1 fail at a deficit; start 2 accumulates enough fuel to pass both.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

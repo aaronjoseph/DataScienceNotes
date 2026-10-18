@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Add one to an integer represented as most-significant-first decimal digits.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc66|LeetCode — LC 66]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Work from the least significant digit, propagating a carry.
-2. Turn a 9 into zero and continue; otherwise increment the digit and stop the carry.
-3. If every digit overflowed, add a leading one and return digits in original order.
-
-## Why It Works
-
-The carry behaves exactly like decimal column addition and stops at the first digit below nine.
-
-## Worked Example
-
-**Illustrative input:** `digits = [9, 9]`.
-
-**Trace:** Both digits become zero and the remaining carry adds a new leading 1.
-
-**Result:** Return `[1, 0, 0]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -61,6 +41,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ extra space in this implementation because it reverses with slices. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Add one to an integer represented as most-significant-first decimal digits.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc66|LeetCode — LC 66]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Work from the least significant digit, propagating a carry.
+2. Turn a 9 into zero and continue; otherwise increment the digit and stop the carry.
+3. If every digit overflowed, add a leading one and return digits in original order.
+
+## Why It Works
+
+The carry behaves exactly like decimal column addition and stops at the first digit below nine.
+
+## Worked Example
+
+**Illustrative input:** `digits = [9, 9]`.
+
+**Trace:** Both digits become zero and the remaining carry adds a new leading 1.
+
+**Result:** Return `[1, 0, 0]`.
 
 ## Common Pitfalls
 

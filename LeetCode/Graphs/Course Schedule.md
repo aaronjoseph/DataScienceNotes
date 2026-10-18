@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Determine whether all courses can be completed when prerequisites form a directed graph.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc207|LeetCode — LC 207]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Build a course-to-prerequisites adjacency list.
-2. Use depth-first search with a set of courses on the current recursion path.
-3. Reject an edge back into that active path; mark completed courses safe so later searches can skip them.
-
-## Why It Works
-
-A directed cycle is precisely a prerequisite dependency that cannot be resolved; completed acyclic subgraphs can be reused.
-
-## Worked Example
-
-**Illustrative input:** Two courses require each other: `[[0, 1], [1, 0]]`.
-
-**Trace:** Searching prerequisites revisits an active course before it can finish.
-
-**Result:** Return `False`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -67,6 +47,30 @@ class Solution:
 ## Complexity
 
 $O(V+E)$ time and $O(V+E)$ storage for the graph and traversal. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Determine whether all courses can be completed when prerequisites form a directed graph.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc207|LeetCode — LC 207]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Build a course-to-prerequisites adjacency list.
+2. Use depth-first search with a set of courses on the current recursion path.
+3. Reject an edge back into that active path; mark completed courses safe so later searches can skip them.
+
+## Why It Works
+
+A directed cycle is precisely a prerequisite dependency that cannot be resolved; completed acyclic subgraphs can be reused.
+
+## Worked Example
+
+**Illustrative input:** Two courses require each other: `[[0, 1], [1, 0]]`.
+
+**Trace:** Searching prerequisites revisits an active course before it can finish.
+
+**Result:** Return `False`.
 
 ## Common Pitfalls
 

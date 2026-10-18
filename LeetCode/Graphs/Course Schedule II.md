@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return an ordering that completes all course prerequisites before each course, or an empty list if impossible.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc210|LeetCode — LC 210]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Build a course-to-prerequisites graph.
-2. Depth-first search each course, distinguishing active-path nodes from fully completed nodes.
-3. Append a course only after all its prerequisites finish; reject any active-path revisit.
-
-## Why It Works
-
-Postorder on prerequisite edges places every prerequisite before its dependent course, provided there is no directed cycle.
-
-## Worked Example
-
-**Illustrative input:** Prerequisites `[[1, 0], [2, 1]]` for three courses.
-
-**Trace:** DFS finishes 0, then 1, then 2.
-
-**Result:** Return `[0, 1, 2]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -69,6 +49,30 @@ class Solution:
 ## Complexity
 
 $O(V+E)$ time and $O(V+E)$ storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return an ordering that completes all course prerequisites before each course, or an empty list if impossible.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc210|LeetCode — LC 210]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Build a course-to-prerequisites graph.
+2. Depth-first search each course, distinguishing active-path nodes from fully completed nodes.
+3. Append a course only after all its prerequisites finish; reject any active-path revisit.
+
+## Why It Works
+
+Postorder on prerequisite edges places every prerequisite before its dependent course, provided there is no directed cycle.
+
+## Worked Example
+
+**Illustrative input:** Prerequisites `[[1, 0], [2, 1]]` for three courses.
+
+**Trace:** DFS finishes 0, then 1, then 2.
+
+**Result:** Return `[0, 1, 2]`.
 
 ## Common Pitfalls
 

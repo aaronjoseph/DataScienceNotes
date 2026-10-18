@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Check whether a string reads the same forward and backward after ignoring non-alphanumeric characters and case.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc125|LeetCode — LC 125]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Keep pointers at both ends.
-2. Advance either pointer past punctuation or spaces.
-3. Compare lowercase characters, reject a mismatch, and move both inward.
-
-## Why It Works
-
-Every significant outer pair must match; removing a matching pair leaves the same palindrome question on the interior.
-
-## Worked Example
-
-**Illustrative input:** `s = "A,b,a!"`.
-
-**Trace:** Skip punctuation and compare a with a; b remains in the middle.
-
-**Result:** Return `True`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -55,6 +35,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space with two pointers. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Check whether a string reads the same forward and backward after ignoring non-alphanumeric characters and case.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc125|LeetCode — LC 125]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Keep pointers at both ends.
+2. Advance either pointer past punctuation or spaces.
+3. Compare lowercase characters, reject a mismatch, and move both inward.
+
+## Why It Works
+
+Every significant outer pair must match; removing a matching pair leaves the same palindrome question on the interior.
+
+## Worked Example
+
+**Illustrative input:** `s = "A,b,a!"`.
+
+**Trace:** Skip punctuation and compare a with a; b remains in the middle.
+
+**Result:** Return `True`.
 
 ## Common Pitfalls
 

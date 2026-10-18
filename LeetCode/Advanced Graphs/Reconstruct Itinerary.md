@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Use every flight ticket exactly once to construct the lexicographically smallest valid itinerary starting at JFK.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc332|LeetCode — LC 332]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Store destinations for each departure in reverse lexical order.
-2. Use an explicit stack to consume the smallest available destination from its end.
-3. When an airport has no outgoing tickets left, append it to a reverse route; reverse the completed route.
-
-## Why It Works
-
-Hierholzer's method builds an Eulerian trail by splicing exhausted routes; ordered edge consumption selects the lexical itinerary under the valid-itinerary contract.
-
-## Worked Example
-
-**Illustrative input:** Tickets `[["JFK", "KUL"], ["JFK", "NRT"], ["NRT", "JFK"]]`.
-
-**Trace:** The apparent KUL dead end is placed at the end during route reversal.
-
-**Result:** Return `["JFK", "NRT", "JFK", "KUL"]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -60,6 +40,30 @@ class Solution:
 ## Complexity
 
 $O(E\log E)$ time and $O(E+V)$ storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Use every flight ticket exactly once to construct the lexicographically smallest valid itinerary starting at JFK.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc332|LeetCode — LC 332]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Store destinations for each departure in reverse lexical order.
+2. Use an explicit stack to consume the smallest available destination from its end.
+3. When an airport has no outgoing tickets left, append it to a reverse route; reverse the completed route.
+
+## Why It Works
+
+Hierholzer's method builds an Eulerian trail by splicing exhausted routes; ordered edge consumption selects the lexical itinerary under the valid-itinerary contract.
+
+## Worked Example
+
+**Illustrative input:** Tickets `[["JFK", "KUL"], ["JFK", "NRT"], ["NRT", "JFK"]]`.
+
+**Trace:** The apparent KUL dead end is placed at the end during route reversal.
+
+**Result:** Return `["JFK", "NRT", "JFK", "KUL"]`.
 
 ## Common Pitfalls
 

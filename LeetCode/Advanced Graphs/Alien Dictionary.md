@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Infer a valid character order from lexicographically sorted words in an unknown alphabet.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc269|LeetCode — LC 269]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Create graph vertices for every character, including isolated ones.
-2. For each adjacent word pair, add an ordering edge at the first differing position; reject a longer word preceding its exact prefix.
-3. Topologically sort with active-path cycle detection and reverse DFS finishing order.
-
-## Why It Works
-
-Only the first differing position constrains lexicographic order, and any topological order satisfies all such constraints.
-
-## Worked Example
-
-**Illustrative input:** Words `["za", "zb", "ca", "cb"]`.
-
-**Trace:** Adjacent comparisons imply a before b and z before c.
-
-**Result:** Any order satisfying both relations is valid.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -73,6 +53,30 @@ class Solution:
 ## Complexity
 
 $O(S+V+E)$ time and $O(V+E)$ auxiliary space for total input characters `S`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Infer a valid character order from lexicographically sorted words in an unknown alphabet.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc269|LeetCode — LC 269]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Create graph vertices for every character, including isolated ones.
+2. For each adjacent word pair, add an ordering edge at the first differing position; reject a longer word preceding its exact prefix.
+3. Topologically sort with active-path cycle detection and reverse DFS finishing order.
+
+## Why It Works
+
+Only the first differing position constrains lexicographic order, and any topological order satisfies all such constraints.
+
+## Worked Example
+
+**Illustrative input:** Words `["za", "zb", "ca", "cb"]`.
+
+**Trace:** Adjacent comparisons imply a before b and z before c.
+
+**Result:** Any order satisfying both relations is valid.
 
 ## Common Pitfalls
 

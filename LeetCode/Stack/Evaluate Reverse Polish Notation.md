@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Evaluate a postfix expression using a stack of computed operands.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc150|LeetCode — LC 150]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Push numeric tokens.
-2. For an operator, pop the right operand first and then the left, apply the operator, and push the result.
-3. Return the only remaining value after all tokens.
-
-## Why It Works
-
-Each operator consumes the two complete expressions immediately before it, which are the stack's latest values.
-
-## Worked Example
-
-**Illustrative input:** `tokens = ["7", "2", "-"]`.
-
-**Trace:** Pop right operand 2 and left operand 7, then subtract.
-
-**Result:** Return `5`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -62,6 +42,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ extra space for `n` tokens under bounded-integer arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Evaluate a postfix expression using a stack of computed operands.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc150|LeetCode — LC 150]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Push numeric tokens.
+2. For an operator, pop the right operand first and then the left, apply the operator, and push the result.
+3. Return the only remaining value after all tokens.
+
+## Why It Works
+
+Each operator consumes the two complete expressions immediately before it, which are the stack's latest values.
+
+## Worked Example
+
+**Illustrative input:** `tokens = ["7", "2", "-"]`.
+
+**Trace:** Pop right operand 2 and left operand 7, then subtract.
+
+**Result:** Return `5`.
 
 ## Common Pitfalls
 

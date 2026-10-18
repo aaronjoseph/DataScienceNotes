@@ -8,6 +8,29 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+```
+
+## Complexity
+
+$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Return the number of nodes on the longest root-to-leaf path.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc104|LeetCode — LC 104]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,25 +52,6 @@ Every root-to-leaf path chooses exactly one child subtree; choosing its maximum 
 **Trace:** The leaf contributes depth 1; its ancestors contribute depths 2 and 3.
 
 **Result:** Return `3`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def maxDepth(self, root: TreeNode) -> int:
-        if not root:
-            return 0
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
-```
-
-## Complexity
-
-$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Deep-copy a linked list whose nodes contain both next and random pointers.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc138|LeetCode — LC 138]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. First create one new node per original and record an original-to-copy map, including null.
-2. Walk the original list again and set each copy's next and random through the map.
-3. Return the copy corresponding to the original head.
-
-## Why It Works
-
-Creating every destination first lets both forward references and cycles in random pointers resolve to copied nodes.
-
-## Worked Example
-
-**Illustrative input:** Node A points next to B; B.random points to A.
-
-**Trace:** Create copies A′ and B′, then connect B′.random to A′.
-
-**Result:** All copied pointers stay within the copied structure.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(n)$ auxiliary map storage, plus the copied nodes. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Deep-copy a linked list whose nodes contain both next and random pointers.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc138|LeetCode — LC 138]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. First create one new node per original and record an original-to-copy map, including null.
+2. Walk the original list again and set each copy's next and random through the map.
+3. Return the copy corresponding to the original head.
+
+## Why It Works
+
+Creating every destination first lets both forward references and cycles in random pointers resolve to copied nodes.
+
+## Worked Example
+
+**Illustrative input:** Node A points next to B; B.random points to A.
+
+**Trace:** Create copies A′ and B′, then connect B′.random to A′.
+
+**Result:** All copied pointers stay within the copied structure.
 
 ## Common Pitfalls
 

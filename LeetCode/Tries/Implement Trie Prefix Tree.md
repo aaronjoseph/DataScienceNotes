@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Implement word insertion, exact search, and prefix search with a trie, a tree of shared character prefixes.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc208|LeetCode — LC 208]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Each node stores child links and a flag marking a completed word.
-2. Insert by creating missing character nodes and marking the final node.
-3. Traverse the same path for searches; exact search needs the terminal flag, while prefix search needs only the path.
-
-## Why It Works
-
-A root-to-node path uniquely identifies a prefix; the terminal marker distinguishes whole words from partial prefixes.
-
-## Worked Example
-
-**Illustrative input:** Insert `"apple"`.
-
-**Trace:** The path app exists, but its node has no completed-word marker.
-
-**Result:** `startsWith("app")` is true and `search("app")` is false.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -79,6 +59,30 @@ class Trie:
 ## Complexity
 
 $O(L)$ time per operation for `L` characters; $O(S)$ nodes for `S` total inserted characters, with fixed-size alphabet child arrays. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Implement word insertion, exact search, and prefix search with a trie, a tree of shared character prefixes.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc208|LeetCode — LC 208]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Each node stores child links and a flag marking a completed word.
+2. Insert by creating missing character nodes and marking the final node.
+3. Traverse the same path for searches; exact search needs the terminal flag, while prefix search needs only the path.
+
+## Why It Works
+
+A root-to-node path uniquely identifies a prefix; the terminal marker distinguishes whole words from partial prefixes.
+
+## Worked Example
+
+**Illustrative input:** Insert `"apple"`.
+
+**Trace:** The path app exists, but its node has no completed-word marker.
+
+**Result:** `startsWith("app")` is true and `search("app")` is false.
 
 ## Common Pitfalls
 

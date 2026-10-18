@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the greatest area of any four-directionally connected island of 1 cells.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc695|LeetCode — LC 695]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Scan all cells and maintain visited land.
-2. A flood fill returns zero for water, out-of-bounds cells, or visited cells.
-3. For new land, mark it and return one plus the areas reached in four directions; keep the largest component area.
-
-## Why It Works
-
-Each newly visited land cell contributes exactly once to its connected island's area.
-
-## Worked Example
-
-**Illustrative input:** `grid = [[1, 1, 0], [0, 1, 1]]`.
-
-**Trace:** All four land cells connect through horizontal or vertical neighbors.
-
-**Result:** Return `4`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -59,6 +39,30 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(RC)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the greatest area of any four-directionally connected island of 1 cells.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc695|LeetCode — LC 695]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Scan all cells and maintain visited land.
+2. A flood fill returns zero for water, out-of-bounds cells, or visited cells.
+3. For new land, mark it and return one plus the areas reached in four directions; keep the largest component area.
+
+## Why It Works
+
+Each newly visited land cell contributes exactly once to its connected island's area.
+
+## Worked Example
+
+**Illustrative input:** `grid = [[1, 1, 0], [0, 1, 1]]`.
+
+**Trace:** All four land cells connect through horizontal or vertical neighbors.
+
+**Result:** Return `4`.
 
 ## Common Pitfalls
 

@@ -8,6 +8,31 @@ languages:
   - Python
 ---
 
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def singleNumber(self, nums: List[int]) -> int:
+        res = 0
+        for n in nums:
+            res = n ^ res
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
 Find the one value appearing once when every other value appears exactly twice.[^implementation]
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc136|LeetCode — LC 136]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
@@ -29,27 +54,6 @@ XOR is associative and commutative, equal pairs cancel to zero, and zero leaves 
 **Trace:** The two occurrences of 4 cancel even though they are separated.
 
 **Result:** Return `1`.
-
-## Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def singleNumber(self, nums: List[int]) -> int:
-        res = 0
-        for n in nums:
-            res = n ^ res
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## Common Pitfalls
 

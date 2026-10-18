@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Reverse a signed 32-bit integer's decimal digits and return zero if the reversed value overflows.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc7|LeetCode — LC 7]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Remember the sign and process the absolute magnitude digit by digit.
-2. Before appending a digit, compare the partial result with the signed result's permitted magnitude boundary.
-3. Return zero on overflow; otherwise append the digit and restore the original sign.
-
-## Why It Works
-
-Each extracted units digit becomes the next most significant digit of the reversed number, and the precheck rejects overflow before multiplication.
-
-## Worked Example
-
-**Illustrative input:** `x = -120`.
-
-**Trace:** Extract digits 0, then 2, then 1; leading zero disappears in the constructed number.
-
-**Result:** Return `-21`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -54,6 +34,30 @@ class Solution:
 ## Complexity
 
 $O(\log(|x|+1))$ time and $O(1)$ extra space under the 32-bit input contract. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Reverse a signed 32-bit integer's decimal digits and return zero if the reversed value overflows.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc7|LeetCode — LC 7]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Remember the sign and process the absolute magnitude digit by digit.
+2. Before appending a digit, compare the partial result with the signed result's permitted magnitude boundary.
+3. Return zero on overflow; otherwise append the digit and restore the original sign.
+
+## Why It Works
+
+Each extracted units digit becomes the next most significant digit of the reversed number, and the precheck rejects overflow before multiplication.
+
+## Worked Example
+
+**Illustrative input:** `x = -120`.
+
+**Trace:** Extract digits 0, then 2, then 1; leading zero disappears in the constructed number.
+
+**Result:** Return `-21`.
 
 ## Common Pitfalls
 

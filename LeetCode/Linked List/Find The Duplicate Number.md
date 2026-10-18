@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the repeated value in an array of n+1 integers drawn from 1 through n, without modifying the array.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc287|LeetCode — LC 287]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Interpret each index as pointing to the index stored in that array position.
-2. Run Floyd's slow/fast cycle detection from index zero.
-3. After a meeting, start another pointer at zero and advance both one step until they meet at the cycle entry.
-
-## Why It Works
-
-The value range creates a reachable functional-graph cycle; the cycle entry has repeated incoming references and is the duplicate value.
-
-## Worked Example
-
-**Illustrative input:** `nums = [1, 3, 4, 2, 2]`.
-
-**Trace:** The index walk is 0 → 1 → 3 → 2 → 4 → 2.
-
-**Result:** The cycle entry identifies value `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -58,6 +38,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the repeated value in an array of n+1 integers drawn from 1 through n, without modifying the array.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc287|LeetCode — LC 287]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Interpret each index as pointing to the index stored in that array position.
+2. Run Floyd's slow/fast cycle detection from index zero.
+3. After a meeting, start another pointer at zero and advance both one step until they meet at the cycle entry.
+
+## Why It Works
+
+The value range creates a reachable functional-graph cycle; the cycle entry has repeated incoming references and is the duplicate value.
+
+## Worked Example
+
+**Illustrative input:** `nums = [1, 3, 4, 2, 2]`.
+
+**Trace:** The index walk is 0 → 1 → 3 → 2 → 4 → 2.
+
+**Result:** The cycle entry identifies value `2`.
 
 ## Common Pitfalls
 

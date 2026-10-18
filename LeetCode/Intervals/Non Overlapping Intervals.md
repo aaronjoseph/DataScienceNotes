@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Remove the fewest intervals so the remaining intervals do not overlap.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc435|LeetCode — LC 435]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort intervals by start and track the end of the last retained interval.
-2. When an interval does not overlap, retain it and advance that end.
-3. When overlap occurs, count one removal and retain whichever interval ends earlier.
-
-## Why It Works
-
-Among conflicting intervals, keeping the earlier finish leaves at least as much room for every future interval.
-
-## Worked Example
-
-**Illustrative input:** `intervals = [[1, 3], [2, 4], [3, 5]]`.
-
-**Trace:** Discard [2,4] in favor of the earlier finish [1,3]; [3,5] can remain.
-
-**Result:** Return `1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n)$ time and $O(n)$ auxiliary space in Python, including sorting and the loop's slice. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Remove the fewest intervals so the remaining intervals do not overlap.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc435|LeetCode — LC 435]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort intervals by start and track the end of the last retained interval.
+2. When an interval does not overlap, retain it and advance that end.
+3. When overlap occurs, count one removal and retain whichever interval ends earlier.
+
+## Why It Works
+
+Among conflicting intervals, keeping the earlier finish leaves at least as much room for every future interval.
+
+## Worked Example
+
+**Illustrative input:** `intervals = [[1, 3], [2, 4], [3, 5]]`.
+
+**Trace:** Discard [2,4] in favor of the earlier finish [1,3]; [3,5] can remain.
+
+**Result:** Return `1`.
 
 ## Common Pitfalls
 

@@ -10,7 +10,81 @@ languages:
   - "Rust"
 ---
 
-Binary search solves a problem by repeatedly halving a range of candidates, where a single check tells you which half to discard. It works on a sorted array and, more generally, on any **monotonic** yes/no question. It is easy to confuse with a **binary tree**, so this note starts with how to tell the two apart.
+## Template
+
+### Three Templates
+
+#### 1. Exact Match in a Sorted Array
+
+```python
+def search(nums: list[int], target: int) -> int:
+    lo, hi = 0, len(nums) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return -1
+```
+
+#### 2. First True (Lower Bound): Minimise X
+
+Use it when feasibility goes `F F F T T T`. Koko, ship capacity and bouquet days all use this.
+
+```python
+def first_true(lo: int, hi: int, feasible) -> int:
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if feasible(mid):
+            hi = mid          # mid may be the answer
+        else:
+            lo = mid + 1
+    return lo
+```
+
+#### 3. Last True: Maximise X
+
+Use it when feasibility goes `T T T F F F`. Round `mid` **up**, or the loop never ends when `hi = lo + 1`.
+
+```python
+def last_true(lo: int, hi: int, feasible) -> int:
+    while lo < hi:
+        mid = (lo + hi + 1) // 2
+        if feasible(mid):
+            lo = mid
+        else:
+            hi = mid - 1
+    return lo
+```
+
+#### Rust: First True
+
+```rust
+fn first_true(mut lo: i64, mut hi: i64, feasible: impl Fn(i64) -> bool) -> i64 {
+    while lo < hi {
+        let mid = lo + (hi - lo) / 2; // avoids overflow in lo + hi
+        if feasible(mid) {
+            hi = mid;
+        } else {
+            lo = mid + 1;
+        }
+    }
+    lo
+}
+```
+
+These templates have not been run; they use the same loop as the Koko solution.
+
+## Complexity
+
+For the exact-match sorted-array template (LC 704): $O(\log n)$ time and $O(1)$ extra space, where $n$ is the number of array elements.
+
+## Overview
+
+Binary search solves a problem by repeatedly halving a range of candidates, where a single check tells you which half to discard. It works on a sorted array and, more generally, on any **monotonic** yes/no question. It is easy to confuse with a **binary tree**; the comparison below explains how to tell the two apart.
 
 Problem link: [[Job Interviews/Coding Practice Index#^lc704|LeetCode — LC 704]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
 
@@ -38,7 +112,7 @@ Sorted order makes every discarded value provably too small or too large.
 
 ### Python and Complexity
 
-Use the exact-match implementation under **Three Templates → 1. Exact Match in a Sorted Array** below. $O(\log n)$ time and $O(1)$ extra space.
+Use the exact-match implementation under **Three Templates → 1. Exact Match in a Sorted Array** above. $O(\log n)$ time and $O(1)$ extra space.
 
 Use an inclusive loop with midpoint exclusion. The existing note also contains first-true and last-true templates with different rules.
 
@@ -77,72 +151,6 @@ For contrast:
 - Solutions are usually DFS (recursion on `left` and `right`) or BFS (level by level with a queue).
 
 TODO: create a separate `LeetCode/Binary Tree/` note with traversal templates.
-
-## Three Templates
-
-### 1. Exact Match in a Sorted Array
-
-```python
-def search(nums: list[int], target: int) -> int:
-    lo, hi = 0, len(nums) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
-        if nums[mid] == target:
-            return mid
-        if nums[mid] < target:
-            lo = mid + 1
-        else:
-            hi = mid - 1
-    return -1
-```
-
-### 2. First True (Lower Bound): Minimise X
-
-Use it when feasibility goes `F F F T T T`. Koko, ship capacity and bouquet days all use this.
-
-```python
-def first_true(lo: int, hi: int, feasible) -> int:
-    while lo < hi:
-        mid = (lo + hi) // 2
-        if feasible(mid):
-            hi = mid          # mid may be the answer
-        else:
-            lo = mid + 1
-    return lo
-```
-
-### 3. Last True: Maximise X
-
-Use it when feasibility goes `T T T F F F`. Round `mid` **up**, or the loop never ends when `hi = lo + 1`.
-
-```python
-def last_true(lo: int, hi: int, feasible) -> int:
-    while lo < hi:
-        mid = (lo + hi + 1) // 2
-        if feasible(mid):
-            lo = mid
-        else:
-            hi = mid - 1
-    return lo
-```
-
-### Rust: First True
-
-```rust
-fn first_true(mut lo: i64, mut hi: i64, feasible: impl Fn(i64) -> bool) -> i64 {
-    while lo < hi {
-        let mid = lo + (hi - lo) / 2; // avoids overflow in lo + hi
-        if feasible(mid) {
-            hi = mid;
-        } else {
-            lo = mid + 1;
-        }
-    }
-    lo
-}
-```
-
-These templates have not been run; they use the same loop as the Koko solution.
 
 ## Worked Example: Is It Monotonic?
 

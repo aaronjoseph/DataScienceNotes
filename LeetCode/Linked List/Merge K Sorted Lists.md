@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Merge k sorted linked lists efficiently by merging pairs in rounds.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc23|LeetCode — LC 23]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Pair adjacent lists and merge each pair with an iterative two-list merge.
-2. Carry an unpaired final list forward.
-3. Repeat until only one list remains; return null when the input collection is empty.
-
-## Why It Works
-
-Every round preserves sortedness and halves the number of lists, while visiting each node only once per round.
-
-## Worked Example
-
-**Illustrative input:** Lists `[1 → 4, 2 → 5, 3]`.
-
-**Trace:** Merge the first pair, carry 3, then merge the two remaining lists.
-
-**Result:** Return `1 → 2 → 3 → 4 → 5`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -73,6 +53,30 @@ class Solution:
 ## Complexity
 
 $O(N\log(k+1))$ time for `N` total nodes; $O(k)$ auxiliary list references while reusing nodes. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Merge k sorted linked lists efficiently by merging pairs in rounds.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc23|LeetCode — LC 23]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Pair adjacent lists and merge each pair with an iterative two-list merge.
+2. Carry an unpaired final list forward.
+3. Repeat until only one list remains; return null when the input collection is empty.
+
+## Why It Works
+
+Every round preserves sortedness and halves the number of lists, while visiting each node only once per round.
+
+## Worked Example
+
+**Illustrative input:** Lists `[1 → 4, 2 → 5, 3]`.
+
+**Trace:** Merge the first pair, carry 3, then merge the two remaining lists.
+
+**Result:** Return `1 → 2 → 3 → 4 → 5`.
 
 ## Common Pitfalls
 

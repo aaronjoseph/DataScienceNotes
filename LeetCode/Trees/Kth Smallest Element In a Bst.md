@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return the kth smallest value in a binary search tree using its sorted inorder traversal.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc230|LeetCode — LC 230]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use a stack to descend the current subtree's left edge.
-2. Pop and visit the next node, decrementing k.
-3. Return when k reaches zero; otherwise continue from that node's right child.
-
-## Why It Works
-
-Inorder visits BST values in ascending order, so the kth visit is the required order statistic.
-
-## Worked Example
-
-**Illustrative input:** BST root 3 has left subtree 1 with right child 2; `k = 2`.
-
-**Trace:** Inorder visits 1, then 2.
-
-**Result:** Return `2`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(h+k)$ time and $O(h)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return the kth smallest value in a binary search tree using its sorted inorder traversal.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc230|LeetCode — LC 230]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use a stack to descend the current subtree's left edge.
+2. Pop and visit the next node, decrementing k.
+3. Return when k reaches zero; otherwise continue from that node's right child.
+
+## Why It Works
+
+Inorder visits BST values in ascending order, so the kth visit is the required order statistic.
+
+## Worked Example
+
+**Illustrative input:** BST root 3 has left subtree 1 with right child 2; `k = 2`.
+
+**Trace:** Inorder visits 1, then 2.
+
+**Result:** Return `2`.
 
 ## Common Pitfalls
 

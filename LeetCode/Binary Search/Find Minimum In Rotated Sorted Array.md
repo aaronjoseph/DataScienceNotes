@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the minimum value in a rotated strictly increasing array. Compare the midpoint with the right endpoint.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc153|LeetCode — LC 153]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Track a candidate interval and the smallest value inspected.
-2. If the midpoint exceeds the right endpoint, search strictly to its right.
-3. Otherwise record the midpoint and search to its left; include the final remaining value.
-
-## Why It Works
-
-With distinct values, comparison to the right endpoint identifies the rotation-containing half; saving discarded midpoints preserves a possible minimum.
-
-## Worked Example
-
-**Illustrative input:** `nums = [4, 5, 1, 2, 3]`.
-
-**Trace:** The midpoint already contains 1; retain it while narrowing the remaining interval.
-
-**Result:** Return `1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(\log n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the minimum value in a rotated strictly increasing array. Compare the midpoint with the right endpoint.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc153|LeetCode — LC 153]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Track a candidate interval and the smallest value inspected.
+2. If the midpoint exceeds the right endpoint, search strictly to its right.
+3. Otherwise record the midpoint and search to its left; include the final remaining value.
+
+## Why It Works
+
+With distinct values, comparison to the right endpoint identifies the rotation-containing half; saving discarded midpoints preserves a possible minimum.
+
+## Worked Example
+
+**Illustrative input:** `nums = [4, 5, 1, 2, 3]`.
+
+**Trace:** The midpoint already contains 1; retain it while narrowing the remaining interval.
+
+**Result:** Return `1`.
 
 ## Common Pitfalls
 

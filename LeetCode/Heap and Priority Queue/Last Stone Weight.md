@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Repeatedly smash the two heaviest stones and return the final remaining weight.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc1046|LeetCode — LC 1046]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Represent a max heap by negating stone weights and heapify.
-2. Pop the two heaviest; discard both if equal or push their positive weight difference in negated form.
-3. Continue until at most one stone remains; return its weight or zero.
-
-## Why It Works
-
-Each heap operation implements the problem's required choice of the two current heaviest stones.
-
-## Worked Example
-
-**Illustrative input:** `stones = [2, 7, 4]`.
-
-**Trace:** Smash 7 with 4 to obtain 3, then smash 3 with 2 to obtain 1.
-
-**Result:** Return `1`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -56,6 +36,30 @@ class Solution:
 ## Complexity
 
 $O(n\log n)$ time and $O(n)$ extra space for the negated heap. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Repeatedly smash the two heaviest stones and return the final remaining weight.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc1046|LeetCode — LC 1046]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Represent a max heap by negating stone weights and heapify.
+2. Pop the two heaviest; discard both if equal or push their positive weight difference in negated form.
+3. Continue until at most one stone remains; return its weight or zero.
+
+## Why It Works
+
+Each heap operation implements the problem's required choice of the two current heaviest stones.
+
+## Worked Example
+
+**Illustrative input:** `stones = [2, 7, 4]`.
+
+**Trace:** Smash 7 with 4 to obtain 3, then smash 3 with 2 to obtain 1.
+
+**Result:** Return `1`.
 
 ## Common Pitfalls
 

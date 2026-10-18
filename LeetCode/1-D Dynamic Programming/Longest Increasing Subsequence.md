@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Find the length of a strictly increasing subsequence; selected elements need not be contiguous.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc300|LeetCode — LC 300]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Initialize a best length of one starting at every position.
-2. Process positions backward, testing each later larger value as the next element.
-3. Set the current best from one plus a later best and return the greatest table entry.
-
-## Why It Works
-
-Every increasing subsequence starting here either stops immediately or chooses some later larger next element.
-
-## Worked Example
-
-**Illustrative input:** `nums = [3, 1, 2, 4]`.
-
-**Trace:** The subsequence 1,2,4 has three elements even though 3 precedes it.
-
-**Result:** Return `3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -52,6 +32,30 @@ class Solution:
 ## Complexity
 
 $O(n^2)$ time and $O(n)$ space for this dynamic-programming implementation. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Find the length of a strictly increasing subsequence; selected elements need not be contiguous.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc300|LeetCode — LC 300]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Initialize a best length of one starting at every position.
+2. Process positions backward, testing each later larger value as the next element.
+3. Set the current best from one plus a later best and return the greatest table entry.
+
+## Why It Works
+
+Every increasing subsequence starting here either stops immediately or chooses some later larger next element.
+
+## Worked Example
+
+**Illustrative input:** `nums = [3, 1, 2, 4]`.
+
+**Trace:** The subsequence 1,2,4 has three elements even though 3 precedes it.
+
+**Result:** Return `3`.
 
 ## Common Pitfalls
 

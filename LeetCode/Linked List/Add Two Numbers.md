@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Add two numbers represented by linked lists of decimal digits in reverse order.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc2|LeetCode — LC 2]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Walk both lists with a carry, treating a missing digit as zero.
-2. Add the current digits and carry, append the units digit, and retain the tens carry.
-3. Continue until both lists and the carry are exhausted.
-
-## Why It Works
-
-Each iteration computes one decimal column and passes exactly its overflow to the next column.
-
-## Worked Example
-
-**Illustrative input:** Lists `9 → 9` and `1`.
-
-**Trace:** The first two columns produce zeros and carry; the final carry adds 1.
-
-**Result:** Return `0 → 0 → 1`, representing 100.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -59,6 +39,30 @@ class Solution:
 ## Complexity
 
 $O(\max(n,m))$ time and $O(1)$ auxiliary space, excluding the output nodes. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Add two numbers represented by linked lists of decimal digits in reverse order.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc2|LeetCode — LC 2]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Walk both lists with a carry, treating a missing digit as zero.
+2. Add the current digits and carry, append the units digit, and retain the tens carry.
+3. Continue until both lists and the carry are exhausted.
+
+## Why It Works
+
+Each iteration computes one decimal column and passes exactly its overflow to the next column.
+
+## Worked Example
+
+**Illustrative input:** Lists `9 → 9` and `1`.
+
+**Trace:** The first two columns produce zeros and carry; the final carry adds 1.
+
+**Result:** Return `0 → 0 → 1`, representing 100.
 
 ## Common Pitfalls
 

@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Reorder a list by alternating its first and last remaining nodes, modifying pointers in place.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc143|LeetCode — LC 143]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use slow and fast pointers to locate the midpoint.
-2. Detach the second half and reverse it.
-3. Weave nodes alternately from the first half and reversed second half, saving both next pointers before relinking.
-
-## Why It Works
-
-The reversed second half exposes last, second-last, and later nodes in exactly the order needed for interleaving.
-
-## Worked Example
-
-**Illustrative input:** List `1 → 2 → 3 → 4 → 5`.
-
-**Trace:** Split after 3, reverse the tail to 5 → 4, then weave.
-
-**Result:** The list becomes `1 → 5 → 2 → 4 → 3`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
 
@@ -62,6 +42,30 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Reorder a list by alternating its first and last remaining nodes, modifying pointers in place.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc143|LeetCode — LC 143]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use slow and fast pointers to locate the midpoint.
+2. Detach the second half and reverse it.
+3. Weave nodes alternately from the first half and reversed second half, saving both next pointers before relinking.
+
+## Why It Works
+
+The reversed second half exposes last, second-last, and later nodes in exactly the order needed for interleaving.
+
+## Worked Example
+
+**Illustrative input:** List `1 → 2 → 3 → 4 → 5`.
+
+**Trace:** Split after 3, reverse the tail to 5 → 4, then weave.
+
+**Result:** The list becomes `1 → 5 → 2 → 4 → 3`.
 
 ## Common Pitfalls
 

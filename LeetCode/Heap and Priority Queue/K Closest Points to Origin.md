@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-Return k points nearest to the origin using a heap ordered by squared Euclidean distance.[^implementation]
+## Template
 
-Problem link: [[Job Interviews/Coding Practice Index#^lc973|LeetCode — LC 973]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Compute the squared distance and coordinates for every point.
-2. Build a min heap from those records.
-3. Pop exactly k points and return their coordinates.
-
-## Why It Works
-
-Squaring preserves distance order for nonnegative distances, so the heap emits nearest points first without square roots.
-
-## Worked Example
-
-**Illustrative input:** `points = [[1, 2], [3, 4], [0, 1]]`, `k = 2`.
-
-**Trace:** Squared distances are 5, 25, and 1; pop the last point, then the first.
-
-**Result:** Return `[[0, 1], [1, 2]]`.
-
-## Python
+### Python
 
 Adapted reference implementation for the LeetCode Python 3 judge.
 
@@ -57,6 +37,30 @@ class Solution:
 ## Complexity
 
 $O(n+k\log n)$ time and $O(n)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+
+## Overview
+
+Return k points nearest to the origin using a heap ordered by squared Euclidean distance.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc973|LeetCode — LC 973]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Compute the squared distance and coordinates for every point.
+2. Build a min heap from those records.
+3. Pop exactly k points and return their coordinates.
+
+## Why It Works
+
+Squaring preserves distance order for nonnegative distances, so the heap emits nearest points first without square roots.
+
+## Worked Example
+
+**Illustrative input:** `points = [[1, 2], [3, 4], [0, 1]]`, `k = 2`.
+
+**Trace:** Squared distances are 5, 25, and 1; pop the last point, then the first.
+
+**Result:** Return `[[0, 1], [1, 2]]`.
 
 ## Common Pitfalls
 
