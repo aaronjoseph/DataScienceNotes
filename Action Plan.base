@@ -19,6 +19,7 @@ views:
     name: All search notes
     order:
       - file.name
+      - problem_number
       - search_stage
       - note_type
       - aliases

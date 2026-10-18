@@ -22,14 +22,21 @@ Koko Eating Bananas is a **binary search** problem, not a binary tree problem. T
 - Each hour she eats up to `k` bananas from **one** pile; if the pile has fewer, she finishes it and waits for the next hour.
 - Return the **minimum** `k` that lets her finish within `h` hours.
 
+## How to Solve
+
+1. Start with speeds from 1 through the largest pile. The problem guarantees at least one hour per pile, so the upper bound is feasible.
+2. For a candidate speed, compute each pile's required hours using integer ceiling division and add them.
+3. If the total fits within the allowed hours, retain that speed and search for a smaller feasible one; otherwise discard it and all slower speeds.
+4. Stop when the lower and upper bounds meet. That speed is the minimum feasible answer.
+
 ## Key Concepts
 
 ### Hours at a Given Speed
 
-A pile of $p$ bananas takes $\lceil p / k \rceil$ hours at speed $k$, so the total is:
+Let $p_i$ be the positive size of pile $i$, $n$ the number of piles, and $k > 0$ the integer eating speed. Each pile occupies a whole number of hours, so the total is:
 
 $$
-\text{hours}(k) = \sum_{i} \left\lceil \frac{p_i}{k} \right\rceil
+\text{hours}(k) = \sum_{i=1}^{n} \left\lceil \frac{p_i}{k} \right\rceil
 $$
 
 Compute the ceiling with integers to avoid floating-point error:
@@ -52,8 +59,8 @@ $$
 p + k - 1 = qk + (r + k - 1)
 $$
 
-- **Case $r = 0$:** the extra part is $k - 1 < k$, so the floor is $q$, which equals the ceiling.
-- **Case $1 \le r \le k - 1$:** the extra part lies between $k$ and $2k - 2$, so it adds exactly 1 and the floor is $q + 1$, which equals the ceiling.
+- **Case $r = 0$:** the added remainder stays below one full divisor, so the floor is $q$, which equals the ceiling.
+- **Case $1 \le r \le k - 1$:** the added remainder crosses one full divisor but stays below two, so the floor increases by exactly one, matching the ceiling.
 
 **Check with k = 4:**
 
@@ -69,9 +76,9 @@ $$
 p = 11: \quad \left\lfloor \frac{14}{4} \right\rfloor = 3
 $$
 
-Each matches $8/4 = 2$, $9/4 = 2.25 \to 3$ and $11/4 = 2.75 \to 3$.
+These results match the exact division for 8 and the upward rounding required for 9 and 11.
 
-**Why not `math.ceil(p / k)`?** A 64-bit float represents integers exactly only up to $2^{53}$, so for very large values the division can be slightly off and the ceiling wrong by one. Koko's limits ($p \le 10^9$) are safe with floats, but the integer form is safe everywhere and avoids casts in Rust. Equivalent idioms, both assuming $p \ge 0$ and $k > 0$:
+**Why not `math.ceil(p / k)`?** A 64-bit float represents integers exactly only up to $2^{53}$, so for very large values the division can be slightly off and the ceiling wrong by one. Koko's limits ($p \le 10^9$) are safe for this floating-point calculation, but integer division avoids floating-point rounding. In fixed-width arithmetic, widen before adding the numerator terms, or use an overflow-safe ceiling-division primitive. Equivalent idioms, both assuming $p \ge 0$ and $k > 0$:
 
 ```python
 -(-p // k)
@@ -95,7 +102,7 @@ Any false-then-true pattern like this can be searched with binary search for the
 ### Search Range
 
 - **Lower bound:** $k = 1$.
-- **Upper bound:** $k = \max(p_i)$. At that speed each pile takes exactly one hour, and the problem guarantees `h >= len(piles)`.
+- **Upper bound:** use the largest pile size. At that speed each pile takes exactly one hour, and the problem guarantees `h >= len(piles)`.
 
 ### Template: First True
 
@@ -108,7 +115,11 @@ while lo < hi:
 return lo
 ```
 
-**Complexity:** $O(n \log M)$ time with $n$ piles and $M = \max(p_i)$; $O(1)$ extra space.
+**Complexity:** $O(n \log M)$ time, where $n$ is the number of piles and $M$ is the largest pile size; $O(1)$ extra space.
+
+## Why It Works
+
+A faster speed never increases any pile's required hours. Therefore, an infeasible midpoint rules out every slower speed, while a feasible midpoint lets the search keep that candidate and discard every larger candidate. The interval always contains the smallest feasible speed and strictly shrinks until only that speed remains.
 
 ## Worked Example
 
@@ -135,7 +146,13 @@ The Python solution below, run by hand on the same input. It starts with `lo = 1
 **Iteration 1: range 1–11.**
 
 $$
-\text{mid} = \left\lfloor \frac{1 + 11}{2} \right\rfloor = 6, \qquad \text{hours}(6) = 1 + 1 + 2 + 2 = 6
+\text{mid} = \left\lfloor \frac{1 + 11}{2} \right\rfloor = 6
+$$
+
+**Hours at that speed:**
+
+$$
+\text{hours}(6) = 1 + 1 + 2 + 2 = 6
 $$
 
 6 ≤ 8, so speed 6 works; keep it and look lower: `hi = 6`.
@@ -143,7 +160,13 @@ $$
 **Iteration 2: range 1–6.**
 
 $$
-\text{mid} = \left\lfloor \frac{1 + 6}{2} \right\rfloor = 3, \qquad \text{hours}(3) = 1 + 2 + 3 + 4 = 10
+\text{mid} = \left\lfloor \frac{1 + 6}{2} \right\rfloor = 3
+$$
+
+**Hours at that speed:**
+
+$$
+\text{hours}(3) = 1 + 2 + 3 + 4 = 10
 $$
 
 10 > 8, so 3 and everything below it is too slow: `lo = 4`.
@@ -151,7 +174,13 @@ $$
 **Iteration 3: range 4–6.**
 
 $$
-\text{mid} = \left\lfloor \frac{4 + 6}{2} \right\rfloor = 5, \qquad \text{hours}(5) = 1 + 2 + 2 + 3 = 8
+\text{mid} = \left\lfloor \frac{4 + 6}{2} \right\rfloor = 5
+$$
+
+**Hours at that speed:**
+
+$$
+\text{hours}(5) = 1 + 2 + 2 + 3 = 8
 $$
 
 8 ≤ 8, so 5 works, but a smaller speed might too: `hi = 5`.
@@ -159,7 +188,13 @@ $$
 **Iteration 4: range 4–5.**
 
 $$
-\text{mid} = \left\lfloor \frac{4 + 5}{2} \right\rfloor = 4, \qquad \text{hours}(4) = 1 + 2 + 2 + 3 = 8
+\text{mid} = \left\lfloor \frac{4 + 5}{2} \right\rfloor = 4
+$$
+
+**Hours at that speed:**
+
+$$
+\text{hours}(4) = 1 + 2 + 2 + 3 = 8
 $$
 
 8 ≤ 8, so 4 works: `hi = 4`.
@@ -226,9 +261,64 @@ impl Solution {
 - **Overflow:** up to $10^4$ piles of up to $10^9$ bananas, so at k = 1 the hour total overflows `i32`.
 - **Midpoint:** `lo + (hi - lo) / 2` avoids overflow in `lo + hi`.
 
+## Complexity
+
+Each feasibility check visits $n$ piles and uses a constant-size integer accumulator. Binary search makes $O(\log M)$ checks for largest pile size $M$, giving $O(n\log M)$ total time and $O(1)$ auxiliary space in the Python and Rust implementations.
+
+> [!info]- Why is the time complexity O(n log M)?
+> There are two pieces of work: **checking one speed** and **deciding how many speeds to check**.
+>
+> **Example inputs:** `piles = [3, 6, 7, 11]`, `h = 8`. Here, $n = 4$ piles and $M = 11$, the largest pile size.
+>
+> **1. Checking one speed takes O(n).** For a candidate speed, calculate the required hours for every pile and add them:
+>
+> ```python
+> def hours(k):
+>     return sum((p + k - 1) // k for p in piles)
+> ```
+>
+> At $k = 4$, the four piles require `[1, 2, 2, 3]` hours. The check visits all $n$ piles, doing constant work per pile under the problem's bounded-integer assumptions.
+>
+> **2. Binary search checks O(log M) speeds.** The candidate speeds range from 1 through $M$. Each iteration removes approximately half the remaining candidates. For this example, the candidate counts shrink as follows:
+>
+> ```text
+> 11 → 6 → 3 → 2 → 1
+> ```
+>
+> Repeated halving gives a logarithmic number of checks. Roughly one million candidate speeds require only about 20 checks:
+>
+> $$
+> 2^{20} = 1{,}048{,}576
+> $$
+>
+> **3. Multiply the costs.** Every speed check scans all the piles:
+>
+> $$
+> \text{total checking work}
+> = \text{number of speed checks} \times \text{work per check}
+> $$
+>
+> $$
+> O(\log M) \times O(n) = O(n\log M)
+> $$
+>
+> In this example, binary search tries speeds **6, 3, 5, and 4**. Each attempt visits four piles:
+>
+> $$
+> 4 \times 4 = 16\text{ pile calculations}
+> $$
+>
+> Finding `max(piles)` initially also takes $O(n)$. Including that scan, a bound covering even $M = 1$ is:
+>
+> $$
+> O\bigl(n(1+\log M)\bigr)
+> $$
+>
+> For $M \ge 2$, this simplifies to the usual $O(n\log M)$. **Binary search halves the range of speeds; it still scans every pile to check each speed.**
+
 ## Common Pitfalls
 
-- Float division for the ceiling can round wrongly.
+- Floating-point ceiling can fail outside this problem's safe numeric range; integer ceiling division avoids that issue.
 - Starting `lo` at 0 divides by zero.
 - Using `hi = mid - 1` when `mid` is feasible can skip the answer.
 
@@ -240,8 +330,12 @@ impl Solution {
 
 ## Related Notes
 
+- [[Job Interviews/Coding Practice Index#^lc875|Coding Practice Index — LC 875]] — Problem entry in the complete NeetCode 150 collection.
+- [[Action-Plan Kanban#Coding Backlog|Action-Plan Kanban — Coding Backlog]] — Track practice completion.
+- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Reusable search templates and monotonicity.
 - [[Big O]] — complexity notation used above.
 
 ## References & Useful Links
 
-- [LeetCode 875: Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) — Problem statement and constraints.
+- [[Job Interviews/Coding Practice Index#^lc875|LeetCode 875 — Koko Eating Bananas]] — Central problem URL and constraints.
+- [NeetCode contributors — Koko Eating Bananas Python reference](https://github.com/neetcode-gh/leetcode/blob/d5ebb3ea8bd4b52d605bc7aa179e22af684d31bb/python/0875-koko-eating-bananas.py) — Binary-search approach reviewed on 18 October 2026; the implementations in this note retain integer ceiling division.

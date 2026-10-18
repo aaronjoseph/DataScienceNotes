@@ -4,7 +4,7 @@ description: Fetch the content of an X (Twitter) post using Copilot Plus. Use wh
 license: Copilot Plus
 metadata:
   copilot-enabled-agents: opencode, claude, codex
-  copilot-builtin-version: "7"
+  copilot-builtin-version: "10"
 ---
 
 # Copilot fetch X

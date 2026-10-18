@@ -30,7 +30,6 @@
   "defaultSaveFolder": "copilot/copilot-conversations",
   "defaultConversationTag": "copilot-conversation",
   "autosaveChat": true,
-  "autoAddActiveContentToContext": true,
   "defaultOpenArea": "view",
   "defaultSendShortcut": "enter",
   "customPromptsFolder": "copilot/copilot-custom-prompts",
@@ -318,7 +317,7 @@
   "inlineEditCommands": [],
   "projectList": [],
   "lastDismissedVersion": "4.0.13",
-  "lastShownStartupVersion": "4.0.13",
+  "lastShownStartupVersion": "4.0.15",
   "passMarkdownImages": true,
   "enableAutonomousAgent": true,
   "enableCustomPromptTemplating": true,
@@ -326,6 +325,7 @@
   "enableMiyo": false,
   "enableMiyoSearchSkill": false,
   "miyoSearchAll": false,
+  "miyoExtraSearchFolders": [],
   "relevantNotesLiveUpdate": true,
   "miyoServerUrl": "",
   "selfHostSearchProvider": "firecrawl",
@@ -334,7 +334,7 @@
   "parallelApiKey": "",
   "exaApiKey": "",
   "supadataApiKey": "",
-  "docProcessorBackend": "plus",
+  "enableMiyoDocumentProcessing": false,
   "enableLexicalBoosts": true,
   "suggestedDefaultCommands": false,
   "autonomousAgentEnabledToolIds": [
@@ -369,6 +369,7 @@
       }
     },
     "debugFullFrames": true,
+    "offerFeedbackCards": true,
     "notificationSound": true,
     "notificationSoundId": "piano",
     "welcomeDismissed": true,
@@ -378,8 +379,8 @@
     "deviceProfiles": {
       "8f428aa1-280b-4fd3-a680-54eb9c33073a": {
         "codex": {
-          "binaryPath": "/Users/A3126435/.local/share/copilot-codex/1.13.0/codex-acp",
-          "binaryVersion": "1.13.0",
+          "binaryPath": "/Users/A3126435/.local/share/copilot-codex/2.0.1/codex-acp",
+          "binaryVersion": "2.0.1",
           "binarySource": "custom",
           "envOverrides": {
             "CODEX_HOME": "/Users/A3126435/.codex"
@@ -430,7 +431,7 @@
           "input": 10,
           "output": 50
         },
-        "description": "Our most capable model for complex, demanding work."
+        "description": "Frontier intelligence for the most demanding work."
       },
       "configuredModelId": "18607b9f-f4f5-4913-a291-f6eb5af9cc89",
       "configuredAt": 1790877253415
@@ -462,7 +463,7 @@
           "input": 5,
           "output": 30
         },
-        "description": "Latest frontier agentic coding model."
+        "description": "Older generation workhorse model."
       },
       "configuredModelId": "781c4d7c-35bf-4bdd-ab99-fda39bc067db",
       "configuredAt": 1790877253416
@@ -494,7 +495,7 @@
           "input": 2,
           "output": 12
         },
-        "description": "Balanced agentic coding model for everyday work."
+        "description": "Older balanced model for straightforward work."
       },
       "configuredModelId": "5730d5a1-7994-4ee3-b1ef-b4a33989c91d",
       "configuredAt": 1790877253417
@@ -526,7 +527,7 @@
           "input": 0.2,
           "output": 1.2
         },
-        "description": "Fast and affordable agentic coding model."
+        "description": "Older fast and efficient model."
       },
       "configuredModelId": "9f60f76a-d1ad-434a-8a81-31c8eaa03c46",
       "configuredAt": 1790877253417
@@ -559,7 +560,8 @@
           "output": 11.999,
           "cacheRead": 0.12,
           "cacheWrite": 3
-        }
+        },
+        "description": "Latest workhorse model for coding and everyday work."
       },
       "configuredModelId": "6f84b759-fd72-4464-b20b-819d34531e4c",
       "configuredAt": 1791521033778
@@ -567,8 +569,8 @@
     {
       "providerId": "47ca54b8-c4d2-4cb4-9369-2b87e9123de8",
       "info": {
-        "id": "gpt-5.5",
-        "displayName": "5.5",
+        "id": "gpt-6-sol",
+        "displayName": "6 Sol",
         "modalities": {
           "input": [
             "text",
@@ -586,15 +588,51 @@
         },
         "reasoning": true,
         "toolCall": true,
-        "releaseDate": "2026-04-23",
+        "releaseDate": "2026-09-22",
         "cost": {
-          "input": 5,
-          "output": 30
+          "input": 2,
+          "output": 10,
+          "cacheRead": 0.2,
+          "cacheWrite": 2.5
         },
-        "description": "Frontier model for complex coding, research, and real-world work."
+        "description": "Previous generation workhorse model."
       },
-      "configuredModelId": "45fbb8ef-a41c-42c8-853e-d4827d0d52e0",
-      "configuredAt": 1791740637100
+      "configuredModelId": "3072931d-2a81-487f-a26c-f40afeb83975",
+      "configuredAt": 1791858772458
+    },
+    {
+      "providerId": "47ca54b8-c4d2-4cb4-9369-2b87e9123de8",
+      "info": {
+        "id": "gpt-6-luna",
+        "displayName": "6 Luna",
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "limits": {
+          "context": 1050000,
+          "output": 128000,
+          "input": 922000
+        },
+        "reasoning": true,
+        "toolCall": true,
+        "releaseDate": "2026-09-22",
+        "cost": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125
+        },
+        "description": "Fast and affordable model for easier tasks."
+      },
+      "configuredModelId": "b57469b5-e408-4e93-ad5a-8ab7912e2918",
+      "configuredAt": 1791858772458
     }
   ],
   "backends": {
@@ -781,7 +819,9 @@
       "minimax-m3"
     ]
   },
+  "autoAddActiveContentToContext": true,
+  "docProcessorBackend": "plus",
   "miyoConnectionMode": "local",
   "_keychainVaultId": "91bdbc28",
-  "settingsVersion": 14
+  "settingsVersion": 15
 }

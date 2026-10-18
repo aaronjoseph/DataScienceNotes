@@ -2,6 +2,8 @@
 tags:
   - "leetcode"
   - "binary-search"
+problem_number: 704
+difficulty: "Easy"
 pattern: "Binary search"
 languages:
   - "Python"
@@ -9,6 +11,36 @@ languages:
 ---
 
 Binary search solves a problem by repeatedly halving a range of candidates, where a single check tells you which half to discard. It works on a sorted array and, more generally, on any **monotonic** yes/no question. It is easy to confuse with a **binary tree**, so this note starts with how to tell the two apart.
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc704|LeetCode — LC 704]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## LC 704 — Problem and Solution
+
+Return the index of a target in an ascending sorted array, or -1 if absent.[^lc704]
+
+### How to Solve
+
+1. Set an inclusive range from the first through the last index.
+2. Compare the middle value with the target and discard the midpoint plus the impossible half.
+3. Return immediately on equality; return -1 after the range becomes empty.
+
+### Why It Works
+
+Sorted order makes every discarded value provably too small or too large.
+
+### Worked Example
+
+**Illustrative input:** `nums = [-3, 0, 4, 9]`, `target = 4`.
+
+**Trace:** The first midpoint is 0, so keep indices 2 through 3; the next midpoint is 4.
+
+**Result:** Return `2`.
+
+### Python and Complexity
+
+Use the exact-match implementation under **Three Templates → 1. Exact Match in a Sorted Array** below. $O(\log n)$ time and $O(1)$ extra space.
+
+Use an inclusive loop with midpoint exclusion. The existing note also contains first-true and last-true templates with different rules.
 
 ## Binary Search vs Binary Tree
 
@@ -134,12 +166,18 @@ Feasibility is `F T T T...` from capacity 2 upwards, so "first true" applies and
 ## Practice Problems
 
 - [[Koko Eating Bananas]] (875) — first true on eating speed.
-- TODO: Binary Search (704) — exact match.
+- [[Job Interviews/Coding Practice Index#^lc704|Binary Search (704)]] — Exact-match solution in this note.
 - TODO: Search Insert Position (35) — lower bound.
 - TODO: Capacity To Ship Packages Within D Days (1011) — first true.
-- TODO: Search in Rotated Sorted Array (33) — sorted-half reasoning.
+- [[LeetCode/Binary Search/Search In Rotated Sorted Array|Search In Rotated Sorted Array]] (33) — Sorted-half reasoning.
 - TODO: Split Array Largest Sum (410) — first true.
 
 ## Related Notes
 
 - [[Big O]] — $O(\log n)$ and $O(n \log M)$ costs.
+- [[Job Interviews/Coding Practice Index#^lc704|Coding Practice Index — LC 704]] — Central LeetCode URL.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Practice completion.
+
+## References & Useful Links
+
+[^lc704]: [NeetCode contributors — Binary Search Python reference](https://github.com/neetcode-gh/leetcode/blob/d5ebb3ea8bd4b52d605bc7aa179e22af684d31bb/python/0704-binary-search.py) — Exact-match search implementation reviewed on 18 October 2026. The LC 704 walkthrough and example above are written for this vault.

@@ -1,170 +1,331 @@
 ---
 
 kanban-plugin: board
+related:
+  - "[[Job Interviews/Coding Practice Index]]"
 
 ---
 
+## Interview Pipeline
+
+- [ ] Kurian @{2026-10-19}  Call
+- [ ] Pramod Call @{2026-10-18}   Call
+- [ ] Salique @{2026-10-18} Call
+
+
 ## Coding Backlog
 
-- [ ] **LC 1** — [[Job Interviews/Coding Practice Index#^lc1|Two Sum]]
-	Arrays & Hashing · Easy
-- [ ] **LC 242** — [[Job Interviews/Coding Practice Index#^lc242|Valid Anagram]]
-	Arrays & Hashing · Easy
-- [ ] **LC 217** — [[Job Interviews/Coding Practice Index#^lc217|Contains Duplicate]]
-	Arrays & Hashing · Easy
-- [ ] **LC 49** — [[Job Interviews/Coding Practice Index#^lc49|Group Anagrams]]
-	Arrays & Hashing · Medium
-- [ ] **LC 347** — [[Job Interviews/Coding Practice Index#^lc347|Top K Frequent Elements]]
-	Arrays & Hashing · Medium
-- [ ] **LC 238** — [[Job Interviews/Coding Practice Index#^lc238|Product of Array Except Self]]
-	Arrays & Hashing · Medium
-- [ ] **LC 271** — [[Job Interviews/Coding Practice Index#^lc271|Encode and Decode Strings]]
-	Arrays & Hashing · Medium
-- [ ] **LC 128** — [[Job Interviews/Coding Practice Index#^lc128|Longest Consecutive Sequence]]
-	Arrays & Hashing · Medium
-- [ ] **LC 125** — [[Job Interviews/Coding Practice Index#^lc125|Valid Palindrome]]
-	Two Pointers · Easy
-- [ ] **LC 15** — [[Job Interviews/Coding Practice Index#^lc15|3Sum]]
-	Two Pointers · Medium
-- [ ] **LC 11** — [[Job Interviews/Coding Practice Index#^lc11|Container With Most Water]]
-	Two Pointers · Medium
-- [ ] **LC 121** — [[Job Interviews/Coding Practice Index#^lc121|Best Time to Buy And Sell Stock]]
-	Sliding Window · Easy
-- [ ] **LC 3** — [[Job Interviews/Coding Practice Index#^lc3|Longest Substring Without Repeating Characters]]
-	Sliding Window · Medium
-- [ ] **LC 424** — [[Job Interviews/Coding Practice Index#^lc424|Longest Repeating Character Replacement]]
-	Sliding Window · Medium
-- [ ] **LC 76** — [[Job Interviews/Coding Practice Index#^lc76|Minimum Window Substring]]
-	Sliding Window · Hard
-- [ ] **LC 20** — [[Job Interviews/Coding Practice Index#^lc20|Valid Parentheses]]
-	Stack · Easy
-- [ ] **LC 153** — [[Job Interviews/Coding Practice Index#^lc153|Find Minimum In Rotated Sorted Array]]
+- [ ] **LC 1** — [[LeetCode/Arrays & Hashing/Two Sum|Two Sum]]
+	Arrays & Hashing · Easy · [[Job Interviews/Coding Practice Index#^lc1|LeetCode entry]]
+- [ ] **LC 10** — [[LeetCode/2-D Dynamic Programming/Regular Expression Matching|Regular Expression Matching]]
+	2-D Dynamic Programming · Hard · [[Job Interviews/Coding Practice Index#^lc10|LeetCode entry]]
+- [ ] **LC 100** — [[LeetCode/Trees/Same Tree|Same Tree]]
+	Trees · Easy · [[Job Interviews/Coding Practice Index#^lc100|LeetCode entry]]
+- [ ] **LC 102** — [[LeetCode/Trees/Binary Tree Level Order Traversal|Binary Tree Level Order Traversal]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc102|LeetCode entry]]
+- [ ] **LC 104** — [[LeetCode/Trees/Maximum Depth of Binary Tree|Maximum Depth of Binary Tree]]
+	Trees · Easy · [[Job Interviews/Coding Practice Index#^lc104|LeetCode entry]]
+- [ ] **LC 1046** — [[LeetCode/Heap and Priority Queue/Last Stone Weight|Last Stone Weight]]
+	Heap / Priority Queue · Easy · [[Job Interviews/Coding Practice Index#^lc1046|LeetCode entry]]
+- [ ] **LC 105** — [[LeetCode/Trees/Construct Binary Tree From Preorder And Inorder Traversal|Construct Binary Tree From Preorder And Inorder Traversal]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc105|LeetCode entry]]
+- [ ] **LC 11** — [[LeetCode/Two Pointers/Container With Most Water|Container With Most Water]]
+	Two Pointers · Medium · [[Job Interviews/Coding Practice Index#^lc11|LeetCode entry]]
+- [ ] **LC 110** — [[LeetCode/Trees/Balanced Binary Tree|Balanced Binary Tree]]
+	Trees · Easy · [[Job Interviews/Coding Practice Index#^lc110|LeetCode entry]]
+- [ ] **LC 1143** — [[LeetCode/2-D Dynamic Programming/Longest Common Subsequence|Longest Common Subsequence]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc1143|LeetCode entry]]
+- [ ] **LC 115** — [[LeetCode/2-D Dynamic Programming/Distinct Subsequences|Distinct Subsequences]]
+	2-D Dynamic Programming · Hard · [[Job Interviews/Coding Practice Index#^lc115|LeetCode entry]]
+- [ ] **LC 121** — [[LeetCode/Sliding Window/Best Time to Buy And Sell Stock|Best Time to Buy And Sell Stock]]
+	Sliding Window · Easy · [[Job Interviews/Coding Practice Index#^lc121|LeetCode entry]]
+- [ ] **LC 124** — [[LeetCode/Trees/Binary Tree Maximum Path Sum|Binary Tree Maximum Path Sum]]
+	Trees · Hard · [[Job Interviews/Coding Practice Index#^lc124|LeetCode entry]]
+- [ ] **LC 125** — [[LeetCode/Two Pointers/Valid Palindrome|Valid Palindrome]]
+	Two Pointers · Easy · [[Job Interviews/Coding Practice Index#^lc125|LeetCode entry]]
+- [ ] **LC 127** — [[LeetCode/Graphs/Word Ladder|Word Ladder]]
+	Graphs · Hard · [[Job Interviews/Coding Practice Index#^lc127|LeetCode entry]]
+- [ ] **LC 128** — [[LeetCode/Arrays & Hashing/Longest Consecutive Sequence|Longest Consecutive Sequence]]
+	Arrays & Hashing · Medium · [[Job Interviews/Coding Practice Index#^lc128|LeetCode entry]]
+- [ ] **LC 130** — [[LeetCode/Graphs/Surrounded Regions|Surrounded Regions]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc130|LeetCode entry]]
+- [ ] **LC 131** — [[LeetCode/Backtracking/Palindrome Partitioning|Palindrome Partitioning]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc131|LeetCode entry]]
+- [ ] **LC 133** — [[LeetCode/Graphs/Clone Graph|Clone Graph]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc133|LeetCode entry]]
+- [ ] **LC 134** — [[LeetCode/Greedy/Gas Station|Gas Station]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc134|LeetCode entry]]
+- [ ] **LC 136** — [[LeetCode/Bit Manipulation/Single Number|Single Number]]
+	Bit Manipulation · Easy · [[Job Interviews/Coding Practice Index#^lc136|LeetCode entry]]
+- [ ] **LC 138** — [[LeetCode/Linked List/Copy List With Random Pointer|Copy List With Random Pointer]]
+	Linked List · Medium · [[Job Interviews/Coding Practice Index#^lc138|LeetCode entry]]
+- [ ] **LC 139** — [[LeetCode/1-D Dynamic Programming/Word Break|Word Break]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc139|LeetCode entry]]
+- [ ] **LC 141** — [[LeetCode/Linked List/Linked List Cycle|Linked List Cycle]]
+	Linked List · Easy · [[Job Interviews/Coding Practice Index#^lc141|LeetCode entry]]
+- [ ] **LC 143** — [[LeetCode/Linked List/Reorder List|Reorder List]]
+	Linked List · Medium · [[Job Interviews/Coding Practice Index#^lc143|LeetCode entry]]
+- [ ] **LC 1448** — [[LeetCode/Trees/Count Good Nodes In Binary Tree|Count Good Nodes In Binary Tree]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc1448|LeetCode entry]]
+- [ ] **LC 146** — [[LeetCode/Linked List/LRU Cache|LRU Cache]]
+	Linked List · Medium · [[Job Interviews/Coding Practice Index#^lc146|LeetCode entry]]
+- [ ] **LC 15** — [[LeetCode/Two Pointers/3Sum|3Sum]]
+	Two Pointers · Medium · [[Job Interviews/Coding Practice Index#^lc15|LeetCode entry]]
+- [ ] **LC 150** — [[LeetCode/Stack/Evaluate Reverse Polish Notation|Evaluate Reverse Polish Notation]]
+	Stack · Medium · [[Job Interviews/Coding Practice Index#^lc150|LeetCode entry]]
+- [ ] **LC 152** — [[LeetCode/1-D Dynamic Programming/Maximum Product Subarray|Maximum Product Subarray]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc152|LeetCode entry]]
+- [ ] **LC 153** — [[LeetCode/Binary Search/Find Minimum In Rotated Sorted Array|Find Minimum In Rotated Sorted Array]]
+	Binary Search · Medium · [[Job Interviews/Coding Practice Index#^lc153|LeetCode entry]]
+- [ ] **LC 155** — [[LeetCode/Stack/Min Stack|Min Stack]]
+	Stack · Medium · [[Job Interviews/Coding Practice Index#^lc155|LeetCode entry]]
+- [ ] **LC 1584** — [[LeetCode/Advanced Graphs/Min Cost to Connect All Points|Min Cost to Connect All Points]]
+	Advanced Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc1584|LeetCode entry]]
+- [ ] **LC 167** — [[LeetCode/Two Pointers/Two Sum II Input Array Is Sorted|Two Sum II Input Array Is Sorted]]
+	Two Pointers · Medium · [[Job Interviews/Coding Practice Index#^lc167|LeetCode entry]]
+- [ ] **LC 17** — [[LeetCode/Backtracking/Letter Combinations of a Phone Number|Letter Combinations of a Phone Number]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc17|LeetCode entry]]
+- [ ] **LC 1851** — [[LeetCode/Intervals/Minimum Interval to Include Each Query|Minimum Interval to Include Each Query]]
+	Intervals · Hard · [[Job Interviews/Coding Practice Index#^lc1851|LeetCode entry]]
+- [ ] **LC 1899** — [[LeetCode/Greedy/Merge Triplets to Form Target Triplet|Merge Triplets to Form Target Triplet]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc1899|LeetCode entry]]
+- [ ] **LC 19** — [[LeetCode/Linked List/Remove Nth Node From End of List|Remove Nth Node From End of List]]
+	Linked List · Medium · [[Job Interviews/Coding Practice Index#^lc19|LeetCode entry]]
+- [ ] **LC 190** — [[LeetCode/Bit Manipulation/Reverse Bits|Reverse Bits]]
+	Bit Manipulation · Easy · [[Job Interviews/Coding Practice Index#^lc190|LeetCode entry]]
+- [ ] **LC 191** — [[LeetCode/Bit Manipulation/Number of 1 Bits|Number of 1 Bits]]
+	Bit Manipulation · Easy · [[Job Interviews/Coding Practice Index#^lc191|LeetCode entry]]
+- [ ] **LC 198** — [[LeetCode/1-D Dynamic Programming/House Robber|House Robber]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc198|LeetCode entry]]
+- [ ] **LC 199** — [[LeetCode/Trees/Binary Tree Right Side View|Binary Tree Right Side View]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc199|LeetCode entry]]
+- [ ] **LC 2** — [[LeetCode/Linked List/Add Two Numbers|Add Two Numbers]]
+	Linked List · Medium · [[Job Interviews/Coding Practice Index#^lc2|LeetCode entry]]
+- [ ] **LC 20** — [[LeetCode/Stack/Valid Parentheses|Valid Parentheses]]
+	Stack · Easy · [[Job Interviews/Coding Practice Index#^lc20|LeetCode entry]]
+- [ ] **LC 200** — [[LeetCode/Graphs/Number of Islands|Number of Islands]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc200|LeetCode entry]]
+- [ ] **LC 2013** — [[LeetCode/Math & Geometry/Detect Squares|Detect Squares]]
+	Math & Geometry · Medium · [[Job Interviews/Coding Practice Index#^lc2013|LeetCode entry]]
+- [ ] **LC 202** — [[LeetCode/Math & Geometry/Happy Number|Happy Number]]
+	Math & Geometry · Easy · [[Job Interviews/Coding Practice Index#^lc202|LeetCode entry]]
+- [ ] **LC 206** — [[LeetCode/Linked List/Reverse Linked List|Reverse Linked List]]
+	Linked List · Easy · [[Job Interviews/Coding Practice Index#^lc206|LeetCode entry]]
+- [ ] **LC 207** — [[LeetCode/Graphs/Course Schedule|Course Schedule]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc207|LeetCode entry]]
+- [ ] **LC 208** — [[LeetCode/Tries/Implement Trie Prefix Tree|Implement Trie Prefix Tree]]
+	Tries · Medium · [[Job Interviews/Coding Practice Index#^lc208|LeetCode entry]]
+- [ ] **LC 21** — [[LeetCode/Linked List/Merge Two Sorted Lists|Merge Two Sorted Lists]]
+	Linked List · Easy · [[Job Interviews/Coding Practice Index#^lc21|LeetCode entry]]
+- [ ] **LC 210** — [[LeetCode/Graphs/Course Schedule II|Course Schedule II]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc210|LeetCode entry]]
+- [ ] **LC 211** — [[LeetCode/Tries/Design Add And Search Words Data Structure|Design Add And Search Words Data Structure]]
+	Tries · Medium · [[Job Interviews/Coding Practice Index#^lc211|LeetCode entry]]
+- [ ] **LC 212** — [[LeetCode/Tries/Word Search II|Word Search II]]
+	Tries · Hard · [[Job Interviews/Coding Practice Index#^lc212|LeetCode entry]]
+- [ ] **LC 213** — [[LeetCode/1-D Dynamic Programming/House Robber II|House Robber II]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc213|LeetCode entry]]
+- [ ] **LC 215** — [[LeetCode/Heap and Priority Queue/Kth Largest Element In An Array|Kth Largest Element In An Array]]
+	Heap / Priority Queue · Medium · [[Job Interviews/Coding Practice Index#^lc215|LeetCode entry]]
+- [ ] **LC 217** — [[LeetCode/Arrays & Hashing/Contains Duplicate|Contains Duplicate]]
+	Arrays & Hashing · Easy · [[Job Interviews/Coding Practice Index#^lc217|LeetCode entry]]
+- [ ] **LC 22** — [[LeetCode/Stack/Generate Parentheses|Generate Parentheses]]
+	Stack · Medium · [[Job Interviews/Coding Practice Index#^lc22|LeetCode entry]]
+- [ ] **LC 226** — [[LeetCode/Trees/Invert Binary Tree|Invert Binary Tree]]
+	Trees · Easy · [[Job Interviews/Coding Practice Index#^lc226|LeetCode entry]]
+- [ ] **LC 23** — [[LeetCode/Linked List/Merge K Sorted Lists|Merge K Sorted Lists]]
+	Linked List · Hard · [[Job Interviews/Coding Practice Index#^lc23|LeetCode entry]]
+- [ ] **LC 230** — [[LeetCode/Trees/Kth Smallest Element In a Bst|Kth Smallest Element In a Bst]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc230|LeetCode entry]]
+- [ ] **LC 235** — [[LeetCode/Trees/Lowest Common Ancestor of a Binary Search Tree|Lowest Common Ancestor of a Binary Search Tree]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc235|LeetCode entry]]
+- [ ] **LC 238** — [[LeetCode/Arrays & Hashing/Product of Array Except Self|Product of Array Except Self]]
+	Arrays & Hashing · Medium · [[Job Interviews/Coding Practice Index#^lc238|LeetCode entry]]
+- [ ] **LC 239** — [[LeetCode/Sliding Window/Sliding Window Maximum|Sliding Window Maximum]]
+	Sliding Window · Hard · [[Job Interviews/Coding Practice Index#^lc239|LeetCode entry]]
+- [ ] **LC 242** — [[LeetCode/Arrays & Hashing/Valid Anagram|Valid Anagram]]
+	Arrays & Hashing · Easy · [[Job Interviews/Coding Practice Index#^lc242|LeetCode entry]]
+- [ ] **LC 25** — [[LeetCode/Linked List/Reverse Nodes In K Group|Reverse Nodes In K Group]]
+	Linked List · Hard · [[Job Interviews/Coding Practice Index#^lc25|LeetCode entry]]
+- [ ] **LC 252** — [[LeetCode/Intervals/Meeting Rooms|Meeting Rooms]]
+	Intervals · Easy · [[Job Interviews/Coding Practice Index#^lc252|LeetCode entry]]
+- [ ] **LC 253** — [[LeetCode/Intervals/Meeting Rooms II|Meeting Rooms II]]
+	Intervals · Medium · [[Job Interviews/Coding Practice Index#^lc253|LeetCode entry]]
+- [ ] **LC 261** — [[LeetCode/Graphs/Graph Valid Tree|Graph Valid Tree]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc261|LeetCode entry]]
+- [ ] **LC 268** — [[LeetCode/Bit Manipulation/Missing Number|Missing Number]]
+	Bit Manipulation · Easy · [[Job Interviews/Coding Practice Index#^lc268|LeetCode entry]]
+- [ ] **LC 269** — [[LeetCode/Advanced Graphs/Alien Dictionary|Alien Dictionary]]
+	Advanced Graphs · Hard · [[Job Interviews/Coding Practice Index#^lc269|LeetCode entry]]
+- [ ] **LC 271** — [[LeetCode/Arrays & Hashing/Encode and Decode Strings|Encode and Decode Strings]]
+	Arrays & Hashing · Medium · [[Job Interviews/Coding Practice Index#^lc271|LeetCode entry]]
+- [ ] **LC 286** — [[LeetCode/Graphs/Walls And Gates|Walls And Gates]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc286|LeetCode entry]]
+- [ ] **LC 287** — [[LeetCode/Linked List/Find The Duplicate Number|Find The Duplicate Number]]
+	Linked List · Medium · [[Job Interviews/Coding Practice Index#^lc287|LeetCode entry]]
+- [ ] **LC 295** — [[LeetCode/Heap and Priority Queue/Find Median From Data Stream|Find Median From Data Stream]]
+	Heap / Priority Queue · Hard · [[Job Interviews/Coding Practice Index#^lc295|LeetCode entry]]
+- [ ] **LC 297** — [[LeetCode/Trees/Serialize And Deserialize Binary Tree|Serialize And Deserialize Binary Tree]]
+	Trees · Hard · [[Job Interviews/Coding Practice Index#^lc297|LeetCode entry]]
+- [ ] **LC 3** — [[LeetCode/Sliding Window/Longest Substring Without Repeating Characters|Longest Substring Without Repeating Characters]]
+	Sliding Window · Medium · [[Job Interviews/Coding Practice Index#^lc3|LeetCode entry]]
+- [ ] **LC 300** — [[LeetCode/1-D Dynamic Programming/Longest Increasing Subsequence|Longest Increasing Subsequence]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc300|LeetCode entry]]
+- [ ] **LC 309** — [[LeetCode/2-D Dynamic Programming/Best Time to Buy And Sell Stock With Cooldown|Best Time to Buy And Sell Stock With Cooldown]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc309|LeetCode entry]]
+- [ ] **LC 312** — [[LeetCode/2-D Dynamic Programming/Burst Balloons|Burst Balloons]]
+	2-D Dynamic Programming · Hard · [[Job Interviews/Coding Practice Index#^lc312|LeetCode entry]]
+- [ ] **LC 322** — [[LeetCode/1-D Dynamic Programming/Coin Change|Coin Change]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc322|LeetCode entry]]
+- [ ] **LC 323** — [[LeetCode/Graphs/Number of Connected Components In An Undirected Graph|Number of Connected Components In An Undirected Graph]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc323|LeetCode entry]]
+- [ ] **LC 329** — [[LeetCode/2-D Dynamic Programming/Longest Increasing Path In a Matrix|Longest Increasing Path In a Matrix]]
+	2-D Dynamic Programming · Hard · [[Job Interviews/Coding Practice Index#^lc329|LeetCode entry]]
+- [ ] **LC 33** — [[LeetCode/Binary Search/Search In Rotated Sorted Array|Search In Rotated Sorted Array]]
+	Binary Search · Medium · [[Job Interviews/Coding Practice Index#^lc33|LeetCode entry]]
+- [ ] **LC 332** — [[LeetCode/Advanced Graphs/Reconstruct Itinerary|Reconstruct Itinerary]]
+	Advanced Graphs · Hard · [[Job Interviews/Coding Practice Index#^lc332|LeetCode entry]]
+- [ ] **LC 338** — [[LeetCode/Bit Manipulation/Counting Bits|Counting Bits]]
+	Bit Manipulation · Easy · [[Job Interviews/Coding Practice Index#^lc338|LeetCode entry]]
+- [ ] **LC 347** — [[LeetCode/Arrays & Hashing/Top K Frequent Elements|Top K Frequent Elements]]
+	Arrays & Hashing · Medium · [[Job Interviews/Coding Practice Index#^lc347|LeetCode entry]]
+- [ ] **LC 355** — [[LeetCode/Heap and Priority Queue/Design Twitter|Design Twitter]]
+	Heap / Priority Queue · Medium · [[Job Interviews/Coding Practice Index#^lc355|LeetCode entry]]
+- [ ] **LC 36** — [[LeetCode/Arrays & Hashing/Valid Sudoku|Valid Sudoku]]
+	Arrays & Hashing · Medium · [[Job Interviews/Coding Practice Index#^lc36|LeetCode entry]]
+- [ ] **LC 371** — [[LeetCode/Bit Manipulation/Sum of Two Integers|Sum of Two Integers]]
+	Bit Manipulation · Medium · [[Job Interviews/Coding Practice Index#^lc371|LeetCode entry]]
+- [ ] **LC 39** — [[LeetCode/Backtracking/Combination Sum|Combination Sum]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc39|LeetCode entry]]
+- [ ] **LC 4** — [[LeetCode/Binary Search/Median of Two Sorted Arrays|Median of Two Sorted Arrays]]
+	Binary Search · Hard · [[Job Interviews/Coding Practice Index#^lc4|LeetCode entry]]
+- [ ] **LC 40** — [[LeetCode/Backtracking/Combination Sum II|Combination Sum II]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc40|LeetCode entry]]
+- [ ] **LC 416** — [[LeetCode/1-D Dynamic Programming/Partition Equal Subset Sum|Partition Equal Subset Sum]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc416|LeetCode entry]]
+- [ ] **LC 417** — [[LeetCode/Graphs/Pacific Atlantic Water Flow|Pacific Atlantic Water Flow]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc417|LeetCode entry]]
+- [ ] **LC 42** — [[LeetCode/Two Pointers/Trapping Rain Water|Trapping Rain Water]]
+	Two Pointers · Hard · [[Job Interviews/Coding Practice Index#^lc42|LeetCode entry]]
+- [ ] **LC 424** — [[LeetCode/Sliding Window/Longest Repeating Character Replacement|Longest Repeating Character Replacement]]
+	Sliding Window · Medium · [[Job Interviews/Coding Practice Index#^lc424|LeetCode entry]]
+- [ ] **LC 43** — [[LeetCode/Math & Geometry/Multiply Strings|Multiply Strings]]
+	Math & Geometry · Medium · [[Job Interviews/Coding Practice Index#^lc43|LeetCode entry]]
+- [ ] **LC 435** — [[LeetCode/Intervals/Non Overlapping Intervals|Non Overlapping Intervals]]
+	Intervals · Medium · [[Job Interviews/Coding Practice Index#^lc435|LeetCode entry]]
+- [ ] **LC 45** — [[LeetCode/Greedy/Jump Game II|Jump Game II]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc45|LeetCode entry]]
+- [ ] **LC 46** — [[LeetCode/Backtracking/Permutations|Permutations]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc46|LeetCode entry]]
+- [ ] **LC 48** — [[LeetCode/Math & Geometry/Rotate Image|Rotate Image]]
+	Math & Geometry · Medium · [[Job Interviews/Coding Practice Index#^lc48|LeetCode entry]]
+- [ ] **LC 49** — [[LeetCode/Arrays & Hashing/Group Anagrams|Group Anagrams]]
+	Arrays & Hashing · Medium · [[Job Interviews/Coding Practice Index#^lc49|LeetCode entry]]
+- [ ] **LC 494** — [[LeetCode/2-D Dynamic Programming/Target Sum|Target Sum]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc494|LeetCode entry]]
+- [ ] **LC 5** — [[LeetCode/1-D Dynamic Programming/Longest Palindromic Substring|Longest Palindromic Substring]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc5|LeetCode entry]]
+- [ ] **LC 50** — [[LeetCode/Math & Geometry/Pow(x, n)|Pow(x, n)]]
+	Math & Geometry · Medium · [[Job Interviews/Coding Practice Index#^lc50|LeetCode entry]]
+- [ ] **LC 51** — [[LeetCode/Backtracking/N Queens|N Queens]]
+	Backtracking · Hard · [[Job Interviews/Coding Practice Index#^lc51|LeetCode entry]]
+- [ ] **LC 518** — [[LeetCode/2-D Dynamic Programming/Coin Change II|Coin Change II]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc518|LeetCode entry]]
+- [ ] **LC 53** — [[LeetCode/Greedy/Maximum Subarray|Maximum Subarray]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc53|LeetCode entry]]
+- [ ] **LC 54** — [[LeetCode/Math & Geometry/Spiral Matrix|Spiral Matrix]]
+	Math & Geometry · Medium · [[Job Interviews/Coding Practice Index#^lc54|LeetCode entry]]
+- [ ] **LC 543** — [[LeetCode/Trees/Diameter of Binary Tree|Diameter of Binary Tree]]
+	Trees · Easy · [[Job Interviews/Coding Practice Index#^lc543|LeetCode entry]]
+- [ ] **LC 55** — [[LeetCode/Greedy/Jump Game|Jump Game]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc55|LeetCode entry]]
+- [ ] **LC 56** — [[LeetCode/Intervals/Merge Intervals|Merge Intervals]]
+	Intervals · Medium · [[Job Interviews/Coding Practice Index#^lc56|LeetCode entry]]
+- [ ] **LC 567** — [[LeetCode/Sliding Window/Permutation In String|Permutation In String]]
+	Sliding Window · Medium · [[Job Interviews/Coding Practice Index#^lc567|LeetCode entry]]
+- [ ] **LC 57** — [[LeetCode/Intervals/Insert Interval|Insert Interval]]
+	Intervals · Medium · [[Job Interviews/Coding Practice Index#^lc57|LeetCode entry]]
+- [ ] **LC 572** — [[LeetCode/Trees/Subtree of Another Tree|Subtree of Another Tree]]
+	Trees · Easy · [[Job Interviews/Coding Practice Index#^lc572|LeetCode entry]]
+- [ ] **LC 62** — [[LeetCode/2-D Dynamic Programming/Unique Paths|Unique Paths]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc62|LeetCode entry]]
+- [ ] **LC 621** — [[LeetCode/Heap and Priority Queue/Task Scheduler|Task Scheduler]]
+	Heap / Priority Queue · Medium · [[Job Interviews/Coding Practice Index#^lc621|LeetCode entry]]
+- [ ] **LC 647** — [[LeetCode/1-D Dynamic Programming/Palindromic Substrings|Palindromic Substrings]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc647|LeetCode entry]]
+- [ ] **LC 66** — [[LeetCode/Math & Geometry/Plus One|Plus One]]
+	Math & Geometry · Easy · [[Job Interviews/Coding Practice Index#^lc66|LeetCode entry]]
+- [ ] **LC 678** — [[LeetCode/Greedy/Valid Parenthesis String|Valid Parenthesis String]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc678|LeetCode entry]]
+- [ ] **LC 684** — [[LeetCode/Graphs/Redundant Connection|Redundant Connection]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc684|LeetCode entry]]
+- [ ] **LC 695** — [[LeetCode/Graphs/Max Area of Island|Max Area of Island]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc695|LeetCode entry]]
+- [ ] **LC 7** — [[LeetCode/Bit Manipulation/Reverse Integer|Reverse Integer]]
+	Bit Manipulation · Medium · [[Job Interviews/Coding Practice Index#^lc7|LeetCode entry]]
+- [ ] **LC 70** — [[LeetCode/1-D Dynamic Programming/Climbing Stairs|Climbing Stairs]]
+	1-D Dynamic Programming · Easy · [[Job Interviews/Coding Practice Index#^lc70|LeetCode entry]]
+- [ ] **LC 703** — [[LeetCode/Heap and Priority Queue/Kth Largest Element In a Stream|Kth Largest Element In a Stream]]
+	Heap / Priority Queue · Easy · [[Job Interviews/Coding Practice Index#^lc703|LeetCode entry]]
+- [ ] **LC 704** — [[LeetCode/Binary Search/Binary Search|Binary Search]]
+	Binary Search · Easy · [[Job Interviews/Coding Practice Index#^lc704|LeetCode entry]]
+	Pattern guide: [[LeetCode/Binary Search/Binary Search|Binary Search]]
+- [ ] **LC 72** — [[LeetCode/2-D Dynamic Programming/Edit Distance|Edit Distance]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc72|LeetCode entry]]
+- [ ] **LC 73** — [[LeetCode/Math & Geometry/Set Matrix Zeroes|Set Matrix Zeroes]]
+	Math & Geometry · Medium · [[Job Interviews/Coding Practice Index#^lc73|LeetCode entry]]
+- [ ] **LC 739** — [[LeetCode/Stack/Daily Temperatures|Daily Temperatures]]
+	Stack · Medium · [[Job Interviews/Coding Practice Index#^lc739|LeetCode entry]]
+- [ ] **LC 74** — [[LeetCode/Binary Search/Search a 2D Matrix|Search a 2D Matrix]]
+	Binary Search · Medium · [[Job Interviews/Coding Practice Index#^lc74|LeetCode entry]]
+- [ ] **LC 743** — [[LeetCode/Advanced Graphs/Network Delay Time|Network Delay Time]]
+	Advanced Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc743|LeetCode entry]]
+- [ ] **LC 746** — [[LeetCode/1-D Dynamic Programming/Min Cost Climbing Stairs|Min Cost Climbing Stairs]]
+	1-D Dynamic Programming · Easy · [[Job Interviews/Coding Practice Index#^lc746|LeetCode entry]]
+- [ ] **LC 76** — [[LeetCode/Sliding Window/Minimum Window Substring|Minimum Window Substring]]
+	Sliding Window · Hard · [[Job Interviews/Coding Practice Index#^lc76|LeetCode entry]]
+- [ ] **LC 763** — [[LeetCode/Greedy/Partition Labels|Partition Labels]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc763|LeetCode entry]]
+- [ ] **LC 778** — [[LeetCode/Advanced Graphs/Swim In Rising Water|Swim In Rising Water]]
+	Advanced Graphs · Hard · [[Job Interviews/Coding Practice Index#^lc778|LeetCode entry]]
+- [ ] **LC 78** — [[LeetCode/Backtracking/Subsets|Subsets]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc78|LeetCode entry]]
+- [ ] **LC 787** — [[LeetCode/Advanced Graphs/Cheapest Flights Within K Stops|Cheapest Flights Within K Stops]]
+	Advanced Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc787|LeetCode entry]]
+- [ ] **LC 79** — [[LeetCode/Backtracking/Word Search|Word Search]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc79|LeetCode entry]]
+- [ ] **LC 84** — [[LeetCode/Stack/Largest Rectangle In Histogram|Largest Rectangle In Histogram]]
+	Stack · Hard · [[Job Interviews/Coding Practice Index#^lc84|LeetCode entry]]
+- [ ] **LC 846** — [[LeetCode/Greedy/Hand of Straights|Hand of Straights]]
+	Greedy · Medium · [[Job Interviews/Coding Practice Index#^lc846|LeetCode entry]]
+- [ ] **LC 853** — [[LeetCode/Stack/Car Fleet|Car Fleet]]
+	Stack · Medium · [[Job Interviews/Coding Practice Index#^lc853|LeetCode entry]]
+- [x] **LC 875** — [[LeetCode/Binary Search/Koko Eating Bananas|Koko Eating Bananas]]
 	Binary Search · Medium
-- [ ] **LC 33** — [[Job Interviews/Coding Practice Index#^lc33|Search In Rotated Sorted Array]]
-	Binary Search · Medium
-- [ ] **LC 206** — [[Job Interviews/Coding Practice Index#^lc206|Reverse Linked List]]
-	Linked List · Easy
-- [ ] **LC 21** — [[Job Interviews/Coding Practice Index#^lc21|Merge Two Sorted Lists]]
-	Linked List · Easy
-- [ ] **LC 143** — [[Job Interviews/Coding Practice Index#^lc143|Reorder List]]
-	Linked List · Medium
-- [ ] **LC 19** — [[Job Interviews/Coding Practice Index#^lc19|Remove Nth Node From End of List]]
-	Linked List · Medium
-- [ ] **LC 141** — [[Job Interviews/Coding Practice Index#^lc141|Linked List Cycle]]
-	Linked List · Easy
-- [ ] **LC 23** — [[Job Interviews/Coding Practice Index#^lc23|Merge K Sorted Lists]]
-	Linked List · Hard
-- [ ] **LC 226** — [[Job Interviews/Coding Practice Index#^lc226|Invert Binary Tree]]
-	Trees · Easy
-- [ ] **LC 104** — [[Job Interviews/Coding Practice Index#^lc104|Maximum Depth of Binary Tree]]
-	Trees · Easy
-- [ ] **LC 100** — [[Job Interviews/Coding Practice Index#^lc100|Same Tree]]
-	Trees · Easy
-- [ ] **LC 572** — [[Job Interviews/Coding Practice Index#^lc572|Subtree of Another Tree]]
-	Trees · Easy
-- [ ] **LC 235** — [[Job Interviews/Coding Practice Index#^lc235|Lowest Common Ancestor of a Binary Search Tree]]
-	Trees · Medium
-- [ ] **LC 102** — [[Job Interviews/Coding Practice Index#^lc102|Binary Tree Level Order Traversal]]
-	Trees · Medium
-- [ ] **LC 98** — [[Job Interviews/Coding Practice Index#^lc98|Validate Binary Search Tree]]
-	Trees · Medium
-- [ ] **LC 230** — [[Job Interviews/Coding Practice Index#^lc230|Kth Smallest Element In a Bst]]
-	Trees · Medium
-- [ ] **LC 105** — [[Job Interviews/Coding Practice Index#^lc105|Construct Binary Tree From Preorder And Inorder Traversal]]
-	Trees · Medium
-- [ ] **LC 124** — [[Job Interviews/Coding Practice Index#^lc124|Binary Tree Maximum Path Sum]]
-	Trees · Hard
-- [ ] **LC 297** — [[Job Interviews/Coding Practice Index#^lc297|Serialize And Deserialize Binary Tree]]
-	Trees · Hard
-- [ ] **LC 208** — [[Job Interviews/Coding Practice Index#^lc208|Implement Trie Prefix Tree]]
-	Tries · Medium
-- [ ] **LC 211** — [[Job Interviews/Coding Practice Index#^lc211|Design Add And Search Words Data Structure]]
-	Tries · Medium
-- [ ] **LC 212** — [[Job Interviews/Coding Practice Index#^lc212|Word Search II]]
-	Tries · Hard
-- [ ] **LC 295** — [[Job Interviews/Coding Practice Index#^lc295|Find Median From Data Stream]]
-	Heap / Priority Queue · Hard
-- [ ] **LC 39** — [[Job Interviews/Coding Practice Index#^lc39|Combination Sum]]
-	Backtracking · Medium
-- [ ] **LC 79** — [[Job Interviews/Coding Practice Index#^lc79|Word Search]]
-	Backtracking · Medium
-- [ ] **LC 200** — [[Job Interviews/Coding Practice Index#^lc200|Number of Islands]]
-	Graphs · Medium
-- [ ] **LC 133** — [[Job Interviews/Coding Practice Index#^lc133|Clone Graph]]
-	Graphs · Medium
-- [ ] **LC 417** — [[Job Interviews/Coding Practice Index#^lc417|Pacific Atlantic Water Flow]]
-	Graphs · Medium
-- [ ] **LC 207** — [[Job Interviews/Coding Practice Index#^lc207|Course Schedule]]
-	Graphs · Medium
-- [ ] **LC 323** — [[Job Interviews/Coding Practice Index#^lc323|Number of Connected Components In An Undirected Graph]]
-	Graphs · Medium
-- [ ] **LC 261** — [[Job Interviews/Coding Practice Index#^lc261|Graph Valid Tree]]
-	Graphs · Medium
-- [ ] **LC 269** — [[Job Interviews/Coding Practice Index#^lc269|Alien Dictionary]]
-	Advanced Graphs · Hard
-- [ ] **LC 70** — [[Job Interviews/Coding Practice Index#^lc70|Climbing Stairs]]
-	1-D Dynamic Programming · Easy
-- [ ] **LC 198** — [[Job Interviews/Coding Practice Index#^lc198|House Robber]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 213** — [[Job Interviews/Coding Practice Index#^lc213|House Robber II]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 5** — [[Job Interviews/Coding Practice Index#^lc5|Longest Palindromic Substring]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 647** — [[Job Interviews/Coding Practice Index#^lc647|Palindromic Substrings]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 91** — [[Job Interviews/Coding Practice Index#^lc91|Decode Ways]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 322** — [[Job Interviews/Coding Practice Index#^lc322|Coin Change]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 152** — [[Job Interviews/Coding Practice Index#^lc152|Maximum Product Subarray]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 139** — [[Job Interviews/Coding Practice Index#^lc139|Word Break]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 300** — [[Job Interviews/Coding Practice Index#^lc300|Longest Increasing Subsequence]]
-	1-D Dynamic Programming · Medium
-- [ ] **LC 62** — [[Job Interviews/Coding Practice Index#^lc62|Unique Paths]]
-	2-D Dynamic Programming · Medium
-- [ ] **LC 1143** — [[Job Interviews/Coding Practice Index#^lc1143|Longest Common Subsequence]]
-	2-D Dynamic Programming · Medium
-- [ ] **LC 53** — [[Job Interviews/Coding Practice Index#^lc53|Maximum Subarray]]
-	Greedy · Medium
-- [ ] **LC 55** — [[Job Interviews/Coding Practice Index#^lc55|Jump Game]]
-	Greedy · Medium
-- [ ] **LC 57** — [[Job Interviews/Coding Practice Index#^lc57|Insert Interval]]
-	Intervals · Medium
-- [ ] **LC 56** — [[Job Interviews/Coding Practice Index#^lc56|Merge Intervals]]
-	Intervals · Medium
-- [ ] **LC 435** — [[Job Interviews/Coding Practice Index#^lc435|Non Overlapping Intervals]]
-	Intervals · Medium
-- [ ] **LC 252** — [[Job Interviews/Coding Practice Index#^lc252|Meeting Rooms]]
-	Intervals · Easy
-- [ ] **LC 253** — [[Job Interviews/Coding Practice Index#^lc253|Meeting Rooms II]]
-	Intervals · Medium
-- [ ] **LC 48** — [[Job Interviews/Coding Practice Index#^lc48|Rotate Image]]
-	Math & Geometry · Medium
-- [ ] **LC 54** — [[Job Interviews/Coding Practice Index#^lc54|Spiral Matrix]]
-	Math & Geometry · Medium
-- [ ] **LC 73** — [[Job Interviews/Coding Practice Index#^lc73|Set Matrix Zeroes]]
-	Math & Geometry · Medium
-- [ ] **LC 191** — [[Job Interviews/Coding Practice Index#^lc191|Number of 1 Bits]]
-	Bit Manipulation · Easy
-- [ ] **LC 338** — [[Job Interviews/Coding Practice Index#^lc338|Counting Bits]]
-	Bit Manipulation · Easy
-- [ ] **LC 190** — [[Job Interviews/Coding Practice Index#^lc190|Reverse Bits]]
-	Bit Manipulation · Easy
-- [ ] **LC 268** — [[Job Interviews/Coding Practice Index#^lc268|Missing Number]]
-	Bit Manipulation · Easy
-- [ ] **LC 371** — [[Job Interviews/Coding Practice Index#^lc371|Sum of Two Integers]]
-	Bit Manipulation · Medium
+	Index: [[Job Interviews/Coding Practice Index#^lc875|LC 875 entry]]
+- [ ] **LC 90** — [[LeetCode/Backtracking/Subsets II|Subsets II]]
+	Backtracking · Medium · [[Job Interviews/Coding Practice Index#^lc90|LeetCode entry]]
+- [ ] **LC 91** — [[LeetCode/1-D Dynamic Programming/Decode Ways|Decode Ways]]
+	1-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc91|LeetCode entry]]
+- [ ] **LC 97** — [[LeetCode/2-D Dynamic Programming/Interleaving String|Interleaving String]]
+	2-D Dynamic Programming · Medium · [[Job Interviews/Coding Practice Index#^lc97|LeetCode entry]]
+- [ ] **LC 973** — [[LeetCode/Heap and Priority Queue/K Closest Points to Origin|K Closest Points to Origin]]
+	Heap / Priority Queue · Medium · [[Job Interviews/Coding Practice Index#^lc973|LeetCode entry]]
+- [ ] **LC 98** — [[LeetCode/Trees/Validate Binary Search Tree|Validate Binary Search Tree]]
+	Trees · Medium · [[Job Interviews/Coding Practice Index#^lc98|LeetCode entry]]
+- [ ] **LC 981** — [[LeetCode/Binary Search/Time Based Key Value Store|Time Based Key Value Store]]
+	Binary Search · Medium · [[Job Interviews/Coding Practice Index#^lc981|LeetCode entry]]
+- [ ] **LC 994** — [[LeetCode/Graphs/Rotting Oranges|Rotting Oranges]]
+	Graphs · Medium · [[Job Interviews/Coding Practice Index#^lc994|LeetCode entry]]
 
 
 ## System Design Backlog
 
 - [x] **V1 · Ch 01** — [[System_Design/Web Application Scaling|Scaling from a single server]]
 	Related: [[Horizontal & Vertical Scaling]] @{2026-10-01}
-- [ ] **V1 · Ch 02** — Capacity estimation
-- [ ] **V1 · Ch 03** — Interview structure
-- [ ] **V1 · Ch 04** — Rate limiting
+- [x] **V1 · Ch 02** — Capacity estimation
+- [x] **V1 · Ch 03** — Interview structure
+- [x] **V1 · Ch 04** — Rate limiting
 - [ ] **V1 · Ch 05** — Consistent hashing
 	Related: [[Database Sharding]]
 - [ ] **V1 · Ch 06** — Key-value storage
@@ -291,10 +452,6 @@ kanban-plugin: board
 - [ ] [[Agoda Search Service]]
 - [ ] [[Design a Personalized Search Recommendation System for Rapido]]
 - [ ] [[File Storage System]]
-
-
-## Interview Pipeline
-
 
 
 

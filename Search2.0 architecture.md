@@ -8,13 +8,11 @@ tags:
 
 ## Overview and Reading Guide
 
-Search2.0 turns a query and customer context into grouped, ordered product results. In the inspected Rust implementation, **product search coordinates the request, recall finds candidates, and reranking selects and orders them inside one process**. Query parsing, embedding generation, ESCI relevance inference, and storage remain external dependencies.
+Search2.0 turns a query and customer context into grouped, ordered product results. In the Rust implementation, **product search coordinates the request, recall finds candidates, and reranking selects and orders them inside one process**. Query parsing, embedding generation, ESCI relevance inference, and storage remain external dependencies.
 
 This is the implementation companion to [[Search Architecture]], linked from [[Search Engineering]]. Read the main diagrams for the overall flow; expand the foldable callouts for examples and less obvious behavior. The callouts use Obsidian's native collapsed syntax, so their titles remain visible while the details can be opened as needed.[^format]
 
-**Source snapshot:** inspected on **26 September 2026**, repository `/Users/A3126435/Desktop/Projects/aml-ai-search`, branch **`pre-prod`**, commit **`1dfaa528621e7306135ffc62a0972508091cd4f9`**. The source checkout was clean at inspection. Paths below beginning with `crates/`, `knowledge/`, or `deploy/` are relative to its `serving-rs/` directory; the reference section links to that exact source revision.
-
-**Evidence boundary:** this note describes executable source and checked-in configuration. It does not certify a running deployment, current cache contents, model quality, or complete Python/Rust parity. The repository's knowledge bundle is a navigation aid; where older prose or comments disagree with executable code, this note follows the code. Upstream catalogue ingestion, model training, and index publishing are dependencies of serving, not audited pipelines in this review.[^map]
+The implementation uses the `serving-rs/` workspace. Source paths beginning with `crates/`, `knowledge/`, or `deploy/` are relative to that directory. Catalogue ingestion, model training, and index publishing supply the data and artifacts consumed by online serving.[^map]
 
 | Read this section                         | To understand                                               |
 | ----------------------------------------- | ----------------------------------------------------------- |
@@ -22,7 +20,7 @@ This is the implementation companion to [[Search Architecture]], linked from [[S
 | [[#Startup and Shared State]]             | What must exist before the service accepts requests         |
 | [[#End-to-End Request Flow]]              | The sequence from HTTP input to response                    |
 | [[#Query Understanding and Filters]]      | How entities become routing and retrieval constraints       |
-| [[#Recall and Candidate Expansion]]       | Dense/sparse tiers, merging, and parent-to-SKU expansion    |
+| [[#Recall and Candidate Expansion]]       | Dense/sparse math, actual RRF role, tiers, and expansion    |
 | [[#Reranking and Final Ordering]]         | ESCI, engagement features, ONNX, availability, and grouping |
 | [[#Alternative Request Paths]]            | Lookup, multiple type groups, and more-like-this            |
 | [[#Failures and Fallbacks]]               | Errors, graceful broadening, and degraded success           |
@@ -128,7 +126,7 @@ flowchart TD
 Important construction rules:
 
 - **Required configuration and required dependency construction fail before bind.** A healthy listener therefore means startup completed; it does not guarantee every remote dependency will remain healthy.
-- **Both ONNX branches are attempted.** Failure to load the configured default branch aborts startup. Failure of the other branch is logged and tolerated; requests selecting that unavailable branch later fail reranking and can degrade to recall results. The executable loader is more precise than its older introductory comments.[^onnx]
+- **Both ONNX branches are attempted.** Failure to load the configured default branch aborts startup. Failure of the other branch is logged and tolerated; requests selecting that unavailable branch later fail reranking and can degrade to recall results.[^onnx]
 - Product types, active model families, and boolean-feature catalogues are initially loaded and then refreshed by caching adapters. A product-type ranking-map load failure instead yields neutral ranks.
 - Query rewriting can load a Redis map, with the already-loaded GCS map as its startup fallback. This is not a new GCS download for each search.
 - There are **three independently connected Redis managers**: product search, recall, and reranker. Adapters inside each boundary share its manager; a large command batch in one boundary does not share the same socket with the other two.[^startup]
@@ -154,22 +152,22 @@ The main route is **`POST /api/v1.0/predictions`**. The required fields are `sea
 
 These example IDs and query are explanatory inputs, not a captured production request.
 
-| Input family | Fields and current meaning |
-|---|---|
-| Identity and query | IDs correlate sessions/logs; query drives understanding and retrieval |
-| Size | `num_results` defaults to 100; domain validation accepts 1–1000 |
-| Routing | `enable_more_like_this` changes the query into an anchor-SKU request |
-| Refinements | `prompt_ids`, `in_stock`, `membership_type`, `enable_marketplace` |
-| Geography | `zip_code`, `location_ids`, `location_id_map`, `store_id_map` |
-| Fulfillment selections | `same_day_shipping_applied`, `instore_applied`, `store_pickup_applied` |
-| Model branch | `ab_flag=test` selects engagement/LTR; other values select baseline; omission uses configuration |
-| Exact SKU restriction | `sku_hard_filter_list` becomes a `sku_id` filter and suppresses broad tiers |
-| Optional side effect | `persist_interim_results` calls the configured interim-results sink, currently a no-op |
+| Input family           | Fields and current meaning                                                                       |
+| ---------------------- | ------------------------------------------------------------------------------------------------ |
+| Identity and query     | IDs correlate sessions/logs; query drives understanding and retrieval                            |
+| Size                   | `num_results` defaults to 100; domain validation accepts 1–1000                                  |
+| Routing                | `enable_more_like_this` changes the query into an anchor-SKU request                             |
+| Refinements            | `prompt_ids`, `in_stock`, `membership_type`, `enable_marketplace`                                |
+| Geography              | `zip_code`, `location_ids`, `location_id_map`, `store_id_map`                                    |
+| Fulfillment selections | `same_day_shipping_applied`, `instore_applied`, `store_pickup_applied`                           |
+| Model branch           | `ab_flag=test` selects engagement/LTR; other values select baseline; omission uses configuration |
+| Exact SKU restriction  | `sku_hard_filter_list` becomes a `sku_id` filter and suppresses broad tiers                      |
+| Optional side effect   | `persist_interim_results` calls the configured interim-results sink, currently a no-op           |
 
 Snake case is canonical; camelCase aliases are accepted. List fields support arrays and legacy comma-delimited strings. Map fields support objects with string-list values and legacy JSON-encoded strings. Integer IDs are accepted by the list-field parser, **not by the map's `Vec<String>` parser**.[^api]
 
 > [!warning]- Requested count, retrieval budget, and response size differ
-> `num_results` is validated and passed into recall, but the native tier budgets are fixed by policy. The normal reranker caps output at **100 parents and 5 SKUs per parent**. The response mapper performs no further truncation to `num_results`. Lookup and degraded recall pass-through also follow their own paths. Therefore `num_results=10` is not an enforced promise of ten returned products in this revision. This is a contract question to resolve, not a pagination feature to assume.[^api][^recall-policy][^rank]
+> `num_results` is validated and passed into recall, but the native tier budgets are fixed by policy. The normal reranker caps output at **100 parents and 5 SKUs per parent**. The response mapper performs no further truncation to `num_results`. Lookup and degraded recall pass-through also follow their own paths. Therefore `num_results=10` is not an enforced promise of ten returned products in this implementation. This is a contract question to resolve, not a pagination feature to assume.[^api][^recall-policy][^rank]
 
 ### Orchestration Spine
 
@@ -247,7 +245,7 @@ The implemented routing distinctions are:
 - **Product lookup:** on a fresh ordinary search, token extraction and a nonempty Redis catalogue result are required. A digit pattern alone does not establish the route.
 - **Product search:** the default route; confidence, NER presence, and multiple-type metadata influence subsequent work.
 - **Invalid:** unresolved MLT anchor is a reachable early exit. The text-moderator interface could reject low-confidence input, but its production adapter currently allows all text.
-- **More information:** the enum/status exists; the inspected classifier does not implement a clarification-producing branch.[^intent][^product-search]
+- **More information:** the enum/status exists; the classifier does not implement a clarification-producing branch.[^intent][^product-search]
 
 ### From Entities to Constraints
 
@@ -267,7 +265,7 @@ flowchart TD
     Business --> Public["Human-readable response filters"]
 ```
 
-Key rules in this revision:
+Key filter rules:
 
 | Policy | Why it matters |
 |---|---|
@@ -294,9 +292,241 @@ These are the current product-search rules; do not interpret applied store selec
 
 ## Recall and Candidate Expansion
 
-Recall implements [[Candidate Generation]] using [[Dense Retrieval]] and [[SPLADE|learned sparse retrieval]]. Both modalities feed the native vector-search path. The dense path is configurable: DVS uses an HTTP embedding service; otherwise the adapter uses a Vertex text-embedding model. Sparse embedding remains an HTTP call. Dense and sparse computation run concurrently on a cache miss.[^recall-wiring]
+Recall implements [[Candidate Generation]] using [[Dense Retrieval]] and [[SPLADE|learned sparse retrieval]]. Both modalities feed the native vector-search path. The dense path is configurable: DVS uses an HTTP embedding service; otherwise the adapter uses a Vertex text-embedding model. Sparse embedding remains an HTTP call. Dense and sparse computation run concurrently on a cache miss.[^recall-math-embedding]
 
-The checked-in T02/P03/P04 values select `text-embedding-005`, not the DVS path. They identify different vector deployments: `productembeddings_v5`, `productembeddings_v16`, and `productembeddings_v15`, respectively. These are configuration observations, not proof of what is currently serving traffic.[^deployment]
+The checked-in T02/P03/P04 values select `text-embedding-005`, not the DVS path. They identify different vector deployments: `productembeddings_v5`, `productembeddings_v16`, and `productembeddings_v15`, respectively. These are configuration observations, not proof of what is currently serving traffic.[^recall-current-config]
+
+### Read the Recall Mathematics in This Order
+
+Start with [[Embeddings]], [[Cosine Similarity]], [[Dense Retrieval]], and [[SPLADE]]. Then read [[Hybrid Retrieval]] for RRF, [[Filtered Vector Search]] for eligibility, and [[Candidate Generation]] for candidate assembly. [[outputs/Understanding Transformer to Search 2.0|Understanding Transformer to Search 2.0]] provides the longer checklist from Transformer fundamentals to these serving stages.
+
+**One running example:** query `gaming laptop under 1000`. Assume one currency, a supported laptop type, and a valid price upper bound. A is a gaming laptop, B is a laptop sleeve, and C is an ordinary office laptop. All vectors, weights, prices, and ranks in the calculations below are invented teaching inputs, not model outputs or production measurements.
+
+The serving distinction to keep in mind is **representation → per-tier retrieval → tier merge → expansion → relevance filtering → final ranking**. These steps do not share one universal score.
+
+### Dense Retrieval: Compare Learned Whole-Text Vectors
+
+A query encoder maps the effective query to a dense vector; compatible catalogue vectors must already exist in the index. Let $E_Q$ be the query encoder and $E_D$ the catalogue encoder:
+
+$$
+u=E_Q(q).
+$$
+
+$$
+v_d=E_D(\operatorname{text}(d)).
+$$
+
+The catalogue representation is independent of this particular query, so it can be precomputed. A Transformer encoder may contextualize tokens and pool them into a vector; the exact pooling/training recipe belongs to the embedding model. The Rust Vertex adapter requests `outputDimensionality` and returns the model's values; it does not implement a new pooling layer or normalize those values itself. Do not label a latent coordinate “gaming” or “price” as if the model exposes a fixed feature dictionary.[^recall-math-embedding]
+
+**Dot-product similarity** for vector width $m$:
+
+$$
+s_{\mathrm{dense}}(q,d)=u^\top v_d=\sum_{j=1}^{m}u_jv_{d,j}.
+$$
+
+**Cosine similarity** for nonzero vectors:
+
+$$
+\operatorname{cos}(u,v_d)=\frac{u^\top v_d}{\lVert u\rVert_2\lVert v_d\rVert_2}.
+$$
+
+With unit-normalized vectors, dot product equals cosine. Without normalization, vector magnitude also affects a dot product. A similarity is not a relevance probability; a nearby laptop sleeve can still be the wrong answer. See [[Cosine Similarity]] and [[Dense Retrieval]].
+
+#### Worked Dense Calculation
+
+**Inputs:** use two dimensions instead of the real model width. Query $u=(1,0)$; A has vector $(0.8,0.6)$; B has $(0.6,0.8)$; C has $(0,1)$. Each has unit norm, so dot product and cosine agree.
+
+**1. Score A.**
+
+$$
+s_{\mathrm{dense}}(q,A)=1\times0.8+0\times0.6=0.8.
+$$
+
+**2. Score B.**
+
+$$
+s_{\mathrm{dense}}(q,B)=1\times0.6+0\times0.8=0.6.
+$$
+
+**3. Score C.**
+
+$$
+s_{\mathrm{dense}}(q,C)=1\times0+0\times1=0.
+$$
+
+Dense order is A, B, C. At a depth of two, A and B enter this toy list; C does not. B's inclusion shows why embedding similarity alone does not settle whether a candidate fulfills the query.
+
+#### Distance Names Do Not Determine Score Direction
+
+For unit vectors, squared Euclidean distance has this relationship to dot product:
+
+$$
+\lVert u-v_d\rVert_2^2=2-2u^\top v_d.
+$$
+
+Using A's dot product from the example:
+
+$$
+\lVert u-v_A\rVert_2^2=2-2\times0.8=0.4.
+$$
+
+Higher dot product therefore corresponds to lower squared Euclidean distance in this normalized example. Google defines its configured `DOT_PRODUCT_DISTANCE` as negative dot product and supports sparse dot-product distance; the dense index also has configurable normalization and distance settings.[^recall-math-index] Its hybrid tutorial describes returned dense/sparse values as **inverted distances**, where larger values mean closer matches.[^recall-math-google]
+
+These are different API contexts. Rust preserves the returned numeric fields; it does not derive a universal conversion from their names. The deployed index configuration determines the actual metric and normalization. The cosine example above is an explanation, not proof that the production dense score is cosine.
+
+### Sparse Retrieval: Match Shared Weighted Coordinates
+
+A sparse vector stores a small number of nonzero coordinates in a much larger space. A term-based model can use vocabulary IDs as coordinates; a coordinate/value pair is not a dense embedding with missing numbers. For a learned sparse model, related terms absent from the original text may receive nonzero weights. See [[SPLADE]].
+
+For query weights $w_j^q$, document weights $w_j^d$, and vocabulary $V$, sparse dot-product scoring is:
+
+$$
+s_{\mathrm{sparse}}(q,d)=\sum_{j\in V}w_j^q w_j^d.
+$$
+
+Only shared nonzero coordinates contribute. In the Rust wire contract, `query_embeddings_dimension` supplies coordinate IDs and `query_embeddings` supplies the corresponding values. The adapter rejects unequal lengths and zips the two arrays into typed pairs. Its comments describe a SPLADE service; the service's actual checkpoint, vocabulary, pooling, and pruning are defined by the model service.[^recall-math-embedding]
+
+#### Worked Sparse Calculation
+
+**Inputs:** query weights `{gaming: 2, laptop: 1}`. A has `{gaming: 0.5, laptop: 1}`; B has `{laptop: 3, sleeve: 2}`; C has `{office: 2, laptop: 1}`. Coordinates absent from a vector have weight zero. Treat these as invented whole-word coordinates for readability; a real vocabulary may use subwords.
+
+**1. Score A.**
+
+$$
+s_{\mathrm{sparse}}(q,A)=2\times0.5+1\times1=2.
+$$
+
+**2. Score B.**
+
+$$
+s_{\mathrm{sparse}}(q,B)=2\times0+1\times3=3.
+$$
+
+**3. Score C.**
+
+$$
+s_{\mathrm{sparse}}(q,C)=2\times0+1\times1=1.
+$$
+
+Sparse order is B, A, C. The `sleeve` coordinate contributes nothing because the query does not activate it. B still wins through its large `laptop` contribution. That is a plausible failure pattern to inspect, not evidence that a real SPLADE model would assign these weights.
+
+The sparse scores 3 and 2 cannot be compared directly with dense scores 0.8 and 0.6. Their spaces and scales differ. Neither the larger number nor the word “distance” establishes which product is more relevant.
+
+#### Where SPLADE's Weights Come From
+
+For a standard SPLADE-style encoder, let $h_i$ be the contextual vector at input position $i$, $e_j$ the vocabulary output embedding, and $b_j$ its bias. An MLM head produces a vocabulary logit:
+
+$$
+z_{ij}=\operatorname{transform}(h_i)^\top e_j+b_j.
+$$
+
+The max-pooling variant converts position-wise logits to one nonnegative vocabulary weight:
+
+$$
+w_j=\max_i\log\bigl(1+\operatorname{ReLU}(z_{ij})\bigr).
+$$
+
+ReLU zeroes negative logits; the logarithm dampens positive ones; pooling aggregates across positions. Training adds relevance and sparsity objectives. Expansion occurs because the head predicts over the vocabulary, not just input terms. Original SPLADE uses sum pooling; the later variant explores max pooling.[^recall-math-splade] None of these training operations run inside Rust's recall orchestrator; it consumes the remote service's representation.
+
+### Filters and Top-K: Similarity Within an Eligible Set
+
+Let $\mathcal D$ be indexed datapoints, $F_t(q,d)$ the eligibility predicate for tier $t$, and $K_t$ that physical request's neighbor budget. The eligible universe is:
+
+$$
+\mathcal D_t(q)=\{d\in\mathcal D:F_t(q,d)=\mathrm{true}\}.
+$$
+
+An ideal exact similarity query would produce:
+
+$$
+L_t(q)=\operatorname{TopK}_{d\in\mathcal D_t(q)}\bigl(s_t(q,d),K_t\bigr).
+$$
+
+This abstraction separates **eligibility**, **scoring**, and **depth**. The actual service uses the configured index algorithm and can apply crowding; it need not return the exact exhaustive top-K. [[Approximate Nearest Neighbours]] explains approximation error. The adapter requests an approximate-neighbor count of 1,000 and leaf-search fraction 0.5; neither number is a relevance threshold or a promise of 1,000 output products.[^recall-math-transport]
+
+For an illustrative strict price interpretation, a candidate priced 1,200 fails the `under 1000` predicate even if it has the highest dense similarity. Another tier can use a broader eligible universe. If a candidate would rank second only after filtering but ranks 500th globally, globally retrieving ten and then filtering is not equivalent to searching the eligible set for ten. See [[Filtered Vector Search]].
+
+No fixed dense/sparse similarity cutoff is applied by the recall candidate flow; it logs `similarity_threshold_applied=false`. Fixed top-K and eligibility are different from a score threshold.[^recall-math-candidate]
+
+### RRF: General Fusion Math and Its Actual Role Here
+
+[[Hybrid Retrieval]] explains reciprocal rank fusion (RRF): compare list positions rather than adding incompatible raw scores. For ordered source lists $L_s$, one-based rank $r_s(d)$, and positive smoothing constant $c$:
+
+$$
+\operatorname{RRF}(d)=\sum_{s:d\in L_s}\frac{1}{c+r_s(d)}.
+$$
+
+An absent item contributes zero from that source. The constant dampens the difference between positions; it is not the candidate count or an ESCI threshold. Fusion can only use candidates in its input windows.[^recall-math-rrf]
+
+#### Worked RRF Calculation
+
+**Inputs:** dense list `[A, B, C]`, sparse list `[B, D, A]`, and illustrative $c=10$. D is another product retrieved only by this sparse window. These lists extend the earlier scoring example to show missing-source behavior; they are not a captured serving result.
+
+**1. Score A: dense rank 1, sparse rank 3.**
+
+$$
+\operatorname{RRF}(A)=\frac{1}{11}+\frac{1}{13}\approx0.167832.
+$$
+
+**2. Score B: dense rank 2, sparse rank 1.**
+
+$$
+\operatorname{RRF}(B)=\frac{1}{12}+\frac{1}{11}\approx0.174242.
+$$
+
+**3. Score C: dense rank 3, absent from sparse.**
+
+$$
+\operatorname{RRF}(C)=\frac{1}{13}+0\approx0.076923.
+$$
+
+**4. Score D: absent from dense, sparse rank 2.**
+
+$$
+\operatorname{RRF}(D)=0+\frac{1}{12}\approx0.083333.
+$$
+
+Fused order is **B, A, D, C**. This rewards agreement that B is high in both windows. It does not understand that B is a sleeve; a relevance model or constraint must address that.
+
+A conceptual weighted version for two lists is:
+
+$$
+\operatorname{RRF}_{\alpha}(d)=\frac{\alpha\,\mathbf1[d\in L_{\mathrm{dense}}]}{c+r_{\mathrm{dense}}(d)}+\frac{(1-\alpha)\,\mathbf1[d\in L_{\mathrm{sparse}}]}{c+r_{\mathrm{sparse}}(d)}.
+$$
+
+Each absent-source term is defined as zero without evaluating an undefined rank. Equal weights halve the unweighted scores and preserve order. This formula illustrates weighting; it does not assert Google's internal smoothing constant or exact implementation. Google documents alpha 1 as dense-only, alpha 0 as sparse-only, and intermediate values as combining the two result sources.[^recall-math-google]
+
+#### What the Inspected Rust Code Actually Sends
+
+| Planned tier modality | Dense coordinates | Sparse coordinates | Serialized RRF block |
+|---|---|---|---|
+| Dense | Present | Absent | Omitted |
+| Sparse | Absent | Present | Alpha 0 |
+| Hybrid adapter capability | Present | Present | Configured alpha, default 0.5 |
+
+`RecallStrategy::DenseAndSparse` in the ordinary product-search path enables separate **Dense** and **Sparse** tiers; it does not change them into a single **Hybrid** tier. All branches in the tier strategy's `transport_spec` emit Dense or Sparse. `build_query`, the official Vertex serializer, and the private gRPC serializer preserve that distinction. A hybrid-capable request type and a configured default alpha do not prove that both representations are fused in every request.[^recall-math-transport][^recall-current-policy]
+
+**Consequently, there is no global RRF sum over the returned dense/sparse tiers in the recall path.** Sparse-only requests carry the RRF configuration selecting sparse results; the application later concatenates tier outputs in plan order and retains first-seen SKU context. It does not calculate the worked RRF scores above. The example teaches the general algorithm and helps explain the API fields without inventing a serving stage.[^recall-math-candidate]
+
+### Ordered Merge Is Different from Rank Fusion
+
+For ordered tier result lists $L_1,\ldots,L_T$, concatenate them:
+
+$$
+C=L_1\mathbin{\Vert}L_2\mathbin{\Vert}\cdots\mathbin{\Vert}L_T.
+$$
+
+For SKU $x$, the first occurrence used for join context is:
+
+$$
+i^*(x)=\min\{i:\operatorname{sku}(C_i)=x\}.
+$$
+
+Example: tier 1 returns `[A, B]`; tier 2 returns `[B, D, A]`. SKU context survives as `[A, B, D]`, with A and B's context from tier 1. This neither averages their distances nor adds their rank contributions. The later occurrence does not overwrite the earlier match type simply because it has a larger sparse score.
+
+There is a prior sparse-specific operation: sort each sparse tier by descending returned sparse score and retain one row per parsed parent. Equal-score copies of the same SKU prefer COMBO, VARIATION, BSIN, then SKU parent contexts; other ties preserve input order. This happens **inside each sparse tier before** global concatenation. The absent modality's numeric field becomes `None`, not a fabricated zero score.[^recall-math-parsing]
+
+The raw merged parent IDs still drive filtered/unfiltered Spanner expansion. The first-seen SKU subset provides join context for expanded rows. Different parent/variation identities can therefore survive beyond a simple SKU-list union. Read the next sections for those assembly rules.[^recall-math-candidate]
 
 ```mermaid
 flowchart TD
@@ -306,8 +536,8 @@ flowchart TD
     Cache -->|Miss| Sparse["Sparse embedding call"]
     Dense --> Emb
     Sparse --> Emb
-    Request --> Plan["Build ordered tier plan"]
-    Emb --> Fan["Concurrent vector request per tier"]
+    Request --> Plan["Plan tiers; expand filtered families per type"]
+    Emb --> Fan["Concurrent request per physical tier/type plan"]
     Plan --> Fan
     Fan --> Raw["Concatenate in tier-plan order"]
     Raw --> ParentIDs["Separate filtered and unfiltered parent IDs"]
@@ -320,54 +550,149 @@ flowchart TD
 
 ### Tier Planning
 
-A **tier** is a particular modality, filter scope, and business purpose. It has its own vector request and top-K. The following budgets come from `RecallTierStrategy::transport_spec`, not from `num_results`.[^recall-policy]
+A **tier** is a particular modality, filter scope, and business purpose. It has its own vector request and top-K. The following budgets come from `RecallTierStrategy::transport_spec`, not from `num_results`.[^recall-current-policy]
 
 | Tier label | Modality | Neighbor budget | Main purpose/gate |
 |---|---|---:|---|
-| `filtered_ranked_dense` | Dense | 100 | Featured rank constraint, when NER is present |
-| `filtered_relevant_dense` | Dense | 100 | Featured relevance, when NER is present |
-| `filtered_dense` | Dense | 150 | Request's entity-derived filters, when NER is present |
-| `filtered_sparse` | Sparse | 100 | Same filtered scope using sparse representation |
-| `unfiltered_sparse` | Sparse | 250 | Broader discovery when prompts and SKU hard restrictions do not suppress it |
-| `unfiltered_dense` | Dense | 250 | Broader dense discovery; crowding neighbor count 1 |
-| `filtered_dense_excluded_conditions` | Dense | 150 | Separate normally excluded conditions when no explicit conditions filter exists |
-| `unfiltered_dense_excluded_conditions` | Dense | 250 | Broader excluded-conditions tier, also subject to unfiltered gating |
-| `filtered_dense_available_*` | Dense | 100 | Nonempty matching location group |
-| `unfiltered_dense_available_*` | Dense | 250 | Availability plus unfiltered eligibility |
+| `filtered_ranked_dense` | Dense | 50 | Featured rank constraint, when NER is present |
+| `filtered_relevant_dense` | Dense | 50 | Featured relevance, when NER is present |
+| `filtered_dense` | Dense | 75 | Request's entity-derived filters, when NER is present |
+| `filtered_sparse` | Sparse | 50 | Same filtered scope using sparse representation |
+| `unfiltered_sparse` | Sparse | 100 | Broader discovery when prompts and SKU hard restrictions do not suppress it |
+| `unfiltered_dense` | Dense | 100 | Broader dense discovery; dense crowding is configured by transport |
+| `filtered_dense_excluded_conditions` | Dense | 75 | Separate normally excluded conditions when no explicit conditions filter exists |
+| `unfiltered_dense_excluded_conditions` | Dense | 100 | Broader excluded-conditions tier, also subject to unfiltered gating |
+| `filtered_dense_available_*` | Dense | 50 | Nonempty matching location group |
+| `unfiltered_dense_available_*` | Dense | 100 | Availability plus unfiltered eligibility |
 
 The ordinary first four tiers require `ner_present`; excluded-condition tiers have their own gate. Availability groups cover digital, in-store, delivery, and shipping when matching locations exist. Nonempty `store_id_map` entries replace the corresponding base tiers with condition-specific variants. Availability tiers are appended after the fixed tier families.
 
-**Current-source detail:** `build_recall_tiers` builds one query per planned strategy. It does not itself split a multi-valued product-type filter into one physical query per type. The outer multiple-type-group workflow can invoke separate recalls. Do not confuse that outer fan-out with per-tier/per-type expansion described in other revisions.
+**Physical request planning:** each filtered strategy expands into one physical request per allowed `product_type_id`, in token order; no allowed type emits no physical filtered request. Unfiltered strategies remain broad single requests. This inner per-type fan-out is distinct from the orchestrator's outer multiple-type-group recalls. The budget table is **per physical request**, before reduction/expansion. Dense transport uses configured `RECALL_CROWDING_NEIGHBORS`, while sparse requests disable crowding; checked-in values differ, including T02 1000 and P04 1. Do not infer effective transport crowding from a logical tier field alone.[^recall-current-policy][^recall-math-transport][^recall-current-config]
 
-> [!example]- Calculate a retrieval budget without confusing it with result count
-> Suppose NER is present, no prompts or SKU hard filter are applied, no explicit conditions filter exists, and both location maps are empty. The eight base tiers can request `100 + 100 + 150 + 100 + 250 + 250 + 150 + 250 = 1350` raw neighbor rows. Actual results can be fewer. Duplicate SKUs, overlapping parents, variation expansion, relevance filtering, and final caps all change the count afterward. Neither 1,350 raw rows nor 100 requested products means 1,350 or 100 unique relevant products.
+#### Worked Fan-Out and Budget Calculation
+
+**Inputs:** one recall invocation, NER present, $p$ allowed product types, no prompts or SKU hard restriction, no explicit condition filter, and empty location/store maps. Five filtered families run per type: featured-ranked, featured-relevant, dense, sparse, and excluded-condition dense. Three broad families run once each: sparse, dense, and excluded-condition dense.
+
+**1. Count physical requests.**
+
+$$
+T=5p+3.
+$$
+
+**2. Sum requested neighbor slots.**
+
+$$
+B=p(50+50+75+50+75)+100+100+100=300p+300.
+$$
+
+**3. Substitute two types for the request count.**
+
+$$
+T=5\times2+3=13.
+$$
+
+**4. Substitute two types for the slot budget.**
+
+$$
+B=300\times2+300=900.
+$$
+
+This is **at most 900 returned index-neighbor slots across 13 physical requests**, before deduplication and sparse per-parent reduction; failures, eligible-set size, approximation, and crowding can reduce the returned count. It is not 900 unique SKUs or parents. Spanner expansion can add SKU variations, so downstream row counts are not bounded by this number. `num_results` and the final display cap are separate controls.
 
 ### Filter Semantics Differ by Stage
 
-“Unfiltered” means broader than the NER constraints, not unrestricted. Vector-search base guards normally require active products, exclude unclassified types and not-orderable products, and handle refurbished/pre-owned/clearance through dedicated condition tiers. Broad tiers can turn the predicted type allow-list into a deny-list to explore outside the predicted types.[^recall-policy]
+“Unfiltered” means broader than the NER constraints, not unrestricted. Vector-search base guards normally require active products, exclude unclassified types and not-orderable products, and handle refurbished/pre-owned/clearance through dedicated condition tiers. Broad tiers can turn the predicted type allow-list into a deny-list to explore outside the predicted types.[^recall-current-policy]
 
 Spanner expansion constructs a separate filtered and unfiltered policy. In this checkout:
 
 - Filtered expansion retains request categorical/numeric filters, strips certain availability filters unless the preferred-store condition applies, and inserts an order-code guard when absent.
 - Unfiltered expansion keeps a narrower base/conditional availability set and ensures active/order-code guards.
-- Filtered expansion does **not** independently add the same missing active guard here. Do not infer identical constraints merely because both paths ultimately query product data.
-- SQL conversion handles booleans, string arrays, scalar strings, and numeric restrictions according to supported columns. Unsupported filters can become errors rather than quietly ignored constraints.[^expansion]
+- Both expansion paths add a missing `is_active=true` guard. Their other filter allowlists still differ; shared storage does not imply identical eligibility.
+- SQL conversion handles booleans, string arrays, scalar strings, and numeric restrictions according to supported columns. Unsupported filters can become errors rather than quietly ignored constraints.[^recall-current-policy]
 
 See [[Filtered Vector Search]] for why filtering before retrieval and filtering expanded candidates have different effects.
 
 ### Deduplication, Parent Expansion, and Provenance
 
-Vector datapoint IDs can encode individual SKUs or combos, such as `sku:*` and `combo:*_sku:*`. They must be parsed into candidate identity before parent expansion. `BSIN`, `VARIATION`, and `COMBO` are different parent kinds; the note uses the repository's BSIN identifier without assuming it is interchangeable with a SKU.[^vector]
+Vector datapoint IDs can encode individual SKUs or combos, such as `sku:*` and `combo:*_sku:*`. They must be parsed into candidate identity before parent expansion. `BSIN`, `VARIATION`, and `COMBO` are different parent kinds; the note uses the repository's BSIN identifier without assuming it is interchangeable with a SKU.[^recall-math-parsing]
 
-Raw tier rows determine which parents enter the two expansion queries. **First-seen SKU deduplication** determines which retrieval context survives when joining the expanded rows. Parent match type comes from the first non-null matching context over ordered variation rows. A parent reached through several tiers therefore cannot safely be assigned provenance from whichever request finished first.[^candidate]
+Raw tier rows determine which parents enter the two expansion queries. **First-seen SKU deduplication** determines which retrieval context survives when joining the expanded rows. Parent match type comes from the first non-null matching context over ordered variation rows. A parent reached through several tiers therefore cannot safely be assigned provenance from whichever request finished first.[^recall-math-candidate]
 
-Marketplace variation handling also matters: the policy orders variation rows by marketplace rank, prefers a BSIN represented by vector search in the relevant tie, and keeps one representative per `(parent_id, bsin_id)` before parent assembly. Dense/sparse distances and match type are intermediate ranking evidence, not the final public score.[^recall-policy]
+Marketplace variation handling also matters: the policy orders variation rows by marketplace rank, prefers a BSIN represented by vector search in the relevant tie, and keeps one representative per `(parent_id, bsin_id)` before parent assembly. Dense/sparse distances and match type are intermediate ranking evidence, not the final public score.[^recall-current-policy]
 
 > [!example]- Why concurrency must preserve order
-> Tier A returns SKU X after 90 ms. Tier B returns the same SKU X after 20 ms. If A is earlier in the plan, A's context must survive first-seen deduplication. `join_all` runs both requests concurrently but returns their outcomes in input order. A merge in completion order could change X's provenance, parent classification, and later type filtering even though both requests returned the same IDs.[^vector-port]
+> Tier A returns SKU X after 90 ms. Tier B returns the same SKU X after 20 ms. If A is earlier in the plan, A's context must survive first-seen deduplication. `join_all` runs both requests concurrently but returns their outcomes in input order. A merge in completion order could change X's provenance, parent classification, and later type filtering even though both requests returned the same IDs.[^recall-current-fanout]
 
 > [!warning]- Empty expansion is not necessarily an empty recall
-> `expand_recalled_products` returns the deduplicated vector neighbors when its variation list is empty. This can preserve candidates without enriched product-type metadata, including after the expansion filtering stage empties the rows. Treat the raw, expanded, post-filter, and final recall counts as distinct evidence. This branch needs specific live validation if eligibility guarantees depend on Spanner expansion.[^recall-policy]
+> `expand_recalled_products` returns the deduplicated vector neighbors when its variation list is empty. This can preserve candidates without enriched product-type metadata, including after the expansion filtering stage empties the rows. Treat the raw, expanded, post-filter, and final recall counts as distinct evidence. This branch needs specific live validation if eligibility guarantees depend on Spanner expansion.[^recall-current-policy]
+
+### Relevance After Recall: ESCI, Types, and the Final Ranker
+
+The word “relevant” appears at several boundaries. `filtered_relevant_dense` is a **tier policy name**: featured-product restriction plus request filters, without the featured-rank cutoff of `filtered_ranked_dense`. It is not the ESCI model's verdict and does not imply that a distance threshold was passed. NER type confidence, vector proximity, ESCI classes, and final ranker output are different evidence.
+
+Read [[Named Entity Recognition]] for query entities, [[ESCI]] for the query–product rubric, [[Cross-Encoder]] for pair scoring, and [[Learning to Rank]] for feature ranking. In a conventional cross-encoder classifier, a jointly encoded query/product pair produces logits. If there are four class logits $z_c$, softmax gives:
+
+$$
+p_c=\frac{\exp(z_c)}{\sum_{k\in\{E,S,C,I\}}\exp(z_k)}.
+$$
+
+That is the standard classifier explanation in [[BERT]] and [[ESCI]], not a verified decoding formula for the private ESCI service. Rust receives a scalar score and a class; the scalar should not be equated with an Exact probability without the model's output contract.
+
+#### The Current SKU Retention Rule
+
+For candidate $i$'s returned ESCI class $y_i$, the pipeline retains:
+
+$$
+\operatorname{keep}_{\mathrm{ESCI}}(i)=\mathbf1[y_i\in\{\mathrm{Exact},\mathrm{Substitute}\}].
+$$
+
+This gate follows type selection. Complement and Irrelevant rows are removed; the current code has **no `explicit_attribute` retention exception**. A log field with that name remains but is set to zero.[^recall-math-relevance]
+
+For the running example, the sleeve B can rank highly in sparse retrieval and still be classified Complement and removed. A can survive as Exact. A relevant product never retrieved cannot be restored by this gate. This is why candidate coverage and ESCI classification quality must be measured separately.
+
+#### Type-Level Relevance Is Not an Average of Distances
+
+For type $t$, the current scoring policy aggregates the maximum incoming relevance scalar and whether any SKU is Exact/Substitute:
+
+$$
+h_t=\max_{i:\operatorname{type}(i)=t}s_i.
+$$
+
+$$
+b_t=\mathbf1[\exists i:\operatorname{type}(i)=t\ \land\ y_i\in\{E,S\}].
+$$
+
+With more than two distinct types, the policy uses the best-match flag, prioritizes NER types when limiting eligible types to eight, and fills remaining slots with non-NER types ordered by maximum score. If no type passes the best-match flag, it retains the maximum-scored type as a safety net. With at most two types, it skips this type-level reduction. A brand-search rule can further restrict to selected NER types when their intersection is nonempty and has at most three entries. The subsequent SKU class gate still applies, so a type fallback does not rescue Complement/Irrelevant rows.[^recall-math-relevance]
+
+#### A Final Ranking Score Still Has Another Meaning
+
+The retained rows become the feature ranker's cohort. Features may include ESCI evidence, retrieval distances, metadata, engagement, and availability. The ranker output and later business policy determine ordering; there is no formula that turns an RRF score directly into the final product score. The existing [[#Scores Are Different Quantities]] and [[#Availability and Two Levels of Ordering]] sections explain these downstream quantities in more detail.
+
+For evaluation, distinguish judged relevance recall from index approximation. Let $R_q$ be the fixed set of judged relevant SKUs and $C_q$ the candidate SKU set at a named boundary:
+
+$$
+\operatorname{CandidateRecall}(q)=\frac{|C_q\cap R_q|}{|R_q|}.
+$$
+
+This requires a nonempty relevance set and a stated treatment of unjudged items; incomplete judgments do not reveal collection-wide true recall. For ANN agreement, let $G_K(q)$ be exact vector top-K under the same metric, eligibility and tie convention, and $A_K(q)$ be the approximate result:
+
+$$
+\operatorname{ANNRecall@K}(q)=\frac{|A_K(q)\cap G_K(q)|}{K}.
+$$
+
+The displayed ANN denominator assumes at least $K$ eligible neighbors and no extra crowding constraint. State a separate convention when fewer exist. High ANN agreement can reproduce an embedding's wrong sleeve ranking perfectly. See [[Approximate Nearest Neighbours]], [[Search Evaluation]], and [[NDCG]].
+
+### Recall Exercise
+
+For the running query, answer before changing a model:
+
+1. A is extremely similar but fails the price filter. Which eligible universe excludes it?
+2. B appears in two tiers, with different scores. Which occurrence supplies its SKU context?
+3. An RRF field is present with alpha 0. Does that establish a dense+sparse fused ranking?
+4. Two product types are allowed. How many requests and raw neighbor slots does the bounded budget example above allow?
+5. B is Complement and its type survived type selection. Does B survive the current SKU gate?
+
+Expected checks: the relevant tier's predicate; the first planned occurrence; sparse-only selection does not establish two-source fusion; **13 requests and 900 slots** under the example's assumptions; **no**. Validate the raw candidate, expansion, type, and ESCI boundaries separately in a real trace.
 
 ## Reranking and Final Ordering
 
@@ -383,7 +708,7 @@ flowchart TD
     E --> Context["Assemble feature contexts"]
     L --> Context
     Context --> Types["Select relevant product types"]
-    Types --> Keep["Keep Exact/Substitute or explicit-attribute matches"]
+    Types --> Keep["Keep Exact/Substitute only"]
     Keep --> Avail["Fetch availability for surviving SKUs"]
     Avail --> Matrix["Ordered feature matrix; optional candidate-local BM25"]
     Matrix --> ONNX["Selected local ONNX branch"]
@@ -404,11 +729,11 @@ ESCI input concatenates cleaned short-name and categorical-feature text. Empty t
 
 The ESCI cache reads an override hash before the normal configured hash. It sends only remaining misses to the HTTP model and merges results in input order. A cache-read failure sends all inputs to the model. Ordinary inference does not write predictions back to these caches.[^esci]
 
-Type selection considers per-type relevance, high-confidence types actually present in recall, and brand-search policy. Then the live SKU filter retains **Exact or Substitute**, plus `explicit_attribute` matches. The log calls this “clustering,” but the executed filter is class-based; it is not the historical KMeans workflow. Normal product `match_quality` is the selected head SKU's class label; lookup uses its own `BEST_MATCH` label.[^rank][^scoring]
+Type selection considers per-type relevance, high-confidence types actually present in recall, and brand-search policy. The SKU filter retains **Exact or Substitute**; see [[#The Current SKU Retention Rule]]. The log calls this “clustering,” but the filter is class-based rather than KMeans. Normal product `match_quality` is the selected head SKU's class label; lookup uses its own `BEST_MATCH` label.[^rank][^scoring]
 
 ### Exact-Query Engagement Features
 
-In this snapshot, query–SKU LTR features are read from **Spanner** by the metadata decorator. The baseline skips this lookup. The test branch performs the lookup concurrently with ESCI.[^ltr]
+Query–SKU LTR features are read from **Spanner** by the metadata decorator. The baseline skips this lookup. The test branch performs the lookup concurrently with ESCI.[^ltr]
 
 ```mermaid
 flowchart LR
@@ -423,10 +748,10 @@ flowchart LR
 
 The SQL checks both hash and normalized query text, joins `ltr_queries` with `ltr_query_sku_metrics_v2`, and restricts metrics to the recalled SKU IDs. It reads 16 values: four windows each for clicks, the source's `order_3d_*` fields, add-to-cart, and product-page views. This is exact normalized-query matching; no approximate substitute-query or Gemini rewrite is part of this feature lookup.[^ltr]
 
-An `EXACT` query match does not imply that every recalled SKU has metrics. `ltr_match_summary` distinguishes query match, matched queries, and candidate coverage. Missing values are mapped through the serving feature builder; the inspected metric paths use neutral zero fills. That is an implementation convention to match training, not a general rule that missing means observed zero. See [[Learning to Rank]], [[Click Bias]], and [[Feature Engineering]].
+An `EXACT` query match does not imply that every recalled SKU has metrics. `ltr_match_summary` distinguishes query match, matched queries, and candidate coverage. Missing values are mapped through the serving feature builder; the metric paths use neutral zero fills. That is an implementation convention to match training, not a general rule that missing means observed zero. See [[Learning to Rank]], [[Click Bias]], and [[Feature Engineering]].
 
-> [!warning]- One empty-result path loses diagnostic context
-> If successful ESCI filtering leaves no retained SKUs, this revision returns `RerankerResult::default()`. That loses the computed relevant types and LTR summary on that path. A skip/error handled by product search separately preserves a recall-count-based `NONE` summary. These two empty/degraded outcomes are not equivalent, and later envelope logic cannot reconstruct discarded context.[^rank][^product-search]
+> [!info]- Empty ESCI results preserve diagnostics
+> If ESCI filtering leaves no Exact/Substitute SKUs, the reranker returns empty products while preserving the selected result types and LTR match summary. An empty product list does not by itself establish a dependency failure.[^recall-math-relevance]
 
 ### Ordered Features and ONNX Execution
 
@@ -455,7 +780,7 @@ $$
 
 When the range is effectively zero, every value becomes **0.5**. Boost normalization instead divides by the positive maximum and uses zero when no positive maximum exists. These distinctions matter when comparing requests or implementations. See [[Score Normalization]] and [[Probability Calibration]].[^scoring]
 
-Let $m$ be normalized model score, $b$ normalized boost, $c$ normalized cheapness, and $a$ normalized availability. Current `combine_score` uses the following branches; these are source constants for this revision, not general ranking recommendations:
+Let $m$ be normalized model score, $b$ normalized boost, $c$ normalized cheapness, and $a$ normalized availability. Current `combine_score` uses the following branches; these are implementation constants, not general ranking recommendations:
 
 - **Coming soon or sold out:** $1+b$.
 - **Pre-order:**
@@ -473,7 +798,7 @@ Let $m$ be normalized model score, $b$ normalized boost, $c$ normalized cheapnes
 - **Buy/in-store, unavailable, new/open-box:** $1+m$.
 - **Other current branches:** $1+b$.
 
-Both model branches currently use these same combination factors, but their ONNX scores and feature schemas differ. The historical blueprint's long multiplicative formula is not the executed formula in this checkout.[^scoring]
+Both model branches currently use these same combination factors, but their ONNX scores and feature schemas differ.[^scoring]
 
 > [!example]- How a cohort change alters a surviving item's normalized score
 > A model gives A=2, B=4, C=6, so B normalizes to 0.5. If C is removed before that normalization and the retained outputs are A=2, B=4, B becomes 1.0 despite unchanged raw prediction. Candidate-local BM25 can also change with the retained text corpus. Compare candidate identities and feature rows before concluding that a changed final score implies a changed model.
@@ -586,7 +911,7 @@ The broadening retains `product_type_id`, `conditions`, and `sku_id` for ordinar
 Sources for the table: product-search orchestration, cache decorators, recall assembly, reranker pipeline, and centralized API error mapping.[^product-search][^embedding-cache][^candidate][^metadata][^esci][^rank][^api]
 
 > [!info]- An HTTP timeout is not the complete request budget
-> The common authenticated HTTP client uses a 5-second per-request timeout. LTR SQL has a separate 2-second deadline. A full search can make several sequential phases, wait on a concurrent fan-out, and run a broadened retry. There is no single global end-to-end deadline evident in the inspected route/service wiring. Summing child spans also overcounts overlapping work. See [[Tail Latency]].[^http][^ltr]
+> The common authenticated HTTP client uses a 5-second per-request timeout. LTR SQL has a separate 2-second deadline. A full search can make several sequential phases, wait on a concurrent fan-out, and run a broadened retry. There is no single global end-to-end deadline defined in the route/service wiring. Summing child spans also overcounts overlapping work. See [[Tail Latency]].[^http][^ltr]
 
 ## Response Mapping
 
@@ -605,7 +930,7 @@ Each public item is slim:
 }
 ```
 
-This is a structural example, not a measured response. **Per-SKU scores, retrieval match metadata, and domain `product_id` are omitted by this revision's public DTO.** In particular, it does not expose `esci_score` on each SKU. Debugging score parity requires logs or a separately verified diagnostic interface.
+This is a structural example, not a measured response. **Per-SKU scores, retrieval match metadata, and domain `product_id` are omitted by the public DTO.** In particular, it does not expose `esci_score` on each SKU. Debugging score parity requires logs or a separately verified diagnostic interface.
 
 | Model status | Meaning in this source |
 |---:|---|
@@ -639,7 +964,7 @@ Availability cache keys canonicalize the SKU set and fulfillment-to-location map
 > [!warning]- Cache policies are not interchangeable
 > Session cache failure becomes a miss; ESCI cache failure invokes the model; embedding cache failure propagates. Metadata fallback reacts to a whole-call error, not missing fields. A broad statement such as “Redis is optional” or “all caches fail open” would be false. These differences belong in operational dashboards and incident diagnosis, alongside hit rate and latency. See [[Search Caching]].
 
-The older blueprint describes multi-region Redis replication and additional prompt/result caches. The inspected Rust composition selects a regional host and constructs service-scoped managers; it does not establish that broader replication/failover contract. Deployment topology and upstream writers must be verified separately.
+Rust composition selects a regional Redis host and constructs service-scoped managers. Multi-region replication, failover, and upstream writer topology require separate infrastructure configuration.
 
 ## Observability and Diagnosis
 
@@ -709,12 +1034,12 @@ Consider `gaming laptop under 1000` with a fresh search ID, no prompts, and `ab_
 9. Raw outputs are normalized, business scoring and parent ordering are applied, and each parent gets its own ordered SKU list.
 10. Public mapping emits IDs and display metadata, with diagnostic envelope fields but without individual scores. If the primary result is empty, the allowed broader retry can remove the price constraint; the fallback flag must therefore be read with the result.
 
-> [!question]- Revision exercise
+> [!question]- Request-flow exercise
 > Trace three changes to the example: (1) the session ID already exists with unrelated entities; (2) ESCI cache fails but model inference succeeds; (3) one vector tier fails. Identify which stages rerun, which errors propagate, and whether an HTTP 200 remains possible. Then explain why `available=null`, LTR `NONE`, and an empty `items` array each have multiple possible causes.
 
 ## Known Gaps and Review Questions
 
-These are findings or explicit boundaries of the inspected revision, not instructions to change the serving repository as part of this note.
+These implementation gaps and operational questions affect completeness, correctness, and diagnosis.
 
 | Area | Source-backed current state | Follow-up needed |
 |---|---|---|
@@ -725,27 +1050,22 @@ These are findings or explicit boundaries of the inspected revision, not instruc
 | Explicit attribute requests | Public DTO lacks the broader explicit categorical/numeric request contract discussed by migration notes | Verify required structured-retrieval scope |
 | ESCI refresh | No per-request `cache_esci` field in the public DTO | Verify ownership of any scheduled refresh workflow separately |
 | Requested result count | Validated but not consistently enforced downstream | Define response-size/pagination contract |
-| Empty ESCI cohort | Default reranker result drops types and LTR summary | Preserve diagnostics if the intended contract requires them |
-| Recall policies | No inner per-type tier expansion; filtered expansion lacks an inserted active guard | Compare the intended revision and matched Python behavior before changing either |
+| Empty ESCI cohort | Empty products preserve result types and LTR summary | Distinguish relevance filtering from dependency failure |
+| Recall policies | Filtered per-type fan-out and mandatory active guards | Validate matched deployed requests against the tier and expansion policies |
 | Freshness and region behavior | Read staleness and caches are visible; upstream writers/replication were not traced | Establish catalogue, vector, feature, and inventory freshness contracts |
-| Deployment and parity | Local code/config inspected; no live calls made | Match image, inputs, dependencies, cohorts, and ordering in the target environment |
+| Deployment and parity | Runtime behavior depends on deployed code, configuration, and dependencies | Match image, inputs, dependencies, cohorts, and ordering in the target environment |
 
-Two documentation traps were resolved by reading code: the public API now sanitizes external errors to `upstream dependency failed`, although its endpoint note still describes a leak; and current recall policy gates differ from older statements that only `DenseAndSparse` unlocks tiers. More generally, old comments about remote reranker calls, unconditional model-load tolerance, public scores, KMeans, or Redis LTR should not override this checkout's executable path.[^api][^recall-policy][^onnx][^ltr]
+### Open Work
 
-### Review Boundary and Open Work
-
-- Substantively reviewed: startup composition; product-search orchestration, filters and variants; recall tier/candidate code and key adapters; reranker pipeline/scoring and feature lookup; DTO mapping; cache/fallback behavior; observability; checked-in deployment wiring.
-- Linked as prerequisites: the existing conceptual notes. This pass is not a fresh factual review of those notes or the whole vault.
-- No Rust source was changed, no Rust tests or compile checks were run, and no deployment, model inference, benchmark, or live parity result is claimed.
-- Documentation checks: all 14 diagrams passed the installed Mermaid parser in a parse-only harness; internal links, heading targets, footnotes, source targets, and Markdown structure were checked. The note opened in Obsidian, but a complete visual/layout and folding-interaction review was not completed because the app was in active use.
 - TODO: Capture one matched, result-bearing request for each branch: ordinary baseline/test, lookup hit/miss, MLT found/missing, multiple type groups, prompt-selected empty result, and degraded dependencies.
 - TODO: Trace the upstream writers and version/freshness contracts for the vector index, embedding/ESCI caches, metadata, availability, and LTR tables.
+- TODO: Verify the deployed index metric/normalization and actual sparse checkpoint/vocabulary/pruning before interpreting returned dense/sparse values as the toy formulas above. Match the running revision and inspect per-tier request/score identities; an RRF field alone does not establish two-source fusion.
 
 ## References & Useful Links
 
-All implementation statements above were checked against the local snapshot recorded at the top. Source links use the verified repository remote and the recorded commit, so switching the local branch does not change their target. They require access to the private repository; their contents were reviewed locally rather than fetched from GitHub.
+Source links point to the implementation files and supporting documentation. Repository links require access to the private repository.
 
-[^map]: [serving-rs knowledge index](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/knowledge/index.md) and [Rust architecture reference](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/knowledge/architecture/rust-serving.md) — Repository concept map and intended boundaries; checked against executable source. [Historical Search 2.0 blueprint](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/knowledge/architecture/search-2-production.md) — Migration context, not an authoritative statement of current runtime behavior.
+[^map]: [serving-rs knowledge index](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/knowledge/index.md) and [Rust architecture reference](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/knowledge/architecture/rust-serving.md) — Repository concept map and implementation boundaries.
 [^startup]: [main.rs](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/main.rs), [app construction](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/lib.rs), and [AppState composition](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/state.rs) — Startup sequence, dependency construction, adapters, Redis ownership, and shutdown.
 [^api]: [Product-search DTOs](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/dtos/product_search.rs), [handler](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/handlers/product_search.rs), [error mapping](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/handlers/error.rs), and [routes](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/routes/mod.rs) — Accepted inputs, slim serialization, generic 502, and route visibility.
 [^product-search]: [ProductSearchService](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/domain/src/product_search/service.rs) — `search`, `recall_and_rerank`, `multi_type_group_search`, `broadened_fallback_filters`, and `publish_and_persist` define orchestration and recovery.
@@ -774,5 +1094,18 @@ All implementation statements above were checked against the local snapshot reco
 [^http]: [Authenticated HTTP client](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/infra/src/clients/http.rs) — Identity-token requests, tracing context, and default per-call timeout.
 [^telemetry]: [Shared observability](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/shared/src/observability.rs) and [HTTP trace middleware](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/crates/api/src/middleware/http_trace.rs) — Exporter/sampling configuration, new ingress trace roots, outgoing propagation, and flush.
 [^deployment]: [Image build](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/product-search-deployment-image.yaml), [MLCore deployment build](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/product-search-mlcore-sdk.yaml), [Dockerfile](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/Dockerfile.Product_Search), [manifest template](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/manifest/template/product-search.yaml.j2), [renderer](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/manifest/render.py), [T02 values](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/manifest/values/t02.yaml), [P03 values](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/manifest/values/p03.yaml), [P04 values](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/deploy/manifest/values/p04.yaml), and [Cargo profiles](https://github.com/bby-corp/aml-ai-search/blob/1dfaa528621e7306135ffc62a0972508091cd4f9/serving-rs/Cargo.toml) — Source-image handoff, environment configuration, runtime resources/probes, and current compilation profile.
-[^rust-arc]: [Rust standard library: Arc](https://doc.rust-lang.org/std/sync/struct.Arc.html) — Shared ownership, cloning, and thread-safety constraints; consulted 26 September 2026.
-[^format]: [Obsidian callouts](https://obsidian.md/help/callouts) and [Mermaid flowchart syntax](https://mermaid.js.org/syntax/flowchart.html) — Native foldable callouts and diagram notation; consulted 26 September 2026.
+[^rust-arc]: [Rust standard library: Arc](https://doc.rust-lang.org/std/sync/struct.Arc.html) — Shared ownership, cloning, and thread-safety constraints.
+[^format]: [Obsidian callouts](https://obsidian.md/help/callouts) and [Mermaid flowchart syntax](https://mermaid.js.org/syntax/flowchart.html) — Native foldable callouts and diagram notation.
+
+[^recall-current-policy]: [Recall policy and physical tier expansion](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/domain/src/recall/policy.rs) — `transport_spec`, `build_recall_tiers`, `filtered_tiers_by_product_type`, and expansion filters; current 50/75/100 budgets and active guards.
+[^recall-current-fanout]: [Ordered vector-search fan-out](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/domain/src/ports/vector_search.rs) — `find_neighbors_for_tiers` executes independent requests concurrently and preserves plan order.
+[^recall-current-config]: [T02 values](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/deploy/manifest/values/t02.yaml), [P03 values](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/deploy/manifest/values/p03.yaml), [P04 values](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/deploy/manifest/values/p04.yaml), [Recall runtime configuration](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/shared/src/config/product_search.rs) — Embedding source, selected index, environment crowding, and default RRF alpha; configuration evidence, not a deployment inventory.
+[^recall-math-embedding]: [Vertex dense and HTTP sparse embedding adapter](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/infra/src/embeddings/vertex.rs), [HTTP embedding contracts](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/infra/src/embeddings/http.rs) — Concurrent acquisition, requested dense dimensionality, sparse coordinate/value pairing, and response validation; remote services and ingestion jobs own training and catalogue encoding.
+[^recall-math-transport]: [Tier request construction](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/infra/src/vector_search/matching_engine.rs), [Official Vertex serialization](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/infra/src/vector_search/matching_engine/vertex.rs), [Private gRPC serialization](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/infra/src/vector_search/matching_engine_grpc.rs) — `prepare_tier` and `build_query`; modality payloads, sparse-only alpha 0, omitted dense-only RRF block, approximate-neighbor settings, and configured dense crowding.
+[^recall-math-candidate]: [Recall candidate flow](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/domain/src/recall/candidate.rs) — `first_seen_neighbor_skus`, `build_expansion_request`, and `recall_from_embedding`; plan-order concatenation, separate parent-query/context cohorts, and explicit absence of a similarity cutoff.
+[^recall-math-parsing]: [Neighbor normalization and sparse reduction](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/infra/src/vector_search/matching_engine/parsing.rs) — Missing-modality fields, descending sparse score, parent reduction, and equal-score parent-context tie rules.
+[^recall-math-relevance]: [Type and class filtering](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/domain/src/reranker/pipeline/type_filter.rs), [Type relevance scoring policy](https://github.com/bby-corp/aml-ai-search/blob/dbd5369fd410b73579758774645d65eba192a2ad/serving-rs/crates/domain/src/reranker/scoring.rs) — Exact/Substitute-only SKU retention, per-type maxima/best-match flags, type-count and brand policies, and preserved empty-result diagnostics.
+[^recall-math-google]: [Google Cloud: About hybrid search](https://docs.cloud.google.com/vertex-ai/docs/vector-search/about-hybrid-search) — Returned inverted distances and alpha semantics: 1 dense-only, 0 sparse-only, intermediate values combine sources. The weighted teaching formula does not establish an undocumented server constant.
+[^recall-math-index]: [Google Cloud: Index configuration parameters](https://docs.cloud.google.com/vertex-ai/docs/vector-search/configuring-indexes) — Configured dense metric/normalization, negative-dot-product distance, and sparse dot-product support. The deployed index configuration supplies the actual settings.
+[^recall-math-rrf]: [Elasticsearch: Reciprocal rank fusion](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion) — Rank-based combination with a smoothing constant and finite source windows; used to verify general RRF, not to infer an Elasticsearch component in Search 2.0.
+[^recall-math-splade]: [Formal et al., SPLADE v2 (2021)](https://arxiv.org/html/2109.10086v1) — Vocabulary logits, log/ReLU weighting, sum/max pooling, expansion, and relevance/sparsity training. These explain the model family, not a verified private checkpoint.

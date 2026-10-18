@@ -4,7 +4,7 @@ description: Search the web for current information using Copilot Plus or the co
 license: Copilot Plus or Self-Host
 metadata:
   copilot-enabled-agents: opencode, claude, codex
-  copilot-builtin-version: "7"
+  copilot-builtin-version: "10"
 ---
 
 # Copilot web search

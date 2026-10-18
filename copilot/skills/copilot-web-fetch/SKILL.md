@@ -4,7 +4,7 @@ description: Fetch and read the full contents of a specific web page (URL) as cl
 license: Copilot Plus
 metadata:
   copilot-enabled-agents: opencode, claude, codex
-  copilot-builtin-version: "7"
+  copilot-builtin-version: "10"
 ---
 
 # Copilot web fetch

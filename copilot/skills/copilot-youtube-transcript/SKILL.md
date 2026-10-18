@@ -4,7 +4,7 @@ description: Fetch the transcript of a YouTube video using Copilot Plus. Use whe
 license: Copilot Plus
 metadata:
   copilot-enabled-agents: opencode, claude, codex
-  copilot-builtin-version: "7"
+  copilot-builtin-version: "10"
 ---
 
 # Copilot YouTube transcript
