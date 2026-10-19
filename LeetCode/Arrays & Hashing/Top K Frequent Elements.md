@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        count = {}
-        freq = [[] for i in range(len(nums) + 1)]
-        for n in nums:
-            count[n] = 1 + count.get(n, 0)
-        for n, c in count.items():
-            freq[c].append(n)
-        res = []
-        for i in range(len(freq) - 1, 0, -1):
-            res += freq[i]
-            if len(res) == k:
-                return res
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0347 - Top K Frequent Elements.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ The problem guarantees a unique top-k set. A general version with ties should st
 
 - [[Job Interviews/Coding Practice Index#^lc347|Coding Practice Index — Top K Frequent Elements]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
+        for n in nums:
+            count[n] = 1 + count.get(n, 0)
+        for n, c in count.items():
+            freq[c].append(n)
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            res += freq[i]
+            if len(res) == k:
+                return res
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

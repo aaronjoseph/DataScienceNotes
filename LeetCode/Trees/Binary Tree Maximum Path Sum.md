@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def maxPathSum(self, root: TreeNode) -> int:
-        res = [root.val]
-
-        def dfs(root):
-            if not root:
-                return 0
-            leftMax = dfs(root.left)
-            rightMax = dfs(root.right)
-            leftMax = max(leftMax, 0)
-            rightMax = max(rightMax, 0)
-            res[0] = max(res[0], root.val + leftMax + rightMax)
-            return root.val + max(leftMax, rightMax)
-        dfs(root)
-        return res[0]
-```
-
-## Complexity
-
-$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0124 - Binary Tree Maximum Path Sum.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Initialize the global answer from a real node so all-negative trees work. Do not
 
 - [[Job Interviews/Coding Practice Index#^lc124|Coding Practice Index — Binary Tree Maximum Path Sum]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def maxPathSum(self, root: TreeNode) -> int:
+        res = [root.val]
+
+        def dfs(root):
+            if not root:
+                return 0
+            leftMax = dfs(root.left)
+            rightMax = dfs(root.right)
+            leftMax = max(leftMax, 0)
+            rightMax = max(rightMax, 0)
+            res[0] = max(res[0], root.val + leftMax + rightMax)
+            return root.val + max(leftMax, rightMax)
+        dfs(root)
+        return res[0]
+```
+
+## Complexity
+
+$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

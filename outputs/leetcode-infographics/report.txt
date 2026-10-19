@@ -1,0 +1,182 @@
+LeetCode infographic migration — 19 October 2026
+
+Completed: all 150 ordinary notes whose YAML tags include leetcode.
+Created: one dedicated 1600 px wide PNG per note under Attachements/LeetCode/.
+
+Opening layout: YAML properties, Algorithm at a glance, image, Overview.
+The original Template and Complexity sections were moved intact immediately before References & Useful Links.
+Existing code, equations, examples, links, block identifiers, metadata, and heading targets were preserved.
+One directional sentence in Binary Search was changed from above to below to match the relocated templates.
+
+Each card combines the idea, numbered logic, Python-style pseudocode, time/space bounds, and size variables.
+Expected, amortized, output-storage, recursion, and implementation-specific qualifications were retained.
+Five class-heavy problems use compact logical pseudocode rather than their class scaffolding.
+LC 875 includes integer ceiling division and its first-true search; LC 704 shows the exact-match primary variant.
+
+Validation performed:
+- Exact reconstruction/preservation checks against all 150 original snapshots passed.
+- All 150 new image embeds resolve and PNG integrity/dimensions passed.
+- Every rendered text line was checked to fit its panel.
+- Original headings, code/math delimiters, YAML content, and final references were checked.
+- git diff --check -- LeetCode passed.
+- Representative PNGs were visually inspected directly.
+- Native Obsidian reading-view verification could not be completed: UI navigation actions left the view unchanged.
+- Solutions were not executed, and this was not a fresh factual review of every algorithm.
+
+Method: deterministic Pillow rendering from existing notes. AI samples were discarded because they changed technical details.
+Regeneration: UV_CACHE_DIR=/private/tmp/leetcode-uv-cache uv run --offline --with pillow python outputs/leetcode-infographics/render.py --quiet
+Recovery snapshots: outputs/leetcode-infographics/.originals/LeetCode/.
+Machine-readable asset mapping: outputs/leetcode-infographics/manifest.json.
+
+Changed notes and created assets:
+LeetCode/Arrays & Hashing/Two Sum.md -> Attachements/LeetCode/LC0001 - Two Sum.png
+LeetCode/Linked List/Add Two Numbers.md -> Attachements/LeetCode/LC0002 - Add Two Numbers.png
+LeetCode/Sliding Window/Longest Substring Without Repeating Characters.md -> Attachements/LeetCode/LC0003 - Longest Substring Without Repeating Characters.png
+LeetCode/Binary Search/Median of Two Sorted Arrays.md -> Attachements/LeetCode/LC0004 - Median of Two Sorted Arrays.png
+LeetCode/1-D Dynamic Programming/Longest Palindromic Substring.md -> Attachements/LeetCode/LC0005 - Longest Palindromic Substring.png
+LeetCode/Bit Manipulation/Reverse Integer.md -> Attachements/LeetCode/LC0007 - Reverse Integer.png
+LeetCode/2-D Dynamic Programming/Regular Expression Matching.md -> Attachements/LeetCode/LC0010 - Regular Expression Matching.png
+LeetCode/Two Pointers/Container With Most Water.md -> Attachements/LeetCode/LC0011 - Container With Most Water.png
+LeetCode/Two Pointers/3Sum.md -> Attachements/LeetCode/LC0015 - 3Sum.png
+LeetCode/Backtracking/Letter Combinations of a Phone Number.md -> Attachements/LeetCode/LC0017 - Letter Combinations of a Phone Number.png
+LeetCode/Linked List/Remove Nth Node From End of List.md -> Attachements/LeetCode/LC0019 - Remove Nth Node From End of List.png
+LeetCode/Stack/Valid Parentheses.md -> Attachements/LeetCode/LC0020 - Valid Parentheses.png
+LeetCode/Linked List/Merge Two Sorted Lists.md -> Attachements/LeetCode/LC0021 - Merge Two Sorted Lists.png
+LeetCode/Stack/Generate Parentheses.md -> Attachements/LeetCode/LC0022 - Generate Parentheses.png
+LeetCode/Linked List/Merge K Sorted Lists.md -> Attachements/LeetCode/LC0023 - Merge K Sorted Lists.png
+LeetCode/Linked List/Reverse Nodes In K Group.md -> Attachements/LeetCode/LC0025 - Reverse Nodes In K Group.png
+LeetCode/Binary Search/Search In Rotated Sorted Array.md -> Attachements/LeetCode/LC0033 - Search In Rotated Sorted Array.png
+LeetCode/Arrays & Hashing/Valid Sudoku.md -> Attachements/LeetCode/LC0036 - Valid Sudoku.png
+LeetCode/Backtracking/Combination Sum.md -> Attachements/LeetCode/LC0039 - Combination Sum.png
+LeetCode/Backtracking/Combination Sum II.md -> Attachements/LeetCode/LC0040 - Combination Sum II.png
+LeetCode/Two Pointers/Trapping Rain Water.md -> Attachements/LeetCode/LC0042 - Trapping Rain Water.png
+LeetCode/Math & Geometry/Multiply Strings.md -> Attachements/LeetCode/LC0043 - Multiply Strings.png
+LeetCode/Greedy/Jump Game II.md -> Attachements/LeetCode/LC0045 - Jump Game II.png
+LeetCode/Backtracking/Permutations.md -> Attachements/LeetCode/LC0046 - Permutations.png
+LeetCode/Math & Geometry/Rotate Image.md -> Attachements/LeetCode/LC0048 - Rotate Image.png
+LeetCode/Arrays & Hashing/Group Anagrams.md -> Attachements/LeetCode/LC0049 - Group Anagrams.png
+LeetCode/Math & Geometry/Pow(x, n).md -> Attachements/LeetCode/LC0050 - Pow(x, n).png
+LeetCode/Backtracking/N Queens.md -> Attachements/LeetCode/LC0051 - N Queens.png
+LeetCode/Greedy/Maximum Subarray.md -> Attachements/LeetCode/LC0053 - Maximum Subarray.png
+LeetCode/Math & Geometry/Spiral Matrix.md -> Attachements/LeetCode/LC0054 - Spiral Matrix.png
+LeetCode/Greedy/Jump Game.md -> Attachements/LeetCode/LC0055 - Jump Game.png
+LeetCode/Intervals/Merge Intervals.md -> Attachements/LeetCode/LC0056 - Merge Intervals.png
+LeetCode/Intervals/Insert Interval.md -> Attachements/LeetCode/LC0057 - Insert Interval.png
+LeetCode/2-D Dynamic Programming/Unique Paths.md -> Attachements/LeetCode/LC0062 - Unique Paths.png
+LeetCode/Math & Geometry/Plus One.md -> Attachements/LeetCode/LC0066 - Plus One.png
+LeetCode/1-D Dynamic Programming/Climbing Stairs.md -> Attachements/LeetCode/LC0070 - Climbing Stairs.png
+LeetCode/2-D Dynamic Programming/Edit Distance.md -> Attachements/LeetCode/LC0072 - Edit Distance.png
+LeetCode/Math & Geometry/Set Matrix Zeroes.md -> Attachements/LeetCode/LC0073 - Set Matrix Zeroes.png
+LeetCode/Binary Search/Search a 2D Matrix.md -> Attachements/LeetCode/LC0074 - Search a 2D Matrix.png
+LeetCode/Sliding Window/Minimum Window Substring.md -> Attachements/LeetCode/LC0076 - Minimum Window Substring.png
+LeetCode/Backtracking/Subsets.md -> Attachements/LeetCode/LC0078 - Subsets.png
+LeetCode/Backtracking/Word Search.md -> Attachements/LeetCode/LC0079 - Word Search.png
+LeetCode/Stack/Largest Rectangle In Histogram.md -> Attachements/LeetCode/LC0084 - Largest Rectangle In Histogram.png
+LeetCode/Backtracking/Subsets II.md -> Attachements/LeetCode/LC0090 - Subsets II.png
+LeetCode/1-D Dynamic Programming/Decode Ways.md -> Attachements/LeetCode/LC0091 - Decode Ways.png
+LeetCode/2-D Dynamic Programming/Interleaving String.md -> Attachements/LeetCode/LC0097 - Interleaving String.png
+LeetCode/Trees/Validate Binary Search Tree.md -> Attachements/LeetCode/LC0098 - Validate Binary Search Tree.png
+LeetCode/Trees/Same Tree.md -> Attachements/LeetCode/LC0100 - Same Tree.png
+LeetCode/Trees/Binary Tree Level Order Traversal.md -> Attachements/LeetCode/LC0102 - Binary Tree Level Order Traversal.png
+LeetCode/Trees/Maximum Depth of Binary Tree.md -> Attachements/LeetCode/LC0104 - Maximum Depth of Binary Tree.png
+LeetCode/Trees/Construct Binary Tree From Preorder And Inorder Traversal.md -> Attachements/LeetCode/LC0105 - Construct Binary Tree From Preorder And Inorder Traversal.png
+LeetCode/Trees/Balanced Binary Tree.md -> Attachements/LeetCode/LC0110 - Balanced Binary Tree.png
+LeetCode/2-D Dynamic Programming/Distinct Subsequences.md -> Attachements/LeetCode/LC0115 - Distinct Subsequences.png
+LeetCode/Sliding Window/Best Time to Buy And Sell Stock.md -> Attachements/LeetCode/LC0121 - Best Time to Buy And Sell Stock.png
+LeetCode/Trees/Binary Tree Maximum Path Sum.md -> Attachements/LeetCode/LC0124 - Binary Tree Maximum Path Sum.png
+LeetCode/Two Pointers/Valid Palindrome.md -> Attachements/LeetCode/LC0125 - Valid Palindrome.png
+LeetCode/Graphs/Word Ladder.md -> Attachements/LeetCode/LC0127 - Word Ladder.png
+LeetCode/Arrays & Hashing/Longest Consecutive Sequence.md -> Attachements/LeetCode/LC0128 - Longest Consecutive Sequence.png
+LeetCode/Graphs/Surrounded Regions.md -> Attachements/LeetCode/LC0130 - Surrounded Regions.png
+LeetCode/Backtracking/Palindrome Partitioning.md -> Attachements/LeetCode/LC0131 - Palindrome Partitioning.png
+LeetCode/Graphs/Clone Graph.md -> Attachements/LeetCode/LC0133 - Clone Graph.png
+LeetCode/Greedy/Gas Station.md -> Attachements/LeetCode/LC0134 - Gas Station.png
+LeetCode/Bit Manipulation/Single Number.md -> Attachements/LeetCode/LC0136 - Single Number.png
+LeetCode/Linked List/Copy List With Random Pointer.md -> Attachements/LeetCode/LC0138 - Copy List With Random Pointer.png
+LeetCode/1-D Dynamic Programming/Word Break.md -> Attachements/LeetCode/LC0139 - Word Break.png
+LeetCode/Linked List/Linked List Cycle.md -> Attachements/LeetCode/LC0141 - Linked List Cycle.png
+LeetCode/Linked List/Reorder List.md -> Attachements/LeetCode/LC0143 - Reorder List.png
+LeetCode/Linked List/LRU Cache.md -> Attachements/LeetCode/LC0146 - LRU Cache.png
+LeetCode/Stack/Evaluate Reverse Polish Notation.md -> Attachements/LeetCode/LC0150 - Evaluate Reverse Polish Notation.png
+LeetCode/1-D Dynamic Programming/Maximum Product Subarray.md -> Attachements/LeetCode/LC0152 - Maximum Product Subarray.png
+LeetCode/Binary Search/Find Minimum In Rotated Sorted Array.md -> Attachements/LeetCode/LC0153 - Find Minimum In Rotated Sorted Array.png
+LeetCode/Stack/Min Stack.md -> Attachements/LeetCode/LC0155 - Min Stack.png
+LeetCode/Two Pointers/Two Sum II Input Array Is Sorted.md -> Attachements/LeetCode/LC0167 - Two Sum II Input Array Is Sorted.png
+LeetCode/Bit Manipulation/Reverse Bits.md -> Attachements/LeetCode/LC0190 - Reverse Bits.png
+LeetCode/Bit Manipulation/Number of 1 Bits.md -> Attachements/LeetCode/LC0191 - Number of 1 Bits.png
+LeetCode/1-D Dynamic Programming/House Robber.md -> Attachements/LeetCode/LC0198 - House Robber.png
+LeetCode/Trees/Binary Tree Right Side View.md -> Attachements/LeetCode/LC0199 - Binary Tree Right Side View.png
+LeetCode/Graphs/Number of Islands.md -> Attachements/LeetCode/LC0200 - Number of Islands.png
+LeetCode/Math & Geometry/Happy Number.md -> Attachements/LeetCode/LC0202 - Happy Number.png
+LeetCode/Linked List/Reverse Linked List.md -> Attachements/LeetCode/LC0206 - Reverse Linked List.png
+LeetCode/Graphs/Course Schedule.md -> Attachements/LeetCode/LC0207 - Course Schedule.png
+LeetCode/Tries/Implement Trie Prefix Tree.md -> Attachements/LeetCode/LC0208 - Implement Trie Prefix Tree.png
+LeetCode/Graphs/Course Schedule II.md -> Attachements/LeetCode/LC0210 - Course Schedule II.png
+LeetCode/Tries/Design Add And Search Words Data Structure.md -> Attachements/LeetCode/LC0211 - Design Add And Search Words Data Structure.png
+LeetCode/Tries/Word Search II.md -> Attachements/LeetCode/LC0212 - Word Search II.png
+LeetCode/1-D Dynamic Programming/House Robber II.md -> Attachements/LeetCode/LC0213 - House Robber II.png
+LeetCode/Heap and Priority Queue/Kth Largest Element In An Array.md -> Attachements/LeetCode/LC0215 - Kth Largest Element In An Array.png
+LeetCode/Arrays & Hashing/Contains Duplicate.md -> Attachements/LeetCode/LC0217 - Contains Duplicate.png
+LeetCode/Trees/Invert Binary Tree.md -> Attachements/LeetCode/LC0226 - Invert Binary Tree.png
+LeetCode/Trees/Kth Smallest Element In a Bst.md -> Attachements/LeetCode/LC0230 - Kth Smallest Element In a Bst.png
+LeetCode/Trees/Lowest Common Ancestor of a Binary Search Tree.md -> Attachements/LeetCode/LC0235 - Lowest Common Ancestor of a Binary Search Tree.png
+LeetCode/Arrays & Hashing/Product of Array Except Self.md -> Attachements/LeetCode/LC0238 - Product of Array Except Self.png
+LeetCode/Sliding Window/Sliding Window Maximum.md -> Attachements/LeetCode/LC0239 - Sliding Window Maximum.png
+LeetCode/Arrays & Hashing/Valid Anagram.md -> Attachements/LeetCode/LC0242 - Valid Anagram.png
+LeetCode/Intervals/Meeting Rooms.md -> Attachements/LeetCode/LC0252 - Meeting Rooms.png
+LeetCode/Intervals/Meeting Rooms II.md -> Attachements/LeetCode/LC0253 - Meeting Rooms II.png
+LeetCode/Graphs/Graph Valid Tree.md -> Attachements/LeetCode/LC0261 - Graph Valid Tree.png
+LeetCode/Bit Manipulation/Missing Number.md -> Attachements/LeetCode/LC0268 - Missing Number.png
+LeetCode/Advanced Graphs/Alien Dictionary.md -> Attachements/LeetCode/LC0269 - Alien Dictionary.png
+LeetCode/Arrays & Hashing/Encode and Decode Strings.md -> Attachements/LeetCode/LC0271 - Encode and Decode Strings.png
+LeetCode/Graphs/Walls And Gates.md -> Attachements/LeetCode/LC0286 - Walls And Gates.png
+LeetCode/Linked List/Find The Duplicate Number.md -> Attachements/LeetCode/LC0287 - Find The Duplicate Number.png
+LeetCode/Heap and Priority Queue/Find Median From Data Stream.md -> Attachements/LeetCode/LC0295 - Find Median From Data Stream.png
+LeetCode/Trees/Serialize And Deserialize Binary Tree.md -> Attachements/LeetCode/LC0297 - Serialize And Deserialize Binary Tree.png
+LeetCode/1-D Dynamic Programming/Longest Increasing Subsequence.md -> Attachements/LeetCode/LC0300 - Longest Increasing Subsequence.png
+LeetCode/2-D Dynamic Programming/Best Time to Buy And Sell Stock With Cooldown.md -> Attachements/LeetCode/LC0309 - Best Time to Buy And Sell Stock With Cooldown.png
+LeetCode/2-D Dynamic Programming/Burst Balloons.md -> Attachements/LeetCode/LC0312 - Burst Balloons.png
+LeetCode/1-D Dynamic Programming/Coin Change.md -> Attachements/LeetCode/LC0322 - Coin Change.png
+LeetCode/Graphs/Number of Connected Components In An Undirected Graph.md -> Attachements/LeetCode/LC0323 - Number of Connected Components In An Undirected Graph.png
+LeetCode/2-D Dynamic Programming/Longest Increasing Path In a Matrix.md -> Attachements/LeetCode/LC0329 - Longest Increasing Path In a Matrix.png
+LeetCode/Advanced Graphs/Reconstruct Itinerary.md -> Attachements/LeetCode/LC0332 - Reconstruct Itinerary.png
+LeetCode/Bit Manipulation/Counting Bits.md -> Attachements/LeetCode/LC0338 - Counting Bits.png
+LeetCode/Arrays & Hashing/Top K Frequent Elements.md -> Attachements/LeetCode/LC0347 - Top K Frequent Elements.png
+LeetCode/Heap and Priority Queue/Design Twitter.md -> Attachements/LeetCode/LC0355 - Design Twitter.png
+LeetCode/Bit Manipulation/Sum of Two Integers.md -> Attachements/LeetCode/LC0371 - Sum of Two Integers.png
+LeetCode/1-D Dynamic Programming/Partition Equal Subset Sum.md -> Attachements/LeetCode/LC0416 - Partition Equal Subset Sum.png
+LeetCode/Graphs/Pacific Atlantic Water Flow.md -> Attachements/LeetCode/LC0417 - Pacific Atlantic Water Flow.png
+LeetCode/Sliding Window/Longest Repeating Character Replacement.md -> Attachements/LeetCode/LC0424 - Longest Repeating Character Replacement.png
+LeetCode/Intervals/Non Overlapping Intervals.md -> Attachements/LeetCode/LC0435 - Non Overlapping Intervals.png
+LeetCode/2-D Dynamic Programming/Target Sum.md -> Attachements/LeetCode/LC0494 - Target Sum.png
+LeetCode/2-D Dynamic Programming/Coin Change II.md -> Attachements/LeetCode/LC0518 - Coin Change II.png
+LeetCode/Trees/Diameter of Binary Tree.md -> Attachements/LeetCode/LC0543 - Diameter of Binary Tree.png
+LeetCode/Sliding Window/Permutation In String.md -> Attachements/LeetCode/LC0567 - Permutation In String.png
+LeetCode/Trees/Subtree of Another Tree.md -> Attachements/LeetCode/LC0572 - Subtree of Another Tree.png
+LeetCode/Heap and Priority Queue/Task Scheduler.md -> Attachements/LeetCode/LC0621 - Task Scheduler.png
+LeetCode/1-D Dynamic Programming/Palindromic Substrings.md -> Attachements/LeetCode/LC0647 - Palindromic Substrings.png
+LeetCode/Greedy/Valid Parenthesis String.md -> Attachements/LeetCode/LC0678 - Valid Parenthesis String.png
+LeetCode/Graphs/Redundant Connection.md -> Attachements/LeetCode/LC0684 - Redundant Connection.png
+LeetCode/Graphs/Max Area of Island.md -> Attachements/LeetCode/LC0695 - Max Area of Island.png
+LeetCode/Heap and Priority Queue/Kth Largest Element In a Stream.md -> Attachements/LeetCode/LC0703 - Kth Largest Element In a Stream.png
+LeetCode/Binary Search/Binary Search.md -> Attachements/LeetCode/LC0704 - Binary Search.png
+LeetCode/Stack/Daily Temperatures.md -> Attachements/LeetCode/LC0739 - Daily Temperatures.png
+LeetCode/Advanced Graphs/Network Delay Time.md -> Attachements/LeetCode/LC0743 - Network Delay Time.png
+LeetCode/1-D Dynamic Programming/Min Cost Climbing Stairs.md -> Attachements/LeetCode/LC0746 - Min Cost Climbing Stairs.png
+LeetCode/Greedy/Partition Labels.md -> Attachements/LeetCode/LC0763 - Partition Labels.png
+LeetCode/Advanced Graphs/Swim In Rising Water.md -> Attachements/LeetCode/LC0778 - Swim In Rising Water.png
+LeetCode/Advanced Graphs/Cheapest Flights Within K Stops.md -> Attachements/LeetCode/LC0787 - Cheapest Flights Within K Stops.png
+LeetCode/Greedy/Hand of Straights.md -> Attachements/LeetCode/LC0846 - Hand of Straights.png
+LeetCode/Stack/Car Fleet.md -> Attachements/LeetCode/LC0853 - Car Fleet.png
+LeetCode/Binary Search/Koko Eating Bananas.md -> Attachements/LeetCode/LC0875 - Koko Eating Bananas.png
+LeetCode/Heap and Priority Queue/K Closest Points to Origin.md -> Attachements/LeetCode/LC0973 - K Closest Points to Origin.png
+LeetCode/Binary Search/Time Based Key Value Store.md -> Attachements/LeetCode/LC0981 - Time Based Key Value Store.png
+LeetCode/Graphs/Rotting Oranges.md -> Attachements/LeetCode/LC0994 - Rotting Oranges.png
+LeetCode/Heap and Priority Queue/Last Stone Weight.md -> Attachements/LeetCode/LC1046 - Last Stone Weight.png
+LeetCode/2-D Dynamic Programming/Longest Common Subsequence.md -> Attachements/LeetCode/LC1143 - Longest Common Subsequence.png
+LeetCode/Trees/Count Good Nodes In Binary Tree.md -> Attachements/LeetCode/LC1448 - Count Good Nodes In Binary Tree.png
+LeetCode/Advanced Graphs/Min Cost to Connect All Points.md -> Attachements/LeetCode/LC1584 - Min Cost to Connect All Points.png
+LeetCode/Intervals/Minimum Interval to Include Each Query.md -> Attachements/LeetCode/LC1851 - Minimum Interval to Include Each Query.png
+LeetCode/Greedy/Merge Triplets to Form Target Triplet.md -> Attachements/LeetCode/LC1899 - Merge Triplets to Form Target Triplet.png
+LeetCode/Math & Geometry/Detect Squares.md -> Attachements/LeetCode/LC2013 - Detect Squares.png
+

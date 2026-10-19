@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0127 - Word Ladder.png|700]]
+
+## Overview
+
+Find the length of the shortest sequence from a starting word to an ending word, changing one letter at a time through dictionary words.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc127|LeetCode — LC 127]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Index words by wildcard patterns such as h*t so one-letter neighbors can be found.
+2. Run breadth-first search from the starting word, marking words when enqueued.
+3. Expand each pattern bucket at most once and return the level when the ending word is dequeued.
+
+## Why It Works
+
+Each edge changes one character, and BFS levels enumerate paths in increasing numbers of transformations.
+
+## Worked Example
+
+**Illustrative input:** `beginWord = "hit"`, `endWord = "hot"`, dictionary `["hot"]`.
+
+**Trace:** The words share pattern h*t and are one transformation apart.
+
+**Result:** Return `2` because the sequence counts both words.
+
+## Common Pitfalls
+
+Return zero if the target is absent or unreachable. Clear processed buckets to avoid repeatedly scanning the same neighbor lists.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc127|Coding Practice Index — Word Ladder]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -46,39 +83,6 @@ class Solution:
 ## Complexity
 
 $O(NL^2)$ expected time and $O(NL^2)$ stored pattern-character space in Python for `N` words of length `L`, plus bucket references. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Find the length of the shortest sequence from a starting word to an ending word, changing one letter at a time through dictionary words.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc127|LeetCode — LC 127]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Index words by wildcard patterns such as h*t so one-letter neighbors can be found.
-2. Run breadth-first search from the starting word, marking words when enqueued.
-3. Expand each pattern bucket at most once and return the level when the ending word is dequeued.
-
-## Why It Works
-
-Each edge changes one character, and BFS levels enumerate paths in increasing numbers of transformations.
-
-## Worked Example
-
-**Illustrative input:** `beginWord = "hit"`, `endWord = "hot"`, dictionary `["hot"]`.
-
-**Trace:** The words share pattern h*t and are one transformation apart.
-
-**Result:** Return `2` because the sequence counts both words.
-
-## Common Pitfalls
-
-Return zero if the target is absent or unreachable. Clear processed buckets to avoid repeatedly scanning the same neighbor lists.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc127|Coding Practice Index — Word Ladder]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

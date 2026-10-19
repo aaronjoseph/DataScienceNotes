@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0130 - Surrounded Regions.png|700]]
+
+## Overview
+
+Replace O regions fully enclosed by X while preserving any O connected to a boundary.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc130|LeetCode — LC 130]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Flood-fill O cells reachable from any border and mark them safe.
+2. Scan the board again.
+3. Turn every unmarked O into X, leaving safe cells unchanged.
+
+## Why It Works
+
+An O region is not surrounded exactly when it has a four-directional path to a boundary O.
+
+## Worked Example
+
+**Illustrative input:** `board = [["X", "O", "X"], ["X", "O", "X"], ["X", "X", "X"]]`.
+
+**Trace:** The middle O connects to the top-border O.
+
+**Result:** Both O cells remain unchanged.
+
+## Common Pitfalls
+
+Start from every border, not only the corners. Changes are in place; the function returns no board.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc130|Coding Practice Index — Surrounded Regions]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -42,39 +79,6 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(RC)$ auxiliary space for the safe set and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Replace O regions fully enclosed by X while preserving any O connected to a boundary.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc130|LeetCode — LC 130]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Flood-fill O cells reachable from any border and mark them safe.
-2. Scan the board again.
-3. Turn every unmarked O into X, leaving safe cells unchanged.
-
-## Why It Works
-
-An O region is not surrounded exactly when it has a four-directional path to a boundary O.
-
-## Worked Example
-
-**Illustrative input:** `board = [["X", "O", "X"], ["X", "O", "X"], ["X", "X", "X"]]`.
-
-**Trace:** The middle O connects to the top-border O.
-
-**Result:** Both O cells remain unchanged.
-
-## Common Pitfalls
-
-Start from every border, not only the corners. Changes are in place; the function returns no board.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc130|Coding Practice Index — Surrounded Regions]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

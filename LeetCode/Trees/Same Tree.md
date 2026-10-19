@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-from typing import Optional
-
-class Solution:
-
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if not p and (not q):
-            return True
-        if p and q and (p.val == q.val):
-            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        else:
-            return False
-```
-
-## Complexity
-
-$O(n+m)$ worst-case time bound and $O(h)$ recursion space across the compared trees. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0100 - Same Tree.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ Matching traversal values without null positions can hide structural differences
 
 - [[Job Interviews/Coding Practice Index#^lc100|Coding Practice Index — Same Tree]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+from typing import Optional
+
+class Solution:
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and (not q):
+            return True
+        if p and q and (p.val == q.val):
+            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        else:
+            return False
+```
+
+## Complexity
+
+$O(n+m)$ worst-case time bound and $O(h)$ recursion space across the compared trees. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

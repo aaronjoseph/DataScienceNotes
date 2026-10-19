@@ -8,31 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def maxProfit(self, prices: List[int]) -> int:
-        res = 0
-        lowest = prices[0]
-        for price in prices:
-            if price < lowest:
-                lowest = price
-            res = max(res, price - lowest)
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0121 - Best Time to Buy And Sell Stock.png|700]]
 
 ## Overview
 
@@ -66,6 +44,32 @@ You cannot sell before buying. A decreasing price sequence returns zero, not a n
 
 - [[Job Interviews/Coding Practice Index#^lc121|Coding Practice Index — Best Time to Buy And Sell Stock]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def maxProfit(self, prices: List[int]) -> int:
+        res = 0
+        lowest = prices[0]
+        for price in prices:
+            if price < lowest:
+                lowest = price
+            res = max(res, price - lowest)
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

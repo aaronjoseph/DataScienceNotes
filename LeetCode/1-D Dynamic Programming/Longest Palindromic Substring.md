@@ -8,31 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        best_start, best_length = 0, 0
-        for center in range(len(s)):
-            for left, right in ((center, center), (center, center + 1)):
-                while left >= 0 and right < len(s) and s[left] == s[right]:
-                    if right - left + 1 > best_length:
-                        best_start, best_length = left, right - left + 1
-                    left -= 1
-                    right += 1
-        return s[best_start:best_start + best_length]
-```
-
-## Complexity
-
-$O(n^2)$ time and $O(1)$ auxiliary space, excluding the final returned substring. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0005 - Longest Palindromic Substring.png|700]]
 
 ## Overview
 
@@ -66,6 +44,32 @@ Check both center types. Repeatedly slicing every improved candidate can add avo
 
 - [[Job Interviews/Coding Practice Index#^lc5|Coding Practice Index — Longest Palindromic Substring]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        best_start, best_length = 0, 0
+        for center in range(len(s)):
+            for left, right in ((center, center), (center, center + 1)):
+                while left >= 0 and right < len(s) and s[left] == s[right]:
+                    if right - left + 1 > best_length:
+                        best_start, best_length = left, right - left + 1
+                    left -= 1
+                    right += 1
+        return s[best_start:best_start + best_length]
+```
+
+## Complexity
+
+$O(n^2)$ time and $O(1)$ auxiliary space, excluding the final returned substring. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        if len(nums) == 1:
-            return [nums[:]]
-        for i in range(len(nums)):
-            n = nums.pop(0)
-            perms = self.permute(nums)
-            for perm in perms:
-                perm.append(n)
-            res.extend(perms)
-            nums.append(n)
-        return res
-```
-
-## Complexity
-
-$O(n\,n!)$ time and $O(n\,n!)$ transient materialized permutation storage for this implementation, including intermediate results. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0046 - Permutations.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ The implementation temporarily mutates the input and restores it. The problem as
 
 - [[Job Interviews/Coding Practice Index#^lc46|Coding Practice Index — Permutations]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        if len(nums) == 1:
+            return [nums[:]]
+        for i in range(len(nums)):
+            n = nums.pop(0)
+            perms = self.permute(nums)
+            for perm in perms:
+                perm.append(n)
+            res.extend(perms)
+            nums.append(n)
+        return res
+```
+
+## Complexity
+
+$O(n\,n!)$ time and $O(n\,n!)$ transient materialized permutation storage for this implementation, including intermediate results. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

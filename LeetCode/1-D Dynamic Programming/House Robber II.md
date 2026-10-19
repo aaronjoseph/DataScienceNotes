@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def rob(self, nums: List[int]) -> int:
-        return max(nums[0], self.helper(nums[1:]), self.helper(nums[:-1]))
-
-    def helper(self, nums):
-        rob1, rob2 = (0, 0)
-        for n in nums:
-            newRob = max(rob1 + n, rob2)
-            rob1 = rob2
-            rob2 = newRob
-        return rob2
-```
-
-## Complexity
-
-$O(n)$ time and $O(n)$ extra space in this Python implementation because both linear cases use slices. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0213 - House Robber II.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ The linear recurrence is constant-space, but slicing is not. A range-indexed hel
 
 - [[Job Interviews/Coding Practice Index#^lc213|Coding Practice Index — House Robber II]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def rob(self, nums: List[int]) -> int:
+        return max(nums[0], self.helper(nums[1:]), self.helper(nums[:-1]))
+
+    def helper(self, nums):
+        rob1, rob2 = (0, 0)
+        for n in nums:
+            newRob = max(rob1 + n, rob2)
+            rob1 = rob2
+            rob2 = newRob
+        return rob2
+```
+
+## Complexity
+
+$O(n)$ time and $O(n)$ extra space in this Python implementation because both linear cases use slices. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

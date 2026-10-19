@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0025 - Reverse Nodes In K Group.png|700]]
+
+## Overview
+
+Reverse linked-list nodes in full groups of k, preserving a final short group.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc25|LeetCode — LC 25]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use a dummy head and locate the kth node after the previous group.
+2. If fewer than k nodes remain, stop; otherwise save the following group boundary.
+3. Reverse pointers up to that boundary, reconnect the new group head, and move the previous-group pointer to the old head.
+
+## Why It Works
+
+Each complete group is reversed independently and reconnected to both untouched neighboring portions.
+
+## Worked Example
+
+**Illustrative input:** List `1 → 2 → 3 → 4 → 5`, `k = 2`.
+
+**Trace:** Reverse groups 1,2 and 3,4; leave the final 5.
+
+**Result:** Return `2 → 1 → 4 → 3 → 5`.
+
+## Common Pitfalls
+
+Verify a complete group before mutating it. Reverse pointers rather than node values.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc25|Coding Practice Index — Reverse Nodes In K Group]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -48,39 +85,6 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Reverse linked-list nodes in full groups of k, preserving a final short group.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc25|LeetCode — LC 25]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use a dummy head and locate the kth node after the previous group.
-2. If fewer than k nodes remain, stop; otherwise save the following group boundary.
-3. Reverse pointers up to that boundary, reconnect the new group head, and move the previous-group pointer to the old head.
-
-## Why It Works
-
-Each complete group is reversed independently and reconnected to both untouched neighboring portions.
-
-## Worked Example
-
-**Illustrative input:** List `1 → 2 → 3 → 4 → 5`, `k = 2`.
-
-**Trace:** Reverse groups 1,2 and 3,4; leave the final 5.
-
-**Result:** Return `2 → 1 → 4 → 3 → 5`.
-
-## Common Pitfalls
-
-Verify a complete group before mutating it. Reverse pointers rather than node values.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc25|Coding Practice Index — Reverse Nodes In K Group]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

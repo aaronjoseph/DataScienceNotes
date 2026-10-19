@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import heapq
-
-class Solution:
-
-    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        minHeap = []
-        for x, y in points:
-            dist = x ** 2 + y ** 2
-            minHeap.append((dist, x, y))
-        heapq.heapify(minHeap)
-        res = []
-        for _ in range(k):
-            _, x, y = heapq.heappop(minHeap)
-            res.append((x, y))
-        return res
-```
-
-## Complexity
-
-$O(n+k\log n)$ time and $O(n)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0973 - K Closest Points to Origin.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ A heap of every point has different space bounds from a size-k max heap. Output 
 
 - [[Job Interviews/Coding Practice Index#^lc973|Coding Practice Index — K Closest Points to Origin]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import heapq
+
+class Solution:
+
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        minHeap = []
+        for x, y in points:
+            dist = x ** 2 + y ** 2
+            minHeap.append((dist, x, y))
+        heapq.heapify(minHeap)
+        res = []
+        for _ in range(k):
+            _, x, y = heapq.heappop(minHeap)
+            res.append((x, y))
+        return res
+```
+
+## Complexity
+
+$O(n+k\log n)$ time and $O(n)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

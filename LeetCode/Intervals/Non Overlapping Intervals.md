@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        intervals.sort()
-        res = 0
-        prevEnd = intervals[0][1]
-        for start, end in intervals[1:]:
-            if start >= prevEnd:
-                prevEnd = end
-            else:
-                res += 1
-                prevEnd = min(end, prevEnd)
-        return res
-```
-
-## Complexity
-
-$O(n\log n)$ time and $O(n)$ auxiliary space in Python, including sorting and the loop's slice. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0435 - Non Overlapping Intervals.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ Touching endpoints are allowed here. Compare retained finish times rather than a
 
 - [[Job Interviews/Coding Practice Index#^lc435|Coding Practice Index — Non Overlapping Intervals]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        intervals.sort()
+        res = 0
+        prevEnd = intervals[0][1]
+        for start, end in intervals[1:]:
+            if start >= prevEnd:
+                prevEnd = end
+            else:
+                res += 1
+                prevEnd = min(end, prevEnd)
+        return res
+```
+
+## Complexity
+
+$O(n\log n)$ time and $O(n)$ auxiliary space in Python, including sorting and the loop's slice. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

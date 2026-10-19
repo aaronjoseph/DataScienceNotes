@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import heapq
-
-class KthLargest:
-
-    def __init__(self, k: int, nums: List[int]):
-        self.minHeap, self.k = (nums, k)
-        heapq.heapify(self.minHeap)
-        while len(self.minHeap) > k:
-            heapq.heappop(self.minHeap)
-
-    def add(self, val: int) -> int:
-        heapq.heappush(self.minHeap, val)
-        if len(self.minHeap) > self.k:
-            heapq.heappop(self.minHeap)
-        return self.minHeap[0]
-```
-
-## Complexity
-
-Initialization takes $O(n+(n-k)_+\log(n+1))$ time for this heapify-and-trim implementation; each add takes $O(\log(k+1))$ time, with $O(k)$ retained storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0703 - Kth Largest Element In a Stream.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ Duplicates count as separate ranked occurrences. The constructor mutates the sup
 
 - [[Job Interviews/Coding Practice Index#^lc703|Coding Practice Index — Kth Largest Element In a Stream]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import heapq
+
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.minHeap, self.k = (nums, k)
+        heapq.heapify(self.minHeap)
+        while len(self.minHeap) > k:
+            heapq.heappop(self.minHeap)
+
+    def add(self, val: int) -> int:
+        heapq.heappush(self.minHeap, val)
+        if len(self.minHeap) > self.k:
+            heapq.heappop(self.minHeap)
+        return self.minHeap[0]
+```
+
+## Complexity
+
+Initialization takes $O(n+(n-k)_+\log(n+1))$ time for this heapify-and-trim implementation; each add takes $O(\log(k+1))$ time, with $O(k)$ retained storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

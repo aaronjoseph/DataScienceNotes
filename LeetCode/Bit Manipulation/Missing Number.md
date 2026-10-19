@@ -8,28 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def missingNumber(self, nums: List[int]) -> int:
-        res = len(nums)
-        for i in range(len(nums)):
-            res += i - nums[i]
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0268 - Missing Number.png|700]]
 
 ## Overview
 
@@ -63,6 +44,29 @@ Distinct values and the exact range guarantee correctness. Python avoids fixed-w
 
 - [[Job Interviews/Coding Practice Index#^lc268|Coding Practice Index — Missing Number]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def missingNumber(self, nums: List[int]) -> int:
+        res = len(nums)
+        for i in range(len(nums)):
+            res += i - nums[i]
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0323 - Number of Connected Components In An Undirected Graph.png|700]]
+
+## Overview
+
+Count connected components in an undirected graph. Merge sets when an edge joins different components.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc323|LeetCode — LC 323]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Initialize a disjoint-set parent and size for every vertex; start the component count at n.
+2. For each edge, find both roots using path compression.
+3. If roots differ, attach the smaller component to the larger and decrement the count.
+
+## Why It Works
+
+Each successful union merges exactly two previously separate components, reducing their number by one.
+
+## Worked Example
+
+**Illustrative input:** `n = 5`, edges `[[0, 1], [1, 2], [3, 4]]`.
+
+**Trace:** Three successful unions reduce five initial components to two.
+
+**Result:** Return `2`.
+
+## Common Pitfalls
+
+Include isolated vertices in the initial count. Do not decrement the count for an edge already inside one component.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc323|Coding Practice Index — Number of Connected Components In An Undirected Graph]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -42,39 +79,6 @@ class Solution:
 ## Complexity
 
 $O((V+E)\alpha(V))$ amortized time and $O(V)$ extra space with path compression and union by size. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Count connected components in an undirected graph. Merge sets when an edge joins different components.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc323|LeetCode — LC 323]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Initialize a disjoint-set parent and size for every vertex; start the component count at n.
-2. For each edge, find both roots using path compression.
-3. If roots differ, attach the smaller component to the larger and decrement the count.
-
-## Why It Works
-
-Each successful union merges exactly two previously separate components, reducing their number by one.
-
-## Worked Example
-
-**Illustrative input:** `n = 5`, edges `[[0, 1], [1, 2], [3, 4]]`.
-
-**Trace:** Three successful unions reduce five initial components to two.
-
-**Result:** Return `2`.
-
-## Common Pitfalls
-
-Include isolated vertices in the initial count. Do not decrement the count for an edge already inside one component.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc323|Coding Practice Index — Number of Connected Components In An Undirected Graph]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

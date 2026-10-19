@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0051 - N Queens.png|700]]
+
+## Overview
+
+Place n queens on an n by n board so that no two attack one another.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc51|LeetCode — LC 51]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Place one queen per row and track occupied columns and both diagonal identifiers.
+2. Try only columns whose column and diagonals are free.
+3. Mark a choice, recurse to the next row, and undo it; copy the completed board after n rows.
+
+## Why It Works
+
+One queen per row removes row conflicts, while column and diagonal sets reject every remaining attack relation.
+
+## Worked Example
+
+**Illustrative input:** `n = 4`.
+
+**Trace:** One valid placement uses columns [1, 3, 0, 2] for successive rows.
+
+**Result:** The search returns this board and its mirror.
+
+## Common Pitfalls
+
+Undo all three constraint sets after each choice. Diagonals are identified by row-plus-column and row-minus-column.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc51|Coding Practice Index — N Queens]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -51,39 +88,6 @@ class Solution:
 ## Complexity
 
 A loose search bound is $O(n\,n!+Qn^2)$ time for `Q` solutions; $O(n^2)$ auxiliary board storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Place n queens on an n by n board so that no two attack one another.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc51|LeetCode — LC 51]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Place one queen per row and track occupied columns and both diagonal identifiers.
-2. Try only columns whose column and diagonals are free.
-3. Mark a choice, recurse to the next row, and undo it; copy the completed board after n rows.
-
-## Why It Works
-
-One queen per row removes row conflicts, while column and diagonal sets reject every remaining attack relation.
-
-## Worked Example
-
-**Illustrative input:** `n = 4`.
-
-**Trace:** One valid placement uses columns [1, 3, 0, 2] for successive rows.
-
-**Result:** The search returns this board and its mirror.
-
-## Common Pitfalls
-
-Undo all three constraint sets after each choice. Diagonals are identified by row-plus-column and row-minus-column.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc51|Coding Practice Index — N Queens]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

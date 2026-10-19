@@ -8,39 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def plusOne(self, digits: List[int]) -> List[int]:
-        one = 1
-        i = 0
-        digits = digits[::-1]
-        while one:
-            if i < len(digits):
-                if digits[i] == 9:
-                    digits[i] = 0
-                else:
-                    digits[i] += 1
-                    one = 0
-            else:
-                digits.append(one)
-                one = 0
-            i += 1
-        return digits[::-1]
-```
-
-## Complexity
-
-$O(n)$ time and $O(n)$ extra space in this implementation because it reverses with slices. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0066 - Plus One.png|700]]
 
 ## Overview
 
@@ -74,6 +44,40 @@ All-nine input grows by one digit. A backward in-place scan can reduce auxiliary
 
 - [[Job Interviews/Coding Practice Index#^lc66|Coding Practice Index — Plus One]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def plusOne(self, digits: List[int]) -> List[int]:
+        one = 1
+        i = 0
+        digits = digits[::-1]
+        while one:
+            if i < len(digits):
+                if digits[i] == 9:
+                    digits[i] = 0
+                else:
+                    digits[i] += 1
+                    one = 0
+            else:
+                digits.append(one)
+                one = 0
+            i += 1
+        return digits[::-1]
+```
+
+## Complexity
+
+$O(n)$ time and $O(n)$ extra space in this implementation because it reverses with slices. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

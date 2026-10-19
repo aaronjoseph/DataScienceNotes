@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def findMin(self, nums: List[int]) -> int:
-        start, end = (0, len(nums) - 1)
-        curr_min = float('inf')
-        while start < end:
-            mid = start + (end - start) // 2
-            curr_min = min(curr_min, nums[mid])
-            if nums[mid] > nums[end]:
-                start = mid + 1
-            else:
-                end = mid - 1
-        return min(curr_min, nums[start])
-```
-
-## Complexity
-
-$O(\log n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0153 - Find Minimum In Rotated Sorted Array.png|700]]
 
 ## Overview
 
@@ -70,6 +45,35 @@ This solution assumes distinct values. A first-true variant uses `hi = mid` inst
 - [[Job Interviews/Coding Practice Index#^lc153|Coding Practice Index — Find Minimum In Rotated Sorted Array]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 - [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def findMin(self, nums: List[int]) -> int:
+        start, end = (0, len(nums) - 1)
+        curr_min = float('inf')
+        while start < end:
+            mid = start + (end - start) // 2
+            curr_min = min(curr_min, nums[mid])
+            if nums[mid] > nums[end]:
+                start = mid + 1
+            else:
+                end = mid - 1
+        return min(curr_min, nums[start])
+```
+
+## Complexity
+
+$O(\log n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

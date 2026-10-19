@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        prices = [float('inf')] * n
-        prices[src] = 0
-        for i in range(k + 1):
-            tmpPrices = prices.copy()
-            for s, d, p in flights:
-                if prices[s] == float('inf'):
-                    continue
-                if prices[s] + p < tmpPrices[d]:
-                    tmpPrices[d] = prices[s] + p
-            prices = tmpPrices
-        return -1 if prices[dst] == float('inf') else prices[dst]
-```
-
-## Complexity
-
-$O((k+1)(V+E))$ time, including array copies, and $O(V)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0787 - Cheapest Flights Within K Stops.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ Do not update the same cost array in place within a round; that could use too ma
 
 - [[Job Interviews/Coding Practice Index#^lc787|Coding Practice Index — Cheapest Flights Within K Stops]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        prices = [float('inf')] * n
+        prices[src] = 0
+        for i in range(k + 1):
+            tmpPrices = prices.copy()
+            for s, d, p in flights:
+                if prices[s] == float('inf'):
+                    continue
+                if prices[s] + p < tmpPrices[d]:
+                    tmpPrices[d] = prices[s] + p
+            prices = tmpPrices
+        return -1 if prices[dst] == float('inf') else prices[dst]
+```
+
+## Complexity
+
+$O((k+1)(V+E))$ time, including array copies, and $O(V)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

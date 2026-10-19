@@ -8,27 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
-        for i in range(len(cost) - 3, -1, -1):
-            cost[i] += min(cost[i + 1], cost[i + 2])
-        return min(cost[0], cost[1])
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space because this implementation overwrites the input array. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0746 - Min Cost Climbing Stairs.png|700]]
 
 ## Overview
 
@@ -62,6 +44,28 @@ The destination is beyond the final index. This implementation assumes at least 
 
 - [[Job Interviews/Coding Practice Index#^lc746|Coding Practice Index — Min Cost Climbing Stairs]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        for i in range(len(cost) - 3, -1, -1):
+            cost[i] += min(cost[i + 1], cost[i + 2])
+        return min(cost[0], cost[1])
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space because this implementation overwrites the input array. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

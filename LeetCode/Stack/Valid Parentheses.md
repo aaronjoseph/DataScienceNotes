@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def isValid(self, s: str) -> bool:
-        bracketMap = {')': '(', ']': '[', '}': '{'}
-        stack = []
-        for c in s:
-            if c not in bracketMap:
-                stack.append(c)
-                continue
-            if not stack or stack[-1] != bracketMap[c]:
-                return False
-            stack.pop()
-        return not stack
-```
-
-## Complexity
-
-$O(n)$ time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0020 - Valid Parentheses.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ An equal number of openers and closers is insufficient. Reject unmatched closing
 
 - [[Job Interviews/Coding Practice Index#^lc20|Coding Practice Index — Valid Parentheses]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def isValid(self, s: str) -> bool:
+        bracketMap = {')': '(', ']': '[', '}': '{'}
+        stack = []
+        for c in s:
+            if c not in bracketMap:
+                stack.append(c)
+                continue
+            if not stack or stack[-1] != bracketMap[c]:
+                return False
+            stack.pop()
+        return not stack
+```
+
+## Complexity
+
+$O(n)$ time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

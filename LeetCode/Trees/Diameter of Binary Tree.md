@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-from typing import Optional
-
-class Solution:
-
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        res = 0
-
-        def dfs(root):
-            nonlocal res
-            if not root:
-                return 0
-            left = dfs(root.left)
-            right = dfs(root.right)
-            res = max(res, left + right)
-            return 1 + max(left, right)
-        dfs(root)
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0543 - Diameter of Binary Tree.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ The diameter counts edges and need not pass through the root. Height and diamete
 
 - [[Job Interviews/Coding Practice Index#^lc543|Coding Practice Index — Diameter of Binary Tree]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+from typing import Optional
+
+class Solution:
+
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        res = 0
+
+        def dfs(root):
+            nonlocal res
+            if not root:
+                return 0
+            left = dfs(root.left)
+            right = dfs(root.right)
+            res = max(res, left + right)
+            return 1 + max(left, right)
+        dfs(root)
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

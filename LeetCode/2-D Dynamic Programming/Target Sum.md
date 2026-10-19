@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        dp = {}
-
-        def backtrack(i, total):
-            if i == len(nums):
-                return 1 if total == target else 0
-            if (i, total) in dp:
-                return dp[i, total]
-            dp[i, total] = backtrack(i + 1, total + nums[i]) + backtrack(i + 1, total - nums[i])
-            return dp[i, total]
-        return backtrack(0, 0)
-```
-
-## Complexity
-
-$O(n(S+1))$ time and space as a range-based upper bound for total absolute sum `S`; the recursion also uses $O(n)$ stack space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0494 - Target Sum.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ Zeros still produce two sign choices. The target may be negative, and repeated v
 
 - [[Job Interviews/Coding Practice Index#^lc494|Coding Practice Index — Target Sum]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        dp = {}
+
+        def backtrack(i, total):
+            if i == len(nums):
+                return 1 if total == target else 0
+            if (i, total) in dp:
+                return dp[i, total]
+            dp[i, total] = backtrack(i + 1, total + nums[i]) + backtrack(i + 1, total - nums[i])
+            return dp[i, total]
+        return backtrack(0, 0)
+```
+
+## Complexity
+
+$O(n(S+1))$ time and space as a range-based upper bound for total absolute sum `S`; the recursion also uses $O(n)$ stack space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

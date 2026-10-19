@@ -326,7 +326,7 @@ related:
 - [x] **V1 · Ch 02** — Capacity estimation
 - [x] **V1 · Ch 03** — Interview structure
 - [x] **V1 · Ch 04** — Rate limiting
-- [ ] **V1 · Ch 05** — Consistent hashing
+- [ ] **V1 · Ch 05** — [[System_Design/Consistent Hashing|Consistent hashing]]
 	Related: [[Database Sharding]]
 - [ ] **V1 · Ch 06** — Key-value storage
 - [ ] **V1 · Ch 07** — Distributed unique identifiers

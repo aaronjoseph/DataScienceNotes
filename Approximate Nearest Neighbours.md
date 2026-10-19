@@ -60,6 +60,9 @@ Start with a flat exact scan on a representative sample. Hold the embeddings fix
 
 Graph breadth, the number of IVF lists probed, and quantisation precision control different sources of approximation.[^index] Raising query effort cannot recover information lost through an incompatible embedding model. Rebuilding with more graph connectivity also differs from widening a search on the existing graph. Record build parameters separately from request parameters so the comparison is reproducible.
 
+> [!question] How does ANN scale across machines when some vector regions are popular?
+> See [[System_Design/Vector Search Scaling|Vector Search Scaling]] for local HNSW search versus distributed shard routing, hot regions, and the role of replicas.
+
 ## Exercise
 
 Hold embeddings and corpus fixed, then change only index search effort. Identify which measured changes concern approximation and which require relevance judgments.

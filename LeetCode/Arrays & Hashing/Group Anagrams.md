@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import collections
-
-class Solution:
-
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        ans = collections.defaultdict(list)
-        for s in strs:
-            count = [0] * 26
-            for c in s:
-                count[ord(c) - ord('a')] += 1
-            ans[tuple(count)].append(s)
-        return list(ans.values())
-```
-
-## Complexity
-
-$O(L)$ expected time for `L` total characters; $O(g)$ signature storage for `g` groups with a fixed alphabet, plus $O(n)$ word references. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0049 - Group Anagrams.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ The 26-slot implementation assumes lowercase English letters. Dictionary keys mu
 
 - [[Job Interviews/Coding Practice Index#^lc49|Coding Practice Index — Group Anagrams]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import collections
+
+class Solution:
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        ans = collections.defaultdict(list)
+        for s in strs:
+            count = [0] * 26
+            for c in s:
+                count[ord(c) - ord('a')] += 1
+            ans[tuple(count)].append(s)
+        return list(ans.values())
+```
+
+## Complexity
+
+$O(L)$ expected time for `L` total characters; $O(g)$ signature storage for `g` groups with a fixed alphabet, plus $O(n)$ word references. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

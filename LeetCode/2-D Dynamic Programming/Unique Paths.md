@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def uniquePaths(self, m: int, n: int) -> int:
-        row = [1] * n
-        for i in range(m - 1):
-            newRow = [1] * n
-            for j in range(n - 2, -1, -1):
-                newRow[j] = newRow[j + 1] + row[j]
-            row = newRow
-        return row[0]
-```
-
-## Complexity
-
-$O(mn)$ time and $O(n)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0062 - Unique Paths.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ This version has no blocked cells. Edge rows and columns have exactly one remain
 
 - [[Job Interviews/Coding Practice Index#^lc62|Coding Practice Index — Unique Paths]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def uniquePaths(self, m: int, n: int) -> int:
+        row = [1] * n
+        for i in range(m - 1):
+            newRow = [1] * n
+            for j in range(n - 2, -1, -1):
+                newRow[j] = newRow[j + 1] + row[j]
+            row = newRow
+        return row[0]
+```
+
+## Complexity
+
+$O(mn)$ time and $O(n)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

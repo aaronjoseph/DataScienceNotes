@@ -8,6 +8,44 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0074 - Search a 2D Matrix.png|700]]
+
+## Overview
+
+Search a matrix whose rows are sorted and whose next row starts after the previous row ends.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc74|LeetCode — LC 74]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Binary search rows using their first and last values.
+2. If no row can contain the target, return false.
+3. Binary search within the candidate row and return whether the target is found.
+
+## Why It Works
+
+The row ordering excludes entire rows, then ordinary sorted-array search excludes columns within the surviving row.
+
+## Worked Example
+
+**Illustrative input:** `matrix = [[1, 3, 5], [7, 9, 11]]`, `target = 9`.
+
+**Trace:** Select the second row, then find its middle value.
+
+**Result:** Return `True`.
+
+## Common Pitfalls
+
+This requires global row-to-row ordering. A matrix sorted independently by row and column is a different problem.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc74|Coding Practice Index — Search a 2D Matrix]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
+
 ## Template
 
 ### Python
@@ -49,40 +87,6 @@ class Solution:
 ## Complexity
 
 $O(\log r+\log c)$ time and $O(1)$ extra space for `r` rows and `c` columns. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Search a matrix whose rows are sorted and whose next row starts after the previous row ends.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc74|LeetCode — LC 74]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Binary search rows using their first and last values.
-2. If no row can contain the target, return false.
-3. Binary search within the candidate row and return whether the target is found.
-
-## Why It Works
-
-The row ordering excludes entire rows, then ordinary sorted-array search excludes columns within the surviving row.
-
-## Worked Example
-
-**Illustrative input:** `matrix = [[1, 3, 5], [7, 9, 11]]`, `target = 9`.
-
-**Trace:** Select the second row, then find its middle value.
-
-**Result:** Return `True`.
-
-## Common Pitfalls
-
-This requires global row-to-row ordering. A matrix sorted independently by row and column is a different problem.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc74|Coding Practice Index — Search a 2D Matrix]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
-- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
 
 ## References & Useful Links
 

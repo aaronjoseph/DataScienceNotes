@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
-        dummy = node = ListNode()
-        while list1 and list2:
-            if list1.val < list2.val:
-                node.next = list1
-                list1 = list1.next
-            else:
-                node.next = list2
-                list2 = list2.next
-            node = node.next
-        node.next = list1 or list2
-        return dummy.next
-```
-
-## Complexity
-
-$O(n+m)$ time and $O(1)$ extra space for iterative node reuse. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0021 - Merge Two Sorted Lists.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ The implementation reuses and relinks input nodes. An empty input is handled by 
 
 - [[Job Interviews/Coding Practice Index#^lc21|Coding Practice Index — Merge Two Sorted Lists]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        dummy = node = ListNode()
+        while list1 and list2:
+            if list1.val < list2.val:
+                node.next = list1
+                list1 = list1.next
+            else:
+                node.next = list2
+                list2 = list2.next
+            node = node.next
+        node.next = list1 or list2
+        return dummy.next
+```
+
+## Complexity
+
+$O(n+m)$ time and $O(1)$ extra space for iterative node reuse. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

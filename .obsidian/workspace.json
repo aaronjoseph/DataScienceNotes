@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
-                "mode": "source",
+                "file": "System_Design/Consistent Hashing.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Koko Eating Bananas"
+              "title": "Consistent Hashing"
             }
           },
           {
@@ -113,7 +113,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#leetcode  ",
+                "query": "Find Minimum in Rotated Sorted Array",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "LeetCode/Binary Search/Koko Eating Bananas.md",
+                "file": "System_Design/Consistent Hashing.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -286,7 +286,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -307,18 +307,45 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "8bbf350e56d0349f",
+  "active": "9582471006681df1",
   "lastOpenFiles": [
+    "outputs/leetcode-infographics/report.txt",
+    "outputs/leetcode-infographics/manifest.json",
+    "outputs/leetcode-infographics/__pycache__/migrate.cpython-314.pyc",
+    "LeetCode/Trees/Binary Tree Level Order Traversal.md",
+    "LeetCode/Stack/Car Fleet.md",
+    "LeetCode/1-D Dynamic Programming/Coin Change.md",
+    "System_Design/Consistent Hashing.md",
+    "outputs/leetcode-infographics/__pycache__/migrate.cpython-311.pyc",
+    "Attachements/LeetCode/LC2013 - Detect Squares.png",
+    "Attachements/LeetCode/LC1899 - Merge Triplets to Form Target Triplet.png",
+    "Attachements/LeetCode/LC1851 - Minimum Interval to Include Each Query.png",
+    "Attachements/LeetCode/LC1584 - Min Cost to Connect All Points.png",
+    "Attachements/LeetCode/LC1448 - Count Good Nodes In Binary Tree.png",
+    "Attachements/LeetCode/LC1143 - Longest Common Subsequence.png",
+    "Attachements/LeetCode/LC1046 - Last Stone Weight.png",
+    "Attachements/LeetCode/LC0994 - Rotting Oranges.png",
+    "Attachements/LeetCode/LC0981 - Time Based Key Value Store.png",
+    "Attachements/LeetCode/LC0973 - K Closest Points to Origin.png",
+    "outputs/leetcode-infographics/migrate.py",
+    "outputs/leetcode-infographics/__pycache__/pseudocode_overrides.cpython-314.pyc",
+    "outputs/leetcode-infographics/pseudocode_overrides.py",
+    "Attachements/LeetCode",
+    "outputs/leetcode-infographics/__pycache__/prepare.cpython-314.pyc",
+    "outputs/leetcode-infographics/render.py",
+    "outputs/leetcode-infographics/__pycache__/prepare.cpython-311.pyc",
+    "System_Design/Vector Search Scaling.md",
+    "Action-Plan Kanban.md",
+    "copilot/copilot-conversations/agent__In_System_Design_Backlog,_can_we_add_notes_for_ch@20261019_103239.md",
+    "Database Sharding.md",
+    "LeetCode/Binary Search/Find Minimum In Rotated Sorted Array.md",
+    "Job Interviews/Coding Practice Index.md",
+    "LeetCode/Binary Search/Koko Eating Bananas.md",
     "copilot/copilot-conversations/agent__For_all_the_leetcode_notes,_that_we_have_can_we@20261018_212137.md",
     "Search2.0 architecture.md",
-    "LeetCode/Binary Search/Koko Eating Bananas.md",
-    "Job Interviews/Coding Practice Index.md",
-    "Action-Plan Kanban.md",
-    "Action Plan.base",
     "Action-Plan.md",
     "LeetCode/Binary Search/Median of Two Sorted Arrays.md",
     "outputs/coding-backlog-update.md",
-    "outputs/validate_coding_backlog.py",
     "LeetCode/Bit Manipulation/Reverse Integer.md",
     "LeetCode/Bit Manipulation/Single Number.md",
     "LeetCode/Bit Manipulation/Sum of Two Integers.md",
@@ -326,35 +353,8 @@
     "LeetCode/Bit Manipulation/Reverse Bits.md",
     "LeetCode/Bit Manipulation/Counting Bits.md",
     "LeetCode/Bit Manipulation/Number of 1 Bits.md",
-    "LeetCode/Bit Manipulation",
     "LeetCode/Math & Geometry/Detect Squares.md",
     "LeetCode/Math & Geometry/Multiply Strings.md",
-    "LeetCode/Math & Geometry/Pow(x, n).md",
-    "LeetCode/Math & Geometry/Plus One.md",
-    "LeetCode/Math & Geometry/Happy Number.md",
-    "LeetCode/Math & Geometry/Set Matrix Zeroes.md",
-    "LeetCode/Math & Geometry/Spiral Matrix.md",
-    "LeetCode/Math & Geometry/Rotate Image.md",
-    "LeetCode/Math & Geometry",
-    "LeetCode/Intervals/Minimum Interval to Include Each Query.md",
-    "LeetCode/Intervals/Meeting Rooms II.md",
-    "LeetCode/Intervals/Meeting Rooms.md",
-    "LeetCode/Intervals",
-    "LeetCode/Greedy",
-    "LeetCode/2-D Dynamic Programming",
-    "LeetCode/1-D Dynamic Programming",
-    "LeetCode/Advanced Graphs",
-    "LeetCode/Graphs",
-    "copilot/copilot-conversations/attachments/copilot-image-e4908760fe90d3076ed2e078500cb3d4c5e65b7a26663be70da42b9b394f13b9.png",
-    "copilot/copilot-conversations/attachments/copilot-image-788c0a1676c335a53b5a3119dcf0f7b200d8bd379435cd38b3c5d2c32f96ef5f.png",
-    "Attachements/Agoda Search Service - Interview Architecture.png",
-    "Attachements/Masked_SA&SA.png",
-    "Attachements/Transformers.png",
-    "Attachements/Transformers-1.png",
-    "Attachements/Masked_SA&SA.png",
-    "Job Interviews/Company_Interviews/Attachements/Pasted image.png",
-    "Job Interviews/Company_Interviews/Attachements/Pasted image 2.png",
-    "Job Interviews/Company_Interviews/Attachements/Pasted image 1.png",
     "Untitled.canvas"
   ]
 }

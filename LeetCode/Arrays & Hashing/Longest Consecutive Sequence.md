@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def longestConsecutive(self, nums: List[int]) -> int:
-        numSet = set(nums)
-        longest = 0
-        for n in numSet:
-            if n - 1 not in numSet:
-                length = 1
-                while n + length in numSet:
-                    length += 1
-                longest = max(length, longest)
-        return longest
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0128 - Longest Consecutive Sequence.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ Iterate over the set, not repeated input values, or duplicate starts can repeat 
 
 - [[Job Interviews/Coding Practice Index#^lc128|Coding Practice Index — Longest Consecutive Sequence]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numSet = set(nums)
+        longest = 0
+        for n in numSet:
+            if n - 1 not in numSet:
+                length = 1
+                while n + length in numSet:
+                    length += 1
+                longest = max(length, longest)
+        return longest
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

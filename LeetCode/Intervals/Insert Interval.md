@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        res = []
-        for i in range(len(intervals)):
-            if newInterval[1] < intervals[i][0]:
-                res.append(newInterval)
-                return res + intervals[i:]
-            elif newInterval[0] > intervals[i][1]:
-                res.append(intervals[i])
-            else:
-                newInterval = [min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])]
-        res.append(newInterval)
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and up to $O(n)$ output storage; list slicing/concatenation in this implementation also uses $O(n)$ transient space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0057 - Insert Interval.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ The inputs are already sorted and nonoverlapping. These closed intervals merge w
 
 - [[Job Interviews/Coding Practice Index#^lc57|Coding Practice Index — Insert Interval]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        res = []
+        for i in range(len(intervals)):
+            if newInterval[1] < intervals[i][0]:
+                res.append(newInterval)
+                return res + intervals[i:]
+            elif newInterval[0] > intervals[i][1]:
+                res.append(intervals[i])
+            else:
+                newInterval = [min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])]
+        res.append(newInterval)
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and up to $O(n)$ output storage; list slicing/concatenation in this implementation also uses $O(n)$ transient space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

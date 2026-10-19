@@ -8,31 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def countBits(self, n: int) -> List[int]:
-        dp = [0] * (n + 1)
-        offset = 1
-        for i in range(1, n + 1):
-            if offset * 2 == i:
-                offset = i
-            dp[i] = 1 + dp[i - offset]
-        return dp
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ auxiliary space beyond the required $O(n)$ output table. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0338 - Counting Bits.png|700]]
 
 ## Overview
 
@@ -66,6 +44,32 @@ Keep zero's count at zero. Update the tracked power exactly when the current val
 
 - [[Job Interviews/Coding Practice Index#^lc338|Coding Practice Index — Counting Bits]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def countBits(self, n: int) -> List[int]:
+        dp = [0] * (n + 1)
+        offset = 1
+        for i in range(1, n + 1):
+            if offset * 2 == i:
+                offset = i
+            dp[i] = 1 + dp[i - offset]
+        return dp
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ auxiliary space beyond the required $O(n)$ output table. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def minDistance(self, word1: str, word2: str) -> int:
-        dp = [[float('inf')] * (len(word2) + 1) for i in range(len(word1) + 1)]
-        for j in range(len(word2) + 1):
-            dp[len(word1)][j] = len(word2) - j
-        for i in range(len(word1) + 1):
-            dp[i][len(word2)] = len(word1) - i
-        for i in range(len(word1) - 1, -1, -1):
-            for j in range(len(word2) - 1, -1, -1):
-                if word1[i] == word2[j]:
-                    dp[i][j] = dp[i + 1][j + 1]
-                else:
-                    dp[i][j] = 1 + min(dp[i + 1][j], dp[i][j + 1], dp[i + 1][j + 1])
-        return dp[0][0]
-```
-
-## Complexity
-
-$O(mn+m+n)$ time and space for source lengths `m` and `n`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0072 - Edit Distance.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ This is Levenshtein distance with unit edit costs. Swapping adjacent characters 
 
 - [[Job Interviews/Coding Practice Index#^lc72|Coding Practice Index — Edit Distance]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def minDistance(self, word1: str, word2: str) -> int:
+        dp = [[float('inf')] * (len(word2) + 1) for i in range(len(word1) + 1)]
+        for j in range(len(word2) + 1):
+            dp[len(word1)][j] = len(word2) - j
+        for i in range(len(word1) + 1):
+            dp[i][len(word2)] = len(word1) - i
+        for i in range(len(word1) - 1, -1, -1):
+            for j in range(len(word2) - 1, -1, -1):
+                if word1[i] == word2[j]:
+                    dp[i][j] = dp[i + 1][j + 1]
+                else:
+                    dp[i][j] = 1 + min(dp[i + 1][j], dp[i][j + 1], dp[i + 1][j + 1])
+        return dp[0][0]
+```
+
+## Complexity
+
+$O(mn+m+n)$ time and space for source lengths `m` and `n`. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

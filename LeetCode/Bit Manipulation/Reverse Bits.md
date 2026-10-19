@@ -8,28 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def reverseBits(self, n: int) -> int:
-        res = 0
-        for i in range(32):
-            bit = n >> i & 1
-            res += bit << 31 - i
-        return res
-```
-
-## Complexity
-
-$O(32)$ time and $O(1)$ extra space; for variable width `w`, the loop takes $O(w)$ steps. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0190 - Reverse Bits.png|700]]
 
 ## Overview
 
@@ -63,6 +44,29 @@ Reverse the full word width, not just the digits of the shortest binary represen
 
 - [[Job Interviews/Coding Practice Index#^lc190|Coding Practice Index — Reverse Bits]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def reverseBits(self, n: int) -> int:
+        res = 0
+        for i in range(32):
+            bit = n >> i & 1
+            res += bit << 31 - i
+        return res
+```
+
+## Complexity
+
+$O(32)$ time and $O(1)$ extra space; for variable width `w`, the loop takes $O(w)$ steps. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

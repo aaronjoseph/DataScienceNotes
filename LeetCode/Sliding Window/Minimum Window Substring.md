@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0076 - Minimum Window Substring.png|700]]
+
+## Overview
+
+Find the shortest substring of s containing all characters of t, including repeated requirements.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc76|LeetCode — LC 76]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Count required characters and maintain window counts.
+2. Expand right until every required character count is met.
+3. While valid, record the window and shrink left; stop shrinking when a required count falls short.
+
+## Why It Works
+
+For each right endpoint, shrinking explores its shortest valid window before any necessary character is lost.
+
+## Worked Example
+
+**Illustrative input:** `s = "ADOBECODEBANC"`, `t = "ABC"`.
+
+**Trace:** After obtaining coverage, repeated shrinking eventually finds BANC.
+
+**Result:** Return `"BANC"`.
+
+## Common Pitfalls
+
+Count multiplicities, not just distinct letters. Return an empty string when coverage is impossible.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc76|Coding Practice Index — Minimum Window Substring]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -48,39 +85,6 @@ class Solution:
 ## Complexity
 
 $O(n+m)$ expected time and $O(u)$ space for the two string lengths and tracked alphabet, excluding the returned substring. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Find the shortest substring of s containing all characters of t, including repeated requirements.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc76|LeetCode — LC 76]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Count required characters and maintain window counts.
-2. Expand right until every required character count is met.
-3. While valid, record the window and shrink left; stop shrinking when a required count falls short.
-
-## Why It Works
-
-For each right endpoint, shrinking explores its shortest valid window before any necessary character is lost.
-
-## Worked Example
-
-**Illustrative input:** `s = "ADOBECODEBANC"`, `t = "ABC"`.
-
-**Trace:** After obtaining coverage, repeated shrinking eventually finds BANC.
-
-**Result:** Return `"BANC"`.
-
-## Common Pitfalls
-
-Count multiplicities, not just distinct letters. Return an empty string when coverage is impossible.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc76|Coding Practice Index — Minimum Window Substring]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

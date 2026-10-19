@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        dp = [False] * (len(s) + 1)
-        dp[len(s)] = True
-        for i in range(len(s) - 1, -1, -1):
-            for w in wordDict:
-                if i + len(w) <= len(s) and s[i:i + len(w)] == w:
-                    dp[i] = dp[i + len(w)]
-                if dp[i]:
-                    break
-        return dp[0]
-```
-
-## Complexity
-
-$O(nDL)$ worst-case time for `D` words of maximum length `L`, accounting for Python slicing/comparison; $O(n+L)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0139 - Word Break.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ This is exact segmentation with reusable words, not substring presence. Greedily
 
 - [[Job Interviews/Coding Practice Index#^lc139|Coding Practice Index — Word Break]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        dp = [False] * (len(s) + 1)
+        dp[len(s)] = True
+        for i in range(len(s) - 1, -1, -1):
+            for w in wordDict:
+                if i + len(w) <= len(s) and s[i:i + len(w)] == w:
+                    dp[i] = dp[i + len(w)]
+                if dp[i]:
+                    break
+        return dp[0]
+```
+
+## Complexity
+
+$O(nDL)$ worst-case time for `D` words of maximum length `L`, accounting for Python slicing/comparison; $O(n+L)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

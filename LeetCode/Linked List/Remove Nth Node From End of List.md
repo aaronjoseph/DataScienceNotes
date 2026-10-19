@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
-        dummy = ListNode(0, head)
-        left = dummy
-        right = head
-        while n > 0:
-            right = right.next
-            n -= 1
-        while right:
-            left = left.next
-            right = right.next
-        left.next = left.next.next
-        return dummy.next
-```
-
-## Complexity
-
-$O(L)$ time and $O(1)$ extra space for list length `L`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0019 - Remove Nth Node From End of List.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ The dummy handles removing the head. The problem guarantees n is within the list
 
 - [[Job Interviews/Coding Practice Index#^lc19|Coding Practice Index — Remove Nth Node From End of List]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        dummy = ListNode(0, head)
+        left = dummy
+        right = head
+        while n > 0:
+            right = right.next
+            n -= 1
+        while right:
+            left = left.next
+            right = right.next
+        left.next = left.next.next
+        return dummy.next
+```
+
+## Complexity
+
+$O(L)$ time and $O(1)$ extra space for list length `L`. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

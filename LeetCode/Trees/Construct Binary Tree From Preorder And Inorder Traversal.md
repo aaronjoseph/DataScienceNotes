@@ -8,37 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-from typing import List, Optional
-
-class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        positions = {value: i for i, value in enumerate(inorder)}
-        next_root = 0
-        def build(left, right):
-            nonlocal next_root
-            if left > right:
-                return None
-            value = preorder[next_root]
-            next_root += 1
-            middle = positions[value]
-            node = TreeNode(value)
-            node.left = build(left, middle - 1)
-            node.right = build(middle + 1, right)
-            return node
-        return build(0, len(inorder) - 1)
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(n)$ auxiliary space for the index map and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0105 - Construct Binary Tree From Preorder And Inorder Traversal.png|700]]
 
 ## Overview
 
@@ -72,6 +44,38 @@ Distinct values and consistent traversals are required. Repeated slicing and lin
 
 - [[Job Interviews/Coding Practice Index#^lc105|Coding Practice Index — Construct Binary Tree From Preorder And Inorder Traversal]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+from typing import List, Optional
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        positions = {value: i for i, value in enumerate(inorder)}
+        next_root = 0
+        def build(left, right):
+            nonlocal next_root
+            if left > right:
+                return None
+            value = preorder[next_root]
+            next_root += 1
+            middle = positions[value]
+            node = TreeNode(value)
+            node.left = build(left, middle - 1)
+            node.right = build(middle + 1, right)
+            return node
+        return build(0, len(inorder) - 1)
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(n)$ auxiliary space for the index map and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

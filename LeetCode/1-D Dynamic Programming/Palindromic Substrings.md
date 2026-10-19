@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def countSubstrings(self, s: str) -> int:
-        res = 0
-        for i in range(len(s)):
-            res += self.countPali(s, i, i)
-            res += self.countPali(s, i, i + 1)
-        return res
-
-    def countPali(self, s, l, r):
-        res = 0
-        while l >= 0 and r < len(s) and (s[l] == s[r]):
-            res += 1
-            l -= 1
-            r += 1
-        return res
-```
-
-## Complexity
-
-$O(n^2)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0647 - Palindromic Substrings.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Count occurrences rather than unique strings. Single characters are palindromes.
 
 - [[Job Interviews/Coding Practice Index#^lc647|Coding Practice Index — Palindromic Substrings]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def countSubstrings(self, s: str) -> int:
+        res = 0
+        for i in range(len(s)):
+            res += self.countPali(s, i, i)
+            res += self.countPali(s, i, i + 1)
+        return res
+
+    def countPali(self, s, l, r):
+        res = 0
+        while l >= 0 and r < len(s) and (s[l] == s[r]):
+            res += 1
+            l -= 1
+            r += 1
+        return res
+```
+
+## Complexity
+
+$O(n^2)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def maxSubArray(self, nums: List[int]) -> int:
-        res = nums[0]
-        total = 0
-        for n in nums:
-            total += n
-            res = max(res, total)
-            if total < 0:
-                total = 0
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0053 - Maximum Subarray.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ Update the best before resetting the running total. Initializing the best to zer
 
 - [[Job Interviews/Coding Practice Index#^lc53|Coding Practice Index — Maximum Subarray]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def maxSubArray(self, nums: List[int]) -> int:
+        res = nums[0]
+        total = 0
+        for n in nums:
+            total += n
+            res = max(res, total)
+            if total < 0:
+                total = 0
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

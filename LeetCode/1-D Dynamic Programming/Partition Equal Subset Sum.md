@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-    def canPartition(self, nums: List[int]) -> bool:
-        total = sum(nums)
-        if total % 2:
-            return False
-        target = total // 2
-        reachable = {0}
-        for value in nums:
-            reachable = reachable | {
-                current + value for current in reachable
-                if current + value <= target
-            }
-            if target in reachable:
-                return True
-        return target in reachable
-```
-
-## Complexity
-
-$O(nT)$ expected time and $O(T)$ space for half-total target `T`; this is pseudo-polynomial in numeric values. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0416 - Partition Equal Subset Sum.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Use only sums from the previous iteration. Positivity justifies discarding sums 
 
 - [[Job Interviews/Coding Practice Index#^lc416|Coding Practice Index — Partition Equal Subset Sum]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        if total % 2:
+            return False
+        target = total // 2
+        reachable = {0}
+        for value in nums:
+            reachable = reachable | {
+                current + value for current in reachable
+                if current + value <= target
+            }
+            if target in reachable:
+                return True
+        return target in reachable
+```
+
+## Complexity
+
+$O(nT)$ expected time and $O(T)$ space for half-total target `T`; this is pseudo-polynomial in numeric values. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-from typing import Optional
-
-class Solution:
-
-    def isBalanced(self, root: Optional[TreeNode]) -> bool:
-
-        def dfs(root):
-            if not root:
-                return [True, 0]
-            left, right = (dfs(root.left), dfs(root.right))
-            balanced = left[0] and right[0] and (abs(left[1] - right[1]) <= 1)
-            return [balanced, 1 + max(left[1], right[1])]
-        return dfs(root)[0]
-```
-
-## Complexity
-
-$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0110 - Balanced Binary Tree.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ Balance must hold at every node. Recomputing heights from scratch at each node c
 
 - [[Job Interviews/Coding Practice Index#^lc110|Coding Practice Index — Balanced Binary Tree]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+from typing import Optional
+
+class Solution:
+
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+
+        def dfs(root):
+            if not root:
+                return [True, 0]
+            left, right = (dfs(root.left), dfs(root.right))
+            balanced = left[0] and right[0] and (abs(left[1] - right[1]) <= 1)
+            return [balanced, 1 + max(left[1], right[1])]
+        return dfs(root)[0]
+```
+
+## Complexity
+
+$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

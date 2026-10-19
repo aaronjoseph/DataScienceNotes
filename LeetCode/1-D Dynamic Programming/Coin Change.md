@@ -8,31 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [amount + 1] * (amount + 1)
-        dp[0] = 0
-        for a in range(1, amount + 1):
-            for c in coins:
-                if a - c >= 0:
-                    dp[a] = min(dp[a], 1 + dp[a - c])
-        return dp[amount] if dp[amount] != amount + 1 else -1
-```
-
-## Complexity
-
-$O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0322 - Coin Change.png|700]]
 
 ## Overview
 
@@ -66,6 +44,32 @@ Greedy largest-first is not generally correct. Positive denominations ensure dep
 
 - [[Job Interviews/Coding Practice Index#^lc322|Coding Practice Index — Coin Change]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [amount + 1] * (amount + 1)
+        dp[0] = 0
+        for a in range(1, amount + 1):
+            for c in coins:
+                if a - c >= 0:
+                    dp[a] = min(dp[a], 1 + dp[a - c])
+        return dp[amount] if dp[amount] != amount + 1 else -1
+```
+
+## Complexity
+
+$O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

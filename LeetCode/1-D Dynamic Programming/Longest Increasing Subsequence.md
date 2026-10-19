@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        LIS = [1] * len(nums)
-        for i in range(len(nums) - 1, -1, -1):
-            for j in range(i + 1, len(nums)):
-                if nums[i] < nums[j]:
-                    LIS[i] = max(LIS[i], 1 + LIS[j])
-        return max(LIS)
-```
-
-## Complexity
-
-$O(n^2)$ time and $O(n)$ space for this dynamic-programming implementation. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0300 - Longest Increasing Subsequence.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ Use strict inequality; equal values cannot extend the sequence. An alternative t
 
 - [[Job Interviews/Coding Practice Index#^lc300|Coding Practice Index — Longest Increasing Subsequence]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        LIS = [1] * len(nums)
+        for i in range(len(nums) - 1, -1, -1):
+            for j in range(i + 1, len(nums)):
+                if nums[i] < nums[j]:
+                    LIS[i] = max(LIS[i], 1 + LIS[j])
+        return max(LIS)
+```
+
+## Complexity
+
+$O(n^2)$ time and $O(n)$ space for this dynamic-programming implementation. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

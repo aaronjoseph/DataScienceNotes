@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def minMeetingRooms(self, intervals):
-        start = sorted([i[0] for i in intervals])
-        end = sorted([i[1] for i in intervals])
-        res, count = (0, 0)
-        s, e = (0, 0)
-        while s < len(intervals):
-            if start[s] < end[e]:
-                s += 1
-                count += 1
-            else:
-                e += 1
-                count -= 1
-            res = max(res, count)
-        return res
-```
-
-## Complexity
-
-$O(n\log n)$ time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0253 - Meeting Rooms II.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Process ends before equal-time starts so reusable rooms are not overcounted. The
 
 - [[Job Interviews/Coding Practice Index#^lc253|Coding Practice Index — Meeting Rooms II]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def minMeetingRooms(self, intervals):
+        start = sorted([i[0] for i in intervals])
+        end = sorted([i[1] for i in intervals])
+        res, count = (0, 0)
+        s, e = (0, 0)
+        while s < len(intervals):
+            if start[s] < end[e]:
+                s += 1
+                count += 1
+            else:
+                e += 1
+                count -= 1
+            res = max(res, count)
+        return res
+```
+
+## Complexity
+
+$O(n\log n)$ time and $O(n)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

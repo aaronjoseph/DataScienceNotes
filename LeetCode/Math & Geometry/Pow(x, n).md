@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def myPow(self, x: float, n: int) -> float:
-        def power(base, exponent):
-            if exponent == 0:
-                return 1.0
-            result = power(base * base, exponent // 2)
-            return base * result if exponent % 2 else result
-        result = power(x, abs(n))
-        return result if n >= 0 else 1.0 / result
-```
-
-## Complexity
-
-$O(\log(|n|+1))$ arithmetic steps and recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0050 - Pow(x, n).png|700]]
 
 ## Overview
 
@@ -64,6 +44,30 @@ A negative exponent requires a nonzero base. Fixed-width languages must widen be
 
 - [[Job Interviews/Coding Practice Index#^lc50|Coding Practice Index — Pow(x, n)]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def power(base, exponent):
+            if exponent == 0:
+                return 1.0
+            result = power(base * base, exponent // 2)
+            return base * result if exponent % 2 else result
+        result = power(x, abs(n))
+        return result if n >= 0 else 1.0 / result
+```
+
+## Complexity
+
+$O(\log(|n|+1))$ arithmetic steps and recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

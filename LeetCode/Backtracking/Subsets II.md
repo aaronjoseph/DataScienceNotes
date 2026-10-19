@@ -8,39 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        nums.sort()
-
-        def backtrack(i, subset):
-            if i == len(nums):
-                res.append(subset[:])
-                return
-            subset.append(nums[i])
-            backtrack(i + 1, subset)
-            subset.pop()
-            while i + 1 < len(nums) and nums[i] == nums[i + 1]:
-                i += 1
-            backtrack(i + 1, subset)
-        backtrack(0, [])
-        return res
-```
-
-## Complexity
-
-$O(n2^n)$ worst-case time including copies; $O(n)$ auxiliary space including sorting and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0090 - Subsets II.png|700]]
 
 ## Overview
 
@@ -74,6 +44,40 @@ Do not remove duplicate values from the input entirely: subsets with multiple co
 
 - [[Job Interviews/Coding Practice Index#^lc90|Coding Practice Index — Subsets II]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+
+        def backtrack(i, subset):
+            if i == len(nums):
+                res.append(subset[:])
+                return
+            subset.append(nums[i])
+            backtrack(i + 1, subset)
+            subset.pop()
+            while i + 1 < len(nums) and nums[i] == nums[i + 1]:
+                i += 1
+            backtrack(i + 1, subset)
+        backtrack(0, [])
+        return res
+```
+
+## Complexity
+
+$O(n2^n)$ worst-case time including copies; $O(n)$ auxiliary space including sorting and recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

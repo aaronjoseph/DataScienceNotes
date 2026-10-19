@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        l, r = (0, len(numbers) - 1)
-        while l < r:
-            curSum = numbers[l] + numbers[r]
-            if curSum > target:
-                r -= 1
-            elif curSum < target:
-                l += 1
-            else:
-                return [l + 1, r + 1]
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0167 - Two Sum II Input Array Is Sorted.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ The input is sorted and a solution exists under the problem contract. Stop while
 
 - [[Job Interviews/Coding Practice Index#^lc167|Coding Practice Index — Two Sum II Input Array Is Sorted]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l, r = (0, len(numbers) - 1)
+        while l < r:
+            curSum = numbers[l] + numbers[r]
+            if curSum > target:
+                r -= 1
+            elif curSum < target:
+                l += 1
+            else:
+                return [l + 1, r + 1]
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

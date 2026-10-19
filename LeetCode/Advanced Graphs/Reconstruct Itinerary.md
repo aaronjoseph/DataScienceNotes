@@ -8,38 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-from collections import defaultdict
-
-class Solution:
-    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        destinations = defaultdict(list)
-        for source, destination in tickets:
-            destinations[source].append(destination)
-        for options in destinations.values():
-            options.sort(reverse=True)
-        stack, reverse_route = ["JFK"], []
-        while stack:
-            source = stack[-1]
-            if destinations[source]:
-                stack.append(destinations[source].pop())
-            else:
-                reverse_route.append(stack.pop())
-        route = reverse_route[::-1]
-        return route if len(route) == len(tickets) + 1 else []
-```
-
-## Complexity
-
-$O(E\log E)$ time and $O(E+V)$ storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0332 - Reconstruct Itinerary.png|700]]
 
 ## Overview
 
@@ -73,6 +44,39 @@ Tickets are edges, and duplicate tickets are separate usable edges. Appending an
 
 - [[Job Interviews/Coding Practice Index#^lc332|Coding Practice Index — Reconstruct Itinerary]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+from collections import defaultdict
+
+class Solution:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        destinations = defaultdict(list)
+        for source, destination in tickets:
+            destinations[source].append(destination)
+        for options in destinations.values():
+            options.sort(reverse=True)
+        stack, reverse_route = ["JFK"], []
+        while stack:
+            source = stack[-1]
+            if destinations[source]:
+                stack.append(destinations[source].pop())
+            else:
+                reverse_route.append(stack.pop())
+        route = reverse_route[::-1]
+        return route if len(route) == len(tickets) + 1 else []
+```
+
+## Complexity
+
+$O(E\log E)$ time and $O(E+V)$ storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

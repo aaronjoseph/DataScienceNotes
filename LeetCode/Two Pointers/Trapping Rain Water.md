@@ -8,39 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def trap(self, height: List[int]) -> int:
-        if not height:
-            return 0
-        l, r = (0, len(height) - 1)
-        leftMax, rightMax = (height[l], height[r])
-        res = 0
-        while l < r:
-            if leftMax < rightMax:
-                l += 1
-                leftMax = max(leftMax, height[l])
-                res += leftMax - height[l]
-            else:
-                r -= 1
-                rightMax = max(rightMax, height[r])
-                res += rightMax - height[r]
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0042 - Trapping Rain Water.png|700]]
 
 ## Overview
 
@@ -74,6 +44,40 @@ Count water above individual bars, not the area of one container. Update the run
 
 - [[Job Interviews/Coding Practice Index#^lc42|Coding Practice Index — Trapping Rain Water]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def trap(self, height: List[int]) -> int:
+        if not height:
+            return 0
+        l, r = (0, len(height) - 1)
+        leftMax, rightMax = (height[l], height[r])
+        res = 0
+        while l < r:
+            if leftMax < rightMax:
+                l += 1
+                leftMax = max(leftMax, height[l])
+                res += leftMax - height[l]
+            else:
+                r -= 1
+                rightMax = max(rightMax, height[r])
+                res += rightMax - height[r]
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

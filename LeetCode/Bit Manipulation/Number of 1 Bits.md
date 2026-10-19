@@ -8,28 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def hammingWeight(self, n: int) -> int:
-        res = 0
-        while n:
-            n &= n - 1
-            res += 1
-        return res
-```
-
-## Complexity
-
-$O(b)$ time for `b` set bits and $O(1)$ extra space under fixed-width arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0191 - Number of 1 Bits.png|700]]
 
 ## Overview
 
@@ -63,6 +44,29 @@ Assume a nonnegative input or explicitly mask a signed value to the intended wid
 
 - [[Job Interviews/Coding Practice Index#^lc191|Coding Practice Index — Number of 1 Bits]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def hammingWeight(self, n: int) -> int:
+        res = 0
+        while n:
+            n &= n - 1
+            res += 1
+        return res
+```
+
+## Complexity
+
+$O(b)$ time for `b` set bits and $O(1)$ extra space under fixed-width arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

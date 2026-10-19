@@ -8,6 +8,44 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0981 - Time Based Key Value Store.png|700]]
+
+## Overview
+
+Store timestamped values and retrieve the latest value at or before a requested time.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc981|LeetCode — LC 981]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. For each key, append timestamped values; the problem supplies increasing set timestamps.
+2. During get, binary search that key's history.
+3. Save a candidate whenever its timestamp is no greater than the query and continue right for a newer candidate.
+
+## Why It Works
+
+All entries after a too-large timestamp are also too new; searching right after a valid entry finds the latest admissible one.
+
+## Worked Example
+
+**Illustrative input:** Set key x to a at time 2 and b at time 5.
+
+**Trace:** A query at time 4 admits only the earlier assignment.
+
+**Result:** Return `"a"`.
+
+## Common Pitfalls
+
+Return an empty string if the key or an early enough version is absent. Unordered writes require sorted insertion or another structure.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc981|Coding Practice Index — Time Based Key Value Store]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
+
 ## Template
 
 ### Python
@@ -43,40 +81,6 @@ class TimeMap:
 ## Complexity
 
 Set is amortized $O(1)$; get is $O(\log m)$ for `m` versions of that key; total storage is $O(N)$ assignments. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Store timestamped values and retrieve the latest value at or before a requested time.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc981|LeetCode — LC 981]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. For each key, append timestamped values; the problem supplies increasing set timestamps.
-2. During get, binary search that key's history.
-3. Save a candidate whenever its timestamp is no greater than the query and continue right for a newer candidate.
-
-## Why It Works
-
-All entries after a too-large timestamp are also too new; searching right after a valid entry finds the latest admissible one.
-
-## Worked Example
-
-**Illustrative input:** Set key x to a at time 2 and b at time 5.
-
-**Trace:** A query at time 4 admits only the earlier assignment.
-
-**Result:** Return `"a"`.
-
-## Common Pitfalls
-
-Return an empty string if the key or an early enough version is absent. Unordered writes require sorted insertion or another structure.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc981|Coding Practice Index — Time Based Key Value Store]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
-- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
 
 ## References & Useful Links
 

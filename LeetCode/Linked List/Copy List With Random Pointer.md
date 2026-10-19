@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def copyRandomList(self, head: 'Node') -> 'Node':
-        oldToCopy = {None: None}
-        cur = head
-        while cur:
-            copy = Node(cur.val)
-            oldToCopy[cur] = copy
-            cur = cur.next
-        cur = head
-        while cur:
-            copy = oldToCopy[cur]
-            copy.next = oldToCopy[cur.next]
-            copy.random = oldToCopy[cur.random]
-            cur = cur.next
-        return oldToCopy[head]
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(n)$ auxiliary map storage, plus the copied nodes. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0138 - Copy List With Random Pointer.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Repeated values do not identify nodes. Never leave a copied pointer referring to
 
 - [[Job Interviews/Coding Practice Index#^lc138|Coding Practice Index — Copy List With Random Pointer]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        oldToCopy = {None: None}
+        cur = head
+        while cur:
+            copy = Node(cur.val)
+            oldToCopy[cur] = copy
+            cur = cur.next
+        cur = head
+        while cur:
+            copy = oldToCopy[cur]
+            copy.next = oldToCopy[cur.next]
+            copy.random = oldToCopy[cur.random]
+            cur = cur.next
+        return oldToCopy[head]
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(n)$ auxiliary map storage, plus the copied nodes. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def maxArea(self, height: List[int]) -> int:
-        l, r = (0, len(height) - 1)
-        res = 0
-        while l < r:
-            res = max(res, min(height[l], height[r]) * (r - l))
-            if height[l] < height[r]:
-                l += 1
-            elif height[r] <= height[l]:
-                r -= 1
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0011 - Container With Most Water.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ Use index distance for width. The container is limited by the shorter line, not 
 
 - [[Job Interviews/Coding Practice Index#^lc11|Coding Practice Index — Container With Most Water]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def maxArea(self, height: List[int]) -> int:
+        l, r = (0, len(height) - 1)
+        res = 0
+        while l < r:
+            res = max(res, min(height[l], height[r]) * (r - l))
+            if height[l] < height[r]:
+                l += 1
+            elif height[r] <= height[l]:
+                r -= 1
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

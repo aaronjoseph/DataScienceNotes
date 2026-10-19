@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        total, balance, start = 0, 0, 0
-        for index, (supply, expense) in enumerate(zip(gas, cost)):
-            difference = supply - expense
-            total += difference
-            balance += difference
-            if balance < 0:
-                start = index + 1
-                balance = 0
-        return start if total >= 0 else -1
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0134 - Gas Station.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ A locally feasible prefix does not prove a full circuit. Check the total balance
 
 - [[Job Interviews/Coding Practice Index#^lc134|Coding Practice Index — Gas Station]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        total, balance, start = 0, 0, 0
+        for index, (supply, expense) in enumerate(zip(gas, cost)):
+            difference = supply - expense
+            total += difference
+            balance += difference
+            if balance < 0:
+                start = index + 1
+                balance = 0
+        return start if total >= 0 else -1
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

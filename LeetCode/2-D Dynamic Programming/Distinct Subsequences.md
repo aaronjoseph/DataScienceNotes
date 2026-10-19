@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def numDistinct(self, s: str, t: str) -> int:
-        cache = {}
-        for i in range(len(s) + 1):
-            cache[i, len(t)] = 1
-        for j in range(len(t)):
-            cache[len(s), j] = 0
-        for i in range(len(s) - 1, -1, -1):
-            for j in range(len(t) - 1, -1, -1):
-                if s[i] == t[j]:
-                    cache[i, j] = cache[i + 1, j + 1] + cache[i + 1, j]
-                else:
-                    cache[i, j] = cache[i + 1, j]
-        return cache[0, 0]
-```
-
-## Complexity
-
-$O((m+1)(n+1))$ time and space under bounded-size integer arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0115 - Distinct Subsequences.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ Count positional subsequences, not distinct resulting strings. The empty target 
 
 - [[Job Interviews/Coding Practice Index#^lc115|Coding Practice Index — Distinct Subsequences]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def numDistinct(self, s: str, t: str) -> int:
+        cache = {}
+        for i in range(len(s) + 1):
+            cache[i, len(t)] = 1
+        for j in range(len(t)):
+            cache[len(s), j] = 0
+        for i in range(len(s) - 1, -1, -1):
+            for j in range(len(t) - 1, -1, -1):
+                if s[i] == t[j]:
+                    cache[i, j] = cache[i + 1, j + 1] + cache[i + 1, j]
+                else:
+                    cache[i, j] = cache[i + 1, j]
+        return cache[0, 0]
+```
+
+## Complexity
+
+$O((m+1)(n+1))$ time and space under bounded-size integer arithmetic. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def characterReplacement(self, s: str, k: int) -> int:
-        count = {}
-        l = 0
-        maxf = 0
-        for r in range(len(s)):
-            count[s[r]] = 1 + count.get(s[r], 0)
-            maxf = max(maxf, count[s[r]])
-            if r - l + 1 - maxf > k:
-                count[s[l]] -= 1
-                l += 1
-        return r - l + 1
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(u)$ space; the uppercase alphabet bounds `u` by 26. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0424 - Longest Repeating Character Replacement.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ A historical maximum supports computing the length, not reporting the current wi
 
 - [[Job Interviews/Coding Practice Index#^lc424|Coding Practice Index — Longest Repeating Character Replacement]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def characterReplacement(self, s: str, k: int) -> int:
+        count = {}
+        l = 0
+        maxf = 0
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r], 0)
+            maxf = max(maxf, count[s[r]])
+            if r - l + 1 - maxf > k:
+                count[s[l]] -= 1
+                l += 1
+        return r - l + 1
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(u)$ space; the uppercase alphabet bounds `u` by 26. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

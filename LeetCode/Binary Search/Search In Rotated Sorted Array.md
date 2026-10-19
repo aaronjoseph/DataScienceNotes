@@ -8,39 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def search(self, nums: List[int], target: int) -> int:
-        l, r = (0, len(nums) - 1)
-        while l <= r:
-            mid = (l + r) // 2
-            if target == nums[mid]:
-                return mid
-            if nums[l] <= nums[mid]:
-                if target > nums[mid] or target < nums[l]:
-                    l = mid + 1
-                else:
-                    r = mid - 1
-            elif target < nums[mid] or target > nums[r]:
-                r = mid - 1
-            else:
-                l = mid + 1
-        return -1
-```
-
-## Complexity
-
-$O(\log n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0033 - Search In Rotated Sorted Array.png|700]]
 
 ## Overview
 
@@ -75,6 +45,40 @@ The distinct-value assumption matters. Include the correct endpoint equalities w
 - [[Job Interviews/Coding Practice Index#^lc33|Coding Practice Index — Search In Rotated Sorted Array]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 - [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = (0, len(nums) - 1)
+        while l <= r:
+            mid = (l + r) // 2
+            if target == nums[mid]:
+                return mid
+            if nums[l] <= nums[mid]:
+                if target > nums[mid] or target < nums[l]:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+            elif target < nums[mid] or target > nums[r]:
+                r = mid - 1
+            else:
+                l = mid + 1
+        return -1
+```
+
+## Complexity
+
+$O(\log n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

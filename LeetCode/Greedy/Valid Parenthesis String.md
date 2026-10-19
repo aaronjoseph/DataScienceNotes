@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def checkValidString(self, s: str) -> bool:
-        leftMin, leftMax = (0, 0)
-        for c in s:
-            if c == '(':
-                leftMin, leftMax = (leftMin + 1, leftMax + 1)
-            elif c == ')':
-                leftMin, leftMax = (leftMin - 1, leftMax - 1)
-            else:
-                leftMin, leftMax = (leftMin - 1, leftMax + 1)
-            if leftMax < 0:
-                return False
-            if leftMin < 0:
-                leftMin = 0
-        return leftMin == 0
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0678 - Valid Parenthesis String.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Clamp only the lower bound. A negative upper bound means the prefix has too many
 
 - [[Job Interviews/Coding Practice Index#^lc678|Coding Practice Index — Valid Parenthesis String]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def checkValidString(self, s: str) -> bool:
+        leftMin, leftMax = (0, 0)
+        for c in s:
+            if c == '(':
+                leftMin, leftMax = (leftMin + 1, leftMax + 1)
+            elif c == ')':
+                leftMin, leftMax = (leftMin - 1, leftMax - 1)
+            else:
+                leftMin, leftMax = (leftMin - 1, leftMax + 1)
+            if leftMax < 0:
+                return False
+            if leftMin < 0:
+                leftMin = 0
+        return leftMin == 0
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

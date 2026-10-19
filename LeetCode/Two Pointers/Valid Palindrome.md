@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        left, right = 0, len(s) - 1
-        while left < right:
-            while left < right and not s[left].isalnum():
-                left += 1
-            while left < right and not s[right].isalnum():
-                right -= 1
-            if s[left].lower() != s[right].lower():
-                return False
-            left += 1
-            right -= 1
-        return True
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space with two pointers. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0125 - Valid Palindrome.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ Python's alphanumeric checks support Unicode; state a normalization policy if ex
 
 - [[Job Interviews/Coding Practice Index#^lc125|Coding Practice Index — Valid Palindrome]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left, right = 0, len(s) - 1
+        while left < right:
+            while left < right and not s[left].isalnum():
+                left += 1
+            while left < right and not s[right].isalnum():
+                right -= 1
+            if s[left].lower() != s[right].lower():
+                return False
+            left += 1
+            right -= 1
+        return True
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space with two pointers. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

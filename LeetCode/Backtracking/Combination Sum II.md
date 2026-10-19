@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0040 - Combination Sum II.png|700]]
+
+## Overview
+
+Find unique combinations summing to a target when each candidate occurrence can be used at most once.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc40|LeetCode — LC 40]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort candidates and maintain a path, starting index, and remaining target.
+2. Loop through candidate choices, skipping values already tried at the same depth.
+3. Recurse from the next index after choosing an occurrence, then undo it; record a path at remaining target zero.
+
+## Why It Works
+
+Increasing indices prevent reuse, and same-depth duplicate skipping removes equivalent value combinations without excluding valid repeated occurrences.
+
+## Worked Example
+
+**Illustrative input:** `candidates = [1, 1, 2]`, `target = 2`.
+
+**Trace:** One path uses both 1 occurrences; another uses the single 2.
+
+**Result:** Return `[[1, 1], [2]]`.
+
+## Common Pitfalls
+
+Skip duplicates only at the same recursion depth. Moving to the next index distinguishes this from unlimited-use Combination Sum.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc40|Coding Practice Index — Combination Sum II]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -45,39 +82,6 @@ class Solution:
 ## Complexity
 
 $O(n2^n)$ conservative worst-case time including output copies; $O(n)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Find unique combinations summing to a target when each candidate occurrence can be used at most once.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc40|LeetCode — LC 40]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort candidates and maintain a path, starting index, and remaining target.
-2. Loop through candidate choices, skipping values already tried at the same depth.
-3. Recurse from the next index after choosing an occurrence, then undo it; record a path at remaining target zero.
-
-## Why It Works
-
-Increasing indices prevent reuse, and same-depth duplicate skipping removes equivalent value combinations without excluding valid repeated occurrences.
-
-## Worked Example
-
-**Illustrative input:** `candidates = [1, 1, 2]`, `target = 2`.
-
-**Trace:** One path uses both 1 occurrences; another uses the single 2.
-
-**Result:** Return `[[1, 1], [2]]`.
-
-## Common Pitfalls
-
-Skip duplicates only at the same recursion depth. Moving to the next index distinguishes this from unlimited-use Combination Sum.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc40|Coding Practice Index — Combination Sum II]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

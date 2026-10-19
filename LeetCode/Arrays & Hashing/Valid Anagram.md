@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        countS, countT = ({}, {})
-        for i in range(len(s)):
-            countS[s[i]] = 1 + countS.get(s[i], 0)
-            countT[t[i]] = 1 + countT.get(t[i], 0)
-        return countS == countT
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(u)$ space, where `u` is the number of distinct characters. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0242 - Valid Anagram.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ Sets alone lose multiplicity. With a fixed lowercase alphabet the count storage 
 
 - [[Job Interviews/Coding Practice Index#^lc242|Coding Practice Index — Valid Anagram]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        countS, countT = ({}, {})
+        for i in range(len(s)):
+            countS[s[i]] = 1 + countS.get(s[i], 0)
+            countT[t[i]] = 1 + countT.get(t[i], 0)
+        return countS == countT
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(u)$ space, where `u` is the number of distinct characters. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

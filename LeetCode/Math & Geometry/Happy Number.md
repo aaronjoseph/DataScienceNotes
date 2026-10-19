@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def isHappy(self, n: int) -> bool:
-        slow, fast = (n, self.sumSquareDigits(n))
-        while slow != fast:
-            fast = self.sumSquareDigits(fast)
-            fast = self.sumSquareDigits(fast)
-            slow = self.sumSquareDigits(slow)
-        return True if fast == 1 else False
-
-    def sumSquareDigits(self, n):
-        output = 0
-        while n:
-            output += (n % 10) ** 2
-            n = n // 10
-        return output
-```
-
-## Complexity
-
-$O(\log n)$ initial digit work plus a bounded number of short-state steps for fixed-width input; $O(1)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0202 - Happy Number.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ The input is positive. Cycle detection avoids keeping every visited value, but e
 
 - [[Job Interviews/Coding Practice Index#^lc202|Coding Practice Index — Happy Number]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def isHappy(self, n: int) -> bool:
+        slow, fast = (n, self.sumSquareDigits(n))
+        while slow != fast:
+            fast = self.sumSquareDigits(fast)
+            fast = self.sumSquareDigits(fast)
+            slow = self.sumSquareDigits(slow)
+        return True if fast == 1 else False
+
+    def sumSquareDigits(self, n):
+        output = 0
+        while n:
+            output += (n % 10) ** 2
+            n = n // 10
+        return output
+```
+
+## Complexity
+
+$O(\log n)$ initial digit work plus a bounded number of short-state steps for fixed-width input; $O(1)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

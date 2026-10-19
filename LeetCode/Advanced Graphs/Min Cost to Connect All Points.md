@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC1584 - Min Cost to Connect All Points.png|700]]
+
+## Overview
+
+Connect all points with minimum total Manhattan-distance cost using a minimum spanning tree.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc1584|LeetCode — LC 1584]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Build the complete weighted graph using each pair's Manhattan distance.
+2. Run Prim's algorithm from any point, always accepting the cheapest edge to an unvisited point.
+3. Add that edge cost and expose its outgoing edges until all points join the tree.
+
+## Why It Works
+
+The minimum edge crossing the visited/unvisited cut is safe to include in a minimum spanning tree.
+
+## Worked Example
+
+**Illustrative input:** Points `[[0, 0], [2, 0], [2, 2]]`.
+
+**Trace:** Choose the two edges of cost 2 rather than the diagonal-distance edge of cost 4.
+
+**Result:** Return total cost `4`.
+
+## Common Pitfalls
+
+Use Manhattan distance, not Euclidean distance. An implicit dense-Prim variant improves this to quadratic time and linear auxiliary space.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc1584|Coding Practice Index — Min Cost to Connect All Points]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -49,39 +86,6 @@ class Solution:
 ## Complexity
 
 $O(n^2\log n)$ time and $O(n^2)$ storage for this explicit complete graph and heap. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Connect all points with minimum total Manhattan-distance cost using a minimum spanning tree.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc1584|LeetCode — LC 1584]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Build the complete weighted graph using each pair's Manhattan distance.
-2. Run Prim's algorithm from any point, always accepting the cheapest edge to an unvisited point.
-3. Add that edge cost and expose its outgoing edges until all points join the tree.
-
-## Why It Works
-
-The minimum edge crossing the visited/unvisited cut is safe to include in a minimum spanning tree.
-
-## Worked Example
-
-**Illustrative input:** Points `[[0, 0], [2, 0], [2, 2]]`.
-
-**Trace:** Choose the two edges of cost 2 rather than the diagonal-distance edge of cost 4.
-
-**Result:** Return total cost `4`.
-
-## Common Pitfalls
-
-Use Manhattan distance, not Euclidean distance. An implicit dense-Prim variant improves this to quadratic time and linear auxiliary space.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc1584|Coding Practice Index — Min Cost to Connect All Points]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

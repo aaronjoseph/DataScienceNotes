@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def goodNodes(self, root: TreeNode) -> int:
-
-        def dfs(node, maxVal):
-            if not node:
-                return 0
-            res = 1 if node.val >= maxVal else 0
-            maxVal = max(maxVal, node.val)
-            res += dfs(node.left, maxVal)
-            res += dfs(node.right, maxVal)
-            return res
-        return dfs(root, root.val)
-```
-
-## Complexity
-
-$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC1448 - Count Good Nodes In Binary Tree.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ Equality qualifies. Keep the maximum local to each root-to-node path rather than
 
 - [[Job Interviews/Coding Practice Index#^lc1448|Coding Practice Index — Count Good Nodes In Binary Tree]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def goodNodes(self, root: TreeNode) -> int:
+
+        def dfs(node, maxVal):
+            if not node:
+                return 0
+            res = 1 if node.val >= maxVal else 0
+            maxVal = max(maxVal, node.val)
+            res += dfs(node.left, maxVal)
+            res += dfs(node.right, maxVal)
+            return res
+        return dfs(root, root.val)
+```
+
+## Complexity
+
+$O(n)$ time and $O(h)$ recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

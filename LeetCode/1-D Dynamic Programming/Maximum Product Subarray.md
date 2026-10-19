@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def maxProduct(self, nums: List[int]) -> int:
-        res = nums[0]
-        curMin, curMax = (1, 1)
-        for n in nums:
-            tmp = curMax * n
-            curMax = max(n * curMax, n * curMin, n)
-            curMin = min(tmp, n * curMin, n)
-            res = max(res, curMax)
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0152 - Maximum Product Subarray.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ Keeping only the maximum loses negative products that can become optimal later. 
 
 - [[Job Interviews/Coding Practice Index#^lc152|Coding Practice Index — Maximum Product Subarray]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def maxProduct(self, nums: List[int]) -> int:
+        res = nums[0]
+        curMin, curMax = (1, 1)
+        for n in nums:
+            tmp = curMax * n
+            curMax = max(n * curMax, n * curMin, n)
+            curMin = min(tmp, n * curMin, n)
+            res = max(res, curMax)
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def numDecodings(self, s: str) -> int:
-        dp = {len(s): 1}
-
-        def dfs(i):
-            if i in dp:
-                return dp[i]
-            if s[i] == '0':
-                return 0
-            res = dfs(i + 1)
-            if i + 1 < len(s) and (s[i] == '1' or (s[i] == '2' and s[i + 1] in '0123456')):
-                res += dfs(i + 2)
-            dp[i] = res
-            return res
-        return dfs(0)
-```
-
-## Complexity
-
-$O(n)$ time and $O(n)$ memo/recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0091 - Decode Ways.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Zero cannot stand alone, while 10 and 20 are valid pairs. Memoization does not r
 
 - [[Job Interviews/Coding Practice Index#^lc91|Coding Practice Index — Decode Ways]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def numDecodings(self, s: str) -> int:
+        dp = {len(s): 1}
+
+        def dfs(i):
+            if i in dp:
+                return dp[i]
+            if s[i] == '0':
+                return 0
+            res = dfs(i + 1)
+            if i + 1 < len(s) and (s[i] == '1' or (s[i] == '2' and s[i + 1] in '0123456')):
+                res += dfs(i + 2)
+            dp[i] = res
+            return res
+        return dfs(0)
+```
+
+## Complexity
+
+$O(n)$ time and $O(n)$ memo/recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

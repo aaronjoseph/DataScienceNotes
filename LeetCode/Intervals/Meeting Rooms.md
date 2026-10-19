@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def canAttendMeetings(self, intervals):
-        intervals.sort(key=lambda i: i[0])
-        for i in range(1, len(intervals)):
-            i1 = intervals[i - 1]
-            i2 = intervals[i]
-            if i1[1] > i2[0]:
-                return False
-        return True
-```
-
-## Complexity
-
-$O(n\log n)$ time and $O(n)$ worst-case auxiliary sorting space in Python. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0252 - Meeting Rooms.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ A meeting starting at another's end does not overlap. The implementation sorts t
 
 - [[Job Interviews/Coding Practice Index#^lc252|Coding Practice Index — Meeting Rooms]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def canAttendMeetings(self, intervals):
+        intervals.sort(key=lambda i: i[0])
+        for i in range(1, len(intervals)):
+            i1 = intervals[i - 1]
+            i2 = intervals[i]
+            if i1[1] > i2[0]:
+                return False
+        return True
+```
+
+## Complexity
+
+$O(n\log n)$ time and $O(n)$ worst-case auxiliary sorting space in Python. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,38 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import heapq
-
-class Solution:
-
-    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:
-        intervals.sort()
-        minHeap = []
-        res = {}
-        i = 0
-        for q in sorted(queries):
-            while i < len(intervals) and intervals[i][0] <= q:
-                l, r = intervals[i]
-                heapq.heappush(minHeap, (r - l + 1, r))
-                i += 1
-            while minHeap and minHeap[0][1] < q:
-                heapq.heappop(minHeap)
-            res[q] = minHeap[0][0] if minHeap else -1
-        return [res[q] for q in queries]
-```
-
-## Complexity
-
-$O(n\log n+q\log q+(n+q)\log(n+1))$ time and $O(n+q)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC1851 - Minimum Interval to Include Each Query.png|700]]
 
 ## Overview
 
@@ -73,6 +44,39 @@ Closed interval size includes both endpoints. Restore query order, and reuse ans
 
 - [[Job Interviews/Coding Practice Index#^lc1851|Coding Practice Index — Minimum Interval to Include Each Query]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import heapq
+
+class Solution:
+
+    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:
+        intervals.sort()
+        minHeap = []
+        res = {}
+        i = 0
+        for q in sorted(queries):
+            while i < len(intervals) and intervals[i][0] <= q:
+                l, r = intervals[i]
+                heapq.heappush(minHeap, (r - l + 1, r))
+                i += 1
+            while minHeap and minHeap[0][1] < q:
+                heapq.heappop(minHeap)
+            res[q] = minHeap[0][0] if minHeap else -1
+        return [res[q] for q in queries]
+```
+
+## Complexity
+
+$O(n\log n+q\log q+(n+q)\log(n+1))$ time and $O(n+q)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

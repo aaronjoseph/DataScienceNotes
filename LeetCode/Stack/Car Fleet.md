@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        pair = [(p, s) for p, s in zip(position, speed)]
-        pair.sort(reverse=True)
-        stack = []
-        for p, s in pair:
-            stack.append((target - p) / s)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
-        return len(stack)
-```
-
-## Complexity
-
-$O(n\log n)$ time and $O(n)$ space for sorted pairs and the fleet stack. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0853 - Car Fleet.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ Equal arrival times form one fleet, including meeting at the target. Preserve ea
 
 - [[Job Interviews/Coding Practice Index#^lc853|Coding Practice Index — Car Fleet]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        pair = [(p, s) for p, s in zip(position, speed)]
+        pair.sort(reverse=True)
+        stack = []
+        for p, s in pair:
+            stack.append((target - p) / s)
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+        return len(stack)
+```
+
+## Complexity
+
+$O(n\log n)$ time and $O(n)$ space for sorted pairs and the fleet stack. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

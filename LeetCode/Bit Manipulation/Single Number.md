@@ -8,28 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def singleNumber(self, nums: List[int]) -> int:
-        res = 0
-        for n in nums:
-            res = n ^ res
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0136 - Single Number.png|700]]
 
 ## Overview
 
@@ -63,6 +44,29 @@ The exactly-twice condition is essential. This does not solve the version where 
 
 - [[Job Interviews/Coding Practice Index#^lc136|Coding Practice Index — Single Number]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def singleNumber(self, nums: List[int]) -> int:
+        res = 0
+        for n in nums:
+            res = n ^ res
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

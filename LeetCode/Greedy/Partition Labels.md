@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0763 - Partition Labels.png|700]]
+
+## Overview
+
+Split a string into as many contiguous parts as possible so each character appears in only one part.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc763|LeetCode — LC 763]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Record the last occurrence of each character.
+2. Scan left to right, extending the current part's required endpoint to include each encountered character's last occurrence.
+3. When the current index reaches that endpoint, close the part and begin the next.
+
+## Why It Works
+
+Before the endpoint, some seen character still occurs later; at the endpoint, no character in the part escapes it, so the earliest safe cut is optimal.
+
+## Worked Example
+
+**Illustrative input:** `s = "abac"`.
+
+**Trace:** The a at index zero extends the first part through index two; c then forms its own part.
+
+**Result:** Return `[3, 1]`.
+
+## Common Pitfalls
+
+Use last occurrences across the entire string. The objective is the greatest number of parts, not shortest total length.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc763|Coding Practice Index — Partition Labels]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -43,39 +80,6 @@ class Solution:
 ## Complexity
 
 $O(n)$ expected time and $O(u)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Split a string into as many contiguous parts as possible so each character appears in only one part.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc763|LeetCode — LC 763]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Record the last occurrence of each character.
-2. Scan left to right, extending the current part's required endpoint to include each encountered character's last occurrence.
-3. When the current index reaches that endpoint, close the part and begin the next.
-
-## Why It Works
-
-Before the endpoint, some seen character still occurs later; at the endpoint, no character in the part escapes it, so the earliest safe cut is optimal.
-
-## Worked Example
-
-**Illustrative input:** `s = "abac"`.
-
-**Trace:** The a at index zero extends the first part through index two; c then forms its own part.
-
-**Result:** Return `[3, 1]`.
-
-## Common Pitfalls
-
-Use last occurrences across the entire string. The objective is the greatest number of parts, not shortest total length.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc763|Coding Practice Index — Partition Labels]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

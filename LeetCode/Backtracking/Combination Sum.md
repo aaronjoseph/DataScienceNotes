@@ -8,38 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
-
-        def dfs(i, cur, total):
-            if total == target:
-                res.append(cur.copy())
-                return
-            if i >= len(candidates) or total > target:
-                return
-            cur.append(candidates[i])
-            dfs(i, cur, total + candidates[i])
-            cur.pop()
-            dfs(i + 1, cur, total)
-        dfs(0, [], 0)
-        return res
-```
-
-## Complexity
-
-Exponential time in the search depth, plus output copying. With `c` candidates and `D = target/min(candidates)`, a loose bound is $O(2^{c+D}(c+D))$ time and $O(c+D)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0039 - Combination Sum.png|700]]
 
 ## Overview
 
@@ -73,6 +44,39 @@ Candidate positivity and uniqueness matter. After taking a candidate, remain at 
 
 - [[Job Interviews/Coding Practice Index#^lc39|Coding Practice Index — Combination Sum]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+
+        def dfs(i, cur, total):
+            if total == target:
+                res.append(cur.copy())
+                return
+            if i >= len(candidates) or total > target:
+                return
+            cur.append(candidates[i])
+            dfs(i, cur, total + candidates[i])
+            cur.pop()
+            dfs(i + 1, cur, total)
+        dfs(0, [], 0)
+        return res
+```
+
+## Complexity
+
+Exponential time in the search depth, plus output copying. With `c` candidates and `D = target/min(candidates)`, a loose bound is $O(2^{c+D}(c+D))$ time and $O(c+D)$ auxiliary space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        hashset = set()
-        for n in nums:
-            if n in hashset:
-                return True
-            hashset.add(n)
-        return False
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(n)$ extra space for `n` values. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0217 - Contains Duplicate.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ Use value equality, and check before inserting. Hash lookup bounds are expected,
 
 - [[Job Interviews/Coding Practice Index#^lc217|Coding Practice Index — Contains Duplicate]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hashset = set()
+        for n in nums:
+            if n in hashset:
+                return True
+            hashset.add(n)
+        return False
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(n)$ extra space for `n` values. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

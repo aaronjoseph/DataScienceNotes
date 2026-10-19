@@ -8,6 +8,44 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0004 - Median of Two Sorted Arrays.png|700]]
+
+## Overview
+
+Find the median of two sorted arrays without merging them. Binary search a partition in the shorter array.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc4|LeetCode — LC 4]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Choose a left partition containing half the combined elements; its split in the shorter array determines the split in the other.
+2. Treat missing boundary elements as negative or positive infinity.
+3. If either left boundary exceeds the opposite right boundary, move the shorter-array split; otherwise derive the median from the middle boundaries.
+
+## Why It Works
+
+A correct partition puts every left-side value before every right-side value while fixing the number of values on each side.
+
+## Worked Example
+
+**Illustrative input:** `nums1 = [1, 3]`, `nums2 = [2]`.
+
+**Trace:** A valid split leaves 1 on the left and 2, 3 on the right.
+
+**Result:** The odd-length median is `2`.
+
+## Common Pitfalls
+
+Both arrays must be sorted and cannot both be empty. The even-length median averages the two boundary middle values.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc4|Coding Practice Index — Median of Two Sorted Arrays]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
+
 ## Template
 
 ### Python
@@ -47,40 +85,6 @@ class Solution:
 ## Complexity
 
 $O(\log(\min(m,n)+1))$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Find the median of two sorted arrays without merging them. Binary search a partition in the shorter array.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc4|LeetCode — LC 4]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Choose a left partition containing half the combined elements; its split in the shorter array determines the split in the other.
-2. Treat missing boundary elements as negative or positive infinity.
-3. If either left boundary exceeds the opposite right boundary, move the shorter-array split; otherwise derive the median from the middle boundaries.
-
-## Why It Works
-
-A correct partition puts every left-side value before every right-side value while fixing the number of values on each side.
-
-## Worked Example
-
-**Illustrative input:** `nums1 = [1, 3]`, `nums2 = [2]`.
-
-**Trace:** A valid split leaves 1 on the left and 2, 3 on the right.
-
-**Result:** The odd-length median is `2`.
-
-## Common Pitfalls
-
-Both arrays must be sorted and cannot both be empty. The even-length median averages the two boundary middle values.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc4|Coding Practice Index — Median of Two Sorted Arrays]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
-- [[LeetCode/Binary Search/Binary Search|Binary Search]] — Search templates and boundary invariants.
 
 ## References & Useful Links
 

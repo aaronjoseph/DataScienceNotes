@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0155 - Min Stack.png|700]]
+
+## Overview
+
+Design a stack supporting push, pop, top, and minimum queries in constant time.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc155|LeetCode — LC 155]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Store pushed values in one stack and the minimum so far in a parallel stack.
+2. On push, append the smaller of the new value and previous minimum.
+3. Pop both stacks together; answer top and minimum from their respective tops.
+
+## Why It Works
+
+The minimum stack records the correct answer for every surviving stack prefix.
+
+## Worked Example
+
+**Illustrative input:** Push 3, then 1, then 1.
+
+**Trace:** After one pop, a 1 remains and its matching prefix minimum is still 1.
+
+**Result:** `getMin()` returns `1`.
+
+## Common Pitfalls
+
+Duplicate minima need separate history entries. The judge guarantees valid operations on nonempty stacks.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc155|Coding Practice Index — Min Stack]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -42,39 +79,6 @@ class MinStack:
 ## Complexity
 
 $O(1)$ time per operation and $O(n)$ storage for `n` pushed values. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Design a stack supporting push, pop, top, and minimum queries in constant time.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc155|LeetCode — LC 155]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Store pushed values in one stack and the minimum so far in a parallel stack.
-2. On push, append the smaller of the new value and previous minimum.
-3. Pop both stacks together; answer top and minimum from their respective tops.
-
-## Why It Works
-
-The minimum stack records the correct answer for every surviving stack prefix.
-
-## Worked Example
-
-**Illustrative input:** Push 3, then 1, then 1.
-
-**Trace:** After one pop, a 1 remains and its matching prefix minimum is still 1.
-
-**Result:** `getMin()` returns `1`.
-
-## Common Pitfalls
-
-Duplicate minima need separate history entries. The judge guarantees valid operations on nonempty stacks.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc155|Coding Practice Index — Min Stack]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

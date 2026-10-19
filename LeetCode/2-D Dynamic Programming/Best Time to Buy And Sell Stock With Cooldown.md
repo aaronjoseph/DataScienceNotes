@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0309 - Best Time to Buy And Sell Stock With Cooldown.png|700]]
+
+## Overview
+
+Maximize stock profit with unlimited transactions but a mandatory one-day cooldown after selling.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc309|LeetCode — LC 309]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Memoize the best future profit by day and whether the next action may be a buy.
+2. At each state, consider waiting or taking the permitted buy/sell action.
+3. Buying advances one day; selling advances two days to enforce the cooldown; return the better branch.
+
+## Why It Works
+
+Day and holding state determine all legal future actions, and the cooldown is fully captured by skipping the day after a sale.
+
+## Worked Example
+
+**Illustrative input:** `prices = [1, 2, 3, 0, 2]`.
+
+**Trace:** Buy at 1, sell at 2, wait one day, buy at 0, and sell at 2.
+
+**Result:** Return `3`.
+
+## Common Pitfalls
+
+The two-day jump applies after selling, not buying. This is a different contract from the one-transaction stock problem.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc309|Coding Practice Index — Best Time to Buy And Sell Stock With Cooldown]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -42,39 +79,6 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(n)$ memo/recursion space. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Maximize stock profit with unlimited transactions but a mandatory one-day cooldown after selling.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc309|LeetCode — LC 309]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Memoize the best future profit by day and whether the next action may be a buy.
-2. At each state, consider waiting or taking the permitted buy/sell action.
-3. Buying advances one day; selling advances two days to enforce the cooldown; return the better branch.
-
-## Why It Works
-
-Day and holding state determine all legal future actions, and the cooldown is fully captured by skipping the day after a sale.
-
-## Worked Example
-
-**Illustrative input:** `prices = [1, 2, 3, 0, 2]`.
-
-**Trace:** Buy at 1, sell at 2, wait one day, buy at 0, and sell at 2.
-
-**Result:** Return `3`.
-
-## Common Pitfalls
-
-The two-day jump applies after selling, not buying. This is a different contract from the one-transaction stock problem.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc309|Coding Practice Index — Best Time to Buy And Sell Stock With Cooldown]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

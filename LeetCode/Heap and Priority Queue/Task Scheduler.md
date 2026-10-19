@@ -8,31 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-from collections import Counter
-
-class Solution:
-    def leastInterval(self, tasks: List[str], n: int) -> int:
-        counts = Counter(tasks)
-        if not counts:
-            return 0
-        highest = max(counts.values())
-        tied = sum(count == highest for count in counts.values())
-        forced_length = (highest - 1) * (n + 1) + tied
-        return max(len(tasks), forced_length)
-```
-
-## Complexity
-
-$O(n+u)$ time and $O(u)$ space for `u` task types, bounded by the fixed uppercase alphabet. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0621 - Task Scheduler.png|700]]
 
 ## Overview
 
@@ -66,6 +44,32 @@ Cooldown 2 requires two intervening slots between identical types. Include all t
 
 - [[Job Interviews/Coding Practice Index#^lc621|Coding Practice Index — Task Scheduler]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+from collections import Counter
+
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        counts = Counter(tasks)
+        if not counts:
+            return 0
+        highest = max(counts.values())
+        tied = sum(count == highest for count in counts.values())
+        forced_length = (highest - 1) * (n + 1) + tied
+        return max(len(tasks), forced_length)
+```
+
+## Complexity
+
+$O(n+u)$ time and $O(u)$ space for `u` task types, bounded by the fixed uppercase alphabet. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

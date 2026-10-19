@@ -8,39 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-from typing import List
-import collections
-
-class Solution:
-
-    def rightSideView(self, root: TreeNode) -> List[int]:
-        res = []
-        q = collections.deque([root])
-        while q:
-            rightSide = None
-            qLen = len(q)
-            for i in range(qLen):
-                node = q.popleft()
-                if node:
-                    rightSide = node
-                    q.append(node.left)
-                    q.append(node.right)
-            if rightSide:
-                res.append(rightSide.val)
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(w)$ auxiliary queue space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0199 - Binary Tree Right Side View.png|700]]
 
 ## Overview
 
@@ -74,6 +44,40 @@ The view is not just the chain of right-child pointers. Handle an empty root.
 
 - [[Job Interviews/Coding Practice Index#^lc199|Coding Practice Index — Binary Tree Right Side View]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+from typing import List
+import collections
+
+class Solution:
+
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        res = []
+        q = collections.deque([root])
+        while q:
+            rightSide = None
+            qLen = len(q)
+            for i in range(qLen):
+                node = q.popleft()
+                if node:
+                    rightSide = node
+                    q.append(node.left)
+                    q.append(node.right)
+            if rightSide:
+                res.append(rightSide.val)
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(w)$ auxiliary queue space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

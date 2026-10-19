@@ -8,38 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import collections
-
-class Solution:
-
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
-        cols = collections.defaultdict(set)
-        rows = collections.defaultdict(set)
-        squares = collections.defaultdict(set)
-        for r in range(9):
-            for c in range(9):
-                if board[r][c] == '.':
-                    continue
-                if board[r][c] in rows[r] or board[r][c] in cols[c] or board[r][c] in squares[r // 3, c // 3]:
-                    return False
-                cols[c].add(board[r][c])
-                rows[r].add(board[r][c])
-                squares[r // 3, c // 3].add(board[r][c])
-        return True
-```
-
-## Complexity
-
-$O(1)$ time and space for the fixed 81-cell board. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0036 - Valid Sudoku.png|700]]
 
 ## Overview
 
@@ -73,6 +44,39 @@ Validity of the current cells does not establish that the puzzle is solvable. Ig
 
 - [[Job Interviews/Coding Practice Index#^lc36|Coding Practice Index — Valid Sudoku]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import collections
+
+class Solution:
+
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        cols = collections.defaultdict(set)
+        rows = collections.defaultdict(set)
+        squares = collections.defaultdict(set)
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] == '.':
+                    continue
+                if board[r][c] in rows[r] or board[r][c] in cols[c] or board[r][c] in squares[r // 3, c // 3]:
+                    return False
+                cols[c].add(board[r][c])
+                rows[r].add(board[r][c])
+                squares[r // 3, c // 3].add(board[r][c])
+        return True
+```
+
+## Complexity
+
+$O(1)$ time and space for the fixed 81-cell board. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

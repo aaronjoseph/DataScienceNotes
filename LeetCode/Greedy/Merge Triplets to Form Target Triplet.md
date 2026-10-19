@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:
-        good = set()
-        for t in triplets:
-            if t[0] > target[0] or t[1] > target[1] or t[2] > target[2]:
-                continue
-            for i, v in enumerate(t):
-                if v == target[i]:
-                    good.add(i)
-        return len(good) == 3
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC1899 - Merge Triplets to Form Target Triplet.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ A coordinate match from an overshooting triplet cannot be used. Merges take coor
 
 - [[Job Interviews/Coding Practice Index#^lc1899|Coding Practice Index — Merge Triplets to Form Target Triplet]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:
+        good = set()
+        for t in triplets:
+            if t[0] > target[0] or t[1] > target[1] or t[2] > target[2]:
+                continue
+            for i, v in enumerate(t):
+                if v == target[i]:
+                    good.add(i)
+        return len(good) == 3
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

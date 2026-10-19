@@ -8,29 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-    def change(self, amount: int, coins: List[int]) -> int:
-        ways = [0] * (amount + 1)
-        ways[0] = 1
-        for coin in coins:
-            for subtotal in range(coin, amount + 1):
-                ways[subtotal] += ways[subtotal - coin]
-        return ways[amount]
-```
-
-## Complexity
-
-$O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0518 - Coin Change II.png|700]]
 
 ## Overview
 
@@ -64,6 +44,30 @@ Swapping loop order counts ordered sequences instead. Amount zero has one combin
 
 - [[Job Interviews/Coding Practice Index#^lc518|Coding Practice Index — Coin Change II]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        ways = [0] * (amount + 1)
+        ways[0] = 1
+        for coin in coins:
+            for subtotal in range(coin, amount + 1):
+                ways[subtotal] += ways[subtotal - coin]
+        return ways[amount]
+```
+
+## Complexity
+
+$O(Ac)$ time and $O(A)$ space for amount `A` and `c` coin types. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,37 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        subset = []
-
-        def dfs(i):
-            if i >= len(nums):
-                res.append(subset.copy())
-                return
-            subset.append(nums[i])
-            dfs(i + 1)
-            subset.pop()
-            dfs(i + 1)
-        dfs(0)
-        return res
-```
-
-## Complexity
-
-$O(n2^n)$ time including copies and $O(n)$ auxiliary recursion/path space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0078 - Subsets.png|700]]
 
 ## Overview
 
@@ -72,6 +44,38 @@ Include the empty subset. Copy the path at a leaf so later mutations do not chan
 
 - [[Job Interviews/Coding Practice Index#^lc78|Coding Practice Index — Subsets]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        subset = []
+
+        def dfs(i):
+            if i >= len(nums):
+                res.append(subset.copy())
+                return
+            subset.append(nums[i])
+            dfs(i + 1)
+            subset.pop()
+            dfs(i + 1)
+        dfs(0)
+        return res
+```
+
+## Complexity
+
+$O(n2^n)$ time including copies and $O(n)$ auxiliary recursion/path space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

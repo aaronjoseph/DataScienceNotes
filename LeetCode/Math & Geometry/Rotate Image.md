@@ -8,35 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def rotate(self, matrix: List[List[int]]) -> None:
-        l, r = (0, len(matrix) - 1)
-        while l < r:
-            for i in range(r - l):
-                top, bottom = (l, r)
-                topLeft = matrix[top][l + i]
-                matrix[top][l + i] = matrix[bottom - i][l]
-                matrix[bottom - i][l] = matrix[bottom][r - i]
-                matrix[bottom][r - i] = matrix[top + i][r]
-                matrix[top + i][r] = topLeft
-            r -= 1
-            l += 1
-```
-
-## Complexity
-
-$O(n^2)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0048 - Rotate Image.png|700]]
 
 ## Overview
 
@@ -70,6 +44,36 @@ The input must be square. Save one overwritten value before starting each four-c
 
 - [[Job Interviews/Coding Practice Index#^lc48|Coding Practice Index — Rotate Image]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def rotate(self, matrix: List[List[int]]) -> None:
+        l, r = (0, len(matrix) - 1)
+        while l < r:
+            for i in range(r - l):
+                top, bottom = (l, r)
+                topLeft = matrix[top][l + i]
+                matrix[top][l + i] = matrix[bottom - i][l]
+                matrix[bottom - i][l] = matrix[bottom][r - i]
+                matrix[bottom][r - i] = matrix[top + i][r]
+                matrix[top + i][r] = topLeft
+            r -= 1
+            l += 1
+```
+
+## Complexity
+
+$O(n^2)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

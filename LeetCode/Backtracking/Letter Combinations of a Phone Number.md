@@ -8,36 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def letterCombinations(self, digits: str) -> List[str]:
-        res = []
-        digitToChar = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
-
-        def backtrack(i, curStr):
-            if len(curStr) == len(digits):
-                res.append(curStr)
-                return
-            for c in digitToChar[digits[i]]:
-                backtrack(i + 1, curStr + c)
-        if digits:
-            backtrack(0, '')
-        return res
-```
-
-## Complexity
-
-$O(L4^L)$ worst-case time including string creation and output; $O(L^2)$ live prefix-string space in this immutable-string recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0017 - Letter Combinations of a Phone Number.png|700]]
 
 ## Overview
 
@@ -71,6 +44,37 @@ Digits 0 and 1 are outside this problem's contract. The letters for 7 are pqrs; 
 
 - [[Job Interviews/Coding Practice Index#^lc17|Coding Practice Index — Letter Combinations of a Phone Number]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        res = []
+        digitToChar = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
+
+        def backtrack(i, curStr):
+            if len(curStr) == len(digits):
+                res.append(curStr)
+                return
+            for c in digitToChar[digits[i]]:
+                backtrack(i + 1, curStr + c)
+        if digits:
+            backtrack(0, '')
+        return res
+```
+
+## Complexity
+
+$O(L4^L)$ worst-case time including string creation and output; $O(L^2)$ live prefix-string space in this immutable-string recursion. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

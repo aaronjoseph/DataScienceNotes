@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        res = [1] * len(nums)
-        for i in range(1, len(nums)):
-            res[i] = res[i - 1] * nums[i - 1]
-        postfix = 1
-        for i in range(len(nums) - 1, -1, -1):
-            res[i] *= postfix
-            postfix *= nums[i]
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ auxiliary space, excluding the required output. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0238 - Product of Array Except Self.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ Use 1 for an empty product. This handles zeros naturally; fixed-width languages 
 
 - [[Job Interviews/Coding Practice Index#^lc238|Coding Practice Index — Product of Array Except Self]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = [1] * len(nums)
+        for i in range(1, len(nums)):
+            res[i] = res[i - 1] * nums[i - 1]
+        postfix = 1
+        for i in range(len(nums) - 1, -1, -1):
+            res[i] *= postfix
+            postfix *= nums[i]
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ auxiliary space, excluding the required output. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

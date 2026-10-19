@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0015 - 3Sum.png|700]]
+
+## Overview
+
+Find all unique value triplets summing to zero. Sort first, then solve a two-pointer pair search for each fixed value.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc15|LeetCode — LC 15]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Sort the values and skip duplicate fixed values.
+2. For each fixed position, place pointers immediately after it and at the end.
+3. Move the left pointer for a negative total or the right for a positive total; record zero totals and skip duplicate pairs.
+
+## Why It Works
+
+Sorted order identifies which pointer can move toward zero, while duplicate skipping emits each value triplet once.
+
+## Worked Example
+
+**Illustrative input:** `nums = [-2, 0, 0, 2, 2]`.
+
+**Trace:** Fix -2 and find 0 with 2; later identical pairs are skipped.
+
+**Result:** Return `[[-2, 0, 2]]`.
+
+## Common Pitfalls
+
+Use three distinct indices. Sorting mutates the input, and duplicate output values require explicit handling.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc15|Coding Practice Index — 3Sum]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -47,39 +84,6 @@ class Solution:
 ## Complexity
 
 $O(n^2)$ time; Python sorting can use $O(n)$ auxiliary space, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Find all unique value triplets summing to zero. Sort first, then solve a two-pointer pair search for each fixed value.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc15|LeetCode — LC 15]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Sort the values and skip duplicate fixed values.
-2. For each fixed position, place pointers immediately after it and at the end.
-3. Move the left pointer for a negative total or the right for a positive total; record zero totals and skip duplicate pairs.
-
-## Why It Works
-
-Sorted order identifies which pointer can move toward zero, while duplicate skipping emits each value triplet once.
-
-## Worked Example
-
-**Illustrative input:** `nums = [-2, 0, 0, 2, 2]`.
-
-**Trace:** Fix -2 and find 0 with 2; later identical pairs are skipped.
-
-**Result:** Return `[[-2, 0, 2]]`.
-
-## Common Pitfalls
-
-Use three distinct indices. Sorting mutates the input, and duplicate output values require explicit handling.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc15|Coding Practice Index — 3Sum]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

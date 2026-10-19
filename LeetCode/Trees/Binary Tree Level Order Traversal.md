@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0102 - Binary Tree Level Order Traversal.png|700]]
+
+## Overview
+
+Return binary-tree values grouped by depth using breadth-first search.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc102|LeetCode — LC 102]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Put the root in a queue if it exists.
+2. At each level, process exactly the queue length measured before that level starts.
+3. Collect those values and enqueue their children for the next level.
+
+## Why It Works
+
+Queue order ensures all nodes at the current depth are consumed before any node at the next depth.
+
+## Worked Example
+
+**Illustrative input:** Tree root 1 has children 2 and 3; node 2 has child 4.
+
+**Trace:** Process batches of sizes 1, 2, and 1.
+
+**Result:** Return `[[1], [2, 3], [4]]`.
+
+## Common Pitfalls
+
+Measure the level size before enqueuing children. Use deque rather than repeatedly removing the first list element.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc102|Coding Practice Index — Binary Tree Level Order Traversal]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -42,39 +79,6 @@ class Solution:
 ## Complexity
 
 $O(n)$ time and $O(w)$ auxiliary queue space for maximum width `w`, excluding output. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Return binary-tree values grouped by depth using breadth-first search.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc102|LeetCode — LC 102]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Put the root in a queue if it exists.
-2. At each level, process exactly the queue length measured before that level starts.
-3. Collect those values and enqueue their children for the next level.
-
-## Why It Works
-
-Queue order ensures all nodes at the current depth are consumed before any node at the next depth.
-
-## Worked Example
-
-**Illustrative input:** Tree root 1 has children 2 and 3; node 2 has child 4.
-
-**Trace:** Process batches of sizes 1, 2, and 1.
-
-**Result:** Return `[[1], [2, 3], [4]]`.
-
-## Common Pitfalls
-
-Measure the level size before enqueuing children. Use deque rather than repeatedly removing the first list element.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc102|Coding Practice Index — Binary Tree Level Order Traversal]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

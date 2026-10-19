@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0073 - Set Matrix Zeroes.png|700]]
+
+## Overview
+
+Set an entire row and column to zero whenever its original matrix contains a zero, using constant extra space.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc73|LeetCode — LC 73]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Use the first row and first column as markers; retain a separate flag for whether the first row originally needs zeroing.
+2. Scan original entries and mark their associated row and column.
+3. Zero the interior from markers, then handle the first column and first row last.
+
+## Why It Works
+
+Markers record original zero locations without needing separate row and column arrays, while delayed clearing preserves that information.
+
+## Worked Example
+
+**Illustrative input:** `matrix = [[1, 2, 3], [4, 0, 6]]`.
+
+**Trace:** The zero marks its row and middle column.
+
+**Result:** The matrix becomes `[[1, 0, 3], [0, 0, 0]]`.
+
+## Common Pitfalls
+
+Do not zero rows immediately during discovery, or newly written zeros can spread incorrectly. The shared top-left marker needs careful handling.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc73|Coding Practice Index — Set Matrix Zeroes]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -46,39 +83,6 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Set an entire row and column to zero whenever its original matrix contains a zero, using constant extra space.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc73|LeetCode — LC 73]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Use the first row and first column as markers; retain a separate flag for whether the first row originally needs zeroing.
-2. Scan original entries and mark their associated row and column.
-3. Zero the interior from markers, then handle the first column and first row last.
-
-## Why It Works
-
-Markers record original zero locations without needing separate row and column arrays, while delayed clearing preserves that information.
-
-## Worked Example
-
-**Illustrative input:** `matrix = [[1, 2, 3], [4, 0, 6]]`.
-
-**Trace:** The zero marks its row and middle column.
-
-**Result:** The matrix becomes `[[1, 0, 3], [0, 0, 0]]`.
-
-## Common Pitfalls
-
-Do not zero rows immediately during discovery, or newly written zeros can spread incorrectly. The shared top-left marker needs careful handling.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc73|Coding Practice Index — Set Matrix Zeroes]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

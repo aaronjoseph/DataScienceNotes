@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        charSet = set()
-        l = 0
-        res = 0
-        for r in range(len(s)):
-            while s[r] in charSet:
-                charSet.remove(s[l])
-                l += 1
-            charSet.add(s[r])
-            res = max(res, r - l + 1)
-        return res
-```
-
-## Complexity
-
-$O(n)$ expected time and $O(u)$ space for distinct characters in the window. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0003 - Longest Substring Without Repeating Characters.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ Remove characters in a loop, not only once. A substring must be contiguous.
 
 - [[Job Interviews/Coding Practice Index#^lc3|Coding Practice Index — Longest Substring Without Repeating Characters]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()
+        l = 0
+        res = 0
+        for r in range(len(s)):
+            while s[r] in charSet:
+                charSet.remove(s[l])
+                l += 1
+            charSet.add(s[r])
+            res = max(res, r - l + 1)
+        return res
+```
+
+## Complexity
+
+$O(n)$ expected time and $O(u)$ space for distinct characters in the window. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

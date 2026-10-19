@@ -8,27 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def getSum(self, a: int, b: int) -> int:
-        mask = 0xFFFFFFFF
-        a, b = a & mask, b & mask
-        while b:
-            a, b = (a ^ b) & mask, ((a & b) << 1) & mask
-        return a if a <= 0x7FFFFFFF else ~(a ^ mask)
-```
-
-## Complexity
-
-$O(w)$ bit-propagation rounds and $O(1)$ extra word storage for fixed width `w = 32`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0371 - Sum of Two Integers.png|700]]
 
 ## Overview
 
@@ -62,6 +44,28 @@ Mask every carry update in Python. The conversion must distinguish a nonnegative
 
 - [[Job Interviews/Coding Practice Index#^lc371|Coding Practice Index — Sum of Two Integers]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        mask = 0xFFFFFFFF
+        a, b = a & mask, b & mask
+        while b:
+            a, b = (a ^ b) & mask, ((a & b) << 1) & mask
+        return a if a <= 0x7FFFFFFF else ~(a ^ mask)
+```
+
+## Complexity
+
+$O(w)$ bit-propagation rounds and $O(1)$ extra word storage for fixed width `w = 32`. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

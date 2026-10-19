@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import heapq
-
-class Solution:
-
-    def lastStoneWeight(self, stones: List[int]) -> int:
-        stones = [-s for s in stones]
-        heapq.heapify(stones)
-        while len(stones) > 1:
-            first = heapq.heappop(stones)
-            second = heapq.heappop(stones)
-            if second > first:
-                heapq.heappush(stones, first - second)
-        stones.append(0)
-        return abs(stones[0])
-```
-
-## Complexity
-
-$O(n\log n)$ time and $O(n)$ extra space for the negated heap. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC1046 - Last Stone Weight.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ Python's ordinary heap is a min heap. Track signs consistently when computing th
 
 - [[Job Interviews/Coding Practice Index#^lc1046|Coding Practice Index — Last Stone Weight]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import heapq
+
+class Solution:
+
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones = [-s for s in stones]
+        heapq.heapify(stones)
+        while len(stones) > 1:
+            first = heapq.heappop(stones)
+            second = heapq.heappop(stones)
+            if second > first:
+                heapq.heappush(stones, first - second)
+        stones.append(0)
+        return abs(stones[0])
+```
+
+## Complexity
+
+$O(n\log n)$ time and $O(n)$ extra space for the negated heap. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

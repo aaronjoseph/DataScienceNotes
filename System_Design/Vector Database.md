@@ -351,6 +351,9 @@ Measure end-to-end percentiles directly under load: adding component p99 values 
 
 ## Sharding, replication, and consistency
 
+> [!question] Why can a balanced vector database still have hot shards?
+> [[System_Design/Vector Search Scaling|Vector Search Scaling]] explains the difference between hash placement and similarity routing, with an infographic and examples of how shards, local ANN indexes, and read replicas scale together.
+
 ### Partition data; replicate for capacity and failure recovery
 
 Start with 32 logical shards mapped through stable virtual partitions. Hash vector IDs within a collection to balance ownership. Place each shard's three replicas across separate availability zones. Replica placements share physical nodes only when resource isolation and failure-domain rules permit.

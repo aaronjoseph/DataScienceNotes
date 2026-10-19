@@ -8,6 +8,43 @@ languages:
   - Python
 ---
 
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0417 - Pacific Atlantic Water Flow.png|700]]
+
+## Overview
+
+Find cells from which water can reach both oceans. Search backward from each ocean's boundary.[^implementation]
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc417|LeetCode — LC 417]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Start one flood fill from the top and left edges and another from the bottom and right edges.
+2. Move backward only to equal or higher neighboring cells.
+3. Return the intersection of cells reached by the two searches.
+
+## Why It Works
+
+A reversed uphill path to a cell corresponds exactly to an allowed downhill path from that cell to the ocean.
+
+## Worked Example
+
+**Illustrative input:** `heights = [[1, 2], [4, 3]]`.
+
+**Trace:** The top-right and bottom-left cells touch both ocean boundary sets; the bottom-right can flow toward both.
+
+**Result:** Return `[[0, 1], [1, 0], [1, 1]]` in any order.
+
+## Common Pitfalls
+
+Reverse the movement inequality when starting at oceans. Equal heights permit flow, and each ocean needs its own visited set.
+
+## Related Notes
+
+- [[Job Interviews/Coding Practice Index#^lc417|Coding Practice Index — Pacific Atlantic Water Flow]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
 ## Template
 
 ### Python
@@ -49,39 +86,6 @@ class Solution:
 ## Complexity
 
 $O(RC)$ time and $O(RC)$ space. Bounds describe the implementation above and exclude required output unless stated otherwise.
-
-## Overview
-
-Find cells from which water can reach both oceans. Search backward from each ocean's boundary.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc417|LeetCode — LC 417]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Start one flood fill from the top and left edges and another from the bottom and right edges.
-2. Move backward only to equal or higher neighboring cells.
-3. Return the intersection of cells reached by the two searches.
-
-## Why It Works
-
-A reversed uphill path to a cell corresponds exactly to an allowed downhill path from that cell to the ocean.
-
-## Worked Example
-
-**Illustrative input:** `heights = [[1, 2], [4, 3]]`.
-
-**Trace:** The top-right and bottom-left cells touch both ocean boundary sets; the bottom-right can flow toward both.
-
-**Result:** Return `[[0, 1], [1, 0], [1, 1]]` in any order.
-
-## Common Pitfalls
-
-Reverse the movement inequality when starting at oceans. Equal heights permit flow, and each ocean needs its own visited set.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc417|Coding Practice Index — Pacific Atlantic Water Flow]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def cloneGraph(self, node: 'Node') -> 'Node':
-        oldToNew = {}
-
-        def dfs(node):
-            if node in oldToNew:
-                return oldToNew[node]
-            copy = Node(node.val)
-            oldToNew[node] = copy
-            for nei in node.neighbors:
-                copy.neighbors.append(dfs(nei))
-            return copy
-        return dfs(node) if node else None
-```
-
-## Complexity
-
-$O(V+E)$ expected time and $O(V)$ auxiliary map/recursion space, excluding copied edges. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0133 - Clone Graph.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ Map node identities, not potentially repeated values. Register a copy before vis
 
 - [[Job Interviews/Coding Practice Index#^lc133|Coding Practice Index — Clone Graph]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        oldToNew = {}
+
+        def dfs(node):
+            if node in oldToNew:
+                return oldToNew[node]
+            copy = Node(node.val)
+            oldToNew[node] = copy
+            for nei in node.neighbors:
+                copy.neighbors.append(dfs(nei))
+            return copy
+        return dfs(node) if node else None
+```
+
+## Complexity
+
+$O(V+E)$ expected time and $O(V)$ auxiliary map/recursion space, excluding copied edges. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

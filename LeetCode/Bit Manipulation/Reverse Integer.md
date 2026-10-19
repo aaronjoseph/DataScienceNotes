@@ -8,32 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-    def reverse(self, x: int) -> int:
-        negative = x < 0
-        remaining = abs(x)
-        limit = 2147483648 if negative else 2147483647
-        reversed_value = 0
-        while remaining:
-            remaining, digit = divmod(remaining, 10)
-            if reversed_value > (limit - digit) // 10:
-                return 0
-            reversed_value = reversed_value * 10 + digit
-        return -reversed_value if negative else reversed_value
-```
-
-## Complexity
-
-$O(\log(|x|+1))$ time and $O(1)$ extra space under the 32-bit input contract. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0007 - Reverse Integer.png|700]]
 
 ## Overview
 
@@ -67,6 +44,33 @@ Positive and negative limits differ by one. Avoid floating-point division and la
 
 - [[Job Interviews/Coding Practice Index#^lc7|Coding Practice Index — Reverse Integer]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        negative = x < 0
+        remaining = abs(x)
+        limit = 2147483648 if negative else 2147483647
+        reversed_value = 0
+        while remaining:
+            remaining, digit = divmod(remaining, 10)
+            if reversed_value > (limit - digit) // 10:
+                return 0
+            reversed_value = reversed_value * 10 + digit
+        return -reversed_value if negative else reversed_value
+```
+
+## Complexity
+
+$O(\log(|x|+1))$ time and $O(1)$ extra space under the 32-bit input contract. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

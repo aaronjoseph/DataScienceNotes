@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-import heapq
-
-class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        largest = []
-        for value in nums:
-            heapq.heappush(largest, value)
-            if len(largest) > k:
-                heapq.heappop(largest)
-        return largest[0]
-```
-
-## Complexity
-
-$O(n\log(k+1))$ time and $O(k)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0215 - Kth Largest Element In An Array.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ This is kth largest with duplicates included, not kth distinct. Quickselect has 
 
 - [[Job Interviews/Coding Practice Index#^lc215|Coding Practice Index — Kth Largest Element In An Array]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+import heapq
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        largest = []
+        for value in nums:
+            heapq.heappush(largest, value)
+            if len(largest) > k:
+                heapq.heappop(largest)
+        return largest[0]
+```
+
+## Complexity
+
+$O(n\log(k+1))$ time and $O(k)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

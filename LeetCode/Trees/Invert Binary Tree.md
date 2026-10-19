@@ -8,30 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
-
-```python
-from __future__ import annotations
-from typing import Optional
-
-class Solution:
-
-    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root:
-            return None
-        root.left, root.right = (root.right, root.left)
-        self.invertTree(root.left)
-        self.invertTree(root.right)
-        return root
-```
-
-## Complexity
-
-$O(n)$ time and $O(h)$ recursion space for tree height `h`. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0226 - Invert Binary Tree.png|700]]
 
 ## Overview
 
@@ -65,6 +44,31 @@ The code mutates the original tree. A skewed tree can exceed Python's recursion 
 
 - [[Job Interviews/Coding Practice Index#^lc226|Coding Practice Index — Invert Binary Tree]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+
+```python
+from __future__ import annotations
+from typing import Optional
+
+class Solution:
+
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        root.left, root.right = (root.right, root.left)
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
+```
+
+## Complexity
+
+$O(n)$ time and $O(h)$ recursion space for tree height `h`. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

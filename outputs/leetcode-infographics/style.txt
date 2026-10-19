@@ -1,0 +1,37 @@
+Initial built-in image_gen sample prompt (not used in the final notes)
+
+Create a dedicated algorithm revision infographic for the supplied LeetCode note.
+Use a clean light background, dark navy type, restrained blue/teal/amber accents,
+and a consistent portrait study-card layout readable at 700 px note width.
+The image must teach the supplied implementation's logic in language-neutral
+pseudocode, with a short intuition above it and separate TIME and AUXILIARY SPACE
+cards below it. Define every complexity variable. Preserve expected versus
+worst-case bounds, recursion cost, and excluded output-space qualifications.
+Use ordinary readable notation such as O(n log n), not visible LaTeX commands.
+Keep pseudocode concise, normally 8–16 lines, using named helpers when necessary.
+Use meaningful variable names, explicit indentation, and correct loop boundaries.
+Preserve important edge cases. Match the actual primary implementation in the
+source; do not substitute a different approach. Add a tiny concrete trace only
+when it fits without crowding. Title the card with its LC number and problem name.
+No logos, reference URLs, invented benchmark figures, or source-code screenshots.
+Source note text is supplied below this template in each generation request.
+
+Migration layout
+
+The infographic replaces the initial text presentation. The original Template
+and Complexity sections are moved intact immediately before the final references.
+All original body text, headings, code, footnotes, links, metadata, and exercises
+are preserved. The user's current request overrides the older top-section order
+in AGENTS.md for this migration.
+
+Final rendering method
+
+The final 150 PNGs use render.py with Pillow for exact text and indentation.
+The cards have idea, logic, Python-style pseudocode, time/space, and size-variable
+panels. Ordinary Python implementations are parsed with ast, stripped of type
+annotations and the Solution wrapper, and displayed with function headers.
+Five class-heavy problems use compact logical descriptions in
+pseudocode_overrides.py. LC 875 uses its existing first-true search and explicit
+integer ceiling division. LC 704's card shows its exact-match primary variant;
+all other original templates remain in the note. The AI sample images were
+discarded because they introduced complexity/indentation errors.

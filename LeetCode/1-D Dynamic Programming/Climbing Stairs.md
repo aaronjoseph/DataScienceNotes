@@ -8,31 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-
-class Solution:
-
-    def climbStairs(self, n: int) -> int:
-        if n <= 3:
-            return n
-        n1, n2 = (2, 3)
-        for i in range(4, n + 1):
-            temp = n1 + n2
-            n1 = n2
-            n2 = temp
-        return n2
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ auxiliary space under bounded-integer accounting. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0070 - Climbing Stairs.png|700]]
 
 ## Overview
 
@@ -66,6 +44,32 @@ This problem starts at positive n. For a reusable recurrence, define zero stairs
 
 - [[Job Interviews/Coding Practice Index#^lc70|Coding Practice Index — Climbing Stairs]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+
+class Solution:
+
+    def climbStairs(self, n: int) -> int:
+        if n <= 3:
+            return n
+        n1, n2 = (2, 3)
+        for i in range(4, n + 1):
+            temp = n1 + n2
+            n1 = n2
+            n2 = temp
+        return n2
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ auxiliary space under bounded-integer accounting. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

@@ -8,33 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key=lambda pair: pair[0])
-        output = [intervals[0]]
-        for start, end in intervals:
-            lastEnd = output[-1][1]
-            if start <= lastEnd:
-                output[-1][1] = max(lastEnd, end)
-            else:
-                output.append([start, end])
-        return output
-```
-
-## Complexity
-
-$O(n\log n)$ time and $O(n)$ sorting/output storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0056 - Merge Intervals.png|700]]
 
 ## Overview
 
@@ -68,6 +44,34 @@ Endpoint contact counts as overlap. This implementation sorts in place and may m
 
 - [[Job Interviews/Coding Practice Index#^lc56|Coding Practice Index — Merge Intervals]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda pair: pair[0])
+        output = [intervals[0]]
+        for start, end in intervals:
+            lastEnd = output[-1][1]
+            if start <= lastEnd:
+                output[-1][1] = max(lastEnd, end)
+            else:
+                output.append([start, end])
+        return output
+```
+
+## Complexity
+
+$O(n\log n)$ time and $O(n)$ sorting/output storage. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 

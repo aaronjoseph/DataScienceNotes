@@ -8,34 +8,9 @@ languages:
   - Python
 ---
 
-## Template
+## Algorithm at a glance
 
-### Python
-
-Adapted reference implementation for the LeetCode Python 3 judge.
-
-```python
-from __future__ import annotations
-from typing import List
-
-class Solution:
-
-    def jump(self, nums: List[int]) -> int:
-        l, r = (0, 0)
-        res = 0
-        while r < len(nums) - 1:
-            maxJump = 0
-            for i in range(l, r + 1):
-                maxJump = max(maxJump, i + nums[i])
-            l = r + 1
-            r = maxJump
-            res += 1
-        return res
-```
-
-## Complexity
-
-$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
+![[Attachements/LeetCode/LC0045 - Jump Game II.png|700]]
 
 ## Overview
 
@@ -69,6 +44,35 @@ The problem guarantees reachability. A reusable version must detect a nonexpandi
 
 - [[Job Interviews/Coding Practice Index#^lc45|Coding Practice Index — Jump Game II]] — Central problem URL and solution navigation.
 - [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
+
+## Template
+
+### Python
+
+Adapted reference implementation for the LeetCode Python 3 judge.
+
+```python
+from __future__ import annotations
+from typing import List
+
+class Solution:
+
+    def jump(self, nums: List[int]) -> int:
+        l, r = (0, 0)
+        res = 0
+        while r < len(nums) - 1:
+            maxJump = 0
+            for i in range(l, r + 1):
+                maxJump = max(maxJump, i + nums[i])
+            l = r + 1
+            r = maxJump
+            res += 1
+        return res
+```
+
+## Complexity
+
+$O(n)$ time and $O(1)$ extra space. Bounds describe the implementation above and exclude required output unless stated otherwise.
 
 ## References & Useful Links
 
