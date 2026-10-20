@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="570" viewBox="0 0 960 570" role="img" aria-labelledby="title desc">
+  <title id="title">Numerical attention weights for red running shoes</title>
+  <desc id="desc">Rows are queries and columns are keys and values. The red query has weights 0.4011, 0.1978 and 0.4011. The running query has 0.1978, 0.4011 and 0.4011. The shoes query has 0.2483, 0.2483 and 0.5035. The shoes output vector is approximately [0.7517, 0.7517]. These are calculated toy weights, not measured linguistic attention.</desc>
+  <rect width="960" height="570" rx="24" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172b46">
+    <text x="40" y="48" font-size="29" font-weight="700">Read an attention matrix one row at a time</text>
+    <text x="40" y="80" font-size="20" fill="#52647a">Calculated toy example · identity projections · no mask · key width 2</text>
+    <text x="570" y="125" text-anchor="middle" font-size="20" fill="#52647a">KEY / VALUE POSITION</text>
+    <text x="370" y="161" text-anchor="middle" font-size="23" font-weight="700">red</text>
+    <text x="570" y="161" text-anchor="middle" font-size="23" font-weight="700">running</text>
+    <text x="770" y="161" text-anchor="middle" font-size="23" font-weight="700">shoes</text>
+    <text x="115" y="240" transform="rotate(-90 115 240)" text-anchor="middle" font-size="20" fill="#52647a">QUERY POSITION</text>
+    <text x="255" y="220" text-anchor="end" font-size="23" font-weight="700">red</text>
+    <text x="255" y="297" text-anchor="end" font-size="23" font-weight="700">running</text>
+    <text x="255" y="374" text-anchor="end" font-size="23" font-weight="700">shoes</text>
+    <g stroke="#fff" stroke-width="3">
+      <rect x="280" y="180" width="180" height="68" rx="10" fill="#81b3df"/><rect x="480" y="180" width="180" height="68" rx="10" fill="#dfecf7"/><rect x="680" y="180" width="180" height="68" rx="10" fill="#81b3df"/>
+      <rect x="280" y="257" width="180" height="68" rx="10" fill="#dfecf7"/><rect x="480" y="257" width="180" height="68" rx="10" fill="#81b3df"/><rect x="680" y="257" width="180" height="68" rx="10" fill="#81b3df"/>
+      <rect x="280" y="334" width="180" height="68" rx="10" fill="#c5dff2"/><rect x="480" y="334" width="180" height="68" rx="10" fill="#c5dff2"/><rect x="680" y="334" width="180" height="68" rx="10" fill="#397fb9"/>
+    </g>
+    <g text-anchor="middle" font-size="27"><text x="370" y="224">0.4011</text><text x="570" y="224">0.1978</text><text x="770" y="224">0.4011</text><text x="370" y="301">0.1978</text><text x="570" y="301">0.4011</text><text x="770" y="301">0.4011</text><text x="370" y="378">0.2483</text><text x="570" y="378">0.2483</text><text x="770" y="378" fill="#fff">0.5035</text></g>
+    <rect x="40" y="438" width="880" height="74" rx="14" fill="#d6f0e8"/>
+    <text x="64" y="469" font-size="22" font-weight="700">For the query at shoes: read across its row, then mix the value vectors.</text>
+    <text x="64" y="497" font-size="22">The resulting output vector is approximately [0.7517, 0.7517].</text>
+    <text x="40" y="548" font-size="19" fill="#52647a">Each row sums to one before rounding. Reverse directions need not have equal weights.</text>
+  </g>
+</svg>

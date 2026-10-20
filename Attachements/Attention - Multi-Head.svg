@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="570" viewBox="0 0 960 570" role="img" aria-labelledby="title desc">
+  <title id="title">Multi-head attention uses different learned projections</title>
+  <desc id="desc">The same input reaches eight heads in the original base Transformer. Each head learns its own query, key and value projections and produces 64 features per token. Concatenation yields 512 features, then a learned output projection mixes heads.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#54657b" stroke-width="1.8"/></marker></defs>
+  <rect width="960" height="570" rx="24" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172b46">
+    <text x="40" y="48" font-size="29" font-weight="700">Several views of the same sequence</text>
+    <text x="40" y="80" font-size="20" fill="#52647a">Heads learn separate matching spaces; their roles are not assigned in advance.</text>
+    <rect x="40" y="110" width="880" height="58" rx="14" fill="#e7edf5"/>
+    <text x="480" y="147" text-anchor="middle" font-size="23">Original base model: 512 input features per token</text>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M178 168V210"/><path d="M480 168V210"/><path d="M782 168V210"/></g>
+    <rect x="40" y="216" width="276" height="148" rx="16" fill="#dceafc"/>
+    <rect x="342" y="216" width="276" height="148" rx="16" fill="#e6e1fa"/>
+    <rect x="644" y="216" width="276" height="148" rx="16" fill="#d6f0e8"/>
+    <g text-anchor="middle"><text x="178" y="252" font-size="25" font-weight="700">Head 1</text><text x="480" y="252" font-size="25" font-weight="700">Head 2</text><text x="782" y="252" font-size="25" font-weight="700">… Head 8</text>
+      <text x="178" y="288" font-size="21">Own Q, K, V projections</text><text x="480" y="288" font-size="21">Own Q, K, V projections</text><text x="782" y="288" font-size="21">Own Q, K, V projections</text>
+      <text x="178" y="320" font-size="21">Own attention weights</text><text x="480" y="320" font-size="21">Own attention weights</text><text x="782" y="320" font-size="21">Own attention weights</text>
+      <text x="178" y="348" font-size="19" fill="#52647a">64 output features</text><text x="480" y="348" font-size="19" fill="#52647a">64 output features</text><text x="782" y="348" font-size="19" fill="#52647a">64 output features</text></g>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M178 364V405"/><path d="M480 364V405"/><path d="M782 364V405"/></g>
+    <rect x="40" y="412" width="880" height="58" rx="14" fill="#fff" stroke="#c8d5e4"/>
+    <text x="480" y="449" text-anchor="middle" font-size="23">Concatenate all 8 outputs: 512 features per token</text>
+    <path d="M480 470V494" fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="180" y="500" width="600" height="46" rx="12" fill="#d6f0e8"/>
+    <text x="480" y="530" text-anchor="middle" font-size="22">Learned output projection mixes the heads</text>
+  </g>
+</svg>

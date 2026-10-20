@@ -8,9 +8,9 @@ related:
 
 ## Interview Pipeline
 
-- [ ] Kurian @{2026-10-19}  Call
-- [ ] Pramod Call @{2026-10-18}   Call
-- [ ] Salique @{2026-10-18} Call
+- [x] Kurian @{2026-10-19}  Call
+- [x] Pramod Call @{2026-10-18}   Call
+- [x] Salique @{2026-10-18} Call
 
 
 ## Coding Backlog

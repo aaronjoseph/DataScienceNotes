@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="760" viewBox="0 0 960 760" role="img" aria-labelledby="title desc">
+  <title id="title">The original Transformer encoder and decoder</title>
+  <desc id="desc">Source embeddings plus positions pass through six encoder layers, each with self-attention and a feed-forward network. Shifted target embeddings plus positions pass through six decoder layers, each with causal self-attention, encoder-decoder cross-attention and a feed-forward network. Every sublayer has residual addition and layer normalization. Encoder outputs supply keys and values to cross-attention; decoder states supply queries.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#54657b" stroke-width="1.8"/></marker></defs>
+  <rect width="960" height="760" rx="24" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172b46">
+    <text x="36" y="48" font-size="29" font-weight="700">The 2017 model contains more than attention</text>
+    <text x="36" y="80" font-size="20" fill="#52647a">Read top to bottom. Each outlined layer is repeated six times with its own weights.</text>
+    <text x="231" y="122" text-anchor="middle" font-size="24" font-weight="700">ENCODER</text><text x="711" y="122" text-anchor="middle" font-size="24" font-weight="700">DECODER</text>
+    <rect x="56" y="145" width="350" height="60" rx="12" fill="#e7edf5"/><text x="231" y="170" text-anchor="middle" font-size="21">Source token embeddings</text><text x="231" y="195" text-anchor="middle" font-size="20">+ positional encodings</text>
+    <rect x="536" y="145" width="350" height="60" rx="12" fill="#e7edf5"/><text x="711" y="170" text-anchor="middle" font-size="21">Shifted target embeddings</text><text x="711" y="195" text-anchor="middle" font-size="20">+ positional encodings</text>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M231 205V251"/><path d="M711 205V251"/></g>
+    <g fill="#fff" stroke="#acbdd0" stroke-width="2"><rect x="32" y="229" width="398" height="354" rx="18"/><rect x="512" y="229" width="398" height="354" rx="18"/></g>
+    <rect x="68" y="257" width="326" height="72" rx="12" fill="#dceafc"/><text x="231" y="285" text-anchor="middle" font-size="22" font-weight="700">Multi-head self-attention</text><text x="231" y="312" text-anchor="middle" font-size="19">All non-padding source positions</text>
+    <rect x="68" y="343" width="326" height="40" rx="10" fill="#fff0cf"/><text x="231" y="370" text-anchor="middle" font-size="20">Residual add + LayerNorm</text>
+    <path d="M231 383V422" fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="68" y="429" width="326" height="61" rx="12" fill="#d6f0e8"/><text x="231" y="466" text-anchor="middle" font-size="22" font-weight="700">Position-wise feed-forward</text>
+    <rect x="68" y="504" width="326" height="40" rx="10" fill="#fff0cf"/><text x="231" y="531" text-anchor="middle" font-size="20">Residual add + LayerNorm</text>
+    <text x="231" y="567" text-anchor="middle" font-size="18" fill="#52647a">One encoder layer · repeat 6 times</text>
+    <rect x="548" y="257" width="326" height="47" rx="12" fill="#dceafc"/><text x="711" y="287" text-anchor="middle" font-size="21" font-weight="700">Causal multi-head self-attention</text>
+    <rect x="548" y="314" width="326" height="36" rx="9" fill="#fff0cf"/><text x="711" y="339" text-anchor="middle" font-size="20">Residual add + LayerNorm</text>
+    <path d="M711 350V365" fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="548" y="371" width="326" height="47" rx="12" fill="#e6e1fa"/><text x="711" y="392" text-anchor="middle" font-size="22" font-weight="700">Cross-attention</text><text x="711" y="411" text-anchor="middle" font-size="17">Q from decoder</text>
+    <rect x="548" y="428" width="326" height="36" rx="9" fill="#fff0cf"/><text x="711" y="453" text-anchor="middle" font-size="20">Residual add + LayerNorm</text>
+    <rect x="548" y="477" width="326" height="37" rx="10" fill="#d6f0e8"/><text x="711" y="503" text-anchor="middle" font-size="21" font-weight="700">Position-wise feed-forward</text>
+    <rect x="548" y="524" width="326" height="30" rx="8" fill="#fff0cf"/><text x="711" y="546" text-anchor="middle" font-size="19">Residual add + LayerNorm</text>
+    <text x="711" y="577" text-anchor="middle" font-size="18" fill="#52647a">One decoder layer · repeat 6 times</text>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M231 583V622"/><path d="M711 583V622"/></g>
+    <rect x="56" y="629" width="350" height="50" rx="12" fill="#dceafc"/><text x="231" y="661" text-anchor="middle" font-size="22">Final encoder token vectors</text>
+    <rect x="536" y="629" width="350" height="50" rx="12" fill="#e7edf5"/><text x="711" y="661" text-anchor="middle" font-size="22">Linear + vocabulary softmax</text>
+    <path d="M406 654H468V395H544" fill="none" stroke="#7b66b5" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="486" y="523" transform="rotate(-90 486 523)" text-anchor="middle" font-size="19" fill="#665197">K and V from final encoder output</text>
+    <text x="36" y="721" font-size="19" fill="#52647a">Each amber box adds that sublayer's input, then normalises. Dropout is omitted for clarity.</text>
+    <text x="36" y="747" font-size="18" fill="#52647a">Training uses known shifted targets in parallel; generation predicts and appends one token at a time.</text>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+  <title id="title">From text to context-aware token vectors</title>
+  <desc id="desc">Text is tokenized, converted to token IDs, mapped to learned embedding vectors with position information, and processed by repeated Transformer blocks. The output is one context-aware vector per token; the task head determines whether the model classifies, scores, pools, or predicts vocabulary tokens.</desc>
+  <rect width="960" height="650" rx="24" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172b46">
+    <text x="40" y="48" font-size="29" font-weight="700">From words to context-aware vectors</text>
+    <text x="40" y="80" font-size="20" fill="#52647a">Running example: treat each word as one token for this illustration.</text>
+    <rect x="40" y="108" width="880" height="70" rx="14" fill="#e7edf5"/>
+    <text x="64" y="138" font-size="23" font-weight="700">1 · Text and tokenization</text>
+    <text x="64" y="164" font-size="21">red running shoes  →  [red, running, shoes]</text>
+    <rect x="40" y="211" width="880" height="70" rx="14" fill="#dceafc"/>
+    <text x="64" y="241" font-size="23" font-weight="700">2 · Vocabulary lookup</text>
+    <text x="64" y="267" font-size="21">[red, running, shoes]  →  token IDs [17, 42, 91] · illustrative IDs</text>
+    <rect x="40" y="314" width="880" height="70" rx="14" fill="#e6e1fa"/>
+    <text x="64" y="344" font-size="23" font-weight="700">3 · Embeddings and positions</text>
+    <text x="64" y="370" font-size="21">Each ID selects a learned vector; position information marks its place.</text>
+    <rect x="40" y="417" width="880" height="70" rx="14" fill="#d6f0e8"/>
+    <text x="64" y="447" font-size="23" font-weight="700">4 · Repeated Transformer blocks</text>
+    <text x="64" y="473" font-size="21">Attention mixes tokens; feed-forward networks transform their features.</text>
+    <rect x="40" y="520" width="880" height="70" rx="14" fill="#fff0cf"/>
+    <text x="64" y="550" font-size="23" font-weight="700">5 · Contextual vectors and a task head</text>
+    <text x="64" y="576" font-size="21">One vector per token  →  classify, pool, score, or predict vocabulary tokens</text>
+    <g stroke="#54657b" stroke-width="2.5" fill="#54657b"><path d="M480 180V199M480 283V302M480 386V405M480 489V508"/><path d="M475 195L480 201L485 195M475 298L480 304L485 298M475 401L480 407L485 401M475 504L480 510L485 504" fill="none"/></g>
+    <text x="40" y="628" font-size="19" fill="#52647a">Token IDs identify vocabulary entries. They are not semantic scores or vector coordinates.</text>
+  </g>
+</svg>

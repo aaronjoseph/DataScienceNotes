@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">How one self-attention head moves information</title>
+  <desc id="desc">Token vectors are projected into queries, keys and values. Queries match keys; scaling, masking and row-wise softmax produce weights that mix the values. The shoes example uses weights 0.2483, 0.2483 and 0.5035.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#54657b" stroke-width="1.8"/></marker></defs>
+  <rect width="960" height="640" rx="24" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172b46">
+    <text x="40" y="48" font-size="29" font-weight="700">One head: match, normalise, mix</text>
+    <text x="40" y="80" font-size="20" fill="#52647a">Each output token receives a weighted mixture of value vectors.</text>
+    <rect x="40" y="110" width="880" height="60" rx="14" fill="#e7edf5"/>
+    <text x="480" y="148" text-anchor="middle" font-size="23">X: one vector per token  →  three learned projections</text>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M178 170V214"/><path d="M480 170V214"/><path d="M782 170V214"/>
+    </g>
+    <rect x="40" y="220" width="276" height="106" rx="16" fill="#dceafc"/>
+    <text x="62" y="254" font-size="25" font-weight="700">Q · Queries</text>
+    <text x="62" y="286" font-size="21">What am I looking for?</text>
+    <text x="62" y="312" font-size="18" fill="#52647a">One query for each position</text>
+    <rect x="342" y="220" width="276" height="106" rx="16" fill="#e6e1fa"/>
+    <text x="364" y="254" font-size="25" font-weight="700">K · Keys</text>
+    <text x="364" y="286" font-size="21">What can I match?</text>
+    <text x="364" y="312" font-size="18" fill="#52647a">One key for each position</text>
+    <rect x="644" y="220" width="276" height="106" rx="16" fill="#d6f0e8"/>
+    <text x="666" y="254" font-size="25" font-weight="700">V · Values</text>
+    <text x="666" y="286" font-size="21">What content can I pass?</text>
+    <text x="666" y="312" font-size="18" fill="#52647a">Learned content vectors</text>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M178 326V386"/><path d="M480 326V352H245V386"/><path d="M782 326V386"/>
+      <path d="M316 442H338"/><path d="M618 442H640"/>
+    </g>
+    <rect x="40" y="392" width="276" height="118" rx="16" fill="#fff" stroke="#c8d5e4"/>
+    <text x="62" y="427" font-size="24" font-weight="700">1 · Score matches</text>
+    <text x="62" y="460" font-size="21">Match queries with keys</text>
+    <text x="62" y="490" font-size="19" fill="#52647a">Scale; mask forbidden keys</text>
+    <rect x="342" y="392" width="276" height="118" rx="16" fill="#fff" stroke="#c8d5e4"/>
+    <text x="364" y="427" font-size="24" font-weight="700">2 · Softmax</text>
+    <text x="364" y="460" font-size="21">Normalise each query row</text>
+    <text x="364" y="490" font-size="19" fill="#52647a">Weights sum to one</text>
+    <rect x="644" y="392" width="276" height="118" rx="16" fill="#fff" stroke="#9bc9b9"/>
+    <text x="666" y="427" font-size="24" font-weight="700">3 · Mix values</text>
+    <text x="666" y="460" font-size="21">Multiply weights by V</text>
+    <text x="666" y="490" font-size="19" fill="#52647a">One new vector per query</text>
+    <rect x="40" y="545" width="880" height="65" rx="14" fill="#e7edf5"/>
+    <text x="60" y="574" font-size="20" font-weight="700">Example: the query at “shoes” receives</text>
+    <text x="60" y="599" font-size="20">24.83% from red   ·   24.83% from running   ·   50.35% from shoes</text>
+  </g>
+</svg>

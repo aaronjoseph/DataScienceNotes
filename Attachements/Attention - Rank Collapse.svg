@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Token uniformity and the role of residual connections</title>
+  <desc id="desc">A schematic shows distinct red, running and shoes token representations becoming similar under repeated pure attention. The contrasting residual path retains the previous representation while attention and feed-forward branches update it. This illustration is not experimental data or a convergence-rate plot.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#54657b" stroke-width="1.8"/></marker></defs>
+  <rect width="960" height="600" rx="24" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#172b46">
+    <text x="36" y="48" font-size="29" font-weight="700">Useful mixing can erase token differences</text>
+    <text x="36" y="80" font-size="20" fill="#52647a">Pure attention has a bias toward uniform tokens under the paper's conditions.</text>
+    <rect x="28" y="108" width="904" height="240" rx="18" fill="#fff" stroke="#d5dfeb"/>
+    <text x="52" y="144" font-size="23" font-weight="700">PURE ATTENTION</text>
+    <text x="52" y="177" font-size="19" fill="#52647a">Different token vectors</text>
+    <text x="52" y="218" font-size="20">red</text><text x="52" y="257" font-size="20">running</text><text x="52" y="296" font-size="20">shoes</text>
+    <g><rect x="145" y="193" width="132" height="29" rx="6" fill="#4388ca"/><rect x="145" y="232" width="77" height="29" rx="6" fill="#8c75c7"/><rect x="145" y="271" width="184" height="29" rx="6" fill="#37a187"/></g>
+    <path d="M346 248H407" fill="none" stroke="#54657b" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="418" y="192" width="215" height="111" rx="14" fill="#e7edf5"/>
+    <text x="525" y="224" text-anchor="middle" font-size="21">Repeated attention</text><text x="525" y="254" text-anchor="middle" font-size="20">No skip connections</text><text x="525" y="282" text-anchor="middle" font-size="20">No MLPs</text>
+    <path d="M645 248H701" fill="none" stroke="#54657b" stroke-width="3" marker-end="url(#arrow)"/>
+    <g fill="#8196b1"><rect x="721" y="193" width="144" height="29" rx="6"/><rect x="721" y="232" width="147" height="29" rx="6"/><rect x="721" y="271" width="145" height="29" rx="6"/></g>
+    <text x="790" y="177" text-anchor="middle" font-size="19" fill="#52647a">Nearly identical rows</text>
+    <text x="52" y="331" font-size="18" fill="#52647a">Bars are a schematic of token differences, not feature values or measured ranks.</text>
+    <rect x="28" y="370" width="904" height="162" rx="18" fill="#fff" stroke="#b6d9cb"/>
+    <text x="52" y="406" font-size="23" font-weight="700">RESIDUAL PATH</text>
+    <rect x="52" y="443" width="142" height="48" rx="10" fill="#e7edf5"/><text x="123" y="474" text-anchor="middle" font-size="22">Token state</text>
+    <rect x="299" y="443" width="239" height="48" rx="10" fill="#dceafc"/><text x="418" y="474" text-anchor="middle" font-size="21">Attention update</text>
+    <circle cx="646" cy="467" r="24" fill="#fff0cf"/><text x="646" y="475" text-anchor="middle" font-size="29">+</text>
+    <rect x="736" y="443" width="168" height="48" rx="10" fill="#d6f0e8"/><text x="820" y="474" text-anchor="middle" font-size="21">Updated state</text>
+    <g fill="none" stroke="#54657b" stroke-width="2.5" marker-end="url(#arrow)"><path d="M194 467H294"/><path d="M538 467H617"/><path d="M670 467H731"/><path d="M221 467V422H646V439"/></g>
+    <text x="425" y="413" text-anchor="middle" font-size="18" fill="#52647a">Previous state bypasses mixing</text>
+    <text x="36" y="567" font-size="20">MLPs can slow collapse; a shared MLP cannot distinguish already identical rows.</text>
+    <text x="36" y="592" font-size="18" fill="#52647a">Conceptual illustration based on Dong et al. (2021). This is not a guarantee for every trained model.</text>
+  </g>
+</svg>
