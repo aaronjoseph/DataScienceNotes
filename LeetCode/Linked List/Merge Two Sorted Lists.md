@@ -1,6 +1,7 @@
 ---
 tags:
   - leetcode
+  - linked-list
 problem_number: 21
 difficulty: "Easy"
 pattern: "Linked List"
@@ -8,48 +9,11 @@ languages:
   - Python
 ---
 
-## Algorithm at a glance
-
-![[Attachements/LeetCode/LC0021 - Merge Two Sorted Lists.png|700]]
-
-## Overview
-
-Merge two ascending linked lists by repeatedly linking the smaller remaining head.[^implementation]
-
-Problem link: [[Job Interviews/Coding Practice Index#^lc21|LeetCode — LC 21]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
-
-## How to Solve
-
-1. Create a dummy head and a tail pointer.
-2. While both lists are nonempty, attach the smaller head and advance that list and the tail.
-3. Attach the entire remaining suffix and return dummy.next.
-
-## Why It Works
-
-The smaller head is the smallest unmerged value, so the growing output stays sorted.
-
-## Worked Example
-
-**Illustrative input:** Lists `1 → 4` and `2 → 3`.
-
-**Trace:** Choose 1, 2, and 3, then attach the remaining 4.
-
-**Result:** Return `1 → 2 → 3 → 4`.
-
-## Common Pitfalls
-
-The implementation reuses and relinks input nodes. An empty input is handled by attaching the other list.
-
-## Related Notes
-
-- [[Job Interviews/Coding Practice Index#^lc21|Coding Practice Index — Merge Two Sorted Lists]] — Central problem URL and solution navigation.
-- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
-
 ## Template
 
 ### Python
 
-Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.
+Adapted reference implementation for the LeetCode Python 3 judge. The judge supplies the problem's node classes; their constructors and attributes follow the problem statement.[^implementation]
 
 ```python
 from __future__ import annotations
@@ -72,7 +36,57 @@ class Solution:
 
 ## Complexity
 
-$O(n+m)$ time and $O(1)$ extra space for iterative node reuse. Bounds describe the implementation above and exclude required output unless stated otherwise.
+- **Time:** $O(n + m)$ worst-case, where $n$ and $m$ are the lengths of `list1` and `list2`. Each loop iteration advances one of the two pointers by one node, and attaching the leftover tail is $O(1)$.
+- **Auxiliary space:** $O(1)$, reusing the existing input nodes and allocating only one sentinel `dummy` node (a recursive merge uses $O(n + m)$ call-stack space).
+
+## Algorithm at a glance
+
+![[Attachements/LeetCode/LC0021 - Merge Two Sorted Lists.png|700]]
+
+## Overview
+
+Merge two sorted singly linked lists into a single sorted list by splicing their existing nodes together in ascending order.[^implementation] This is the core subroutine reused inside [[LeetCode/Linked List/Merge K Sorted Lists|Merge K Sorted Lists]] (LC 23).
+
+Problem link: [[Job Interviews/Coding Practice Index#^lc21|LeetCode — LC 21]] · Completion: [[Action-Plan Kanban#Coding Backlog|Coding Backlog]].
+
+## How to Solve
+
+1. Create a sentinel `dummy = ListNode()` and a tail pointer `node = dummy` so you never need a special case for the first output node.
+2. While both `list1` and `list2` are non-empty:
+   - Compare `list1.val` and `list2.val`.
+   - Attach the smaller node to `node.next` and advance that input pointer.
+   - Advance `node = node.next`.
+3. Once one list is exhausted, attach the entire remaining suffix in one pointer assignment (`node.next = list1 or list2`).
+4. Return `dummy.next`.
+
+## Why It Works
+
+Both input lists are sorted, so the smaller of the two current heads is guaranteed to be the smallest unmerged element remaining across both lists. Appending it maintains sorted order, and once one list becomes empty, every node in the other list is already sorted and greater than or equal to everything merged so far.
+
+## Worked Example
+
+**Inputs:** `list1 = 1 → 4`, `list2 = 2 → 3`.
+
+1. **Step 1:** Compare `1 < 2`. Attach `1`, advance `list1` to `4`. Merged: `dummy → 1`.
+2. **Step 2:** Compare `4 < 2` (false). Attach `2`, advance `list2` to `3`. Merged: `dummy → 1 → 2`.
+3. **Step 3:** Compare `4 < 3` (false). Attach `3`, advance `list2` to `None`. Merged: `dummy → 1 → 2 → 3`.
+4. **Tail attachment:** `list2` is `None`, so set `node.next = list1` (`4 → None`).
+
+**Outcome:** Returns `dummy.next`, the head of `1 → 2 → 3 → 4`.
+
+## Common Pitfalls
+
+- **Returning `dummy` instead of `dummy.next`:** The sentinel node holds a placeholder value and must not be part of the returned list.
+- **Forgetting to advance `node`:** If `node = node.next` is omitted, every iteration overwrites `dummy.next`.
+- **Looping through the leftover tail unnecessarily:** Because the remaining list is already linked and sorted, `node.next = list1 or list2` attaches it in $O(1)$ time.
+- **In-place mutation:** This implementation reuses and relinks the original input nodes rather than allocating fresh copies.
+
+## Related Notes
+
+- [[LeetCode/Linked List/Merge K Sorted Lists|Merge K Sorted Lists]] — Repeatedly calls this two-list merge in pairwise divide-and-conquer rounds.
+- [[LeetCode/Linked List/Add Two Numbers|Add Two Numbers]] — Another sentinel-head (`dummy`) traversal over two lists.
+- [[Job Interviews/Coding Practice Index#^lc21|Coding Practice Index — Merge Two Sorted Lists]] — Central problem URL and solution navigation.
+- [[Action-Plan Kanban#Coding Backlog|Coding Backlog]] — Mark practice completion on the board.
 
 ## References & Useful Links
 

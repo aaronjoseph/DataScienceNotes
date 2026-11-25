@@ -208,6 +208,22 @@ Adapt the body to the material:
 - For layout changes, inspect the affected section in Obsidian reading view at normal note width when available (wrapping, table width, hierarchy, callout size). Otherwise state that the rendered layout remains unverified.
 - Summarise the files changed, substantive improvements, and unresolved factual or source-access gaps. Report only checks actually performed, and do not claim the whole vault was reviewed after a targeted edit.
 
+## Git & Personal GitHub Push Guardrails
+
+- **Repository:** `https://github.com/aaronjoseph/DataScienceNotes.git` (default branch `master`).
+- **Never modify global git config (`--global`):** Keep personal GitHub identity and credential overrides scoped `--local` to this repository so work git settings remain untouched:
+  ```zsh
+  git config --local user.name "Aaron Joseph Mathew"
+  git config --local user.email "aaronjosephmathew@gmail.com"
+  git config --local credential.https://github.com.helper ""
+  git config --local --add credential.https://github.com.helper '!/opt/homebrew/bin/gh auth git-credential'
+  ```
+- **Push command:** Push with regular fast-forward (`push origin master`, never force-push `-f`). If repo-local credential config is not set, pass the per-command override:
+  ```zsh
+  git -c credential.helper= -c 'credential.helper=!/opt/homebrew/bin/gh auth git-credential' push origin master
+  ```
+- **Clean commits:** Stage only intentional note or doc changes; do not commit `.DS_Store`, `.obsidian/*`, or `.copilot/*` unless explicitly requested.
+
 ## Obsidian documentation
 
 - [Obsidian Callouts](https://obsidian.md/help/callouts) — Callout syntax, types, titles, and folding.
